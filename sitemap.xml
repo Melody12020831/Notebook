@@ -1,35 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-         <loc>https://note.melody.cc/</loc>
-         <lastmod>2024-11-22</lastmod>
-    </url>
-    <url>
-         <loc>https://note.melody.cc/Math/</loc>
-         <lastmod>2024-11-22</lastmod>
-    </url>
-    <url>
-         <loc>https://note.melody.cc/Math/Probability%20Theory%20and%20Mathematical%20Statistics/</loc>
-         <lastmod>2024-11-22</lastmod>
-    </url>
-    <url>
-         <loc>https://note.melody.cc/Math/Probability%20Theory%20and%20Mathematical%20Statistics/Chapter1/</loc>
-         <lastmod>2024-11-22</lastmod>
-    </url>
-    <url>
-         <loc>https://note.melody.cc/Math/Probability%20Theory%20and%20Mathematical%20Statistics/Chapter2/</loc>
-         <lastmod>2024-11-22</lastmod>
-    </url>
-    <url>
-         <loc>https://note.melody.cc/Math/Probability%20Theory%20and%20Mathematical%20Statistics/Chapter3/</loc>
-         <lastmod>2024-11-22</lastmod>
-    </url>
-    <url>
-         <loc>https://note.melody.cc/Math/Probability%20Theory%20and%20Mathematical%20Statistics/Chapter4/</loc>
-         <lastmod>2024-11-22</lastmod>
-    </url>
-    <url>
-         <loc>https://note.melody.cc/Math/Probability%20Theory%20and%20Mathematical%20Statistics/Chapter5/</loc>
-         <lastmod>2024-11-22</lastmod>
-    </url>
 </urlset>
