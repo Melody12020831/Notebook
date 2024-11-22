@@ -1,21 +1,24 @@
-# Welcome to MkDocs
+---
+comments: false
+statistics: True
+hide:
+  - feedback
+---
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+# Welcome to my notebook!
 
-## Commands
+!!! note "" 
+    <br><br>
+    <div align="center" style="font-size:32px;font-weight:bold">
+        允许一切发生，但只解决问题。
+    </div>
+     <br><br>
 
-=== "first"
-    * `mkdocs new [dir-name]` - Create a new project.
-=== "second"
-    * `mkdocs serve` - Start the live-reloading docs server.
+!!! info "站点统计"
+    <center>
+    本站目前共 {{pages}} 页，累计 {{words}} 字！
+    </center>
 
-=== "third"
-    - `mkdocs build` - Build the documentation site.
-    - `mkdocs -h` - Print help message and exit.
+如果发现了什么错误，欢迎在评论区留言，或者通过邮箱(Melody12020831@outlook.com)联系我。
 
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+本项目的许可证为 <!--[![CC BY-NC-SA Logo](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png) -->[知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
