@@ -175,8 +175,10 @@ $P(ABC) = P(A) \times P(B | A) \times P(C | AB)$
 $$P(A_1A_2\dots A_n ) = P(A_1)P(A_2 | A_1)P(A_3 |A_1A_2 ) \dots P(A_n | A_1 \dots A_{n-1})$$
 
 ???+ question
-	一盒中有5个红球，4个白球，采用不放回抽样，每次取一个，取4次，
+	一盒中有5个红球，4个白球，采用不放回抽样，每次取一个，取4次。
+
 	(1)已知前两次中至少有一次取到红球，求前两次中恰有一次取到红球的概率；
+
 	(2)已知第4次取到红球，求第1，2次也取到红球的概率。
 
 ??? note "Answer"
@@ -238,13 +240,16 @@ $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 
 ???+ question
 	设某地每天发生雾霾的概率为0.2.在雾霾天气,该地各居民独立地以概率0.2戴口罩，在没有雾霾的时候各居民独立地以概率0.01戴口罩.某天
+
 	(1)在该地任选一居民,求他戴口罩的概率；
+
 	(2)若选n人,求他们都戴口罩的概率；
+
 	(3)若选n人发现他们都戴口罩,求这一天发生雾霾的概率.(这里n为正整数.)
 
 ??? note "Answer"
 	![img](images/image-20241010152338029.png)
 	![img](images/image-20241010152348041.png)
 	![img](images/image-20241010152359611.png)
-	![img](/Math/Probability Theory and Mathematical Statistics/images/image-20241010152418375.png)
+	![img](images/image-20241010152418375.png)
 ---

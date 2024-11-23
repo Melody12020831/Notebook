@@ -75,15 +75,15 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 
 3. 设$X,Y$ 是两个随机变量，则
 
-   <p>$$Var(X\pm Y)=Var(X)+Var(Y) \pm 2E{[X−E(X)][Y−E(Y)]}=Var(X)+Var(Y) \pm 2Cov(X,Y)$$；</p>
+   <p>$$Var(X\pm Y)=Var(X)+Var(Y) \pm 2E{[X−E(X)][Y−E(Y)]}=Var(X)+Var(Y) \pm 2Cov(X,Y);$$</p>
 
    - 这一性质可以推广到任意有限个随机变量之和的情况：
    
-   <p>$$Var(\sum_{i=1}^nX_i)=\sum_{i=1}^nVar(X_i)+2\sum_{1\le i < j \le n} Cov(X_i,X_j)$$; </p>
+   <p>$$Var(\sum_{i=1}^nX_i)=\sum_{i=1}^nVar(X_i)+2\sum_{1\le i < j \le n} Cov(X_i,X_j);$$</p>
 
    - 特别地，如果 $X,Y$ 相互独立，则 $Var(X \pm Y)=Var(X)+Var(Y)$;
 
-   - 进一步地，如果 $X_i(i=1,2,\dots,n)$ 彼此独立，则$Var(c_0+\sum_{i=1}^nc_iX_i)=\sum_{i=1}^nc_i^2Var(X_i)$;
+   - 进一步地，如果 $X_i(i=1,2,\dots,n)$ 彼此独立，则$Var(c_0+\sum_{i=1}^nc_iX_i)=\sum_{i=1}^nc_i^2Var(X_i);$
 
 4. $Var(X)\le E[(X−c)^2]$，并且当且仅当 $E(X)=c$ 时等号成立；
 
@@ -198,12 +198,19 @@ $$\left( \begin{array}{l} Var(X_1) & Cov(X_1,X_2) & \dots & Cov(X_1,X_n) \\ Cov(
 4. 若 $(X_1,X2,\dots ,X_n)$ 服从 $n$ 维正态分布，则 $X_1,X_2,\dots ,X_n$ 互相独立的**充要条件**是 $X_i$ 两两不相关，也等价于协方差矩阵为对角矩阵；
 
 ???+ question 
-	设二元随机变量$(X,Y)$服从二元正态分布，$X∼N(0,1),Y∼N(1,4)$，X与Y的相关系数$\rho = -\frac{1}{2}$求:(1)$Var(2X-Y)$；(2)$P(2X > Y)$；(3) $Z_1 = X + Y,Z_2 = X - Y$，求$(Z_1,Z_2)$的分布。
+	设二元随机变量$(X,Y)$服从二元正态分布，$X∼N(0,1),Y∼N(1,4)$，X与Y的相关系数$\rho = -\frac{1}{2}$求:
+   
+   (1)$Var(2X-Y)$；
+   
+   (2)$P(2X > Y)$；
+   
+   (3) $Z_1 = X + Y,Z_2 = X - Y$，求$(Z_1,Z_2)$的分布。
 
 ??? note "Answer"
 	![img](images/image-20241114112838339.png)
    ![img](images/image-20241114113256466.png)
    ![img](images/image-20241114112903472.png)
+
 ---
 
 

@@ -9,7 +9,7 @@ statistics: True
 
 ### 依概率收敛
 
-随机变量序列$Y_1,Y_2，Y_3,\dots $，若存在某常数$c$，使得$\forall \epsilon > 0$，均有：$\mathop{lim}\limits_{n \rightarrow +\infty}P\{|Y_n - c| \ge \epsilon\} = 0$，则称$\{Y_n,n \ge 1\}$**依概率收敛**于常数$c$，记为：当$n \rightarrow +\infty$时，$Y_n \mathop{\rightarrow}\limits^P c$
+随机变量序列 $Y_1,Y_2，Y_3,\dots $ ，若存在某常数 $c$ ，使得 $\forall \epsilon > 0$ ，均有：$\mathop{lim}\limits_{n \rightarrow +\infty}P\{|Y_n - c| \ge \epsilon\} = 0$，则称$\{Y_n,n \ge 1\}$**依概率收敛**于常数$c$，记为：当$n \rightarrow +\infty$时，$Y_n \mathop{\rightarrow}\limits^P c$
 
 **性质**：
 
