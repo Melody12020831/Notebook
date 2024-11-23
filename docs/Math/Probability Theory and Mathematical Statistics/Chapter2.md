@@ -255,5 +255,6 @@ $$\Phi(x) = \int_{−\infty}^{x}\frac{1}{\sqrt{2\pi}} e^{−\frac{t^2}{2}}dt$$
 $$f_Y(y)= \begin{cases}f_X(h(y)) \cdot∣h′(y)∣,&y \in D\\ 0,&y\notin D\end{cases}$$
 
 其中 $D$ 为 $y=g(x)$ 的值域。
+
 ---
 
