@@ -55,9 +55,9 @@ $$A \cup B = \{x | x \in A 或 x \in B\}$$
 
 $$A \cap B  = A \cdot B = AB = \{ x| x \in A 且 x \in B\}$$
 
-$\mathop{\cup}\limits_{i=1}^{n} A_i: A_1,A_2,\dots,A_n$至少有一个发生
+- $\mathop{\cup}\limits_{i=1}^{n} A_i: A_1,A_2,\dots,A_n$至少有一个发生
 
-$\mathop{\cap}\limits_{i=1}^{n}A_i:A_1,A_2,\dots,A_n$同时发生
+- $\mathop{\cap}\limits_{i=1}^{n}A_i:A_1,A_2,\dots,A_n$同时发生
 
 当$AB = \Phi$时，称事件A与B是互不相容的，或互斥的。
 
