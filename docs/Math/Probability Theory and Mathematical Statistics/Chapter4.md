@@ -208,8 +208,8 @@ $$\left( \begin{array}{l} Var(X_1) & Cov(X_1,X_2) & \dots & Cov(X_1,X_n) \\ Cov(
 
 ??? note "Answer"
 	![img](images/image-20241114112838339.png)
-   ![img](images/image-20241114113256466.png)
-   ![img](images/image-20241114112903472.png)
+	![img](images/image-20241114113256466.png)
+	![img](images/image-20241114112903472.png)
 
 ---
 
