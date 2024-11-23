@@ -9,10 +9,10 @@ statistics: True
 
 数学期望简称**期望**，又称**均值**。
 
-- 离散型随机变量：$E(X) = \sum_{k=1}^{+\infty}x_kp_k$，且要求$\sum_{k=1}^{+\infty}|x_k|p_k < \infty$
+- 离散型随机变量：$E(X) = \sum\limits_{k=1}^{+\infty}x_kp_k$，且要求$\sum\limits_{k=1}^{+\infty}|x_k|p_k < \infty$
 - 连续型随机变量：$E(X) = \int_{-\infty}^{+\infty} xf(x)dx$，且要求$\int_{-\infty}^{+\infty}|x|f(x)dx< \infty$
 - 随机变量函数的数学期望：设 $Y$ 是随机变量 $X$ 的函数：$Y=g(X)$（$g$ 是连续函数）。
-  - $X$ 是**离散型随机变量**，它的分布律为 $P(X=x_k)=p_k,k=1,2,\dots$，若 $\sum_{k=1}^{+\infty}g(x_k)p_k$ 绝对收敛，则有：$E(Y)=E(g(X))=\sum_{k=1}^{+\infty}g(x_k)p_k$。
+  - $X$ 是**离散型随机变量**，它的分布律为 $P(X=x_k)=p_k,k=1,2,\dots$，若 $\sum\limits_{k=1}^{+\infty}g(x_k)p_k$ 绝对收敛，则有：$E(Y)=E(g(X))=\sum\limits_{k=1}^{+\infty}g(x_k)p_k$。
   - $X$ 是**连续型随机变量**，它的概率密度为 $f(x)$，若 $\int_{−\infty}^{+\infty}g(x)f(x)dx$ 绝对收敛，则有：$E(Y)=E(g(X))=\int_{−\infty}^{+\infty}g(x)f(x)dx$。
 
 ---
@@ -27,13 +27,13 @@ statistics: True
 
    - 这一性质可以推广到任意有限个随机变量线性组合的情况:
 
-     $E(c_o + \sum_i^nc_iX_i) = c_o + \sum_i^nc_iE(X_i)$
+     $E(c_o + \sum\limits_{i=1}^nc_iX_i) = c_o + \sum\limits_{i=1}^nc_iE(X_i)$
 
 4. 设 $X,Y$ 是相互独立的随机变量，则 $E(X \cdot Y)=E(X) \cdot E(Y)$，但**逆命题不成立**；
 
    - 这一性质可以推广到任意有限个相互独立的随机变量：
 
-     $E(\prod_i^nX_i) = \prod_i^nE(X_i)$
+     $E(\prod\limits_{i=1}^nX_i) = \prod\limits_{i=1}^nE(X_i)$
 
 ???+ question 
 	计算机程序随机产生0 ~ 9中的数字. 记$X_i$为第$i$次产生的数字，$i=1, 2,\dots ,n$. 将这$n$个数依次排列，得到一数，记为$Y$,求$E(Y)$.
@@ -61,8 +61,8 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 
 而其计算方法可以利用随机变量函数的数学期望，记$ g(X)=(X−E(X))^2$，然后计算 $E(g(X))$。
 
-- 离散型：$Var(X)=E{[X−E(X)]^2}=\sum_{i=1}^{+\infty}[x_i−E(X)]^2p_i$；
-- 连续型：$Var(X)=E{[X−E(X)]^2}=\int_{−\infty}^{+\infty}[x−E(X)]^2f(x)dx$；
+- 离散型：$Var(X)=E{[X−E(X)]^2}=\sum\limits_{i=1}^{+\infty}[x_i−E(X)]^2p_i;$
+- 连续型：$Var(X)=E{[X−E(X)]^2}=\int_{−\infty}^{+\infty}[x−E(X)]^2f(x)dx;$
 - 利用期望的性质，可以得到 $Var(X)=E(X^2)−E^2(X)$；
 
 ---
@@ -83,7 +83,7 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 
    - 特别地，如果 $X,Y$ 相互独立，则 $Var(X \pm Y)=Var(X)+Var(Y)$;
 
-   - 进一步地，如果 $X_i(i=1,2,\dots,n)$ 彼此独立，则$Var(c_0+\sum_{i=1}^nc_iX_i)=\sum_{i=1}^nc_i^2Var(X_i);$
+   - 进一步地，如果 $X_i(i=1,2,\dots,n)$ 彼此独立，则$Var(c_0+\sum\limits_{i=1}^nc_iX_i)=\sum\limits_{i=1}^nc_i^2Var(X_i);$
 
 4. $Var(X)\le E[(X−c)^2]$，并且当且仅当 $E(X)=c$ 时等号成立；
 
@@ -112,25 +112,25 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 ### 协方差的性质
 1. $Cov(X,Y)=Cov(Y,X)$；
 2. $Cov(X,Y)=E(XY)−E(X)E(Y)$；
-3. $Cov(aX,bY)=abCov(X,Y),a,b \in R$；
+3. $Cov(aX,bY)=ab*Cov(X,Y) \ ,a,b \in R$；
 4. $Cov(X+Y,Z)=Cov(X,Z)+Cov(Y,Z)$；
 5. $Cov(X,X)=Var(X)$；
 6. $Cov(c,Y)=E(cY)−E(c)E(Y)=0,c \in R$；
 7. $Cov(X+Y,X−Y)=Cov(X,X)−Cov(Y,Y)$；
 8. $Cov(X∗,Y∗)=Cov(\frac{X−E(X)}{\sqrt{Var(X)}},\frac{Y−E(Y)}{\sqrt{Var(Y)}})=\frac{Cov(X,Y)}{Var(X)Var(Y)}=\rho_{XY}$；
-9. $Cov(aX+bY,cX+dY)=acVar(X)+bdVar(Y)+(ad+bc)Cov(X,Y)$；
+9. $Cov(aX+bY,cX+dY)=ac \cdot Var(X)+bd \cdot Var(Y)+(ad+bc)Cov(X,Y)$；
 
 ### 相关系数的性质
 
 1. $∣\rho_{XY}∣\le 1$；
 
-2. $∣\rho_{XY}∣=1 \Leftrightarrow \exists a,b \in R,\ s.t.\ P(Y=a+bX)=1$；
+2. $∣\rho_{XY}∣=1 \Leftrightarrow \exists a,b \in R,\ s.t.\ P(Y=a+bX)=1;$
 
    - $\rho_{XY}=+1$时，$b>0$；
    - $\rho_{XY}=-1$时，$b<0$；
 
 3. 上述两条性质可以合并写成：
-   当 $Var(X)Var(Y) \neq 0$ 时，有 $Cov^2(X,Y) \le Var(X)Var(Y)$，其中等号当且仅当 $X$ 与 $Y$ 之间有严格的线性关系，即存在常数 $a,b$，使 $P(Y=a+bX)=1$；
+   当 $Var(X)Var(Y) \neq 0$ 时，有 $Cov^2(X,Y) \le Var(X)Var(Y)$，其中等号当且仅当 $X$ 与 $Y$ 之间有严格的线性关系，即存在常数 $a,b$，使 $P(Y=a+bX)=1;$
 
 相关系数 $\rho_{XY}$ 是用来表征 $ X,Y$ 之间**线性关系紧密程度**的量。此外，考虑以 $X$ 的线性函数 $a+bX$ 来近似表示 $Y$，均方误差 $e(a,b)=E{[Y−(a+bX)]^2}$ 也可以用来衡量 $X,Y$ 之间线性关系紧密程度。其中有：
 
@@ -160,7 +160,7 @@ $$\begin{cases}a_0 = E(Y)-b_0E(X)\\b_0=\frac{Cov(X,Y)}{Var(X)}\end{cases}$$
 **注意区分独立性和相关性：**
 
 - $X,Y$互相独立 $\Rightarrow X,Y$ 不相关；
-- $X,Y$ 不独立 $\Leftarrow X,Y $相关；
+- $X,Y$ 不独立 $\Leftarrow X,Y$ 相关；
 
 ---
 
@@ -186,12 +186,12 @@ $$\left( \begin{array}{l} Var(X_1) & Cov(X_1,X_2) & \dots & Cov(X_1,X_n) \\ Cov(
 
 ### n元正态变量具有以下四条重要性质
 
-1. $n$维正态变量$(X1,X2,...,Xn)^T$中的任意子向量$(X_{i_1},X_{i_2},\dots,X_{i_k})^T，$1 \le k \le n$也服从$k$元正态分布；
+1. $n$维正态变量$(X1,X2,...,Xn)^T$中的任意子向量 $(X_{i_1},X_{i_2},\dots,X_{i_k})^T , \ 1 \le k \le n$也服从$k$元正态分布；
 
-   - 特别地，每一个分量 $X_i,i=1,2,\dots ,n$都是正态变量；
+   - 特别地，每一个分量 $X_i,\ i=1,2,\dots ,n$都是正态变量；
    - 反之，若每个 $X_i$ 都是正态变量，且相互独立，则$ (X_1,X_2, \dots,X_n)$是 $n$维正态变量；
 
-2. $n$ 维随机变量 $(X_1,X_2,\dots ,X_n)$ 服从 $n$ 维正态分布的**充要条件**是 $X_1,X_2,\dots ,X_n$ 的任意线性组合 $\sum_{i=1}^nl_iX_i$ 服从一维正态分布，其中 $l_1,l_2,\dots ,l_n$不全为 $0$；
+2. $n$ 维随机变量 $(X_1,X_2,\dots ,X_n)$ 服从 $n$ 维正态分布的**充要条件**是 $X_1,X_2,\dots ,X_n$ 的任意线性组合 $\sum\limits_{i=1}^nl_iX_i$ 服从一维正态分布，其中 $l_1,l_2,\dots ,l_n$不全为 $0$；
 
 3. 若 $(X_1,X_2,\dots ,X_n)$ 服从 $n$ 维正态分布，设 $Y_1,Y_2,\dots ,Y_k$ 是 $X_i$ 的线性函数，则 $(Y_1,Y_2,\dots,Y_k)$ 也服从多维正态分布，这一性质被称为正态变量的线性变换不变性；
 

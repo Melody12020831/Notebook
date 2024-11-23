@@ -55,9 +55,9 @@ $$A \cup B = \{x | x \in A 或 x \in B\}$$
 
 $$A \cap B  = A \cdot B = AB = \{ x| x \in A 且 x \in B\}$$
 
-$\cup_{i=1}^{n} A_i: A_1,A_2,\dots,A_n$至少有一个发生
+$\mathop{\cup}\limits_{i=1}^{n} A_i: A_1,A_2,\dots,A_n$至少有一个发生
 
-$\cap_{i=1}^{n}A_i:A_1,A_2,\dots,A_n$同时发生
+$\mathop{\cap}\limits_{i=1}^{n}A_i:A_1,A_2,\dots,A_n$同时发生
 
 当$AB = \Phi$时，称事件A与B是互不相容的，或互斥的。
 
@@ -70,9 +70,9 @@ $$A \overline{B} = A - B = \{ x | x \in A 且 x \notin B\}$$
 - **分配律：**A(B∪C) = (AB)∪(AC), (AB)∪C = (A∪C)(B∪C);
 - **对偶律** / **德摩根定律(De Morgan's law)：**
 
-$$\overline{\cup_{j=1}^n A_j} = \cap_{j=1}^n \overline{A_j}$$
+$$\overline{\mathop{\cup}\limits_{j=1}^n A_j} = \mathop{\cap}\limits_{j=1}^n \overline{A_j}$$
 
-$$\overline{\cap_{j=1}^nA_{j}} = \cup_{j=1}^n\overline{A_j}$$
+$$\overline{\mathop{\cap}\limits_{j=1}^nA_{j}} = \mathop{\cup}\limits_{j=1}^n\overline{A_j}$$
 
 ---
 
@@ -88,7 +88,7 @@ $$\overline{\cap_{j=1}^nA_{j}} = \cup_{j=1}^n\overline{A_j}$$
 
 1. $$ 0 \le f_n(A) \le 1$$
 2. $$f_n(S) = 1$$
-3. 若$A_1,A_2,\dots,A_n$两两互不相容，则$f_n(\cup_{i=1}^k A_i) = \sum_{i=1}^k f_n(A_i)$
+3. 若$A_1,A_2,\dots,A_n$两两互不相容，则$f_n(\mathop{\cup}\limits_{i=1}^k A_i) = \sum\limits_{i=1}^k f_n(A_i)$
 4. $f_n(A)$随n的增大渐趋稳定，记稳定值为p
 
 ---
@@ -99,21 +99,21 @@ $$\overline{\cap_{j=1}^nA_{j}} = \cup_{j=1}^n\overline{A_j}$$
 
 1. 非负性 P(A)≥0；
 2. 规范性 / 正则性 P(S)=1；
-3. 可列可加性：对于 S 中不相容的事件 $A_i$，有$P(\cup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} P(A_i)$
+3. 可列可加性：对于 S 中不相容的事件 $A_i$，有$P(\mathop{\cup}\limits_{i=1}^{\infty} A_i) = \sum\limits_{i=1}^{\infty} P(A_i)$
 
 由此得到如下几条**概率的性质**：
 
-1. 对于有限个**两两不相容**的事件的和事件，有 $P(\cup_{i=1}^{n} A_i) = \sum_{i=1}^{n} P(A_i)$
+1. 对于有限个**两两不相容**的事件的和事件，有 $P(\mathop{\cup}\limits_{i=1}^{n} A_i) = \sum\limits_{i=1}^{n} P(A_i)$
 2. $P(A)=1−P(\overline{A})$; 特别的，可以得到 $P(\Phi) = 0$;
-3. 当 A⊃B 时，P(A−B)=P(A)−P(B)  且 P(A) ≥ P(B);
+3. 当 A⊃B 时，P(A−B)=P(A)−P(B)  且 P(A) $\ge$ P(B);
 4. 概率的**加法公式**：P(A∪B) = P(A)+P(B)−P(AB) ; 推广即容斥原理；
-5. 加法公式的推论：P(A∪B) ≤ P(A)+P(B);
+5. 加法公式的推论：P(A∪B) $\le$ P(A)+P(B);
 
 ???+ question 
 	甲乙丙3人去参加某个集会的概率均为0.4，其中至少有两人参加的概率为0.3，都参加的概率为0.05，求3人中至少有一人参加的概率。
 
 ??? note "Answer"
-	![img](image-20241010150740808.png)
+	![img](images/image-20241010150740808.png)
 	![img](images/image-20241010150921573.png)
 	![img](images/image-20241010150932293.png)
 
@@ -134,7 +134,7 @@ $$\overline{\cap_{j=1}^nA_{j}} = \cup_{j=1}^n\overline{A_j}$$
 	（配对问题）一个小班有n个同学，编号为1, 2, …, n 号，中秋节前每人准备一件礼物，相应编号为1,2, … ,n。将所有礼物集中放在一起，然后每个同学随机取一件，求没有人拿到自己礼物的概率。
 
 ??? note "Answer"
-	![img](image-20241010151142968.png)
+	![img](images/image-20241010151142968.png)
 	![img](images/image-20241010151151499-1728544311835-1.png)
 	![img](images/image-20241010151202708.png)
 ---
@@ -150,7 +150,7 @@ $$P(B|A) = \frac{P(AB)}{P(A)}, P(A) \ne 0$$
 1. $P(\cdot|A)$是概率
 2. 非负性：$P(B|A) \ge 0$
 3. 规范性：$P(S|A) = 1$
-4. 可列可加性：$A_1,A_2,\dots,A_k,\dots$两两互斥$\rightarrow P(\cup_{i=1}^{\infty}A_i|A) = \sum_{i=1}^{\infty}P(A_i|A)$
+4. 可列可加性：$A_1,A_2,\dots,A_k,\dots$两两互斥$\rightarrow P(\mathop{\cup}\limits_{i=1}^{\infty}A_i|A) = \sum\limits_{i=1}^{\infty}P(A_i|A)$
 5. $P(\cdot | A)$具有概率的所有性质
 
 ???+ question
@@ -164,7 +164,7 @@ $$P(B|A) = \frac{P(AB)}{P(A)}, P(A) \ne 0$$
 	某单位想从8名业务员中等概率地选取一名去外地出差一年.现有一枚均匀硬币.利用这枚硬币设计一个试验帮这个单位做决定.
 
 ??? note "Answer"
-	![img](image-20241010151743177.png)
+	![img](images/image-20241010151743177.png)
 
 ### 乘法公式
 
@@ -182,19 +182,19 @@ $$P(A_1A_2\dots A_n ) = P(A_1)P(A_2 | A_1)P(A_3 |A_1A_2 ) \dots P(A_n | A_1 \dot
 	(2)已知第4次取到红球，求第1，2次也取到红球的概率。
 
 ??? note "Answer"
-	![img](image-20241010151819207.png)
+	![img](images/image-20241010151819207.png)
 
 ### 全概率公式&Bayes公式
 
-$$P(A)=\sum_{j=1}^nP(B_j)P(A∣B_j)$$
+$$P(A)=\sum\limits_{j=1}^nP(B_j)P(A∣B_j)$$
 
-$$P(B_i|A) = \frac{P(B_i)P(A|B_i)}{\sum_{j=1}^{n}P(B_j)P(A|B_j)}$$
+$$P(B_i|A) = \frac{P(B_i)P(A|B_i)}{\sum\limits_{j=1}^{n}P(B_j)P(A|B_j)}$$
 
 ???+ question
 	根据以往的临床记录，某种诊断癌症的试验具有5%的假阳性及5%的假阴性：即设A={试验反应是阳性}，C={被诊断患有癌症}则有：$P(A |C) = 5%, P(A | C ) = 5 %$ .已知某一群体$P(C)=0.005$，问这种方法能否用于普查？
 
 ??? note "Answer"
-	![img](image-20241010151940151.png)
+	![img](images/image-20241010151940151.png)
 	![img](images/image-20241010150921573.png)
 	![img](images/image-20241010150932293.png)
 
@@ -210,15 +210,17 @@ $$P(B_i|A) = \frac{P(B_i)P(A|B_i)}{\sum_{j=1}^{n}P(B_j)P(A|B_j)}$$
 当出现两个以上的随机事件时，如三个随机事件 A,B,C 当：
 $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 
-都成立，则称事件 A,B,C*A*,*B*,*C* **两两独立**；
+都成立，则称事件 A,B,C **两两独立**；
 
 如果**同时还**满足：$P(ABC)=P(A)P(B)P(C)$ 则称事件 A,B,C**相互独立**。
 
-- 注意: $相互独立 \rightarrow 两两独立$但是$两两独立 \nrightarrow 相互独立$
+- 注意: $相互独立 \rightarrow 两两独立$,但是,$两两独立 \nrightarrow 相互独立$
 
 更普遍的：
 
-**定义** $\{A_i\}$ **相互独立**当且仅当 $\forall i_j, P(\prod_{j=1}^k A_{i_j}) = \prod_{j=1}^k P(A_{i_j})$
+**定义** $\{A_i\}$ **相互独立**
+
+当且仅当 $\forall i_j, P(\prod\limits_{j=1}^k A_{i_j}) = \prod\limits_{j=1}^k P(A_{i_j})$
 
 
 
@@ -232,7 +234,7 @@ $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 	一袋中有编号为1,2,3,4共4个球，采用有放回抽样，每次取一球，共取2次，记录号码之和，这样独立重复进行试验，求“和等于3”出现在“和等于5”之前的概率。
 
 ??? note "Answer"
-	![img](image-20241010152204691.png)
+	![img](images/image-20241010152204691.png)
 	![img](images/image-20241010152216237.png)
 	![img](images/image-20241010150932293.png)
 

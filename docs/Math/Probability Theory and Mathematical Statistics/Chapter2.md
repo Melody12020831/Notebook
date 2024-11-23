@@ -7,8 +7,8 @@ statistics: True
 
 定义：设随机试验的样本空间为$S = \{e\}$，若$X=X(e)$为定义在样本空间$S$上的实值单值函数，则称X=X(e)为随机变量。
 
-- 常用大写字母 X,Y,Z*X*,*Y*,*Z* 来表示**随机变量**
-- 用小写字母 x,y,z*x*,*y*,*z* 表示其**取值**。
+- 常用大写字母 X,Y,Z 来表示**随机变量**
+- 用小写字母 x,y,z 表示其**取值**。
 
 ---
 
@@ -16,9 +16,9 @@ statistics: True
 
 定义：取值至多可数的随机变量
 
-若其可能取值为 $\{x_i\}$，则称 $P\{X=x_k\}=p_k$,$k=1,2,\dots $ 为$X$ 的**概率分布律(probability mass function)**，也可以用列表的方式表达。
+若其可能取值为 $\{x_i\}$，则称 $P\{X=x_k\}=p_k$ , $k=1,2,\dots $ 为$X$ 的**概率分布律(probability mass function)**，也可以用列表的方式表达。
 因为样本空间 $S=\{X=x_1,X=x_2,\dots,X=x_n \dots \}$中各样本点两两不相容，所以：
-$$1 = P(S) = \sum_{i=1}^{+\infty}P(X = x_i) = \sum_{i=1}^{+\infty}p_i$$
+$$1 = P(S) = \sum\limits_{i=1}^{+\infty}P(X = x_i) = \sum\limits_{i=1}^{+\infty}p_i$$
 
 ---
 
@@ -50,7 +50,7 @@ $$P(X = k) = C_n^k p^k(1-p)^{n-k},k = 0,1,\dots,n$$
 
 根据二项式定理，二项分布有如下性质：
 
-$$\sum_{k=0}^n C_n^kp^k(1-p)^{n-k} = 1$$
+$$\sum\limits_{k=0}^n C_n^kp^k(1-p)^{n-k} = 1$$
 
 ???+ question 
 	甲和乙比赛,甲的实力更强一点。每一局甲赢的概率为*p*,这里$0.5\le p \le1$。设各局胜负相互独立。设*k*是一正整数.问：对甲而言，$2k-1$局$k$胜制有利还是$2k+1$局$k+1$胜制有利？
@@ -111,7 +111,7 @@ $$P(X=k)=C_{k-1}^{r-1}p^r(1-p)^{k-r},k=r,r+1,\dots,0<p<1$$
 
 当 $X$ 为**离散型随机变量**时，设 $X$ 的概率分布律为 $P\{X=x_i\}=p_i,i=1,2,\dots$ 则 $X$的分布函数为：
 
-$$F(x)=P\{X\le x\}=\sum_{x_i \le x}P\{X=x_i\}$$
+$$F(x)=P\{X\le x\}=\sum\limits_{x_i \le x}P\{X=x_i\}$$
 
 ### $F(x)$的性质
 

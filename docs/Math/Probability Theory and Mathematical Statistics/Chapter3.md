@@ -12,7 +12,7 @@ statistics: True
 $$P(X = x_i,Y = y_j) = p_{ij},\ i,j = 1,2,\dots$$
 
 - $P_{ij} \ge 0, i,j=1,2,\dots$
-- $\sum_{i=1}^{\infty}\sum_{j=1}^{\infty}p_{ij} = 1$
+- $\sum\limits_{i=1}^{\infty}\sum\limits_{j=1}^{\infty}p_{ij} = 1$
 
 ---
 
@@ -20,8 +20,8 @@ $$P(X = x_i,Y = y_j) = p_{ij},\ i,j = 1,2,\dots$$
 
 边际分布律（Marginal Mass Function）是联合分布律的行/列求和；
 
-- $P(X=x_i)=P(X=x_i,Y < \infty )= \sum_{j=1}^{\infty}p_{ij}:=p_{i⋅}$
-- $P(Y=y_j)=P(X< \infty,Y = y_j )= \sum_{i=1}^{\infty}p_{ij}:=p_{⋅j}$
+- $P(X=x_i)=P(X=x_i,Y < \infty )= \sum\limits_{j=1}^{\infty}p_{ij}:=p_{i⋅}$
+- $P(Y=y_j)=P(X< \infty,Y = y_j )= \sum\limits_{i=1}^{\infty}p_{ij}:=p_{⋅j}$
 
 ---
 
@@ -29,7 +29,7 @@ $$P(X = x_i,Y = y_j) = p_{ij},\ i,j = 1,2,\dots$$
 
 条件分布律（Conditional Mass Function）
 
-$$P{X=x_i∣Y=y_j}=\frac{P(X=x_i,Y=y_j)}{P(Y=y_j)}=\frac{p_{ij}}{p\cdot j},\ i,j=1,2,\dots$$
+$$P\{X=x_i∣Y=y_j\}=\frac{P(X=x_i,Y=y_j)}{P(Y=y_j)}=\frac{p_{ij}}{p\cdot j},\ i,j=1,2,\dots$$
 
 ---
 
@@ -63,7 +63,7 @@ $F_X(x)=P\{X\le x\}=P\{X\le x,Y<+\infty \}=F(x,+\infty )=\int_{−\infty}^{+\inf
 
 $F_{Y∣X}(y∣x)=P\{ Y\le y∣X=x\}=P\{X=x\}P\{Y\le y,X =x\}$ 为 $\{X=x\}$ 条件下 $Y$ 的**条件分布函数（Conditional Distribution Function）**。
 
-进一步推广，若 $P(X=x)=0$，但对任意给定的 $\varepsilon$，$P(x<X\le x+ \varepsilon ) >0$，则在 $\{X=x\}$ 条件下，$Y$ 的条件分布函数为 $F_{Y∣X}(y∣x) = lim_{\varepsilon \rightarrow 0^+}P\{Y \le y∣x<X\le x+ \varepsilon \}$，仍记为 $P\{Y\le y∣X=x \}$。
+进一步推广，若 $P(X=x)=0$，但对任意给定的 $\varepsilon$，$P(x<X\le x+ \varepsilon ) >0$，则在 $\{X=x\}$ 条件下，$Y$ 的条件分布函数为 $F_{Y∣X}(y∣x) = \mathop{lim}\limits_{\varepsilon \rightarrow 0^+}P\{Y \le y∣x<X\le x+ \varepsilon \}$，仍记为 $P\{Y\le y∣X=x \}$。
 
 ---
 
