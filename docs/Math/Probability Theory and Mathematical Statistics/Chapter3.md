@@ -134,10 +134,8 @@ $$F(x,y) = F_X(x)F_Y(y)$$
 ???+ question 
 	设随机变量$X ∼ P(\lambda_1),Y ∼ P(\lambda_2 )$，且$X$ ,$Y$相互独立。若$Z =X+Y$，求$Z$的概率分布律。
 
-<details>
-	<summary>答案</summary> 
-<img src = "images/image-20241031104230138.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241031104230138.png)
 
 ---
 
@@ -150,32 +148,26 @@ $$f_Z(z) = \int_{-\infty}^{+\infty}f_X(z-y)f_Y(y)dy = \int_{-\infty}^{+\infty}f_
 ???+ question 
 	卷积公式的证明
 
-<details>
-<summary>注意</summary>
-应该体现出z，或者说，体现出z = x + y的性质
-</details>
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241031105342047.png">
-</details>
+??? Info "Attenion"
+	应该体现出z，或者说，体现出z = x + y的性质
+
+??? note "Answer"
+	![img](images/image-20241031105342047.png)
 
 ???+ question 
 	若$M=max\{X,Y\},N=min\{X,Y\}$。设$X$,$Y$是两个相互独立的随机变量，它们的分布函数分别为$F_X(x)$和$F_Y(y)$,求$M$,$N$的分布函数分别为$F_{max}(z)$和$F_{min}(z)$。
 
-<details>
-    <summary>答案</summary>
-<img src = "images/image-20241121162443008.png">
-<img src = "images/image-20241121162454285.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241121162443008.png)
+	![img](images/image-20241121162454285.png)
+
 ???+ question 
 	发送机发送信号$X$,假设在传输过程中带有噪声$N ∼ N(0,\sigma^2 )$且与发送信号独立。最后接收到的信号是$Y=X+N$. 当$Y\ge 0$时判断$X= 1$;否则判断$X=-$1.假设$P(X=1)=p$,$P(X=-1)=1-p$,$0< p <1$. 
 	(1)如果$X=1$,那么判断准确的概率？
 	(2)如果$Y\ge 0$,那么判断准确的概率？
 	(3)如果$Y <> 0$,那么判断准确的概率?
 
-<details>
-    <summary>答案</summary>
-<img src = "images/image-20241107105900418.png">
-<img src = "images/image-20241107105912515.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241107105900418.png)
+	![img](images/image-20241107105912515.png)
 ---

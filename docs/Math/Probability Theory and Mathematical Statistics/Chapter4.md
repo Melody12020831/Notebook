@@ -38,18 +38,14 @@ statistics: True
 ???+ question 
 	计算机程序随机产生0 ~ 9中的数字. 记$X_i$为第$i$次产生的数字，$i=1, 2,\dots ,n$. 将这$n$个数依次排列，得到一数，记为$Y$,求$E(Y)$.
 
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241107110633690.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241107110633690.png)
 
 ???+ question 
 	一专用电梯载着12位乘客从一层上升，最高11层.假设中途没有乘客进入，每位乘客独立等概率地到达各层.如果没有乘客到达某层楼，电梯在该层就不停.记电梯停留次数为X，求E(X). (设电梯到达11层后乘客全部下完)
 
-<details>
-    <summary>答案</summary>
-<img src = "images/image-20241107110702776.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241107110702776.png)
 
 ---
 
@@ -94,16 +90,14 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 ???+ question 
 	设$X ∼N(22.40,0.03^2),Y∼ N(22.50,0.04^2)$，且$X$和$Y$相互独立，计算$P(X < Y)$
 
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241107120239539.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241107120239539.png)
 
 ---
 
 ## 常见分布的数学期望与方差
 
-![image-20241121170711548](概率论与数理统计.assets/image-20241121170711548.png)
+![img](images/image-20241121170711548.png)
 
 ---
 
@@ -204,12 +198,10 @@ $$\left( \begin{array}{l} Var(X_1) & Cov(X_1,X_2) & \dots & Cov(X_1,X_n) \\ Cov(
 ???+ question 
 	设二元随机变量$(X,Y)$服从二元正态分布，$X∼N(0,1),Y∼N(1,4)$，X与Y的相关系数$\rho = -\frac{1}{2}$求:(1)$Var(2X-Y)$；(2)$P(2X > Y)$；(3) $Z_1 = X + Y,Z_2 = X - Y$，求$(Z_1,Z_2)$的分布。
 
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241114112838339.png">
-<img src = "images/image-20241114113256466.png">
-<img src = "images/image-20241114112903472.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241114112838339.png)
+   ![img](images/image-20241114113256466.png)
+   ![img](images/image-20241114112903472.png)
 ---
 
 

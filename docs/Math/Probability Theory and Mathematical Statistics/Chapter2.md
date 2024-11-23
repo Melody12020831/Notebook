@@ -55,11 +55,9 @@ $$\sum_{k=0}^n C_n^kp^k(1-p)^{n-k} = 1$$
 ???+ question 
 	甲和乙比赛,甲的实力更强一点。每一局甲赢的概率为*p*,这里$0.5\le p \le1$。设各局胜负相互独立。设*k*是一正整数.问：对甲而言，$2k-1$局$k$胜制有利还是$2k+1$局$k+1$胜制有利？
 
-   <details>
-   <summary>答案</summary>
-   <img src = "images/image-20241010152832029.png">
-   <img src = "images/image-20241010152839373.png">
-   </details>
+??? note "Answer"
+	![img](images/image-20241010152832029.png)
+    ![img](images/image-20241010152839373.png)
 
 ---
 
@@ -145,13 +143,12 @@ $$F(x) = \int_{-\infty}^{+\infty}f(x)dx = 1$$
 ???+ question 
 	设 $A,B$ 为随机事件，若 $P(A)=1$，则 $A$为必然事件吗？若 $P(B)=0$，则 $B$ 为不可能事件吗？若$P(AB) = 0$ ，则 $A$ 与 $B$ 不相容吗？
 
-<details>
-    <summary>答案</summary>
-<img src = "images/image-20241010153109801.png">
-	<p>1. 空集发生的概率为0，但0概率事件不一定是空集。例如在(0,1)上取0.5</p>
-    <p>2. 一个事件发生的概率为1，但不是整个样本空间（去掉0概率那个点即可）</p>
-    <p>3. AB互斥则P(AB)= 0，但反之不成立。例如A为在(0,1)上去掉0.4，B为在(0,1)上取出0.5</p>
-</details>
+??? note "Answer"
+    ![img](images/image-20241010153109801.png)
+
+	1. 空集发生的概率为0，但0概率事件不一定是空集。例如在(0,1)上取0.5</p>
+    2. 一个事件发生的概率为1，但不是整个样本空间（去掉0概率那个点即可）</p>
+    3. AB互斥则P(AB)= 0，但反之不成立。例如A为在(0,1)上去掉0.4，B为在(0,1)上取出0.5</p>
 
 ---
 
@@ -172,15 +169,11 @@ $$F(x)=\begin{cases}0,&x<a\\\frac{x−a}{b−a},&a\le x\le b\\1,&x\ge b\end{case
 	（1）求王先生候车时间不超过15分钟的概率；
 	（2）如果王先生一月中有两次按此方式独立地去候车，求他一次候车不超过15分钟，另一次候车大于10分钟的概率。
 
-<details> 
-<summary>提示</summary>
-<p><mark>什么时候可以相加？</mark></p>
-<p>互斥时才能相加，当这两个事件可以同时发生时就要注意。</p>
-</detais>
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241010153141624.png">
-</details>
+??? tip "什么时候可以相加？"
+    互斥时才能相加，当这两个事件可以同时发生时就要注意。
+
+??? note "Answer"
+	![img](images/image-20241010153141624.png)
 
 ---
 
@@ -203,10 +196,8 @@ $$F(x)=\int_{-\infty}^{x}f(t)dt=\begin{cases}1-e^{-\lambda x}, &x>0\\0,&x \le 0\
 	(1)求$T$ 的概率分布函数；
 	(2)已知设备无故障运行10个小时，求再无故障运行8个小时的概率。
 
-<details>
-    <summary>答案</summary>
-<img src = "images/image-20241010153212016.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241010153212016.png)
 
 ---
 

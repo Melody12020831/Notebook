@@ -111,12 +111,12 @@ $$\overline{\cap_{j=1}^nA_{j}} = \cup_{j=1}^n\overline{A_j}$$
 
 ???+ question 
 	甲乙丙3人去参加某个集会的概率均为0.4，其中至少有两人参加的概率为0.3，都参加的概率为0.05，求3人中至少有一人参加的概率。
-   <details>
-   <summary>答案</summary>
-   <img src = "images/image-20241010150740808.png">
-   <img src = "images/image-20241010150921573.png">
-   <img src = "images/image-20241010150932293.png">
-   </details>
+
+??? note "Answer"
+	![img](image-20241010150740808.png)
+	![img](images/image-20241010150921573.png)
+	![img](images/image-20241010150932293.png)
+
 
 ---
 
@@ -133,12 +133,10 @@ $$\overline{\cap_{j=1}^nA_{j}} = \cup_{j=1}^n\overline{A_j}$$
 ???+ question
 	（配对问题）一个小班有n个同学，编号为1, 2, …, n 号，中秋节前每人准备一件礼物，相应编号为1,2, … ,n。将所有礼物集中放在一起，然后每个同学随机取一件，求没有人拿到自己礼物的概率。
 
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241010151142968.png">
-<img src = "images/image-20241010151151499-1728544311835-1.png">
-<img src = "images/image-20241010151202708.png">
-</details>
+??? note "Answer"
+	![img](image-20241010151142968.png)
+	![img](images/image-20241010151151499-1728544311835-1.png)
+	![img](images/image-20241010151202708.png)
 ---
 
 ## 条件概率
@@ -158,19 +156,16 @@ $$P(B|A) = \frac{P(AB)}{P(A)}, P(A) \ne 0$$
 ???+ question
 	天气很好,小王想带家人去千岛湖玩,又想到天目山玩.他有一枚硬币,但不知道这枚硬币出现正面的概率.利用这枚硬币设计一个试验帮他做决定，使得最后他去千岛湖和去天目山的概率相等.
 
-<details>
-    <summary>答案</summary>
-<img src = "images/image-20241010151655945.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241010151655945.png)
 
 
 ???+ question
 	某单位想从8名业务员中等概率地选取一名去外地出差一年.现有一枚均匀硬币.利用这枚硬币设计一个试验帮这个单位做决定.
 
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241010151743177.png">
-</details>
+??? note "Answer"
+	![img](image-20241010151743177.png)
+
 ### 乘法公式
 
 $P(AB) = P(A) \times P(B | A) = P(B) \times P(A| B)$
@@ -184,10 +179,8 @@ $$P(A_1A_2\dots A_n ) = P(A_1)P(A_2 | A_1)P(A_3 |A_1A_2 ) \dots P(A_n | A_1 \dot
 	(1)已知前两次中至少有一次取到红球，求前两次中恰有一次取到红球的概率；
 	(2)已知第4次取到红球，求第1，2次也取到红球的概率。
 
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241010151819207.png">
-</details>
+??? note "Answer"
+	![img](image-20241010151819207.png)
 
 ### 全概率公式&Bayes公式
 
@@ -198,12 +191,10 @@ $$P(B_i|A) = \frac{P(B_i)P(A|B_i)}{\sum_{j=1}^{n}P(B_j)P(A|B_j)}$$
 ???+ question
 	根据以往的临床记录，某种诊断癌症的试验具有5%的假阳性及5%的假阴性：即设A={试验反应是阳性}，C={被诊断患有癌症}则有：$P(A |C) = 5%, P(A | C ) = 5 %$ .已知某一群体$P(C)=0.005$，问这种方法能否用于普查？
 
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241010151940151.png">
-<img src = "images/image-20241010150921573.png">
-<img src = "images/image-20241010150932293.png">
-</details>
+??? note "Answer"
+	![img](image-20241010151940151.png)
+	![img](images/image-20241010150921573.png)
+	![img](images/image-20241010150932293.png)
 
 
 ---
@@ -238,12 +229,11 @@ $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 ???+ question
 	一袋中有编号为1,2,3,4共4个球，采用有放回抽样，每次取一球，共取2次，记录号码之和，这样独立重复进行试验，求“和等于3”出现在“和等于5”之前的概率。
 
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241010152204691.png">
-<img src = "images/image-20241010152216237.png">
-<img src = "images/image-20241010150932293.png">
-</details>
+??? note "Answer"
+	![img](image-20241010152204691.png)
+	![img](images/image-20241010152216237.png)
+	![img](images/image-20241010150932293.png)
+
 
 
 ???+ question
@@ -252,11 +242,9 @@ $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 	(2)若选n人,求他们都戴口罩的概率；
 	(3)若选n人发现他们都戴口罩,求这一天发生雾霾的概率.(这里n为正整数.)
 
-<details>
-<summary>答案</summary>
-<img src = "images/image-20241010152338029.png">
-<img src = "images/image-20241010152348041.png">
-<img src = "images/image-20241010152359611.png">
-<img src = "/Math/Probability Theory and Mathematical Statistics/images/image-20241010152418375.png">
-</details>
+??? note "Answer"
+	![img](images/image-20241010152338029.png)
+	![img](images/image-20241010152348041.png)
+	![img](images/image-20241010152359611.png)
+	![img](/Math/Probability Theory and Mathematical Statistics/images/image-20241010152418375.png)
 ---
