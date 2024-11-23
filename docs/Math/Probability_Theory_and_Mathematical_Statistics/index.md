@@ -8,6 +8,7 @@ statistics: True
     - **智云链接**：[🔗](https://classroom.zju.edu.cn/coursedetail?course_id=63659)
     - **授课**：赵敏智
     - **教材**：《概率论与数理统计》，张帼奋，高等教育出版社
+    - **PPT**： [📁](PPT_download.md)
 
 !!! note "Notes"
     - [x] [概率论的基本概念](Chapter1.md)

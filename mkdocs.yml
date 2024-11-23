@@ -39,7 +39,7 @@ theme:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
 
-  favicon: assets/5.jpg
+  favicon: assets/images/icon.jpg
 
   
 markdown_extensions:
@@ -143,10 +143,11 @@ nav:
   - Math: 
     - Math/index.md
     - "概率论与数理统计":
-        - Math/Probability Theory and Mathematical Statistics/index.md
-        - Math/Probability Theory and Mathematical Statistics/Chapter1.md
-        - Math/Probability Theory and Mathematical Statistics/Chapter2.md
-        - Math/Probability Theory and Mathematical Statistics/Chapter3.md
-        - Math/Probability Theory and Mathematical Statistics/Chapter4.md
-        - Math/Probability Theory and Mathematical Statistics/Chapter5.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/index.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/Chapter1.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/Chapter2.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/Chapter3.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/Chapter4.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/Chapter5.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/PPT_download.md
 
