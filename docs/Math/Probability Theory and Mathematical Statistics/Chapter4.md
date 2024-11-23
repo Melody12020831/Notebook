@@ -75,13 +75,15 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 
 3. 设$X,Y$ 是两个随机变量，则
 
-   $$Var(X\pm Y)=Var(X)+Var(Y) \pm 2E{[X−E(X)][Y−E(Y)]}=Var(X)+Var(Y) \pm 2Cov(X,Y)$$；
+   <p>$$Var(X\pm Y)=Var(X)+Var(Y) \pm 2E{[X−E(X)][Y−E(Y)]}=Var(X)+Var(Y) \pm 2Cov(X,Y)$$；</p>
 
-     - 这一性质可以推广到任意有限个随机变量之和的情况：$$Var(\sum_{i=1}^nX_i)=\sum_{i=1}^nVar(X_i)+2\sum_{1\le i<j \le n} Cov(X_i,X_j)$$;
+   - 这一性质可以推广到任意有限个随机变量之和的情况：
+   
+   <p>$$Var(\sum_{i=1}^nX_i)=\sum_{i=1}^nVar(X_i)+2\sum_{1\le i < j \le n} Cov(X_i,X_j)$$; </p>
 
-     - 特别地，如果 $X,Y$ 相互独立，则 $Var(X \pm Y)=Var(X)+Var(Y)$;
+   - 特别地，如果 $X,Y$ 相互独立，则 $Var(X \pm Y)=Var(X)+Var(Y)$;
 
-     - 进一步地，如果 $X_i(i=1,2,\dots,n)$ 彼此独立，则$Var(c_0+\sum_{i=1}^nc_iX_i)=\sum_{i=1}^nc_i^2Var(X_i)$;
+   - 进一步地，如果 $X_i(i=1,2,\dots,n)$ 彼此独立，则$Var(c_0+\sum_{i=1}^nc_iX_i)=\sum_{i=1}^nc_i^2Var(X_i)$;
 
 4. $Var(X)\le E[(X−c)^2]$，并且当且仅当 $E(X)=c$ 时等号成立；
 
