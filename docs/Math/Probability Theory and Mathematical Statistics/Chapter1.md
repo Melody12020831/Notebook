@@ -43,7 +43,7 @@ comments: true
 
 ### 事件的相互关系
 
-![img](/概率论与数理统计.assets/1648003695351-a3590cf6-064e-4435-9dc6-07c15eee7c7a.png)
+![img](Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/1648003695351-a3590cf6-064e-4435-9dc6-07c15eee7c7a.png)
 
 包含 | 和事件 | 积事件 | 逆事件 | 差事件
 
@@ -113,9 +113,9 @@ $$\overline{\cap_{j=1}^nA_{j}} = \cup_{j=1}^n\overline{A_j}$$
 	甲乙丙3人去参加某个集会的概率均为0.4，其中至少有两人参加的概率为0.3，都参加的概率为0.05，求3人中至少有一人参加的概率。
    <details>
    <summary>答案</summary>
-   <img src = "/概率论与数理统计.assets/image-20241010150740808.png">
-   <img src = "/概率论与数理统计.assets/image-20241010150921573.png">
-   <img src = "/概率论与数理统计.assets/image-20241010150932293.png">
+   <img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010150740808.png">
+   <img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010150921573.png">
+   <img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010150932293.png">
    </details>
 
 ---
@@ -135,9 +135,9 @@ $$\overline{\cap_{j=1}^nA_{j}} = \cup_{j=1}^n\overline{A_j}$$
 
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010151142968.png">
-<img src = "/概率论与数理统计.assets/image-20241010151151499-1728544311835-1.png">
-<img src = "/概率论与数理统计.assets/image-20241010151202708.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010151142968.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010151151499-1728544311835-1.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010151202708.png">
 </details>
 ---
 
@@ -160,7 +160,7 @@ $$P(B|A) = \frac{P(AB)}{P(A)}, P(A) \ne 0$$
 
 <details>
     <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010151655945.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010151655945.png">
 </details>
 
 
@@ -169,7 +169,7 @@ $$P(B|A) = \frac{P(AB)}{P(A)}, P(A) \ne 0$$
 
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010151743177.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010151743177.png">
 </details>
 ### 乘法公式
 
@@ -186,7 +186,7 @@ $$P(A_1A_2\dots A_n ) = P(A_1)P(A_2 | A_1)P(A_3 |A_1A_2 ) \dots P(A_n | A_1 \dot
 
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010151819207.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010151819207.png">
 </details>
 
 ### 全概率公式&Bayes公式
@@ -200,9 +200,9 @@ $$P(B_i|A) = \frac{P(B_i)P(A|B_i)}{\sum_{j=1}^{n}P(B_j)P(A|B_j)}$$
 
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010151940151.png">
-<img src = "/概率论与数理统计.assets/image-20241010150921573.png">
-<img src = "/概率论与数理统计.assets/image-20241010150932293.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010151940151.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010150921573.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010150932293.png">
 </details>
 
 
@@ -240,9 +240,9 @@ $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010152204691.png">
-<img src = "/概率论与数理统计.assets/image-20241010152216237.png">
-<img src = "/概率论与数理统计.assets/image-20241010150932293.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010152204691.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010152216237.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010150932293.png">
 </details>
 
 
@@ -254,9 +254,9 @@ $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010152338029.png">
-<img src = "/概率论与数理统计.assets/image-20241010152348041.png">
-<img src = "/概率论与数理统计.assets/image-20241010152359611.png">
-<img src = "/概率论与数理统计.assets/image-20241010152418375.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010152338029.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010152348041.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010152359611.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010152418375.png">
 </details>
 ---

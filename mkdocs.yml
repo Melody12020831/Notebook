@@ -24,6 +24,13 @@ theme:
     text: LXGW WenKai Screen GB Screen
     code: JetBrains Mono
   palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: deep purple
@@ -32,13 +39,6 @@ theme:
         icon: material/toggle-switch
         name: Switch to dark mode
 
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: black
-      accent: deep purple
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to light mode
   favicon: assets/5.jpg
 
   

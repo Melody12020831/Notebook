@@ -40,7 +40,7 @@ statistics: True
 
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241107110633690.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241107110633690.png">
 </details>
 
 ???+ question 
@@ -48,7 +48,7 @@ statistics: True
 
 <details>
     <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241107110702776.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241107110702776.png">
 </details>
 
 ---
@@ -96,14 +96,14 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241107120239539.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241107120239539.png">
 </details>
 
 ---
 
 ## 常见分布的数学期望与方差
 
-![image-20241121170711548](/概率论与数理统计.assets/image-20241121170711548.png)
+![image-20241121170711548](概率论与数理统计.assets/image-20241121170711548.png)
 
 ---
 
@@ -206,9 +206,9 @@ $$\left( \begin{array}{l} Var(X_1) & Cov(X_1,X_2) & \dots & Cov(X_1,X_n) \\ Cov(
 
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241114112838339.png">
-<img src = "/概率论与数理统计.assets/image-20241114113256466.png">
-<img src = "/概率论与数理统计.assets/image-20241114112903472.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241114112838339.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241114113256466.png">
+<img src = "概率论与数理统计.assets/image-20241114112903472.png">
 </details>
 ---
 

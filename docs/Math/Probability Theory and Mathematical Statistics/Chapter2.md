@@ -57,8 +57,8 @@ $$\sum_{k=0}^n C_n^kp^k(1-p)^{n-k} = 1$$
 
    <details>
    <summary>答案</summary>
-   <img src = "/概率论与数理统计.assets/image-20241010152832029.png">
-   <img src = "/概率论与数理统计.assets/image-20241010152839373.png">
+   <img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010152832029.png">
+   <img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010152839373.png">
    </details>
 
 ---
@@ -147,7 +147,7 @@ $$F(x) = \int_{-\infty}^{+\infty}f(x)dx = 1$$
 
 <details>
     <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010153109801.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010153109801.png">
 	<p>1. 空集发生的概率为0，但0概率事件不一定是空集。例如在(0,1)上取0.5</p>
     <p>2. 一个事件发生的概率为1，但不是整个样本空间（去掉0概率那个点即可）</p>
     <p>3. AB互斥则P(AB)= 0，但反之不成立。例如A为在(0,1)上去掉0.4，B为在(0,1)上取出0.5</p>
@@ -179,7 +179,7 @@ $$F(x)=\begin{cases}0,&x<a\\\frac{x−a}{b−a},&a\le x\le b\\1,&x\ge b\end{case
 </detais>
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010153141624.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010153141624.png">
 </details>
 
 ---
@@ -205,7 +205,7 @@ $$F(x)=\int_{-\infty}^{x}f(t)dt=\begin{cases}1-e^{-\lambda x}, &x>0\\0,&x \le 0\
 
 <details>
     <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241010153212016.png">
+<img src = "Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241010153212016.png">
 </details>
 
 ---
@@ -236,7 +236,7 @@ $$\Phi(x) = \int_{−\infty}^{x}\frac{1}{\sqrt{2\pi}} e^{−\frac{t^2}{2}}dt$$
 
 而对于不是标准正态分布的正态分布，我们可以通过线性变换（标准化）来转换为标准正态分布：
 
-- 若 $X∼N(\mu ,\sigma^2)$，则 $P\{a<X<b\}=P\{\frac{a−\mu}{\sigma}< \frac{X−\mu }{\sigma}< \frac{b−\mu}{\sigma}= \Phi (\frac{b−\mu }{\sigma})− \Phi (\frac{a−\mu}{\sigma})$
+- 若 $X∼N(\mu ,\sigma^2)$，则 $P\{a<X<b\}=P\{\frac{a−\mu}{\sigma}< \frac{X−\mu }{\sigma}< \frac{b−\mu}{\sigma} \}= \Phi (\frac{b−\mu }{\sigma})− \Phi (\frac{a−\mu}{\sigma})$
 - 特别的：若  $X∼N(\mu ,\sigma^2)$，则 $P{∣X− \mu ∣< k \sigma }=\Phi (k)− \Phi (−k)= 2 \Phi (k) −1$
 - 若 $X∼N(\mu ,\sigma^2)$，则 $Y=aX+b∼N(a\mu +b,a^2\sigma^2)$
 

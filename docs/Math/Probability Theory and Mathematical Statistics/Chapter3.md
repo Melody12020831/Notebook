@@ -136,7 +136,7 @@ $$F(x,y) = F_X(x)F_Y(y)$$
 
 <details>
 	<summary>答案</summary> 
-<img src = "/概率论与数理统计.assets/image-20241031104230138.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241031104230138.png">
 </details>
 
 ---
@@ -156,7 +156,7 @@ $$f_Z(z) = \int_{-\infty}^{+\infty}f_X(z-y)f_Y(y)dy = \int_{-\infty}^{+\infty}f_
 </details>
 <details>
 <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241031105342047.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241031105342047.png">
 </details>
 
 ???+ question 
@@ -164,18 +164,18 @@ $$f_Z(z) = \int_{-\infty}^{+\infty}f_X(z-y)f_Y(y)dy = \int_{-\infty}^{+\infty}f_
 
 <details>
     <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241121162443008.png">
-<img src = "/概率论与数理统计.assets/image-20241121162454285.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241121162443008.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241121162454285.png">
 </details>
 ???+ question 
 	发送机发送信号$X$,假设在传输过程中带有噪声$N ∼ N(0,\sigma^2 )$且与发送信号独立。最后接收到的信号是$Y=X+N$. 当$Y\ge 0$时判断$X= 1$;否则判断$X=-$1.假设$P(X=1)=p$,$P(X=-1)=1-p$,$0< p <1$. 
 	(1)如果$X=1$,那么判断准确的概率？
 	(2)如果$Y\ge 0$,那么判断准确的概率？
-	(3)如果$Y < 0$,那么判断准确的概率?
+	(3)如果$Y <> 0$,那么判断准确的概率?
 
 <details>
     <summary>答案</summary>
-<img src = "/概率论与数理统计.assets/image-20241107105900418.png">
-<img src = "/概率论与数理统计.assets/image-20241107105912515.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241107105900418.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/概率论与数理统计.assets/image-20241107105912515.png">
 </details>
 ---
