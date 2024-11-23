@@ -80,7 +80,11 @@ $$\overline{\mathop{\cap}\limits_{j=1}^nA_{j}} = \mathop{\cup}\limits_{j=1}^n\ov
 
 ### 频率
 
-定义：$$f_n(A) = \frac{n_A}{n}$$ ； 称为A在这n次试验中发生的**频率**。
+**定义**:
+
+$$f_n(A) = \frac{n_A}{n};$$
+
+称为A在这n次试验中发生的**频率**。
 
 其中$n_A$​——A发生的次数(频数)；n——总试验次数。
 
@@ -168,9 +172,9 @@ $$P(B|A) = \frac{P(AB)}{P(A)}, P(A) \ne 0$$
 
 ### 乘法公式
 
-$P(AB) = P(A) \times P(B | A) = P(B) \times P(A| B)$
+$P(AB) = P(A) \cdot P(B | A) = P(B) \cdot P(A| B)$
 
-$P(ABC) = P(A) \times P(B | A) \times P(C | AB)$
+$P(ABC) = P(A) \cdot P(B | A) \cdot P(C | AB)$
 
 $$P(A_1A_2\dots A_n ) = P(A_1)P(A_2 | A_1)P(A_3 |A_1A_2 ) \dots P(A_n | A_1 \dots A_{n-1})$$
 
@@ -208,6 +212,7 @@ $$P(B_i|A) = \frac{P(B_i)P(A|B_i)}{\sum\limits_{j=1}^{n}P(B_j)P(A|B_j)}$$
 若$P(A) \ne 0$,那么$P(B|A) = P(B)$
 
 当出现两个以上的随机事件时，如三个随机事件 A,B,C 当：
+
 $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 
 都成立，则称事件 A,B,C **两两独立**；

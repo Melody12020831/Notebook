@@ -87,7 +87,7 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 
 4. $Var(X)\le E[(X−c)^2]$，并且当且仅当 $E(X)=c$ 时等号成立；
 
-5. $Var(X)=0 \Leftrightarrow P(X=c)=1$  and  $c=E(X)$；
+5. $Var(X)=0 \Leftrightarrow P(X=c)=1$  and  $c=E(X);$
 
 ???+ question 
 	设$X ∼N(22.40,0.03^2),Y∼ N(22.50,0.04^2)$，且$X$和$Y$相互独立，计算$P(X < Y)$
@@ -115,10 +115,10 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 3. $Cov(aX,bY)=ab*Cov(X,Y) \ ,a,b \in R$；
 4. $Cov(X+Y,Z)=Cov(X,Z)+Cov(Y,Z)$；
 5. $Cov(X,X)=Var(X)$；
-6. $Cov(c,Y)=E(cY)−E(c)E(Y)=0,c \in R$；
-7. $Cov(X+Y,X−Y)=Cov(X,X)−Cov(Y,Y)$；
-8. $Cov(X∗,Y∗)=Cov(\frac{X−E(X)}{\sqrt{Var(X)}},\frac{Y−E(Y)}{\sqrt{Var(Y)}})=\frac{Cov(X,Y)}{Var(X)Var(Y)}=\rho_{XY}$；
-9. $Cov(aX+bY,cX+dY)=ac \cdot Var(X)+bd \cdot Var(Y)+(ad+bc)Cov(X,Y)$；
+6. $Cov(c,Y)=E(cY)−E(c)E(Y)=0,c \in R;$
+7. $Cov(X+Y,X−Y)=Cov(X,X)−Cov(Y,Y);$
+8. $Cov(X∗,Y∗)=Cov(\frac{X−E(X)}{\sqrt{Var(X)}},\frac{Y−E(Y)}{\sqrt{Var(Y)}})=\frac{Cov(X,Y)}{Var(X)Var(Y)}=\rho_{XY};$
+9. $Cov(aX+bY,cX+dY)=ac \cdot Var(X)+bd \cdot Var(Y)+(ad+bc)Cov(X,Y);$
 
 ### 相关系数的性质
 
@@ -199,11 +199,11 @@ $$\left( \begin{array}{l} Var(X_1) & Cov(X_1,X_2) & \dots & Cov(X_1,X_n) \\ Cov(
 
 ???+ question 
 	设二元随机变量$(X,Y)$服从二元正态分布，$X∼N(0,1),Y∼N(1,4)$，X与Y的相关系数$\rho = -\frac{1}{2}$求:
-   
+
    (1)$Var(2X-Y)$；
-   
+
    (2)$P(2X > Y)$；
-   
+
    (3) $Z_1 = X + Y,Z_2 = X - Y$，求$(Z_1,Z_2)$的分布。
 
 ??? note "Answer"

@@ -20,8 +20,8 @@ $$P(X = x_i,Y = y_j) = p_{ij},\ i,j = 1,2,\dots$$
 
 边际分布律（Marginal Mass Function）是联合分布律的行/列求和；
 
-- $P(X=x_i)=P(X=x_i,Y < \infty )= \sum\limits_{j=1}^{\infty}p_{ij}:=p_{i⋅}$
-- $P(Y=y_j)=P(X< \infty,Y = y_j )= \sum\limits_{i=1}^{\infty}p_{ij}:=p_{⋅j}$
+- $P(X=x_i)=P(X=x_i,Y < \infty )= \sum\limits_{j=1}^{\infty}p_{ij} \mathop{=}\limits^{\textbf{记为}}p_{i⋅}$
+- $P(Y=y_j)=P(X< \infty,Y = y_j )= \sum\limits_{i=1}^{\infty}p_{ij}\mathop{=}\limits^{\textbf{记为}}p_{⋅j}$
 
 ---
 
@@ -35,7 +35,7 @@ $$P\{X=x_i∣Y=y_j\}=\frac{P(X=x_i,Y=y_j)}{P(Y=y_j)}=\frac{p_{ij}}{p\cdot j},\ i
 
 ### 联合分布函数
 
-$F(x,y)=P\{X \le x,Y \le y\}$ 为$ (X,Y)$ 的**联合概率分布函数**，简称**联合分布函数（Joint Distribution Function）**，其具有如下性质：
+$F(x,y)=P\{X \le x,Y \le y\}$ 为 $(X,Y)$ 的**联合概率分布函数**，简称**联合分布函数（Joint Distribution Function）**，其具有如下性质：
 
 1. **固定**其中一个变量，则该二元函数关于另外一个变量单调**不减**；
 
@@ -79,7 +79,7 @@ $$F(x,y) = \int_{-\infty}^{y} \int_{-\infty}^{x}f(u,v)dudv$$
 2. $F(+\infty ,+\infty ) = \int_{−\infty}^{+\infty} \int_{−\infty}^{+\infty}f(u,v)dudv=1$；
 3. 在 $f(x,y)$ 的连续点 $(x,y)$ 上有 $\frac{\delta^2 F(x,y)}{\delta x\delta y}=f(x,y)$；
 4. $(X,Y)$ 落入 $xOy$平面任意区域 $D$ 的概率为：$P\{(X,Y)\in D\}=\int \int f(x,y)dxdy$；
-5. 由于其几何意义为落在以$ D$ 为底，以曲面 $z=f(x,y)$ 为顶面的柱体体积，所以当 $D$ 面积为 0 时概率为 0；`eg`：$P(X=1,Y=1)=0$，$P(X+Y=1)=0$，$P(X^2+Y^2=1) \neq 0$；
+5. 由于其几何意义为落在以 $D$ 为底，以曲面 $z=f(x,y)$ 为顶面的柱体体积，所以当 $D$ 面积为 0 时概率为 0；`eg`：$P(X=1,Y=1)=0$，$P(X+Y=1)=0$，$P(X^2+Y^2=1) \neq 0$；
 
 ---
 
@@ -173,7 +173,7 @@ $$f_Z(z) = \int_{-\infty}^{+\infty}f_X(z-y)f_Y(y)dy = \int_{-\infty}^{+\infty}f_
 
 	(2)如果$Y\ge 0$,那么判断准确的概率？
 
-	(3)如果$Y <> 0$,那么判断准确的概率?
+	(3)如果$Y < 0$,那么判断准确的概率?
 
 ??? note "Answer"
 	![img](images/image-20241107105900418.png)
