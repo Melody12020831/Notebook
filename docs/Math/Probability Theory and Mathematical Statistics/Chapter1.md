@@ -257,6 +257,6 @@ $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 <img src = "images/image-20241010152338029.png">
 <img src = "images/image-20241010152348041.png">
 <img src = "images/image-20241010152359611.png">
-<img src = "images/image-20241010152418375.png">
+<img src = "/Math/Probability Theory and Mathematical Statistics/images/image-20241010152418375.png">
 </details>
 ---
