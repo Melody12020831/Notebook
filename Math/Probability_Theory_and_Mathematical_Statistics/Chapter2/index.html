@@ -1032,8 +1032,8 @@
 <h2 id="_1">离散型随机变量<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>定义：取值至多可数的随机变量</p>
 <p>若其可能取值为 <span class="arithmatex">\(\{x_i\}\)</span>，则称 <span class="arithmatex">\(P\{X=x_k\}=p_k\)</span> , $k=1,2,\dots $ 为<span class="arithmatex">\(X\)</span> 的<strong>概率分布律(probability mass function)</strong>，也可以用列表的方式表达。
-因为样本空间 <span class="arithmatex">\(S=\{X=x_1,X=x_2,\dots,X=x_n \dots \}\)</span>中各样本点两两不相容，所以：
-<span class="arithmatex">\(<span class="arithmatex">\(1 = P(S) = \sum\limits_{i=1}^{+\infty}P(X = x_i) = \sum\limits_{i=1}^{+\infty}p_i\)</span>\)</span></p>
+因为样本空间 <span class="arithmatex">\(S=\{X=x_1,X=x_2,\dots,X=x_n \dots \}\)</span>中各样本点两两不相容，所以：</p>
+<div class="arithmatex">\[1 = P(S) = \sum\limits_{i=1}^{+\infty}P(X = x_i) = \sum\limits_{i=1}^{+\infty}p_i\]</div>
 <hr />
 <h3 id="0-1">0-1分布/两点分布<a class="headerlink" href="#0-1" title="Permanent link">&para;</a></h3>
 <p>如果随机变量 X 的概率分布律为：</p>
@@ -1058,8 +1058,8 @@
 <div class="arithmatex">\[P(X = k) = p^k(1-p)^{1-k},k = 0,1\]</div>
 <hr />
 <h3 id="_2">二项分布<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>定义<strong>Bernoulli试验</strong>：在$ n <span class="arithmatex">\(次独立重复试验中，每次只有\)</span> A$  和 <span class="arithmatex">\(\overline{A}\)</span> 两种结果，且概率不变，则这一系列试验为伯努利试验。</p>
-<p>若随机变量 <span class="arithmatex">\(X\)</span>表示 $ n $<strong>重贝努力实验中事件A发生的次数</strong>，其概率分布律为：</p>
+<p>定义<strong>Bernoulli试验</strong>：在 <span class="arithmatex">\(n\)</span> 次独立重复试验中，每次只有 <span class="arithmatex">\(A\)</span>  和 <span class="arithmatex">\(\overline{A}\)</span> 两种结果，且概率不变，则这一系列试验为伯努利试验。</p>
+<p>若随机变量 <span class="arithmatex">\(X\)</span> 表示 <span class="arithmatex">\(n\)</span> <strong>重贝努力实验中事件A发生的次数</strong>，其概率分布律为：</p>
 <div class="arithmatex">\[P(X = k) = C_n^k p^k(1-p)^{n-k},k = 0,1,\dots,n\]</div>
 <p>则称 X 为服从<strong>参数为</strong> <span class="arithmatex">\((n,p)\)</span> <strong>的二项分布(binomial distribution)</strong>，并记为 <span class="arithmatex">\(X∼B(n,p)\)</span></p>
 <p>根据二项式定理，二项分布有如下性质：</p>
@@ -1077,7 +1077,8 @@
 <h3 id="_3">泊松分布<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>若随机变量X的概率分布律为</p>
 <div class="arithmatex">\[P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!},k = 0,1,\dots,\lambda &gt; 0\]</div>
-<p>称X服从参数为λ的泊松分布，记<span class="arithmatex">\(<span class="arithmatex">\(X ∼ P(\lambda)\)</span>\)</span></p>
+<p>称X服从参数为λ的泊松分布，记</p>
+<div class="arithmatex">\[X ∼ P(\lambda)\]</div>
 <p><strong>二项分布与泊松分布有以下近似公式</strong>：当<span class="arithmatex">\(n &gt;10,p &lt;0.1\)</span>时，其中，<span class="arithmatex">\(\lambda = np\)</span></p>
 <div class="arithmatex">\[C_n^k p^k(1-p)^{n-k} \approx \frac{\lambda^k e^{-\lambda}}{k!}\]</div>
 <hr />
@@ -1103,17 +1104,17 @@
 <h3 id="fx"><span class="arithmatex">\(F(x)\)</span>的性质<a class="headerlink" href="#fx" title="Permanent link">&para;</a></h3>
 <ol>
 <li><span class="arithmatex">\(F(x)\)</span> 单调不减；</li>
-<li><span class="arithmatex">\(0 \le F(x) \le 10\)</span> 且 <span class="arithmatex">\(F(−\infty)=0\)</span>，<span class="arithmatex">\(F(+\infty)=1\)</span>；</li>
-<li><span class="arithmatex">\(F(x)\)</span> 右连续，即 <span class="arithmatex">\(F(x+0)=F(x)\)</span>；</li>
-<li><span class="arithmatex">\(P(a&lt; X \le b)=F(b)−F(a)\)</span>；</li>
-<li>分布函数<span class="arithmatex">\(F(x)\)</span>在<span class="arithmatex">\(x = x_k\)</span>处有跳跃，其跳跃值为<span class="arithmatex">\(p_k = P(X=x_k)\)</span></li>
+<li><span class="arithmatex">\(0 \le F(x) \le 10\)</span> 且 <span class="arithmatex">\(F(−\infty)=0\)</span>，<span class="arithmatex">\(F(+\infty)=1;\)</span></li>
+<li><span class="arithmatex">\(F(x)\)</span> 右连续，即 <span class="arithmatex">\(F(x+0)=F(x);\)</span></li>
+<li><span class="arithmatex">\(P(a&lt; X \le b)=F(b)−F(a);\)</span></li>
+<li>分布函数<span class="arithmatex">\(F(x)\)</span>在<span class="arithmatex">\(x = x_k\)</span>处有跳跃，其跳跃值为<span class="arithmatex">\(p_k = P(X=x_k);\)</span></li>
 </ol>
 <hr />
 <h2 id="_8">连续型随机变量及其密度函数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>如果对于随机变量 <span class="arithmatex">\(X\)</span> ，其<strong>分布函数</strong>为 <span class="arithmatex">\(F(x)\)</span>，若存在一个非负的实函数 <span class="arithmatex">\(f(x)\)</span>，使对于<strong>任意实数</strong> <span class="arithmatex">\(x\)</span>，有：</p>
 <div class="arithmatex">\[F(x) = \int_{-\infty}^{+\infty}f(x)dx = 1\]</div>
 <p>则称 <span class="arithmatex">\(X\)</span> 为<strong>连续型随机变量</strong>，并且称 <span class="arithmatex">\(f(x)\)</span> 为 <span class="arithmatex">\(X\)</span> 的<strong>概率密度函数</strong>，简称为<strong>密度函数</strong>。</p>
-<p>关于 f(x)<em>f</em>(<em>x</em>) 有以下结论：</p>
+<p>关于 f(x) 有以下结论：</p>
 <ol>
 <li><span class="arithmatex">\(f(x)\ge 0\)</span>；</li>
 <li><span class="arithmatex">\(\int_{\infty}^{+\infty}f(x)dx = 1\)</span>；</li>
@@ -1235,7 +1236,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年11月23日 11:06:33</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年11月23日 23:37:59</span>
   </span>
 
     
