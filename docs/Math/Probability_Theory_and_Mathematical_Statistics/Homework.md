@@ -8,7 +8,7 @@ comments: true
 <div class="card file-block" markdown="1">
 <div class="file-icon"><img src="/Notebook/assets/images/pdf.svg" style="height: 3em;"></div>
 <div class="file-body">
-<div class="file-title"> Chapter1 </div>
+<div class="file-title"> HW </div>
 <div class="file-meta"> 9,023 KB / 2024-11-24</div>
 </div>
 <a class="down-button" target="_blank" href="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/HW.pdf" markdown="1">:fontawesome-solid-download: 下载</a>
