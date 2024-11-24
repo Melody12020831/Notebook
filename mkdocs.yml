@@ -156,5 +156,16 @@ nav:
         - Math/Probability_Theory_and_Mathematical_Statistics/Chapter4.md
         - Math/Probability_Theory_and_Mathematical_Statistics/Chapter5.md
         - Math/Probability_Theory_and_Mathematical_Statistics/PPT_download.md
-        - Math/Probability_Theory_and_Mathematical_Statistics/Homework.md
+        - "Homework":
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/Homework_index.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW1.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW2.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW3.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW4.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW5.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW6.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW7.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW8.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW9.md
+          - Math/Probability_Theory_and_Mathematical_Statistics/HW/HW10.md
 
