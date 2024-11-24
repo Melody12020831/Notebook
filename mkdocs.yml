@@ -12,6 +12,7 @@ theme:
     logo: material/notebook-outline
   custom_dir: overrides
   features:
+    - content.code.copy
     - content.code.annotate
     - navigation.tracking
     - navigation.tabs
@@ -90,6 +91,9 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Melody12020831/
+  analytics:
+    provider: google
+    property: G-002T22X4FB
 
 extra_css:
     - https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
@@ -134,7 +138,8 @@ plugins:
       timezone: Asia/Shanghai
       exclude:
         - index.md
-  - statistics
+  - statistics:
+      words_per_minute: 200
 
 # not_in_nav: todo.md
 
@@ -151,4 +156,5 @@ nav:
         - Math/Probability_Theory_and_Mathematical_Statistics/Chapter4.md
         - Math/Probability_Theory_and_Mathematical_Statistics/Chapter5.md
         - Math/Probability_Theory_and_Mathematical_Statistics/PPT_download.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/Homework.md
 

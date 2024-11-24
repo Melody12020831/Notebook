@@ -155,7 +155,7 @@ $$\begin{cases}a_0 = E(Y)-b_0E(X)\\b_0=\frac{Cov(X,Y)}{Var(X)}\end{cases}$$
 
 **特别地**：
 
-若$(X,Y)$服从二元正态分布，$X$和$Y$的相关系数$\rho_{XY} = \rho$，且可以证明**X与Y相互独立$\Leftrightarrow$X与Y不相关**
+若$(X,Y)$服从二元正态分布，$X$和$Y$的相关系数$\rho_{XY} = \rho$，且可以证明**X与Y相互独立 $\Leftrightarrow$ X与Y不相关**
 
 **注意区分独立性和相关性：**
 
