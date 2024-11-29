@@ -8,7 +8,7 @@ statistics: True
     <div align="center" style="font-size:32px;font-weight:bold">
         Per aspera ad astra
     </div>
-    div align="center" style="font-size:12px">
+    <div align="center" style="font-size:12px">
         循此苦旅，以达星辰。
     </div>
     <br><br>
