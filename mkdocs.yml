@@ -149,7 +149,7 @@ nav:
   - Computer Science:
     - Computer_Science/index.md
     - "Tools":
-      - Computer_Science/Tools/git.md
+      - Computer_Science/Tools/Git.md
   - Math: 
     - Math/index.md
     - "概率论与数理统计":
