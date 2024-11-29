@@ -92,7 +92,7 @@ $$\frac{n_A}{n} \mathop{\rightarrow}\limits^P +\infty$$
 因此当$n$充分大时
 
 - $\sum\limits_{i=1}^{n}X_i \mathop{\sim}\limits^{近似} N(n\mu,n\sigma^2)$
-- $\frac{1}{n}\sum\limits_{i=1}{n}X_i \mathop{\sim}\limits^{近似} N(\mu,\frac{\sigma^2}{n})$
+- $\frac{1}{n}\sum\limits_{i=1}^{n}X_i \mathop{\sim}\limits^{近似} N(\mu,\frac{\sigma^2}{n})$
 
 ### 推论(棣莫弗——拉普拉斯中心极限定理)
 

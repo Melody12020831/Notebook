@@ -146,6 +146,10 @@ plugins:
 nav:
   - Home: 
     - index.md
+  - Computer Science:
+    - Computer_Science/index.md
+    - "Tools":
+      - Computer_Science/Tools/git.md
   - Math: 
     - Math/index.md
     - "概率论与数理统计":
@@ -155,6 +159,8 @@ nav:
         - Math/Probability_Theory_and_Mathematical_Statistics/Chapter3.md
         - Math/Probability_Theory_and_Mathematical_Statistics/Chapter4.md
         - Math/Probability_Theory_and_Mathematical_Statistics/Chapter5.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/Chapter6.md
+        - Math/Probability_Theory_and_Mathematical_Statistics/Chapter7.md
         - Math/Probability_Theory_and_Mathematical_Statistics/PPT_download.md
         - "Homework":
           - Math/Probability_Theory_and_Mathematical_Statistics/HW/Homework_index.md

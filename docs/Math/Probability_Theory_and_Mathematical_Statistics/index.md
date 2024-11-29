@@ -17,6 +17,6 @@ statistics: True
     - [x] [多元随机变量及其分布](Chapter3.md)
     - [x] [随机变量的数字特征](Chapter4.md)
     - [x] [大数定律及中心极限定理](Chapter5.md)
-    - [ ] [统计量与抽样分布]
+    - [x] [统计量与抽样分布](Chapter6.md)
     - [ ] [参数估计]
     - [ ] [假设检验]

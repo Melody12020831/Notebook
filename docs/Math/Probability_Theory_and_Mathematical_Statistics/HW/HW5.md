@@ -18,6 +18,20 @@ comments: true
 
 ??? Note "Answer"
     1. 
+    
+    $$P\{|x-\mu| < \sigma\} = 0.6826,P\{|x-\mu| < 2\sigma\} = 0.9544,P\{|x-\mu| < 3\sigma\} = 0.9974$$
+
+    $$P(X \le 25) = \frac{0.6826}{2} + 0.5 = 0.8413$$
+
+    $$P(25 < X \le 27.5) = \frac{0.9544 - 0.6826}{2} = 0.1359$$
+
+    $$P(X > 27.5) = 1 - \frac{0.9974}{2} = 0.0228$$
+
+    $$\therefore P(\text{患高血压}) = 0.8413 \times 0.1 + 0.1359 \times 0.15 + 0.0228 \times 0.3 = 0.111355$$
+
+    2. $P_2 = \frac{P(25 < X \le 27.5)\times 0.15 + P(X > 27.5)\times 0.3}{P(\text{患高血压})} = \frac{5445}{22271} \approx 0.2445$
+
+    3. $P_3 = 1 - (1 - P(\text{患高血压}))^3 = 1 - (1 - 0.111355)^3 \approx 0.2982$
 
 ---
 
@@ -26,7 +40,7 @@ comments: true
 ???+ question
     已知随机变量 $X$ 的密度函数为
 
-    $$f(x) = \begin{cases}c(4-x^2), & -1<x<2 \\ 0, &其他\end{cases}$$
+    $$f(x) = \begin{cases}c(4-x^2), & -1<x<2 \\ 0, &\text{其他}\end{cases}$$
 
     (1)求常数 $c$ 的值；
 
@@ -35,7 +49,15 @@ comments: true
     (3)设 $Z = |X|$ ，求 $Z$ 的分布函数及密度函数.
 
 ??? Note "Answer"
-    1.
+    1.$\int_{-1}^{2}c(4-x^2)dx = 1 \Rightarrow c = \frac{1}{9}$
+
+    2. $F_Y(y) = P(Y \le y) = P(3X \le y) = P(X \le \frac{y}{3}) = F_X(\frac{y}{3})$
+
+    两边都对 $y$ 求导，得 $f_Y(y) = \frac{1}{3}f_X(\frac{y}{3}) = \begin{cases}\frac{1}{27}[4 - (\frac{y}{3})^2], & -3 < y < 6 \\ 0, &其他\end{cases}$
+
+    3. $F_Z(z) = P(Z \le z) = P(|X| \le z) = P(-z \le X \le z) = F_X(z) - F_X(-z)$
+
+    两边都对 $z$ 求导，得 $f_Z(z) = f_X(z) + f_X(-z) = \begin{cases}\frac{2}{9}[4 - z^2], & 0 \le z < 1 \\ \frac{1}{9}[4 - z^2], & 1 \le z < 2 \\ 0, &\text{其他}\end{cases}$
 
 ---
 
@@ -49,7 +71,13 @@ comments: true
     (2)求 $Z$ 的密度函数；
 
 ??? Note "Answer"
-    1.
+    1. $F_Y(y) = P(Y \le y) = P(e^X \le y) = P(X \le ln y) = F_X(ln y)$
+
+    两边都对 $y$ 求导，得 $f_Y(y) = \begin{cases}\frac{1}{y}f_X(ln y) = \frac{1}{y}\frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}(ln y)^2},&y>0 \\ 0, &\text{其他} \end{cases}$
+
+    2. $F_Z(z) = P(Z \le z) = P(ln|X| \le z) = P(-e^z \le X \le e^z) = F_X(e^z) - F_X(-e^z)$
+
+    两边都对 $z$ 求导，得 $f_Z(z) = e^z \cdot f_X(e^z) + e^z \cdot f_X(-e^z) = \frac{1}{2\sqrt{\pi}}e^{z-\frac{1}{2}e^{2z}}, -\infty < z < +\infty$
 
 ---
 
@@ -66,7 +94,7 @@ comments: true
     且已知事件 $\{ X = 0\}$ 与事件 $\{X + Y = 1\}$ 相互独立， 求常数 $a,b$ 的值.
 
 ??? Note "Answer"
-    1.
+    $$\begin{cases} a+b = 0.5 \\ (0.3+a)(a+b) = a \end{cases} \rightarrow \begin{cases} a = 0.3 \\ b = 0.2 \end{cases}$$
 
 ---
 
@@ -90,7 +118,20 @@ comments: true
     (2)写出给定 $\{X=0\}$ 条件下 $Y$ 的条件分布律；
 
 ??? Note "Answer"
-    1.
+    1. 
+
+    | X\Y |  0   |  1   |  2   |
+    | :--: | :--: | :--: | :--: |
+    |  0  | 0.2  | 0.1  | 0.1  |
+    |  1  |  0   | 0.4  | 0.2  |
+
+    2. 
+
+    $$P\{Y=0|X=0\} = 0.5$$
+
+    $$P\{Y=1|X=0\} = 0.25$$
+
+    $$P\{Y=2|X=0\} = 25$$
 
 ---
 
@@ -105,5 +146,21 @@ comments: true
 
 ??? Note "Answer"
     1.
+
+    | X\Y |  1   |  2   |  3   |  4   |  5   |  6   |$\{X = i\}$|
+    | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+    |  1  | $\frac{1}{36}$  | $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{6}$  |
+    |  2  |  0   | $\frac{1}{18}$  | $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{6}$  |
+    |  3  |  0   |  0   | $\frac{1}{12}$  |  $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{6}$  |
+    |  4  |  0   |  0   |  0   |  $\frac{1}{9}$  |  $\frac{1}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{6}$  |
+    |  5  |  0   |  0   |  0   |  0   |  $\frac{5}{36}$  |  $\frac{1}{36}$  |  $\frac{1}{6}$  |
+    |  6  |  0   |  0   |  0   |  0   |  0   |  $\frac{1}{6}$  |  $\frac{1}{6}$  |
+    |$\{Y = i\}$| $\frac{1}{36}$  |  $\frac{1}{12}$  |  $\frac{5}{36}$  |  $\frac{7}{36}$  |  $\frac{1}{4}$  |  $\frac{11}{36}$  |  |
+
+    2. 
+
+    | X\Y |  1   |  2   |  3   |  4   |  5   |  6   |
+    | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+    |$P\{X=i|Y=6\}|$\frac{1}{11}$|$\frac{1}{11}$|$\frac{1}{11}$|$\frac{1}{11}$|$\frac{1}{11}$|$\frac{1}{11}$|
 
 ---
