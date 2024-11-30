@@ -12,8 +12,8 @@ statistics: True
 - 离散型随机变量：$E(X) = \sum\limits_{k=1}^{+\infty}x_kp_k$，且要求$\sum\limits_{k=1}^{+\infty}|x_k|p_k < \infty$
 - 连续型随机变量：$E(X) = \int_{-\infty}^{+\infty} xf(x)dx$，且要求$\int_{-\infty}^{+\infty}|x|f(x)dx< \infty$
 - 随机变量函数的数学期望：设 $Y$ 是随机变量 $X$ 的函数：$Y=g(X)$（$g$ 是连续函数）。
-  - $X$ 是**离散型随机变量**，它的分布律为 $P(X=x_k)=p_k,k=1,2,\dots$，若 $\sum\limits_{k=1}^{+\infty}g(x_k)p_k$ 绝对收敛，则有：$E(Y)=E(g(X))=\sum\limits_{k=1}^{+\infty}g(x_k)p_k$。
-  - $X$ 是**连续型随机变量**，它的概率密度为 $f(x)$，若 $\int_{−\infty}^{+\infty}g(x)f(x)dx$ 绝对收敛，则有：$E(Y)=E(g(X))=\int_{−\infty}^{+\infty}g(x)f(x)dx$。
+      - $X$ 是**离散型随机变量**，它的分布律为 $P(X=x_k)=p_k,k=1,2,\dots$，若 $\sum\limits_{k=1}^{+\infty}g(x_k)p_k$ 绝对收敛，则有：$E(Y)=E(g(X))=\sum\limits_{k=1}^{+\infty}g(x_k)p_k$。
+      - $X$ 是**连续型随机变量**，它的概率密度为 $f(x)$，若 $\int_{−\infty}^{+\infty}g(x)f(x)dx$ 绝对收敛，则有：$E(Y)=E(g(X))=\int_{−\infty}^{+\infty}g(x)f(x)dx$。
 
 ---
 
@@ -25,15 +25,15 @@ statistics: True
 
 3. 设$X,Y$是两个随机变量，$E(X+Y) = E(X) + E(Y)$
 
-   - 这一性质可以推广到任意有限个随机变量线性组合的情况:
+      - 这一性质可以推广到任意有限个随机变量线性组合的情况:
 
-     $E(c_o + \sum\limits_{i=1}^nc_iX_i) = c_o + \sum\limits_{i=1}^nc_iE(X_i)$
+         $E(c_o + \sum\limits_{i=1}^nc_iX_i) = c_o + \sum\limits_{i=1}^nc_iE(X_i)$
 
 4. 设 $X,Y$ 是相互独立的随机变量，则 $E(X \cdot Y)=E(X) \cdot E(Y)$，但**逆命题不成立**；
 
-   - 这一性质可以推广到任意有限个相互独立的随机变量：
+      - 这一性质可以推广到任意有限个相互独立的随机变量：
 
-     $E(\prod\limits_{i=1}^nX_i) = \prod\limits_{i=1}^nE(X_i)$
+         $E(\prod\limits_{i=1}^nX_i) = \prod\limits_{i=1}^nE(X_i)$
 
 ???+ question 
 	计算机程序随机产生0 ~ 9中的数字. 记$X_i$为第$i$次产生的数字，$i=1, 2,\dots ,n$. 将这$n$个数依次排列，得到一数，记为$Y$,求$E(Y)$.
@@ -78,7 +78,7 @@ $$\sigma(X) = \sqrt{Var(X)}$$
    <p>$$Var(X\pm Y)=Var(X)+Var(Y) \pm 2E{[X−E(X)][Y−E(Y)]}=Var(X)+Var(Y) \pm 2Cov(X,Y);$$</p>
 
    - 这一性质可以推广到任意有限个随机变量之和的情况：
-   
+         
    <p>$$Var(\sum_{i=1}^nX_i)=\sum_{i=1}^nVar(X_i)+2\sum_{1\le i < j \le n} Cov(X_i,X_j);$$</p>
 
    - 特别地，如果 $X,Y$ 相互独立，则 $Var(X \pm Y)=Var(X)+Var(Y)$;
@@ -90,7 +90,7 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 5. $Var(X)=0 \Leftrightarrow P(X=c)=1$  and  $c=E(X);$
 
 ???+ question 
-	设$X ∼N(22.40,0.03^2),Y∼ N(22.50,0.04^2)$，且$X$和$Y$相互独立，计算$P(X < Y)$
+	设$X \sim N(22.40,0.03^2),Y \sim N(22.50,0.04^2)$，且$X$和$Y$相互独立，计算$P(X < Y)$
 
 ??? note "Answer"
 	![img](images/image-20241107120239539.png)
@@ -107,7 +107,7 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 
 随机变量 $X,Y$ 的**协方差** $Cov(X,Y)=E{[X−E(X)][Y−E(Y)]}=E(XY)−E(X)E(Y)$
 
-随机变量 $X,Y$ 的**相关系数** $\rho_{XY}= \frac{Cov(X,Y)}{Var(X)Var(Y)}$
+随机变量 $X,Y$ 的**相关系数** $\rho_{XY}= \frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}$
 
 ### 协方差的性质
 1. $Cov(X,Y)=Cov(Y,X)$；
@@ -117,7 +117,7 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 5. $Cov(X,X)=Var(X)$；
 6. $Cov(c,Y)=E(cY)−E(c)E(Y)=0,c \in R;$
 7. $Cov(X+Y,X−Y)=Cov(X,X)−Cov(Y,Y);$
-8. $Cov(X∗,Y∗)=Cov(\frac{X−E(X)}{\sqrt{Var(X)}},\frac{Y−E(Y)}{\sqrt{Var(Y)}})=\frac{Cov(X,Y)}{Var(X)Var(Y)}=\rho_{XY};$
+8. $Cov(X∗,Y∗)=Cov(\frac{X−E(X)}{\sqrt{Var(X)}},\frac{Y−E(Y)}{\sqrt{Var(Y)}})=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}=\rho_{XY};$
 9. $Cov(aX+bY,cX+dY)=ac \cdot Var(X)+bd \cdot Var(Y)+(ad+bc)Cov(X,Y);$
 
 ### 相关系数的性质
@@ -132,7 +132,9 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 3. 上述两条性质可以合并写成：
    当 $Var(X)Var(Y) \neq 0$ 时，有 $Cov^2(X,Y) \le Var(X)Var(Y)$，其中等号当且仅当 $X$ 与 $Y$ 之间有严格的线性关系，即存在常数 $a,b$，使 $P(Y=a+bX)=1;$
 
-相关系数 $\rho_{XY}$ 是用来表征 $ X,Y$ 之间**线性关系紧密程度**的量。此外，考虑以 $X$ 的线性函数 $a+bX$ 来近似表示 $Y$，均方误差 $e(a,b)=E{[Y−(a+bX)]^2}$ 也可以用来衡量 $X,Y$ 之间线性关系紧密程度。其中有：
+相关系数 $\rho_{XY}$ 是用来表征 $X,Y$ 之间**线性关系紧密程度**的量。
+
+此外，考虑以 $X$ 的线性函数 $a+bX$ 来近似表示 $Y$，均方误差 $e(a,b)=E{[Y−(a+bX)]^2}$ 也可以用来衡量 $X,Y$ 之间线性关系紧密程度。其中有：
 
 $$\begin{cases}a_0 = E(Y)-b_0E(X)\\b_0=\frac{Cov(X,Y)}{Var(X)}\end{cases}$$
 
@@ -186,7 +188,7 @@ $$\left( \begin{array}{l} Var(X_1) & Cov(X_1,X_2) & \dots & Cov(X_1,X_n) \\ Cov(
 
 ### n元正态变量具有以下四条重要性质
 
-1. $n$维正态变量$(X1,X2,...,Xn)^T$中的任意子向量 $(X_{i_1},X_{i_2},\dots,X_{i_k})^T , \ 1 \le k \le n$也服从$k$元正态分布；
+1. $n$维正态变量$(X_1,X_2,...,X_n)^T$中的任意子向量 $(X_{i_1},X_{i_2},\dots,X_{i_k})^T , \ 1 \le k \le n$也服从$k$元正态分布；
 
    - 特别地，每一个分量 $X_i,\ i=1,2,\dots ,n$都是正态变量；
    - 反之，若每个 $X_i$ 都是正态变量，且相互独立，则$ (X_1,X_2, \dots,X_n)$是 $n$维正态变量；
@@ -195,7 +197,7 @@ $$\left( \begin{array}{l} Var(X_1) & Cov(X_1,X_2) & \dots & Cov(X_1,X_n) \\ Cov(
 
 3. 若 $(X_1,X_2,\dots ,X_n)$ 服从 $n$ 维正态分布，设 $Y_1,Y_2,\dots ,Y_k$ 是 $X_i$ 的线性函数，则 $(Y_1,Y_2,\dots,Y_k)$ 也服从多维正态分布，这一性质被称为正态变量的线性变换不变性；
 
-4. 若 $(X_1,X2,\dots ,X_n)$ 服从 $n$ 维正态分布，则 $X_1,X_2,\dots ,X_n$ 互相独立的**充要条件**是 $X_i$ 两两不相关，也等价于协方差矩阵为对角矩阵；
+4. 若 $(X_1,X_2,\dots ,X_n)$ 服从 $n$ 维正态分布，则 $X_1,X_2,\dots ,X_n$ 互相独立的**充要条件**是 $X_i$ 两两不相关，也等价于协方差矩阵为对角矩阵；
 
 ???+ question 
 	设二元随机变量$(X,Y)$服从二元正态分布，$X∼N(0,1),Y∼N(1,4)$，X与Y的相关系数$\rho = -\frac{1}{2}$求: 
