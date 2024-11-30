@@ -87,7 +87,16 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1498,7 +1507,7 @@
 <p>1.</p>
 <div class="arithmatex">\[F_X(x) = \begin{cases} x,&amp;0&lt;x&lt;1 \\ 0,&amp;\text{其他} \end{cases} , F_Y(y) = \begin{cases} y^2,&amp;0&lt;y&lt;1 \\ 0,&amp;\text{其他} \end{cases}\]</div>
 <div class="arithmatex">\[F_M(t)=t^3,0&lt;t&lt;1,F_N(t) = t+t^2-t^3,0&lt;t&lt;1\]</div>
-<div class="arithmatex">\[f_M(t)=\begin{cases}3t^2,&amp;0&lt;t&lt;1 \\ 0, &amp;\text{其他}\end{cases},f_N(t)=\begin{cases} 1+2t-3t^2,&amp;0&lt;t&lt;1 \\ 0, &amp;\text{其他}\]</div>
+<div class="arithmatex">\[f_M(t)=\begin{cases}3t^2,&amp;0&lt;t&lt;1 \\ 0, &amp;\text{其他}\end{cases},f_N(t)=\begin{cases} 1+2t-3t^2,&amp;0&lt;t&lt;1 \\ 0, &amp;\text{其他} \end{cases}\]</div>
 </details>
 <hr />
 <h2 id="b6">B6<a class="headerlink" href="#b6" title="Permanent link">&para;</a></h2>
@@ -1517,7 +1526,7 @@
 <details class="question" open="open">
 <summary>Question</summary>
 <p>设一系统由三个相互独立的、正常工作时间分别为 <span class="arithmatex">\(X_1,X_2,X_3\)</span> 的子系统组成(如图所示),且 <span class="arithmatex">\(X_i(i=1,2,3)\)</span> 均服从参数为 <span class="arithmatex">\(\lambda\)</span> 的指数分布，求该系统正常工作时间 <span class="arithmatex">\(T\)</span> 的分布函数 <span class="arithmatex">\(F_T(t)\)</span> 及密度函数 <span class="arithmatex">\(f_T(t)\)</span> .</p>
-<p><img alt="image-20241125221156880" src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/image-20241125221156880.png" /></p>
+<p><a class="glightbox" href="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/image-20241125221156880.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241125221156880" src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/image-20241125221156880.png" /></a></p>
 </details>
 <details class="note">
 <summary>Answer</summary>
@@ -1582,7 +1591,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年11月29日 22:38:47</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年11月30日 10:22:22</span>
   </span>
 
     
@@ -1732,5 +1741,7 @@
         <script src="../../../../css/javascripts/tablesort.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

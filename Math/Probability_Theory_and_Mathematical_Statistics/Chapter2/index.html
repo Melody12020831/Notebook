@@ -87,7 +87,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1606,8 +1615,8 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><img alt="img" src="../images/image-20241010152832029.png" />
-<img alt="img" src="../images/image-20241010152839373.png" /></p>
+<p><a class="glightbox" href="../images/image-20241010152832029.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241010152832029.png" /></a>
+<a class="glightbox" href="../images/image-20241010152839373.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241010152839373.png" /></a></p>
 </details>
 <hr />
 <h3 id="_3">泊松分布<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -1665,7 +1674,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><img alt="img" src="../images/image-20241010153109801.png" /></p>
+<p><a class="glightbox" href="../images/image-20241010153109801.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241010153109801.png" /></a></p>
 <p><p>1. 空集发生的概率为0，但0概率事件不一定是空集。例如在(0,1)上取0.5</p>
 <p>2. 一个事件发生的概率为1，但不是整个样本空间（去掉0概率那个点即可）</p>
 <p>3. AB互斥则P(AB)= 0，但反之不成立。例如A为在(0,1)上去掉0.4，B为在(0,1)上取出0.5</p></p>
@@ -1689,7 +1698,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><img alt="img" src="../images/image-20241010153141624.png" /></p>
+<p><a class="glightbox" href="../images/image-20241010153141624.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241010153141624.png" /></a></p>
 </details>
 <hr />
 <h3 id="_10">指数分布<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
@@ -1707,7 +1716,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><img alt="img" src="../images/image-20241010153212016.png" /></p>
+<p><a class="glightbox" href="../images/image-20241010153212016.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241010153212016.png" /></a></p>
 </details>
 <hr />
 <h3 id="_11">正态分布<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -1922,5 +1931,7 @@
         <script src="../../../css/javascripts/tablesort.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

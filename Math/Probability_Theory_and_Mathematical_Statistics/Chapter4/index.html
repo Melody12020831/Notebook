@@ -87,7 +87,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1542,7 +1551,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><img alt="img" src="../images/image-20241107110633690.png" /></p>
+<p><a class="glightbox" href="../images/image-20241107110633690.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241107110633690.png" /></a></p>
 </details>
 <details class="question" open="open">
 <summary>Question</summary>
@@ -1550,7 +1559,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><img alt="img" src="../images/image-20241107110702776.png" /></p>
+<p><a class="glightbox" href="../images/image-20241107110702776.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241107110702776.png" /></a></p>
 </details>
 <hr />
 <h2 id="_3">方差<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
@@ -1606,11 +1615,11 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><img alt="img" src="../images/image-20241107120239539.png" /></p>
+<p><a class="glightbox" href="../images/image-20241107120239539.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241107120239539.png" /></a></p>
 </details>
 <hr />
 <h2 id="_5">常见分布的数学期望与方差<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p><img alt="img" src="../images/image-20241121170711548.png" /></p>
+<p><a class="glightbox" href="../images/image-20241121170711548.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241121170711548.png" /></a></p>
 <hr />
 <h2 id="_6">协方差与相关系数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>随机变量 <span class="arithmatex">\(X,Y\)</span> 的<strong>协方差</strong> <span class="arithmatex">\(Cov(X,Y)=E{[X−E(X)][Y−E(Y)]}=E(XY)−E(X)E(Y)\)</span></p>
@@ -1724,9 +1733,9 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><img alt="img" src="../images/image-20241114112838339.png" />
-<img alt="img" src="../images/image-20241114113256466.png" />
-<img alt="img" src="../images/image-20241114112903472.png" /></p>
+<p><a class="glightbox" href="../images/image-20241114112838339.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241114112838339.png" /></a>
+<a class="glightbox" href="../images/image-20241114113256466.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241114113256466.png" /></a>
+<a class="glightbox" href="../images/image-20241114112903472.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../images/image-20241114112903472.png" /></a></p>
 </details>
 <hr />
 
@@ -1901,5 +1910,7 @@
         <script src="../../../css/javascripts/tablesort.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
