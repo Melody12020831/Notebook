@@ -114,17 +114,17 @@ $$f(x) = \begin{cases} \frac{1}{2^{\frac{n}{2}}\Gamma(\frac{n}{2})}x^{\frac{n}{2
 
 3. $\chi^2_\alpha(n)$ 为 $\chi^2(n)$分布的上 $\alpha$ 分位数，即给定 $\alpha$ , $0<\alpha<1$ ,满足 $P(\chi^2 > \chi^2_\alpha(n)) = \alpha$ 。
 
-<center>$\chi^2$ 分布的概率密度函数</center>
-
 <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/xa1.png" ></div>
 
-<center>$\chi^2$ 分布的上 $\alpha$ 分位数</center>
+<center>$\chi^2$ 分布的概率密度函数</center>
 
 <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/xa2.png" ></div>
 
-<center>$\chi^2$ 分布的上 $\alpha$ 分位数表</center>
+<center>$\chi^2$ 分布的上 $\alpha$ 分位数</center>
 
 <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/xa3.png" ></div>
+
+<center>$\chi^2$ 分布的上 $\alpha$ 分位数表</center>
 
 ???+ question
     设总体 $X \sim N(\mu,\sigma^2)$ ， $\mu , \sigma^2$ 已知。 $X_1,\dots,X_n$ 是来自总体 $X$ 的样本，求统计量 $\chi^2 = \frac{1}{\sigma^2}\sum\limits_{i=1}^n (X_i - \mu)^2$ 的分布。
@@ -148,17 +148,17 @@ $$f(t,n) = \frac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi} \cdot \Gamma(\frac{n}{2})}(1
 
 其中， $\Gamma(\alpha) = \int_0^{+\infty} x^{\alpha-1}e^{-x}dx$ 。$\Gamma(\alpha +1) = \alpha \Gamma(\alpha) = \alpha !(if \alpha \in Z), \Gamma(0.5) = \sqrt{\pi}$
 
-<center>$t(n)$ 分布概率密度函数</center>
-
 <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/t1.png" ></div>
 
-<center>$t$ 分布的上 $\alpha$ 分位数</center>
+<center>$t(n)$ 分布概率密度函数</center>
 
 <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/t2.png" ></div>
 
-<center>$t$ 分布的上 $\alpha$ 分位数表</center>
+<center>$t$ 分布的上 $\alpha$ 分位数</center>
 
 <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/t3.png" ></div>
+
+<center>$t$ 分布的上 $\alpha$ 分位数表</center>
 
 ---
 
@@ -222,17 +222,17 @@ $$f(x,n_1,n_2) = \begin{cases} \frac{1}{B(\frac{n_1}{2},\frac{n_2}{2})}n_1^{\fra
 
 其中， $B(\alpha,\beta) = \int_0^1 x^{\alpha-1}(1-x)^{\beta-1}dx = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}$ 。
 
-<center> $F$ 分布的概率密度函数</center>
-
 <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/f1.png" ></div>
 
-<center>$F$ 分布的上 $\alpha$ 分位数</center>
+<center> $F$ 分布的概率密度函数</center>
 
 <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/f3.png" ></div>
 
-<center>$F$ 分布的上 $\alpha$ 分位数表</center>
+<center>$F$ 分布的上 $\alpha$ 分位数</center>
 
 <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/f2.png" ></div>
+
+<center>$F$ 分布的上 $\alpha$ 分位数表</center>
 
 ---
 
