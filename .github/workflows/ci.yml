@@ -31,6 +31,7 @@ jobs:
         run: pip install mkdocs-macros-plugin pymdown-extensions mkdocs-material-extensions mkdocs-statistics-plugin neoteroi-mkdocs
       - run: pip install mkdocs-git-revision-date-localized-plugin
       - run: pip install mkdocs-git-authors-plugin
+      - run: pip install mkdocs mkdocs-glightbox
       # - run: pip install mkdocs-rss-plugin
       - run: pip install mkdocs-material 
       - run: mkdocs gh-deploy --force
