@@ -6,7 +6,7 @@ comments: true
 # Git
 
 !!! Abstract
-    以下是我在网站上联系时所做的梳理。这边指路[精简版🔗](https://slides.tonycrane.cc/PracticalSkillsTutorial/2023-fall-ckc/lec2/)。
+    以下是我在网站上练习时所做的梳理。这边指路[精简版🔗](https://slides.tonycrane.cc/PracticalSkillsTutorial/2023-fall-ckc/lec2/)。
 
 !!! Info "一个练习 `git` 的网站"
     [Learn Git Branching](https://learngitbranching.js.org/?locale=zh_CN)

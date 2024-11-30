@@ -127,7 +127,7 @@ plugins:
         - zh
         - en
       separator: '[\s\-\.]+'
-  # - glightbox:
+  - glightbox
   #     width: 80%
   # - changelog
   # - heti

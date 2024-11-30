@@ -54,7 +54,7 @@ comments: true
 
     $$F_M(t)=t^3,0<t<1,F_N(t) = t+t^2-t^3,0<t<1$$
 
-    $$f_M(t)=\begin{cases}3t^2,&0<t<1 \\ 0, &\text{其他}\end{cases},f_N(t)=\begin{cases} 1+2t-3t^2,&0<t<1 \\ 0, &\text{其他}$$
+    $$f_M(t)=\begin{cases}3t^2,&0<t<1 \\ 0, &\text{其他}\end{cases},f_N(t)=\begin{cases} 1+2t-3t^2,&0<t<1 \\ 0, &\text{其他} \end{cases}$$
 
 ---
 
