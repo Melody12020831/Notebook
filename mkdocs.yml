@@ -141,13 +141,13 @@ plugins:
   - statistics:
       words_per_minute: 200
 
-# not_in_nav: todo.md
-
 nav:
   - Home: 
     - index.md
   - Computer Science:
     - Computer_Science/index.md
+    - "编程语言":
+      - Computer_Science/Programming_Language/python.md
     - "Tools":
       - Computer_Science/Tools/Git.md
   - Math: 
