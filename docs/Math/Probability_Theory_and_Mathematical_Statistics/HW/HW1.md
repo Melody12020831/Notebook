@@ -53,7 +53,7 @@ comments: true
 
 ## A12
 
-???+ question "[⭐$(球盒问题)_{先咕咕咕有空就整理再做链接跳转}$]"
+???+ question "[(⭐球盒问题)](https://melody12020831.github.io/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/Chapter1/#ball_box)"
     一袋中有10个球，其中8个是红球.每次摸一球，共摸2次，在有放回抽样与无放回抽样两种抽样方式下分别求：
 
     (1)“两次均为红球”的概率；

@@ -466,6 +466,8 @@ re.search(pattern, string, flags=0)
     
     `re.S` 默认情况下，`.` 字符在正则表达式中匹配除换行符以外的任何字符。使用 `re.S` | `re.DOTALL` 可使 `.` 字符将匹配任何字符，包括换行符。
 
+---
+
 ### example
 
 ```python
@@ -566,6 +568,8 @@ class Student:
             raise ValueError("House is required")
         self._house = value
 ```
+
+---
 
 ## set
 
