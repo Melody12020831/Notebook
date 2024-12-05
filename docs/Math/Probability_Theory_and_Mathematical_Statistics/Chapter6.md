@@ -188,7 +188,7 @@ $$f(t,n) = \frac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi} \cdot \Gamma(\frac{n}{2})}(1
 
     (3) $X$ 和 $Y$ 的分布足够简单，例如 $X$ 和 $Y$ 都是常数或线性相关( `e.g.` $Y=aX$ )的情况。
 
-2. 当 $n \to +\infty$ 时， $t(n) \to N(0,1)$ 。
+2. 当 $n \to +\infty$ (或 $n \ge 45$ 时可认为)， $t(n) \to N(0,1)$ 。
 
 ??? note "证明"
     运用中心极限定理。当 $n \to +\infty$ 时:
@@ -202,7 +202,23 @@ $$f(t,n) = \frac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi} \cdot \Gamma(\frac{n}{2})}(1
 3. 设 $T \sim t(n)$ ， $N \sim N(0,1)$ ，则对于任意的 $n \ge 1$ , 都存在 $a_0 > 0$ ，使得 $P(|T| \ge a_0) \ge P(|N| \ge a_0)$ 。
 
 4. $t_{\alpha}(n)$ 为 $t(n)$ 分布的上 $\alpha$ 分位数，即给定 $\alpha$ , $0<\alpha<1$ ,满足条件 $\int_{t_{\alpha}(n)}{+\infty}f(t,n)dt = \alpha$ 。
+
 5. $t_{1-\alpha}(n) = -t_{\alpha}(n)$ 。
+
+??? note "证明"
+    $$\forall 0<\alpha < 1, P(T > t_{\alpha}(n)) = \alpha$$
+
+    $$P(T < t_{\alpha}(n)) = 1 - \alpha$$
+
+    由于 $t$ 分布的对称性可得:
+
+    $$P(T < -t_{\alpha}(n)) = \alpha$$
+
+    $$\because P(T > t_{1- \alpha}(n)) = 1 - \alpha$$
+
+    $$\therefore P(T < t_{1- \alpha}(n)) = \alpha$$
+
+    $$\therefore t_{1-\alpha}(n) = -t_{\alpha}(n)$$
 
 ---
 
