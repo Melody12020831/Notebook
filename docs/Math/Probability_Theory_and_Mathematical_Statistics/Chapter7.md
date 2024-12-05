@@ -479,7 +479,7 @@ $$g(A_1,\dots,A_k) \mathop{\rightarrow}\limits^p g(\mu_1,\dots,\mu_k)$$
 
 $$\hat{\theta_1} = \theta_1(X_1,\cdots,X_n),\hat{\theta_2} = \theta_2(X_1,\cdots,X_n)$$
 
-使**随机区间** $$(\hat{\theta_1},\hat{\theta_2})$$ 以一定可靠程度盖住 $\theta$
+使**随机区间** $(\hat{\theta_1},\hat{\theta_2})$ 以一定可靠程度盖住 $\theta$
 
 ---
 
@@ -502,7 +502,7 @@ $$P(\theta_L(X_1,\cdots,X_n)) < \theta < \theta_U(X_1,\cdots,X_n) \ge 1 - \alpha
 
 3. 置信区间 $(\theta_L,\theta_U)$ 是随机的，依赖于样本。样本不同，算出的区间也可能不同。
 
-4. 对于有些样本观察值,区间覆盖 $\theta$，但对于于另一些样本观察值,区间则不能覆盖 $\theta$ .
+4. 对于有些样本观察值,区间覆盖 $\theta$ ，但对于于另一些样本观察值,区间则不能覆盖 $\theta$ .
 
 ???+ example
     设总体 $X \sim N(\mu,4)$ , $\mu$ 未知， $X_1,\cdots,X_4$ 是样本，则 $\overline{X} \sim N(\mu,1)$
@@ -539,6 +539,8 @@ $$P(\theta_L(X_1,\cdots,X_n)) < \theta < \theta_U(X_1,\cdots,X_n) \ge 1 - \alpha
 
 - 在给定的样本容量下,置信水平和精确度是相互制的。
 
-#### Neyman原则
+---
+
+### Neyman原则
 
 在置信水平达到 $1-\alpha$ 的置信区间中，选精确度尽可能高的置信区间.
