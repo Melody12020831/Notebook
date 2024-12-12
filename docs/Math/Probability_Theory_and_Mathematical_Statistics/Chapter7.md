@@ -766,7 +766,7 @@ $$(\frac{S_1^2}{S_2^2} \frac{1}{F_{\frac{\alpha}{2}}(n_1-1,n_2-1)} , \frac{S_1^2
 
     $$\frac{(n_2-1)S_2^2}{\sigma_2^2} \sim \chi^2(n_2-1)$$
 
-    $$\frac{\frac{(n_1-1)S_1^2}{\sigma_1^2 \cdot (n_1 - 1)}}{\fracc{(n_2-1)S_2^2}{\sigma_2^2 \cdot (n_2-1)}} = \frac{\frac{S_1^2}{\sigma_1^2}}{\frac{S_2^2}{\sigma_2^2}} \sim F(n_1-1,n_2-1)$$
+    $$\frac{\frac{(n_1-1)S_1^2}{\sigma_1^2 \cdot (n_1 - 1)}}{\frac{(n_2-1)S_2^2}{\sigma_2^2 \cdot (n_2-1)}} = \frac{\frac{S_1^2}{\sigma_1^2}}{\frac{S_2^2}{\sigma_2^2}} \sim F(n_1-1,n_2-1)$$
 
 ---
 
