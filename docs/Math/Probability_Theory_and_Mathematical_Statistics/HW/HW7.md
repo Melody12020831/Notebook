@@ -132,6 +132,6 @@ comments: true
 
     $$F_Z(z) = \frac{1}{2} \times \frac{1}{2} \times (\frac{z}{10}-6) + \frac{1}{2} \times \frac{1}{2} \times (8-6) = \frac{z}{40} - 1,64<z < 80$$
 
-    $$\therefore F_Z(z) = \begin{cases} 0,&z<48 \\ \frac{z}{32} - \frac{3}{2},&48<z < 60 \\ \frac{z}{32}-\frac{3}{2},&48 \le z < 60 \\ \frac{9z}{160} - 3,&60<Z \le 64 \\ \frac{z}{40}-1,& 64 < z < 80 \\ 0,&\text{其他} \end{cases}$$
+    $$\therefore F_Z(z) = \begin{cases} 0,&z<48 \\ \frac{z}{32} - \frac{3}{2},&48<z < 60 \\ \frac{9z}{160} - 3,&60< z \le 64 \\ \frac{z}{40}-1,& 64 < z < 80 \\ 0,&\text{其他} \end{cases}$$
 
 ---

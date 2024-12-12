@@ -408,12 +408,16 @@ $$\frac{\overline{X} - \overline{Y} - (\mu_1 - \mu_2)}{\sqrt{\frac{\sigma_1^2}{n
 
 $$\frac{(\overline{X} - \overline{Y} - (\mu_1 - \mu_2))}{S_w\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t(n_1 + n_2 - 2)$$
 
-其中， $S_w^2 = \frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{n_1 + n_2 - 2}$ , $S_w = \sqrt{S_w^2}$
+其中， $S_w^2 = \frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{n_1 + n_2 - 2}$ , $S_w = \sqrt{S_w^2}$ ($S_w$ 是联合样本方差)
 
 ??? note "证明"
     $$\frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{n_1 + n_2 - 2} \sim \chi^2(n_1 + n_2 - 2)$$
 
     结合二即得 $\frac{(\overline{X} - \overline{Y} - (\mu_1 - \mu_2))}{S_w\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t(n_1 + n_2 - 2)$
+
+<div id="whySw">
+
+</div>
 
 ???+ question "Thinking"
     若 $\sigma^2$ 未知，为什么用 $S_w$ 来估计 $\sigma^2$ 而不是用 $S_1^2$ 或 $S_2^2$ 来估计 $\sigma^2$ ？
