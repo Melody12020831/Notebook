@@ -35,15 +35,3 @@ jobs:
       # - run: pip install mkdocs-rss-plugin
       - run: pip install mkdocs-material 
       - run: mkdocs gh-deploy --force
-      
-      # - name: Push update file to slides repo
-      - uses: dmnemec/copy_file_to_another_repo_action@3fe42250d47e0764da9de9939b151b09a26e5857
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source_file: 'slide/site/.'
-          destination_repo: 'Melody12020831/Notebook'
-          destination_branch: 'master'
-          destination_folder: 'RevealmdTemplate'
-          user_email: 'melody12020831@outlook.com'
-          user_name: 'Melody'
