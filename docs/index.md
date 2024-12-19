@@ -14,14 +14,16 @@ hide:
     </div>
      <br><br>
 
-!!! info "站点统计"
-    <center>
-    本站目前共 {{pages}} 页，累计 {{words}} 字！
-    
-    代码块行数：{{codes}}
-    
-    网站运行时间：<span id="web-time"></span>
-    </center>
+[:material-chart-line: 站点统计](javascript:toggle_statistics();)
+
+<div id="statistics" markdown="1" class="card" style="width: 27em; border-color: transparent; opacity: 0; font-size: 75%">
+<div style="padding-left: 1em;" markdown="1">
+页面总数：{{pages}}  
+总字数：{{words}}  
+代码块行数：{{codes}}  
+网站运行时间：<span id="web-time"></span>
+</div>
+</div>
 
 这是一个记录我学习过程和笔记的网站，浅陋之见，伏侯卓裁。
 
