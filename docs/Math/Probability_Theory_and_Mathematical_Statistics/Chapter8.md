@@ -99,7 +99,7 @@ $= \Phi\{\frac{6.0+C-\mu}{\sqrt{\frac{\sigma^2}{n}}}\} - \Phi\{\frac{6.0-C-\mu}{
 
     $$\Rightarrow P(\frac{|\overline{X}-6.0|}{0.6/3} \ge z_{\alpha/2}) = \alpha$$
 
-    $$\Rightarrow \text{拒绝条件为:} \frac{|\overline{X} - 6.0|}{0.2} \ge z_{\alpha / 2}
+    $$\Rightarrow \text{拒绝条件为:} \frac{|\overline{X} - 6.0|}{0.2} \ge z_{\alpha / 2}$$
 
     若取 $\alpha = 0.05$ ,则拒绝域为 $\{|\overline{X} - 6| \ge 0.392|\}$
 
@@ -109,7 +109,9 @@ $= \Phi\{\frac{6.0+C-\mu}{\sqrt{\frac{\sigma^2}{n}}}\} - \Phi\{\frac{6.0-C-\mu}{
 
     犯第1类错误的概率 $\alpha(0.392)=0.05$
 
-    犯第2类错误的概率 $\beta(0.392) = P\{\text{接受}H_0|H_0\text{是假的}\} = P\{|\overline{X}-6.0|<0.392 | \mu \neq 6.0\} = P\{5.608 < \overline{X} < 6.392| \mu \neq 6.0\} = \Phi\{\frac{6.392-\mu}{0.2}\} - \Phi\{\frac{5.608-\mu}{0.2}\},\mu \neq 6.0$
+    犯第2类错误的概率 $\beta(0.392) = P\{\text{接受}H_0|H_0\text{是假的}\} = P\{|\overline{X}-6.0|<0.392 | \mu \neq 6.0\}$
+    
+    $= P\{5.608 < \overline{X} < 6.392| \mu \neq 6.0\} = \Phi\{\frac{6.392-\mu}{0.2}\} - \Phi\{\frac{5.608-\mu}{0.2}\},\mu \neq 6.0$
 
     例当 $\mu = 5.4$ 时，
 
@@ -129,7 +131,7 @@ $= \Phi\{\frac{6.0+C-\mu}{\sqrt{\frac{\sigma^2}{n}}}\} - \Phi\{\frac{6.0-C-\mu}{
 
 P_ 值与显著水平 $\alpha$ 的关系:
 
-若 $P \le \alpha$ ,则拒绝原假设，此时称检验结果在水平 $\alpha$ 下是**统计显著**的.
+若 P_ $\le \alpha$ ,则拒绝原假设，此时称检验结果在水平 $\alpha$ 下是**统计显著**的.
 
 若 P_ $> \alpha$ ,则接受原假设，此时称检验结果在水平 $\alpha$ 下是**统计不显著**.
 
@@ -176,7 +178,7 @@ $H_0$ 选取: 不能轻易拒绝的，后果严重的，或维持现状的
 
     **P_ 值的计算** 对给定的样本观察值 $x_1,\dots,x_n$ ,记检验统计量 Z 的取值为 $z_0 = \frac{\overline{x} - \mu_0}{\sigma / \sqrt{n}}$ 则有
 
-    P_ $ = P_{H_0} \{ |Z| \ge |z_0| \} = 2(1 - \Phi (|z_0|))$
+    P_ $= P_{H_0} \{ |Z| \ge |z_0| \} = 2(1 - \Phi (|z_0|))$
 
     当 P_ 小于显著水平 $\alpha$ 时，拒绝原假设，否则，接受原假设.
 
@@ -188,7 +190,7 @@ $H_0$ 选取: 不能轻易拒绝的，后果严重的，或维持现状的
 
     $\because \overline{X} \sim N(\mu,\frac{\sigma^2}{n})$
 
-    $\therefore \text{犯第一类错误概率为} P_{\mu}\{\overline{X} - \mu_0 \ge k\} = 1 - \Phi(\frac{k+\mu_0 - \mu}{\sigma / \sqrt{n}}) = \Phi(\frac{\mu - \mu_0 - k}{\sigma / sqrt{n}}) \text{是} \mu \text{的增函数}$
+    $\therefore \text{犯第一类错误概率为} P_{\mu}\{\overline{X} - \mu_0 \ge k\} = 1 - \Phi(\frac{k+\mu_0 - \mu}{\sigma / \sqrt{n}}) = \Phi(\frac{\mu - \mu_0 - k}{\sigma / \sqrt{n}}) \text{是} \mu \text{的增函数}$
 
     $\therefore \text{当} \mu = \mu_0 \text{时,犯第一类错误概率最大.}$
 
@@ -198,9 +200,11 @@ $H_0$ 选取: 不能轻易拒绝的，后果严重的，或维持现状的
 
     **P_ 值的计算** P_ = $\mathop{sup}\limits_{\mu \le \mu_0} P_{H_0} \{Z \ge z_0 \} = P\{Z \ge z_0 | \mu = \mu_0 \} = 1 - \Phi (z_0)$
 
+---
+
 ### 结论
 
-#### $\sigma^2$ 已知检验 $\mu$ (Z 检验法)
+#### 1 $\sigma^2$ 已知检验 $\mu$ (Z 检验法)
 
 $z_0 = \frac{\overline{x} - \mu_0}{\sigma / \sqrt{n}}$ ,当 $\mu = \mu_0$ 时， $Z = \frac{\overline{X} - \mu_0}{\sigma / \sqrt{n}} \sim N(0,1)$
 
@@ -222,7 +226,9 @@ P_ = $P_{\mu_0} \{Z \ge z_0 \} = 1 - \Phi(z_0)$
 
 P_ = $P_{\mu_0} \{Z \le z_0 \} = \Phi(z_0)$
 
-#### $\sigma^2$ 未知检验 $\mu$ (t 检验法)
+---
+
+#### 2 $\sigma^2$ 未知检验 $\mu$ (t 检验法)
 
 $t_0 = \frac{\overline{x} - \mu_0}{s / \sqrt{n}}$ ,当 $\mu = \mu_0$ 时， $t = \frac{\overline{X} - \mu_0}{s / \sqrt{n}} \sim t(n-1)$
 
@@ -244,7 +250,10 @@ P_ = $P_{\mu_0} \{t \ge t_0 \} = P(t(n-1) \ge t_0)$
 
 P_ = $P_{\mu_0} \{t \le t_0 \} = P(t(n-1) \le t_0)$
 
-#### $\mu$ 未知检验 $\sigma^2$ ($\chi^2$ 检验法)
+---
+
+#### 3 $\mu$ 未知检验 $\sigma^2$ ($\chi^2$ 检验法)
+
 当 $\sigma^2 = \sigma_0^2$ 时， $\chi^2 = \frac{(n-1)s^2}{\sigma_0^2} \sim \chi^2(n-1)$
 
 (1) $H_0 : \sigma^2 = \sigma_0^2 \leftrightarrow H_1 : \sigma^2 \ne \sigma_0^2$
@@ -263,33 +272,35 @@ P_ 值计算：
 
 设 $p = P_{\sigma_0^2} \{\frac{(n-1)S^2}{\sigma_0^2} \le \frac{(n-1)s^2}{\sigma_0^2} \} = P\{\chi^2(n-1) \le \chi^2_0 \}$
 
-其中，对样本观察值 $x_1, x_2, \cdots, x_n$，$s^2 = \frac{1}{n-1}\sum\limits_{i=1}^n (x_i - \overline{x})^2$
+其中，对样本观察值 $x_1, x_2, \cdots, x_n$，$s^2 = \frac{1}{n-1}\sum\limits_{i=1}^n (x_i - \overline{x})^2$ , $\chi_0^2 = \frac{(n-1)s^2}{\sigma_0^2}$
 
-$\chi_0^2 = \frac{(n-1)s^2}{\sigma_0^2}$
+1. 对于双边检验
 
-P_ = 2min(p,1-p)
+    拒绝域 : $\frac{(n-1)S^2}{\sigma_0^2} \ge \chi^2_{\alpha / 2}(n-1) \text{ 或 } \frac{(n-1)S^2}{\sigma_0^2} \le \chi^2_{1-\alpha / 2}(n-1)$
 
-当 P_ $\le \alpha$ , 拒绝原假设，当 P_ $> \alpha$ , 接受原假设
+    P_ = 2min(p,1-p)
 
-类似的，对于左边检验
+    当 P_ $\le \alpha$ , 拒绝原假设，当 P_ $> \alpha$ , 接受原假设
 
-$H_0 : \sigma^2 \ge \sigma_0^2 , H_1 : \sigma^2 < \sigma_0^2$
+2. 类似的，对于左边检验
 
-拒绝域 : $\frac{(n-1)S^2}{\sigma_0^2} \le \chi^2_{1-\alpha}(n-1)$
+    $H_0 : \sigma^2 \ge \sigma_0^2 , H_1 : \sigma^2 < \sigma_0^2$
 
-P_ = $\mathop{sup} P_{H_0} \{\frac{(n-1)S^2}{\sigma_0^2} \le \frac{(n-1)s^2}{\sigma_0^2} \} = P\{\chi^2(n-1) \le \chi^2_0 \}$
+    拒绝域 : $\frac{(n-1)S^2}{\sigma_0^2} \le \chi^2_{1-\alpha}(n-1)$
 
-当 P_ $\le \alpha$ , 拒绝原假设，当 P_ $> \alpha$ , 接受原假设
+    P_ = p = $\mathop{sup} P_{H_0} \{\frac{(n-1)S^2}{\sigma_0^2} \le \frac{(n-1)s^2}{\sigma_0^2} \} = P\{\chi^2(n-1) \le \chi^2_0 \}$
 
-类似的，对于右边检验
+    当 P_ $\le \alpha$ , 拒绝原假设，当 P_ $> \alpha$ , 接受原假设
 
-$H_0 : \sigma^2 \le \sigma_0^2 , H_1 : \sigma^2 > \sigma_0^2$
+3. 类似的，对于右边检验
 
-拒绝域 : $\frac{(n-1)S^2}{\sigma_0^2} \ge \chi^2_{\alpha}(n-1)$
+    $H_0 : \sigma^2 \le \sigma_0^2 , H_1 : \sigma^2 > \sigma_0^2$
 
-P_ = $\mathop{sup} P_{H_0} \{\frac{(n-1)S^2}{\sigma_0^2} \ge \frac{(n-1)s^2}{\sigma_0^2} \} = P\{\chi^2(n-1) \ge \chi^2_0 \}$
+    拒绝域 : $\frac{(n-1)S^2}{\sigma_0^2} \ge \chi^2_{\alpha}(n-1)$
 
-当 P_ $\le \alpha$ , 拒绝原假设，当 P_ $> \alpha$ , 接受原假设
+    P_ = 1-p = $\mathop{sup} P_{H_0} \{\frac{(n-1)S^2}{\sigma_0^2} \ge \frac{(n-1)s^2}{\sigma_0^2} \} = P\{\chi^2(n-1) \ge \chi^2_0 \}$
+
+    当 P_ $\le \alpha$ , 拒绝原假设，当 P_ $> \alpha$ , 接受原假设
 
 ???+ question
     某种元件的寿命 X（以小时记）服从正态分布 $N(\mu, \sigma^2)$ ，其中 $\mu$ 和 $\sigma^2$ 均未知。现测得16只元件的寿命如下：
@@ -379,13 +390,19 @@ P_ = $\mathop{sup} P_{H_0} \{\frac{(n-1)S^2}{\sigma_0^2} \ge \frac{(n-1)s^2}{\si
 
 ---
 
-## 两个正态总体 $N(\mu_1,\sigma_1^2),N(\mu_2,\sigma_2^2)$ 的检验
+## 两个正态总体参数的假设检验
+
+两个正态总体 $N(\mu_1,\sigma_1^2),N(\mu_2,\sigma_2^2)$ 的检验
 
 $X_1,X_2,\cdots,X_{n_1}$ 来自 $N(\mu_1,\sigma_1^2)$ ，$Y_1,Y_2,\cdots,Y_{n_2}$ 来自 $N(\mu_2,\sigma_2^2)$
 
 $\overline{X} ,\overline{Y},S_1^2,S_2^2$ 分别是 $X_1,X_2,\cdots,X_{n_1}$ ，$Y_1,Y_2,\cdots,Y_{n_2}$ 的样本均值和样本方差.显著性水平为 $\alpha$
 
-### $\sigma_1^2,\\sigma_2^2$ 已知检验 $\mu_1-\mu_2$ （Z 检验法）
+---
+
+### 结论
+
+#### $\sigma_1^2,\sigma_2^2$ 已知检验 $\mu_1-\mu_2$ （Z 检验法）
 
 当 $\mu_1 - \mu_2 = \delta$ 时， $Z = \frac{(\overline{X}-\overline{Y})-\delta}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}} \sim N(0,1)$
 
@@ -401,7 +418,9 @@ $\overline{X} ,\overline{Y},S_1^2,S_2^2$ 分别是 $X_1,X_2,\cdots,X_{n_1}$ ，$
 
 拒绝域 : $Z \le -z_{\alpha}$
 
-### $\sigma_1^2 = \sigma_2^2$ 未知检验 $\mu_1-\mu_2$ （t 检验法）
+---
+
+#### $\sigma_1^2 = \sigma_2^2$ 未知检验 $\mu_1-\mu_2$ （t 检验法）
 
 当 $\mu_1 - \mu_2 = \delta$ 时， $t = \frac{(\overline{X}-\overline{Y})-\delta}{\sqrt{\frac{S_w^2}{n_1}+\frac{S_w^2}{n_2}}} \sim t(n_1+n_2-2)$
 
@@ -417,7 +436,9 @@ $\overline{X} ,\overline{Y},S_1^2,S_2^2$ 分别是 $X_1,X_2,\cdots,X_{n_1}$ ，$
 
 拒绝域 : $t \le -t_{\alpha}(n_1+n_2-2)$
 
-### $\mu_1,\\mu_2$ 未知检验 $\frac{\sigma_1^2}{\sigma_2^2}$ （F 检验法）
+---
+
+#### $\mu_1,\mu_2$ 未知检验 $\frac{\sigma_1^2}{\sigma_2^2}$ （F 检验法）
 
 当 $\sigma_1^2 = \sigma_2^2$ 时， $F = \frac{S_1^2}{S_2^2} \sim F(n_1-1,n_2-1)$
 
@@ -471,7 +492,7 @@ $\overline{X} ,\overline{Y},S_1^2,S_2^2$ 分别是 $X_1,X_2,\cdots,X_{n_1}$ ，$
 
     $n_1 = 8, n_2 = 9, \overline{x} = 15.05, \overline{y} = 14.9,S_1^2 = 0.0457, S_2^2 = 0.0575$
 
-    计算得 : $ 0.268 < \frac{S_1^2}{S_2^2} = 0.795 < 3.50 $
+    计算得 : $0.268 < \frac{S_1^2}{S_2^2} = 0.795 < 3.50$
 
     不拒绝原假设，故认为方差没有显著差异。
 
@@ -511,7 +532,7 @@ $$\overline{X} - \frac{\sigma}{\sqrt{n}}z_{\alpha/2} < \mu < \overline{X} + \fra
 
 假设检验问题 $H_0 : \mu = \mu_0 , H_1 : \mu \ne \mu_0$ 显著性水平为 $\alpha$ 的检验拒绝域为： $W = \{\frac{|\overline{X}-\mu_0|}{\sigma/\sqrt{n}} \ge z_{\alpha/2}\}$
 
-接受域为 : $\overline{W} = \{\frac{|\overline{X}-\mu_0|}{\sigma/\sqrt{n}} < z_{\alpha/2}\} = \{\overline{X} - \frac{\sigma}{\sqrt{n}}z_{\alpha/2} < \mu < \overline{X} + \frac{\sigma}{\sqrt{n}}z_{\alpha/2}\}$
+接受域为 : $\overline{W} = \{\frac{|\overline{X}-\mu_0|}{\sigma/\sqrt{n}} < z_{\alpha/2}\} = \{\overline{X} - \frac{\sigma}{\sqrt{n}}z_{\alpha/2} < \mu_0 < \overline{X} + \frac{\sigma}{\sqrt{n}}z_{\alpha/2}\}$
 
 !!! note
     将接受域中的 $\mu_0$ 改写成 $\mu$ 时，所得结果正好是参数 $\mu$ 的置信水平为 $1-\alpha$ 的置信区间。
@@ -520,13 +541,13 @@ $$\overline{X} - \frac{\sigma}{\sqrt{n}}z_{\alpha/2} < \mu < \overline{X} + \fra
 
 反之，若 $(\hat{\theta_L},\hat{\theta_U})$ 是 $\theta$ 的置信水平为 $1-\alpha$ 的置信区间，则当 $\theta_0 \in (\hat{\theta_L},\hat{\theta_U})$ 时，接受双边检验 $H_0 : \theta = \theta_0 , H_1 : \theta \ne \theta_0$ 中的原假设 $H_0$ ，且检验的拒绝域为 $\theta_0 \le \hat{\theta_L}$ 或 $\theta_0 \ge \hat{\theta_U}$ 。
 
-### 单侧置信限与单边假设检验的关系：
+### 单侧置信限与单边假设检验的关系
 
 (1) 若 $\hat{\theta_L}$ 是 $\theta$ 的置信水平为 $1 - \alpha$ 的单侧置信下限，则当 $\theta_0 \ge \hat{\theta_L}$ 时，接受右边检验 $H_0 : \theta \le \theta_0 , H_1 : \theta > \theta_0$ 中的原假设 $H_0$ ,反之，拒绝原假设 $H_0$ 。
 
 (2) 若 $\hat{\theta_U}$ 是 $\theta$ 的置信水平为 $1 - \alpha$ 的单侧置信上限，则当 $\theta_0 \le \hat{\theta_U}$ 时，接受左边检验 $H_0 : \theta \ge \theta_0 , H_1 : \theta < \theta_0$ 中的原假设 $H_0$ ,反之，拒绝原假设 $H_0$ 。
 
-??? info "正态总体均值、方差的置信区间与假设检验"
+!!! info "正态总体均值、方差的置信区间与假设检验"
     <div align=center><img src="/Notebook/Math/Probability_Theory_and_Mathematical_Statistics/images/202412181.png" ></div>
 
 ---
@@ -549,7 +570,7 @@ $$\overline{X} - \frac{\sigma}{\sqrt{n}}z_{\alpha/2} < \mu < \overline{X} + \fra
 
 $$\chi^2 = \sum\limits_{i=1}^k\frac{(n_i - np_i)^2}{np_i} = \sum\limits_{i=1}^k\frac{n_i^2}{np_i}-n$$
 
-$$(\text{或} \chi^2 = \sum\limits_{i=1}^k\frac{(n_i-n\hat{p_i})^2}{n\hat{p_i}} = \sum\limits_{i=1}^k\frac{n_i^2}{n\hat{p_i}}-n)
+$$(\text{或} \chi^2 = \sum\limits_{i=1}^k\frac{(n_i-n\hat{p_i})^2}{n\hat{p_i}} = \sum\limits_{i=1}^k\frac{n_i^2}{n\hat{p_i}}-n)$$
 
 反映了实际频数与理论频数的综合偏差，当 $H_0$ 成立时， $\chi^2$ 的取值偏小，因此检验的拒绝域形式为 : $\chi^2 \ge c$
 
@@ -561,7 +582,7 @@ $$(\text{或} \chi^2 = \sum\limits_{i=1}^k\frac{(n_i-n\hat{p_i})^2}{n\hat{p_i}} 
 
 $$\chi^2 = \sum\limits_{i=1}^k\frac{n_i^2}{np_i} - n \ge \chi_{\alpha}^2(k-1) \text{没有参数需要估计}$$
 
-$$\chi^2 = \sum\limits_{i=1}^k\frac{n_i^2}{n\hat{p_i}} - n \ge \chi_{\alpha}^2(k-r-1) \text{有r个参数要估计}
+$$\chi^2 = \sum\limits_{i=1}^k\frac{n_i^2}{n\hat{p_i}} - n \ge \chi_{\alpha}^2(k-r-1) \text{有r个参数要估计}$$
 
 **注：** $\chi^2$ 拟合检验使用时必须注意 $n$ 要足够大， $np_i(\text{或} n\hat{p_i})$ 不能太小。根据实践，要求 $n \ge 50$ ，  $np_i(\text{或} n\hat{p_i}) \ge 5$ ，否则应适当合并相邻的类以满足要求.
 
@@ -579,7 +600,7 @@ $$\chi^2 = \sum\limits_{i=1}^k\frac{n_i^2}{n\hat{p_i}} - n \ge \chi_{\alpha}^2(k
     通常认为每天的订单数服从泊松分布，以上的数据是否支持这个结论？
 
 ??? note "Answer"
-    $H_0: X \sim P(\lambda)$ $\lamda$ 为未知参数， 总订单数为 1749
+    $H_0: X \sim P(\lambda)$ $\lambda$ 为未知参数， 总订单数为 1749
 
     所以平均每天订单数 $\hat{\lambda} = \overline{X} = \frac{1749}{330} = 5.3$
 
@@ -611,6 +632,4 @@ $$\chi^2 = \sum\limits_{i=1}^k\frac{n_i^2}{n\hat{p_i}} - n \ge \chi_{\alpha}^2(k
 
     P_ = $P(\chi^2(9) \ge 3.97) = 0.913$
 
-
-
-
+---
