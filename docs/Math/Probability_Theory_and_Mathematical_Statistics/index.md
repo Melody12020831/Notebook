@@ -19,4 +19,4 @@ statistics: True
     - [x] [大数定律及中心极限定理](Chapter5.md)
     - [x] [统计量与抽样分布](Chapter6.md)
     - [x] [参数估计](Chapter7.md)
-    - [ ] [假设检验]
+    - [x] [假设检验](Chapter8.md)

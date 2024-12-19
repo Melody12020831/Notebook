@@ -150,6 +150,7 @@ nav:
       - Computer_Science/Programming_Language/python.md
     - "Tools":
       - Computer_Science/Tools/Git.md
+      - Computer_Science/Tools/reveal-md.md
   - Math: 
     - Math/index.md
     - "概率论与数理统计":
