@@ -14,7 +14,7 @@ hide:
     </div>
      <br><br>
 
-[:material-chart-line: 站点统计](javascript:toggle_statistics();)
+??? info "[:material-chart-line: 站点统计](javascript:toggle_statistics();)"
 
 <div id="statistics" markdown="1" class="card" style="width: 27em; border-color: transparent; opacity: 0; font-size: 75%">
 <div style="padding-left: 1em;" markdown="1">
