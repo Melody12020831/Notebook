@@ -79,7 +79,7 @@ $$\frac{1}{n}\sum\limits_{i=1}^nX_i\mathop{\rightarrow}\limits^P\mu$$
 
 设$n_A$为$n$重贝努里试验中事件$A$发生的次数，并记事件$A$在每次试验中发生的概率为$p$，则有当$n \rightarrow +\infty$时
 
-$$\frac{n_A}{n} \mathop{\rightarrow}\limits^P +\infty$$
+$$\mathop{lim}\limits_{n\rightarrow +\infty}P\{|\frac{n_A}{n} - p| \ge \epsilon\} = 0$$
 
 ---
 
