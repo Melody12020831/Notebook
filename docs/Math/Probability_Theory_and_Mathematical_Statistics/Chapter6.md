@@ -12,7 +12,10 @@ comments: true
 - **总体的容量**：总体中包含的个体数；
 - **有限总体**：容量有限的总体；
 - **无限总体**：容量无限的总体，通常将容量非常大的总体也按无限总体处理。
-- 总体的某个指标 $X$ , 对于不同的个体来说有不同的取值, 这些取值可以构一个分布, 因此 $X$ 可以看成一个随机变量。有时候就把 $X$ 称为**总体**。假设 $X$ 的分布函数为 $F(x)$ , 也称 $F(x)$ 为**总体**。
+
+---
+
+- **总体的某个指标 $X$** : 对于不同的个体来说有不同的取值, 这些取值可以构成一个分布, 因此 $X$ 可以看成一个随机变量。有时候就把 $X$ 称为**总体**。假设 $X$ 的分布函数为 $F(x)$ , 也称 $F(x)$ 为**总体**。
 - **样本**：从总体中抽取的个体组成的集合；
 - **随机样本**：从总体中随机地取 $n$ 个个体；
 - **简单随机样本**：满足以下两个条件的随机样本 $(X_1,X_2,\cdots,X_n)$ 称为容量是 $n$ 的简单随机样本：
@@ -110,7 +113,7 @@ $$f(x) = \begin{cases} \frac{1}{2^{\frac{n}{2}}\Gamma(\frac{n}{2})}x^{\frac{n}{2
 
     设 $Y_1 \sim \chi^2(n_1)$ ， $Y_2 \sim \chi^2(n_2)$ ，且 $Y_1$ ， $Y_2$ 相互独立，则 $Y_1 + Y_2 \sim \chi^2(n_1 + n_2)$ 。
 
-    设 $Y_1,\dots,Y_m$ 相互独立，且 $Y_i \sim \chi^2(n_i)$ ，则 $\sum\limits_{i=1}^m \sim \chi^2(\sum\limits_{i=1}^m n_i)$ 。
+    设 $Y_1,\dots,Y_m$ 相互独立，且 $Y_i \sim \chi^2(n_i)$ ，则 $\sum\limits_{i=1}^m Y_i \sim \chi^2(\sum\limits_{i=1}^m n_i)$ 。
 
 3. $\chi^2_\alpha(n)$ 为 $\chi^2(n)$分布的上 $\alpha$ 分位数，即给定 $\alpha$ , $0<\alpha<1$ ,满足 $P(\chi^2 > \chi^2_\alpha(n)) = \alpha$ 。
 
@@ -191,17 +194,17 @@ $$f(t,n) = \frac{\Gamma(\frac{n+1}{2})}{\sqrt{n\pi} \cdot \Gamma(\frac{n}{2})}(1
 2. 当 $n \to +\infty$ (或 $n \ge 45$ 时可认为)， $t(n) \to N(0,1)$ 。
 
 ??? note "证明"
-    运用中心极限定理。当 $n \to +\infty$ 时:
+    运用中心极限定理。
 
-    $$\frac{Y-E(Y)}{\sqrt{Var(Y)}} = \frac{Y - n}{\sqrt{2n}} \mathop{\rightarrow}\limits^{\text{近似}} N(0,1)$$
+    由于 $E(Y) = n, D(Y) = 2n$ 可以得到 $\sqrt{\frac{Y}{n}} \xrightarrow{P} 1 \quad \text{当 } n \to \infty$ 。
 
-    即， $Y$ 的标准化随机变量收敛于标准正态分布。
+    对于任意固定的 $Z \sim N(0,1)$，有：
 
-    因此， $\frac{Y}{n}$ 会在 $n \to +\infty$ 时收敛于 $N(0,1)$ 。所以 $T$ 在 $n \to +\infty$ 时收敛于 $N(0,1)$ 。
+    $$T_n = \frac{Z}{\sqrt{Y/n}} \to Z \quad \text{当 } n \to \infty$$
 
 3. 设 $T \sim t(n)$ ， $N \sim N(0,1)$ ，则对于任意的 $n \ge 1$ , 都存在 $a_0 > 0$ ，使得 $P(|T| \ge a_0) \ge P(|N| \ge a_0)$ 。
 
-4. $t_{\alpha}(n)$ 为 $t(n)$ 分布的上 $\alpha$ 分位数，即给定 $\alpha$ , $0<\alpha<1$ ,满足条件 $\int_{t_{\alpha}(n)}{+\infty}f(t,n)dt = \alpha$ 。
+4. $t_{\alpha}(n)$ 为 $t(n)$ 分布的上 $\alpha$ 分位数，即给定 $\alpha$ , $0<\alpha<1$ ,满足条件 $\int_{t_{\alpha}(n)}^{+\infty}f(t,n)dt = \alpha$ 。
 
 5. $t_{1-\alpha}(n) = -t_{\alpha}(n)$ 。
 
@@ -250,6 +253,25 @@ $$f(x,n_1,n_2) = \begin{cases} \frac{1}{B(\frac{n_1}{2},\frac{n_2}{2})}n_1^{\fra
 
 <center>$F$ 分布的上 $\alpha$ 分位数表</center>
 
+??? Info "关于 $F$ 分布的图像"
+    F分布的概率密度函数（PDF）依赖于两个自由度参数，分别记作 $n_1$ 和 $n_2$ ，也称为分子自由度和分母自由度。
+
+    1. **随着 $n_1$ 增加**：
+        - 当 $n_1$ 增大时，F分布的峰值会向右移动，并且分布变得更加集中。也就是说，随着 $n_1$ 的增大，分布的偏斜性减小，图形变得更对称。
+        - 对于非常大的 $n_1$ ，F分布趋近于一个正态分布。
+
+    2. **随着 $n_2$ 增加**：
+        - 当 $n_2$ 增大时，F分布的右尾变轻，即极端值出现的概率减少，分布更加集中在均值附近。
+        - 类似地，当 $n_2$ 变得非常大时，F分布也会趋近于一个正态分布。
+
+    3. **对于较小的 $n_1$ 和 $n_2$ **：
+        - F分布通常会有较长的右尾，表示较大的方差，分布更分散，具有较高的偏斜性。
+        - 分布的峰值较低，因为概率质量分布在较宽的范围内。
+
+    4. **总体趋势**：
+        - 总体来说，随着 $n_1$ 和 $n_2$ 都增加，F分布趋向于更紧凑、更对称，并且其形态逐渐接近正态分布。
+        - 两个自由度都为1的情况下，F分布等价于柯西分布，它有一个特别长的尾部并且没有定义的平均值或方差。
+
 ---
 
 #### $F$-分布的性质
@@ -265,11 +287,13 @@ $$f(x,n_1,n_2) = \begin{cases} \frac{1}{B(\frac{n_1}{2},\frac{n_2}{2})}n_1^{\fra
 ??? note "证明"
     $$F \sim F(n_1,n_2) \Rightarrow F^{-1} \sim F(n_2,n_1)$$
 
-    $$\alpha = P(F \ge F_{\alpha}(n_1,n_2)) = P(F^{-1} \le F_{\alpha}(n_1,n_2)) = 1 - P(F^{-1} > F_{\alpha}(n_1,n_2))$$
+    $$\alpha = P(F \ge F_{\alpha}(n_1,n_2)) = P(F^{-1} \le F_{\alpha}^{-1}(n_1,n_2)) = 1 - P(F^{-1} > F_{\alpha}^{-1}(n_1,n_2))$$
 
-    $$\Rightarrow P(F^{-1} > F_{\alpha}(n_1,n_2)) = 1 - \alpha$$
+    $$\Rightarrow P(F^{-1} > F_{\alpha}^{-1}(n_1,n_2)) = 1 - \alpha$$
 
     $$\because F^{-1} \sim F(n_2,n_1)$$
+
+    $$\therefore F_{1-\alpha}(n_2,n_1) = \frac{1}{F_{\alpha}(n_1,n_2)}$$
 
     $$\therefore F_{1-\alpha}(n_1,n_2) = \frac{1}{F_{\alpha}(n_2,n_1)}$$
 
@@ -286,7 +310,7 @@ $$f(x,n_1,n_2) = \begin{cases} \frac{1}{B(\frac{n_1}{2},\frac{n_2}{2})}n_1^{\fra
 ??? note "Answer"
     (1) $X^2+Y^2+Z^2 \sim \chi^2(3)$ 。
 
-    (2) $\frac{X}{\sqrt{Y^2+Z^2}} \sim t(2)$ 。
+    (2) $\frac{X}{\frac{\sqrt{Y^2+Z^2}}{2}} \sim t(2)$ 。
 
     (3) $\frac{2X^2}{Y^2+Z^2} \sim F(1,2)$ 。
 
@@ -306,7 +330,7 @@ $$f(x,n_1,n_2) = \begin{cases} \frac{1}{B(\frac{n_1}{2},\frac{n_2}{2})}n_1^{\fra
 
 2. $\frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)$ 且 $\overline{X}$ 与 $S^2$ 相互独立。
 
-!!! Info
+!!! Info "直观理解"
     这里就涉及到对自由度的理解了。让我们先看看对自由度的定义。
 
     **自由度**：是指当以样本的统计量来估计总体的参数时，样本中独立或能自由变化的数据的个数，称为该统计量的自由度。一般来说，自由度等于独立变量减掉其衍生量数。也能理解为自由度是一个随机向量的维度数，也就是一个向量能被完整描述所需的最少单位向量数。
@@ -316,6 +340,10 @@ $$f(x,n_1,n_2) = \begin{cases} \frac{1}{B(\frac{n_1}{2},\frac{n_2}{2})}n_1^{\fra
     可以想见，样本方差 $S^2$ 只依赖于样本数据的偏差部分，即 $(X_1-\overline{X}),(X_2-\overline{X}),\cdots,(X_n-\overline{X})$ ，而与 $\overline{X}$ 无关。所以 $\overline{X}$ 与 $S^2$ 相互独立。
 
     此时我们就可以得到上述两条定理了。
+
+??? note "此处附上老师给的证明"
+    ![proof1](images/proof1.jpg)
+    ![proof2](images/proof2.jpg)
 
 ???+ question
     设总体 $X \sim N(\mu,\sigma^2)$ , $X_1,X_2,\cdots,X_n$ 是样本。
@@ -411,9 +439,9 @@ $$\frac{(\overline{X} - \overline{Y} - (\mu_1 - \mu_2))}{S_w\sqrt{\frac{1}{n_1} 
 其中， $S_w^2 = \frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{n_1 + n_2 - 2}$ , $S_w = \sqrt{S_w^2}$ ($S_w$ 是联合样本方差)
 
 ??? note "证明"
-    $$\frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{n_1 + n_2 - 2} \sim \chi^2(n_1 + n_2 - 2)$$
+    $$\frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{\sigma^2} \sim \chi^2(n_1 + n_2 - 2)$$
 
-    结合二即得 $\frac{(\overline{X} - \overline{Y} - (\mu_1 - \mu_2))}{S_w\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t(n_1 + n_2 - 2)$
+    $$\frac{(\overline{X} - \overline{Y} - (\mu_1 - \mu_2))}{\sigma \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} / \sqrt{\frac{(n_1-1)S_1^2 + (n_2-1)S_2^2}{\sigma^2 (n_1 + n_2 -2)}} \sim t(n_1 + n_2 - 2)$$
 
 <div id="whySw">
 

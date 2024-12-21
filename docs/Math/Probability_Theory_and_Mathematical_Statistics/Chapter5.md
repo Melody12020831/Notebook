@@ -104,3 +104,8 @@ $\mathop{lim}\limits_{n\rightarrow\infty}P(\frac{n_A-np}{\sqrt{np(1-p)}} \le x) 
 
 ---
 
+!!! note "依概率收敛与均值之间的关系补充"
+    ![details](images/details.png)
+
+---
+

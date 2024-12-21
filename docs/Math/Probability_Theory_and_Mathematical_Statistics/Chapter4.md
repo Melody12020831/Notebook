@@ -117,7 +117,7 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 5. $Cov(X,X)=Var(X)$；
 6. $Cov(c,Y)=E(cY)−E(c)E(Y)=0,c \in R;$
 7. $Cov(X+Y,X−Y)=Cov(X,X)−Cov(Y,Y);$
-8. $Cov(X∗,Y∗)=Cov(\frac{X−E(X)}{\sqrt{Var(X)}},\frac{Y−E(Y)}{\sqrt{Var(Y)}})=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}=\rho_{XY};$
+8. $Cov(X^∗,Y^∗)=Cov(\frac{X−E(X)}{\sqrt{Var(X)}},\frac{Y−E(Y)}{\sqrt{Var(Y)}})=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}=\rho_{XY};$
 9. $Cov(aX+bY,cX+dY)=ac \cdot Var(X)+bd \cdot Var(Y)+(ad+bc)Cov(X,Y);$
 
 ### 相关系数的性质

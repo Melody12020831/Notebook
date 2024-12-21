@@ -32,10 +32,12 @@ $$\hat{h}(\mu_1,\dots,\mu_k) = h(A_1,\dots,A_k)$$
 $$\hat{\theta}_i = g_i(A_1,\dots,A_k) , i=1,\dots,k$$
 
 ???+ question
-    现随机选出100名学生,计算得他们的平均成绩为72.3分,标准差为15.8分.试估计全部学生的平均成绩.
+    现随机选出100名学生,计算得他们的平均成绩为72.3分,标准差为15.8分.求总体标准差 $\sigma$ 的矩估计值.
 
 ??? note "Answer"
     $$\begin{cases}\mu_1 = E(X) = \mu \\ \mu_2 = E(X^2) = \mu^2 + \sigma^2 \end{cases} \Rightarrow \begin{cases}\mu = \mu_1 \\ \sigma = \sqrt{\mu_2 - \mu_1^2} \end{cases}$$
+
+    $$\because s^2 = \frac{1}{n-1}\sum\limits_{i=1}^n (X_i - \overline{X})^2, \sigma^2 = \frac{1}{n}\sum\limits_{i=1}^n (X_i - \overline{X})^2$$
 
     $$\Rightarrow \begin{cases}\hat{\mu} = 72.3 \\ \hat{\sigma} = \sqrt{A_2 - \overline{X}^2} = \sqrt{B_2} = \sqrt{\frac{99}{100} \times 15.8^2} = 15.7 \end{cases}$$
 
@@ -45,12 +47,14 @@ $$\hat{\theta}_i = g_i(A_1,\dots,A_k) , i=1,\dots,k$$
 ??? note "Answer"
     $$\mu = E(X) = p$$
 
-    $$\hat{p} = \overline{X} = \frac{1}{n} \sum_{i=1}^n X_i$$
+    $$\hat{p} = \overline{X}$$
+
+    即用样本比例来估计总体比例.
 
 ???+ question
-    设总体的密度为: $f(x;\theta) = \begin{cases} \sqrt{\theta}x^{\sqrt{\theta}-1},&0 \le x \le 1 \\ 0, & \text{otherwise}\end{cases} , \theta > 0$ 未知，其中 $X_1,\dots,X_n$ 为样本，求 $\theta$ 的矩估计量.
+    (1) 设总体的密度为: $f(x;\theta) = \begin{cases} \sqrt{\theta}x^{\sqrt{\theta}-1},&0 \le x \le 1 \\ 0, & \text{otherwise}\end{cases} , \theta > 0$ 未知，其中 $X_1,\dots,X_n$ 为样本，求 $\theta$ 的矩估计量.
 
-    若已获得 $n = 10$ 的样本值如下,
+    (2) 若已获得 $n = 10$ 的样本值如下,
     
     0.43  0.01  0.30  0.04  0.54
     
@@ -59,15 +63,15 @@ $$\hat{\theta}_i = g_i(A_1,\dots,A_k) , i=1,\dots,k$$
     求 $\theta$ 的矩估计值.
 
 ??? note "Answer"
-    (1)
+    1. 
     
-    $$\mu = E(X) = \int_0^1 x \sqrt{\theta} x^{\sqrt{\theta}-1} dx = \frac{\sqrt{\theta}}{\sqrt{\theta}+1}$$
+    $$\mu_1 = E(X) = \int_0^1 x \sqrt{\theta} x^{\sqrt{\theta}-1} dx = \frac{\sqrt{\theta}}{\sqrt{\theta}+1}$$
     
     $$\theta = (\frac{\mu_1}{1 - \mu_1})^2$$
     
     $$\hat{\theta} = (\frac{\overline{X}}{1-\overline{X}})^2$$
     
-    (2)
+    2. 
     
     $$\overline{X} = \frac{1}{10} \sum\limits_{i=1}^{10} X_i = 0.363$$
     
@@ -160,9 +164,9 @@ $\prod\limits_{i=1}^{n} P(x_i < X_i < x_i + \Delta x_i) \approx \prod\limits_{i=
     4. 若 $\hat{\theta}$ 是 $\theta$ 的极大似然估计，则 $g(\theta)$ 的极大似然估计为 $g(\hat{\theta})$ .
 
 ???+ question
-    设总体的密度为: $f(x;\theta) = \begin{cases} \sqrt{\theta}x^{\sqrt{\theta}-1},&0 \le x \le 1 \\ 0, & \text{otherwise}\end{cases} , \theta > 0$ 未知，其中 $X_1,\dots,X_n$ 为样本，求 $\theta$ 的极大似然估计值.
+    (1) 设总体的密度为: $f(x;\theta) = \begin{cases} \sqrt{\theta}x^{\sqrt{\theta}-1},&0 \le x \le 1 \\ 0, & \text{otherwise}\end{cases} , \theta > 0$ 未知，其中 $X_1,\dots,X_n$ 为样本，求 $\theta$ 的极大似然估计值.
 
-    若已获得 $n = 10$ 的样本值如下,
+    (2)若已获得 $n = 10$ 的样本值如下,
     
     0.43  0.01  0.30  0.04  0.54
     
@@ -171,6 +175,8 @@ $\prod\limits_{i=1}^{n} P(x_i < X_i < x_i + \Delta x_i) \approx \prod\limits_{i=
     求 $\theta$ 的极大似然估计值
 
 ??? note "Answer"
+    1. 
+    
     $$L(\theta) = \prod_{i=1}^{n} f(x_i;\theta) = \theta^{\frac{n}{2}} (\prod\limits_{i=1}^{n} x_i)^{\sqrt{\theta}-1}$$
 
     $$\frac{\partial \ln L(\theta)}{\partial \theta} = \frac{n}{2} \cdot \frac{1}{\theta} + \frac{1}{2\sqrt{\theta}} \sum\limits_{i=1}^{n} \ln x_i = 0$$
@@ -178,6 +184,8 @@ $\prod\limits_{i=1}^{n} P(x_i < X_i < x_i + \Delta x_i) \approx \prod\limits_{i=
     $$\Rightarrow \frac{n}{\sqrt{\theta}} = - \sum\limits_{i=1}^{n} \ln x_i$$
     
     $\theta$ 的极大似然估计量： $\hat{\theta} = \frac{n^2}{(\sum\limits_{i=1}^{n} \ln x_i)^2}$
+    
+    2. 
     
     代入 $n = 10$ 的样本值，得 $\hat{\theta} = 0.305$ .
 
@@ -311,11 +319,11 @@ $\prod\limits_{i=1}^{n} P(x_i < X_i < x_i + \Delta x_i) \approx \prod\limits_{i=
 
     $$F_{X_{(n)}}(x) = [F_X(x)]^n = \begin{cases} 0, & x < 0 \\ (\frac{x}{\theta})^n, & 0 \leq x \leq \theta \\ 1, & x > \theta \end{cases}$$
 
-    $$f_{X_{(n)}}(x) = \begin{cases} n\frac{x^{n-1}}{\theta^n}^n ,& 0 \leq x \leq \theta \\ 0, & x < 0, x > \theta \end{cases}$$
+    $$f_{X_{(n)}}(x) = \begin{cases} n\frac{x^{n-1}}{\theta^n} ,& 0 \leq x \leq \theta \\ 0, & x < 0, x > \theta \end{cases}$$
 
     $$E(\hat{\theta_L}) = E(X_{(n)}) = \int_0^\theta x f_{X_{(n)}}(x) dx = \int_0^\theta \frac{n}{\theta^n} x^{n} dx = \frac{n}{n+1}\theta \neq \theta$$
 
-    故 $\hat{\theta_L = X_{(n)}}$ 是有偏的.
+    故 $\hat{\theta_L} = X_{(n)}$ 是有偏的.
 
 ---
 
@@ -358,6 +366,30 @@ $\prod\limits_{i=1}^{n} P(x_i < X_i < x_i + \Delta x_i) \approx \prod\limits_{i=
     $$D(\hat{\theta}_1) > D(\hat{\theta}_2)$$
 
     $$\therefore \hat{\theta}_2 \text{更有效.}$$
+
+??? Tip "这两个无偏估计"
+    第一个是基于 $E(X_i)$ 得到的。
+
+    第二个的推导如下:
+
+    对于均匀分布 $U(0, \theta)$，$X_i$ 的累积分布函数 (CDF) 为： $F(x; \theta) = \frac{x}{\theta}, \quad 0 \leq x \leq \theta$
+
+    最大次序统计量 $X_{(n)}$ 的 CDF ： $F_{X_{(n)}}(x) = P(X_{(n)} \leq x) = P(X_1 \leq x, X_2 \leq x, ..., X_n \leq x)$
+    
+    由于 $X_i$ 独立同分布， $F_{X_{(n)}}(x) = [F(x)]^n = \left(\frac{x}{\theta}\right)^n, \quad 0 \leq x \leq \theta$
+
+    为了得到 $\hat{\theta}_2$，我们需要计算 $X_{(n)}$ 的期望值 : $E[X_{(n)}] = \int_0^\theta x f_{X_{(n)}}(x) dx$
+
+    $$\because f_{X_{(n)}}(x) = \frac{d}{dx}F_{X_{(n)}}(x) = n \left(\frac{x}{\theta}\right)^{n-1} \cdot \frac{1}{\theta}$$
+    
+    $$= \frac{n}{\theta^n}x^{n-1}, \quad 0 \leq x \leq \theta$$
+
+    $$E[X_{(n)}] = \int_0^\theta x \cdot \frac{n}{\theta^n}x^{n-1} dx = \frac{n}{\theta^n} \int_0^\theta x^n dx$$
+
+    $$= \frac{n}{\theta^n} \cdot \frac{\theta^{n+1}}{n+1} = \frac{n}{n+1}\theta$$
+
+    $$\therefore \hat{\theta}_2 = \frac{n+1}{n}X_{(n)}$$
+
 
 ---
 
@@ -441,17 +473,17 @@ $$g(A_1,\dots,A_k) \mathop{\rightarrow}\limits^p g(\mu_1,\dots,\mu_k)$$
 
     $$A_l = \frac{1}{n}\sum\limits_{i=1}^n X_i^l \mathop{\rightarrow}\limits^p \mu_l = E(X^l)$$
 
+    特别地, $\overline{X}$ 是 $\mu_1 = E(X)$ 的相合估计， $A_2$ 是 $\mu_2 = E(X^2)$ 的相合估计.
+
     (2)
 
-    由强大数定律， $\overline{X}$ 和 $A_2$ 分别一致收敛于 $\mu_1$ 和 $\mu_2$
+    $$\because D(X) = \sigma^2 = \mu_2 - (\mu_1)^2 \ , \ B_2 = \frac{1}{n} \sum\limits_{i=1}^n (X_i - \overline{X})^2 = A_2 - (\overline{X})^2$$
 
-    $$B_2 = \frac{1}{n}\sum\limits_{i=1}^n (X_i - \overline{X})^2 = A_2 - \overline{X}^2$$
-
-    $\therefore B_2,S^2$ 是 $\sigma^2$ 的相合估计
+    $$\therefore B_2 = A_2 - (\overline{X})^2 \ , \ S^2 = \frac{n}{n-1}B_2 \text{都是} \sigma^2 \text{的相合估计}$$
 
     (3)
 
-    $S = \sqrt{S^2}$ 是 $\sigma$ 的相合估计
+    $$S = \sqrt{S^2} \text{是} \sigma \text{的相合估计}$$
 
 ???+ question
     设总体 $X \sim U[0,\theta]$， $X_1,\cdots,X_n$ 是来自 $X$ 的样本，证明 $\hat{\theta_1} = 2\overline{X}$ 和 $\hat{\theta_2} = \frac{n+1}{n}\overline{X}$ 都是 $\theta$ 的相合估计
@@ -459,7 +491,7 @@ $$g(A_1,\dots,A_k) \mathop{\rightarrow}\limits^p g(\mu_1,\dots,\mu_k)$$
 ??? note "Answer"
     $$\hat{\theta_1} = 2\overline{X} = \mathop{\rightarrow}\limits^p 2E(X) = \theta$$
 
-    $\therefore \hat{\theta_1}$ 是 $\theta$ 的相合估计
+    $$\therefore \hat{\theta_1} \text{是} \theta \text{的相合估计}$$
 
     $$E(\hat{\theta_2}) = \theta,D(\hat{\theta_2}) = \frac{\theta^2}{n(n+2)}$$
 
@@ -469,7 +501,7 @@ $$g(A_1,\dots,A_k) \mathop{\rightarrow}\limits^p g(\mu_1,\dots,\mu_k)$$
 
     $$P(|\hat{\theta_2} - \theta| \geq \varepsilon) \leq \frac{D(\hat{\theta_2})}{\varepsilon^2}  = \frac{\theta^2}{n(n+2)\varepsilon^2} \to 0$$
 
-    所以 $\hat{\theta_2}$ 也是 $\theta$ 的相合估计
+    $$\text{所以} \hat{\theta_2} \text{也是} \theta \text{的相合估计}$$
 
 ---
 
@@ -487,7 +519,7 @@ $$\hat{\theta_1} = \theta_1(X_1,\cdots,X_n),\hat{\theta_2} = \theta_2(X_1,\cdots
 
 设总体 $X$ 的分布函数 $F(x;\theta)$  $\theta$ 未知，对给定值 $\alpha$ ( $0 < \alpha < 1$ )，有两个统计量 $\theta_L = \theta_L(X_1,\cdots,X_n)$ 和 $\theta_U = \theta_U(X_1,\cdots,X_n)$，使得
 
-$$P(\theta_L(X_1,\cdots,X_n)) < \theta < \theta_U(X_1,\cdots,X_n) \ge 1 - \alpha$$
+$$P\{(\theta_L(X_1,\cdots,X_n)) < \theta < \theta_U(X_1,\cdots,X_n)\} \ge 1 - \alpha$$
 
 
 称 $(\theta_L,\theta_U)$ 为 $\theta$ 的置信水平为 $1-\alpha$ 的双侧置信区间， $\theta_L$ 和 $\theta_U$ 分别称为双侧置信下限和双侧置信上限.
@@ -784,7 +816,7 @@ $$\sigma^2 \text{的枢轴量} \frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1) ,(\mu 
 
 ### 两个正态总体 
 
-$$N(\mu_1,\sigma_1^2)$ 和 $N(\mu_2,\sigma_2^2)$$
+$N(\mu_1,\sigma_1^2)$ 和 $N(\mu_2,\sigma_2^2)$
 
 $$\mu_1 - \mu_2 \text{的枢轴量} \begin{cases} \frac{(\overline{X}-\overline{Y}) - (\mu_1 - \mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0,1),& \sigma_1^2 , \sigma_2^2 \text{已知} \\ \frac{(\overline{X}-\overline{Y}) - (\mu_1 - \mu_2)}{S_w\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}} \sim t(n_1 + n_2 - 2) ,& \sigma_1^2 = \sigma_2^2 \text{未知} \end{cases}$$
 
