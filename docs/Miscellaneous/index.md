@@ -9,4 +9,4 @@
 
 最近在学什么：
 
-- [ ] [prompt](Miscellaneous/prompt/prompt.md)
+- [ ] [prompt](prompt/prompt.md)
