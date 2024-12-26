@@ -113,6 +113,13 @@ $$f_n(A) = \frac{n_A}{n};$$
 4. 概率的**加法公式**：P(A∪B) = P(A)+P(B)−P(AB) ; 推广即容斥原理；
 5. 加法公式的推论：P(A∪B) $\le$ P(A)+P(B);
 
+!!! note "独立与互斥"
+	要注意，独立和互斥是两种不同的性质，它们并不直接相关。
+
+	独立是指 $P(AB) = P(A) \times P(B)$
+
+	而互斥是指 $A \cap B = \varnothing$ , 或者说 $P(AB) = 0$ , $P(A + B) = P(A) + P(B)$
+
 ???+ question 
 	甲乙丙3人去参加某个集会的概率均为0.4，其中至少有两人参加的概率为0.3，都参加的概率为0.05，求3人中至少有一人参加的概率。
 
@@ -149,13 +156,15 @@ $$f_n(A) = \frac{n_A}{n};$$
 
 $$P(B|A) = \frac{P(AB)}{P(A)}, P(A) \ne 0$$
 
+---
+
 ### 性质
 
-1. $P(\cdot|A)$是概率
+1. $P(\cdot|A)$ 是概率
 2. 非负性：$P(B|A) \ge 0$
 3. 规范性：$P(S|A) = 1$
-4. 可列可加性：$A_1,A_2,\dots,A_k,\dots$两两互斥$\rightarrow P(\mathop{\cup}\limits_{i=1}^{\infty}A_i|A) = \sum\limits_{i=1}^{\infty}P(A_i|A)$
-5. $P(\cdot | A)$具有概率的所有性质
+4. 可列可加性： $A_1,A_2,\dots,A_k,\dots$ 两两互斥 $\rightarrow P(\mathop{\cup}\limits_{i=1}^{\infty}A_i|A) = \sum\limits_{i=1}^{\infty}P(A_i|A)$
+5. $P(\cdot | A)$ 具有概率的所有性质
 
 ???+ question
 	天气很好,小王想带家人去千岛湖玩,又想到天目山玩.他有一枚硬币,但不知道这枚硬币出现正面的概率.利用这枚硬币设计一个试验帮他做决定，使得最后他去千岛湖和去天目山的概率相等.
@@ -169,6 +178,8 @@ $$P(B|A) = \frac{P(AB)}{P(A)}, P(A) \ne 0$$
 
 ??? note "Answer"
 	![img](images/image-20241010151743177.png)
+
+---
 
 ### 乘法公式
 
@@ -188,11 +199,26 @@ $$P(A_1A_2\dots A_n ) = P(A_1)P(A_2 | A_1)P(A_3 |A_1A_2 ) \dots P(A_n | A_1 \dot
 ??? note "Answer"
 	![img](images/image-20241010151819207.png)
 
+---
+
 ### 全概率公式&Bayes公式
 
-$$P(A)=\sum\limits_{j=1}^nP(B_j)P(A∣B_j)$$
+**划分** ： 称 $B_1,B_2,\dots,B_n$ 是样本空间 $S$ 的一个划分，若
+
+1. 不漏 $\mathop{\cup}\limits_{i=1}^{n}B_i = S$
+2. 不重 $B_iB_j = \varnothing, i \ne j$
+
+---
+
+设 $B_1,B_2,\dots,B_n$ 为 $S$ 的一个划分且 $P(B_i) > 0, i = 1,2,\dots,n$ ,则有**全概率公式**：
+
+$$P(A)=\sum\limits_{j=1}^nP(B_j) \cdot P(A|B_j)$$
+
+对 $P(A) > 0$ 有 **Bayes 公式** ：
 
 $$P(B_i|A) = \frac{P(B_i)P(A|B_i)}{\sum\limits_{j=1}^{n}P(B_j)P(A|B_j)}$$
+
+此时，称 $P(B_i)$ 为先验概率，$P(B_i|A)$ 称为后验概率。
 
 ???+ question
 	根据以往的临床记录，某种诊断癌症的试验具有5%的假阳性及5%的假阴性：即设A={试验反应是阳性}，C={被诊断患有癌症}则有：$P(A |C) = 5%, P(A | C ) = 5 %$ .已知某一群体$P(C)=0.005$，问这种方法能否用于普查？
@@ -202,38 +228,39 @@ $$P(B_i|A) = \frac{P(B_i)P(A|B_i)}{\sum\limits_{j=1}^{n}P(B_j)P(A|B_j)}$$
 	![img](images/image-20241010150921573.png)
 	![img](images/image-20241010150932293.png)
 
-
 ---
 
 ## 独立性
 
 设 A,B 为两个随机事件，若有 $P(AB)=P(A) \times P(B)$，则 A,B 相互**独立(independent)**
 
-若$P(A) \ne 0$,那么$P(B|A) = P(B)$
+$$\mathop{\Leftrightarrow}\limits^{P(A) > 0} P(B|A) = P(B)$$
+
+$$\mathop{\Leftrightarrow}\limits^{P(\overline{A}) > 0} P(B|\overline{A}) = P(B)$$
+
+直观含义：A发生与否都不会改变B发生的概率
 
 当出现两个以上的随机事件时，如三个随机事件 A,B,C 当：
 
-$$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
+$$P(AB)=P(A)*P(B),P(AC)=P(A)*P(C),P(BC)=P(B)*P(C)$$
 
 都成立，则称事件 A,B,C **两两独立**；
 
 如果**同时还**满足：$P(ABC)=P(A)P(B)P(C)$ 则称事件 A,B,C**相互独立**。
 
-- 注意: $相互独立 \rightarrow 两两独立$,但是,$两两独立 \nrightarrow 相互独立$
+- 注意: $\text{相互独立} \rightarrow \text{两两独立}$ ,但是, $\text{两两独立} \nrightarrow \text{相互独立}$
 
 更普遍的：
 
-**定义** $\{A_i\}$ **相互独立**
+**定义** $\{A_i\}$ **相互独立** 当且仅当
 
-当且仅当 $\forall i_j, P(\prod\limits_{j=1}^k A_{i_j}) = \prod\limits_{j=1}^k P(A_{i_j})$
+$$\forall i_j, P(\prod\limits_{j=1}^k A_{i_j}) = \prod\limits_{j=1}^k P(A_{i_j}),2 \le k \le n$$
 
-
+---
 
 **独立试验**：指任一次子试验出现的结果都不影响其他各子试验出现的结果；例如观察十期彩票的开奖结果，是独立试验。
 
 **重复试验**：如果各子试验是在相同条件下进行的。
-
-
 
 ???+ question
 	一袋中有编号为1,2,3,4共4个球，采用有放回抽样，每次取一球，共取2次，记录号码之和，这样独立重复进行试验，求“和等于3”出现在“和等于5”之前的概率。
@@ -242,8 +269,6 @@ $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 	![img](images/image-20241010152204691.png)
 	![img](images/image-20241010152216237.png)
 	![img](images/image-20241010150932293.png)
-
-
 
 ???+ question
 	<div id = 'a2'>设某地每天发生雾霾的概率为0.2.在雾霾天气,该地各居民独立地以概率0.2戴口罩，在没有雾霾的时候各居民独立地以概率0.01戴口罩.某天
@@ -259,6 +284,7 @@ $$P(AB)=P(A)∗P(B),P(AC)=P(A)∗P(C),P(BC)=P(B)∗P(C)$$
 	![img](images/image-20241010152348041.png)
 	![img](images/image-20241010152359611.png)
 	![img](images/image-20241010152418375.png)
+
 ---
 
 ## 球盒问题整理

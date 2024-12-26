@@ -19,15 +19,17 @@ statistics: True
 
 ### 性质
 
-1. $C$是常数，则有$E(C)=C$
+1. $C$ 是常数，则有 $E(C)=C$
 
-2. 设$X$是随机变量，$C$是常数，$E(CX)=CE(X)$
+2. 设 $X$ 是随机变量，$C$是常数，$E(CX)=CE(X)$
 
-3. 设$X,Y$是两个随机变量，$E(X+Y) = E(X) + E(Y)$
+3. 设 $X,Y$ 是两个随机变量，$E(X+Y) = E(X) + E(Y)$
 
       - 这一性质可以推广到任意有限个随机变量线性组合的情况:
 
          $E(c_o + \sum\limits_{i=1}^nc_iX_i) = c_o + \sum\limits_{i=1}^nc_iE(X_i)$
+      
+      - 这是期望的线性性质，**无需**独立。
 
 4. 设 $X,Y$ 是相互独立的随机变量，则 $E(X \cdot Y)=E(X) \cdot E(Y)$，但**逆命题不成立**；
 
@@ -75,11 +77,11 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 
 3. 设$X,Y$ 是两个随机变量，则
 
-   <p>$$Var(X\pm Y)=Var(X)+Var(Y) \pm 2E{[X−E(X)][Y−E(Y)]}=Var(X)+Var(Y) \pm 2Cov(X,Y);$$</p>
+$$Var(X\pm Y)=Var(X)+Var(Y) \pm 2E{[X−E(X)][Y−E(Y)]}=Var(X)+Var(Y) \pm 2Cov(X,Y);$$
 
    - 这一性质可以推广到任意有限个随机变量之和的情况：
          
-   <p>$$Var(\sum_{i=1}^nX_i)=\sum_{i=1}^nVar(X_i)+2\sum_{1\le i < j \le n} Cov(X_i,X_j);$$</p>
+$$Var(\sum_{i=1}^nX_i)=\sum_{i=1}^nVar(X_i)+2\sum_{1\le i < j \le n} Cov(X_i,X_j);$$
 
    - 特别地，如果 $X,Y$ 相互独立，则 $Var(X \pm Y)=Var(X)+Var(Y)$;
 
@@ -90,7 +92,7 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 5. $Var(X)=0 \Leftrightarrow P(X=c)=1$  and  $c=E(X);$
 
 ???+ question 
-	设$X \sim N(22.40,0.03^2),Y \sim N(22.50,0.04^2)$，且$X$和$Y$相互独立，计算$P(X < Y)$
+	设$X \sim N(22.40,0.03^2),Y \sim N(22.50,0.04^2)$，且 $X$ 和 $Y$ 相互独立，计算 $P(X < Y)$
 
 ??? note "Answer"
 	![img](images/image-20241107120239539.png)
@@ -107,8 +109,6 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 
 随机变量 $X,Y$ 的**协方差** $Cov(X,Y)=E{[X−E(X)][Y−E(Y)]}=E(XY)−E(X)E(Y)$
 
-随机变量 $X,Y$ 的**相关系数** $\rho_{XY}= \frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}$
-
 ### 协方差的性质
 1. $Cov(X,Y)=Cov(Y,X)$；
 2. $Cov(X,Y)=E(XY)−E(X)E(Y)$；
@@ -119,18 +119,23 @@ $$\sigma(X) = \sqrt{Var(X)}$$
 7. $Cov(X+Y,X−Y)=Cov(X,X)−Cov(Y,Y);$
 8. $Cov(X^∗,Y^∗)=Cov(\frac{X−E(X)}{\sqrt{Var(X)}},\frac{Y−E(Y)}{\sqrt{Var(Y)}})=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}=\rho_{XY};$
 9. $Cov(aX+bY,cX+dY)=ac \cdot Var(X)+bd \cdot Var(Y)+(ad+bc)Cov(X,Y);$
+10. $Cov(\sum\limits_{i}a_iX_i,Y) = \sum\limits_{i}a_iCov(X_i,Y);$
+
+---
+
+随机变量 $X,Y$ 的**相关系数** $\rho_{XY}= \frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}}$
 
 ### 相关系数的性质
 
-1. $∣\rho_{XY}∣\le 1$；
+1. $∣\rho_{XY}∣\le 1$ ;
 
-2. $∣\rho_{XY}∣=1 \Leftrightarrow \exists a,b \in R,\ s.t.\ P(Y=a+bX)=1;$
+2. $∣\rho_{XY}∣=1 \Leftrightarrow \exists a,b \in R,\ s.t.\ P(Y=a+bX)=1$ ;
 
-   - $\rho_{XY}=+1$时，$b>0$；
-   - $\rho_{XY}=-1$时，$b<0$；
+   - $\rho_{XY}=+1$时，$b>0$ ；
+   - $\rho_{XY}=-1$时，$b<0$ ；
 
 3. 上述两条性质可以合并写成：
-   当 $Var(X)Var(Y) \neq 0$ 时，有 $Cov^2(X,Y) \le Var(X)Var(Y)$，其中等号当且仅当 $X$ 与 $Y$ 之间有严格的线性关系，即存在常数 $a,b$，使 $P(Y=a+bX)=1;$
+   当 $Var(X)Var(Y) \neq 0$ 时，有 $Cov^2(X,Y) \le Var(X)Var(Y)$ ，其中等号当且仅当 $X$ 与 $Y$ 之间有严格的线性关系，即存在常数 $a,b$ ，使 $P(Y=a+bX)=1$ ;
 
 相关系数 $\rho_{XY}$ 是用来表征 $X,Y$ 之间**线性关系紧密程度**的量。
 
@@ -148,8 +153,8 @@ $$\begin{cases}a_0 = E(Y)-b_0E(X)\\b_0=\frac{Cov(X,Y)}{Var(X)}\end{cases}$$
 
 - $\rho_{XY}<0$时，$X,Y$ 负相关；
 
-- $\rho_{XY}=0$时，称$X,Y$不相关或零相关（仅仅对于线性关系来说，与独立的含义不同）；
-    - $\rho_{XY}=0$有如下等价条件：
+- $\rho_{XY}=0$ 时，称 $X,Y$ 不相关或零相关（仅仅对于线性关系来说，与独立的含义不同）；
+    - $\rho_{XY}=0$ 有如下等价条件：
         1. $Cov(X,Y)=0$；
         2. $E(XY)=E(X)E(Y)$；
         3. $Var(X \pm Y)=Var(X)+Var(Y)$；
@@ -157,12 +162,19 @@ $$\begin{cases}a_0 = E(Y)-b_0E(X)\\b_0=\frac{Cov(X,Y)}{Var(X)}\end{cases}$$
 
 **特别地**：
 
-若$(X,Y)$服从二元正态分布，$X$和$Y$的相关系数$\rho_{XY} = \rho$，且可以证明**X与Y相互独立 $\Leftrightarrow$ X与Y不相关**
+若 $(X,Y)$ 服从二元正态分布，记为 $(X,Y) \sim N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$
+
+**性质**：
+
+1. $X \sim N(\mu_1,\sigma_1^2)$ , $Y \sim N(\mu_2,\sigma_2^2)$
+2. $X$ 和 $Y$ 的相关系数 $\rho_{XY} = \rho$ 
+3. X与Y相互独立 $\Leftrightarrow \rho = 0 \Leftrightarrow$ X与Y不相关
 
 **注意区分独立性和相关性：**
 
-- $X,Y$互相独立 $\Rightarrow X,Y$ 不相关；
+- $X,Y$ 互相独立 $\Rightarrow X,Y$ 不相关；
 - $X,Y$ 不独立 $\Leftarrow X,Y$ 相关；
+- 在联合正态的情况下，独立与不相关是等价的；
 
 ---
 

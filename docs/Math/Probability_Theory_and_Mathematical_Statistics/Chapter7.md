@@ -243,15 +243,18 @@ $\prod\limits_{i=1}^{n} P(x_i < X_i < x_i + \Delta x_i) \approx \prod\limits_{i=
 ## 估计量的评价准则
 
 ### 四条评价准则：
+
 1. 无偏性准则
 
-2. 有效性准则
+2. 有效性准则 (仅在无偏估计量中考虑)
 
 3. 均方误差准则
 
 4. 相合性准则
 
-### 定义
+---
+
+#### 无偏性准则
 
 若参数 $\theta$ 的估计量 $\hat{\theta} = \hat{\theta}(X_1,X_2,\cdots,X_n)$ 满足 $E(\hat{\theta}) = \theta$ ，则称 $\hat{\theta}$ 为 $\theta$ 的无偏估计量.
 
@@ -327,15 +330,13 @@ $\prod\limits_{i=1}^{n} P(x_i < X_i < x_i + \Delta x_i) \approx \prod\limits_{i=
 
 ---
 
-### 纠偏方法
+**纠偏方法**
 
 如果 $E(\hat{\theta})  = a \theta + b$， $\theta \in \Theta$ ， 其中 $a,b$ 是常数，且 $a \neq 0$，则 $\frac{1}{a}(\hat{\theta} - b)$ 是 $\theta$ 的无偏估计.
 
 ---
 
-## 有效性与均方误差
-
-### 有效性准则
+#### 有效性准则
 
 **定义**： 设 $\hat{\theta}_1,\hat{\theta}_2$ 是参数 $\theta$ 的两个无偏估计，若 $D(\hat{\theta}_1) \leq D(\hat{\theta}_2)$ ，对一切 $\theta \in \Theta$ 成立，且不等号至少对某一 $\theta \in \Theta$ 成立，则称 $\hat{\theta}_1$ 比 $\hat{\theta}_2$ 有效.
 
@@ -393,7 +394,7 @@ $\prod\limits_{i=1}^{n} P(x_i < X_i < x_i + \Delta x_i) \approx \prod\limits_{i=
 
 ---
 
-### 均方误差准则
+#### 均方误差准则
 
 **定义** ：
 
@@ -439,9 +440,7 @@ $\prod\limits_{i=1}^{n} P(x_i < X_i < x_i + \Delta x_i) \approx \prod\limits_{i=
 
 ---
 
-## 相合性
-
-### 相合性准则
+#### 相合性准则
 
 **定义**：设 $\hat{\theta}(X_1,\cdots,X_n)$ 为参数 $\theta$ 的估计量，若对于任意 $\theta \in \Theta$，当 $n \rightarrow +\infty$ 时
 
@@ -458,6 +457,15 @@ $A_1,\dots,A_k$ 是 $\mu_1,\dots,\mu_k$ 的相合估计,即 $A_i \mathop{\righta
 $$g(A_1,\dots,A_k) \mathop{\rightarrow}\limits^p g(\mu_1,\dots,\mu_k)$$
 
 即 $g(A_1,\dots,A_k)$ 也是 $g(\mu_1,\dots,\mu_k)$ 的相合估计.
+
+!!! Tip "我对无偏性和相合性的理解"
+    - **无偏性**确保了平均来说，估计量不会系统地高估或低估真实参数值。它反映了估计量的中心趋势是否正确。
+
+    - **相合性**保证了随着我们收集更多的数据，估计量会越来越接近真实参数值，最终几乎肯定会得到正确的估计。
+
+    - **无偏性不一定意味着相合性**：一个估计量可以是无偏的，但如果其方差不随样本量增大而减小，则它可能不是相合的。例如，某些固定样本大小下的无偏估计可能具有较大的方差，这使得即使样本量很大，估计也可能偏离真实值。
+
+    - **相合性也不一定意味着无偏性**：一个估计量可以是相合的但有偏。这意味着虽然估计量的偏差可能会随着样本量的增加而减少，但在有限样本情况下，它仍然可能系统地偏向于真实值的一侧。然而，很多常见的相合估计量在大样本条件下也是渐近无偏的，即随着样本量的增加，偏差趋于零。
 
 ???+ question
     设总体 $X$ 的 $k$ 阶矩 $E(X^k) = \mu_k(k \ge 2)$ 存在， $X_1,\cdots,X_n$ 是来自 $X$ 的样本，证明：
