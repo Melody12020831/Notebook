@@ -1805,11 +1805,11 @@
 <h2 id="b6">B6<a class="headerlink" href="#b6" title="Permanent link">&para;</a></h2>
 <details class="question" open="open">
 <summary>Question</summary>
-<p>在 <span class="arithmatex">\(A\)</span> 地至 <span class="arithmatex">\(B\)</span> 地（距离为 <span class="arithmatex">\(m\ km\)</span>）的公路上，事故发生地在离 <span class="arithmatex">\(A\)</span> 地 <span class="arithmatex">\(X\ km\)</span> 处， 事故处理车在离 <span class="arithmatex">\(A\)</span> 地 <span class="arithmatex">\(Y\ km\)</span> 处. 设 <span class="arithmatex">\(X\)</span> 与 <span class="arithmatex">\(Y\)</span> 均服从 <span class="arithmatex">\((0,m)\)</span> 上的均有分布，且 <span class="arithmatex">\(X\)</span> 与 <span class="arithmatex">\(Y\)</span> 相互独立，求事故车与事故处理车的距离 <span class="arithmatex">\(Z\)</span> 的密度函数.</p>
+<p>在 <span class="arithmatex">\(A\)</span> 地至 <span class="arithmatex">\(B\)</span> 地（距离为 <span class="arithmatex">\(m\ km\)</span>）的公路上，事故发生地在离 <span class="arithmatex">\(A\)</span> 地 <span class="arithmatex">\(X\ km\)</span> 处， 事故处理车在离 <span class="arithmatex">\(A\)</span> 地 <span class="arithmatex">\(Y\ km\)</span> 处. 设 <span class="arithmatex">\(X\)</span> 与 <span class="arithmatex">\(Y\)</span> 均服从 <span class="arithmatex">\((0,m)\)</span> 上的均匀分布，且 <span class="arithmatex">\(X\)</span> 与 <span class="arithmatex">\(Y\)</span> 相互独立，求事故车与事故处理车的距离 <span class="arithmatex">\(Z\)</span> 的密度函数.</p>
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p>1.<span class="arithmatex">\(|Y-X|\)</span>由画图得</p>
+<p>1.<span class="arithmatex">\(Z = |Y-X|\)</span>由画图得</p>
 <div class="arithmatex">\[F_Z(t) = \frac{m^2 - (m-t)^2}{m^2} = \frac{2mt - t^2}{m^2},0&lt;t&lt;m\]</div>
 <div class="arithmatex">\[f_Z(t)=\begin{cases} \frac{2m-2t}{m^2},&amp;0&lt;t&lt;m \\ 0,&amp;\text{其他}\end{cases}\]</div>
 </details>
@@ -1858,7 +1858,7 @@
 <div class="arithmatex">\[X = \frac{Z}{8}, F_Z(z) = \frac{z}{32} - \frac{3}{2},48&lt;z \le 60\]</div>
 <div class="arithmatex">\[F_Z(z) = \frac{1}{2} \times \frac{1}{2} \times (\frac{z}{8}-6) + \frac{1}{2} \times \frac{1}{2} \times (\frac{z}{10}-6) = \frac{9z}{160} - 3,60&lt;z \le 64\]</div>
 <div class="arithmatex">\[F_Z(z) = \frac{1}{2} \times \frac{1}{2} \times (\frac{z}{10}-6) + \frac{1}{2} \times \frac{1}{2} \times (8-6) = \frac{z}{40} - 1,64&lt;z &lt; 80\]</div>
-<div class="arithmatex">\[\therefore F_Z(z) = \begin{cases} 0,&amp;z&lt;48 \\ \frac{z}{32} - \frac{3}{2},&amp;48&lt;z &lt; 60 \\ \frac{9z}{160} - 3,&amp;60&lt; z \le 64 \\ \frac{z}{40}-1,&amp; 64 &lt; z &lt; 80 \\ 0,&amp;\text{其他} \end{cases}\]</div>
+<div class="arithmatex">\[\therefore F_Z(z) = \begin{cases} 0,&amp;z&lt;48 \\ \frac{z}{32} - \frac{3}{2},&amp;48&lt;z &lt; 60 \\ \frac{9z}{160} - 3,&amp;60&lt; z \le 64 \\ \frac{z}{40}-1,&amp; 64 &lt; z &lt; 80 \\ 1,&amp;\text{其他} \end{cases}\]</div>
 </details>
 <hr />
 
@@ -1883,7 +1883,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月12日 19:34:54</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月28日 21:41:11</span>
   </span>
 
     
