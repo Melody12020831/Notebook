@@ -45,7 +45,7 @@ comments: true
 
     随机变量的协方差定义为：$\operatorname{Cov}(S_k, T_k) = \mathbb{E}[S_k T_k] - \mathbb{E}[S_k]\mathbb{E}[T_k]$
 
-    由于$ X_i $ 是标准正态分布，因此 $\mathbb{E}[S_k] = \mathbb{E}[T_k] = 0$，从而：$\operatorname{Cov}(S_k, T_k) = \mathbb{E}[S_k T_k]$ 利用独立性和交叉项的性质，仅保留 $X_i$ 同时出现在两个求和中的项：
+    由于 $X_i$ 是标准正态分布，因此 $\mathbb{E}[S_k] = \mathbb{E}[T_k] = 0$，从而：$\operatorname{Cov}(S_k, T_k) = \mathbb{E}[S_k T_k]$ 利用独立性和交叉项的性质，仅保留 $X_i$ 同时出现在两个求和中的项：
 
     $$\mathbb{E}[S_k T_k] = \sum_{i=1}^k \sum_{j=n_0+1}^{n_0+k} \mathbb{E}[X_i X_j] = \text{重叠项的数量}$$
 
@@ -63,7 +63,7 @@ comments: true
     (2)计算 $\rho_{X_{\xi}}$ ，并判断 $X$ 与 $\xi$ 的相关性和独立性.
 
 ??? Note "Answer"
-    1. 当 $Y = 1$ 时，$ \xi = X$ ；当 $Y = -1$ 时，$ \xi = -X$ 。
+    1. 当 $Y = 1$ 时， $\xi = X$ ；当 $Y = -1$ 时，$ \xi = -X$ 。
 
     于是，混合分布：
     
@@ -73,7 +73,7 @@ comments: true
 
     2. 
     - $\operatorname{Var}(X) = \operatorname{Var}(\xi) = 1$ ，因为 $X \sim N(0,1)$ 且 $\xi \sim N(0,1)$ 。
-    - 因此：$\rho_{X_\xi} = \operatorname{Cov}(X, \xi).$
+    - 因此：$\rho_{X \xi} = \operatorname{Cov}(X, \xi).$
 
     $$ \operatorname{Cov}(X, \xi) = \mathbb{E}[X \cdot \xi] - \mathbb{E}[X] \mathbb{E}[\xi] = \mathbb{E}[X \cdot \xi] = \mathbb{E}[X \cdot (X \cdot Y)] = \mathbb{E}[X^2 \cdot Y] = \mathbb{E}[X^2] \cdot \mathbb{E}[Y]$$
 
@@ -83,9 +83,11 @@ comments: true
 
     当 $p=\frac{1}{2}$ 时， $X$与$\xi$不相关；当 $p > \frac{1}{2}$ 时， $X$与$\xi$正相关；当 $p < \frac{1}{2}$ 时， $X$与$\xi$负相关；
 
-    取 $p = 0.75$ ，则 $\rho_{X_\xi} = 2 \cdot 0.75 - 1 = 0.5$ 
+    取 $p = 0.75$ ，则 $\mathbb{E}[X \cdot \xi] = 2 \cdot 0.75 - 1 = 0.5$ 
 
-    当 $Y = 1$ 时， $\xi = X$ ；当 $Y = -1$ 时， $\xi = -X$ 。由于 $p \neq 0.5$ 可见 $\xi$ 的取值依赖于 $X$，因此 $X$与$\xi$不相关。
+    此时 $\mathbb{E}[X] = 0$ ， $\mathbb{E}[\xi] = 0$ ， $\mathbb{E}[X \cdot \xi] \neq \mathbb{E}[X] \cdot \mathbb{E}[\xi]$
+
+    因此 $X$与$\xi$不独立。
 
     当 $0 < p <1$ 时， $X$与$\xi$不独立；
 
@@ -156,9 +158,11 @@ comments: true
     且 $X_1,X_2,\dots,X_n$ 相互独立。令 $Y_n = X_1X_2\dots X_n$，用切比雪夫不等式求使 $P\{|Y_n| \ge \frac{1}{2}\} \le \frac{1}{9}$ 成立的最小 $n$。
 
 ??? Note "Answer"
-    $E(X_i) = 0 \quad E(X_i^2) = \frac{i}{i+2} \rightarrow Var(X_i) = \frac{i}{i+2} \rightarrow Var(Y_n) = \frac{2}{(n+1)(n+2)}$
+    $$E(X_i) = 0 \rightarrow E(Y_n) = 0$$
+    
+    $$E(X_i^2) = \frac{i}{i+2} \rightarrow Var(X_i) = \frac{i}{i+2} \rightarrow Var(Y_n) = \frac{2}{(n+1)(n+2)}$$
 
-     $$P\{|Y_n| \ge \frac{1}{2}\} \le 4Var(Y_n) \le \frac{1}{9} \Rightarrow n_{min} = 7$$
+    $$P\{|Y_n| \ge \frac{1}{2}\} \le 4Var(Y_n) \le \frac{1}{9} \Rightarrow n_{min} = 7$$
 
 ---
 
@@ -178,9 +182,13 @@ comments: true
 
     $$P(X_{(n)} \leq x) =  \begin{cases}  0, & x < 0, \\ \left(\frac{x}{a}\right)^n, & 0 \leq x \leq a, \\ 1, & x > a. \end{cases}$$
 
-    由于$P(a - X_{(n)} \geq \varepsilon) = P(X_{(n)} \leq a - \varepsilon) = \left(\frac{a - \varepsilon}{a}\right)^n.$ 且当$n \rightarrow \infty$$\left(\frac{a - \varepsilon}{a}\right)^n \to 0.$ 得到 $X_{(n)} \xrightarrow{P} a.$
+    由于$P(a - X_{(n)} \geq \varepsilon) = P(X_{(n)} \leq a - \varepsilon) = \left(\frac{a - \varepsilon}{a}\right)^n.$ 
+    
+    且当$n \rightarrow \infty$ 时 $\left(\frac{a - \varepsilon}{a}\right)^n \to 0.$ 
+    
+    得到 $X_{(n)} \xrightarrow{P} a.$
 
-    2. $$\mathbb{E}[X_{(n)}] = \int_0^a x f_{X_{(n)}}(x) \, dx = \int_0^a x \cdot \frac{n}{a} \left(\frac{x}{a}\right)^{n-1} \, dx. = \frac{1}{n+1}.$$
+    2. $$\mathbb{E}[X_{(n)}] = \int_0^a x f_{X_{(n)}}(x) \, dx = \int_0^a x \cdot \frac{n}{a} \left(\frac{x}{a}\right)^{n-1} \, dx = \frac{1}{n+1}.$$
 
     同理， $\mathbb{E}[X_{(n)}^2] = a^2 \cdot \frac{n}{n+2}.$
 
@@ -190,7 +198,7 @@ comments: true
 
     由切比雪夫不等式得：$X_{(n)} \xrightarrow{P} a$
 
-!!!+ Info
+!!! Info
     不能拿大数定律去做，这里不涉及均值，标准的做法是直接计算分布函数（需要根据分布放缩一步）或者切比雪夫不等式（计算均值和方差）
 
 ---

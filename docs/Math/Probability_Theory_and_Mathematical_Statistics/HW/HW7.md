@@ -61,10 +61,10 @@ comments: true
 ## B6
 
 ???+ question
-    在 $A$ 地至 $B$ 地（距离为 $m\ km$）的公路上，事故发生地在离 $A$ 地 $X\ km$ 处， 事故处理车在离 $A$ 地 $Y\ km$ 处. 设 $X$ 与 $Y$ 均服从 $(0,m)$ 上的均有分布，且 $X$ 与 $Y$ 相互独立，求事故车与事故处理车的距离 $Z$ 的密度函数.
+    在 $A$ 地至 $B$ 地（距离为 $m\ km$）的公路上，事故发生地在离 $A$ 地 $X\ km$ 处， 事故处理车在离 $A$ 地 $Y\ km$ 处. 设 $X$ 与 $Y$ 均服从 $(0,m)$ 上的均匀分布，且 $X$ 与 $Y$ 相互独立，求事故车与事故处理车的距离 $Z$ 的密度函数.
 
 ??? Note "Answer"
-    1.$|Y-X|$由画图得
+    1.$Z = |Y-X|$由画图得
 
     $$F_Z(t) = \frac{m^2 - (m-t)^2}{m^2} = \frac{2mt - t^2}{m^2},0<t<m$$
 
@@ -132,6 +132,6 @@ comments: true
 
     $$F_Z(z) = \frac{1}{2} \times \frac{1}{2} \times (\frac{z}{10}-6) + \frac{1}{2} \times \frac{1}{2} \times (8-6) = \frac{z}{40} - 1,64<z < 80$$
 
-    $$\therefore F_Z(z) = \begin{cases} 0,&z<48 \\ \frac{z}{32} - \frac{3}{2},&48<z < 60 \\ \frac{9z}{160} - 3,&60< z \le 64 \\ \frac{z}{40}-1,& 64 < z < 80 \\ 0,&\text{其他} \end{cases}$$
+    $$\therefore F_Z(z) = \begin{cases} 0,&z<48 \\ \frac{z}{32} - \frac{3}{2},&48<z < 60 \\ \frac{9z}{160} - 3,&60< z \le 64 \\ \frac{z}{40}-1,& 64 < z < 80 \\ 1,&\text{其他} \end{cases}$$
 
 ---

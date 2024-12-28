@@ -402,7 +402,7 @@ $\overline{X} ,\overline{Y},S_1^2,S_2^2$ 分别是 $X_1,X_2,\cdots,X_{n_1}$ ，$
 
 ### 结论
 
-#### $\sigma_1^2,\sigma_2^2$ 已知检验 $\mu_1-\mu_2$ （Z 检验法）
+#### 1 $\sigma_1^2,\sigma_2^2$ 已知检验 $\mu_1-\mu_2$ Z 检验法）
 
 当 $\mu_1 - \mu_2 = \delta$ 时， $Z = \frac{(\overline{X}-\overline{Y})-\delta}{\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}} \sim N(0,1)$
 
@@ -420,7 +420,7 @@ $\overline{X} ,\overline{Y},S_1^2,S_2^2$ 分别是 $X_1,X_2,\cdots,X_{n_1}$ ，$
 
 ---
 
-#### $\sigma_1^2 = \sigma_2^2$ 未知检验 $\mu_1-\mu_2$ （t 检验法）
+#### 2 $\sigma_1^2 = \sigma_2^2$ 未知检验 $\mu_1-\mu_2$（t 检验法）
 
 当 $\mu_1 - \mu_2 = \delta$ 时， $t = \frac{(\overline{X}-\overline{Y})-\delta}{\sqrt{\frac{S_w^2}{n_1}+\frac{S_w^2}{n_2}}} \sim t(n_1+n_2-2)$
 
@@ -438,7 +438,7 @@ $\overline{X} ,\overline{Y},S_1^2,S_2^2$ 分别是 $X_1,X_2,\cdots,X_{n_1}$ ，$
 
 ---
 
-#### $\mu_1,\mu_2$ 未知检验 $\frac{\sigma_1^2}{\sigma_2^2}$ （F 检验法）
+#### 3 $\mu_1,\mu_2$ 未知检验 $\frac{\sigma_1^2}{\sigma_2^2}$（F 检验法）
 
 当 $\sigma_1^2 = \sigma_2^2$ 时， $F = \frac{S_1^2}{S_2^2} \sim F(n_1-1,n_2-1)$
 

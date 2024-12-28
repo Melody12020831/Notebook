@@ -46,7 +46,7 @@ comments: true
     (3)求 $E(XY)$
 
 ??? Note "Answer"
-    1. $E(X) = \int xf(x,y)dx = \frac{1}{2}$
+    1. $E(X) = \int_0^{+\infty} x (\int_0^xf(x,y)dy)dx = \frac{1}{2}$
 
     2. $E(3X-1) = 3E(X)-1 = \frac{1}{2}$
 
@@ -63,10 +63,19 @@ comments: true
 
     (2)求点A与屏幕中心位置(0,0)的平均距离
 
-??? Note "[⭐$(微积分二积分的变换)_{先咕咕咕有空就整理再做链接跳转}$]"
-    1. $E(X) = E(Y) = \int_{-r}^r dx \int_{-r}^r x\cdot \frac{1}{\pi r^2} dy = 0$
+??? Note "Answer"
+    1. $E(X) = E(Y) = \int_{-r}^r x (\int_{-\sqrt{r^2 - x^2}}^{\sqrt{r^2 - x^2}} \frac{1}{\pi r^2}dy) dx = 0$
 
     2. $E(\sqrt{x^2+y^2}) = \mathop{\int \int}\limits_{x^2+y^2 \le r^2} \sqrt{x^2+y^2} \cdot \frac{1}{\pi r^2} dxdy \mathop{=}\limits^{\textbf{极坐标变换}} \int_0^{2 \pi}d\theta \int_0^r \frac{R^2}{\pi r^2}dR= \frac{2}{3}r$
+
+??? Note "⭐积分变换"
+    二重积分从直角坐标系变换为极坐标的变换公式
+
+    $$\int\int_{\sigma}f(x,y)dxdy = \int\int_{\sigma}f(r\cos\theta,r\sin\theta)rdrd\theta$$
+
+    三重积分从直角坐标系变换为球面坐标的变换公式
+
+    $$\int\int\int_{V}f(x,y,z)dV = \int\int\int_{V}f(\rho\sin\phi\cos\theta,\rho\sin\phi\sin\theta,\rho\cos\phi)\rho^2\sin\phi d\theta d\phi d\rho$$
 
 ---
 

@@ -102,7 +102,7 @@ comments: true
 ## A19
 
 ???+ question
-    设 $(X,Y)$ 为二位随机变量， $X$ 的密度函数为
+    设 $(X,Y)$ 为二维随机变量， $X$ 的密度函数为
 
     $$f_X(x) = \begin{cases}\lambda^2xe^{-\lambda x},&x>0\\0,&x\le 0\end{cases}$$
 
