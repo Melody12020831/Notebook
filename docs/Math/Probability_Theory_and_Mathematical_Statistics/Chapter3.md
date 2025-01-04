@@ -39,7 +39,7 @@ $F(x,y)=P\{X \le x,Y \le y\}$ 为 $(X,Y)$ 的**联合概率分布函数**，简�
 
 1. **固定**其中一个变量，则该二元函数关于另外一个变量单调**不减**；
 
-2. $0 \le F(x,y) \le1 ,\ 0\le F(x,y) \le1$，且
+2. $0 \le F(x,y) \le1$，且
 
 $$F(x,−\infty )=F(−\infty ,y)=F(−\infty,−\infty)=0, \ F(+\infty ,+\infty ) =1;$$
 

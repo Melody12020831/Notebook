@@ -469,6 +469,9 @@ $$\frac{(\overline{X} - \overline{Y} - (\mu_1 - \mu_2))}{S_w\sqrt{\frac{1}{n_1} 
 
     $$\therefore a = \frac{1}{2\sigma^2} , b = \frac{1}{6\sigma^2} , k = 2$$
 
+??? Tip "ATTENTION"
+    关于上面这道题有一个需要注意的点。其实直观上也可以感觉得到， $2X_3$ 和 $X_3 + X_3$ 是不一样的，前者的方差会比后者要大。
+
 ???+ question
     设总体 $X \sim N(\mu, \sigma^2)$ ， $X_1, X_2, \cdots, X_4$ 与 $Y_1, Y_2, \cdots, Y_9$ 是取自总体 $X$ 的两个独立样本， $\overline{X},S_1^2$ 和 $\overline{Y},S_2^2$ 分别是这两个样本的样本均值和样本方差。
 
