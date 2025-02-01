@@ -18,8 +18,9 @@ SAT 是第一个被证明为 NP-complete 的问题（由 Stephen Cook 在 1971 �
 
 ​	对于每一个形如 $x_i \cup x_j$ 的子句，我们添加两条有向边：
 
-	- $\neg x_i \rightarrow x_j$
-	- $\neg x_j \rightarrow x_i$
+$$\neg x_i \rightarrow x_j$$
+ 
+$$\neg x_j \rightarrow x_i$$
 
 2. 强连通分量分解：
 
