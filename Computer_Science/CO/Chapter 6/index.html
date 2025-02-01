@@ -1796,7 +1796,7 @@
 <li>显示器，键盘鼠标等外设。</li>
 <li>网络。</li>
 </ul>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204202655615.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204202655615" src="./organized_notes.assets/image-20241204202655615.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204202655615.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204202655615" src="../organized_notes.assets/image-20241204202655615.png" /></a></p>
 <hr />
 <h2 id="three-characters-of-io">Three characters of I/O<a class="headerlink" href="#three-characters-of-io" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1858,7 +1858,7 @@
 <li><strong>轨道(track)</strong>：共同组成磁盘的表面的上千个同心圆中的一个。</li>
 <li><strong>扇区(sector)</strong>：组成磁盘轨道的多个段中的一个;扇区是磁盘读写信息的最小单位。</li>
 </ul>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241224181435222.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224181435222" src="./organized_notes.assets/image-20241224181435222.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241224181435222.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224181435222" src="../organized_notes.assets/image-20241224181435222.png" /></a></p>
 <hr />
 <p>为了存取数据，操作系统必须通过一个三步过程来指引磁盘。</p>
 <ol>
@@ -1876,7 +1876,7 @@
 </li>
 </ol>
 <p>执行 <code>I/O</code> 操作的平均时间将由这四段时间组成，此外还有因其他程序使用磁盘而带来的等待时间。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241224182529283.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224182529283" src="./organized_notes.assets/image-20241224182529283.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241224182529283.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224182529283" src="../organized_notes.assets/image-20241224182529283.png" /></a></p>
 <hr />
 <h2 id="dependability-reliability-availability">Dependability, Reliability, Availability<a class="headerlink" href="#dependability-reliability-availability" title="Permanent link">&para;</a></h2>
 <h3 id="_1">可依赖性<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
@@ -1919,7 +1919,7 @@
 <h2 id="raid">RAID<a class="headerlink" href="#raid" title="Permanent link">&para;</a></h2>
 <p>利用冗余来增加磁盘存储的可用性，这一技术被用于廉价磁盘冗余阵列。</p>
 <p>Files are "striped" across multiple disks. Redundancy yields high data availability. Disks will still fail. Contents reconstructed from data redundantly stored in the array.</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241224185606766.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224185606766" src="./organized_notes.assets/image-20241224185606766.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241224185606766.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224185606766" src="../organized_notes.assets/image-20241224185606766.png" /></a></p>
 <hr />
 <h3 id="raid-0-no-redundancy">RAID 0: No Redundancy<a class="headerlink" href="#raid-0-no-redundancy" title="Permanent link">&para;</a></h3>
 <p>仅仅把数据分散到多个磁盘，称为条带化，自动把访问分到几个磁盘上。在一组磁盘上进行条带化使得这一组磁盘对于软件来说是一个大磁盘，从而简化了存储管理。这样对大规模访问来说也改进了性能，因为多个磁盘可以同时操作。</p>
@@ -1942,19 +1942,19 @@
 <p>这就是RAID 4~6级的目的。由于读操作时需要检查每个扇区的错误检测信息来判断数据正确与否，只要最小访问数据量仍为一个扇区，各磁盘上这些“小数据量的读操作”就可以独立地进行。在RAID环境中，小数据量访问在保护组中的一个磁盘中发生，而大数据量访问需要用到保护组中的所有磁盘。</p>
 <p>写操作是另一个麻烦。看上去似乎每一次小数据量的写操作都需要访问其他磁盘来读取重新计算新的奇偶校验所需的其他信息。一次“小数据量的写操作”,需要读取旧数据和奇偶校验，添加新信息，接着把新的奇偶校验和写入校验盘，把新的数据写入数据盘。</p>
 <p>而在进行写操作时，由于 <code>RAID 4</code> 是一个整个的校验盘, 在 <code>small read</code> 的情况下速度会变快，因为可以同时读。 <code>large write</code> 也高效。 而 <code>large read</code> 要排队，对于 <code>small write</code> 会要求实时算出 <code>p</code> 的值。因为都要写校验盘就又要排队而又要同一行全读才能写校验盘。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241224191309992.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224191309992" src="./organized_notes.assets/image-20241224191309992.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241224191309992.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224191309992" src="../organized_notes.assets/image-20241224191309992.png" /></a></p>
 <p>减小开销的关键在于校验码不过是信息的一个总和；通过观察写入新信息后哪些位发生了变化，就只需改变校验盘上的对应位信息即可。我们必须从要写的磁盘读取旧数据，用旧数据与新数据比较，看哪些位发生了变化。读旧奇偶校验和，改变对应的位，然后写入新数据以及新的校验和。这样，一次小数据量的写操作包含对两个磁盘的4次访问，而不是访问所有的磁盘。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241224190944132.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224190944132" src="./organized_notes.assets/image-20241224190944132.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241224190944132.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224190944132" src="../organized_notes.assets/image-20241224190944132.png" /></a></p>
 <hr />
 <h3 id="raid-5-high-io-rate-interleaved-parity">RAID 5: High I/O Rate Interleaved Parity<a class="headerlink" href="#raid-5-high-io-rate-interleaved-parity" title="Permanent link">&para;</a></h3>
 <p>在RAID 5中数据块的每行的校验信息不再限定于单个磁盘。这种组织方式使得多个写操作可以同时发生，只要校验块不在相同的磁盘上。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241224191529281.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224191529281" src="./organized_notes.assets/image-20241224191529281.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241224191529281.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224191529281" src="../organized_notes.assets/image-20241224191529281.png" /></a></p>
 <hr />
 <h3 id="raid-6-pq-redundancy">RAID 6: P+Q Redundancy<a class="headerlink" href="#raid-6-pq-redundancy" title="Permanent link">&para;</a></h3>
 <p>基于奇偶校验的机制可使系统免受单个可自动识别的错误的破坏。当单个错误纠正机制不足以保护系统时，可利用奇偶校验对数据和另一个校验盘的信息进行二次计算。二次校验块机制可使系统从二次错误中恢复过来。因此，它的存储开销是RAID 5的两倍。</p>
 <p>小数据写操作捷径还成立，只是现在要访问6个盘(而不是4个盘)以更新P和Q信息。</p>
-<p><a class="glightbox" href="./organized_notes.assets/raid.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="raid" src="./organized_notes.assets/raid.png" /></a></p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241224191928423.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224191928423" src="./organized_notes.assets/image-20241224191928423.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/raid.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="raid" src="../organized_notes.assets/raid.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241224191928423.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224191928423" src="../organized_notes.assets/image-20241224191928423.png" /></a></p>
 <hr />
 <h2 id="buses">Buses<a class="headerlink" href="#buses" title="Permanent link">&para;</a></h2>
 <p>在计算机系统中，不同的子系统必须具有连接彼此的接口。比如，内存和处理器需要通信，处理器和I/O设备也需要通信。多年以来，这些工作都是由总线来完成的。总线是一条共享的通信链路，它用一套线路来连接多个子系统。总线结构的两个主要优点是功能多和成本低。通过定义一种连接方案，就能够方便地添加新设备，外围设备也可以在使用同类总线的计算机系统之间移动。而且，因为同一套线路被多个路径共享，所以总线具有较好的成本效益。</p>
@@ -2003,7 +2003,7 @@
 </li>
 </ol>
 <p>在异步协议中，读请求和数据就绪的控制信号将一直维持，直到另一通信方(内存或设备)指明控制线已访问且数据线已读取；这种指示由应答线发出信号来完成。以上全过程称为握手(handshaking)。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241224195524815.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224195524815" src="./organized_notes.assets/image-20241224195524815.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241224195524815.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224195524815" src="../organized_notes.assets/image-20241224195524815.png" /></a></p>
 <ol>
 <li>
 <p>When memory sees the ReadReq line, it reads the address from the data bus, begin the memory read operation，then raises Ack to tell the device that the ReadReq signal has been seen.</p>
@@ -2053,7 +2053,7 @@
 </ul>
 <hr />
 <h2 id="increasing-the-bus-bandwidth">Increasing the Bus Bandwidth<a class="headerlink" href="#increasing-the-bus-bandwidth" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241224201556938.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224201556938" src="./organized_notes.assets/image-20241224201556938.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241224201556938.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241224201556938" src="../organized_notes.assets/image-20241224201556938.png" /></a></p>
 <ul>
 <li>Increasing data bus width</li>
 <li>Use separate address and data lines</li>

@@ -1952,7 +1952,7 @@
 ​   SRAM不需要刷新电路，所以访问时间可以和处理器的时钟周期接近。为防止读操作时信息丢失，典型的SRAM每比特采用6个或8个晶体管来实现。在待机模式下，SRAM只需要最小的功率来保持电荷。</p>
 <h3 id="dynamic-random-access-memory-dram">dynamic random access memory (DRAM)(易失性)<a class="headerlink" href="#dynamic-random-access-memory-dram" title="Permanent link">&para;</a></h3>
 <p>​   在SRAM中，只要提供电源，数值会被一直保存。而在DRAM中，使用电容保存电荷的方式来存储数据。采用单个晶体管来访问存储的电荷，或者读取它，或者改写它。DRAM的每个比特仅使用单个晶体管来存储数据。由于DRAM在单个晶体管上存储电荷，因此不能长久保持数据，必须进行周期性的刷新。与SRAM相比，这也是该结构被称为动态的原因。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241119112604032.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119112604032" src="./organized_notes.assets/image-20241119112604032.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241119112604032.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119112604032" src="../organized_notes.assets/image-20241119112604032.png" /></a></p>
 <h3 id="flash-memory">flash memory(非易失性)<a class="headerlink" href="#flash-memory" title="Permanent link">&para;</a></h3>
 <p>闪存是一种<strong>电可擦除</strong>的可编程只读存储器(Electrically Erasable Programmable Read-onlyMemory,EEPROM)。</p>
 <p>与磁盘和DRAM不同，但与其他EEPROM技术相似，闪存的写操作会对器件本身产生磨损。为应对这种限制，大多数闪存产品都包括一个控制器，用来将发生多次写的块重新映射到较少被写的块，从而使得写操作尽量分散。该技术被称为<strong>耗损均衡</strong>(wearleveling)。</p>
@@ -1966,7 +1966,7 @@
 <li>旋转延时：也称为旋转延迟(rotational delay),即磁盘上所需扇区旋转到读写磁头下的时间。通常假设为旋转半周的时间。</li>
 <li>传输时间(transfer time)：传输数据块(block)的时间。</li>
 </ul>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241119113321975.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119113321975" src="./organized_notes.assets/image-20241119113321975.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241119113321975.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119113321975" src="../organized_notes.assets/image-20241119113321975.png" /></a></p>
 <details class="question" open="open">
 <summary>Question</summary>
 <p>512B sector, 15,000rpm, 4ms average seek time, 100 MB/s transfer rate, 0.2ms controller overhead, idle disk, what's average read time?</p>
@@ -1990,29 +1990,29 @@
 <li>如果是 <code>direct mapped cache</code> 算出 <code>block index</code> 再去查表根据 <code>index</code> 查找</li>
 <li>看 <code>valid bit</code> 以及与 <code>tag</code> 比较是否是需要寻找的，再给出 <code>hit</code> 信号。</li>
 </ul>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241119162153085.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119162153085" src="./organized_notes.assets/image-20241119162153085.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241119162153085.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119162153085" src="../organized_notes.assets/image-20241119162153085.png" /></a></p>
 <p>对于一个 64 位操作系统而言，地址是 64 位， <code>n</code> 位 <code>index</code> 且一个 <code>word</code> 为 8 bytes(但是在教材前文定下此处计算时 一个 <code>word</code> 算作 4 bytes)，因此可以得到 <code>tag</code> 的大小为 (64 - n - m - 2)，那么 <code>direct mapped cache</code> 的总容量为:</p>
 <div class="arithmatex">\[2^{n} \times (2^{m+5} +(64 - n - m - 2) + 1)\]</div>
 <details class="question" open="open">
 <summary>Question</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241119162458648.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119162458648" src="./organized_notes.assets/image-20241119162458648.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241119162458648.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119162458648" src="../organized_notes.assets/image-20241119162458648.png" /></a></p>
 </details>
 <details class="note answer">
 <summary>Note</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241119162509112.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="./organized_notes.assets/image-20241119162509112.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241119162509112.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../organized_notes.assets/image-20241119162509112.png" /></a></p>
 </details>
 <details class="question" open="open">
 <summary>那么如果地址变大呢</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241210185718473.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210185718473" src="./organized_notes.assets/image-20241210185718473.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241210185718473.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241210185718473" src="../organized_notes.assets/image-20241210185718473.png" /></a></p>
 </details>
 <details class="question" open="open">
 <summary>Question</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241119162520576.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119162520576" src="./organized_notes.assets/image-20241119162520576.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241119162520576.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241119162520576" src="../organized_notes.assets/image-20241119162520576.png" /></a></p>
 </details>
 <details class="note answer">
 <summary>Note</summary>
 <p>每块中的字节数为16，则字节地址1200对应的块地址为 <span class="arithmatex">\(\frac{1200}{16} = 75\)</span> , 该块地址映射到的 <code>cache</code> 块号为 <span class="arithmatex">\((75 \text{mod} 64) = 11\)</span>
-<a class="glightbox" href="./organized_notes.assets/image-20241119162532183.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="./organized_notes.assets/image-20241119162532183.png" /></a></p>
+<a class="glightbox" href="../organized_notes.assets/image-20241119162532183.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../organized_notes.assets/image-20241119162532183.png" /></a></p>
 </details>
 <hr />
 <p>容量更大的块可以通过挖掘空间局部性来降低失效率，因为此时更大容量的数据块会降低失效率，减少 <code>cache</code> 中与数据存储相关的标签存储，提高 <code>cache</code> 的效率。</p>
@@ -2023,7 +2023,7 @@
 </div>
 <p>下图中，随着块大小的增长，失效率通常都在下降。如果单个块大小占 <code>cache</code> 容量的比例增加到一定程度，失效率最终会随之上升。这是因为 <code>cache</code> 中可存放的块数变少了。最终，某个数据块会在它的大量数据被访问之前就被挤出 <code>cache</code> 。另一方面，对于一个较大的数据块，块中各字之间的空间局部性也会随之降低，失效率降低带来的好处也就随之减少。</p>
 <p>增大块容量时，另一个更严重的问题是<strong>失效损失</strong>。失效损失是从下一级存储获得数据块并加载到 <code>cache</code> 的时间。该时间分为两部分：访问命中的时间和数据的传输时间。很明显，除非我们改变存储系统，否则传输时间(也可以说是失效损失)将随着数据块容量的增大而增大。而且，随着数据块容量的增大，失效率改善带来的收益开始降低。最终的结果是，失效损失增大引起的性能下降超过了失效率降低带来的收益，cache性能当然随之下降。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241130151038682.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130151038682" src="./organized_notes.assets/image-20241130151038682.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241130151038682.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130151038682" src="../organized_notes.assets/image-20241130151038682.png" /></a></p>
 <hr />
 <h2 id="set-associative">Set associative<a class="headerlink" href="#set-associative" title="Permanent link">&para;</a></h2>
 <p><strong>组相联cache</strong> : cache 的一种组织结构，每个数据块在cache中存放的位置数量具有固定值(至少为2)。</p>
@@ -2167,7 +2167,7 @@
 <p>Every word is 4 bytes</p>
 <p>请分别计算 With a main memory width of 4，2，1 words 以及 With 4 banks Interleaved Memory 的 <code>Bandwidth</code></p>
 </details>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241130151730018.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130151730018" src="./organized_notes.assets/image-20241130151730018.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241130151730018.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130151730018" src="../organized_notes.assets/image-20241130151730018.png" /></a></p>
 <details class="note">
 <summary>Answer</summary>
 <ol>
@@ -2232,7 +2232,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241130160948483.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130160948483" src="./organized_notes.assets/image-20241130160948483.png" /></a><a class="glightbox" href="./organized_notes.assets/image-20241130161000289.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130161000289" src="./organized_notes.assets/image-20241130161000289.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241130160948483.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130160948483" src="../organized_notes.assets/image-20241130160948483.png" /></a><a class="glightbox" href="../organized_notes.assets/image-20241130161000289.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130161000289" src="../organized_notes.assets/image-20241130161000289.png" /></a></p>
 </details>
 <details class="question" open="open">
 <summary>FURTHER</summary>
@@ -2240,7 +2240,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241130161409312.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130161409312" src="./organized_notes.assets/image-20241130161409312.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241130161409312.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130161409312" src="../organized_notes.assets/image-20241130161409312.png" /></a></p>
 </details>
 <details class="question" open="open">
 <summary>FURTHER</summary>
@@ -2248,7 +2248,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241130163342604.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130163342604" src="./organized_notes.assets/image-20241130163342604.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241130163342604.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130163342604" src="../organized_notes.assets/image-20241130163342604.png" /></a></p>
 <p>This, the computer with the faster clock is about 1.2 times faster rather than 2 time faster.</p>
 </details>
 <p>之前的例子和等式都假设命中时间不是影响cache性能的重要因素。很清楚，如果命中时间增加，在存储系统中访问一个字所花的时间也在增加。这可能引起处理器时钟周期的增大。例如增大 <code>cache</code> 的容量。更大的 <code>cache</code> 自然会有更长的访问时间。命中时间的增加可能会为流水线增加一个流水级，这样即使 <code>cache</code> 命中也会花费多个时钟周期。计算加深流水线对性能的影响则更为复杂。在某些情况下，对于大容量 <code>cache</code> 来说，相比命中率的提升，命中时间的增加反而会更占优势，这将会导致处理器性能的下降。</p>
@@ -2262,7 +2262,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241130164456569.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130164456569" src="./organized_notes.assets/image-20241130164456569.png" /></a><a class="glightbox" href="./organized_notes.assets/image-20241130164510011.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130164510011" src="./organized_notes.assets/image-20241130164510011.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241130164456569.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130164456569" src="../organized_notes.assets/image-20241130164456569.png" /></a><a class="glightbox" href="../organized_notes.assets/image-20241130164510011.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241130164510011" src="../organized_notes.assets/image-20241130164510011.png" /></a></p>
 </details>
 <hr />
 <h3 id="decreasing-miss-penalty-with-multilevel-caches">Decreasing miss penalty with multilevel caches<a class="headerlink" href="#decreasing-miss-penalty-with-multilevel-caches" title="Permanent link">&para;</a></h3>
@@ -2276,7 +2276,7 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204182517391.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204182517391" src="./organized_notes.assets/image-20241204182517391.png" /></a><a class="glightbox" href="./organized_notes.assets/image-20241204182528638.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204182528638" src="./organized_notes.assets/image-20241204182528638.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204182517391.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204182517391" src="../organized_notes.assets/image-20241204182517391.png" /></a><a class="glightbox" href="../organized_notes.assets/image-20241204182528638.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204182528638" src="../organized_notes.assets/image-20241204182528638.png" /></a></p>
 </details>
 <hr />
 <h2 id="miss-penalties">Miss Penalties<a class="headerlink" href="#miss-penalties" title="Permanent link">&para;</a></h2>
@@ -2304,7 +2304,7 @@
 </li>
 </ol>
 <h3 id="_1">图片版总结<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204185106524.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204185106524" src="./organized_notes.assets/image-20241204185106524.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204185106524.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204185106524" src="../organized_notes.assets/image-20241204185106524.png" /></a></p>
 <ul>
 <li>If the write buffer stalls are small, we can safely ignore them. (No penalty on Write Memory)</li>
 <li>If the cache block size is one word, the write miss penalty is 0. (Except the block is dirty)</li>
@@ -2319,7 +2319,7 @@
 <p>左边是虚拟地址，右边是实体，上面是内存，下面是磁盘。</p>
 <p>灰色是在磁盘中，白色在内存中。而在内存中的最终都会在磁盘中。</p>
 <p>这样用映射表来，那么可以得到虚拟地址但很难得到另一个用户的物理地址，因此遭到攻击的可能减小了。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204190849981.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204190849981" src="./organized_notes.assets/image-20241204190849981.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204190849981.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204190849981" src="../organized_notes.assets/image-20241204190849981.png" /></a></p>
 <hr />
 <h3 id="pages-virtual-memory-blocks">Pages: virtual memory blocks<a class="headerlink" href="#pages-virtual-memory-blocks" title="Permanent link">&para;</a></h3>
 <p>Page faults: the data is not in memory, retrieve it from disk. 也就相当于 <code>miss</code> 。</p>
@@ -2353,7 +2353,7 @@
 <li><code>write buffer</code> 的容量会不会写满由两件事决定， 写的数量与 <code>buffer</code> 中的数据写一次到磁盘中需要的时间。</li>
 <li>写穿透策略对于虚拟存储不合适，因为写入时间过长。相反，虚拟存储系统采用写回策略。</li>
 </ul>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204192843747.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204192843747" src="./organized_notes.assets/image-20241204192843747.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204192843747.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204192843747" src="../organized_notes.assets/image-20241204192843747.png" /></a></p>
 <hr />
 <h3 id="page-table">Page Table<a class="headerlink" href="#page-table" title="Permanent link">&para;</a></h3>
 <p>由上图也可以看出我们使用的是 <code>fully associate</code> 。所以不再遵循简单的取模操作。而是在内存中存放这一映射关系，这就是我们的 <code>Page Table</code> 。</p>
@@ -2387,16 +2387,16 @@
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204195504261.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204195504261" src="./organized_notes.assets/image-20241204195504261.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204195504261.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204195504261" src="../organized_notes.assets/image-20241204195504261.png" /></a></p>
 </details>
 <hr />
 <h3 id="tlb">TLB<a class="headerlink" href="#tlb" title="Permanent link">&para;</a></h3>
 <p>The TLB (Translation-lookaside Buffer) acts as Cache on the page table.</p>
 <p>给页表一个 <code>cache</code> ，那么不直接在内存的页表中查而是用 <code>cache</code> 来读，就可以提速。</p>
 <p>这个 <code>cache</code> 中的 <code>ref</code> 是定期打一个时间戳，每隔一段时间清零时间戳，一段时间后新进来的 <code>ref</code> 是1，旧的 <code>ref</code> 为0。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204200210351.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204200210351" src="./organized_notes.assets/image-20241204200210351.png" /></a></p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204201043591.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204201043591" src="./organized_notes.assets/image-20241204201043591.png" /></a></p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204201156714.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204201156714" src="./organized_notes.assets/image-20241204201156714.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204200210351.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204200210351" src="../organized_notes.assets/image-20241204200210351.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204201043591.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204201043591" src="../organized_notes.assets/image-20241204201043591.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204201156714.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204201156714" src="../organized_notes.assets/image-20241204201156714.png" /></a></p>
 <p><strong>TLB失效</strong>：</p>
 <ol>
 <li>
@@ -2427,7 +2427,7 @@
 <li>如果 <code>TLB</code> hit 那么 <code>page table</code> 里面也会 hit ，而 <code>TLB</code> miss ，<code>page table</code> 也是可以 hit的</li>
 <li>但是是否在 <code>cache</code> 里面却是不一定的</li>
 </ul>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241204201317481.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204201317481" src="./organized_notes.assets/image-20241204201317481.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241204201317481.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241204201317481" src="../organized_notes.assets/image-20241204201317481.png" /></a></p>
 <hr />
 
 
