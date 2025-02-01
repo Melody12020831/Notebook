@@ -146,6 +146,19 @@ nav:
     - index.md
   - Computer Science:
     - Computer_Science/index.md
+    - "ADS":
+      - Computer_Science/ADS/index.md
+      - Computer_Science/ADS/Homework.md
+      - Computer_Science/ADS/organisedproblems.md
+    - "CO":
+      - Computer_Science/CO/index.md
+      - Computer_Science/CO/Chapter 1.md
+      - Computer_Science/CO/Chapter 2.md
+      - Computer_Science/CO/Chapter 3.md
+      - Computer_Science/CO/Chapter 4.md
+      - Computer_Science/CO/Chapter 5.md
+      - Computer_Science/CO/Chapter 6.md
+      - Computer_Science/CO/COhomework.md
     - "编程语言":
       - Computer_Science/Programming_Language/python.md
     - "Tools":
