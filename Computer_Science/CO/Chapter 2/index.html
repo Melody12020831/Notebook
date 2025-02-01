@@ -1729,7 +1729,7 @@
 <h3 id="regs">regs<a class="headerlink" href="#regs" title="Permanent link">&para;</a></h3>
 <p><strong>32个64位寄存器</strong></p>
 <p>|x0(zero)|0|The constant value 0|</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114172925277.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114172925277" src="./organized_notes.assets/image-20241114172925277.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114172925277.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114172925277" src="../organized_notes.assets/image-20241114172925277.png" /></a></p>
 <p>RISC-V 约定：</p>
 <ul>
 <li><code>x5</code> - <code>x7</code> 以及 <code>x28</code> - <code>x31</code> 是 temp reg，如果需要的话 caller 保存；也就是说，不保证在经过过程调用之后这些寄存器的值不变。</li>
@@ -1763,7 +1763,7 @@
 <p>如果你将地址横着写，即从左到右递增，那么对于大端来说是比较自然的，但是对于小端来说会比较不自然。</p>
 <hr />
 <h2 id="risc-v-assembly-language">RISC-V assembly language<a class="headerlink" href="#risc-v-assembly-language" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114173319936.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114173319936" src="./organized_notes.assets/image-20241114173319936.png" /></a><a class="glightbox" href="./organized_notes.assets/image-20241114173335617.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114173335617" src="./organized_notes.assets/image-20241114173335617.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114173319936.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114173319936" src="../organized_notes.assets/image-20241114173319936.png" /></a><a class="glightbox" href="../organized_notes.assets/image-20241114173335617.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114173335617" src="../organized_notes.assets/image-20241114173335617.png" /></a></p>
 <ul>
 <li>逻辑移不考虑符号位，左移时高位补0，右移时低位补0</li>
 <li>算数移考虑符号位</li>
@@ -2029,26 +2029,26 @@
 <p>RISC-V指令中存在<code>load upper immediate</code>(取立即数高位，<code>lui</code>)，用于将20 位常数加载到寄存器的第31位到第12位。将第31位的值复制填充到最左边32位，最右边的12位用0填充。（也即有符号）。</p>
 <details class="question" open="open">
 <summary>大立即数</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114193114836.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="./organized_notes.assets/image-20241114193114836.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114193114836.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../organized_notes.assets/image-20241114193114836.png" /></a></p>
 </details>
 <details class="note">
 <summary>Answer</summary>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114193334581.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="./organized_notes.assets/image-20241114193334581.png" /></a></p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114193342068.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="./organized_notes.assets/image-20241114193342068.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114193334581.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../organized_notes.assets/image-20241114193334581.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114193342068.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../organized_notes.assets/image-20241114193342068.png" /></a></p>
 </details>
 <details class="note">
 <summary>Further</summary>
 <p>因为 <code>addi</code> 是有符号的。</p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114193354970.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="./organized_notes.assets/image-20241114193354970.png" /></a></p>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114193408139.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="./organized_notes.assets/image-20241114193408139.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114193354970.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../organized_notes.assets/image-20241114193354970.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114193408139.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../organized_notes.assets/image-20241114193408139.png" /></a></p>
 <p>因此我们在进行大立即数运算时，可以先使用 <code>lui</code> 将高20位加载到寄存器，再使用 <code>slli</code> 移位后再加上低12位，但是需要注意 <code>addi</code> 是有符号的。</p>
 </details>
 <hr />
 <h2 id="risc-v">RISC-V寻址模式<a class="headerlink" href="#risc-v" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114193858172.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114193858172" src="./organized_notes.assets/image-20241114193858172.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114193858172.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114193858172" src="../organized_notes.assets/image-20241114193858172.png" /></a></p>
 <hr />
 <h2 id="decoding-machine-language">Decoding Machine Language<a class="headerlink" href="#decoding-machine-language" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114194526501.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114194526501" src="./organized_notes.assets/image-20241114194526501.png" /></a><a class="glightbox" href="./organized_notes.assets/image-20241114194451092.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114194451092" src="./organized_notes.assets/image-20241114194451092.png" /></a><a class="glightbox" href="./organized_notes.assets/image-20241114194336358.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114194336358" src="./organized_notes.assets/image-20241114194336358.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114194526501.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114194526501" src="../organized_notes.assets/image-20241114194526501.png" /></a><a class="glightbox" href="../organized_notes.assets/image-20241114194451092.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114194451092" src="../organized_notes.assets/image-20241114194451092.png" /></a><a class="glightbox" href="../organized_notes.assets/image-20241114194336358.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114194336358" src="../organized_notes.assets/image-20241114194336358.png" /></a></p>
 <hr />
 <h2 id="_3">原子交换<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>在计算中，同步机制通常由用户级的软件例程所构建，而这依赖于硬件提供的同步指令。在本节中，我们将重点介绍加锁(lock)和解锁(unlock)同步操作的实现。加锁和解锁可直接用于创建只有单个处理器可以操作的区域，称为互斥(mutual exclusion)区，以及实现更复杂的同步机制。</p>
@@ -2088,7 +2088,7 @@
 </ul>
 <hr />
 <h2 id="translating-and-starting-a-program">Translating and Starting a Program<a class="headerlink" href="#translating-and-starting-a-program" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="./organized_notes.assets/image-20241114203619024.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114203619024" src="./organized_notes.assets/image-20241114203619024.png" /></a></p>
+<p><a class="glightbox" href="../organized_notes.assets/image-20241114203619024.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241114203619024" src="../organized_notes.assets/image-20241114203619024.png" /></a></p>
 <h3 id="compiler">Compiler<a class="headerlink" href="#compiler" title="Permanent link">&para;</a></h3>
 <p>The assembler turns the assembly language program into an object file, which is a combination of machine language instructions, data, and information needed to place instructions properly in memory.</p>
 <h3 id="linker">Linker<a class="headerlink" href="#linker" title="Permanent link">&para;</a></h3>
