@@ -15,7 +15,7 @@ statistics: True
 !!! info "课程信息"
     - **智云链接**：[🔗](https://classroom.zju.edu.cn/coursedetail?course_id=64216)
     - **授课**：叶德仕
-    - **教材**：[《Introduction to Algorithm》](算法导论中文第三版.pdf)Thomas H.Cormen, Charles Leiserson, Ronald L. Rivest, Clifford Stein
+    - **教材**：[《Introduction to Algorithm》](算法导论中文第三版.pdf) (~~企图放上来 but failed 以后再试 现在的话邮箱联系我吧~~) Thomas H.Cormen, Charles Leiserson, Ronald L. Rivest, Clifford Stein
 
     我在这里放的是中文版 pdf 还是建议有能力的朋友们去阅读原版，这里放一个 [selected version](IntroductiontoAlgorithms3rd.pdf) 。还是非常建议阅读圣经的。🥺
     
