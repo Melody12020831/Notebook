@@ -2790,7 +2790,7 @@ addi x30, x10, 8</p>
 <ul>
 <li>4.25.1</li>
 </ul>
-<p><a class="glightbox" href="./CO homework.assets/image-20241116202252409.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241116202252409" src="./CO homework.assets/image-20241116202252409.png" /></a></p>
+<p><a class="glightbox" href="../CO%20homework.assets/image-20241116202252409.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241116202252409" src="../CO%20homework.assets/image-20241116202252409.png" /></a></p>
 <p>上面是答案给出的解答。注意此处答案有误，第一个 <code>stall</code> 之后应该不是 <code>EX</code> 而是 <code>ID</code> ，所以可以直接写一行 <code>NOP</code> 最保险， <code>data hazard</code> 只要不是 <code>load use data hazard</code> 只要不是上一个 <code>ld</code> 的 <code>rd</code> 不是下一个的 <code>rs</code> （前提是必须要支持 <code>forwarding</code> 否则要挺两个周期）</p>
 <p>所以可以写成</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ld x10, 0(x13)
@@ -3267,7 +3267,7 @@ addi x30, x10, 8</p>
 <li>5.11.1</li>
 </ul>
 <p>与之类似</p>
-<p><a class="glightbox" href="./CO homework.assets/image-20241230133914729.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241230133914729" src="./CO homework.assets/image-20241230133914729.png" /></a></p>
+<p><a class="glightbox" href="../CO%20homework.assets/image-20241230133914729.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image-20241230133914729" src="../CO%20homework.assets/image-20241230133914729.png" /></a></p>
 <ul>
 <li>5.11.2</li>
 </ul>
