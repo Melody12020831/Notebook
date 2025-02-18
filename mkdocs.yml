@@ -159,6 +159,14 @@ nav:
       - Computer_Science/CO/Chapter 5.md
       - Computer_Science/CO/Chapter 6.md
       - Computer_Science/CO/COhomework.md
+    - "DB":
+      - Computer_Science/DB/index.md
+      - Computer_Science/DB/Chapter1.md
+      - Computer_Science/DB/homework.md
+    - "OOP":
+      - Computer_Science/OOP/index.md
+      - Computer_Science/OOP/Chapter1.md
+
     - "编程语言":
       - Computer_Science/Programming_Language/python.md
     - "Tools":
