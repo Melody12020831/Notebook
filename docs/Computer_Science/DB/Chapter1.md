@@ -3,7 +3,7 @@ statistics: True
 comments: true
 ---
 
-# 数据库系统引论
+# Introduction
 
 ??? Abstract "Table of Contents"
     - Purpose of Database Systems
