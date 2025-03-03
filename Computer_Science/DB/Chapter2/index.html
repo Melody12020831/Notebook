@@ -16,15 +16,15 @@
         <link rel="prev" href="../Chapter1/">
       
       
-        <link rel="next" href="../homework/">
+        <link rel="next" href="../Chapter3/">
       
       
       <link rel="icon" href="../../../assets/images/icon.jpg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
     
     
       
-        <title>Introduction to the Relational Model - 央央's Notebook</title>
+        <title>Chapter 2 | Introduction to the Relational Model - 央央's Notebook</title>
       
     
     
@@ -115,7 +115,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction-to-the-relational-model" class="md-skip">
+        <a href="#chapter-2-introduction-to-the-relational-model" class="md-skip">
           跳转至
         </a>
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction to the Relational Model
+              Chapter 2 | Introduction to the Relational Model
             
           </span>
         </div>
@@ -874,6 +874,8 @@
       
         
       
+        
+      
     
     
       
@@ -927,7 +929,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction
+    Chapter 1 | Introduction
     
   </span>
   
@@ -958,7 +960,7 @@
           
   
   <span class="md-ellipsis">
-    Introduction to the Relational Model
+    Chapter 2 | Introduction to the Relational Model
     
   </span>
   
@@ -970,7 +972,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction to the Relational Model
+    Chapter 2 | Introduction to the Relational Model
     
   </span>
   
@@ -1070,9 +1072,150 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#the-select-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Select Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-project-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Project Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-union-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Union Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-set-difference-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Set Difference Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-cartesian-product-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Cartesian-Product Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-composition-of-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Composition of Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rename-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Rename Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#formal-definition" class="md-nav__link">
     <span class="md-ellipsis">
       Formal Definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Formal Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-intersection-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Intersection Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natural-join-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Natural Join Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outer-join-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outer Join Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semijoin-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semijoin Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignment-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assignment Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#division-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Division Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalized-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generalized Projection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate-functions-and-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregate Functions and Operations
     </span>
   </a>
   
@@ -1097,10 +1240,83 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sql-and-relational-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL and Relational Algebra
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modification-of-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modification of the Database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modification of the Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3 | Introduction to SQL
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1147,6 +1363,8 @@
       
         
           
+        
+      
         
       
         
@@ -1204,7 +1422,29 @@
         
   
   <span class="md-ellipsis">
-    introduction
+    Chapter 1 | introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2 | A tour of cpp
     
   </span>
   
@@ -1291,7 +1531,7 @@
         
   
   <span class="md-ellipsis">
-    Fundamentals of Computer Design
+    Ch1 | Fundamentals of Computer Design
     
   </span>
   
@@ -2431,9 +2671,150 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#the-select-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Select Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-project-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Project Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-union-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Union Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-set-difference-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Set Difference Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-cartesian-product-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Cartesian-Product Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-composition-of-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Composition of Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rename-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Rename Operation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#formal-definition" class="md-nav__link">
     <span class="md-ellipsis">
       Formal Definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Formal Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-intersection-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Intersection Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#natural-join-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Natural Join Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outer-join-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outer Join Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semijoin-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semijoin Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignment-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assignment Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#division-operation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Division Operation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalized-projection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generalized Projection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate-functions-and-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregate Functions and Operations
     </span>
   </a>
   
@@ -2450,6 +2831,57 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-and-relational-algebra" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL and Relational Algebra
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modification-of-the-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modification of the Database
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modification of the Database">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Insertion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
   
 </li>
         
@@ -2477,9 +2909,9 @@
   
 
 
-<h1 id="introduction-to-the-relational-model">Introduction to the Relational Model<a class="headerlink" href="#introduction-to-the-relational-model" title="Permanent link">&para;</a></h1>
+<h1 id="chapter-2-introduction-to-the-relational-model">Chapter 2 | Introduction to the Relational Model<a class="headerlink" href="#chapter-2-introduction-to-the-relational-model" title="Permanent link">&para;</a></h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 2760 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> 11 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 17 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 14 分钟</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 3819 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3l89.3 89.4-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3"/></svg></span> 11 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"/></svg></span> 17 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 19 分钟</p>
 </div>
 <p>The relational model’s independence from any specific underlying low-level data structures has allowed it to persist despite the advent of new approaches to data storage.</p>
 <p>The major advantages of the relational model are its straightforward data representation and the ease with which even complex queries can be expressed. </p>
@@ -2550,6 +2982,7 @@
 <p>Thus, minimal superkey is called a <strong>candidate key</strong>(候选键).</p>
 <p>One of the candidate keys is selected to be the <strong>primary key</strong>(主键), which is also reffered to as <strong>primary key constraints</strong>.</p>
 <p>It is customary to list the primary key attributes of a relation schema before the other attributes, like this: <span class="arithmatex">\(classroom(\underline{building}, \underline{room\_number}, capacity)\)</span></p>
+<hr />
 <h3 id="foreign-key">foreign key<a class="headerlink" href="#foreign-key" title="Permanent link">&para;</a></h3>
 <p>A foreign-key constraint from attribute(s) A of relation <span class="arithmatex">\(r_1\)</span> to the primary-key B of relation <span class="arithmatex">\(r_2\)</span> states that on any database instance, the value of A for each tuple in <span class="arithmatex">\(r_1\)</span> must also be the value of B for some tuple in <span class="arithmatex">\(r_2\)</span> . Attribute set A is called a foreign key from <span class="arithmatex">\(r_1\)</span> , referencing <span class="arithmatex">\(r_2\)</span> . The relation <span class="arithmatex">\(r_1\)</span> is also called the referencing relation of the foreign-key
 constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced relation.</p>
@@ -2583,6 +3016,37 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 <p class="admonition-title">Info</p>
 <p>Database systems today typically support <strong>foreign-key constraints</strong>, but they do not support referential integrity constraints where the referenced attribute is not a primary key.</p>
 </div>
+<details class="note">
+<summary>为什么要有 foreign-key</summary>
+<p>From deepSeek.</p>
+<p>外键（Foreign Key）是关系数据库设计中的一个重要概念，它用于建立和强制两个表之间的链接。外键的存在有以下几个关键原因：</p>
+<ol>
+<li>
+<p><strong>保持数据完整性</strong>：
+外键确保了一个表中的数据与另一个表中的数据保持一致。它防止了会导致表之间数据不一致的无效数据的插入。例如，如果你有一个订单表，每个订单都需要关联到一个存在的客户，外键可以确保你不能添加一个没有对应客户ID的订单。</p>
+</li>
+<li>
+<p><strong>实现表与表之间的关联</strong>：
+外键允许数据库设计者将数据分散到不同的表中，同时保持这些数据之间的逻辑关联。这样，数据可以被组织成逻辑上一致且易于管理的单元，而不是将所有数据都存储在一个大表中。</p>
+</li>
+<li>
+<p><strong>级联操作</strong>：
+外键可以定义级联更新和删除规则，这意味着当主键表中的数据更新或删除时，所有相关联的外键表中的数据也会自动更新或删除。这有助于维护数据的一致性和减少错误。</p>
+</li>
+<li>
+<p><strong>查询和数据检索</strong>：
+外键使得跨表查询成为可能。通过连接（JOIN）操作，可以从多个相关表中检索出复杂的数据集。这对于数据分析和报告生成非常有用。</p>
+</li>
+<li>
+<p><strong>规范化数据库设计</strong>：
+外键是数据库规范化过程中的一个关键要素。规范化是一组指导原则，旨在减少数据冗余，提高数据完整性。通过使用外键，可以将数据分解成多个相关的表，从而减少重复数据并简化数据结构。</p>
+</li>
+<li>
+<p><strong>约束和验证</strong>：
+外键约束确保了数据库中的数据遵循预定义的规则。这为数据输入提供了一种验证机制，确保了数据的准确性和可靠性。</p>
+</li>
+</ol>
+</details>
 <hr />
 <h2 id="schema-diagram">schema diagram<a class="headerlink" href="#schema-diagram" title="Permanent link">&para;</a></h2>
 <p><a class="glightbox" href="../assets/2-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-2.png" /></a></p>
@@ -2591,7 +3055,7 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 <p>双头箭头的线表示 Referential integrity。</p>
 <details class="note">
 <summary>my thoughts</summary>
-<p>理解为箭头指向"来源"<sub>和一般的箭头相反</sub></p>
+<p>理解为箭头指向"来源"~ 和一般的箭头相反 ~</p>
 </details>
 <hr />
 <h2 id="relational-query-languages">Relational Query Languages<a class="headerlink" href="#relational-query-languages" title="Permanent link">&para;</a></h2>
@@ -2624,39 +3088,39 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 <p>But, in discussing the formal relational algebra, we require that duplicates be eliminated, as is required by the mathematical definition of a set.</p>
 </div>
 <hr />
-<h5 id="the-select-operation">The Select Operation<a class="headerlink" href="#the-select-operation" title="Permanent link">&para;</a></h5>
+<h4 id="the-select-operation">The Select Operation<a class="headerlink" href="#the-select-operation" title="Permanent link">&para;</a></h4>
 <p>Notation: <span class="arithmatex">\(\sigma_{p}(r)\)</span></p>
 <p>Defined as: <span class="arithmatex">\(\sigma_{p}(r) = \{t \in r \ and \ p(t)\}\)</span></p>
-<p>In general, we allow comparisons using $ = , \neq , &lt; , &gt; , \leq , \geq , and (\wedge) , or (\vee) , and  not (\neg) $.</p>
+<p>In general, we allow comparisons using <span class="arithmatex">\(= , \neq , &lt; , &gt; , \leq , \geq , and (\wedge) , or (\vee) , and \ not (\neg)\)</span>.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><span class="arithmatex">\(\sigma_{\text{dept\_name} = "Physics" \wedge \text{salary} &gt; 90000}(\text{instructor})\)</span></p>
+<p><span class="arithmatex">\(\sigma_{\text{dept_name} = "Physics" \wedge \text{salary} &gt; 90000}(\text{instructor})\)</span></p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">图示</p>
+<details class="note">
+<summary>图示</summary>
 <p>select 也即从表中选择满足特定条件的行。</p>
 <p><a class="glightbox" href="../assets/2-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-5.png" /></a></p>
-</div>
+</details>
 <hr />
-<h5 id="the-project-operation">The Project Operation<a class="headerlink" href="#the-project-operation" title="Permanent link">&para;</a></h5>
-<p>Notation: <span class="arithmatex">\(\pi_{A_1,A_2,\ldots,A_n}(r)\)</span></p>
-<p>The basic version of the project operator <span class="arithmatex">\(\pi_{L}(E)\)</span> allows only attribute names to be present in the list L. A generalized version of the operator allows expressions involving attributes to appear in the list L.</p>
+<h4 id="the-project-operation">The Project Operation<a class="headerlink" href="#the-project-operation" title="Permanent link">&para;</a></h4>
+<p>Notation: <span class="arithmatex">\(\Pi_{A_1,A_2,\ldots,A_n}(r)\)</span></p>
+<p>The basic version of the project operator <span class="arithmatex">\(\Pi_{L}(E)\)</span> allows only attribute names to be present in the list L. A generalized version of the operator allows expressions involving attributes to appear in the list L.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p><span class="arithmatex">\(\pi_{\text{ID,name,salary}}(\text{instructor})\)</span></p>
-<p><span class="arithmatex">\(\pi_{\text{ID,name,salary / 12}}(\text{instructor})\)</span></p>
+<p><span class="arithmatex">\(\Pi_{\text{ID,name,salary}}(\text{instructor})\)</span></p>
+<p><span class="arithmatex">\(\Pi_{\text{ID,name,salary / 12}}(\text{instructor})\)</span></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">attention</p>
 <p>Duplicate rows removed from result, since relations are sets.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">图示</p>
+<details class="note">
+<summary>图示</summary>
 <p>从表中选择特定的列。</p>
 <p><a class="glightbox" href="../assets/2-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-3.png" /></a></p>
-</div>
+</details>
 <hr />
-<h5 id="the-union-operation">The Union Operation<a class="headerlink" href="#the-union-operation" title="Permanent link">&para;</a></h5>
+<h4 id="the-union-operation">The Union Operation<a class="headerlink" href="#the-union-operation" title="Permanent link">&para;</a></h4>
 <p>Notation: <span class="arithmatex">\(r \cup s\)</span></p>
 <p>Defined as: <span class="arithmatex">\(r \cup s = \{t| t \in r \ or \ t \in s\}\)</span></p>
 <div class="admonition note">
@@ -2670,12 +3134,12 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 </li>
 </ol>
 </div>
-<div class="admonition note">
-<p class="admonition-title">图示</p>
+<details class="note">
+<summary>图示</summary>
 <p><a class="glightbox" href="../assets/2-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-6.png" /></a></p>
-</div>
+</details>
 <hr />
-<h5 id="the-set-difference-operation">The Set Difference Operation<a class="headerlink" href="#the-set-difference-operation" title="Permanent link">&para;</a></h5>
+<h4 id="the-set-difference-operation">The Set Difference Operation<a class="headerlink" href="#the-set-difference-operation" title="Permanent link">&para;</a></h4>
 <p>Notation: <span class="arithmatex">\(r - s\)</span></p>
 <p>Defined as: <span class="arithmatex">\(r - s = \{t| t \in r \ and \ t \notin s\}\)</span></p>
 <div class="admonition note">
@@ -2690,32 +3154,48 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 </li>
 </ol>
 </div>
-<div class="admonition note">
-<p class="admonition-title">图示</p>
+<details class="note">
+<summary>图示</summary>
 <p><a class="glightbox" href="../assets/2-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-7.png" /></a></p>
-</div>
+</details>
+<details class="example">
+<summary>Example</summary>
+<p>Find the largest account balance (i.e., self-comparison). </p>
+<p><span class="arithmatex">\(\Pi_{\text{balance}}(account) - \Pi_{\text{account.balance}}(\sigma_{\text{account.balance \le d.balance}}(account \times \rho_{d}(account)))\)</span></p>
+</details>
 <hr />
-<h5 id="the-cartesian-product-operation">The Cartesian-Product Operation<a class="headerlink" href="#the-cartesian-product-operation" title="Permanent link">&para;</a></h5>
+<h4 id="the-cartesian-product-operation">The Cartesian-Product Operation<a class="headerlink" href="#the-cartesian-product-operation" title="Permanent link">&para;</a></h4>
 <p>Notation: <span class="arithmatex">\(r \times s\)</span></p>
-<p>Defined as: <span class="arithmatex">\(r \times s = \{t q | t \in r \ and \ q \in s\}\)</span></p>
+<p>Defined as: <span class="arithmatex">\(r \times s = \{t \ q | t \in r \ and \ q \in s\}\)</span></p>
 <div class="admonition note">
 <p class="admonition-title">attention</p>
 <p>Assume that attributes of r(R) and s(S) are disjoint. (That is , <span class="arithmatex">\(R \cap S = \emptyset\)</span>)</p>
 <p>If attributes of r(R) and s(S) are not disjoint, then  renaming must be used.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">图示</p>
+<details class="note">
+<summary>图示</summary>
 <p><a class="glightbox" href="../assets/2-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-8.png" /></a></p>
-</div>
+</details>
+<details class="example">
+<summary>Example</summary>
+<ol>
+<li>Find the names of all customers who have a loan at the Perryridge branch. </li>
+</ol>
+<p><span class="arithmatex">\(\Pi_{customer\_name}(\sigma_{borrower.loan-number = loan.loan-number}(borrower \times (\sigma_{branch-name = 'Perryridge'}(loan))))\)</span></p>
+<ol start="2">
+<li>Find the names of all customers who have loans at the Perryridge branch but do not have an account at any branch of the bank. </li>
+</ol>
+<p><span class="arithmatex">\(\Pi_{customer-name}(\sigma_{borrower.loan-number = loan.loan-number}(borrower \times (\sigma_{branch-name = 'Perryridge'}(loan)))) - \Pi_{customer-name}(depositor)\)</span></p>
+</details>
 <hr />
-<h5 id="the-composition-of-operations">The Composition of Operations<a class="headerlink" href="#the-composition-of-operations" title="Permanent link">&para;</a></h5>
+<h4 id="the-composition-of-operations">The Composition of Operations<a class="headerlink" href="#the-composition-of-operations" title="Permanent link">&para;</a></h4>
 <p>Can build expressions using multiple operations.</p>
-<div class="admonition note">
-<p class="admonition-title">图示</p>
+<details class="note">
+<summary>图示</summary>
 <p><a class="glightbox" href="../assets/2-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-4.png" /></a></p>
-</div>
+</details>
 <hr />
-<h5 id="the-rename-operation">The Rename Operation<a class="headerlink" href="#the-rename-operation" title="Permanent link">&para;</a></h5>
+<h4 id="the-rename-operation">The Rename Operation<a class="headerlink" href="#the-rename-operation" title="Permanent link">&para;</a></h4>
 <p>Notation: <span class="arithmatex">\(\rho_{x}(E)\)</span></p>
 <p>If a relational-algebra expression E has arity n, then</p>
 <div class="arithmatex">\[\rho_{x(A_1, A_2, \cdots, A_n)}(E)\]</div>
@@ -2726,7 +3206,7 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 <p>不是所有查询结果都能用关系代数表示出来。</p>
 </div>
 <hr />
-<h4 id="formal-definition">Formal Definition<a class="headerlink" href="#formal-definition" title="Permanent link">&para;</a></h4>
+<h3 id="formal-definition">Formal Definition<a class="headerlink" href="#formal-definition" title="Permanent link">&para;</a></h3>
 <p>A basic expression in the relational algebra consists of either one of the following:</p>
 <ul>
 <li>A relation in the database</li>
@@ -2743,17 +3223,17 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 <li>Division Operator: <span class="arithmatex">\(\div\)</span></li>
 </ul>
 <hr />
-<h5 id="set-intersection-operation">Set Intersection Operation<a class="headerlink" href="#set-intersection-operation" title="Permanent link">&para;</a></h5>
+<h4 id="set-intersection-operation">Set Intersection Operation<a class="headerlink" href="#set-intersection-operation" title="Permanent link">&para;</a></h4>
 <p>The set-intersection operation allows us to find tuples that are in both the input relations.</p>
 <p>Notation: <span class="arithmatex">\(r \cap s\)</span></p>
 <p>Defined as: <span class="arithmatex">\(r \cap s = \{t | t \in r \land t \in s\}\)</span></p>
 <p>Note: <span class="arithmatex">\(r \cap s = r - (r - s)\)</span></p>
-<div class="admonition note">
-<p class="admonition-title">图例</p>
+<details class="note">
+<summary>图例</summary>
 <p><a class="glightbox" href="../assets/2-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-9.png" /></a></p>
-</div>
+</details>
 <hr />
-<h5 id="natural-join-operation">Natural Join Operation<a class="headerlink" href="#natural-join-operation" title="Permanent link">&para;</a></h5>
+<h4 id="natural-join-operation">Natural Join Operation<a class="headerlink" href="#natural-join-operation" title="Permanent link">&para;</a></h4>
 <p>把公共属性相同的行连在一起。</p>
 <p>Consider each pair of tuples <span class="arithmatex">\(t_r\)</span> from <span class="arithmatex">\(r\)</span> and <span class="arithmatex">\(t_s\)</span> from <span class="arithmatex">\(s\)</span>.</p>
 <p>If <span class="arithmatex">\(t_r\)</span> and <span class="arithmatex">\(t_s\)</span> have the same value on each of the attributes in <span class="arithmatex">\(R \cap S\)</span>, add a tuple t to the result, where</p>
@@ -2761,31 +3241,35 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 <li><span class="arithmatex">\(t\)</span> has the same values as <span class="arithmatex">\(t_r\)</span> on r</li>
 <li><span class="arithmatex">\(t\)</span> has the same values as <span class="arithmatex">\(t_s\)</span> on s</li>
 </ul>
-<p><span class="arithmatex">\(r \bowtie\)</span> s = \pi_{r.A, r.B, r.C, r.D, s.E}(\sigma_{r.B = s.B ^ r.D = s.D(r \times s)})</p>
+<div class="arithmatex">\[r \bowtie s = \Pi_{r.A, r.B, r.C, r.D, s.E}(\sigma_{r.B = s.B ^ r.D = s.D(r \times s)})\]</div>
 <ul>
 <li>associative</li>
 </ul>
-<p><span class="arithmatex">\((instructor \bowtie  teaches) \bowtie  course\)</span> is equivalent to <span class="arithmatex">\(instructor \bowtie (teaches \bowtie course)\)</span></p>
+<div class="arithmatex">\[(instructor \bowtie  teaches) \bowtie  course\]</div>
+<p>is equivalent to </p>
+<div class="arithmatex">\[instructor \bowtie (teaches \bowtie course)\]</div>
 <ul>
 <li>commutative</li>
 </ul>
-<p><span class="arithmatex">\(instructor \bowtie  teaches\)</span> is equivalent to <span class="arithmatex">\(teaches \bowtie instructor\)</span></p>
+<div class="arithmatex">\[instructor \bowtie  teaches\]</div>
+<p>is equivalent to </p>
+<div class="arithmatex">\[teaches \bowtie instructor\]</div>
 <p>The <strong>theta join</strong> operation <span class="arithmatex">\(r \bowtie_{\theta} s\)</span> is defined as:</p>
 <div class="arithmatex">\[r \bowtie_{\theta} s = \sigma_{\theta}(r \times s)\]</div>
-<div class="admonition note">
-<p class="admonition-title">图例</p>
+<details class="note">
+<summary>图例</summary>
 <p><a class="glightbox" href="../assets/2-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-10.png" /></a></p>
-</div>
+</details>
 <hr />
-<h5 id="outer-join-operation">Outer Join Operation<a class="headerlink" href="#outer-join-operation" title="Permanent link">&para;</a></h5>
+<h4 id="outer-join-operation">Outer Join Operation<a class="headerlink" href="#outer-join-operation" title="Permanent link">&para;</a></h4>
 <p>An extension of the join operation that avoids loss of information.</p>
 <p>Computes the join and then adds tuples form one relation that does not match tuples in the other relation to the result of the join.</p>
 <p>Outer join can be expressed using basic operations</p>
 <ul>
-<li><span class="arithmatex">\(r\)</span> ⟕ <span class="arithmatex">\(s\)</span> = <span class="arithmatex">\((r \bowtie s) \cup (r - \pi_{R}(r \bowtie s) \times \{(null, \dots, null)\})\)</span></li>
-<li><span class="arithmatex">\(r\)</span> ⟖ <span class="arithmatex">\(s\)</span> = <span class="arithmatex">\((r \bowtie s) \cup (\{(null, \dots, null)\} \times s - \pi_{S}(r \bowtie s))\)</span></li>
+<li><span class="arithmatex">\(r\)</span> ⟕ <span class="arithmatex">\(s\)</span> = <span class="arithmatex">\((r \bowtie s) \cup (r - \Pi_{R}(r \bowtie s) \times \{(null, \dots, null)\})\)</span></li>
+<li><span class="arithmatex">\(r\)</span> ⟖ <span class="arithmatex">\(s\)</span> = <span class="arithmatex">\((r \bowtie s) \cup (\{(null, \dots, null)\} \times s - \Pi_{S}(r \bowtie s))\)</span></li>
 <li>
-<p><span class="arithmatex">\(r\)</span> ⟗ <span class="arithmatex">\(s\)</span> = <span class="arithmatex">\((r \bowtie s) \cup (r - \pi_{R}(r \bowtie s) \times \{(null, \dots, null)\}) \cup (\{(null, \dots, null)\} \times s - \pi_{S}(r \bowtie s))\)</span></p>
+<p><span class="arithmatex">\(r\)</span> ⟗ <span class="arithmatex">\(s\)</span> = <span class="arithmatex">\((r \bowtie s) \cup (r - \Pi_{R}(r \bowtie s) \times \{(null, \dots, null)\}) \cup (\{(null, \dots, null)\} \times s - \Pi_{S}(r \bowtie s))\)</span></p>
 </li>
 <li>
 <p><span class="arithmatex">\(\{ \}\)</span> 表示构造一对临时的关系， 所以 <span class="arithmatex">\(\{(null, \dots, null)\}\)</span> 表示构造一对临时的关系，其中只有一对元组，且所有属性都是 null</p>
@@ -2803,50 +3287,56 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 </li>
 </ul>
 </div>
-<div class="admonition note">
-<p class="admonition-title">图例</p>
+<details class="note">
+<summary>图例</summary>
 <p><a class="glightbox" href="../assets/2-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-11.png" /></a></p>
 <p><a class="glightbox" href="../assets/2-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-12.png" /></a></p>
-</div>
+</details>
 <hr />
-<h5 id="semijoin-operation">Semijoin Operation<a class="headerlink" href="#semijoin-operation" title="Permanent link">&para;</a></h5>
+<h4 id="semijoin-operation">Semijoin Operation<a class="headerlink" href="#semijoin-operation" title="Permanent link">&para;</a></h4>
 <p>Notation: <span class="arithmatex">\(r ⋉_{\theta} s\)</span></p>
 <p>Is a subset of r, in which every tuple <span class="arithmatex">\(r_i\)</span> matches at least one truple <span class="arithmatex">\(s_i\)</span> in s under the condition <span class="arithmatex">\(\theta\)</span>.</p>
-<p><span class="arithmatex">\(r ⋉_{\theta} s = \pi_{R}(r \bowtie_{\theta} s)\)</span></p>
-<p>The content of the database may be modified using the following  operations:</p>
-<ul>
-<li>Deletion</li>
-<li>Insertion</li>
-<li>Updating</li>
-</ul>
-<p>All these operations can be expressed using the assignment  operator.</p>
-<div class="admonition note">
-<p class="admonition-title">图例</p>
+<p><span class="arithmatex">\(r ⋉_{\theta} s = \Pi_{R}(r \bowtie_{\theta} s)\)</span></p>
+<details class="note">
+<summary>图例</summary>
 <p><a class="glightbox" href="../assets/2-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-13.png" /></a></p>
-</div>
+</details>
+<details class="example">
+<summary>Example</summary>
+<p>Find all customers who have an account from at least the “Downtown” and the “Uptown” branches. </p>
+<ol>
+<li>
+<p><span class="arithmatex">\(\Pi_{customer-name}(\sigma_{branch-name = 'Downtown'}(depositor \bowtie account)) \cap \Pi_{customer-name}(\sigma_{branch-name = 'Uptown'}(depositor \bowtie account))\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\Pi_{customer-name, branch-name}(depositor \bowtie account) \div \rho_{temp(branch-name)}(\{('Downtown', 'Uptown')\})\)</span></p>
+</li>
+</ol>
+</details>
 <hr />
-<h5 id="assignment-operation">Assignment Operation<a class="headerlink" href="#assignment-operation" title="Permanent link">&para;</a></h5>
+<h4 id="assignment-operation">Assignment Operation<a class="headerlink" href="#assignment-operation" title="Permanent link">&para;</a></h4>
 <p>The assignment operation (<span class="arithmatex">\(\leftarrow\)</span>) provides a convenient way to express complex queries.</p>
 <hr />
-<h5 id="division-operation">Division Operation<a class="headerlink" href="#division-operation" title="Permanent link">&para;</a></h5>
+<h4 id="division-operation">Division Operation<a class="headerlink" href="#division-operation" title="Permanent link">&para;</a></h4>
 <p>Given relations r(R) and s(S), such that <span class="arithmatex">\(S \subset R\)</span> , <span class="arithmatex">\(r \div s\)</span> is the largest relation t(R-S) such that <span class="arithmatex">\(t \times s \subseteq r\)</span>.</p>
 <p><span class="arithmatex">\(r \div s\)</span> can be written as:</p>
 <ul>
-<li>temp1 <span class="arithmatex">\(\leftarrow \pi_{R-S}(r)\)</span></li>
-<li>temp2 <span class="arithmatex">\(\leftarrow \pi_{R-S}((temp1 \times s) - \pi_{R-S,S}(r))\)</span></li>
+<li>temp1 <span class="arithmatex">\(\leftarrow \Pi_{R-S}(r)\)</span></li>
+<li>temp2 <span class="arithmatex">\(\leftarrow \Pi_{R-S}((temp1 \times s) - \Pi_{R-S,S}(r))\)</span></li>
 <li>result = temp1 - temp2</li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<p>let <span class="arithmatex">\(r(ID, course\_id) = \pi_{ID, course\_id}(takes)\)</span> and <span class="arithmatex">\(s(course\_id) = \pi_{course\_id}(\sigma_{dept\_name = "Biology"}(course))\)</span></p>
+<p>Suited to queries that include the phrase "for all".</p>
+<p>let <span class="arithmatex">\(r(ID, course\_id) = \Pi_{ID, course\_id}(takes)\)</span> and <span class="arithmatex">\(s(course\_id) = \Pi_{course\_id}(\sigma_{dept\_name = "Biology"}(course))\)</span></p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">图例</p>
+<details class="note">
+<summary>图例</summary>
 <p><a class="glightbox" href="../assets/2-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-14.png" /></a></p>
 <p><a class="glightbox" href="../assets/2-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-15.png" /></a></p>
-</div>
+</details>
 <hr />
-<h5 id="generalized-projection">Generalized Projection<a class="headerlink" href="#generalized-projection" title="Permanent link">&para;</a></h5>
+<h4 id="generalized-projection">Generalized Projection<a class="headerlink" href="#generalized-projection" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>增加表达能力</p>
@@ -2855,10 +3345,10 @@ constraint, and <span class="arithmatex">\(r_2\)</span> is called the referenced
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p>Given relation instructor(ID, name, dept_name, salary) where salary is annual salary, get the same information but with monthly salary.</p>
-<p><span class="arithmatex">\(\pi_{ID, name, dept_name, salary/12}(instructor)\)</span></p>
+<p><span class="arithmatex">\(\Pi_{ID, name, dept_name, salary/12}(instructor)\)</span></p>
 </div>
 <hr />
-<h5 id="aggregate-functions-and-operations">Aggregate Functions and Operations<a class="headerlink" href="#aggregate-functions-and-operations" title="Permanent link">&para;</a></h5>
+<h4 id="aggregate-functions-and-operations">Aggregate Functions and Operations<a class="headerlink" href="#aggregate-functions-and-operations" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>增加表达能力</p>
@@ -2879,15 +3369,14 @@ returns a single value as a result.</p>
 <p>E is any relational-algebra expression. <span class="arithmatex">\(G_1, G_2, \cdots, G_n\)</span> is a list of attributes on which to group (can be empty). </p>
 <p>Each <span class="arithmatex">\(F_i\)</span> is an aggregation function. </p>
 <p>Each <span class="arithmatex">\(A_i\)</span> is an attribute name.</p>
-<div class="admonition note">
-<p class="admonition-title">图例</p>
+<details class="note">
+<summary>图例</summary>
 <p><a class="glightbox" href="../assets/2-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-16.png" /></a></p>
 <p><a class="glightbox" href="../assets/2-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/2-17.png" /></a></p>
-</div>
+</details>
 <p>Result of aggregation does not have a name, so we can use rename operation to give it a name.</p>
-<p>For convenience, we permit renaming as part of aggregate 
-operation.</p>
-<p><span class="arithmatex">\(dept \_ name G_{avg(salary) \ as \ avg \_ sal(instructor)}\)</span></p>
+<p>For convenience, we permit renaming as part of aggregate operation.</p>
+<p><span class="arithmatex">\(_{dept \_ name \ G_{avg(salary)} \ as \ avg \_ sal(instructor)}\)</span></p>
 <hr />
 <h4 id="multiset-relational-algebra">Multiset Relational Algebra<a class="headerlink" href="#multiset-relational-algebra" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
@@ -2910,7 +3399,7 @@ operation.</p>
 <li><strong>difference</strong>: min(0,m-n) copies</li>
 </ul>
 <hr />
-<h5 id="sql-and-relational-algebra">SQL and Relational Algebra<a class="headerlink" href="#sql-and-relational-algebra" title="Permanent link">&para;</a></h5>
+<h2 id="sql-and-relational-algebra">SQL and Relational Algebra<a class="headerlink" href="#sql-and-relational-algebra" title="Permanent link">&para;</a></h2>
 <ol>
 <li></li>
 </ol>
@@ -2931,6 +3420,10 @@ operation.</p>
 </code></pre></div>
 <p>is equivalent to the following expression in multiset relational algebra</p>
 <div class="arithmatex">\[A1, A2, G_{sum(A3)}(\sigma_P(r1 \times r2 \times ... \times rm))\]</div>
+<details class="note">
+<summary>anlysis</summary>
+<p>乘起来的结果筛选一下，分组再统计。</p>
+</details>
 <hr />
 <ol start="3">
 <li></li>
@@ -2941,7 +3434,65 @@ operation.</p>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">A1</span><span class="p">,</span><span class="w"> </span><span class="n">A2</span>
 </code></pre></div>
 <p>is equivalent to the following expression in multiset relational algebra</p>
-<div class="arithmatex">\[\pi_{A1, sumA3}(_{A1, A2}G_{sum(A3) \ as \ sumA3}(\sigma_P(r1 \times r2 \times ... \times rm)))\]</div>
+<div class="arithmatex">\[\Pi_{A1, sumA3}(_{A1, A2}G_{sum(A3) \ as \ sumA3}(\sigma_P(r1 \times r2 \times ... \times rm)))\]</div>
+<details class="note">
+<summary>anlysis</summary>
+<p>是从 <code>r1, r2, …, rm</code> 这些表中选取数据，根据 <code>A1</code> 和 <code>A2</code> 列的值进行分组，并对每个分组中的 <code>A3</code> 列的值求和。最终的结果集将包含 <code>A1</code> 列和 <code>sum(A3)</code> 列。</p>
+</details>
+<hr />
+<h2 id="modification-of-the-database">Modification of the Database<a class="headerlink" href="#modification-of-the-database" title="Permanent link">&para;</a></h2>
+<p>The content of the database may be modified using the following  operations:</p>
+<ul>
+<li>Deletion</li>
+<li>Insertion</li>
+<li>Updating</li>
+</ul>
+<p>All these operations can be expressed using the assignment operator.</p>
+<h3 id="deletion">Deletion<a class="headerlink" href="#deletion" title="Permanent link">&para;</a></h3>
+<p>A delete request is expressed similarly to a query, except instead of displaying tuples to the user, the selected tuples are removed from the database. </p>
+<p>It can delete only whole tuples; cannot delete values on some  particular attributes.  </p>
+<p>A deletion is expressed in relational algebra by: </p>
+<div class="arithmatex">\[r \leftarrow r - E\]</div>
+<p>where r is a relation and E is a relational algebra query. </p>
+<details class="example">
+<summary>Example</summary>
+<ol>
+<li>Delete all account records in the Perryridge branch. </li>
+</ol>
+<p><span class="arithmatex">\(account \leftarrow account - \sigma_{branch-name = 'Perryridge'}(account)\)</span></p>
+<ol start="2">
+<li>Delete all loan records with amount in the range of 0 to 50. </li>
+</ol>
+<p><span class="arithmatex">\(loan \leftarrow loan - \sigma_{amount \ge 0 \ and \ amount \le 50}(loan)\)</span></p>
+</details>
+<hr />
+<h3 id="insertion">Insertion<a class="headerlink" href="#insertion" title="Permanent link">&para;</a></h3>
+<p>To insert data into a relation, we either: </p>
+<ul>
+<li>Specify a tuple to be inserted. </li>
+<li>Write a query whose result is a set of tuples to be inserted. </li>
+</ul>
+<p>In relational algebra, an insertion is expressed by: </p>
+<div class="arithmatex">\[r \leftarrow r \cup E\]</div>
+<p>where r is a relation and E is a relational algebra expression. </p>
+<p>The insertion of a single tuple is expressed by letting E be a constant relation containing one tuple. </p>
+<details class="example">
+<summary>Example</summary>
+<p>Insert information in the database specifying that Smith has $1200 in account A-973 at the Perryridge branch. </p>
+<div class="arithmatex">\[account \leftarrow account \cup \{('Perryridge', A-973, 1200)\}\]</div>
+<div class="arithmatex">\[depositor \leftarrow depositor \cup \{('Smith', A-973)\}\]</div>
+</details>
+<hr />
+<h3 id="update">Update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
+<p>A mechanism to change a value in a tuple without charging all  values in the tuple. </p>
+<p>Use the generalized projection operator to do this task</p>
+<div class="arithmatex">\[r \leftarrow \Pi_{F1, F2, \cdots, Fl}(r)\]</div>
+<p>where each <span class="arithmatex">\(F_i\)</span> is either the ith attribute of r, if the ith attribute is not updated, or, if the attribute is to be updated <span class="arithmatex">\(F_i\)</span> is an expression, involving only constants and the attributes of r, which gives the new value for the attribute. </p>
+<details class="example">
+<summary>Example</summary>
+<p>Make interest payments by increasing all balances by 5 percent. </p>
+<div class="arithmatex">\[account \leftarrow \Pi_{account-number,branch-name, balance * 1.05}(account)\]</div>
+</details>
 <hr />
 
 
@@ -2965,7 +3516,7 @@ operation.</p>
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年2月23日 15:20:04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年3月3日 09:31:33</span>
   </span>
 
     
@@ -3098,7 +3649,7 @@ operation.</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
