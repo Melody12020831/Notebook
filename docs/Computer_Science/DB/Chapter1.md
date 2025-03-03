@@ -3,7 +3,7 @@ statistics: True
 comments: true
 ---
 
-# Introduction
+# Chapter 1 | Introduction
 
 ??? Abstract "Table of Contents"
     - Purpose of Database Systems

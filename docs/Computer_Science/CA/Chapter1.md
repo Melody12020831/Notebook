@@ -3,7 +3,7 @@ statistics: True
 comments: true
 ---
 
-# Fundamentals of Computer Design
+# Ch1 | Fundamentals of Computer Design
 
 ## Classes of Computers
 

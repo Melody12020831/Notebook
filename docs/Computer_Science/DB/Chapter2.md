@@ -3,7 +3,7 @@ statistics: True
 comments: true
 ---
 
-# Introduction to the Relational Model
+# Chapter 2 | Introduction to the Relational Model
 
 The relational model’s independence from any specific underlying low-level data structures has allowed it to persist despite the advent of new approaches to data storage.
 
@@ -91,6 +91,8 @@ One of the candidate keys is selected to be the **primary key**(主键), which i
 
 It is customary to list the primary key attributes of a relation schema before the other attributes, like this: $classroom(\underline{building}, \underline{room\_number}, capacity)$
 
+---
+
 ### foreign key
 
 A foreign-key constraint from attribute(s) A of relation $r_1$ to the primary-key B of relation $r_2$ states that on any database instance, the value of A for each tuple in $r_1$ must also be the value of B for some tuple in $r_2$ . Attribute set A is called a foreign key from $r_1$ , referencing $r_2$ . The relation $r_1$ is also called the referencing relation of the foreign-key
@@ -124,6 +126,30 @@ Referential integrity (**参照完整性**) constraint requires that the values 
 !!! info
      Database systems today typically support **foreign-key constraints**, but they do not support referential integrity constraints where the referenced attribute is not a primary key.
 
+??? note "为什么要有 foreign-key"
+    From deepSeek.
+
+    外键（Foreign Key）是关系数据库设计中的一个重要概念，它用于建立和强制两个表之间的链接。外键的存在有以下几个关键原因：
+
+    1. **保持数据完整性**：
+    外键确保了一个表中的数据与另一个表中的数据保持一致。它防止了会导致表之间数据不一致的无效数据的插入。例如，如果你有一个订单表，每个订单都需要关联到一个存在的客户，外键可以确保你不能添加一个没有对应客户ID的订单。
+
+    2. **实现表与表之间的关联**：
+    外键允许数据库设计者将数据分散到不同的表中，同时保持这些数据之间的逻辑关联。这样，数据可以被组织成逻辑上一致且易于管理的单元，而不是将所有数据都存储在一个大表中。
+
+    3. **级联操作**：
+    外键可以定义级联更新和删除规则，这意味着当主键表中的数据更新或删除时，所有相关联的外键表中的数据也会自动更新或删除。这有助于维护数据的一致性和减少错误。
+
+    4. **查询和数据检索**：
+    外键使得跨表查询成为可能。通过连接（JOIN）操作，可以从多个相关表中检索出复杂的数据集。这对于数据分析和报告生成非常有用。
+
+    5. **规范化数据库设计**：
+    外键是数据库规范化过程中的一个关键要素。规范化是一组指导原则，旨在减少数据冗余，提高数据完整性。通过使用外键，可以将数据分解成多个相关的表，从而减少重复数据并简化数据结构。
+
+    6. **约束和验证**：
+    外键约束确保了数据库中的数据遵循预定义的规则。这为数据输入提供了一种验证机制，确保了数据的准确性和可靠性。
+
+
 ---
 
 ## schema diagram
@@ -137,7 +163,7 @@ Foreign-key constraints appear as arrows from the foreign-key attributes of the 
 双头箭头的线表示 Referential integrity。
 
 ??? note "my thoughts"
-    理解为箭头指向"来源"~和一般的箭头相反~
+    理解为箭头指向"来源"~ 和一般的箭头相反 ~
 
 ---
 
@@ -176,46 +202,46 @@ Six basic operators：
 
 ---
 
-##### The Select Operation
+#### The Select Operation
 
 Notation: $\sigma_{p}(r)$
 
 Defined as: $\sigma_{p}(r) = \{t \in r \ and \ p(t)\}$
 
-In general, we allow comparisons using $ = , \neq , < , > , \leq , \geq , and (\wedge) , or (\vee) , and \ not (\neg) $.
+In general, we allow comparisons using $= , \neq , < , > , \leq , \geq , and (\wedge) , or (\vee) , and \ not (\neg)$.
 
 !!! example
-    $\sigma_{\text{dept\_name} = "Physics" \wedge \text{salary} > 90000}(\text{instructor})$
+    $\sigma_{\text{dept_name} = "Physics" \wedge \text{salary} > 90000}(\text{instructor})$
 
-!!! note "图示"
+??? note "图示"
     select 也即从表中选择满足特定条件的行。
 
     ![img](./assets/2-5.png)
 
 ---
 
-##### The Project Operation
+#### The Project Operation
 
-Notation: $\pi_{A_1,A_2,\ldots,A_n}(r)$
+Notation: $\Pi_{A_1,A_2,\ldots,A_n}(r)$
 
-The basic version of the project operator $\pi_{L}(E)$ allows only attribute names to be present in the list L. A generalized version of the operator allows expressions involving attributes to appear in the list L.
+The basic version of the project operator $\Pi_{L}(E)$ allows only attribute names to be present in the list L. A generalized version of the operator allows expressions involving attributes to appear in the list L.
 
 !!! example
-    $\pi_{\text{ID,name,salary}}(\text{instructor})$
+    $\Pi_{\text{ID,name,salary}}(\text{instructor})$
 
-    $\pi_{\text{ID,name,salary / 12}}(\text{instructor})$
+    $\Pi_{\text{ID,name,salary / 12}}(\text{instructor})$
 
 !!! note "attention"
     Duplicate rows removed from result, since relations are sets.
 
-!!! note "图示"
+??? note "图示"
     从表中选择特定的列。
     
     ![img](./assets/2-3.png)
 
 ---
 
-##### The Union Operation
+#### The Union Operation
 
 Notation: $r \cup s$
 
@@ -226,12 +252,12 @@ Defined as: $r \cup s = \{t| t \in r \ or \ t \in s\}$
 
     2. The attribute domains must be compatible
 
-!!! note "图示"
+??? note "图示"
     ![img](./assets/2-6.png)
 
 ---
 
-##### The Set Difference Operation
+#### The Set Difference Operation
 
 Notation: $r - s$
 
@@ -244,37 +270,51 @@ Defined as: $r - s = \{t| t \in r \ and \ t \notin s\}$
 
     2. The attribute domains must be compatible.
 
-!!! note "图示"
+??? note "图示"
     ![img](./assets/2-7.png)
+
+??? Example
+    Find the largest account balance (i.e., self-comparison). 
+
+    $\Pi_{\text{balance}}(account) - \Pi_{\text{account.balance}}(\sigma_{\text{account.balance \le d.balance}}(account \times \rho_{d}(account)))$
 
 ---
 
-##### The Cartesian-Product Operation
+#### The Cartesian-Product Operation
 
 Notation: $r \times s$
 
-Defined as: $r \times s = \{t q | t \in r \ and \ q \in s\}$
+Defined as: $r \times s = \{t \ q | t \in r \ and \ q \in s\}$
 
 !!! note "attention"
     Assume that attributes of r(R) and s(S) are disjoint. (That is , $R \cap S = \emptyset$)
 
     If attributes of r(R) and s(S) are not disjoint, then  renaming must be used.
 
-!!! note "图示"
+??? note "图示"
     ![img](./assets/2-8.png)
+
+??? Example
+    1. Find the names of all customers who have a loan at the Perryridge branch. 
+
+    $\Pi_{customer\_name}(\sigma_{borrower.loan-number = loan.loan-number}(borrower \times (\sigma_{branch-name = 'Perryridge'}(loan))))$
+
+    2. Find the names of all customers who have loans at the Perryridge branch but do not have an account at any branch of the bank. 
+    
+    $\Pi_{customer-name}(\sigma_{borrower.loan-number = loan.loan-number}(borrower \times (\sigma_{branch-name = 'Perryridge'}(loan)))) - \Pi_{customer-name}(depositor)$
 
 ---
 
-##### The Composition of Operations
+#### The Composition of Operations
 
 Can build expressions using multiple operations.
 
-!!! note "图示"
+??? note "图示"
     ![img](./assets/2-4.png)
 
 ---
 
-##### The Rename Operation
+#### The Rename Operation
 
 Notation: $\rho_{x}(E)$
 
@@ -291,7 +331,7 @@ returns the result of expression E under the name X, and with the attributes ren
 
 ---
 
-#### Formal Definition
+### Formal Definition
 
 A basic expression in the relational algebra consists of either one of the following:
 
@@ -311,7 +351,7 @@ We define additional operations that do not add any power to the relational alge
 
 ---
 
-##### Set Intersection Operation
+#### Set Intersection Operation
 
 The set-intersection operation allows us to find tuples that are in both the input relations.
 
@@ -321,12 +361,12 @@ Defined as: $r \cap s = \{t | t \in r \land t \in s\}$
 
 Note: $r \cap s = r - (r - s)$
 
-!!! note "图例"
+??? note "图例"
     ![img](./assets/2-9.png)
 
 ---
 
-##### Natural Join Operation
+#### Natural Join Operation
 
 把公共属性相同的行连在一起。
 
@@ -337,26 +377,34 @@ If $t_r$ and $t_s$ have the same value on each of the attributes in $R \cap S$, 
 - $t$ has the same values as $t_r$ on r
 - $t$ has the same values as $t_s$ on s
 
-$r \bowtie$ s = \pi_{r.A, r.B, r.C, r.D, s.E}(\sigma_{r.B = s.B ^ r.D = s.D(r \times s)})
+$$r \bowtie s = \Pi_{r.A, r.B, r.C, r.D, s.E}(\sigma_{r.B = s.B ^ r.D = s.D(r \times s)})$$
 
 - associative
 
-$(instructor \bowtie  teaches) \bowtie  course$ is equivalent to $instructor \bowtie (teaches \bowtie course)$
+$$(instructor \bowtie  teaches) \bowtie  course$$ 
+
+is equivalent to 
+
+$$instructor \bowtie (teaches \bowtie course)$$
 
 - commutative
 
-$instructor \bowtie  teaches$ is equivalent to $teaches \bowtie instructor$
+$$instructor \bowtie  teaches$$ 
+
+is equivalent to 
+
+$$teaches \bowtie instructor$$
 
 The **theta join** operation $r \bowtie_{\theta} s$ is defined as:
 
 $$r \bowtie_{\theta} s = \sigma_{\theta}(r \times s)$$
 
-!!! note "图例"
+??? note "图例"
     ![img](./assets/2-10.png)
 
 ---
 
-##### Outer Join Operation
+#### Outer Join Operation
 
 An extension of the join operation that avoids loss of information.
 
@@ -364,9 +412,9 @@ Computes the join and then adds tuples form one relation that does not match tup
 
 Outer join can be expressed using basic operations
 
-- $r$ ⟕ $s$ = $(r \bowtie s) \cup (r - \pi_{R}(r \bowtie s) \times \{(null, \dots, null)\})$
-- $r$ ⟖ $s$ = $(r \bowtie s) \cup (\{(null, \dots, null)\} \times s - \pi_{S}(r \bowtie s))$
-- $r$ ⟗ $s$ = $(r \bowtie s) \cup (r - \pi_{R}(r \bowtie s) \times \{(null, \dots, null)\}) \cup (\{(null, \dots, null)\} \times s - \pi_{S}(r \bowtie s))$
+- $r$ ⟕ $s$ = $(r \bowtie s) \cup (r - \Pi_{R}(r \bowtie s) \times \{(null, \dots, null)\})$
+- $r$ ⟖ $s$ = $(r \bowtie s) \cup (\{(null, \dots, null)\} \times s - \Pi_{S}(r \bowtie s))$
+- $r$ ⟗ $s$ = $(r \bowtie s) \cup (r - \Pi_{R}(r \bowtie s) \times \{(null, \dots, null)\}) \cup (\{(null, \dots, null)\} \times s - \Pi_{S}(r \bowtie s))$
 
 - $\{ \}$ 表示构造一对临时的关系， 所以 $\{(null, \dots, null)\}$ 表示构造一对临时的关系，其中只有一对元组，且所有属性都是 null
 
@@ -377,61 +425,62 @@ Outer join can be expressed using basic operations
 
     - All comparisons involving null are (roughly speaking) false by definition.
 
-!!! note "图例"
+??? note "图例"
     ![img](./assets/2-11.png)
 
     ![img](./assets/2-12.png)
 
 ---
 
-##### Semijoin Operation
+#### Semijoin Operation
 
 Notation: $r ⋉_{\theta} s$
 
 Is a subset of r, in which every tuple $r_i$ matches at least one truple $s_i$ in s under the condition $\theta$.
 
-$r ⋉_{\theta} s = \pi_{R}(r \bowtie_{\theta} s)$
+$r ⋉_{\theta} s = \Pi_{R}(r \bowtie_{\theta} s)$
 
-The content of the database may be modified using the following  operations:
-
-- Deletion
-- Insertion
-- Updating
-
-All these operations can be expressed using the assignment  operator.
-
-!!! note "图例"
+??? note "图例"
     ![img](./assets/2-13.png)
+
+??? Example
+    Find all customers who have an account from at least the “Downtown” and the “Uptown” branches. 
+    
+    1. $\Pi_{customer-name}(\sigma_{branch-name = 'Downtown'}(depositor \bowtie account)) \cap \Pi_{customer-name}(\sigma_{branch-name = 'Uptown'}(depositor \bowtie account))$
+
+    2. $\Pi_{customer-name, branch-name}(depositor \bowtie account) \div \rho_{temp(branch-name)}(\{('Downtown', 'Uptown')\})$
 
 ---
 
-##### Assignment Operation
+#### Assignment Operation
 
 The assignment operation ($\leftarrow$) provides a convenient way to express complex queries.
 
 ---
 
-##### Division Operation
+#### Division Operation
 
 Given relations r(R) and s(S), such that $S \subset R$ , $r \div s$ is the largest relation t(R-S) such that $t \times s \subseteq r$.
 
 $r \div s$ can be written as:
 
-- temp1 $\leftarrow \pi_{R-S}(r)$
-- temp2 $\leftarrow \pi_{R-S}((temp1 \times s) - \pi_{R-S,S}(r))$
+- temp1 $\leftarrow \Pi_{R-S}(r)$
+- temp2 $\leftarrow \Pi_{R-S}((temp1 \times s) - \Pi_{R-S,S}(r))$
 - result = temp1 - temp2
 
 !!! Example
-    let $r(ID, course\_id) = \pi_{ID, course\_id}(takes)$ and $s(course\_id) = \pi_{course\_id}(\sigma_{dept\_name = "Biology"}(course))$
+    Suited to queries that include the phrase "for all".
+    
+    let $r(ID, course\_id) = \Pi_{ID, course\_id}(takes)$ and $s(course\_id) = \Pi_{course\_id}(\sigma_{dept\_name = "Biology"}(course))$
 
-!!! note "图例"
+??? note "图例"
     ![img](./assets/2-14.png)
 
     ![img](./assets/2-15.png)
 
 ---
 
-##### Generalized Projection
+#### Generalized Projection
 
 !!! note
     增加表达能力
@@ -441,11 +490,11 @@ Extends the projection operation by allowing arithmetic functions to be used in 
 !!! Example
     Given relation instructor(ID, name, dept_name, salary) where salary is annual salary, get the same information but with monthly salary.
 
-    $\pi_{ID, name, dept_name, salary/12}(instructor)$
+    $\Pi_{ID, name, dept_name, salary/12}(instructor)$
 
 ---
 
-##### Aggregate Functions and Operations
+#### Aggregate Functions and Operations
 
 !!! note
     增加表达能力
@@ -468,17 +517,16 @@ Each $F_i$ is an aggregation function.
 
 Each $A_i$ is an attribute name.
 
-!!! note "图例"
+??? note "图例"
     ![img](./assets/2-16.png)
 
     ![img](./assets/2-17.png)
 
 Result of aggregation does not have a name, so we can use rename operation to give it a name.
 
-For convenience, we permit renaming as part of aggregate 
-operation.
+For convenience, we permit renaming as part of aggregate operation.
 
-$dept \_ name G_{avg(salary) \ as \ avg \_ sal(instructor)}$
+$_{dept \_ name \ G_{avg(salary)} \ as \ avg \_ sal(instructor)}$
 
 ---
 
@@ -507,7 +555,7 @@ set operators
 
 ---
 
-##### SQL and Relational Algebra
+## SQL and Relational Algebra
 
 1. 
 
@@ -536,6 +584,9 @@ is equivalent to the following expression in multiset relational algebra
 
 $$A1, A2, G_{sum(A3)}(\sigma_P(r1 \times r2 \times ... \times rm))$$
 
+??? note "anlysis"
+    乘起来的结果筛选一下，分组再统计。
+
 ---
 
 3. 
@@ -549,6 +600,83 @@ group by A1, A2
 
 is equivalent to the following expression in multiset relational algebra
 
-$$\pi_{A1, sumA3}(_{A1, A2}G_{sum(A3) \ as \ sumA3}(\sigma_P(r1 \times r2 \times ... \times rm)))$$
+$$\Pi_{A1, sumA3}(_{A1, A2}G_{sum(A3) \ as \ sumA3}(\sigma_P(r1 \times r2 \times ... \times rm)))$$
+
+??? note "anlysis"
+    是从 `r1, r2, …, rm` 这些表中选取数据，根据 `A1` 和 `A2` 列的值进行分组，并对每个分组中的 `A3` 列的值求和。最终的结果集将包含 `A1` 列和 `sum(A3)` 列。
+
+---
+
+## Modification of the Database 
+
+The content of the database may be modified using the following  operations:
+
+- Deletion
+- Insertion
+- Updating
+
+All these operations can be expressed using the assignment operator.
+
+### Deletion
+
+A delete request is expressed similarly to a query, except instead of displaying tuples to the user, the selected tuples are removed from the database. 
+
+It can delete only whole tuples; cannot delete values on some  particular attributes.  
+
+A deletion is expressed in relational algebra by: 
+
+$$r \leftarrow r - E$$
+
+where r is a relation and E is a relational algebra query. 
+
+??? Example
+    1. Delete all account records in the Perryridge branch. 
+    
+    $account \leftarrow account - \sigma_{branch-name = 'Perryridge'}(account)$
+
+    2. Delete all loan records with amount in the range of 0 to 50. 
+
+    $loan \leftarrow loan - \sigma_{amount \ge 0 \ and \ amount \le 50}(loan)$
+
+---
+
+### Insertion
+
+To insert data into a relation, we either: 
+
+- Specify a tuple to be inserted. 
+- Write a query whose result is a set of tuples to be inserted. 
+
+In relational algebra, an insertion is expressed by: 
+
+$$r \leftarrow r \cup E$$
+
+where r is a relation and E is a relational algebra expression. 
+
+The insertion of a single tuple is expressed by letting E be a constant relation containing one tuple. 
+
+??? Example
+    Insert information in the database specifying that Smith has $1200 in account A-973 at the Perryridge branch. 
+    
+    $$account \leftarrow account \cup \{('Perryridge', A-973, 1200)\}$$
+
+    $$depositor \leftarrow depositor \cup \{('Smith', A-973)\}$$
+
+---
+
+### Update
+
+A mechanism to change a value in a tuple without charging all  values in the tuple. 
+
+Use the generalized projection operator to do this task
+
+$$r \leftarrow \Pi_{F1, F2, \cdots, Fl}(r)$$
+
+where each $F_i$ is either the ith attribute of r, if the ith attribute is not updated, or, if the attribute is to be updated $F_i$ is an expression, involving only constants and the attributes of r, which gives the new value for the attribute. 
+
+??? Example
+    Make interest payments by increasing all balances by 5 percent. 
+    
+    $$account \leftarrow \Pi_{account-number,branch-name, balance * 1.05}(account)$$
 
 ---

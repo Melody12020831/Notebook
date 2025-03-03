@@ -3,7 +3,7 @@ statistics: True
 comments: true
 ---
 
-# introduction
+# Chapter 1 | introduction
 
 ## The first CPP program
 
