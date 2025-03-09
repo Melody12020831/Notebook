@@ -23,6 +23,9 @@ A summary of the five mainstream computing classes and their system characterist
 
 物联网(Intermet of Things，loT)指的是通常以无线方式连接到互联网的嵌入式计算机。
 
+!!! note
+    DeepSeek 的参数量是 671 B.
+
 ---
 
 ### personal mobile device (PMD)
@@ -200,6 +203,20 @@ TDP既不是峰值功耗(峰值功耗通常要高1.5倍)，也不是在给定计
 
 每个晶体管所需要的功耗 $\text{功耗}_{\text{动态}} \propto \frac{1}{2} \times \text{容性负载} \times \text{电压}^2 \times \text{开关频率}$
 
+???+ question
+    Some microprocessors today are designed to have adjustable voltage, so a 15% reduction in voltage may result in a 15% reduction in frequency. What would be the impact on dynamic energy and on dynamic power?
+
+??? note "answer"
+    Because the capacitance is unchanged, the answer for energy is the ratio of the voltages
+
+    $$\frac{Energy_{\text{new}}}{Energy_{\text{old}}} = \frac{(Voltage \times 0.85)^2}{Voltage^2} = 0.85^2 = 0.72$$
+
+    which reduces energy to about 72% of the original. For power, we add the ratio of the frequencies
+
+    $$\frac{Power_{\text{new}}}{Power_{\text{old}}} = 0.72 \times \frac{(Frequency \ switched \times 0.85)}{Frequency \ switched} = 0.61$$
+
+    shrinking power to about 61% of the original.
+
 ---
 
 现代微处理器提供了许多技术，试图在时钟频率和电源电压保持不变的情况下，提高能效。
@@ -246,6 +263,32 @@ $$\text{晶片成本} = \frac{\text{晶圆成本}}{\text{每个晶圆上的晶�
 
 $$\text{每个晶圆上的晶片数} = \frac{\pi \times (\frac{\text{晶圆直径}}{2})^2}{\text{晶片面积}} - \frac{\pi \times \text{晶片直径}}{\sqrt{2 \times \text{晶片面积}}}$$
 
+???+ question
+    Find the number of dies per 300 mm (30 cm) wafer for a die that is 1.5 cm on a side and for a die that is 1.0 cm on a side.
+
+??? note "answer"
+    When die area is 2.25 $cm^2$ :
+
+    $$Dies \ per \ wafer = \frac{\pi \times (\frac{30}{2})^2}{2.25} - \frac{\pi \times 30}{\sqrt{2 \times 2.25}} = 270$$
+
+    Because the area of the larger die is 2.25 times bigger, there are roughly 2.25 as many smaller dies per wafer:
+
+    $$Dies \ per \ wafer = \frac{\pi \times (\frac{30}{2})^2}{1.00} - \frac{\pi \times 30}{\sqrt{2 \times 1.00}} = 640$$
+
+???+ question
+    Find the die yield for dies that are 1.5 cm on a side and 1.0 cm on a side, assuming a defect density of 0.047 per $cm^2$ and N is 12.
+
+??? note "answer"
+    The total die areas are 2.25 and 1.00 $cm^2$ . For the larger die, the yield is
+
+    $$Die \ yield = 1/(1 + 0.047 \times 2.25)^{12} \times 270 = 120$$
+
+    For the smaller die, the yield is
+
+    $$Die \ yield = 1/(1 + 0.047 \times 1.00)^{12} \times 640 = 444$$
+
+    The bottom line is the number of good dies per wafer. Less than half of all the large dies are good, but nearly 70% of the small dies are good.
+
 ---
 
 ## Dependability
@@ -259,6 +302,48 @@ $$\text{每个晶圆上的晶片数} = \frac{\pi \times (\frac{\text{晶圆直�
 
 - MTTF：平均无故障时间 (mean time to failure)是一种可靠性度量，其倒数即故障率。
 - 模块可用性 = $\frac{MTTF}{MTTF + MTTR}$
+
+???+ question
+    Assume a disk subsystem with the following components and MTTF:
+
+    - 10 disks, each rated at 1,000,000-hour MTTF
+
+    - 1 ATA controller, 500,000-hour MTTF
+
+    - 1 power supply, 200,000-hour MTTF
+
+    - 1 fan, 200,000-hour MTTF
+
+    - 1 ATA cable, 1,000,000-hour MTTF
+
+    Using the simplifying assumptions that the lifetimes are exponentially distributed and that failures are independent, compute the MTTF of the system as a whole.
+
+??? note "answer"
+    The sum of the failure rates is
+
+    $$Failure \ rate_{\text{system}} = 10 \times \frac{1}{1,000,000} + \frac{1}{500,000} + \frac{1}{200,000} + \frac{1}{200,000} + \frac{1}{1,000,000} = \frac{23,000}{1,000,000,000 \ hours}$$
+
+    or 23,000 FIT. The MTTF for the system is just the inverse of the failure rate
+
+    $$MTTF_{\text{system}} = \frac{1}{Failure \ rate_{\text{system}}} = 43,500 \ hours$$
+
+    or just under 5 years.
+
+???+ question
+    Disk subsystems often have redundant power supplies to improve dependability. Using the preceding components and MTTFs, calculate the reliability of redundant power supplies. Assume that one power supply is sufficient to run the disk subsystem and that we are adding one redundant power supply.
+
+??? note "answer"
+    We need a formula to show what to expect when we can tolerate a failure and still provide service. To simplify the calculations, we assume that the lifetimes of the components are exponentially distributed and that there is no dependency between the component failures. MTTF for our redundant power supplies is the mean time until one power supply fails divided by the chance that the other will fail before the first one is replaced. Thus, if the chance of a second failure before repair is small, then the MTTF of the pair is large.
+
+    Since we have two power supplies and independent failures, the mean time until one supply fails is $MTTF_{\text{power supply}} / 2$. A good approximation of the probability of a second failure is MTTR over the mean time until the other power supply fails. Therefore a reasonable approximation for a redundant pair of power supplies is
+
+    $$MTTF_{\text{power supply pair}} = \frac{MTTF_{\text{power supply}}/2}{\frac{MTTR_{\text{power supply}}}{MTTF_{\text{power supply}}}} = \frac{MTTF^2_{\text{power supply}}/2}{MTTR_{\text{power supply}}} = \frac{MTTF^2_{\text{power supply}}}{2 \times MTTR_{\text{power supply}}}$$
+
+    Using the preceding MTTF numbers, if we assume it takes on average 24 hours for a human operator to notice that a power supply has failed and to replace it, the reliability of the fault tolerant pair of power supplies is
+
+    $$MTTF_{\text{power supply pair}} = \frac{MTTF^2_{\text{power supply}}}{2 \times MTTR_{\text{power supply}}} = \frac{200,000^2}{2 \times 24} \approx 830,000,000$$
+
+    making the pair about 4150 times more reliable than a single power supply.
 
 ---
 
@@ -311,6 +396,12 @@ $$n = \frac{SPECRatio_A}{SPECRatio_B} = \frac{Performance_A}{Performance_B}$$
 
 $$Geometric \ mean = (\prod\limits_{i=1}^{n}sample_i)^{\frac{1}{n}}$$
 
+???+ question
+    Show that the ratio of the geometric means is equal to the geometric mean of the performance ratios and that the reference computer of SPECRatio does not matter.
+
+??? note "answer"
+    ![img](./assets/1-2.png)
+
 ---
 
 ## Quantitative Principles of Computer Design (⭐)
@@ -341,9 +432,63 @@ $$Geometric \ mean = (\prod\limits_{i=1}^{n}sample_i)^{\frac{1}{n}}$$
 
 $$Speedup = \frac{Performance for entire task using the enhancement when possible}{Performance for entire task without using the enhancement}$$
 
+???+ question
+    Suppose that we want to enhance the processor used for web serving. The new processor is 10 times faster on computation in the web serving application than the old processor. Assuming that the original processor is busy with computation 40% of the time and is waiting for I/O 60% of the time, what is the overall speedup gained by incorporating the enhancement?
+
+??? note "answer"
+    $Fraction_{enhanced} = 0.4;$
+
+    $Speedup_{enhanced} = 10;$
+
+    $Speedup_{overall} = \frac{1}{0.6 + \frac{0.4}{10}} = \frac{1}{0.64} \approx 1.56$
+
+???+ question
+    A common transformation required in graphics processors is square root. Implementations of floating-point (FP) square root vary significantly in performance, especially among processors designed for graphics. Suppose FP square root (FSQRT) is responsible for 20% of the execution time of a critical graphics benchmark. One proposal is to enhance the FSQRT hardware and speed up this operation by a factor of 10. The other alternative is just to try to make all FP instructions in the graphics processor run faster by a factor of 1.6; FP instructions are responsible for half of the execution time for the application. The design team believes that they can make all FP instructions run 1.6 times faster with the same effort as required for the fast square root. Compare these two design alternatives.
+
+??? note "answer"
+    We can compare these two alternatives by comparing the speedups:
+
+    $Speedup_{FSQRT} = \frac{1}{(1-0.2) + \frac{0.2}{10}} = \frac{1}{0.82} \approx 1.22$
+
+    $Speedup_{FP} = \frac{1}{(1-0.5) + \frac{0.5}{1.6}} = \frac{1}{0.8125} \approx 1.23$
+
+    Improving the performance of the FP operations overall is slightly better because of the higher frequency.
+
+???+ question
+    The calculation of the failure rates of the disk subsystem was
+
+    $$Failure \ rate_{system} = 10 \times \frac{1}{1,000,000} + \frac{1}{500,000} + \frac{1}{200,000} + \frac{1}{200,000} + \frac{1,000,000} = \frac{23}{1,000,000 \hour}$$
+
+    Therefore the fraction of the failure rate that could be improved is 5 per million hours out of 23 for the whole system, or 0.22.
+
+??? note "answer"
+    The reliability improvement would be
+
+    $$Improvement_{power \ supply \ pair} = \frac{1}{(1-0.22) + \frac{0.22}{4150}} = \frac{1}{0.78} = 1.28$$
+
+    Despite an impressive 4150 $\times$ improvement in reliability of one module, from the system’s perspective, the change has a measurable but small benefit.
+
 5. 处理器性能公式
 
 详见[CO](https://melody12020831.github.io/Notebook/Computer_Science/CO/Chapter%201/#cpi-and-cycle-times)
+
+???+ question
+    Suppose we made the following measurements:
+
+    Frequency of FP operations = 25%
+    
+    Average CPI of FP operations = 4.0
+    
+    Average CPI of other instructions = 1.33
+    
+    Frequency of FSQRT = 2%
+    
+    CPI of FSQRT = 20
+    
+    Assume that the two design alternatives are to decrease the CPI of FSQRT to 2 or to decrease the average CPI of all FP operations to 2.5. Compare these two design alternatives using the processor performance equation.
+
+??? note "answer"
+    ![img](./assets/1-3.png)
 
 ---
 

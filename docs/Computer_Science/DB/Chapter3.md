@@ -60,8 +60,7 @@ date, time functions:
 
     interval ‘1’ day
 
-    Subtracting a date/time/timestamp value from another gives 
-an interval value.
+    Subtracting a date/time/timestamp value from another gives an interval value.
 
 ---
 
@@ -69,13 +68,11 @@ an interval value.
 
 An SQL relation is defined using the create table command : 
 
-```sql
-create table $r(A_1 \ D_1, A_2 \ D_2, \cdots , A_n \ D_n,(integrity-constraint_1),\cdots,(integrity-constraint_k))
-```
+create table $r(A_1 \ D_1, A_2 \ D_2, \cdots , A_n \ D_n,(integrity-constraint_1),\cdots,(integrity-constraint_k))$
 
 - `r` is the name of the relation
-- each `A_i` is an attribute name in the schema of relation r
-- `D_i` is the data type of values in the domain of attribute $A_i$
+- each $A_i$ is an attribute name in the schema of relation r
+- $D_i$ is the data type of values in the domain of attribute $A_i$
 
 ??? Example
     ```sql
@@ -768,7 +765,7 @@ Yet another way of specifying the query "Find all courses taught in both the Fal
     ```sql
     select course_id
     from section as S
-    where semester = ’Fall’ and year= 2009 and 
+    where semester = 'Fall' and year = 2009 and 
         exists (select *
             from section as T
             where semester = 'Spring' and year= 2010 
@@ -908,6 +905,16 @@ where dept_name in (select dept_name
                     where building = 'Watson');
 ```
 
+**Example**: Delete all instructors whose salary is less than the average salary of instructors.
+
+??? Example "answer"
+    ```sql
+    delete from instructor
+    where salary< (select avg (salary) from instructor);
+    ```
+
+    先算 `avg` 再删除，否则删除后 `avg` 就变了。
+
 ---
 
 ### Insertion
@@ -919,7 +926,7 @@ insert into course
     values ('CS-437', 'Database Systems', 'Comp. Sci.', 4);
 ```
 
-- or equivalently
+- or equivalently. 这条可以用于忘记了列的顺序的时候，只要列名和值对应即可。
 
 ```sql
 insert into course (course_id, title, dept_name, credits)
