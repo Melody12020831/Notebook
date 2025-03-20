@@ -33,7 +33,7 @@ comments: true
 
     b. 
     
-    $60\% \times 20\% \times \text{最大功率} + 40% \times 90\% \times \text{最大功率} = 48\%$。
+    $60\% \times 20\% \times \text{最大功率} + 40\% \times 90\% \times \text{最大功率} = 48\%$。
 
     节省的功率为 $90\% \times \text{最大功率} - 48\% \times \text{最大功率} = 42\% \times \text{最大功率}$。
 
@@ -86,7 +86,7 @@ comments: true
 
     如果设每次损失成本为 $X$ 而这一整套系统寿命为 $Y$ 那么每年可以减少维修 $\frac{365}{11.67} - \frac{365}{23.33} = 15.63$ 次。
 
-    那么只要 $X \times Y \times 15.63 $ > 1000000 美元，也即 $X \times Y > 639795$ 美元，那么这个决策就是值得的。
+    那么只要 $X \times Y \times 15.63$ > 1000000 美元，也即 $X \times Y > 639795$ 美元，那么这个决策就是值得的。
 
 ---
 
