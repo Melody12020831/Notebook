@@ -181,3 +181,67 @@ std::sqrt(real * real + imag * imag)
 ``` 
 
 ---
+
+## 002.5
+
+### Question 1
+
+How to create a dynamic array of 20 pointers to integers using the new operator in C++?
+
+A. `int *arr = new int *[20];`
+
+B. `int *arr = new int [20];`
+
+C. `int **arr = new int *[20];`
+
+D. Impossible
+
+### Answer
+
+正确答案是：
+
+**C. `int **arr = new int *[20];`**
+
+解释：
+
+- 要创建一个包含 20 个指向整数的指针的动态数组，你需要分配一个指针数组（`int*`），而不是一个整数数组（`int`）。
+- `int **arr` 是一个指向指针的指针，适合用来存储一个指向整数指针数组的地址。
+- `new int *[20]` 分配了一个包含 20 个指向整数的指针的数组。
+
+---
+
+### Question 2
+
+Which of the following is TRUE about `new` when compared with `malloc`?
+
+1. `new` is an operator, while `malloc` is a function.
+2. `new` calls an appropriate constructor for object allocation, while `malloc` doesn't.
+3. `new` returns a pointer with the appropriate type, while `malloc` only returns a `void *` pointer that needs to be typecasted to the appropriate type.
+
+A. 1 and 2
+
+B. 2 and 3
+
+C. 1 and 3
+
+D. All 1, 2 and 3
+
+### Answer
+
+正确答案是：
+
+**D. All 1, 2 and 3**
+
+解释：
+
+1. **`new` 是运算符，而 `malloc` 是函数。**  
+
+   - 在 C++ 中，`new` 是一个关键字，用于动态分配内存，而 `malloc` 是 C 标准库中的一个函数。
+
+2. **`new` 会调用适当的构造函数来分配对象，而 `malloc` 不会。**  
+
+   - 当使用 `new` 分配对象时，它会自动调用对象的构造函数。而 `malloc` 只是分配一块内存，不会调用构造函数。
+
+3. **`new` 返回一个适当类型的指针，而 `malloc` 只返回一个 `void *` 指针，需要强制转换为适当类型。** 
+ 
+   - `new` 直接返回与分配类型匹配的指针（例如 `int*`、`MyClass*` 等），而 `malloc` 返回的是 `void*`，需要手动进行类型转换。

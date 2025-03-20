@@ -16,7 +16,7 @@ The major advantages of the relational model are its straightforward data repres
 !!! note "术语"
     1. relation $\leftarrow$ table
     
-    关系被用来指代表
+    关系被用来指代表，由于关系是元组的集合(set)，所以元组在关系中出现的顺序是无关紧要的。
 
     2. tuple $\leftarrow$ row  
     
@@ -116,6 +116,8 @@ constraint, and $r_2$ is called the referenced relation.
 
 Referential integrity (**参照完整性**) constraint requires that the values appearing in specified attribute(s) A of any tuples in the referencing relation $r_1$ also appear in specified attribute(s) B of at least one tuple in the referenced relation $r_2$.
 
+参照完整性约束要求引用关系中的任意元组在指定属性上出现的取值也必然出现在被引用关系中至少一个元组的指定属性上。
+
 ??? note "my thoughts"
     我的理解是此时 $r_2$ 中的多个 attribute 构成 primary key，那么 $r_1$ 中的任意 tuple 在指定 schema 上出现的取值在 $r_2$ 中可能不止一个。
     
@@ -158,9 +160,12 @@ Referential integrity (**参照完整性**) constraint requires that the values 
 
 Primary-key attributes are shown underlined. 
 
+主码属性用下划线标注。
+
 Foreign-key constraints appear as arrows from the foreign-key attributes of the referencing relation to the primary key of the referenced relation.
 
-双头箭头的线表示 Referential integrity。
+- 外码约束用从引用关系的外码属性指向被引用关系的主码属性的箭头来表示。
+- 我们使用双头箭头来表示不是外码约束的引用完整性约束。
 
 ??? note "my thoughts"
     理解为箭头指向"来源"~ 和一般的箭头相反 ~
@@ -195,10 +200,16 @@ Six basic operators：
 
 !!! info "anttenion"
     It is worth recalling at this point that since a relation is a set of tuples, relations cannot contain duplicate tuples. 
+
+    在这一点上值得回顾的是，由于关系是一组元组，因此关系不能包含重复的元组。
     
     In practice, however, tables in database systems are permitted to contain duplicates unless a specific constraint prohibits it. 
+
+    但是，在实践中，数据库系统中的表允许包含重复项，除非有特定的约束禁止它。
     
     But, in discussing the formal relational algebra, we require that duplicates be eliminated, as is required by the mathematical definition of a set.
+
+    但是，在讨论形式化的关系代数时，我们要求消除重复，而这是一个集合的数学定义所要求的。在第三章中，我们讨论如何将关系代数扩展到多集，这是可以包含重复的集合。
 
 ---
 
@@ -273,10 +284,12 @@ Defined as: $r - s = \{t| t \in r \ and \ t \notin s\}$
 ??? note "图示"
     ![img](./assets/2-7.png)
 
+- **一个很常用的思想**: 要找到最大的，就先找到所有小的，然后从全集里减去。要找最小的同理。
+
 ??? Example
     Find the largest account balance (i.e., self-comparison). 
 
-    $\Pi_{\text{balance}}(account) - \Pi_{\text{account.balance}}(\sigma_{\text{account.balance \le d.balance}}(account \times \rho_{d}(account)))$
+    $\Pi_{\text{balance}}(account) - \Pi_{\text{account.balance}}(\sigma_{\text{account.balance} \le \text{d.balance}}(account \times \rho_{d}(account)))$
 
 ---
 
@@ -526,7 +539,7 @@ Result of aggregation does not have a name, so we can use rename operation to gi
 
 For convenience, we permit renaming as part of aggregate operation.
 
-$_{dept \_ name \ G_{avg(salary)} \ as \ avg \_ sal(instructor)}$
+$_{dept \_ name} \ G_{avg(salary)} \ as \ avg \_ sal(instructor)$
 
 ---
 
@@ -547,7 +560,7 @@ Multiset relational algebra defined as follows:
 - **projection**: one tuple per input tuple, even if it is a duplicate
 - **cross product**: If there are m copies of t1 in r, and n copies of t2 in s, there are m x n copies of t1.t2 in $r \times s$
 
-set operators
+**set operators :**
 
 - **union**: m + n copies
 - **intersection**: min(m, n) copies
@@ -617,6 +630,8 @@ The content of the database may be modified using the following  operations:
 
 All these operations can be expressed using the assignment operator.
 
+---
+
 ### Deletion
 
 A delete request is expressed similarly to a query, except instead of displaying tuples to the user, the selected tuples are removed from the database. 
@@ -677,6 +692,6 @@ where each $F_i$ is either the ith attribute of r, if the ith attribute is not u
 ??? Example
     Make interest payments by increasing all balances by 5 percent. 
     
-    $$account \leftarrow \Pi_{account-number,branch-name, balance * 1.05}(account)$$
+    $$account \leftarrow \Pi_{account\_number,branch\_name, balance * 1.05}(account)$$
 
 ---

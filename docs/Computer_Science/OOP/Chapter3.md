@@ -574,3 +574,16 @@ int main(){
     - less-than operator, `operator<()`
 
 ---
+
+## Further reading
+
+<div class="card file-block" markdown="1">
+<div class="file-icon"><img src="/Notebook/assets/images/pdf.svg" style="height: 3em;"></div>
+<div class="file-body">
+<div class="file-title"> introducing-the-stl </div>
+<div class="file-meta"> 93 KB / 2025-03-03</div>
+</div>
+<a class="down-button" target="_blank" href="/Notebook/Computer_Science/OOP/Further_reading/[Further Readings] introducing-the-stl.pdf" markdown="1">:fontawesome-solid-download: 下载</a>
+</div>
+
+---

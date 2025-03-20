@@ -237,3 +237,16 @@ int main(){
     - 注意：正则表达式默认区分大小写，因此大写元音不会被匹配。
 
 ---
+
+## Further reading
+
+<div class="card file-block" markdown="1">
+<div class="file-icon"><img src="/Notebook/assets/images/pdf.svg" style="height: 3em;"></div>
+<div class="file-body">
+<div class="file-title"> A_Tour_of_C++__CH08 </div>
+<div class="file-meta"> 124 KB / 2025-02-17</div>
+</div>
+<a class="down-button" target="_blank" href="/Notebook/Computer_Science/OOP/Further_reading/[Further Readings] A_Tour_of_C++__CH08.pdf" markdown="1">:fontawesome-solid-download: 下载</a>
+</div>
+
+---

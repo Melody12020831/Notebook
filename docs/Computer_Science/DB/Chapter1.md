@@ -61,7 +61,7 @@ Database systems are used to manage collections of data that:
 
 **Method 1:**
 
-Access database by using interactive tools (e.g., Query Analyzer of SQL Server, Sql*Plus and Work Sheet of ORACLE, etc.) provided by DBMS. 
+Access database by using interactive tools (e.g., Query Analyzer of SQL Server, Sql Plus and Work Sheet of ORACLE, etc.) provided by DBMS. 
 
 **Method 2:**
 
@@ -97,7 +97,7 @@ Broadly speaking, there are two modes in which databases are used.
 
 - Concurrent access and robustness (i.e., recovery). 
 
-    If data are to be shared among several users, the system must provideconcurrency control mechanisms to avoid possible anomalous results.
+    If data are to be shared among several users, the system must provide concurrency control mechanisms to avoid possible anomalous results.
 
 ---
 
@@ -166,15 +166,26 @@ Underlying the structure of a database is the data model: a collection of concep
 
 - 实体-联系模型(**entity-relationship model**)
 
-- 半结构化数据模型(XML)(**semi-structured data model**)
+    实体-联系数据模型使用称作实体的基本对象的集合，以及这些对象间的联系。实体是现实世界中可区别于其他对象的一件"事情"或一个"物体"。实体-联系模型被广泛用于数据库设计。
+
+- 半结构化数据模型(**semi-structured data model**)
+
+    半结构化数据模型允许在其数据定义中某些相同类型的数据项含有不同的属性集。这和前面讲到的数据模型形成了对比:在那些数据模型中特定类型的每一个数据项都必须有相同的属性集。`JSON`和可扩展标记语言(extensible MarkupLanguage，**XML**)被广泛地用来表示半结构化数据。
 
 - 基于对象的数据模型(**object-based data model**)
     - Object-oriented (面向对象数据模型)
     - Object-relational (对象-关系模型模型)
 
+    面向对象的程序设计(特别是 Java C++或C#)已经成为占主导地位的软件开发方法。这在最初的时候导致了一个独特的面向对象数据模型的发展，但是现在对象的概念已经被很好地整合到关系数据库中。已经有了把对象存放到关系表中的规范。过程可以被存放在数据库系统中，并由数据库系统来执行它们。这可以看成对关系模型进行扩展，增加了封装、方法和对象标识等概念。
+
 - Other older models:
     - Network model (网状模型)
+
+    网状模型是一种数据库模型，它允许记录之间存在多对多的关系。网状模型中的记录可以有多个父记录和多个子记录，形成一个复杂的网状结构。
+
     - Hierarchical model (层次模型)
+
+    层次模型是一种数据库模型，它使用树形结构来表示数据之间的关系。每个记录有一个父记录和多个子记录，形成一个层次结构。
 
 ---
 
@@ -184,9 +195,11 @@ For the system to be usable, it must retrieve data efficiently. The need for eff
 
 - <div id = 'Physicallevel'> 物理层 (physical level)。</div> 
     最低层次的抽象，描述数据实际上是怎样存储的。物理层详细描述复杂的底层数据结构。
+
 - 逻辑层(logical level)。
 
     比物理层层次稍高的抽象，描述数据库中存储什么数据以及这些数据间存在什么联系。这样逻辑层就通过少量相对简单的结构描述了整个数据库。虽然逻辑层的简单结构的实现可能涉及复杂的物理层结构，但逻辑层的用户不必意识到这样的复杂性。这称作物理数据独立性(physical data independence)。数据库管理员使用抽象的逻辑层，他必须确定数据库中应该保存哪些信息。
+
 - 视图层(view level)。
 
     最高层次的抽象，它只描述整个数据库的某个部分。尽管在逻辑层使用了相对简单的结构，但由于一个大型数据库中所存信息的多样性，仍存在一定程度的复杂性。数据库系统的很多用户并不需要所有的这些信息，而只需要访问数据库的一部分。视图层抽象的存在正是为了使这些用户与系统的交互更简单系统可以为同一数据库提供多个视图。
@@ -203,11 +216,11 @@ For the system to be usable, it must retrieve data efficiently. The need for eff
     end 
     ```
 
-    在物理层，一个 instructor 记录可能被描述为包含连续的字节的块。编译器对程序设计人员屏蔽了这一层的细节。与此类似，数据库系统对数据库程序设计人员屏蔽了许多最底层的存储细节。而数据库管理员可能了解数据物理组织的某些细节。例如，有许多种将表存储到文件中的可能的方法。一种方法是，将表存储为文件中的一系列记录，用一个特殊的字符(例如逗号)来区分开记录中不同的属性，用另一个特殊的字符(例如换行符)来区分开不同的记录。如果所有的属性都是固定长度的，那么可以另外存储属性的长度，而文件中的区分符就可以不用了。可变长度属性可以用先存储长度、后面紧跟数据的办法来解决。数据库使用一种称作索引的数据结构来支持对记录的高效检索;这些也是物理层的构成成分。
+    在物理层，一个 instructor 记录可能被描述为**包含连续的字节的块**。编译器对程序设计人员屏蔽了这一层的细节。与此类似，数据库系统对数据库程序设计人员**屏蔽了许多最底层的存储细节**。而数据库管理员可能了解数据物理组织的某些细节。例如，有许多种将表存储到文件中的可能的方法。一种方法是，将表存储为文件中的一系列记录，用一个特殊的字符(例如逗号)来区分开记录中不同的属性，用另一个特殊的字符(例如换行符)来区分开不同的记录。如果所有的属性都是固定长度的，那么可以另外存储属性的长度，而文件中的区分符就可以不用了。可变长度属性可以用先存储长度、后面紧跟数据的办法来解决。数据库使用一种称作索引的数据结构来支持对记录的高效检索;这些也是物理层的构成成分。
 
-    在逻辑层，每个这样的记录通过类型定义进行描述，正如前面的代码段所示。在逻辑层上同时还要定义这些记录类型之间的相互关系;这样的相互关系的一个示例是，instructor 记录的 dept name 值必须出现在 department 表中。程序设计人员正是在这个抽象层次上使用某种程序设计语言进行工作。与此类似，数据库管理员通常也是在这个抽象层次上工作。
+    在逻辑层，每个这样的记录通过类型定义进行描述，正如前面的代码段所示。在逻辑层上同时还要定义这些记录类型之间的相互关系;这样的相互关系的一个示例是，instructor 记录的 dept_name 值必须出现在 department 表中。程序设计人员正是在这个抽象层次上使用某种程序设计语言进行工作。与此类似，数据库管理员通常也是在这个抽象层次上工作。
     
-    最后，在视图层，计算机用户看见的是对其屏蔽了数据类型细节的一组应用程序。在视图层上定义了数据库的多个视图，数据库用户看到的是某些或所有视图。除了屏蔽数据库的逻辑层细节以外，视图还提供了防止用户访问数据库的某些部分的安全性机制。例如，大学注册办公室的职员只能看见数据库中关于学生的那部分信息，而不能访问涉及教师工资的信息。
+    最后，在视图层，计算机用户看见的是对其屏蔽了数据类型细节的**一组应用程序**。在视图层上定义了数据库的多个视图，数据库用户看到的是某些或所有视图。除了屏蔽数据库的逻辑层细节以外，视图还提供了防止用户访问数据库的某些部分的安全性机制。例如，大学注册办公室的职员只能看见数据库中关于学生的那部分信息，而不能访问涉及教师工资的信息。
 
 ---
 
@@ -217,6 +230,7 @@ For the system to be usable, it must retrieve data efficiently. The need for eff
 
 !!! note
     instance: be like variable
+    
     schema: be like type
 
 - physical schema: 在物理层描述数据库的设计
@@ -228,6 +242,7 @@ For the system to be usable, it must retrieve data efficiently. The need for eff
 Physical data independence – the ability to modify the physical schema without changing the logical schema. 
 
 Logical data independence – protect application programs from changes in logical structure of data. 
+    
     Logical data independence is hard to achieve as the application programs are heavily dependent on the logical structure of data. 
 
 ---
@@ -237,19 +252,26 @@ Logical data independence – protect application programs from changes in logic
 Data Definition Language (**DDL**): Specification notation for defining the database schema. 
 
 用于定义数据库架构的规范表示法。
-Specifies a database scheme as a set of definitions of relational schema. 
-Also specifies storage structure, access methods, and consistency constraints. 
+
+Specifies a database scheme as a set of definitions of relational schema.  Also specifies storage structure, access methods, and consistency constraints.
+
 DDL statements are compiled, resulting in a set of tables stored in a special file called data dictionary. 
 
 ---
 
-Data dictionary contains metadata (i.e., the data about data) about 
+数据库系统仅实现可以以最小代价测试的完整性约束。
 
-- Database schema 
-- Integrity constraints 
-    - Primary Key 
-    - Referential integrity
-- Authorization 
+- 域约束(domain constraint)。
+
+    每个属性都必须对应于一个所有可能的取值构成的域(例如，整数型、字符型、日期/时间型)。声明一个属性属于某个具体的域就相当于约束它可以取的值。域约束是完整性约束的最基本形式。每当有新数据项插入数据库中，系统就能方便地进行域约束检测。
+
+- 引用完整性(referential integrity)。
+
+    常常有这样的情况，我们希望能确保一个关系中给定属性集上的取值也在另一关系的某一属性集的取值中出现(引用完整性)。例如每门课程所列出的系必须是大学中实际存在的系。更准确地说，一个 course 记录中的 dept_name 值必须出现在 department 关系中的某个记录的 dept_name 属性中。数据库的修改有可能会导致引用完整性的破坏。当引用完整性约束被违反时，通常的处理是拒绝执行导致完整性被破坏的操作。
+
+- 授权(authorization)。
+
+    我们也许想对用户加以区别，对于不同的用户在数据库中的不同数据值上允许不同的访问类型。这些区别以授权来表达，最常见的是:读权限(read authorization)，允许读取数据，但不能修改数据;插入权限(insert authorization)，允许插入新数据，但不允许修改已有数据;更新权限(update authorization)，允许修改但不能删除数据;删除权限(delete authorization)，允许删除数据。我们可以赋予用户所有或者部分这些权限，也可以不赋予用户任何这些权限。
 
 DDL的输出放在数据字典(data dictionary)中，数据字典包含元数据(metadata)，元数据是关于数据的数据。可以把数据字典看作一种特殊的表，这种表只能由数据库系统本身(不是常规的用户)来访问和修改。
 

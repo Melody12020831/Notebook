@@ -864,3 +864,330 @@ comments: true
     ```
 
 ---
+
+## 第四次作业
+
+### 4.7
+
+???+ question
+    Consider the employee database of Figure 4.12. Give an SQL DDL definition of this database.
+    
+    Identify referential-integrity constraints that should hold, and include them in the DDL definition.
+
+    **Figure 4.12** Employee database.
+
+    employee ($\underline{ID}$, person_name, street, city)
+
+    works ($\underline{ID}$, company_name, salary)
+
+    company ($\underline{company\_name}$, city)
+
+    manages ($\underline{ID}$, manager_id)
+
+??? note "my"
+    ```sql
+    CREATE TABLE employee(
+        ID int,
+        person_name char(20),
+        street char(20),
+        city char(20),
+        primary key (ID)
+    );
+
+    CREATE TABLE company(
+        company_name char(20),
+        city char(20),
+        primary key (company_name)
+    );
+
+    CREATE TABLE works(
+        ID int,
+        company_name char(20),
+        salary int,
+        primary key (ID),
+        foreign key (ID) references employee(ID),
+        foreign key (company_name) references company(company_name)
+    );
+
+    CREATE TABLE manages(
+        ID int,
+        manager_id int,
+        primary key (ID),
+        foreign key (ID) references employee(ID),
+        foreign key (manager_id) references employee(ID)
+    );
+    ```
+
+??? note "answer"
+    ```sql
+    CREATE TABLE employee ( 
+        id INTEGER,
+        person_name VARCHAR(50),
+        street VARCHAR(50),
+        city VARCHAR(50),
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE company ( 
+        company_name VARCHAR(50),
+        city VARCHAR(50),
+        PRIMARY KEY(company_name)
+    );
+
+    CREATE TABLE works (
+        id INTEGER,
+        company_name VARCHAR(50),
+        salary numeric(10,2),
+        PRIMARY KEY(id),
+        FOREIGN KEY (id) REFERENCES employee(id),
+        FOREIGN KEY (company_name) REFERENCES company(company_name)
+    );
+
+    CREATE TABLE manages ( 
+        id INTEGER,
+        manager_id INTEGER, 
+        PRIMARY KEY (id), 
+        FOREIGN KEY (id) REFERENCES employee (id), 
+        FOREIGN KEY (manager_id) REFERENCES employee (id)
+    );
+    ```
+
+
+??? note "about DDL(https://zhuanlan.zhihu.com/p/391552199)"
+    SQL程序语言有四种类型，对数据库的基本操作都属于这四类，它们分别为；数据定义语言(DDL)、数据查询语言（DQL）、数据操纵语言（DML）、数据控制语言（DCL）。
+
+    1. DDL 全称是 Data Definition Language，即数据定义语言。
+
+    数据定义语言是由 SQL 语言集中负责数据结构定义与数据库对象定义的语言，并且由 `CREATE` 、`ALTER` 、`DROP` 和 `TRUNCATE` 四个语法组成。
+
+    2. DML 全称是 Data Manipulation Language，即数据操纵语言。
+    
+    主要由 `insert`、`update`、`delete`语法组成。
+
+    3. DQL 全称是 Data Query Language，即数据查询语言。
+
+    主要由 `select` 语法组成。
+
+    4. DCL 全称是 Data Control Language，即数据控制语言。
+
+    主要由 `grant`、`revoke`、`show grants`语法组成。
+
+---
+
+### 4.9
+
+???+ question
+    SQL allows a foreign-key dependency to refer to the same relation, as in the following example:
+
+    ```sql
+    create table manager
+        (employee_ID char(20),
+        manager_ID char(20),
+        primary key employee_ID,
+        foreign key (manager_ID) references manager(employee_ID) on delete cascade);
+    ```
+
+    Here, *employee_ID* is a key to the table manager, meaning that each employee has at most one manager. The foreign-key clause requires that every manager also be an employee. Explain exactly what happens when a tuple in the relation *manager* is deleted.
+
+??? note "my"
+    When a tuple in the relation *manager* is deleted, the corresponding tuple of this manager in the manager, which means that the tuples of employees under this manager will also be deleted. And the same thing happens for the employees under the deleted employees that are deleted in the previous deletion. The deletion will reach end when all the employees under the manager are deleted.
+
+??? note "answer"
+    The tuples of all employees of the manager, at all levels, get deleted as well! This happens in a series of steps. The inital deletion will trigger deletion of all the tuples corresponding to direct employees of the manager. These deletions will in turn cause deletions of second-level employee tuples, and so on, till all direct and indirect employee tuples are deleted.
+
+---
+
+### 4.12
+
+???+ question
+    Suppose a user wants to grant **select** access on a relation to another user. Why should the user include (or not include) the clause **granted by current role** in the **grant** statement?
+
+??? note "my"
+    包含`granted by current role` 时是明确权限的授予者是当前会话激活的角色，而不是用户自身，此时后续权限的撤销或修改将基于角色的权限链。此时可确保权限与角色绑定。当角色被撤销时，其授予的权限才会自动失效。而不包含时权限的授予者被记录为执行命令的用户本身，权限链直接依赖用户，与角色无关，更适合在临时调试或一次性访问时使用。
+
+    When `granted by current role` is included, it indicates that the granting authority is the current session-activated role rather than the user themselves. At this point, the subsequent revocation or modification of permissions will be based on the permission chain of the role. This ensures that permissions are bound to the role. When the role is revoked, the permissions granted by it will automatically become invalid. When it is not included, the granting authority is recorded as the user who executed the command, and the permission chain directly depends on the user and is unrelated to the role. This is more suitable for temporary debugging or one-time access.
+
+??? note "answer"
+    Both cases give the same authorization at the time the statement is executed, but the long-term effects differ. If the grant is done based on the role, then the grant remains in effect even if the user who performed the grant leaves and that user's account is terminated. Whether that is a good or bad idea depends on the specific situation, but usually granting through a role is more consistent with a well-run enterprise.
+
+---
+
+### 5.6
+
+???+ question
+    Consider the bank database of Figure 5.21. Let us define a view branch_cust as follows:
+
+    ```sql
+    create view branch_cust as
+    select branch_name, customer_name
+    from depositor, account
+    where depositor.account_number = account.account_number;
+    ```
+
+    Suppose that the view is materialized; that is, the view is computed and stored. Write triggers to maintain the view, that is, to keep it up-to-date on insertions to depositor or account. It is not necessary to handle deletions or updates. Note that, for simplicity, we have not required the elimination of duplicates.
+
+    **Figure 5.21** Banking database
+
+    branch ($\underline{branch\_name}$, branch_city, assets)
+
+    customer ($\underline{customer\_name}$, customer_street, cust omer_city)
+
+    loan ($\underline{loan\_number}$, branch name, amount)
+
+    borrower ($\underline{customer\_name}$, $\underline{loan\_number}$)
+
+    account ($\underline{account\_number}$, branch_name, balance)
+
+    depositor ($\underline{customer\_name}$, $\underline{account\_number}$)
+
+??? note "my"
+    ```sql
+    CREATE TRIGGER depositor_trigger AFTER INSERT ON depositor
+    referencing new row as nrow
+
+    FOR each ROW
+    BEGIN
+        INSERT INTO branch_cust
+            SELECT branch_name, nrow.customer_name
+            FROM account
+            WHERE account.account_number = nrow.account_number;
+    END
+
+    CREATE TRIGGER account_trigger AFTER INSERT ON account
+    referencing new row as nrow
+
+    FOR each ROW
+    BEGIN
+        INSERT INTO branch_cust
+            SELECT nrow.branch_name, customer_name
+            FROM depositor
+            WHERE depositor.account_number = nrow.account_number
+    END
+    ```
+
+??? note "answer"
+    ```sql
+    CREATE TRIGGER insert_into_branch_cust_via_depositor
+    AFTER INSERT ON depositor
+    REFERENCING NEW ROW AS inserted
+    FOR EACH ROW
+    INSERT INTO branch_cust
+        SELECT branch_name, inserted.customer_name
+        FROM account
+        WHERE inserted.account_number = account.account_number;
+
+    CREATE TRIGGER insert_into_branch_cust_via_account
+    AFTER INSERT ON account
+    REFERENCING NEW ROW AS inserted
+    FOR EACH STATEMENT
+    INSERT INTO branch_cust
+        SELECT inserted.branch_name, customer_name
+        FROM depositor
+        WHERE depositor.account_number = inserted.account_number;
+    ```
+
+???+ question
+    如果改成 "require the elimination of duplicates" 呢？
+
+??? note "answer"
+    ```sql
+    CREATE TRIGGER depositor_insert_trigger
+    AFTER INSERT ON depositor
+    FOR EACH ROW
+    BEGIN
+        -- 插入前检查 (branch_name, customer_name) 是否已存在
+        INSERT INTO branch_cust (branch_name, customer_name)
+        SELECT a.branch_name, NEW.customer_name
+        FROM account a
+        WHERE a.account_number = NEW.account_number
+        AND NOT EXISTS (
+            SELECT 1
+            FROM branch_cust bc
+            WHERE bc.branch_name = a.branch_name
+                AND bc.customer_name = NEW.customer_name
+        );
+    END;
+
+    CREATE TRIGGER account_insert_trigger
+    AFTER INSERT ON account
+    FOR EACH ROW
+    BEGIN
+        -- 插入前检查 (branch_name, customer_name) 是否已存在
+        INSERT INTO branch_cust (branch_name, customer_name)
+        SELECT NEW.branch_name, d.customer_name
+        FROM depositor d
+        WHERE d.account_number = NEW.account_number
+        AND NOT EXISTS (
+            SELECT 1
+            FROM branch_cust bc
+            WHERE bc.branch_name = NEW.branch_name
+                AND bc.customer_name = d.customer_name
+        );
+    END;
+    ```
+
+---
+
+### 5.15
+
+???+ question
+    Consider an employee database with two relations:
+
+    employee ($\underline{employee\_name}$, street, city)
+
+    works ($\underline{employee\_name}$, company_name, salary)
+
+    where the primary keys are underlined. Write a function avg_salary that takes a company_name as an argument and finds the average salary of employees at that company. Then, write an SQL statement, using that function, to find companies whose employees earn a higher salary, on average, than the average salary at "First Bank".
+
+??? note "my"
+    ```sql
+    CREATE function avg_salary(name varchar(20))
+    RETURNS double
+
+    BEGIN
+        declare salary_avg double;
+        SELECT AVG(salary) INTO salary_avg
+        FROM works
+        WHERE works.company_name = name;
+        RETURN salary_avg;
+    END
+
+    SELECT DISTINCT company_name
+    FROM works
+    WHERE avg_salary(works.company_name) > avg_salary('First Bank');
+    ```
+
+??? note "answer"
+    ```sql
+    -- The following defines the sql function avg_salary.
+    -- Takes a company name as an argument and finds the average salary of
+    -- employees at that company.
+    CREATE FUNCTION avg_salary(company_name VARCHAR(20))
+        RETURNS REAL
+        BEGIN
+        DECLARE retval REAL;
+            SELECT AVG(salary)
+            FROM works
+            WHERE works.company_name = company_name;
+        RETURN retval;
+        END;
+
+    SELECT DISTINCT company_name
+    FROM works
+    WHERE avg_salary(company_name) > avg_salary('First Bank');
+    ```
+
+---
+
+### 5.19
+
+???+ question
+    Suppose there are two relations r and s, such that the foreign key B of r references the primary key A of s. Describe how the trigger mechanism can be used to implement the **on delete cascade** option when a tuple is deleted from s.
+
+??? note "my"
+    When there is a row that is deleted from s, then the trigger can be used to delete all the r in B where r.B = deleted_row.A.
+
+??? note "answer"
+    When any row is deleted from from the relation s the trigger mechanism is supposed to take the following action: delete all rows from the relation r that reference the deleted row from the relation s.
+
+---

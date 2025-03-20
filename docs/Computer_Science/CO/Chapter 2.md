@@ -368,6 +368,14 @@ RISC-V指令中存在`load upper immediate`(取立即数高位，`lui`)，用于
 
 ---
 
+## Instruction formats of RISC-V
+
+![img](./organized_notes.assets/1.png)
+
+![img](./organized_notes.assets/2.png)
+
+---
+
 ## 原子交换
 
 在计算中，同步机制通常由用户级的软件例程所构建，而这依赖于硬件提供的同步指令。在本节中，我们将重点介绍加锁(lock)和解锁(unlock)同步操作的实现。加锁和解锁可直接用于创建只有单个处理器可以操作的区域，称为互斥(mutual exclusion)区，以及实现更复杂的同步机制。
