@@ -165,6 +165,8 @@ nav:
       - Computer_Science/DB/Chapter2.md
       - Computer_Science/DB/Chapter3.md
       - Computer_Science/DB/Chapter4.md
+      - Computer_Science/DB/Chapter5.md
+      - Computer_Science/DB/Chapter6.md
       - Computer_Science/DB/homework.md
       - Computer_Science/DB/sql.md
     - "OOP":
@@ -181,6 +183,7 @@ nav:
       - Computer_Science/CA/index.md
       - Computer_Science/CA/Chapter1.md
       - Computer_Science/CA/Chapter2.md
+      - Computer_Science/CA/homework.md
     - "编程语言":
       - Computer_Science/Programming_Language/python.md
     - "Tools":
