@@ -464,7 +464,7 @@ struct Student{
     ~Student(){
         cout << "Student::~Student(): id = " << id << endl;
     }
-}
+};
 
 Student *ps1 = (Student*)malloc(sizeof(Student));
 cout << "ps1->id = " << ps1->id << endl;
@@ -530,7 +530,7 @@ struct A {
     A() {cout << "A()" << endl; }
     ~A() {cout << "~A()" << endl;}
     int i;
-}
+};
 
 int main(int argc, char ** argv){
     int size = 0;

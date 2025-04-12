@@ -639,7 +639,7 @@ class X {
     int i;
 public:
     X(); // constructor
-}
+};
 
 void f(){
     X a; // a.X() is called

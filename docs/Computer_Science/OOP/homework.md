@@ -245,3 +245,212 @@ D. All 1, 2 and 3
 3. **`new` 返回一个适当类型的指针，而 `malloc` 只返回一个 `void *` 指针，需要强制转换为适当类型。** 
  
    - `new` 直接返回与分配类型匹配的指针（例如 `int*`、`MyClass*` 等），而 `malloc` 返回的是 `void*`，需要手动进行类型转换。
+
+---
+
+## 003.5
+
+### Question 3
+
+Please show the output of the following program.
+
+```cpp
+#include <iostream>
+
+struct X {
+    X() {
+        std::cout << "X::X()" << std::endl;
+    }
+    ~X() {
+        std::cout << "X::~X()" << std::endl;
+    }
+};
+
+struct Y {
+    Y() {
+        std::cout << "Y::Y()" << std::endl;
+    }
+    ~Y() {
+        std::cout << "Y::~Y()" << std::endl;
+    }
+};
+
+struct Parent {
+    Parent() {
+        std::cout << "Parent::Parent()" << std::endl;
+    }
+    ~Parent() {
+        std::cout << "Parent::~Parent()" << std::endl;
+    }
+    X x;
+};
+
+struct Child : public Parent {
+    Child() {
+        std::cout << "Child::Child()" << std::endl;
+    }
+    ~Child() {
+        std::cout << "Child::~Child()" << std::endl;
+    }
+    Y y;
+};
+
+int main() {
+    Child c;
+}
+```
+
+### Answer
+
+```cpp
+Line 1: X::X()
+Line 2: Parent::Parent()
+Line 3: Y::Y()
+Line 4: Child::Child()
+Line 5: Child::~Child()
+Line 6: Y::~Y()
+Line 7: Parent::~Parent()
+Line 8: X::~X()
+```
+
+解释:
+
+**构造顺序**（从内到外，自下而上）
+
+1. 基类的成员构造,`Parent` 是基类，其成员变量 `X x` 会优先构造，调用 `X::X()`。
+2. 基类构造函数,基类 `Parent` 的构造函数体 `Parent::Parent()` 执行。
+3. 派生类的成员构造, `Child` 是派生类，其成员变量 `Y y` 随后构造，调用 `Y::Y()`。
+4. 派生类构造函数, 最后执行派生类 `Child` 的构造函数体 `Child::Child()`。
+
+**析构顺序**（与构造顺序完全相反，从外到内，自上而下）。
+
+**核心原理**：
+
+确保派生类构造时基类已完整初始化，析构时派生类资源先释放，避免依赖基类已销毁的资源。
+
+---
+
+## 004.5
+
+### Question
+
+Please show the output of the following program.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class A
+{
+public:
+  A(int i) : mi(i) {}
+  A(const A& rhs) : mi(rhs.mi)
+  {
+    cout << "A::A(&)" << endl;
+  }
+  A& operator=(const A&rhs)
+  {
+    mi = rhs.mi;
+    cout << "A::operator=()" << endl;
+    return *this;
+  }
+  virtual void f()
+  {
+    cout << "A::f(), " << mi << endl;
+  }
+protected:
+  int mi;
+};
+
+class B : public A
+{
+public:
+  B(int i, int j) : A(i), mj(j) {}
+  void f() override
+  {
+    cout << "B::f(), " << mi << ", " << mj << endl;
+  }
+private:
+  int mj;
+};
+
+int main()
+{
+  A a1(1);
+  B b(3,4);
+
+  A& ra = b;
+  ra.f();
+  ra = a1;
+  ra.f();
+
+  A a2 = b;
+  a2.f();
+}
+```
+
+### Answer
+
+```cpp
+B::f(), 3, 4
+A::operator=()
+B::f(), 1, 4
+A::A(&)
+A::f(), 1
+```
+
+程序的输出结果如下：
+
+```
+B::f(), 3, 4
+A::operator=()
+B::f(), 1, 4
+A::A(&)
+A::f(), 1
+```
+
+1. **`ra.f()` 第一次调用：**
+   - `ra` 是 `A` 的引用，但指向 `B` 类对象 `b`。
+   - 由于 `f()` 是虚函数，触发多态，调用 `B::f()`。
+   - 输出：`B::f(), 3, 4`（`mi=3` 继承自 `A`，`mj=4` 是 `B` 的成员）。
+
+2. **`ra = a1` 赋值操作：**
+   - `ra` 实际指向 `b` 的 `A` 部分。
+   - 调用 `A` 的赋值运算符，将 `a1` 的 `mi=1` 赋值给 `b` 的 `A` 部分。
+   - 输出：`A::operator=()`。
+
+3. **`ra.f()` 第二次调用：**
+   - `ra` 仍指向 `b`（实际类型是 `B`），虚函数调用仍为 `B::f()`。
+   - 此时 `b` 的 `mi` 已被修改为 1，`mj` 保持 4。
+   - 输出：`B::f(), 1, 4`。
+
+4. **`A a2 = b` 对象初始化：**
+   - 用 `B` 类对象 `b` 初始化 `A` 类对象 `a2`，发生对象切片。
+   - 调用 `A` 的拷贝构造函数（只复制 `B` 部分的 `mi=1`）。
+   - 输出：`A::A(&)`。
+
+5. **`a2.f()` 调用：**
+   - `a2` 是纯 `A` 类对象，调用 `A::f()`。
+   - 输出：`A::f(), 1`（`mi=1` 来自拷贝构造）。
+
+
+**重载赋值运算符**
+
+```cpp
+A& operator=(const A& rhs)
+```
+
+- **作用**：重载赋值运算符 `=`，用于将一个 `A` 类对象的值赋给另一个 `A` 类对象。
+- **参数**：
+  - `const A& rhs`：一个常量引用，表示赋值操作右侧（Right-Hand Side）的对象。
+- **返回值**：
+  - 返回当前对象的引用（`A&`），支持链式赋值（如 `a = b = c`）。
+
+```cpp
+{
+  mi = rhs.mi;          // 将右侧对象的 mi 赋值给当前对象的 mi
+  cout << "A::operator=()" << endl; // 输出提示信息
+  return *this;         // 返回当前对象的引用
+}
+```
+---

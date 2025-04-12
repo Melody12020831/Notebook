@@ -142,6 +142,12 @@ iterator erase( iterator pos );
 iterator erase( iterator first, iterator last );
 ```
 
+- 移除位于 `pos` 的元素。
+- 移除范围 `[first, last)` 中的元素。
+- 返回值是最后移除元素之后的迭代器。
+    - 如果 `pos` 指代末元素，那么返回 `end()` 迭代器。
+    - 如果在移除前 `last == end()`，那么返回更新的 `end()` 迭代器。如果范围 `[first, last)` 为空，那么返回 `last`。
+
 ---
 
 4. `push_back` 追加给定元素 `value` 到容器尾。

@@ -167,6 +167,7 @@ nav:
       - Computer_Science/DB/Chapter4.md
       - Computer_Science/DB/Chapter5.md
       - Computer_Science/DB/Chapter6.md
+      - Computer_Science/DB/Chapter7.md
       - Computer_Science/DB/homework.md
       - Computer_Science/DB/sql.md
     - "OOP":
@@ -176,6 +177,9 @@ nav:
       - Computer_Science/OOP/Chapter3.md
       - Computer_Science/OOP/Chapter4.md
       - Computer_Science/OOP/Chapter5.md
+      - Computer_Science/OOP/Chapter6.md
+      - Computer_Science/OOP/Chapter7.md
+      - Computer_Science/OOP/Chapter8.md
       - Computer_Science/OOP/homework.md
       - Computer_Science/OOP/test_from_wk.md
       - Computer_Science/OOP/105_STL_Algorithmsin_Less_Than_an_Hour.md
@@ -185,7 +189,8 @@ nav:
       - Computer_Science/CA/Chapter2.md
       - Computer_Science/CA/homework.md
     - "编程语言":
-      - Computer_Science/Programming_Language/python.md
+      - Computer_Science/Programming_Language/python/CS50P_python.md
+      - Computer_Science/Programming_Language/python/python100days.md
     - "Tools":
       - Computer_Science/Tools/Git.md
       - Computer_Science/Tools/reveal-md.md
@@ -221,3 +226,4 @@ nav:
   - Misccelleanous:
     - Miscellaneous/index.md
     - Miscellaneous/prompt/prompt.md
+    - Miscellaneous/mermaid.md

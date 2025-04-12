@@ -130,7 +130,7 @@ precision).
 
 5. 操作指令
 
--  data transfer
+- data transfer
 - arithmetic logical
 - control (discussed next)
 - floating point

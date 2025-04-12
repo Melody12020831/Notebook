@@ -250,3 +250,35 @@ int main(){
 </div>
 
 ---
+
+### Formatting
+
+The iostream library provides a large set of operations for controlling the format of input and output. The simplest formatting controls are called manipulators.
+
+- For example, we can output integers as decimal (the default), octal, or hexadecimal numbers:
+
+```cpp
+cout << 1234 << ',' << hex << 1234 << ',' << oct << 1234 << '\n';
+
+// 1234,4d2,2322
+```
+
+- We can explicitly set the output format for floating-point numbers:
+
+```cpp
+constexpr double d = 123.456;
+
+cout << d << "; " // use the default for mat for d
+    << scientific << d << "; " // use 1.123e2 style for mat for d
+    << hexfloat << d << "; " // use hexadecimal notation for d
+    << fixed << d << "; " // use 123.456 style for mat for f
+    << defaultfloat << d << '\n'; // use the default for mat for d
+```
+
+- This produces:
+
+```cpp
+123.456; 1.234560e+002; 0x1.edd2f2p+6; 123.456000; 123.456
+```
+
+---

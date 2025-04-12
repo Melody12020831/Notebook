@@ -74,6 +74,8 @@ void selection_sort(int arr[], int n){
 }
 ```
 
+---
+
 ## about `int&` 
 
 - 关于 `swap(int& a, int& b)` 函数 :
@@ -231,7 +233,7 @@ struct Student{
     // bool operator < (const Student& s){
     //    return id < s.id;
     // }
-}
+};
 
 bool operator < (const Student& s1, const Student& s2){
     return s1.id < s2.id;
@@ -356,7 +358,7 @@ public:
     void calc_perimeter(){
         perimeter = 2 * (w + h);
     }
-}
+};
 
 #include <cmath>
 
@@ -372,7 +374,7 @@ public:
     void calc_perimeter(){
         perimeter = a + b + c;
     }
-}
+};
 
 const double PI = 3.14;
 
@@ -387,7 +389,7 @@ public:
     void calc_perimeter(){
         perimeter = 2 * PI * r;
     }
-}
+};
 
 int main(){
     Rectangle arr[] = {Rectangle(2,3), Rectangle(5,5)};
@@ -436,7 +438,7 @@ public:
     virtual void calc_perimeter() = 0;
     virtual std::string name() = 0;
     friend ostream& operator<<(ostream& , const Shape&);
-}
+};
 
 class Circle: public Shape{
 private:
@@ -454,7 +456,7 @@ public:
     void name() const override{
         return "Circle";
     }
-}
+};
 
 std::ostream& operator<<(std::ostream& os, const Shape& s){
     return out << "(" << s.name << ":" << s.area << ", " << s.perimeter << ")";
