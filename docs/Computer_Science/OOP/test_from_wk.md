@@ -694,3 +694,199 @@ comments: true
     **D.** 这是**错误**的。委托构造函数和目标构造函数的访问修饰符（public, private, protected）取决于类的设计需求，并没有强制的规定。一个公有的构造函数可以委托给另一个公有的或私有的构造函数。
 
 ---
+
+## W8 课前小测
+
+???+ question
+    What does the concept of 'composition' in object-oriented programming refer to?
+
+    A. It refers to the relationship where one class inherits from another.
+
+    B. It refers to the relationship where one class "has-a" instance of another class as a member variable.
+
+    C. It refers to the process of modularizing code into separate files.
+
+??? note "answer"
+    B. It refers to the relationship where one class "has-a" instance of another class as a member variable.
+
+---
+
+???+ question
+    Which statement best describes the difference between 'fully' and 'by reference' inclusion in composition?
+
+    A. 'Fully' means the object is part of the parent object, while 'by reference' means it exists elsewhere and isreferenced.
+
+    B. 'Fully' indicates the object is destroyed manually, whereas 'by reference' means automatic destruction.
+
+    C. 'Fully' and 'by reference' both imply that constructors are called automatically.
+
+    D. 'By reference' means the object is embedded within theparent okject, while 'fully‘ implies referencing anexternal object.
+
+??? note "answer"
+    A. 'Fully' means the object is part of the parent object, while 'by reference' means it exists elsewhere and isreferenced.
+
+---
+
+???+ question
+    What happens if you do not provide arguments for embedded objects in the constructor initialization list?
+
+    A. The default constructor for the embedded object will be called automatically if it exists.
+
+    B. The program will throw a runtime error.
+
+    C. The embedded object will remain uninitialized until explicitly assigned.
+
+    D. The destructor for the embedded object will be called instead.
+
+??? note "answer"
+    A. The default constructor for the embedded object will be called automatically if it exists.
+
+---
+
+???+ question
+    Why might embedded objects typically be declared private in a class?
+
+    A. To allow full access to their public interface from outside the class.
+
+    B. Because they are considered part of the underlying implementation details.
+
+    C. To ensure that the constructors and destructors are called automatically.
+
+    D. Private objects cannot be initialized or destroyed automatically.
+
+??? note "answer"
+    B. Because they are considered part of the underlying implementation details.
+
+---
+
+???+ question
+    How does an initializer list differ from assignment inside a constructor's body?
+
+    A. Initializer lists perform assignments after the constructor has been called.
+
+    B.Initializer lists initialize members before the constructor body executes.
+
+    C. Assignment inside the constructor's body initializes const members.
+
+    D. There is no difference; both perform the same function.
+
+??? note "answer"
+    B. Initializer lists initialize members before the constructor body executes.
+
+---
+
+## W9 课前小测
+
+???+ question
+    What does inheritance in Object-Oriented Programming allow a class to do?
+
+    A. It allows a class to define its behavior as a superset of another class.
+
+    B. It allows a class to completely replace another class's behavior.
+
+    C. It allows a class to only reuse private data from another class.
+
+    D. It allows a class to hide all member functions from another class
+
+??? note "answer"
+    A. It allows a class to define its behavior as a superset of another class.
+
+---
+
+???+ question
+    What advantage does using inheritance provide when designing classes like CD and DVD?
+
+    A. It avoids code duplication and makes maintenance easier.
+
+    B. It increases the amount of code needed for each new class.
+
+    C. It prevents any changes to the superclass once subclasses are created.
+
+    D. It ensures that subclasses cannot add their own attributes.
+
+??? note "answer"
+    A. It avoids code duplication and makes maintenance easier.
+
+---
+
+???+ question
+    Which of the following statements about member access in C++ inheritance is correct?
+
+    A. Private member variables of the base class are not accessible directly in the derived class but are still present within it.
+
+    B. Private member variables of the base class are fully accessible in the derived class.
+
+    C. Protected members of the base class are not accessible in the derived class.
+
+    D. Static members of the base class lose their class-wide property in the derived class.
+
+??? note "answer"
+    A. Private member variables of the base class are not accessible directly in the derived class but are still present within it.
+
+---
+
+???+ question
+    What does the term 'ls-A' relationship refer to in the context of inheritance?
+
+    A. It refers to the relationship where one class inherits from another, indicating a subtype relationship.
+
+    B. It describes a situation where two classes share the same interface but have no connection.
+
+    C. It indicates that two classes are completely unrelated.
+
+    D. It means that one class can be composed of multiple instances of another class.
+
+??? note "answer"
+    A. It refers to the relationship where one class inherits from another, indicating a subtype relationship.
+
+---
+
+## W10 课前小测
+
+???+ question
+    What does subtyping allow in object-oriented programming?
+
+    A. It allows objects of subclasses to be used where objecis of supertypes are required.
+
+    B. It restricts objects of subclasses from being used where objects of supertypes are required.
+
+    C. It prevents any conversion between different types of objects.
+
+    D. It forces all subclasses to redefine their parent class methods.
+
+??? note "answer"
+    A. It allows objects of subclasses to be used where objects of supertypes are required.
+
+---
+
+???+ question
+    Which statement best describes upcasting in the context of polymorphism?
+
+    A. Upcasting involves converting a base class reference or pointer to a derived class reference or pointer.
+
+    B. Upcasting is the act of converting from a derived class reference or pointer to a base class reference orpointer.
+
+    C. Upcasting refers to the process of slicing off the extra features of a subclass when assigning it to a superclass variable.
+
+    D. Upcasting is the dynamic binding of functions runtime.
+
+??? note "answer"
+    B. Upcasting is the act of converting from a derived class reference or pointer to a base class reference orpointer.
+
+---
+
+???+ question
+    What happens when an overridden function calls its base class version using `Base::func()` inside `Derived::func()`?
+
+    A. It creates a compile-time error because you cannot call the base class function from a derived class
+
+    B. It calls the base class version of the function, allowing reuse of existing functionality.
+
+    C. It overrides the base class function completely, making the base class version inaccessible.
+
+    D. It causes a runtime exception due to conflicting function definitions.
+
+??? note "answer"
+    B. It calls the base class version of the function, allowing reuse of existing functionality.
+
+---    

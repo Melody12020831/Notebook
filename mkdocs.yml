@@ -168,6 +168,12 @@ nav:
       - Computer_Science/DB/Chapter5.md
       - Computer_Science/DB/Chapter6.md
       - Computer_Science/DB/Chapter7.md
+      - Computer_Science/DB/Chapter8.md
+      - Computer_Science/DB/Chapter12.md
+      - Computer_Science/DB/Chapter13.md
+      - Computer_Science/DB/Chapter14.md
+      - Computer_Science/DB/Chapter15.md
+      - Computer_Science/DB/Chapter16.md
       - Computer_Science/DB/homework.md
       - Computer_Science/DB/sql.md
     - "OOP":
@@ -180,6 +186,10 @@ nav:
       - Computer_Science/OOP/Chapter6.md
       - Computer_Science/OOP/Chapter7.md
       - Computer_Science/OOP/Chapter8.md
+      - Computer_Science/OOP/Chapter9.md
+      - Computer_Science/OOP/Chapter10.md
+      - Computer_Science/OOP/Chapter11.md
+      - Computer_Science/OOP/Chapter12.md
       - Computer_Science/OOP/homework.md
       - Computer_Science/OOP/test_from_wk.md
       - Computer_Science/OOP/105_STL_Algorithmsin_Less_Than_an_Hour.md
@@ -188,6 +198,8 @@ nav:
       - Computer_Science/CA/Chapter1.md
       - Computer_Science/CA/Chapter2.md
       - Computer_Science/CA/homework.md
+    - "Visualization":
+      - Computer_Science/Visualization/note.md
     - "编程语言":
       - Computer_Science/Programming_Language/python/CS50P_python.md
       - Computer_Science/Programming_Language/python/python100days.md

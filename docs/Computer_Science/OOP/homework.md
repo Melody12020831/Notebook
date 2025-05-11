@@ -453,4 +453,155 @@ A& operator=(const A& rhs)
   return *this;         // 返回当前对象的引用
 }
 ```
+
+---
+
+## 005.5
+
+### Question
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class vec3 {
+public:
+    vec3(int x=0, int y=0, int z=0){
+        v[0] = x;
+        v[1] = y;
+        v[2] = z;
+    }
+    int operator[]         
+    {
+        return v[index];
+    }
+    vec3& operator+=(const vec3& rhs){
+    for (int i = 0; i < 3; ++i)
+                    ;
+                    ;
+    }
+private:
+    int v[3];
+};
+
+vec3 operator+(const vec3& v1, const vec3& v2)
+{
+    return                              ;
+};
+
+        operator<<(ostream& out, const vec3& v)
+{
+    out << '(' << v[0] << ' ' << v[1] << ' ' << v[2] << ')';
+              ;
+}
+
+int main()
+{
+    vec3 v1(1,2,3), v2(4,5,6);
+    vec3 v = v1 + v2;
+    v += v2;
+    cout << v << endl;
+}
+```
+
+### Answer
+
+```cpp
+(int index) const
+v[i] += rhs.v[i]
+return *this
+vec3(v1[0]+v2[0], v1[1]+v2[1], v1[2]+v2[2])
+ostream&
+return out
+```
+
+1. `operator[]` 重载: 添加 `int index` 参数和 `const` 修饰符，使其能正确访问元素并支持常量对象。
+2. `operator+=` 重载: 在循环中将每个分量与右操作数对应分量相加，并返回 `*this` 以实现链式操作。
+3. `operator+` 重载: 通过 `vec3` 构造函数直接创建新对象，其分量为两个操作数对应分量之和。
+4. `operator<<` 重载: 添加 `ostream&` 返回类型，并在输出完成后返回流对象以支持连续输出。
+
+---
+
+## 006.5
+
+### Question
+
+The function template `min_elem()` finds the smallest element in the range `[first, last)` and returns the iterator to the smallest element. The way how smallest is understood can be customized.
+
+```cpp
+#include <functional>
+#include <iostream>
+#include <iterator>
+#include <string>
+#include <list>
+#include <vector>
+
+template<class ForwardIt, class Compare>
+ForwardIt min_elem(ForwardIt first, ForwardIt last,                 comp)
+{
+  if (first == last)
+    return                      ;
+
+  ForwardIt smallest = first++;
+  for (;                   ; ++first) {
+    if (comp(*first, *smallest)) {
+      smallest = first;
+    }
+  }
+  return                        ;
+}
+
+template<class ForwardIt>
+ForwardIt min_elem(ForwardIt first, ForwardIt last)
+{
+  return min_elem(first, last, std::less<                     std::iterator_traits<ForwardIt>::value_type>());
+}
+
+struct Student {
+  int id;
+  std::string name;
+  bool                                 (const Student& s2) const {
+    return id < s2.id;
+  }
+};
+
+std::ostream& operator<<(std::ostream& out, const Student& s)
+{
+  out << s.name << s.id;
+  return out;
+}
+
+int main()
+{
+  std::vector<int> v = { 3, 1, 4, 2, 5, 9 };
+  std::cout << "min element is: " << *min_elem(std::begin(v), std::end(v)) << std::endl;
+  
+  std::list<double> l = { 3.1, 1.2, 4.3, 2.4, 5.5, 9.7 };
+  std::cout << "min element is: " << *min_elem(std::begin(l), std::end(l), std::greater<double>()) << std::endl;
+  
+  Student s[] = { {30, "Curry"}, {23, "Lebron"}, {35, "Durant"} };
+  std::cout << "min element is: " << *min_elem(std::begin(s), std::end(s)) << std::endl;
+}
+```
+
+The above program outputs:
+
+```cpp
+min element is: 1
+min element is: 9.7
+min element is: Lebron23
+```
+
+### Answer
+
+```cpp
+Compare
+last
+first != last
+smallest
+typename
+operator<
+```
+
 ---

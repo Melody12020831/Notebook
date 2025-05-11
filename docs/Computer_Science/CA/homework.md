@@ -145,7 +145,7 @@ comments: true
 ### 2.17
 
 ???+ question
-    The following questions investigate the impact of small and simple caches using CACTI and assume a 65 nm (0.065 m) technology. ([CACTI is available in an online form at](http://quid.hpl.hp.com:9081/cacti/).)
+    The following questions investigate the impact of small and simple caches using CACTI and assume a 65 nm (0.065 ms) technology. ([CACTI is available in an online form at](http://quid.hpl.hp.com:9081/cacti/).)
 
     a. Compare the access times of 64 KB caches with 64-byte blocks and a single bank. What are the relative access times of two-way and four-way set associative caches compared to a direct mapped organization?
 
@@ -154,6 +154,79 @@ comments: true
     c. For a 64 KB cache, find the cache associativity between 1 and 8 with the lowest average memory access time given that misses per instruction for a certain workload suite is 0.00664 for direct-mapped, 0.00366 for two-way set associative, 0.000987 for four-way set associative, and 0.000266 for eight-way set associative cache. Overall, there are 0.3 data references per instruction. Assume cache misses take 10 ns in all models. To calculate the hit time in cycles, assume the cycle time output using CACTI, which corresponds to the maximum frequency a cache can operate without any bubbles in the pipeline.
 
 ??? note "answer"
+    a. 由 CACTI 模拟结果 得到
+    
+    a direct mapped organization : 0.86 ns
+
+    a two-way set associative organization : 1.12 ns
+
+    a four-way set associative organization : 1.37 ns
+
+    relatively, the access time
+
+    $$\frac{\text{two-way}}{\text{direct mapped}} = \frac{1.12}{0.86} = 1.30 \ ns$$
+
+    $$\frac{\text{four-way}}{\text{direct mapped}} = \frac{1.37}{0.86} = 1.59 \ ns$$
+
+    b. 由 CACTI 模拟结果 得到
+
+    a 16 KB direct-mapped organization : 1.27 ns
+
+    a 32 KB two-way set associative organization : 1.35 ns
+
+    a 64 KB four-way set associative organization : 1.37 ns
+
+    relatively, the access time
+
+    $$\frac{\text{two-way}}{\text{direct mapped}} = \frac{1.35}{1.27} = 1.06 \ ns$$
+
+    $$\frac{\text{four-way}}{\text{direct mapped}} = \frac{1.37}{1.27} = 1.08 \ ns$$
+
+    c. 
+
+    先计算缺失率
+
+    $$\text{direct mapped} = \frac{0.00664}{0.3} \approx 2.21\%$$
+
+    $$\text{two-way} = \frac{0.00366}{0.3} \approx 1.22\%$$
+
+    $$\text{four-way} = \frac{0.000987}{0.3} \approx 3.29\%$$
+
+    $$\text{eight-way} = \frac{0.000266}{0.3} \approx 0.09\%$$
+
+    再把命中时间转换成周期（周期要向上取整）
+
+    $$\text{direct mapped} = \lceil \frac{0.86}{0.5} \rceil = 2 \ ns$$
+
+    $$\text{two-way} = \lceil \frac{1.12}{0.5} \rceil = 3\ ns$$
+
+    $$\text{four-way} = \lceil \frac{1.37}{0.83} \rceil = 2 \ ns$$
+
+    $$\text{eight-way} = \lceil \frac{2.03}{0.79} \rceil = 3 \ ns$$
+
+    再把 miss penalty 转换成周期（周期要向上取整）
+
+    $$\text{direct mapped} = \lceil \frac{10}{0.5} \rceil = 20 \ ns$$
+
+    $$\text{two-way} = \lceil \frac{10}{0.5} \rceil = 20 \ ns$$
+
+    $$\text{four-way} = \lceil \frac{10}{0.83} \rceil = 13 \ ns$$
+
+    $$\text{eight-way} = \lceil \frac{10}{0.79} \rceil = 13 \ ns$$
+
+    最后计算 AMAT
+
+    $$AMAT = \text{hit time} + \text{miss rate} \times \text{miss penalty}$$
+
+    1. 直接映射 $((1 - 2.21\%) \times 2 + 2.21\% \times 20 ) \times 0.5 \approx 1.20 \ ns$
+
+    2. 两路 $((1 - 1.22\%) \times 3 + 1.22\% \times 20 ) \times 0.5 \approx 1.59 \ ns$
+
+    3. 四路 $((1 - 3.29\%) \times 2 + 3.29\% \times 13 ) \times 0.83 \approx 1.96 \ ns$
+
+    4. 八路 $((1 - 0.09\%) \times 3 + 0.09\% \times 13 ) \times 0.79 \approx 2.38 \ ns$
+
+    直接映射的 cache 的 AMAT 最小
 
 ---
 
@@ -171,6 +244,39 @@ comments: true
     d. As an alternative to way prediction, many large associative L2 caches serialize tag and data access so that only the required dataset array needs to be activated. This saves power but increases the access time. Use CACTI's detailed web interface for a 0.065 m process 1 MB four-way set associative cache with 64-byte blocks, 144 bits read out, 1 bank, only 1 read/write port, 30 bit tags, and ITRS-HP technology with global wires. What is the ratio of the access times for serializing tag and data access compared to parallel access?
 
 ??? note "answer"
+    a. current cache
+
+    $$AMAT = (\lceil \frac{1.37}{0.83} \rceil \times (1 - 0.33\%) + 0.33\% \times \lceil \frac{10}{0.83} \rceil) \times 0.83 \approx 1.69 \ ns$$
+
+    way-predicted cache
+
+    $$AMAT = ((\lceil \frac{0.86}{0.5} \rceil \times 80\% + (\lceil \frac{0.86}{0.5} \rceil + 1) \times 20 \% ) \times (1 - 0.33\%) + 0.33\% \times \lceil \frac{10}{0.5} \rceil) \times 0.5 \approx 1.13 \ ns$$
+
+    b. 
+
+    the max frequency of the four-way set associative cache $\frac{1}{0.83} \approx 1.20 GHz$
+
+    the max frequency of the way-predicted cache $\frac{1}{0.5} \approx 2.00 GHz$
+
+    the ratio of the access times is $ \frac{2.00}{1.20} \approx 1.67$
+
+    c. 
+
+    way-predicted cache
+
+    $$AMAT = ((\lceil \frac{0.86}{0.5} \rceil \times 80\% + 15 \times 20 \% ) \times (1 - 0.33\%) + 0.33\% \times \lceil \frac{10}{0.5} \rceil) \times 0.5 \approx 2.33 \ ns$$
+
+    so, negative
+
+    the ratio is $\frac{1.69}{2.33} \approx 0.73$
+
+    d.
+
+    Parallel access: Tags and data are read at the same time with an access time of 1.59 ns.
+
+    Serial access: read the tag first, hit and then read the data, and the access time is 2.4 ns.
+
+    the ratio is $\frac{2.4}{1.59} \approx 1.51$
 
 ---
 
@@ -184,15 +290,60 @@ comments: true
     b. Can you define other Insertion and Promotion policies that may be competitive and worth exploring further?
 
 ??? note "answer"
+    a.
+
+    **Insertion**: 
+    
+    The newly acquired block is inserted into the head of the priority list (the highest priority position).
+
+    **Promotion**:
+
+    Whenever a block is hit (accessed), it is immediately moved to the head of the priority list.
+
+    **Victim Selection**:
+
+    When it's time to retire, select the tail of the priority list (the block that hasn't been visited for the longest time).
+
+    b.
+
+    **Insertion**:
+
+    1. A new block is inserted in the middle of the priority list or the penultimate bit.
+    2. Adjust the insertion position based on the block type or prefetch information. The prefetched data is inserted near the tail. Hot data is inserted directly into the head.
+
+    **Promotion**:
+
+    1. After each hit, the block moves forward by a fixed step.
+    2. Adjust the lift based on the cumulative number of visits to the block.
+    3. Raised to the head only with multiple hits in a short period of time.
+
+    **Victim Selection**:
+
+    No need to change.
 
 ---
 
 ### 2.27
 
 ???+ question
-    In a processor that is running multiple programs, the last-level cache is typically shared by all the programs. This leads to interference, where one program’s behavior and cache footprint can impact the cache available to other programs. First, this is a problem from a quality-of-service (QoS) perspective, where the interference leads to a program receiving fewer resources and lower performance than promised, say by the operator of a cloud service. Second, this is a problem in terms of privacy. Based on the interference it sees, a program can infer the memory access patterns of other programs. This is referred to as a timing channel, a form of information leakage from one program to others that can be exploited to compromise data privacy or to reverse-engineer a competitor’s algorithm. What policies can you add to your last-level cache so that the behavior of one program is immune to the behavior of other programs sharing the cache?
+    In a processor that is running multiple programs, the last-level cache is typically shared by all the programs. This leads to interference, where one program's behavior and cache footprint can impact the cache available to other programs. First, this is a problem from a quality-of-service (QoS) perspective, where the interference leads to a program receiving fewer resources and lower performance than promised, say by the operator of a cloud service. Second, this is a problem in terms of privacy. Based on the interference it sees, a program can infer the memory access patterns of other programs. This is referred to as a timing channel, a form of information leakage from one program to others that can be exploited to compromise data privacy or to reverse-engineer a competitor's algorithm. What policies can you add to your last-level cache so that the behavior of one program is immune to the behavior of other programs sharing the cache?
 
 ??? note "answer"
+    在多程序共享LLC的场景中，以下两种问题尤为突出：
+
+    1. 服务质量（QoS）问题：某个程序占用过多缓存资源，导致其他程序无法达到性能承诺。
+
+    2. 隐私泄露问题：通过缓存访问的时间差异（时间通道），推断其他程序的内存访问模式，可能导致数据泄露或算法逆向工程。
+
+    解决方案：缓存策略设计
+
+    1. 缓存分区，将缓存划分为多个独立区域，每个程序独占一部分。可以是预先固定分配每个程序的缓存 way 数量，或者根据程序行为动态调整分配。
+    
+    2. 配额管理，限制每个程序可占用的缓存块数量。
+
+    3. 替换策略优化，比如可以为每个程序独立维护替换队列，仅在本程序分配的缓存区域内淘汰。
+
+    4. 使用程序独有的密钥生成缓存索引，使其他程序无法通过地址推断缓存位置，用于实现实现地址混淆。
 
 ---
 
@@ -202,6 +353,9 @@ comments: true
     A large multimegabyte L3 cache can take tens of cycles to access because of the long wires that have to be traversed. For example, it may take 20 cycles to access a 16 MB L3 cache. Instead of organizing the 16 MB cache such that every access takes 20 cycles, we can organize the cache so that it is an array of smaller cache banks. Some of these banks may be closer to the processor core, while others may be further. This leads to nonuniform cache access (NUCA), where 2 MB of the cache may be accessible in 8 cycles, the next 2 MB in 10 cycles, and so on until the last 2 MB is accessed in 22 cycles. What new policies can you introduce to maximize performance in a NUCA cache?
 
 ??? note "answer"
+    1. Record the frequency of access or the most recent access time for each cache block. Blocks of high-frequency access are gradually migrated to the nearest bank. Blocks that have not been accessed within the period are migrated to the remote bank to free up near-end space.
+
+    2. Each bank maintains the tags of the local block, reducing the delay of global tag lookup. Send requests to multiple banks at the same time and take advantage of physical distribution to reduce response times.
 
 ---
 
@@ -211,6 +365,19 @@ comments: true
     You are provisioning a server with eight-core 3 GHz CMP that can execute a workload with an overall CPI of 2.0 (assuming that L2 cache miss refills are not delayed). The L2 cache line size is 32 bytes. Assuming the system uses DDR2-667 DIMMs, how many independent memory channels should be provided so the system is not limited by memory bandwidth if the bandwidth required is sometimes twice the average? The workloads incur, on average, 6.67 L2 misses per 1 K instructions.
 
 ??? note "answer"
+    $$\text{指令吞吐量} = \frac{\text{核心数} \times \text{频率}}{\text{CPI}} = \frac{8 \times 3 \times 10^9}{2.0} = 12 \times 10^9\ \text{指令/秒}$$
+
+    $$\text{平均L2未命中次数/秒} = 12 \times 10^9\ \text{指令/秒} \times \frac{6.67}{1000} = 8 \times 10^7\ \text{次/秒}$$
+
+    $$\text{平均带宽} = 8 \times 10^7\ \text{次/秒} \times 32\ \text{字节/次} = 2560\ \text{MB/秒}$$
+
+    $$\text{峰值带宽} = 2 \times 2560\ \text{MB/秒} = 5120\ \text{MB/秒}$$
+
+    由 DDR2-667 DIMMs :
+    
+    $$\text{带宽} = 667 \times 10^6\ \text{次/秒} \times 8\ \text{字节/次} = 5336\ \text{MB/秒} > 5120\ \text{MB/秒}$$
+
+    So, one memory channel is enough.
 
 ---
 
@@ -220,15 +387,35 @@ comments: true
     Consider a processor that has four memory channels. Should consecutive memory blocks be placed in the same bank, or should they be placed in different banks on different channels?
 
 ??? note "answer"
+    In a four-channel memory system, the placement strategy for contiguous memory blocks needs to weigh row buffer hits (low latency) with parallel access (high throughput).
+
+    be placed in the same bank: 
+
+    After the first access to the active row, subsequent visits directly read the row buffer to reduce latency. But, sequential requests need to be processed serially, and multi-channel parallelism cannot be leveraged. And if continuous access is intensive, the channel bandwidth utilization is low.
+
+    be placed in different banks on different channels:
+
+    Requests from different channels/banks can be processed at the same time, improving throughput, which take advantage of multi-channel parallelism and make it suitable for burst access. And each visit may require the activation of a new line, adding a single delay.
+
+    In summary, in a four-channel memory system, sequential memory blocks should be distributed across different channels and banks. Although each access may face latency from row buffer misses, the overall throughput and system performance by processing multiple requests in parallel can result in significant overall throughput and system performance, especially for high-concurrency workloads.
 
 ---
 
 ### 2.36
 
 ???+ question
-    Whenever a computer is idle, we can either put it in standby (where DRAM is still active) or we can let it hibernate. Assume that, to hibernate, we have to copy just the contents of DRAM to a nonvolatile medium such as Flash. If reading or writing a cache line of size 64 bytes to Flash requires 2.56 J and DRAM requires 0.5 nJ, and if idle power consumption for DRAM is 1.6 W (for 8 GB), how long should a system be idle to benefit from hibernating? Assume a main memory of size 8 GB.
+    Whenever a computer is idle, we can either put it in standby (where DRAM is still active) or we can let it hibernate. Assume that, to hibernate, we have to copy just the contents of DRAM to a nonvolatile medium such as Flash. If reading or writing a cache line of size 64 bytes to Flash requires 2.56 $\mu$ J and DRAM requires 0.5 nJ, and if idle power consumption for DRAM is 1.6 W (for 8 GB), how long should a system be idle to benefit from hibernating? Assume a main memory of size 8 GB.
 
 ??? note "answer"
+    8 GB = 8 * $2^{30}$ bytes = $2^{33}$ bytes = $2^{27}$ cache lines
+
+    读 + 写一次的总功耗是一次 flash 的能耗 $2 \times 2.56 \ J$ = 5.12 J
+
+    待机功耗 1.6 W = 1.6 J/s
+
+    $\therefore \ t = \frac{2^{27} \times 5.12 \ \mu J}{1.6 \ J/s} \approx 429.50 \ s$
+
+    When the system is idle for more than 429.50 seconds, sleep is more energy-efficient than standby.
 
 ---
 
@@ -248,6 +435,15 @@ comments: true
     e. Performing software maintenance on systems while applications are running without significant interruption?
 
 ??? note "answer"
+    a. Yes. Create a virtual machine (such as an operating system, dependent libraries, and network settings) on the development machine that is consistent with the configuration of the production environment, and deploy the application to be tested on the VM for testing.
+
+    b. Yes. Package the application and its runtime environment as a virtual machine image and load the image on the standby hardware to boot the virtual machine for rapid recovery.
+
+    c. No. The hypervisor needs to intercept I/O requests, resulting in additional context switching and latency.
+
+    d. Yes. Each application runs on an independent virtual machine, allocating exclusive CPU, memory, and disk resources. A single VM crash or resource exhaustion does not affect other VMs.
+
+    e. Yes. Migrate running virtual machines from one physical host to another without service interruption.
 
 ---
 
@@ -279,6 +475,31 @@ comments: true
     **Figure 2.35 Early performance of various system calls under native execution, pure virtualization, and paravirtualization.**
 
 ??? note "answer"
+    a. 计算密集型（大部分时间执行用户态指令）、内存工作集小（减少因虚拟内存管理导致的性能损失）、且较少进行I/O或系统调用的程序。
+
+    b. According to "an application spending 10% of its execution in system mode might slow down by 60% when running on a VM."
+
+    $$60 \% \times \frac{20 \%}{10 \%} = 120 \%$$
+
+    so the total times is $100\% + 120\% = 220\%$.
+
+    c. 
+
+    | Benchmark          | 纯虚拟化减速比 | 半虚拟化减速比 |
+    |:------------------:|:--------------:|:--------------:|
+    | Null call          | 0.96/0.04 = 24   | 0.50/0.04 = 12.5 |
+    | Null I/O           | 6.32/0.27 $\approx$ 23.41| 2.91/0.27 $\approx$ 9.67|
+    | Stat               | 10.69/1.10 $\approx$ 9.72| 4.14/1.10 $\approx$ 3.76 |
+    | Open/close         | 20.43/1.99 $\approx$ 10.27|7.71/1.99 $\approx$ 3.87 |
+    | Install signal     |7.34/0.33 $\approx$ 22.24 |2.89/0.33 $\approx$ 8.76 |
+    | Handle signal      |19.26/1.69 $\approx$ 11.40|2.36/1.69 $\approx$ 1.40 |
+    | Fork               |513/56 $\approx$ 9.16     |164/56 $\approx$ 2.93    |
+    | Exec               |2084/316 $\approx$ 6.59   |578/316 $\approx$ 1.83   |
+    | Fork + exec sh     |7790/1451 $\approx$ 5.37  |2360/1451 $\approx$ 1.63 |
+
+    排序后得到:纯虚拟化中位减速比为 **10.27**，半虚拟化中位减速比为 **3.76**。
+
+    d. Null call and Null I/O, because they have no actual work, the virtualization overhead is very high.
 
 ---
 
@@ -292,5 +513,27 @@ comments: true
     **Figure 2.36 Floorplan of the Alpha 21264 [Kessler 1999].**
 
 ??? note "answer"
+    1. 假设 Issue Queues 和 Mappers 的面积占芯片总逻辑面积的 15%。将 15% 的面积用于扩大 L1 数据缓存，假设面积与容量线性相关，则新缓存容量为：  
+    
+    $$64\ \text{KB} \times \left(1 + \frac{15\%}{\text{原缓存面积占比}}\right)$$
 
+    若原缓存面积占比为20%，则新容量为：  
+    
+    $$64\ \text{KB} \times \left(1 + \frac{15\%}{20\%}\right) = 64 \times 1.75 = 112\ \text{KB}.$$
+
+    2. for OOO L1 cache ：64 KB，2-way。
+    
+    for In-Order L1 cache ：112 KB  
+
+    3. 假设模拟结果：
+
+    | **配置**       | IPC  | L1缺失率 | 执行时间（秒） |
+    |:-------------:|:----:|:--------:|:-------------:|
+    | 乱序（64 KB）  | 2.0  | 5%       | 100           |
+    | 顺序（112 KB） | 1.5  | 3%       | 133           |
+
+    4. 
+    
+    $$\text{性能损失} = \frac{133 - 100}{100} \times 100\% = 33\%$$
+    
 ---
