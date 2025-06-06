@@ -2389,3 +2389,428 @@ comments: true
     to the estimated total.
 
 ---
+
+## 第十一次作业
+
+### 17.6
+
+???+ question
+    Consider the precedence graph of Figure 17.16. Is the corresponding schedule conflict serializable? Explain your answer.
+
+    ![img](./assets/hw11-1.png)
+
+??? note "my"
+    The graph is acyclic, so there exists a schedule is conflict serializable. For example, $T_1, T_2, T_3, T_4, T_5$.
+
+??? note "answer"
+    There is a serializable schedule corresponding to the precedence graph sincethe graph is acyclic. A possible schedule is obtained by doing a topologicalsort, that is, $T_1$ , $T_2$ , $T_3$ , $T_4$ , $T_5$ .
+
+---
+
+### 17.7
+
+???+ question
+    What is a cascadeless schedule? Why is cascadelessness of schedules desirable? Are there any circumstances under which it would be desirable to allow noncascadeless schedules? Explain your answer.
+
+??? note "my"
+    无级联调度要求如果一个事务 $T_j$ 要读取另一个事务 $T_i$ 已经写入的数据项，那么事务 $T_i$ 必须先成功提交，之后事务 $T_j$ 才能执行这个读取操作。
+
+    无级联调度的主要优点在于：
+
+    1. 当事务失败时，不需要追溯并回滚所有依赖于它的事务。
+    2. 避免了因级联回滚造成的开销。
+
+    当事务失败是非常罕见时，发生级联中止的可能性就比较低，此时允许非无级联调度可以提高系统的并发性，从而提高吞吐量，使得系统性能更好。
+
+??? note "answer"
+    A cascadeless schedule is one where, for each pair of transactions $T_i$ , and $T_j$ such that $T_j$ , reads data items previously written by $T_i$ , the commit operation of $T_i$ , appears before the read operation of $T_j$ . Cascadeless schedules are desirable because the failure of a transaction does not lead to the aborting of any other transaction. Of course this comes at the cost of less concurrency. If failuresoccur rarely, so that we can pay the price of cascading aborts for the increased concurrency, noncascadeless schedules might be desirable.
+
+---
+
+### 17.12
+
+???+ question
+    List the ACID properties. Explain the usefulness of each.
+
+??? note "my"
+    1. Atomicity: 原子性确保事务被视为一个单一的、不可分割的工作单元。事务中的所有操作要么全部成功执行，要么在任何一步失败时全部不执行（回滚到事务开始前的状态）。系统不会停留在部分完成的状态。原子性保证了操作的完整性，例如银行转账操作中，原子性确保不会发生只扣款成功但存款失败的情况，从而避免了账户数据的不一致和资金损失。
+    
+    2. Consistency: 一致性确保事务执行前后，数据库都必须满足所有预设的约束，也就是说事务执行前后数据库状态都是合法的。如果不合法，那就会回滚到事务开始前的状态。一致性维护了数据库的数据完整性，防止了非法数据的产生，确保了数据库中的数据始终是符合规则和逻辑约束的。
+    
+    3. Isolation: 隔离性确保并发执行的多个事务之间不会相互干扰。即使多个事务并行处理，其最终结果也应该与这些事务按某种顺序串行执行的结果相同。隔离性防止了并发处理中可能出现的各种问题(例如 Dirty Read, Non-repeatable Read, Phantom Read)。
+    
+    4. Durability: 持久性确保一旦事务被成功提交，其对数据库所做的更改就是永久性的，即使在事务提交后系统发生故障，这些更改也不会丢失。持久性为数据库提供了可靠性保证，它确保了用户的操作结果不会因为系统故障而丢失。
+
+??? note "answer"
+    The ACID properties, and the need for each of them are:
+
+    - **Consistency**: Execution of a transaction in isolation (that is, with noother transaction executing concurrently) preserves the consistency of the database. This is typically the responsibility of the application programmer who codes the transactions.
+    
+    - **Atomicity**: Either all operations of the transaction are reflected properly in the database, or none are. Clearly lack of atomicity will lead toinconsistency in the database.
+
+    - **Isolation**: When multiple transactions execute concurrently, it shouldbe the case that, for every pair of transactions $T_i$ , and $T_j$ , it appearsto $T_i$ , that either $T_j$ , finished execution before $T_i$ started, or  $T_j$ ; startedexecution after $T_i$ finished. Thus, each transaction is unaware of othertransactions executing concurrently with it. The user view of a transaction system requires the isolation property, and the property thatconcurrent schedules take the system from one consistent state toanother. These requirements are satisfied by ensuring that only serializable schedules ofindividuallyconsistency preserving transactionsare allowed.
+
+    - **Durability**: After a transaction completes successfully, the changes it has made to the database persist, even if there are system failures.
+
+---
+
+## 第十二次作业
+
+### 18.1
+
+???+ question
+    Show that the two-phase locking protocol ensures conflict serializability and that transactions can be serialized according to their lock points.
+
+??? note "my"
+    假设一个遵循 2PL 的调度存在一个环：$T_1 \rightarrow T_2 \rightarrow \cdots \rightarrow T_n \rightarrow T_1$。
+    
+    这意味着：
+
+    - $T_1$ 在执行冲突操作 $O_1$ 之前获得了某个锁，而 $O_1$ 与 $T_2$ 的操作冲突，且 $T_2$ 必须在 $T_1$ 释放该锁后才能执行其冲突操作 $O_2$ 。
+
+    - $T_2$ 在执行冲突操作 $O_2$ 之前获得了某个锁，而 $O_2$ 与 $T_3$ 的操作冲突，且 $T_3$ 必须在 $T_2$ 释放该锁后才能执行其冲突操作 $O_3$ 。
+
+    - ...
+
+    - $T_n$ 在执行冲突操作 $O_n$ 之前获得了某个锁，而 $O_n$ 与 $T_1$ 的操作冲突，且 $T_1$ 必须在 $T_n$ 释放该锁后才能执行其冲突操作 $O_1$ 。
+
+    也就是说，事务 $T_i$ 的冲突操作先于 $T_{i+1}$ 的冲突操作(对于 $T_n$ 来说， $T_{n+1}$ 就是 $T_1$ )。由于锁机制， $T_i$ 释放相关锁的时间点早于 $T_{i+1}$ 获得相关锁的时间点，也就是说 $T_i$ 的 lock point 必须早于 $T_{i+1}$ 的 lock point ，因此我们会得到对于 lock point 来说， $T_1 \rightarrow T_2 \rightarrow \cdots \rightarrow T_n \rightarrow T_1$ ，这是矛盾的，因此 2PL 确保了冲突可串行化。
+
+??? note "answer"
+    Suppose two-phase locking does not ensure serializability. Then there exists aset oftransactions $T_1, T_2, \codts, T_{n-1}$ which obey 2PL and which produce a nonserializable schedule. A nonserializable schedule implies a cycle in the precedencegraph, and we shall show that 2PL cannot produce such cycles. Without lossof generality, assume the following cycle exists in the precedence graph: $T_0 \rightarrow T_1 \rightarrow T_2 \rightarrow \cdots \rightarrow T_{n-1} \rightarrow T_0$. Let $\alpha_i$ be the time at which $T_i$ obtains its lastlock (i.e. $T_i$ 's lock point). Then for all transactions such that $T_i \rightarrow T_j$ , $\alpha_i < \alpha_j$. Then for the cycle we have
+
+    $$\alpha_0 < \alpha_1 < \alpha_2 < \cdots < \alpha_{n-1} < \alpha_0$$
+
+    Since $\alpha_0 < \alpha_0$ is a contradiction, no such cycle can exist. Hence 2PL cannotproduce nonserializable schedules. Because of the property that for all transactions such that $T_i \rightarrow T_j$ , $\alpha_i < \alpha_j$, the lock point ordering of the transactions is also a topological sort ordering of the precedence graph. Thus transactions can be serialized according to their lock points.
+
+---
+
+### 18.2
+
+???+ question
+    Consider the following two transactions:
+
+    $T_{34}$ :
+
+    ```
+
+                read(A);
+
+                read(B);
+
+                if A = 0 then B := B + 1;
+
+                write(B).
+    ```
+
+    $T_{35}$ :
+
+    ```
+                read(B);
+
+                read(A);
+
+                if B = 0 then A := A + 1;
+
+                write(A).
+    ```
+
+    Add lock and unlock instructions to transactions $T_{34}$ and $T_{35}$ so that they observe the two-phase locking protocol. Can the execution of these transactions result in a deadlock?
+
+??? note "my"
+    $T_{34}$:
+
+    ```
+                lock_S(A);
+                read(A);
+                lock_X(B);
+                read(B);
+                if A = 0 then
+                    B := B + 1;
+                    write(B);
+                end if;
+
+                unlock_S(A);
+                unlock_X(B);
+    ```
+
+    $T_{35}$:
+
+    ```
+                lock_S(B);
+                read(B);
+                lock_X(A);
+
+                if B = 0 then
+                    A := A + 1;
+                    write(A);
+                end if;
+
+            
+                unlock_S(B);
+                unlock_X(A);
+    ```
+
+    在按照上述 2PL 添加锁指令后，事务 $T_{34}$ 和 $T_{35}$ 的并发执行会导致死锁。
+
+    例如下述的并发执行顺序。
+
+    1. $T_{34}$ 执行 lock_S(A)。
+
+    2. $T_{34}$ 执行 read(A)。
+
+    3. $T_{35}$ 执行 lock_S(B)。
+
+    4. $T_{35}$ 执行 read(B)。
+
+    5. $T_{34}$ 执行 lock_X(B)。
+
+    6. $T_{34}$ 执行 read(B)。
+
+    7. $T_{35}$ 执行 lock_X(A)。
+
+    8. $T_{35}$ 执行 read(A)。
+
+    在这里，根据锁协议，$T_{34}$ 在第 5 步被阻塞，必须等待 $T_{35}$ 释放它持有的 B 的锁，所以对于它来说第 6 步以及之后的任何操作无法被执行。而对于 $T_{35}$ 来说，在第 7 步被阻塞，必须等待 $T_{34}$ 释放它持有的 A 的锁，所以对于它来说第 8 步以及之后的任何操作无法被执行。这就形成了死锁。
+
+??? note "answer"
+    ![img](./assets/hw12-2.png)
+
+    ![img](./assets/hw12-3.png)
+
+    ![img](./assets/hw12-4.png)
+
+---
+
+### 18.7
+
+???+ question
+    Consider a database system that includes an atomic increment operation, in addition to the read and write operations. Let V be the value of data item X.
+
+    The operation
+
+    increment(X) by C
+
+    sets the value of X to V + C in an atomic step. The value of X is not available to the transaction unless the latter executes a read(X).
+
+    Assume that increment operations lock the item in increment mode using the compatibility matrix in Figure 18.25.
+
+    a. Show that, if all transactions lock the data that they access in the corresponding mode, then two-phase locking ensures serializability.
+
+    b. Show that the inclusion of increment mode locks allows for increased concurrency.
+
+    ![img](./assets/hw12-1.png)
+
+??? note "my"
+    a. 在 18.1 中已经证明了两阶段封锁协议本身能有效地防止了循环等待和冲突图中的环。在加入了 I 锁轴，只要事务遵循两阶段封锁协议，它仍然能够确保冲突可串礼化，因为新的锁模式只是扩展了需要进行冲突检查的操作类型。
+
+    b. 考虑多个事务需要对同一个数据项 X 执行 increment(X) by C 操作的场景。
+
+    1. 如果只使用 S 和 X 锁： increment 操作本质上是读取当前值，计算新值，然后写回。这涉及到读和写操作。如果严格按照 S/X 锁，事务可能需要先获取 S 锁进行读，然后升级到 X 锁进行写。由于 X 锁与任何其他锁都不兼容，同一时间只能有一个事务持有 X 锁对 X 进行写操作。其他想要 increment 的事务必须等待当前的写事务完成并释放 X 锁后才能获取锁并执行。这将导致这些 increment 操作被串行化执行，并发度很低。
+
+    2. 如果使用 S, X, I 锁： 由于 I 锁与 I 锁是兼容的，多个事务可以同时获取数据项 X 上的 I 锁。这意味着多个事务可以同时对同一个数据项 X 执行 increment(X) by C 操作。数据库系统负责确保这些原子增量操作的正确性。相对于使用 X 锁，多个事务可以在不互相等待锁的情况下对同一个数据项进行 increment 操作。因此从锁的角度来看，它们无需等待即可获取锁并执行，从而提高了并发度。
+
+??? note "answer"
+    a. Serializability can be shown by observing that if two transactions have any mode lock on the same item, the increment operations can be swapped, just like read operations. However, any pair of conflicting operations must be serialized in the order of the lock points of the corresponding transactions, as shown in Exercise 18.1.
+
+    b. The increment lock mode being compatible with itself allows multiple incrementing transactions to take the lock simultaneously, thereby improving the concurrency of the protocol. In the absence of this mode, an exclusive mode will have to be taken on a data item by each transaction that wants to increment the value of this data item. An exclusive lock being incompatible with itself adds to the lock waiting time and obstructs the overall progress of the concurrent schedule. 
+    
+    In general, increasing the true entries in the compatibility matrix increases the concurrency and improves the throughput.
+
+    The proof is in Korth, "Locking Primitives in a Database System," Journal of the ACM Volume 30,(1983).
+
+---
+
+### 18.18
+
+???+ question
+    Most implementations of database systems use strict two-phase locking. Suggest three reasons for the popularity of this protocol.
+
+??? note "my"
+    1. 防止级联回滚
+    
+    2. 实现相对简单
+
+    3. 保证严格可串行化的同时，并发度较高
+
+??? note "answer"
+    It is relatively simple to implement, imposes low rollback over-head because of cascadeless schedules, and usually allows an acceptable level of concurrency.
+
+---
+
+## 第十三次作业
+
+### 19.1
+
+???+ question
+    Explain why log records for transactions on the undo-list must be processed in reverse order, whereas redo is performed in a forward direction.
+
+??? note "my"
+    撤销日志记录的是如何"撤销"一个操作，将数据恢复到操作前的样子。因此，处理这些记录时，必须从最后一个完成的操作开始，一步步向前回溯，层层剥离，直到恢复到事务的起点。
+
+    重做日志记录的是如何"完成"一个操作。因此，在恢复时，系统需要从日志的起点开始，按照历史的轨迹，一步步地重新执行那些已经成功提交的事务，确保所有的修改都得到体现。
+
+??? note "answer"
+    Within a single transaction in undo-list, suppose a data item is updated morethan once, say from l to 2, and then from 2 to 3. If the undo log records areprocessed in forward order, the final value of the data item will be incorrectly set to 2, whereas by processing them in reverse order, the value is set to 1. The same logic also holds for data items updated by more than one transaction on undo-list.
+
+    Using the same example as above, but assuming the transaction committed, it is easy to see that if redo processing processes the records in forward orderthe fnal value is set correctly to 3, but if done in reverse order, the fnal valueis set incorrectly to 2.
+
+---
+
+### 19.2
+
+???+ question
+    Explain the purpose of the checkpoint mechanism. How often should checkpoints be performed? How does the frequency of checkpoints affect:
+
+    - System performance when no failure occurs?
+
+    - The time it takes to recover from a system crash?
+
+    - The time it takes to recover from a media (disk) failure?
+
+??? note "my"
+    Purpose of the Checkpoint Mechanism
+
+    1. 减少恢复时间。在系统崩溃后，数据库需要通过 Redo 日志来恢复已提交但尚未写入磁盘数据文件的事务，并通过撤销 Undo 日志来回滚未完成的事务。如果没有检查点，系统可能需要从日志的非常早期的位置开始扫描和处理，这会导致漫长的恢复过程。检查点通过定期将内存中已修改的数据块（脏页）强制写入磁盘，并记录一个检查点位置到日志中，从而限制了恢复时需要扫描的日志范围。简单来说，恢复过程只需要从最后一个检查点开始处理日志，大大缩短了恢复所需的时间。
+
+    2. 释放日志空间。一旦某个检查点完成，意味着该检查点之前所有已提交事务的修改都已安全写入磁盘。因此，这些检查点之前的日志记录对于正常的崩溃恢复来说就不再是必需的了。这使得系统可以重用或截断这些旧的日志空间。
+
+    3. 提高正常操作性能的间接影响。虽然检查点本身会消耗一定的 I/O 资源，但通过定期将脏页写入磁盘，可以避免在内存缓冲区满时出现大量的、集中的、可能导致系统暂时停顿的写入操作。它将写入压力分散到不同的时间点。
+
+    检查点的执行频率: 找到一个平衡点，使得既不要因为太频繁存档导致系统变慢，也不要因为存档间隔太长导致崩溃后恢复太久。
+
+    检查点频率的影响:
+
+    1. 过于频繁的检查点会导致持续的、较高的 I/O 活动，因为系统需要不断地将脏页写入磁盘。这可能会抢占正常事务处理所需的 I/O 资源，从而降低整体系统吞吐量和响应时间。CPU 资源也可能因为管理检查点过程而被消耗。过于稀疏的检查点在两次检查点之间，写入操作主要在内存中进行，磁盘 I/O 较少，短期内系统性能可能看起来更好，响应更快。但是当检查点最终发生时，可能需要一次性将大量的脏页写入磁盘，导致一个短暂但剧烈的 I/O 高峰，可能会造成系统瞬间卡顿。
+
+    2. 过于频繁的检查点恢复时间通常较短。因为检查点确保了较新的数据已经写入磁盘，所以从最后一个检查点开始需要重做的日志量较少。过于稀疏的检查点恢复时间通常较长。因为最后一个检查点可能比较旧，意味着自该检查点以来有大量的事务日志需要被扫描和重做，这会显著增加恢复所需的时间。
+
+    3. 检查点本身并不直接决定从备份恢复数据的速度。但是，检查点影响了需要应用的日志量。过于频繁的检查点对介质恢复时间影响不大，因为主要依赖的是备份和归档日志。不过，一个非常近的检查点可能意味着在线日志中需要应用的更改相对较少。过于稀疏的检查点的话，如果最后一个检查点非常旧，那么在从备份恢复数据后，需要应用的归档日志和在线日志量可能会非常大，这会延长整个介质恢复过程的 rollforward 阶段。
+
+??? note "answer"
+    Checkpointing is done with log-based recovery schemes to reduce the time required for recovery after a crash. If there is no checkpointing, then the entirelog must be searched after a crash, and all transactions must be undone/redone from the log. If checkpointing is performed, then most ofthe log records priorto the checkpoint can be ignored at the time of recovery.
+
+    Another reason to perform checkpoints is to clear log records from stablestorage as it gets full.
+
+    Since checkpoints cause some loss in performance while they are beingtaken, their frequency should be reduced if fast recovery is not critical. If we need fast recovery, checkpointing frequency should be increased. If the amount of stable storage available is less, frequent checkpointing is unavoidable.
+
+    Checkpoints have no effect on recovery from a disk crash; archival dumpsare the equivalent of checkpoints for recovery from disk crashes.
+
+---
+
+### 19.10
+
+???+ question
+    Explain the reasons why recovery of interactive transactions is more difficult to deal with than is recovery of batch transactions. Is there a simple way to deal with this difficulty? (Hint: Consider an automatic teller machine transaction in which cash is withdrawn.)
+
+??? note "my"
+    1. 交互式事务的特点是它们涉及到与外部实体（通常是用户，但也可能是其他系统）的实时交互，并且其执行过程中可能伴随着现实世界中不可逆转的操作。批处理事务通常在数据库内部完成一系列操作，如果失败，可以通过撤销日志将数据库状态回滚到事务开始前，仿佛什么都没发生过。交互式事务往往涉及到与数据库外部世界的交互。以 ATM 取款为例，一旦ATM机吐出现金，这个物理动作是无法通过数据库回滚来"收回"现金的。即使数据库记录显示取款失败或被回滚，钱已经到了用户手中。
+    
+    2. 由于无法直接回滚外部操作，对于已在外部世界产生影响的交互式事务，恢复往往需要依赖补偿事务。补偿事务的目的是执行与原事务相反的操作，以期达到一种逻辑上的"抵消"效果。例如，如果 ATM 错误地多吐了钱，补偿事务可能需要记录一笔借项到用户的账户，但这并不能保证能追回现金。设计和实现正确的补偿事务本身就很复杂，需要准确理解原事务的每一个外部影响，并确保补偿操作的原子性和一致性。
+    
+    3. 交互式事务需要在数据库内部状态和外部世界状态之间保持同步。当系统崩溃时，这两个状态可能不一致。例如，数据库可能记录了取款事务已提交，但ATM硬件故障导致未吐钞。或者ATM已吐钞，但数据库因崩溃未能及时更新余额。恢复时需要准确判断真实情况并进行相应处理。
+    
+    4. 交互式事务通常有时间敏感性。用户不会无限期地等待响应。如果系统在交互过程中变慢或无响应，用户可能会放弃操作或尝试其他操作，这会使恢复逻辑更加复杂。在网络分区或系统部分故障的情况下，很难确定交互的另一方是否收到了最后的消息或完成了其操作。
+
+    相比之下，批处理事务的恢复相对简单，因为它的操作通常局限于数据库内部。很容易通过日志回滚到一致状态。失败不需要立即通知用户或处理复杂的交互中断。很多批处理任务可以设计成幂等的，即多次执行和一次执行的效果相同，这简化了重试逻辑。
+
+    但是也可以有一些办法。
+    
+    1. 将事务分解为多个步骤，只有在所有关键前提条件（包括数据库内部操作）都成功完成后，才执行不可逆转的外部操作。
+    2. 尽可能将与外部系统的交互设计成幂等的。这意味着即使一个请求因为网络问题或系统重启被发送了多次，外部系统也只会处理一次，或者多次处理的结果与一次处理相同。例如，给 ATM 发送吐钞指令时，可以附带一个唯一的事务 ID 。 ATM 硬件或其控制器可以记录已经处理过的事务 ID ，避免重复吐钞。
+    3. 详细记录交互式事务的每一个关键步骤和状态转换。这有助于在恢复时准确判断事务进展到了哪一步，以及哪些外部操作可能已经发生。
+    4. 对于那些无法避免的、需要在失败后进行补偿的外部操作，应设计标准化的补偿流程，并尽可能自动化执行。例如，如果确认发生了错误扣款但未吐钞，系统应能自动触发一个冲正交易。
+    5. 为与外部系统的交互设置合理的超时。在超时或失败后，根据操作的幂等性和业务逻辑决定是否以及如何重试。
+    6. 对于极其复杂或无法自动恢复的场景（例如，ATM硬件报告了一个无法解释的错误），必须有明确的人工介入流程和异常处理预案。系统应能清晰地记录此类事件，并通知相关人员。
+
+??? note "answer"
+    Interactive transactions are more dificult to recover from than batch transactions because some actions may be irrevocable. For example, an output (write)statement may have fred a missile or caused a bank machine to give money toa customer. The best way to deal with this is to try to do all output statementsat the end ofthe transaction. That way ifthe transaction aborts in the middle.no harm will be have been done.
+
+    Output operations should ideally be done atomically; for example, ATM machines often count out notes and deliver all the notes together instead of delivering notes one at a time. If output operations cannot be done atomicallya physical log of output operations, such as a disk log ofevents, or even a videolog of what happened in the physical world can be maintained to allow performrecovery to be performed manually later, for example, by crediting cash back to a customer's account.
+
+---
+
+### 19.21
+
+???+ question
+    Consider the log in Figure 19.5. Suppose there is a crash just before the log record `<T0 abort>` is written out. Explain what would happen during recovery.
+
+    ![img](./assets/hw13-1.png)
+
+??? note "my"
+    假设系统在写入 `<T0 abort>` 记录前崩溃，根据图中的日志记录，我们可以判断事务的状态：
+
+    - T0 已开始，进行了修改，并且已经开始回滚其操作（将 B 恢复为 2000），但由于没有 `<T0 abort>` 或 `<T0 commit>` 记录，T0 在崩溃时被视为未完成活动事务。
+
+    - T1 是已提交事务。
+
+    - T2 已开始，进行了修改，但没有 `<T2 commit>` 或 `<T2 abort>` 记录，T2 在崩溃时被视为未完成活动事务。
+
+    初始化 Undo-List：根据检查点 `<checkpoint {T0, T1}>`，初始 `Undo-List = {T0, T1}`。从检查点条目开始向前扫描日志并执行 Redo 操作，遇到 `<T1, C, 700, 600>` 重做此操作，将 C 的值设置为 600。遇到 `<T1 commit>` 将其从 `Undo-List` 中移除。遇到 `<T2 start>` 将其加入 `Undo-List`。再将 A 的值设置为 400。将 B 的值设置为 2000。此时 Redo 阶段结束。最终 `Undo-List = {T0, T2}`。磁盘上的状态是 A = 400, B = 2000, C = 600。接着将回滚所有在 Redo 阶段结束后仍在 Undo-List 中的事务。从日志的末尾开始向后扫描，对 Undo-List 中的事务执行撤销操作。先是将 A 的值从 400 恢复到 500。然后输出一条补偿日志记录 `<T2, A, 500>`。最后到 `<T0, B, 2000, 2050>` 时，将 B 的值从 2050 恢复到 2000。输出一条补偿日志记录: `<T0, B, 2000>`。恢复结束时的系统状态是 A = 500, B = 2000, C = 600。
+
+??? note "answer"
+    Recovery would happen as follows:
+
+    **Redo phase**:
+
+    a. Undo-List = $T_0, T_1$
+
+    b. Start from the checkpoint entry and perform the redo operation.
+
+    c. `C=600`
+
+    d. $T_1$ is removed from the Undo-list as there is a commit record
+    
+    e. $T_2$ is added to the Undo list on encountering the `< $T_2$, start >` record.
+    
+    f. `A = 400`
+    
+    g. `B = 2000`
+
+    **Undo phase**:
+
+    a. Undo-List = $T_0, T_2$
+
+    b. Scan the log backwards from the end.
+
+    c. `A = 500;` output the redo-only record `<$T_2$, A, 500>`
+
+    d. output `< $T_2$, abort >`
+
+    e. `B = 2000;` output the redo-only record `<$T_0$, B, 2000>`
+
+    f. output `< $T_0$, abort >`
+
+    At the end of the recovery process, the state of the system is as follows: `A = 500, B = 2000, C = 600`
+
+    The log records added during recovery are, `<$T_2$, A, 500>, <$T_2$, abort>, <$T_0$, B, 2000>, <$T_0$, abort>
+
+    Observe that B is set to 2000 by two log records, one created during normal rollback of $T_0$, and the other created during recovery, when the abort of $T_0$ is completed. Clearly the second one is redundant, although not incorrect. Optimizations described in the ARlES algorithm (and equivalent optimizations described in Section 16.7 for the case of logical operations) can help avoid carrying out redundant operations, which create such redundant log records.
+
+
+---
+
+### 19.25
+
+???+ question
+    In the ARIES recovery algorithm:
+
+    a. If at the beginning of the analysis pass, a page is not in the checkpoint dirty page table, will we need to apply any redo records to it? Why?
+
+    b. What is RecLSN, and how is it used to minimize unnecessary redos?
+
+??? note "my"
+    a. 在检查点时刻，脏页表记录了那些在内存中被修改过但尚未写回磁盘的页面。如果一个页面在检查点时刻不在脏页表中，这通常意味着在检查点那一刻，该页面在磁盘上的版本是最新的，或者说它自上次写回磁盘后没有再被修改过。但是即使一个页面在检查点时刻是不在脏页表中的，它完全有可能在检查点完成之后、系统崩溃之前被修改。如果它在检查点后变脏，相关的修改被记录到日志，但页面本身未在崩溃前刷盘，那么在恢复的 Redo 阶段，这些修改的日志记录仍然需要被应用到该页面上，以保证数据的持久性和一致性。Redo 的依据是日志记录和页面上存储的 PageLSN，而不仅仅是检查点时刻的脏页表。
+
+    b. RecLSN 是在 ARIES 算法的分析阶段确定的一个非常关键的日志序列号。它代表了 Redo 阶段必须开始向前扫描日志的最早位置。RecLSN 的值通常是以下两者中的较小者：检查点记录中"事务表"里最早的活动事务所对应的第一条日志记录的 LSN。这表示任何比这个 LSN 更早的、由已结束事务完成的修改，应该都已经有机会写入磁盘了。或者是检查点记录中"脏页表"里所有脏页的 RecLSN 字段中的最小值。脏页表中的每个条目会记录一个 RecLSN，这个 RecLSN 是指第一次使得该页面变脏（并且该修改可能未写入磁盘）的日志记录的 LSN。取所有这些 RecLSN 的最小值，可以找到最早的可能需要重做的页面修改。
+
+    RecLSN 最主要的作用是，ARIES 的 Redo 阶段只需要从 RecLSN 指定的位置开始向前扫描日志，而不需要从日志的起点或检查点的起点开始扫描。通过跳过一些相关修改已经在磁盘中的日志记录，ARIES 避免了读取和分析大量可能完全不需要重做的日志信息，从而显著减少了 Redo 阶段的工作量。
+
+??? note "answer"
+    a. If a page is not in the checkpoint dirty page table at the beginning of the analysis pass, redo records prior to the checkpoint record need not be applied to it as it means that the page has been flushed to disk and been removed from the DirtyPageTable before the checkpoint. However, the page may have been updated after the checkpoint, which means it will appear in the dirty page table at the end of the analysis pass.
+    
+    For pages that appear in the checkpoint dirty page table,redo records prior to the checkpoint may also need to be applied.
+
+    b. The RecLSN is an entry in the DirtyPageTable, which reflects the LSN at the end of the log when the page was added to DirtyPageTable. During the redo pass of the ARlES algorithm, if the LSN of the update log record encountered, is less than the RecLSN of the page in DirtyPageTable, then that record is not redone but skipped. Further, the redo pass starts at RedoLSN, which is the earliest of the RecLSNs among the entries in the checkpoint DirtyPageTable, since earlier log records would certainly not need to be redone. (If there are no dirty pages in the checkpoint, the RedoLSN is set to the LSN of thecheckpoint log record.)
+
+---

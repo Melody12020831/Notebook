@@ -29,7 +29,7 @@ An evaluation plan defines exactly what algorithm is used for each operation, an
 
 为了全面说明如何执行一个查询，我们不仅要提供关系代数表达式，还要对表达式加上带指令的注释来说明如何执行每种运算。
 
-这些注释可以说明为一种具体运算所采用的算法或要使用的一个具体索引或多个索引。带有"如何执行"注释的关系代数运算称为执行原语(evaluation primitive)。用于执行一个查询的原语操作序列称为查询执行计划(query-execution plan或query-evaluation plan)。
+这些注释可以说明为一种具体运算所采用的算法或要使用的一个具体索引或多个索引。带有"如何执行"注释的关系代数运算称为执行原语(evaluation primitive)。用于执行一个查询的原语操作序列称为查询执行计划(query-execution plan或 query-evaluation plan)。
 
 查询执行引擎(query-execution engine)接受一个查询执行计划，执行该计划并把结果返回给查询。
 
@@ -53,7 +53,7 @@ An evaluation plan defines exactly what algorithm is used for each operation, an
 ??? note "about 聚集索引和辅助索引"
    假设我们有一个 `students` 表，存储学生的信息，结构如下：
 
-    | **学号（sid）** | **姓名（name）** | **年龄（age）** | **班级（class）** |
+    |**学号（sid）**|**姓名（name）**|**年龄（age）**|**班级（class）**|
     |:------------:|:------------:|:-----------:|:-------------:|
     | 101          | 张三         | 18          | 1班           |
     | 102          | 李四         | 19          | 2班           |
@@ -78,11 +78,11 @@ An evaluation plan defines exactly what algorithm is used for each operation, an
 
     **关键区别对比**
 
-    | **查询场景**               | **聚集索引（sid）**                          | **辅助索引（name）**                          |
-    |:-------------------------:|:-------------------------------------------:|:-------------------------------------------:|
-    | **查询 `WHERE sid=102`**  | 直接定位数据行，**无需回表**，速度快。       | 不适用（除非覆盖索引）。                     |
-    | **查询 `WHERE name='李四'`** | 需全表扫描（除非优化器选择索引）。           | 先查 `name` 索引得 `sid`，再回表，**多一步**。 |
-    | **插入数据**              | 数据按 `sid` 排序插入，可能引起页分裂。      | 只需更新 `name` 索引树，不影响数据物理顺序。  |
+    | **查询场景**| **聚集索引（sid）**| **辅助索引（name）**|
+    |:------:|:-----------:|:--------:|
+    | **查询 `WHERE sid=102`**| 直接定位数据行，**无需回表**，速度快。| 不适用（除非覆盖索引）。|
+    | **查询 `WHERE name='李四'`** | 需全表扫描（除非优化器选择索引）。| 先查 `name` 索引得 `sid`，再回表，**多一步**。 |
+    | **插入数据**| 数据按 `sid` 排序插入，可能引起页分裂。| 只需更新 `name` 索引树，不影响数据物理顺序。  |
 
 ---
 
@@ -621,13 +621,15 @@ Sequential scan more efficient than random lookup
 ??? note "自然连接 v.s. 等值连接"
     假设有两个表：
 
-    - **`students`（学生表）**  
+    - **`students`（学生表）**
+
     | **sid** | **name** | **class_id** |
     |--------|----------|-------------|
     | 1      | 张三     | 101         |
     | 2      | 李四     | 102         |
 
-    - **`classes`（班级表）**  
+    - **`classes`（班级表）**
+    
     | **class_id** | **class_name** |
     |-------------|---------------|
     | 101         | 1班           |
@@ -652,7 +654,8 @@ Sequential scan more efficient than random lookup
     SELECT * FROM students JOIN classes ON students.class_id = classes.class_id;
     ```
 
-    **结果**（保留所有列）：  
+    **结果**（保留所有列）：
+
     | **sid** | **name** | **students.class_id** | **classes.class_id** | **class_name** |
     |:------:|:--------:|:--------------------:|:--------------------:|:-------------:|
     | 1      | 张三     | 101                  | 101                  | 1班           |
@@ -845,7 +848,7 @@ b. At end of $s_i$ add the tuples in the hash index to the result.
 
     ![img](./assets/15-20.png)
 
-![img](./assets/15-31.png)
+    ![img](./assets/15-31.png)
 
 ---
 

@@ -250,7 +250,7 @@ D. All 1, 2 and 3
 
 ## 003.5
 
-### Question 3
+### Question
 
 Please show the output of the following program.
 
@@ -605,3 +605,277 @@ operator<
 ```
 
 ---
+
+## 007.5
+
+### Question
+
+The struct Buffer is a simple container that encapsulates fixed-size arrays. Please fill in the blanks to finish its design.
+
+```cpp
+#include <iostream>
+#include <stdexcept>
+
+class BufferIndexError : public 
+
+{
+
+private:
+
+  int index;
+
+public:
+
+  BufferIndexError(int idx) : std::out_of_range(""), index(idx) {}
+
+  int getIndex() const { return index; }
+
+};
+
+
+template <typename T, int N>
+
+struct Buffer
+
+{
+
+  int size() const
+
+  {
+
+                    ;
+
+  }
+
+  bool empty() const
+
+  {
+
+                      ;
+
+  }
+
+  const T& operator[](int i) const
+
+  {
+
+    if (             )
+
+      return elems[i];
+
+                     BufferIndexError(i);
+
+  }
+
+  const T& front() const
+
+  {
+
+                      ;
+
+  }
+
+  const T& back() const
+
+  {
+
+                      ;
+
+  }
+
+
+
+               elems[             ];
+
+};
+
+
+
+
+
+              operator<<(std::ostream &out, const Buffer<T, N> &buf)
+
+{
+
+  for (int i = 0; i < N; ++i)
+
+                  ;
+
+  return out;
+
+}
+
+
+
+int main()
+
+{
+
+  Buffer<int, 4> numbers = {1, 3, 1, 4};
+
+  Buffer<int, 0> no_numbers;
+
+  std::cout << "numbers.empty(): " << numbers.empty() << '\n';
+
+  std::cout << "no_numbers.empty(): " << no_numbers.empty() << '\n';
+
+
+
+  Buffer<char, 16> letters = {
+
+    'D','o',' ','n','o','t',' ','a','n','s','w','e','r','!','!','!'
+
+  };
+
+  if (!letters.empty())
+
+  {
+
+    std::cout << "The first character is: " << letters.front() << '\n';
+
+    std::cout << "The last character is: " << letters.back() << '\n';
+
+  }
+
+  std::cout << letters << '\n';
+
+
+
+  
+
+                  {
+
+    int k = 0;
+
+    while (true)
+
+      std::cout << letters[k++];
+
+  }
+
+  
+
+  {
+
+    std::cout << "\nBuffer index is out of range: " << ex.() << std::endl;
+
+  }
+
+}
+```
+
+
+The above program outputs:
+
+```bash
+numbers.empty(): 0
+no_numbers.empty(): 1
+The first character is: D
+The last character is: !
+Do not answer!!!
+Do not answer!!!
+Buffer index is out of range: 16
+```
+
+### Answer
+
+```cpp
+#include <iostream>
+#include <stdexcept> // 需要包含 <stdexcept> 以使用 std::out_of_range
+
+// BufferIndexError 类定义，继承自 std::out_of_range
+class BufferIndexError : public std::out_of_range // 填充1: 基类
+{
+private:
+    int index;
+public:
+    // 构造函数，初始化基类和成员变量
+    BufferIndexError(int idx) : std::out_of_range("Buffer index out of range"), index(idx) {}
+    // 获取错误索引的方法
+    int getIndex() const { return index; }
+};
+
+// Buffer 结构体模板定义
+template <typename T, int N>
+struct Buffer
+{
+    // 获取缓冲区大小的方法
+    int size() const
+    {
+        return N; // 填充2: 返回模板参数 N
+    }
+
+    // 判断缓冲区是否为空的方法
+    bool empty() const
+    {
+        return N == 0; // 填充3: 当 N 为 0 时为空
+    }
+
+    // 重载下标运算符 (const 版本)
+    const T& operator[](int i) const
+    {
+      // 检查索引是否在有效范围内
+      if (i >= 0 && i < N) // 填充4: 索引有效条件
+          return elems[i];
+      // 如果索引无效，则抛出自定义异常
+      throw BufferIndexError(i); // 修正/填充5: 抛出异常
+    }
+
+    // 获取第一个元素的引用 (const 版本)
+    const T& front() const
+    {
+        // 注意：更健壮的实现会检查 N > 0
+        // if (empty()) throw std::out_of_range("front() called on empty buffer");
+        return elems[0]; // 填充6: 返回第一个元素
+    }
+
+    // 获取最后一个元素的引用 (const 版本)
+    const T& back() const
+    {
+        // 注意：更健壮的实现会检查 N > 0
+        // if (empty()) throw std::out_of_range("back() called on empty buffer");
+        return elems[N-1]; // 填充7: 返回最后一个元素
+    }
+
+    T elems[N]; // 填充8: 声明定长数组成员，类型为 T，大小为 N
+};
+
+// 重载输出流运算符，用于打印 Buffer 内容
+template <typename T, int N> // 填充9: operator<< 的模板声明和返回类型
+std::ostream& operator<<(std::ostream &out, const Buffer<T, N> &buf)
+{
+    for (int i = 0; i < N; ++i) // 使用 N 或 buf.size()
+        out << buf[i]; // 填充10: 输出当前索引的元素
+    return out; // 填充11: 返回输出流对象
+}
+
+int main()
+{
+    Buffer<int, 4> numbers = {1, 3, 1, 4};
+    Buffer<int, 0> no_numbers;
+    std::cout << "numbers.empty(): " << numbers.empty() << '\n';
+    std::cout << "no_numbers.empty(): " << no_numbers.empty() << '\n';
+
+    Buffer<char, 16> letters = {
+        'D','o',' ','n','o','t',' ','a','n','s','w','e','r','!','!','!'
+    };
+    if (!letters.empty())
+    {
+        std::cout << "The first character is: " << letters.front() << '\n';
+        std::cout << "The last character is: " << letters.back() << '\n';
+    }
+    std::cout << letters << '\n';
+
+    try // 填充11: try 块开始
+    {
+        int k = 0;
+        while (true) // 这个循环会无限执行，直到 letters[k++] 抛出异常
+            std::cout << letters[k++];
+    } catch (const BufferIndexError& ex) // 填充12: catch 块，捕获 BufferIndexError 类型的异常
+    {
+        // 输出错误信息，包括超出范围的索引值
+        std::cout << "\nBuffer index is out of range: " << ex.getIndex() << std::endl; // 填充13: 调用 getIndex() 获取索引
+    }
+    return 0; // 良好的 main 函数应该有返回值
+}
+```

@@ -735,6 +735,7 @@ $V^{new} = v^{old} - \sigma_{\theta}(d_r)$
 **Aggregation Operations**: 对组内有影响的改变即可。
 
 聚合操作(如`sum`, `count`, `avg`等)的维护：
+
 - 只需要更新受影响的组。
 - 对于 `avg` 操作，通常分别维护 `sum` 和 `count` ，最后再相除。
 - `min` 和 `max` 操作在删除时可能代价较高，因为需要检查同组的其他元组来确定新的极值。
@@ -744,6 +745,7 @@ To handle the case of avg, we maintain the sum and count aggregate values separa
 Maintaining the aggregate values **min** and **max** on deletions may be more expensive. We have to look at the other tuples of r that are in the same group to find the new minimum.
 
 物化视图特别适用于：
+
 - 频繁执行的复杂查询
 - 对实时性要求不高的统计分析
 - 数据仓库和决策支持系统
