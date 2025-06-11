@@ -310,11 +310,11 @@ Defined as: $r \times s = \{t \ q | t \in r \ and \ q \in s\}$
 ??? Example
     1. Find the names of all customers who have a loan at the Perryridge branch. 
 
-    $\Pi_{customer\_name}(\sigma_{borrower.loan-number = loan.loan-number}(borrower \times (\sigma_{branch-name = 'Perryridge'}(loan))))$
+    $\Pi_{customer\_name}(\sigma_{borrower.loan\_number = loan.loan\_number}(borrower \times (\sigma_{branch\_name = 'Perryridge'}(loan))))$
 
     2. Find the names of all customers who have loans at the Perryridge branch but do not have an account at any branch of the bank. 
     
-    $\Pi_{customer-name}(\sigma_{borrower.loan-number = loan.loan-number}(borrower \times (\sigma_{branch-name = 'Perryridge'}(loan)))) - \Pi_{customer-name}(depositor)$
+    $\Pi_{customer\_name}(\sigma_{borrower.loan\_number = loan.loan\_number}(borrower \times (\sigma_{branch\_name = 'Perryridge'}(loan)))) - \Pi_{customer\_name}(depositor)$
 
 ---
 
@@ -425,9 +425,9 @@ Computes the join and then adds tuples form one relation that does not match tup
 
 Outer join can be expressed using basic operations
 
-- $r$ ⟕ $s$ = $(r \bowtie s) \cup (r - \Pi_{R}(r \bowtie s) \times \{(null, \dots, null)\})$
-- $r$ ⟖ $s$ = $(r \bowtie s) \cup (\{(null, \dots, null)\} \times s - \Pi_{S}(r \bowtie s))$
-- $r$ ⟗ $s$ = $(r \bowtie s) \cup (r - \Pi_{R}(r \bowtie s) \times \{(null, \dots, null)\}) \cup (\{(null, \dots, null)\} \times s - \Pi_{S}(r \bowtie s))$
+- $r$ ⟕ $s$ = $(r \bowtie s) \cup (r - \Pi_{R}(r \bowtie s)) \times \{(null, \dots, null)\}$
+- $r$ ⟖ $s$ = $(r \bowtie s) \cup (\{(null, \dots, null)\}) \times s - \Pi_{S}(r \bowtie s)$
+- $r$ ⟗ $s$ = $(r \bowtie s) \cup (r - \Pi_{R}(r \bowtie s)) \times \{(null, \dots, null)\} \cup (\{(null, \dots, null)\}) \times s - \Pi_{S}(r \bowtie s)$
 
 - $\{ \}$ 表示构造一对临时的关系， 所以 $\{(null, \dots, null)\}$ 表示构造一对临时的关系，其中只有一对元组，且所有属性都是 null
 
@@ -459,9 +459,9 @@ $r ⋉_{\theta} s = \Pi_{R}(r \bowtie_{\theta} s)$
 ??? Example
     Find all customers who have an account from at least the “Downtown” and the “Uptown” branches. 
     
-    1. $\Pi_{customer-name}(\sigma_{branch-name = 'Downtown'}(depositor \bowtie account)) \cap \Pi_{customer-name}(\sigma_{branch-name = 'Uptown'}(depositor \bowtie account))$
+    1. $\Pi_{customer\_name}(\sigma_{branch\_name = 'Downtown'}(depositor \bowtie account)) \cap \Pi_{customer\_name}(\sigma_{branch\_name = 'Uptown'}(depositor \bowtie account))$
 
-    2. $\Pi_{customer-name, branch-name}(depositor \bowtie account) \div \rho_{temp(branch-name)}(\{('Downtown', 'Uptown')\})$
+    2. $\Pi_{customer\_name, branch\_name}(depositor \bowtie account) \div \rho_{temp(branch\_name)}(\{('Downtown') , ('Uptown')\})$
 
 ---
 
@@ -564,7 +564,7 @@ Multiset relational algebra defined as follows:
 
 - **union**: m + n copies
 - **intersection**: min(m, n) copies
-- **difference**: min(0,m-n) copies
+- **difference**: max(0,m-n) copies
 
 ---
 
@@ -647,7 +647,7 @@ where r is a relation and E is a relational algebra query.
 ??? Example
     1. Delete all account records in the Perryridge branch. 
     
-    $account \leftarrow account - \sigma_{branch-name = 'Perryridge'}(account)$
+    $account \leftarrow account - \sigma_{branch\_name = 'Perryridge'}(account)$
 
     2. Delete all loan records with amount in the range of 0 to 50. 
 

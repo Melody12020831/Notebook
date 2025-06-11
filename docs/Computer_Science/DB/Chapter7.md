@@ -104,7 +104,7 @@ Suppose we decompose a relation schema r(R) into $r_1(R_1)$ and $r_2(R_2)$, wher
 
 This constraint enforces the functional dependency.
 
-- $R_1 \cap R_2$ 2 is a foreign key from $r_2$ referencing $r_1$
+- $R_1 \cap R_2$ is a foreign key from $r_2$ referencing $r_1$
 
 This constraint ensures that each tuple in $r_2$ has a matching tuple in $r_1$ , without which it would not appear in the natural join of $r_1$ and $r_2$.
 
@@ -135,13 +135,13 @@ result := $\alpha$;
 
 while (changes to result) do
 
-    for each $\beta \rightarrow \gamma$ in F do
+for each $\beta \rightarrow \gamma$ in F do
 
-        begin
+begin
 
-            if $\beta \subseteq result$ then result := result $\cup \ \gamma$
+if $\beta \subseteq result$ then result := result $\cup \ \gamma$
 
-        end
+end
     
 ![img](./assets/7-27.png)
 
@@ -365,7 +365,7 @@ at least one of the following holds:
 
 ![img](./assets/7-28.png)
 
-有趣的是，我们描述的用于分解到 3NF 的算法可以在多项式时间内完成，尽管判定个给定关系是否满足 3NF 是 NP-hard 的。
+有趣的是，我们描述的用于分解到 3NF 的算法可以在多项式时间内完成，尽管判定给定关系是否满足 3NF 是 NP-hard 的。
 
 !!! note "summary"
     `BCNF`：若 X $\rightarrow$ Y 是非平凡依赖，则 `X` 必须是超键。
@@ -518,6 +518,8 @@ If a relation is in 4NF it is in BCNF.
 
 ??? Example "answer"
     ![img](./assets/7-26.png)
+
+    第二问可能有问题，关系 `E(A, B, C, D)` 的唯一候选码应该是 `(A, B, C)`。
 
 ---
 

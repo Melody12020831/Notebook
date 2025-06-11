@@ -418,11 +418,11 @@ void f(int*& p);  // ok
 
 - The `new` operator returns the address of the first element of the block.
 
-`int *psome = new int[10];`
+    `int *psome = new int[10];`
 
 - The presence of the brackets tells the program that it should free the whole array, not just the element.
 
-`delete[] psome;`
+    `delete[] psome;`
 
 ---
 
@@ -452,9 +452,32 @@ delete pa;
 delete[] parr;
 ```
 
+输出:
+
+```bash
+ps1->id = -1163005939
+Student::Student(): id = 0
+ps2->id = 0
+Student::~Student(): id = 0
+Student::Student(): id = 0
+Student::Student(): id = 0
+Student::Student(): id = 0
+Student::Student(): id = 0
+Student::Student(): id = 0
+Student::~Student(): id = 4
+Student::~Student(): id = 3
+Student::~Student(): id = 2
+Student::~Student(): id = 1
+Student::~Student(): id = 0
+```
+
 ---
 
 ```cpp
+#include <iostream>
+
+using namespace std;
+
 struct Student{
     int id;
     Student(){
@@ -466,23 +489,25 @@ struct Student{
     }
 };
 
-Student *ps1 = (Student*)malloc(sizeof(Student));
-cout << "ps1->id = " << ps1->id << endl;
-Student *ps2 = new Student();
-cout << "ps2->id = " << ps2->id << endl;
-free(ps1);
-delete ps2;
+int main(){
+    Student *ps1 = (Student*)malloc(sizeof(Student));
+    cout << "ps1->id = " << ps1->id << endl;
+    Student *ps2 = new Student();
+    cout << "ps2->id = " << ps2->id << endl;
+    free(ps1);
+    delete ps2;
 
-Student *psarr = new Student[5];
-for(int i = 0; i < 5; ++i){
-    psarr[i].id = i;
+    Student *psarr = new Student[5];
+    for(int i = 0; i < 5; ++i){
+        psarr[i].id = i;
+    }
+    delete[] psarr;
 }
-delete[] psarr;
 ```
 
 - 此时构造函数被调用了，析构函数被调用了。自动触发构造函数和析构函数的触发。
 - new 和 delete 相当于多做了一步。
-- 构造和析构的顺序是相反的。 中的局部对象通常存储在栈上，而栈是一种“后进先出”（LIFO）的数据结构。最后构造的对象会最先被析构，因为它在栈的顶部。
+- 构造和析构的顺序是相反的。结构体中的局部对象通常存储在栈上，而栈是一种"后进先出"（LIFO）的数据结构。最后构造的对象会最先被析构，因为它在栈的顶部。
 - 如果在 `delete[] psarr;` 使用的是 `delete`，那么会报错，因为用数组初始化和不是数组初始化时存的东西不一样。用 `delete` 在调用第一个析构函数后就会报错。
 
 ---
@@ -493,7 +518,7 @@ delete[] a;
 delete[] a;
 ```
 
-- 每块内存的“所有权”应明确，释放后的内存不再属于程序，再次释放会破坏内存管理器的内部数据结构。堆管理器无法识别这块内存是否有效，导致**双重释放（double free）**错误，可能引发程序崩溃或内存损坏。
+- 每块内存的"所有权"应明确，释放后的内存不再属于程序，再次释放会破坏内存管理器的内部数据结构。堆管理器无法识别这块内存是否有效，导致**双重释放（double free）**错误，可能引发程序崩溃或内存损坏。
 
 ---
 
@@ -510,7 +535,7 @@ delete[] a;
         - 如果指针非空，继续执行释放逻辑。
     2. 调用析构函数（仅对类对象）。
     3. 调用析构函数（仅对类对象）。
-    4. 标记内存为“未分配”：堆管理器更新内部数据结构，标记该内存块可重用。
+    4. 标记内存为"未分配"：堆管理器更新内部数据结构，标记该内存块可重用。
 
 ??? question "My question about 为什么 delete 之后还能使用 a 并为 a 赋值"
     指针变量 `a` 是一个普通的变量，它的生命周期和作用域由声明的位置决定。`delete` 释放的是 `a` 指向的内存，而不是指针 `a` 本身。指针变量 `a` 仍然可以像其他变量一样被读取、赋值或修改。
@@ -597,7 +622,7 @@ const int z = y; // ok, const is safer
     - Observe scoping rules
     - Declared with `const` type modifier
 - A const in C++ defaults to internal linkage
-        - C++ 中的常量默认具有内部链接性（internal linkage），这意味着：常量仅在定义它的文件内可见且其他文件无法访问该常量。
+    - C++ 中的常量默认具有内部链接性（internal linkage），这意味着：常量仅在定义它的文件内可见且其他文件无法访问该常量。
 
         ```cpp
         // File1.cpp
@@ -786,7 +811,6 @@ const int* y = const_cast<const int*>(&x); // 添加 const 限定符
 // *y = 20;         // 错误！不能通过 const 指针修改值
 ```
 
-
 ---
 
 **Passing by const value?**
@@ -809,6 +833,37 @@ int main() {
  int k = f4(); // this works fine too
 }
 ```
+
+为什么 `f4()` 返回 `const int`，但仍然可以赋值给非 `const` 的 `int k`？`const` 返回值到底有什么意义？
+
+1. 返回值是"右值（rvalue）"，无法被修改
+
+- 当函数返回基本类型（如 `int`） 时，返回值是一个临时值（右值），它本身就不能被修改，即使不加 `const`。因此，`const int f4()` 和 `int f3()` 在 调用方的使用上是没有区别的，因为返回值本身就无法被修改。
+
+2. `const` 返回值的主要用途
+
+`const` 返回值在 返回对象（而非基本类型） 时更有意义，可以防止对返回的对象进行修改：
+
+```cpp
+class MyClass {
+public:
+    void modify() { /* ... */ }
+};
+
+const MyClass getObj() { return MyClass(); }
+
+int main() {
+    getObj().modify();  // ❌ 错误！不能调用非 const 方法
+}
+```
+
+- 这里的 `const` 阻止了对返回对象的修改。
+
+但对于 `int` 这样的基本类型，`const` 返回值几乎没有实际影响，因为返回值本身就不能被修改。
+
+3. 赋值时 `const` 会被忽略
+
+当 `f4()` 返回 `const int` 时，`int k = f4();` 实际上是**拷贝**这个返回值，而拷贝会**忽略** `const`（因为 `k` 是新变量，不受原 `const` 限制）。
 
 ---
 
@@ -835,6 +890,7 @@ void bar(const Student& s){
 }
 
 int main();
+```
 
 - 对于 `foo1` 传递的代价很大，因为是 `copy` 传递，要传递一个 `int` 与 一个 `char` 。
 - 对于 `foo2` 用指针传递，加上 `const` 限定符，防止意外修改。代价很小，因为指针就是 8 个字节的大小。

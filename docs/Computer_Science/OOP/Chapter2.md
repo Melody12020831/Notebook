@@ -5,6 +5,9 @@ comments: true
 
 # Chapter 2 | A tour of cpp
 
+!!! info
+    不知道为什么显示的 `!=` 变成 `≠` 了。后面皆是如此，请注意。
+
 ```cpp
 #include <iostream>
 
@@ -158,12 +161,25 @@ void foo(int x, int y = 10); // 合法
 void foo(int x);             // 错误：与上面的函数冲突
 ```
 
+从语言设计的角度来看，禁止这种重载是为了保持语言的确定性和一致性。允许这种重载会导致：
+
+1. 代码的可读性下降：难以确定哪个函数被调用。
+2. 维护困难：修改默认参数可能会意外影响其他重载。
+3. 编译器实现复杂：需要更复杂的规则来解决歧义。
+
+!!! note "默认参数"
+    默认参数通常从右向左提供：
+
+    ```cpp
+    void func(int a, int b = 5, int c = 10); // 合法
+    void func(int a = 1, int b, int c); // 非法：默认参数后不能有非默认参数
+    ```
+
+    这与重载的规则是一致的，因为部分默认参数不会导致歧义，除非像前面的例子那样完全覆盖。
+
 ---
 
 - 至此我们发现，变动点是参数的类型，因此我们把类型变动抽出来，作为一个参数。
-
-
-==T可以换成别的符号吗==
 
 ```cpp
 #include <iostream>
@@ -532,20 +548,20 @@ int main(){
     
     如果类中使用了动态内存分配（如 new），需要在析构函数中释放内存（如 delete）。
 
-```cpp
-class MyClass {
-private:
-    int* data;
-public:
-    MyClass(int size) {
-        data = new int[size];  // 动态分配内存
-    }
+    ```cpp
+    class MyClass {
+    private:
+        int* data;
+    public:
+        MyClass(int size) {
+            data = new int[size];  // 动态分配内存
+        }
 
-    ~MyClass() {
-        delete[] data;  // 释放内存
-    }
-};
-```
+        ~MyClass() {
+            delete[] data;  // 释放内存
+        }
+    };
+    ```
 
 2. 确保资源释放
 

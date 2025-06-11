@@ -91,26 +91,19 @@ pointer_func(data.data(), data.size());
 
 1. `begin` 返回指向 `vector` 首元素的迭代器。如果 `vector` 为空，那么返回的迭代器等于 `end()`。
 
-`begin` 返回普通迭代器或 `const` 迭代器，具体取决于容器是否是 `const` 的。适用于需要修改容器内容的场景。`cbegin`：始终返回 `const` 迭代器，不能修改容器内容。适用于只读访问容器的场景。
+`begin` 返回普通迭代器或 `const` 迭代器，具体取决于容器是否是 `const` 的。适用于需要修改容器内容的场景。
 
----
+`cbegin`：始终返回 `const` 迭代器，不能修改容器内容。适用于只读访问容器的场景。
 
 2. `end` 和 `cend` 同理。
+
+---
 
 - Capacity
 
 1. `empty` 返回 `vector` 是否为空。
-
----
-
 2. `size` 返回 `vector` 中元素的数量。
-
----
-
 3. `capacity` 返回在不重新分配内存的情况下，`vector` 可以容纳的元素数量。
-
----
-
 4. `reserve` 请求分配至少容纳 `n` 个元素的内存。如果 `n` 小于当前容量，则不进行任何操作。
 
 ---
@@ -118,9 +111,6 @@ pointer_func(data.data(), data.size());
 - Modifiers
 
 1. `.clear()` 移除所有元素。
-
----
-
 2. `insert` 在指定位置前插入元素。
 
 ```cpp
@@ -132,8 +122,6 @@ iterator insert( const_iterator pos, InputIt first, InputIt last );
 - 在 `pos` 前插入 `value`
 - 在 `pos` 前插入 `count` 个 `value`
 - 在 `pos` 前插入来自范围 `[first, last)` 的元素
-
----
 
 3. `erase` 移除指定位置的元素。
 
@@ -147,8 +135,6 @@ iterator erase( iterator first, iterator last );
 - 返回值是最后移除元素之后的迭代器。
     - 如果 `pos` 指代末元素，那么返回 `end()` 迭代器。
     - 如果在移除前 `last == end()`，那么返回更新的 `end()` 迭代器。如果范围 `[first, last)` 为空，那么返回 `last`。
-
----
 
 4. `push_back` 追加给定元素 `value` 到容器尾。
 
@@ -167,19 +153,21 @@ int main(){
     vector<int> evens {2, 4, 6, 8};
     evens.push_back(20);
     evens.push_back(22);
-    evens.insert(evens.begin()+4, 5, 10);
+    evens.insert(evens.begin()+4, 5, 10);  // [2, 4, 6, 8, 10, 10, 10, 10, 10, 20, 22]
 
     for(int i = 0; i < evens.size(); i++){
         cout << evens[i] << " ";
     }
     cout << endl;
 
-    for(vector<int>::iterator it = evens.begin(); it < evens.end(); it++){  
+    for(vector<int>::iterator it = evens.begin(); it < evens.end(); ++it){  
 
         // 每个容器下面都有这个迭代器 iterator 
         // 使用要解引用，因为这个底层就是用指针写的
 
         cout << *it << " ";
+
+        // 解引用迭代器，获取当前元素的值
     }
     cout << endl;
 
@@ -191,7 +179,7 @@ int main(){
     }
     cout << endl;
 
-    for(auto it = evens.begin(evens); it < evens.end(); it++){  
+    for(auto it = evens.begin(); it < evens.end(); ++it){  
         
         // 上面相当于在做这个
         
@@ -355,15 +343,19 @@ int main(){
 !!! note "关于 map 的访问"
     1. 使用 `operator[]` 访问
 
-    如果键不存在，`std::map` 会自动插入该键，并将其值初始化为默认值（对于基本类型，如 `int`，默认值为 `0`；对于类类型，调用默认构造函数）。再返回该键对应的值的引用。
+    如果 `key` 存在，返回对应值的引用。如果键不存在，`std::map` 会自动插入该键，并将其值初始化为默认值（对于基本类型，如 `int`，默认值为 `0`；对于类类型，调用默认构造函数）。再返回该键对应的值的引用。
 
     2. 使用 `at()` 访问
 
-    如果键不存在，`at()` 会抛出 `std::out_of_range` 异常。不会修改 `std::map`。
+    如果 `key` 存在，返回对应值的引用。如果键不存在，`at()` 会抛出 `std::out_of_range` 异常。不会修改 `std::map`。
 
     3. 使用 `find()` 访问
 
-    如果键不存在，`find()` 返回 `std::map::end()`，表示未找到。不会修改 `std::map`。
+    如果 `key` 存在，返回指向该键值对的迭代器。如果键不存在，`find()` 返回 `std::map::end()`，表示未找到。不会修改 `std::map`。
+
+    4. 使用 `contains()` 访问
+
+    如果 `key` 存在，返回 `true`。如果键不存在，返回 `false`。不会修改 `std::map`。
 
 ---
 
@@ -389,7 +381,7 @@ int main(){
 }
 ```
 
-- `word_map` 是一个 `std::map<std::string, int>`，它的元素类型是 `std::pair<const std::string, int>`。
+- `word_map` 是一个 `std::map<std::string, int>`，它的元素类型是 `std::pair<const std::string, int>`。(`const` 保证键的不可变性)。
 - `const auto& [word, count]` 是结构化绑定：
     - `word` 绑定到 `std::pair` 的第一个成员（即键，`std::string` 类型）。
     - `count` 绑定到 `std::pair` 的第二个成员（即值，`int` 类型）。
@@ -402,6 +394,8 @@ int main(){
 |"Charles Nguyen"|"(531) 9392 4587"|
 |"Lisa Jones"|"(402) 4536 4674"|
 |"William H. Smith"|"(998) 5488 0123"|
+
+---
 
 ##### Pitfalls - silent insertion
 
@@ -502,6 +496,8 @@ int main(){
 ```cpp
 #include <iostream>
 #include <vector>
+#include <list>
+#include <iterator>
 #include <infix_iterator.h>
 
 int main(){

@@ -8,24 +8,28 @@ comments: true
 ## Database Design Process
 
 requirement specification (规范说明、需求定义)
-    - specification of user requirement
+    
+- specification of user requirement
 
-    数据库设计的最初阶段是完整地描述未来数据库用户的数据需求。为完成这个任务数据库设计者需要同应用领域的专家和用户进行深入的沟通。这一阶段的产出是用户需求规格说明。虽然存在图形化方式的用户需求表示技术，但是在本章中，我们仅限于采用文本的方式来描述用户需求。
+数据库设计的最初阶段是完整地描述未来数据库用户的数据需求。为完成这个任务数据库设计者需要同应用领域的专家和用户进行深入的沟通。这一阶段的产出是用户需求规格说明。虽然存在图形化方式的用户需求表示技术，但是在本章中，我们仅限于采用文本的方式来描述用户需求。
 
 conceptual-design (概念设计)
-    - E-R diagram
+    
+- E-R diagram
 
-    设计者选择一种数据模型，并采用所选数据模型的概念将这些需求转化为数据库的概念模式。在此概念设计阶段所产生的模式提供了对企业的详细概览。概念模式明确规定了数据库中表示的实体实体的属性、实体之间的联系，以及实体和联系上的约束。通常，概念设计阶段会导致实体-联系图的构建，它提供了对模式的图形化表示。
+设计者选择一种数据模型，并采用所选数据模型的概念将这些需求转化为数据库的概念模式。在此概念设计阶段所产生的模式提供了对企业的详细概览。概念模式明确规定了数据库中表示的实体实体的属性、实体之间的联系，以及实体和联系上的约束。通常，概念设计阶段会导致实体-联系图的构建，它提供了对模式的图形化表示。
 
 logical-design (逻辑设计)
-    - logical schema
+    
+- logical schema
 
-    在逻辑设计阶段中，设计者将高层概念模式映射到将被使用的数据库系统具体实现的数据模型。数据模型的实现通常是关系数据模型，并且该阶段通常包括将采用实体-联系模型定义的概念模式映射到关系模式。
+在逻辑设计阶段中，设计者将高层概念模式映射到将被使用的数据库系统具体实现的数据模型。数据模型的实现通常是关系数据模型，并且该阶段通常包括将采用实体-联系模型定义的概念模式映射到关系模式。
 
 physical-design (物理设计)
-    - physical schema
+    
+- physical schema
 
-    数据库的物理特性被具体说明，这些特性包括文件组织形式和索引结构的选择。
+数据库的物理特性被具体说明，这些特性包括文件组织形式和索引结构的选择。
 
 ---
 
@@ -236,9 +240,9 @@ E-R 图还提供了一种方式来描述更复杂的约束，这种约束限制�
 
 ![img](./assets/6-16.png)
 
-advisor 和 student 之间的线段有 1.1 的基数约束，这意味着基数的最小值和最大值都是1。也就是说，每名学生必须有且只有一位导师。 advisor 和 instructor 之间的线段有 0.* 的限制，说明一位教师可以有零名或多名学生。因此，advisor 联系是从 insiructor 到 student 的一对多联系，更进一步地讲，student 在 advisor 中的参与是全部的这意味着一名学生必须有一位导师。
+advisor 和 student 之间的线段有 1.1 的基数约束，这意味着基数的最小值和最大值都是1。也就是说，每名学生必须有且只有一位导师。 advisor 和 instructor 之间的线段有 `0.*` 的限制，说明一位教师可以有零名或多名学生。因此，advisor 联系是从 insiructor 到 student 的一对多联系，更进一步地讲，student 在 advisor 中的参与是全部的这意味着一名学生必须有一位导师。
 
-很容易将左侧的边上的 0.* 曲解为 advisor 联系是从 instructor 到 student 的多对一联系，这正好和正确的解释**相反**，实际上应该是**一对多**。
+很容易将左侧的边上的 `0.*` 曲解为 advisor 联系是从 instructor 到 student 的多对一联系，这正好和正确的解释**相反**，实际上应该是**一对多**。
 
 ---
 
@@ -270,7 +274,7 @@ describes an individual relationship in set R.
 
 ### Weak Entity Sets
 
-弱实体集(weak entitys et)的存在依赖于另一个实体集，称为其标识性实体集(identifying entity set);我们使用标识性实体集的主码以及称为分辨符属性(discriminator attribute)的额外属性来唯一地标识弱实体，而不是将主码与弱实体相关联。非弱实体集的实体集被称为强实体集(strong entity set)。
+弱实体集(weak entity set)的存在依赖于另一个实体集，称为其标识性实体集(identifying entity set);我们使用标识性实体集的主码以及称为分辨符属性(discriminator attribute)的额外属性来唯一地标识弱实体，而不是将主码与弱实体相关联。非弱实体集的实体集被称为强实体集(strong entity set)。
 
 每个弱实体必须和一个标识性实体相关联;也就是说，实体集被称为存在依赖(existence dependent)于标识性实体集。标识性实体集被称为拥有(own)它所标识的弱实体集。将弱实体集与标识性实体集相关联的联系被称为标识性联系(identifying relationship)。标识性联系是从弱实体集到标识性实体集的多对一联系，并且弱实体集在联系中的参与是全部的。标识性联系集不应该有任何描述性属性，因为任何这样的属性都可以与弱实体集相关联。
 
@@ -338,7 +342,7 @@ $$time\_slot\_detail(\underline{time\_slot\_id, day, start\_time}, end\_time)$$
 
 Optimization: Don’t create the relation corresponding to the entity, just create the one corresponding to the multivalued attribute
 
-$$time\_slot(\underline{time\_slot_id, day, start\_time}, end\_time)$$
+$$time\_slot(\underline{time\_slot_{id}, day, start\_time}, end\_time)$$
 
 ---
 

@@ -22,7 +22,6 @@ At runtime, these function calls connect to the database using an API that provi
 
 - **API** (application-program interface) for a program to interact with a database server
     Application makes calls to
-
         - Connect with the database server
         - Send SQL commands to the database server
         - Fetch tuples of result one-by-one into program variables
@@ -39,7 +38,7 @@ At runtime, these function calls connect to the database using an API that provi
 
 JDBC is a Java API for communicating with database systems supporting SQL.
 
-JDBC 标准定义了用于将 Java 程序连接到数据库服务器的应用程序接口(ApplicationProgram Interface，API).
+JDBC 标准定义了用于将 Java 程序连接到数据库服务器的应用程序接口(Application Program Interface，API).
 
 Model for communicating with the database:
 
@@ -268,7 +267,6 @@ Open DataBase Connectivity(ODBC) standard
 standard for application program to communicate with a database server
 
 application program interface (API) to
-
     - open a connection with a database,
     - send queries and updates,
     - get back results.
@@ -286,7 +284,6 @@ When client program makes an ODBC API call, the code in the library communicates
 ODBC program first allocates an **SQL environment**, then a **database connection** handle.
 
 Opens database connection using `SQLConnect()`. Parameters for SQLConnect:
-
     - connection handle,
     - the server to which to connect
     - the user identifier, 
@@ -405,8 +402,8 @@ Transactions must then be committed or rolled back explicitly by ` SQLTransact(c
 
 ## Embedded SQL
 
-- The SQL standard defines embeddings of SQL in a variety ofprogramming languages such as C, Java, and Cobol.
-- A language to which SQL queries are embedded is referred to as a hostlanguage(宿主语言), and the SQL structures permitted in the hostlanguage comprise embedded SaL.
+- The SQL standard defines embeddings of SQL in a variety of programming languages such as C, Java, and Cobol.
+- A language to which SQL queries are embedded is referred to as a host language(宿主语言), and the SQL structures permitted in the hostlanguage comprise embedded SaL.
 - EXEC SaL statement is used to identify embedded SQL request to the preprocessol `EXEC SQL <embedded SQL statement>END EXEC`
     - the Java embedding uses: `# SQL{...};`
     - the C embedding uses: `EXEC SQL<embedded SQL statement >;`
@@ -692,13 +689,15 @@ A trigger is a statement that is executed automatically by the system as a side 
 触发器是在表上定义的一些程序、一个函数、一个过程，这些过程是被某些事件激活的。
 
 Trigger - ECA rule
-    - E: Event （`insert`,`delete`,`update`）
-    - C: Condition 
-    - A: Action
+
+- E: Event （`insert`,`delete`,`update`）
+- C: Condition 
+- A: Action
 
 To design a trigger mechanism, we must:
-    - Specify the conditions under which the trigger is to be executed.
-    - Specify the actions to be taken when the trigger executes.
+
+- Specify the conditions under which the trigger is to be executed.
+- Specify the actions to be taken when the trigger executes.
 
 Triggers introduced to SQL standard in SQL:1999, but supported even earlier using non-standard syntax by most databases.
 

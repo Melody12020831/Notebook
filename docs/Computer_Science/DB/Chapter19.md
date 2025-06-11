@@ -75,13 +75,13 @@ A **log** is kept on **stable storage**(稳定存储器).
 
 - The log is a sequence of **log records**, and maintains a record of update activities on the database.
 
-When transaction $T_i$ starts, it registers itself by writing a "start" log record: `<$T_i$  start>`
+When transaction $T_i$ starts, it registers itself by writing a "start" log record: <$T_i$  start>
 
-Before $T_i$ executes **write**(X), writing "update" log record `<$T_i$, X,  $V_1$, $V_2$ >` where $V_1$ is the value of X before the write (the old value), $V_2$ is the value to be written to X (the new value). 
+Before $T_i$ executes **write**(X), writing "update" log record <$T_i$, X,  $V_1$, $V_2$ > where $V_1$ is the value of X before the write (the old value), $V_2$ is the value to be written to X (the new value). 
 
-When $T_i$ finishes it last statement, writing "commit" log record: `<$T_i$ commit>`
+When $T_i$ finishes it last statement, writing "commit" log record: <$T_i$ commit>
 
-When $T_i$ complete rollback, writing "abort" log record: `<$T_i$ abort>`
+When $T_i$ complete rollback, writing "abort" log record: <$T_i$ abort>
 
 ---
 
@@ -126,16 +126,16 @@ Writes performed by a transaction may still be in the **buffer** when the transa
 
 ## Undo(撤销) and Redo（重做）Operations
 
-Undo of a log record `<$T_i$, X, $V_1$, $V_2$>` writes the old value $V_1$ to X
+Undo of a log record <$T_i$, X, $V_1$, $V_2$> writes the old value $V_1$ to X
 
-Redo of a log record `<$T_i$, X, $V_1$, $V_2$>` writes the new value $V_2$ to X
+Redo of a log record <$T_i$, X, $V_1$, $V_2$> writes the new value $V_2$ to X
 
 Undo and Redo of Transactions
 
 - **undo($T_i$)** restores the value of all data items updated by $T_i$ to their old values, going backwards from the last log record for $T_i$
 
-1. each time a data item X is restored to its old value V a special log record `<$T_i$ , X, V>` is written out – **compensation log**(补偿日志)
-2. when undo of a transaction is complete, a log record `<$T_i$ abort>` is written out.
+1. each time a data item X is restored to its old value V a special log record <$T_i$ , X, V> is written out – **compensation log**(补偿日志)
+2. when undo of a transaction is complete, a log record <$T_i$ abort> is written out.
 
 - **redo($T_i$)** sets the value of all data items updated by $T_i$ to the new values, going forward from the first log record for $T_i$
 
@@ -149,19 +149,19 @@ When recovering after failure:
 
 - Transaction $T_i$ needs to be **undone** if the log 
 
-1. contains the record `<$T_i$ start>`,
-2. but does not contain either the record `<$T_i$ commit>` or `<$T_i$ abort>`.
+1. contains the record <$T_i$ start>,
+2. but does not contain either the record <$T_i$ commit> or <$T_i$ abort>.
 
 - Transaction $T_i$ needs to be **redone** if the log 
 
-1. contains the records `<$T_i$ start>`
-2. and contains the record `<$T_i$ commit>` or `<$T_i$ abort>`
+1. contains the records <$T_i$ start>
+2. and contains the record <$T_i$ commit> or <$T_i$ abort>
 
 ---
 
 ### Recovering from Failure - Repeating History
 
-Note that If transaction $T_i$ was undone earlier and the `<$T_i$ abort>` record written to the log, and then a failure occurs, on recovery from failure $T_i$ is **redone**
+Note that If transaction $T_i$ was undone earlier and the <$T_i$ abort> record written to the log, and then a failure occurs, on recovery from failure $T_i$ is **redone**
 
 - such a redo redoes all the original actions including the steps that restored old values
 
@@ -194,8 +194,8 @@ During recovery we need to consider only the most recent transaction $T_i$ that 
 
 Some earlier part of the log may be needed for undo operations
 
-1. Continue scanning backwards till a record `<$T_i$ start>` is found for every transaction $T_i$ in L.
-2. Parts of log prior to earliest `<$T_i$ start>` record above are not needed for recovery, and can be erased whenever desired.
+1. Continue scanning backwards till a record <$T_i$ start> is found for every transaction $T_i$ in L.
+2. Parts of log prior to earliest <$T_i$ start> record above are not needed for recovery, and can be erased whenever desired.
 
 ![img](./assets/19-6.png)
 
@@ -205,21 +205,21 @@ Some earlier part of the log may be needed for undo operations
 
 Logging (during normal operation):
 
-    - `<$T_i$ start>` at transaction start
-    - `<$T_i$, $X_j$,  $V_1$,  $V_2$>` for each update, and
-    - `<$T_i$ commit>` at transaction end
+- <$T_i$ start> at transaction start
+- <$T_i$, $X_j$,  $V_1$,  $V_2$> for each update, and
+- <$T_i$ commit> at transaction end
 
 Transaction rollback (during normal operation)
 
 - Let $T_i$ be the transaction to be rolled back
-- Scan log backwards from the end, and for each log record of $T_i$ of the form `<$T_i$, $X_j$,  $V_1$,  $V_2$>` 
+- Scan log backwards from the end, and for each log record of $T_i$ of the form <$T_i$, $X_j$,  $V_1$,  $V_2$>`
 
 1. perform the undo by writing $V_1$ to $X_j$,
-2. write a log record `<$T_i$ , $X_j$,  $V_1$>` 
+2. write a log record <$T_i$ , $X_j$,  $V_1$>
 
     - such log records are called compensation log records(补偿记录)
 
-- Once the record `<$T_i$ start>` is found stop the scan and write the log record `<$T_i$ abort>`
+- Once the record <$T_i$ start> is found stop the scan and write the log record <$T_i$ abort>
 
 Recovery from failure: Two phases
 
@@ -231,28 +231,28 @@ Redo phase:
 1. Find last `<checkpoint L>` record, and set **undo-list** to L.
 2. Scan forward from above `<checkpoint L>` record
 
-- Whenever a  record `<$T_i$, $X_j$, $V_1$, $V_2$>` is found, redo it by writing $V_2$ to $X_j$ 
-- Whenever a  (compensation) log record `<$T_i$, $X_j$, $V_2$>` is found, redo it by writing $V_2$ to $X_j$ 
-- Whenever a log record `<$T_i$ start>` is found, add $T_i$ to undo-list
-- Whenever a log record `<$T_i$ commit>` or `<$T_i$ abort>` is found, remove $T_i$ from **undo-list**
+- Whenever a  record <$T_i$, $X_j$, $V_1$, $V_2$> is found, redo it by writing $V_2$ to $X_j$ 
+- Whenever a  (compensation) log record <$T_i$, $X_j$, $V_2$> is found, redo it by writing $V_2$ to $X_j$ 
+- Whenever a log record <$T_i$ start> is found, add $T_i$ to undo-list
+- Whenever a log record <$T_i$ commit> or <$T_i$ abort> is found, remove $T_i$ from **undo-list**
 
 Undo phase: 
 
 1. Scan log backwards from end 
 
-- Whenever a log record `<$T_i$, $X_j$,  $V_1$,  $V_2$>` is found where $T_i$ is in undo-list perform same actions as for transaction rollback:
+- Whenever a log record <$T_i$, $X_j$,  $V_1$,  $V_2$> is found where $T_i$ is in undo-list perform same actions as for transaction rollback:
  
     - perform undo by writing $V_1$ to $X_j$.
-    - write a log record `<$T_i$ , $X_j$,  $V_1$>`
+    - write a log record <$T_i$ , $X_j$,  $V_1$>
 
-2. Whenever a log record `<$T_i$ start>` is found where $T_i$ is in undo-list, 
+2. Whenever a log record <$T_i$ start> is found where $T_i$ is in undo-list, 
 
-    - Write a log record `<$T_i$ abort>` 
+    - Write a log record <$T_i$ abort>`
     - Remove $T_i$ from undo-list
 
 3. Stop when undo-list is empty
 
-    - i.e. `<$T_i$ start>` has been found for every transaction in undo-list
+    - i.e. <$T_i$ start> has been found for every transaction in undo-list
 
 After undo phase completes, normal transaction processing can commence
 
@@ -289,7 +289,7 @@ Log Writer (日志写入器):
 
 该事务所有的日志记录，包括一个标记其提交状态的特殊日志记录（例如 `<T_i commit>`），都必须被放入 log buffer。
 
-在向应用程序返回"提交成功"的消息之前，DBMS 必须确保 log buffer 中与该事务相关的所有日志记录（至少到其 commit 记录为止）都已经被强制刷新 (flush) 并成功写入到磁盘上的 log file 中。 
+在向应用程序返回"提交成功"的消息之前，DBMS 必须确保 log buffer 中与该事务相关的所有日志记录（至少到其 commit 记录为止）都已经被强制刷新 (flush) 并成功写入到磁盘上的 log file 中。(有时候是很多一起写回去，看选择)。
 
 **Log record buffering**: log records are buffered in main memory, instead of of being output directly to stable storage.
 
@@ -302,7 +302,7 @@ Log force is performed to commit a transaction by forcing all its log records (i
 The rules below must be followed if log records are buffered:
 
 - Log records are output to stable storage in the order in which they are created. 
-- Transaction $T_i$ enters the commit state only when the log record `<$T_i$ commit>` has been output to stable storage.
+- Transaction $T_i$ enters the commit state only when the log record <$T_i$ commit> has been output to stable storage.
 - Before a block of data in main memory is output to the database, all log records pertaining to data in that block must have been output to stable storage. 
 
 This rule is called the **write-ahead logging** or **WAL** rule
@@ -474,9 +474,9 @@ Redo information is logged **physically** (that is, new value for each write) ev
 
 Operation logging is done as follows:
 
-1. When operation starts, log `<$T_i$, $O_j$,  operation-begin>`. Here Oj is a unique identifier of the operation instance.
+1. When operation starts, log <$T_i$, $O_j$,  operation-begin>. Here Oj is a unique identifier of the operation instance.
 2. While operation is executing, normal log records with physical redo and physical undo information are logged. 
-3. When operation completes, `<$T_i$, $O_j$,  operation-end, U>` is logged, where U contains information  needed to perform a logical undo information.
+3. When operation completes, <$T_i$, $O_j$,  operation-end, U> is logged, where U contains information  needed to perform a logical undo information.
 
 Example: insert of (key, record-id) pair (K5, RID7) into index I9
 
@@ -496,20 +496,20 @@ Redo of operation (after crash) still uses physical redo information.
 
 操作日志的记录步骤如下：
 
-操作开始时：当一个这类特殊操作（比如 B+ 树插入 $O_j$，由事务 $T_i$ 执行）开始时，记录一条日志：`<$T_i$, $O_j$, operation-begin>`。这里的 $O_j$ 是这个操作实例的唯一标识符。
+操作开始时：当一个这类特殊操作（比如 B+ 树插入 $O_j$，由事务 $T_i$ 执行）开始时，记录一条日志：<$T_i$, $O_j$, operation-begin>。这里的 $O_j$ 是这个操作实例的唯一标识符。
 
-操作执行期间：在操作 $O_j$ 执行的过程中，系统仍然像往常一样记录包含物理重做和物理撤销信息的普通日志记录。例如，如果操作 $O_j$ 修改了页面 X 的值从 $V_1$ 到 $V_2$，会记录 `<$T_i$, X, $V_1$, $V_2$>`。这些物理撤销信息是"备用"的。
+操作执行期间：在操作 $O_j$ 执行的过程中，系统仍然像往常一样记录包含物理重做和物理撤销信息的普通日志记录。例如，如果操作 $O_j$ 修改了页面 X 的值从 $V_1$ 到 $V_2$，会记录 <$T_i$, X, $V_1$, $V_2$>。这些物理撤销信息是"备用"的。
 
-操作完成时：当操作 $O_j$ 成功完成时，记录一条日志：`<$T_i$, $O_j$, operation-end, U>`。这里的 U 包含了执行该操作的逻辑撤销所需的信息。例如，如果 $O_j$ 是一个 B+ 树插入操作，U 可能包含要删除的键。
+操作完成时：当操作 $O_j$ 成功完成时，记录一条日志：<$T_i$, $O_j$, operation-end, U>。这里的 U 包含了执行该操作的逻辑撤销所需的信息。例如，如果 $O_j$ 是一个 B+ 树插入操作，U 可能包含要删除的键。
 
 如果崩溃/回滚发生在操作完成之前：
 
-1. 这意味着在日志中找不到对应的 `<$T_i$, $O_j$, operation-end, U>` 记录。
+1. 这意味着在日志中找不到对应的 <$T_i$, $O_j$, operation-end, U> 记录。
 2. 此时，系统会使用在操作执行期间记录的物理撤销信息来撤销该操作（例如，使用 $V_1$ 恢复页面 X）。
 
 如果崩溃/回滚发生在操作完成之后：
 
-1. 这意味着在日志中找到了对应的 `<$T_i$, $O_j$, operation-end, U>` 记录。
+1. 这意味着在日志中找到了对应的 <$T_i$, $O_j$, operation-end, U> 记录。
 2. 在这种情况下，系统会执行逻辑撤销，使用 U 中提供的信息。此时，该操作对应的物理撤销信息将被忽略。
 
 ---
@@ -520,30 +520,29 @@ Rollback of transaction $T_i$ is done as follows:
 
 Scan the log backwards 
 
-1. If a log record `<$T_i$, X, $V_1$, $V_2$>` is found, perform the undo and log `<$T_i$, X, V1>`.
+1. If a log record <$T_i$, X, $V_1$, $V_2$> is found, perform the undo and log <$T_i$, X, V1>.
 
-遇到普通物理撤销日志记录：如果找到一条形如 `<$T_i$, X, $V_1$, $V_2$>` 的日志记录（表示 $T_i$ 将 X 从 $V_1$ 修改为 $V_2$），则执行物理撤销（将 X 的值恢复为 $V_1$），并记录一条补偿日志（Compensation Log Record, CLR），通常形式为 `<$T_i$, X, V1>` (表示将 X 的值改为 $V_1$，并且这个 CLR 本身是只重做 redo-only 的)。
+遇到普通物理撤销日志记录：如果找到一条形如 <$T_i$, X, $V_1$, $V_2$> 的日志记录（表示 $T_i$ 将 X 从 $V_1$ 修改为 $V_2$），则执行物理撤销（将 X 的值恢复为 $V_1$），并记录一条补偿日志（Compensation Log Record, CLR），通常形式为 <$T_i$, X, V1> (表示将 X 的值改为 $V_1$，并且这个 CLR 本身是只重做 redo-only 的)。
 
-2. If a `<$T_i$, $O_j$,  operation-end, U>` record is found
+2. If a <$T_i$, $O_j$,  operation-end, U> record is found
 
 - Rollback the operation logically using the undo information U.  此时，必须使用 U 中包含的信息来逻辑地回滚操作 $O_j$ 。例如，如果 $O_j$ 是插入，则执行删除。
 
 Updates performed during roll back are logged just like during normal operation execution. 在执行这个逻辑撤销操作期间所做的更新（比如逻辑删除导致对 B+ 树节点的修改）会像正常操作执行时一样被记录到日志中（包括它们自己的物理重做和物理撤销信息）。
 
-At the end of the operation rollback, instead of logging an  operation-end record, generate a record  `<$T_i$, $O_j$, operation-abort>`. 当这个逻辑撤销操作完成后，系统不会记录一个 operation-end 记录，而是生成一条特殊的记录：`<$T_i$, $O_j$, operation-abort>`。
+At the end of the operation rollback, instead of logging an  operation-end record, generate a record  <$T_i$, $O_j$, operation-abort>. 当这个逻辑撤销操作完成后，系统不会记录一个 operation-end 记录，而是生成一条特殊的记录：<$T_i$, $O_j$, operation-abort>。
 
-- skip all preceding log records for $T_i$ until the record `<$T_i$, $O_j$ operation-begin>` is found. 在记录了 `operation-abort` 之后，跳过日志中所有属于事务 $T_i$ 的、早于此 `operation-abort` 记录的、且与操作 $O_j$ 相关的日志记录，直到找到该操作对应的 `<$T_i$, $O_j$ operation-begin>` 记录。这是为了避免对 $O_j$ 内部的细粒度物理修改进行不必要的物理撤销。
+- skip all preceding log records for $T_i$ until the record <$T_i$, $O_j$ operation-begin> is found. 在记录了 `operation-abort` 之后，跳过日志中所有属于事务 $T_i$ 的、早于此 `operation-abort` 记录的、且与操作 $O_j$ 相关的日志记录，直到找到该操作对应的 <$T_i$, $O_j$ operation-begin> 记录。这是为了避免对 $O_j$ 内部的细粒度物理修改进行不必要的物理撤销。
 
 Transaction rollback, scanning the log backwards (cont.):
 
 1. If a redo-only record is found ignore it  遇到只重做 (redo-only) 记录忽略它们，因为回滚阶段只关心撤销操作。
-2. If a `<$T_i$, $O_j$, operation-abort>` record is found: 遇到 `<$T_i$, $O_j$ operation-begin>` 记录
+2. If a <$T_i$, $O_j$, operation-abort> record is found: 遇到 <$T_i$, $O_j$ operation-begin> 记录
 
-- skip all preceding log records for $T_i$ until the record `<$T_i$, $O_j$, operation-begin>` is found. 这表示操作 $O_j$ 之前已经被（可能是部分地）回滚了（例如，在一次崩溃前的回滚尝试中）。
-为了避免重复回滚，此时需要跳过所有属于事务 $T_i$ 的、早于此 operation-abort 记录的、且与操作 $O_j$ 相关的日志记录，直到找到该操作对应的 `<$T_i$, $O_j$, operation-begin>` 记录。
+- skip all preceding log records for $T_i$ until the record <$T_i$, $O_j$, operation-begin> is found. 这表示操作 $O_j$ 之前已经被（可能是部分地）回滚了（例如，在一次崩溃前的回滚尝试中）。为了避免重复回滚，此时需要跳过所有属于事务 $T_i$ 的、早于此 operation-abort 记录的、且与操作 $O_j$ 相关的日志记录，直到找到该操作对应的 <$T_i$, $O_j$, operation-begin> 记录。
 
-3. Stop the scan when the record `<$T_i$, start>` is found. 当找到该事务的开始记录 `<$T_i$, start>` 时，回滚过程（对于这个事务而言）结束。
-4. Add a `<$T_i$,  abort>` record to the log. 最后，在日志中添加一条 `<T$T_i$, abort>` 记录，正式标记该事务已中止。
+3. Stop the scan when the record <$T_i$, start> is found. 当找到该事务的开始记录 <$T_i$, start> 时，回滚过程（对于这个事务而言）结束。
+4. Add a <$T_i$,  abort> record to the log. 最后，在日志中添加一条 <$T_i$, abort> 记录，正式标记该事务已中止。
 
 Some points to note:
 
@@ -570,9 +569,9 @@ Basically same as earlier algorithm, except for changes described earlier for tr
 
 undo-list is set to L initially
 
-Whenever `<$T_i$ start>` is found $T_i$ is added to undo-list
+Whenever <$T_i$ start> is found $T_i$ is added to undo-list
 
-Whenever `<$T_i$ commit>` or `<$T_i$ abort>` is found, $T_i$ is deleted from undo-list
+Whenever <$T_i$ commit> or <$T_i$ abort> is found, $T_i$ is deleted from undo-list
 
 This brings database to state as of crash, with committed as well as uncommitted transactions having been redone.
 
@@ -586,8 +585,8 @@ Recovery from system crash (cont.)
 
 Single shared scan for all transactions being undone
 
-- When `<$T_i$ start>` is found for a transaction $T_i$ in  undo-list, write a `<$T_i$ abort>` log record.
-- Stop scan when `<$T_i$ start>` records have been found for all $T_i$ in undo-list
+- When <$T_i$ start> is found for a transaction $T_i$ in  undo-list, write a <$T_i$ abort> log record.
+- Stop scan when <$T_i$ start> records have been found for all $T_i$ in undo-list
 
 This undoes the effects of incomplete transactions (those with neither commit nor abort log records). Recovery is now complete.
 
@@ -599,12 +598,16 @@ This undoes the effects of incomplete transactions (those with neither commit no
 
 * **扫描方向**：从最后一个检查点记录 `<checkpoint L>` 开始，**向前**扫描日志，直到日志的末尾（即崩溃点）。
 * **核心操作**：
-    * **重复历史 (Repeat history)**：通过**物理重做 (physically redoing)** 所有事务的所有更新操作。这意味着对于日志中的每一条物理修改记录（例如 `<Ti, X, OldVal, NewVal>`），都会将其新值 `NewVal` 应用到数据项 `X` 上。
+
+    * **重复历史 (Repeat history)**：通过**物理重做 (physically redoing)** 所有事务的所有更新操作。这意味着对于日志中的每一条物理修改记录（例如 <$T_i$, X, OldVal, NewVal>），都会将其新值 `NewVal` 应用到数据项 `X` 上。
     * **构建撤销列表 (undo-list)**：在向前扫描的过程中，动态地构建一个 `undo-list`。这个列表包含了在崩溃时尚未完成（既未提交也未中止）的事务。
+
         * 初始时，`undo-list` 被设置为检查点记录 `L` 中包含的活动事务列表。
-        * 当扫描到 `<$T_i$ start>` 日志记录时，将事务 $T_i$ 添加到 `undo-list` 中。
-        * 当扫描到 `<$T_i$ commit>` 或 `<$T_i$ abort>` 日志记录时，将事务 $T_i$ 从 `undo-list` 中删除。
+        * 当扫描到 <$T_i$ start> 日志记录时，将事务 $T_i$ 添加到 `undo-list` 中。
+        * 当扫描到 <$T_i$ commit> 或 <$T_i$ abort> 日志记录时，将事务 $T_i$ 从 `undo-list` 中删除。
+
 * **阶段结果**：
+
     * 此阶段完成后，数据库的状态与崩溃发生时的状态完全一致。所有事务（无论是最终提交的还是未提交的）的、且已记录在日志中的修改都已经被重做到了数据库中。
     * 此时，`undo-list` 中包含的是所有**不完整的事务**，即那些既没有提交记录也没有完全回滚中止记录的事务。这些事务的影响需要在下一阶段被撤销。
 
@@ -614,16 +617,23 @@ This undoes the effects of incomplete transactions (those with neither commit no
 
 * **扫描方向**：从日志的末尾开始，**向后**扫描日志。
 * **核心操作**：
+
     * 对 `undo-list` 中事务的日志记录执行撤销操作。
     * **关键**：当遇到需要回滚的事务的日志记录时，这些记录会**按照先前描述的方式进行处理**。这就是逻辑撤销发挥作用的地方：
-        * 如果遇到普通的物理修改记录（如 `<$T_i$, X, $V_1$, $V_2$>`），则执行物理撤销，并记录补偿日志记录 (CLR)。
-        * 如果遇到 `<$T_i$, $O_j$, operation-end, U>` 记录，则使用 `U` 中的信息执行**逻辑撤销**，记录相应的 CLR（可能描述逻辑操作的效果），并记录 `<$T_i$, $O_j$, operation-abort>`，然后跳过此操作 $O_j$ 内部的其余物理日志记录，直到其 `<operation-begin>`。
-        * 如果遇到 `<$T_i$, $O_j$, operation-abort>` 记录（说明此操作在之前的回滚尝试中已被处理），则跳过与此操作相关的日志，直到其 `<operation-begin>`。
+
+        * 如果遇到普通的物理修改记录（如 <$T_i$, X, $V_1$, $V_2$>），则执行物理撤销，并记录补偿日志记录 (CLR)。
+        * 如果遇到 <$T_i$, $O_j$, operation-end, U> 记录，则使用 `U` 中的信息执行**逻辑撤销**，记录相应的 CLR（可能描述逻辑操作的效果），并记录 <$T_i$, $O_j$, operation-abort>，然后跳过此操作 $O_j$ 内部的其余物理日志记录，直到其 `<operation-begin>`。
+        * 如果遇到 <$T_i$, $O_j$, operation-abort> 记录（说明此操作在之前的回滚尝试中已被处理），则跳过与此操作相关的日志，直到其 `<operation-begin>`。
+
     * **共享扫描**：所有需要撤销的事务共享同一次的日志反向扫描过程，提高了效率。
+
 * **事务处理完成**：
-    * 当反向扫描遇到 `undo-list` 中某个事务 $T_i$ 的开始记录 `<$T_i$ start>` 时，意味着该事务的所有影响都已被撤销。此时，系统会向日志中写入一条 `<$T_i$ abort>` 记录，并将 $T_i$ 从 `undo-list` 中（概念上）移除。
+
+    * 当反向扫描遇到 `undo-list` 中某个事务 $T_i$ 的开始记录 <$T_i$ start> 时，意味着该事务的所有影响都已被撤销。此时，系统会向日志中写入一条 <$T_i$ abort> 记录，并将 $T_i$ 从 `undo-list` 中（概念上）移除。
+
 * **扫描停止**：当 `undo-list` 中所有事务的 `<start>` 记录都已找到（并处理完毕）后，撤销阶段的扫描就可以停止了。
 * **阶段结果**：
+
     * 所有不完整事务（那些在日志中既没有 commit 记录也没有 abort 记录的事务）的影响都被成功撤销。
     * 至此，数据库恢复过程完成。
 
@@ -638,15 +648,25 @@ ARIES is a state of the art recovery method
 
 Unlike the recovery algorithm described earlier, ARIES 
 
-1. Uses log sequence number (LSN) to identify log records 使用日志序列号 (LSN) 标识日志记录。每条日志记录都会被赋予一个唯一的、单调递增的日志序列号 (LSN)。LSN 通常与日志在日志文件中的物理位置（例如字节偏移量）相关。
+1. Uses log sequence number (LSN) to identify log records 
 
-Stores LSNs in pages to identify what updates have already been applied to a database page 更重要的是，ARIES 会在每个数据页的头部存储该页面最近一次被更新时对应的日志记录的 LSN (称为 PageLSN)。
+使用日志序列号 (LSN) 标识日志记录。每条日志记录都会被赋予一个唯一的、单调递增的日志序列号 (LSN)。LSN 通常与日志在日志文件中的物理位置（例如字节偏移量）相关。
 
-2. Physiological redo 生理性操作通常指的是对单个页面的修改是物理的（比如修改页面内的几个字节），但是这些操作的边界是由逻辑定义的（例如，一个记录的插入或删除可能只影响一个页面内的一小部分）。在重做时，会重做对页面的这些"生理性"修改。例如，日志记录会指明在哪个页面的哪个偏移量写入了哪些字节。虽然重做是生理性的，但撤销（尤其对于复杂操作如 B+ 树索引维护）可以是逻辑的，正如我们之前讨论的那样。
-3. Dirty page table to avoid unnecessary redos during recovery ARIES. ARIES 在内存中维护一个脏页表，记录了哪些数据页在缓冲区中被修改过但尚未写回磁盘（即脏页）。对于每个脏页，DPT 还会记录该脏页第一次变脏时对应的日志记录的 LSN (称为 `RecoveryLSN` 或 `RecLSN`)。在恢复的分析阶段 (Analysis Pass)，会根据检查点信息和后续日志重建 DPT。在重做阶段 (Redo Pass) 开始时，系统只需要从所有脏页中最小的 `RecLSN` 开始扫描日志。对于不在 DPT 中的页面相关的日志更新，可以跳过，因为这些页面在检查点时肯定是干净的，并且之后没有变脏。这进一步减少了需要扫描和处理的日志量。
-4. Fuzzy checkpointing that only records information about dirty pages, and does not require dirty pages to be written out at checkpoint time. 与我们之前讨论的模糊检查点类似，它仅仅记录有关脏页的信息（例如，脏页列表及其 RecLSN）以及活动事务列表到日志中。ARIES 的模糊检查点不要求在检查点完成时将脏页写出到磁盘。脏页的写出是由缓冲区的替换策略或其他后台进程独立管理的。这种方式使得检查点的开销非常小，对正常事务处理的干扰降到最低，因为检查点操作主要只是写一些元数据到日志，而不涉及大量的数据页 I/O。
+Stores LSNs in pages to identify what updates have already been applied to a database page 
 
-More coming up on each of the above ...
+更重要的是，ARIES 会在每个数据页的头部存储该页面最近一次被更新时对应的日志记录的 LSN (称为 PageLSN)。
+
+2. Physiological redo 
+
+通常指的是对单个页面的修改是物理的（比如修改页面内的几个字节），但是这些操作的边界是由逻辑定义的（例如，一个记录的插入或删除可能只影响一个页面内的一小部分）。在重做时，会重做对页面的这些"生理性"修改。例如，日志记录会指明在哪个页面的哪个偏移量写入了哪些字节。虽然重做是生理性的，但撤销（尤其对于复杂操作如 B+ 树索引维护）可以是逻辑的，正如我们之前讨论的那样。
+
+3. Dirty page table to avoid unnecessary redos during recovery ARIES. 
+
+ARIES 在内存中维护一个脏页表，记录了哪些数据页在缓冲区中被修改过但尚未写回磁盘（即脏页）。对于每个脏页，DPT 还会记录该脏页第一次变脏时对应的日志记录的 LSN (称为 `RecoveryLSN` 或 `RecLSN`)。在恢复的分析阶段 (Analysis Pass)，会根据检查点信息和后续日志重建 DPT。在重做阶段 (Redo Pass) 开始时，系统只需要从所有脏页中最小的 `RecLSN` 开始扫描日志。对于不在 DPT 中的页面相关的日志更新，可以跳过，因为这些页面在检查点时肯定是干净的，并且之后没有变脏。这进一步减少了需要扫描和处理的日志量。
+
+4. Fuzzy checkpointing that only records information about dirty pages, and does not require dirty pages to be written out at checkpoint time. 
+
+与我们之前讨论的模糊检查点类似，它仅仅记录有关脏页的信息（例如，脏页列表及其 RecLSN）以及活动事务列表到日志中。ARIES 的模糊检查点不要求在检查点完成时将脏页写出到磁盘。脏页的写出是由缓冲区的替换策略或其他后台进程独立管理的。这种方式使得检查点的开销非常小，对正常事务处理的干扰降到最低，因为检查点操作主要只是写一些元数据到日志，而不涉及大量的数据页 I/O。
 
 ---
 
@@ -673,20 +693,33 @@ Each page contains a PageLSN which is the LSN of the last log record whose effec
 
 To update a page:
 
-- X-latch the page, and write the log record. 对页面上 X锁 (排他锁) (X-latch the page，这是一种短期的物理锁，用于保证页面在内存中的物理一致性，不同于事务用的逻辑锁)。
+- X-latch the page, and write the log record. 
+
+对页面上 X锁 (排他锁) (X-latch the page，这是一种短期的物理锁，用于保证页面在内存中的物理一致性，不同于事务用的逻辑锁)。
+
 - Update the page
 - Record the LSN of the log record in PageLSN
 - Unlock page
 
-To flush page to disk, must first S-latch page. 在将页面内容写入磁盘之前，必须先获取该页的 S锁 (共享锁) (S-latch page)。
+To flush page to disk, must first S-latch page. 
 
-- Thus page state on disk is operation consistent. 这样可以确保写入磁盘的页面状态是操作一致的 (operation consistent)，即页面内容是某个完整操作的结果，而不是正在被修改过程中的中间状态。
+在将页面内容写入磁盘之前，必须先获取该页的 S锁 (共享锁) (S-latch page)。
 
-Required to support physiological redo. 生理性重做意味着重做操作是基于页面的物理修改，但这些修改是由逻辑操作（如记录插入）引起的。
+- Thus page state on disk is operation consistent. 
 
-- PageLSN is used during recovery to prevent repeated redo. 在恢复的重做阶段，通过比较日志记录的 LSN 和页面的 PageLSN，可以判断该日志记录描述的更新是否已经应用到了这个页面上。如果日志记录的 LSN ≤ PageLSN，则表示该更新已包含在内，无需再次重做。
+这样可以确保写入磁盘的页面状态是操作一致的 (operation consistent)，即页面内容是某个完整操作的结果，而不是正在被修改过程中的中间状态。
 
-Thus ensuring idempotence. 由于上述机制，即使重做操作被多次执行（例如，在恢复过程中发生多次尝试），页面的最终状态也是正确的，不会因为重复应用同一个更新而出错。
+Required to support physiological redo. 
+
+意味着重做操作是基于页面的物理修改，但这些修改是由逻辑操作（如记录插入）引起的。
+
+- PageLSN is used during recovery to prevent repeated redo. 
+
+在恢复的重做阶段，通过比较日志记录的 LSN 和页面的 PageLSN，可以判断该日志记录描述的更新是否已经应用到了这个页面上。如果日志记录的 LSN ≤ PageLSN，则表示该更新已包含在内，无需再次重做。
+
+Thus ensuring idempotence. 
+
+由于上述机制，即使重做操作被多次执行（例如，在恢复过程中发生多次尝试），页面的最终状态也是正确的，不会因为重复应用同一个更新而出错。
 
 ---
 
@@ -804,8 +837,8 @@ Key idea: no need to undo these transactions: earlier undo actions were logged, 
 * **len, offset**: 修改数据的长度和在页面内的偏移量。
 * **before, after**: 修改前的数据影像和修改后的数据影像。
 * **特殊日志记录**:
-    * LSN 23: `BEGIN_CKP` - 标志着一个检查点过程的开始。
-    * LSN 24: `END_CKP{P1:20,P2:21,P3:19}{T1:22,T2:20,T3:21}` - 标志检查点结束。大括号内是检查点开始时（即LSN 23时）的两个关键信息快照：
+    * LSN 23: `BEGIN_CKP` 标志着一个检查点过程的开始。
+    * LSN 24: `END_CKP{P1:20,P2:21,P3:19}{T1:22,T2:20,T3:21}` 标志检查点结束。大括号内是检查点开始时（即LSN 23时）的两个关键信息快照：
         * 第一个大括号 `{P1:20,P2:21,P3:19}` 是当时的**脏页表 (Dirty Page Table - DPT)**，记录了脏页ID及其对应的 **RecLSN** (Recovery LSN，即该页首次变脏时的LSN)。
         * 第二个大括号 `{T1:22,T2:20,T3:21}` 是当时的**活动事务表 (Active Transaction Table - ATT)**，记录了活动事务ID及其对应的 **LastLSN** (该事务写入的最后一条日志的LSN)。
 
@@ -998,9 +1031,9 @@ Undos performed as described earlier
         * 初始 ATT = {$T_{145}$ (lastLSN 7567)}
         * 初始 DPT = {PageID 4894 (PageLSN 7567, RecLSN 7564), PageID 7200 (PageLSN 7565, RecLSN 7565)}
     2.  继续向前扫描日志：
-        * LSN 7569 (`<$T_{146}$ begin>`): 将 $T_{146}$ 加入 ATT。ATT = {$T_{145}$, $T_{146}$}.
-        * LSN 7570 (`<$T_{146}$, 2390.4, 50, 90>`): 页面 2390 被修改。如果 2390 不在 DPT 中，则加入，其 RecLSN 为 7570。$T_{146}$ 的 lastLSN 更新为 7570。
-        * LSN 7571 (`<$T_{146}$ commit>`): 将 $T_{146}$ 从 ATT 中移除。ATT = {$T_{145}$}.
+        * LSN 7569 (<$T_{146}$ begin>): 将 $T_{146}$ 加入 ATT。ATT = {$T_{145}$, $T_{146}$}.
+        * LSN 7570 (<$T_{146}$, 2390.4, 50, 90>): 页面 2390 被修改。如果 2390 不在 DPT 中，则加入，其 RecLSN 为 7570。$T_{146}$ 的 lastLSN 更新为 7570。
+        * LSN 7571 (<$T_{146}$ commit>): 将 $T_{146}$ 从 ATT 中移除。ATT = {$T_{145}$}.
 
 * **分析阶段结束时**：
 
@@ -1039,27 +1072,27 @@ Undos performed as described earlier
 * **目的**：撤销所有未提交事务（即 `undo_list` 中的事务）造成的影响。
 * **过程 (针对 $T_{145}$)**：
 
-    1.  从 LSN 7567 (`<$T_{145}$, 4894.1, 40, 60>`) 开始：
+    1.  从 LSN 7567 (<$T_{145}$, 4894.1, 40, 60>) 开始：
     
         * 执行撤销操作：将页面 4894 偏移量 1 的位置的值从 60 恢复为 40。
         * 写入一条**补偿日志记录 (CLR)** 到日志的末尾。这条 CLR 描述了所做的撤销操作，并且它本身是“只重做”的。CLR 中会包含一个 `UndoNextLSN` 字段，其值是当前被撤销记录 (LSN 7567) 的 `PrevLSN`，即 7564。图中的弧线和 "UndoNextLSN" 标签示意了这一点。
 
-    2.  根据 CLR 的 `UndoNextLSN` (或原始记录的 `PrevLSN`)，找到 LSN 7564 (`<$T_{145}$, 4894.1, 20, 40>`):
+    2.  根据 CLR 的 `UndoNextLSN` (或原始记录的 `PrevLSN`)，找到 LSN 7564 (<$T_{145}$, 4894.1, 20, 40>):
 
         * 执行撤销操作：将页面 4894 偏移量 1 的位置的值从 40 恢复为 20。
         * 再写入一条 CLR，其 `UndoNextLSN` 指向 LSN 7564 的 `PrevLSN`，即 7563。
 
-    3.  根据 CLR 的 `UndoNextLSN`，找到 LSN 7563 (`<$T_{145}$ begin>`):
+    3.  根据 CLR 的 `UndoNextLSN`，找到 LSN 7563 (<$T_{145}$ begin>):
 
         * 这表示事务 $T_{145}$ 的所有操作都已被撤销。
-        * 在日志末尾写入一条 `<$T_{145}$ abort>` 记录。
+        * 在日志末尾写入一条 <$T_{145}$ abort> 记录。
 
 * **撤销阶段完成后**：所有未提交事务的影响都被清除了。数据库达到一致状态。
 
 **总结图中关键概念的图示：**
 
 * **PrevLSN pointers**: 清晰地展示了每个事务的日志记录是如何链接起来的，方便在撤销阶段反向追踪。
-* **CLR (Compensation Log Record)**: 当执行撤销操作时会生成CLR，记录这个撤销动作。图中用一个从被撤销记录指向日志末尾（CLR被写入的地方）的弧线表示。
+* **CLR (Compensation Log Record)**: 当执行撤销操作时会生成CLR，记录这个撤销动作。图中一条标记为 CLR 的虚线弧线，形象地展示了补偿日志记录（CLR） 中 UndoNextLSN 指针的作用。它代表了在执行撤销（Undo）操作时，为了避免重复撤销，系统需要向后跳跃到的位置。
 * **UndoNextLSN**: CLR中的一个字段，指向该事务下一个需要被撤销的日志记录的LSN，确保了即使在回滚过程中发生崩溃，也能正确地继续回滚，避免重复撤销。
 
 通过这三个阶段的紧密配合，ARIES算法能够确保在发生任何类型的系统故障后，数据库都能恢复到一个一致且持久的状态。

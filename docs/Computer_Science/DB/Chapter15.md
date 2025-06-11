@@ -51,7 +51,7 @@ An evaluation plan defines exactly what algorithm is used for each operation, an
 ![img](./assets/15-21.png)
 
 ??? note "about 聚集索引和辅助索引"
-   假设我们有一个 `students` 表，存储学生的信息，结构如下：
+    假设我们有一个 `students` 表，存储学生的信息，结构如下：
 
     |**学号（sid）**|**姓名（name）**|**年龄（age）**|**班级（class）**|
     |:------------:|:------------:|:-----------:|:-------------:|
@@ -64,17 +64,19 @@ An evaluation plan defines exactly what algorithm is used for each operation, an
     
     在 MySQL InnoDB 中，**主键默认是聚集索引**。假设我们以 `学号（sid）` 作为主键，那么数据行在磁盘上**按 `学号` 顺序存储**。
 
-    - **B+树结构**：
-        - **叶子节点**：存储**完整的数据行**（`sid, name, age, class`）。
-        - **非叶子节点**：存储键值（`sid`）和指向下一层的指针。
+    **B+树结构**：
+
+    - **叶子节点**：存储**完整的数据行**（`sid, name, age, class`）。
+    - **非叶子节点**：存储键值（`sid`）和指向下一层的指针。
     
     2. 辅助索引（Secondary Index）
 
     假设我们在 `姓名（name）` 字段上创建一个辅助索引，辅助索引的 B+树**独立于数据存储**，叶子节点不存完整数据，而是存**主键值（sid）**。
 
-    - **B+树结构**：
-        - **叶子节点**：存储 `name` 和对应的 `sid`（如 `('张三', 101)`）。
-        - **非叶子节点**：存储 `name` 和指向下一层的指针。
+    **B+树结构**：
+
+    - **叶子节点**：存储 `name` 和对应的 `sid`（如 `('张三', 101)`）。
+    - **非叶子节点**：存储 `name` 和指向下一层的指针。
 
     **关键区别对比**
 
@@ -301,7 +303,9 @@ Let i be 0 initially.
 Repeatedly do the following till the end of the relation:
 
 (a) Read M blocks of relation into memory
+
 (b) Sort the in-memory blocks
+
 (c) Write sorted data to run $R_i$ ; increment i.
 
 Let the final value of i be N
@@ -313,10 +317,15 @@ Let the final value of i be N
 If N < M, single merge pass is required (如果归并段少于可用内存页)
 
 a. Use N blocks of memory to buffer input runs, and 1 block to buffer output. Read the first block of each run into its buffer page
+
 b. repeat
+
     (1) Select the first record (in sort order) among all buffer pages
+
     (2) Write the record to the output buffer. If the output buffer is full write it to disk.
+
     (3) Delete the record from its input buffer page. If the buffer page becomes empty then read the next block (if any) of the run into the buffer.
+
 c. until all input buffer pages are empty:
 
 ![img](./assets/15-11.png)
@@ -349,6 +358,51 @@ Thus total number of block transfers for external sorting:
 
 $$2b_r \lceil \log_{M-1} (b_r / M) \rceil + b_r = b_r(2 \lceil \log_{M-1} (b_r / M) \rceil + 1)$$
 
+??? note "解释"
+    这里的 $b_r$ 指的是关系（即要排序的文件）所占用的总块数。
+
+    我们把这个过程分解成两个阶段来解释：
+
+    阶段一：初始顺串的生成 (Initial Run Creation)
+
+    这是外排序算法的第一步。目标是将一个巨大的、无序的文件，转换成多个小的、内部有序的文件片段，我们称之为顺串 (runs)。
+
+    这个过程如下：
+
+    1.  **读入 (Read)**：算法从磁盘上读取数据块，直到把分配的内存 ($M$ 块) 填满。
+    2.  **排序 (Sort)**：在内存中，使用快速排序等高效的内排序算法，对这 $M$ 块数据进行排序。
+    3.  **写出 (Write)**：将排序好的这 $M$ 块数据，作为一个有序的顺串，写回到磁盘上。这个顺串是一个临时文件。
+    4.  **重复**：重复以上 1-3 步，直到原始文件的所有数据块都被处理完毕。
+
+    **成本分析：**
+
+    - **总读取成本**：为了生成这些顺串，算法必须把原始文件的**每一个块**都从磁盘读入内存一次。因此，总的读取成本是 $b_r$ 次块传输。
+    - **总写出成本**：同样，被读入内存并排序好的**每一个块**，都必须被重新写回到磁盘，形成临时的顺串文件。因此，总的写出成本也是 $b_r$ 次块传输。
+
+    **阶段一总成本 = 读取成本 ($b_r$) + 写出成本 ($b_r$) = $2b_r$**
+
+    阶段二：每一个合并趟数 (Each Merge Pass)
+
+    在第一阶段之后，我们得到了一堆数量为 $\lceil b_r / M \rceil$ 的、各自有序但全局无序的顺串。第二阶段的目标就是把这些顺串合并成一个最终的、完全有序的文件。
+
+    因为内存有限，我们无法一次性合并所有的顺串，所以需要分趟 (pass) 进行。
+
+    在一个**完整的合并趟数**中，过程如下：
+
+    1.  **读入 (Read)**：算法从磁盘上读取上一趟生成的各个顺串的第一个块，放入内存中的**输入缓冲区**。
+    2.  **合并 (Merge)**：在内存中，比较各个输入缓冲区的当前最小元素，将最小的那个放入**输出缓冲区**。然后从被选中的那个输入缓冲区补充下一个元素。如果某个输入缓冲区空了，就从对应的磁盘顺串中再读取一个块进来。
+    3.  **写出 (Write)**：当输出缓冲区满了，就将其内容作为一个新的、更长的顺串写回到磁盘上。
+    4.  **重复**：重复以上 1-3 步，直到这一趟要处理的所有顺串都被完全读取和合并，并写成新一批数量更少、但长度更长的顺串。
+
+    **成本分析：**
+
+    - **总读取成本**：在一个完整的合并趟数中，为了生成下一代更长的顺串，算法必须把上一趟产生的所有顺串的**每一个块**都从磁盘读入内存一次。因此，总的读取成本是 $b_r$ 次块传输。
+    - **总写出成本**：同样，合并后产生的新的、更长的顺串的**每一个块**，都必须被写回到磁盘，为下一趟合并做准备。因此，总的写出成本也是 $b_r$ 次块传输。
+
+    **一个合并趟数的总成本 = 读取成本 ($b_r$) + 写出成本 ($b_r$) = $2b_r$**
+
+    > **注意**：这是因为在**最后一次**合并时，最终的排序结果可以直接作为输出流向下一个操作（例如，直接显示给用户或进行聚合计算），而无需再写回磁盘。所以，除了最后一趟，中间的每一趟合并成本都是 $2b_r$。
+
 ---
 
 #### **Cost of seeks**: (simple version)
@@ -366,6 +420,42 @@ There are $\lceil \log_{M-1} (b_r / M) \rceil$ merge passes
 Total number of seeks:
 
 $$2 \lceil b_r / M \rceil + b_r(2 \lceil \log_{M-1} (b_r / M) \rceil - 1)$$
+
+??? note "解释"
+    首先，我们要理解一个核心概念：
+    **寻道 (Seek)**：在机械硬盘上，这是指将磁盘的读写磁头移动到正确磁道所需的时间。这是一个物理动作，速度很慢，通常是I/O操作中最耗时的部分之一。因此，在数据库性能分析中，**最小化寻道次数**是一个至关重要的优化目标。
+
+    这个公式将总寻道成本分为了两个独立的部分：**初始顺串生成阶段**和**多趟合并阶段**。
+
+    第一部分：初始顺串生成阶段的寻道成本
+
+    1. 我们把大文件（大小为 $b_r$ 块）分成小块（每块大小为内存大小 $M$），在内存中排序后，写回磁盘形成一个有序的临时文件，这个文件就是一个顺串(run)。
+
+    2. 这个模型做了一个简化的假设：
+
+        - **读 (Read)**：为了从原始文件中读取下一个 $M$ 大小的数据块，磁头需要**寻道**到这个数据块的起始位置。这算 **1次寻道**。
+        - **写 (Write)**：当这 $M$ 块数据在内存中排好序后，需要把它写到磁盘上的一个新位置（作为一个新的临时文件）。操作系统需要为这个新文件找到空间，这需要磁头**寻道**到那个位置开始写入。这算 **1次寻道**。
+        因此，每生成一个顺串，都伴随着 `1次读寻道 + 1次写寻道 = 2次寻道`。
+
+    3. 文件的总大小是 $b_r$ 块，每次处理 $M$ 块，所以生成的顺串总数是 $\lceil b_r / M \rceil$。
+
+    4. 总寻道次数 = (每个顺串的寻道次数) × (顺串的总数) = $2 \times \lceil b_r / M \rceil$。
+
+    第二部分：合并阶段的寻道成本
+
+    1. 这是 **Simple Version 模型的一个非常重要的、悲观的（worst-case）假设**。它假设：
+
+        - **读 (Read)**：在合并阶段，我们需要同时从多个（最多 $M-1$ 个）不同的顺串文件中读取数据。这个模型假设这些文件在磁盘上是完全随机分布的。因此，每当需要从任何一个顺串读取**一个数据块**时，都需要进行一次寻道。在一个完整的合并趟数中，我们需要把所有 $b_r$ 个数据块都读进来，所以模型近似认为这需要 **$b_r$ 次读寻道**。
+        - **写 (Write)**：同样，在写出合并后的新顺串时，模型也悲观地假设每写**一个数据块**都需要一次寻道。因此，这又需要 **$b_r$ 次写寻道**。
+        - **每趟成本**：$b_r$ (读) + $b_r$ (写) = $2b_r$ 次寻道。
+
+    2. 我们初始有 $\lceil b_r / M \rceil$ 个顺串。在每个合并趟数中，我们最多能将 $M-1$ 个顺串合并成一个。所以，每一趟都会将顺串的数量减少为原来的 $1/(M-1)$。要将初始数量的顺串减少到 1，需要进行的趟数就是以 $M-1$ 为底的对数，即 $\lceil \log_{M-1} (b_r / M) \rceil$ 趟。
+
+    3. 对于所有**中间趟数**，成本都是 $2b_r$（读+写）。对于**最后一趟**，我们只需要读取数据进行合并，然后结果可以直接输出给用户或下一个计算步骤，无需写回磁盘。所以最后一趟的寻道成本只有读操作的 $b_r$ 次。
+
+    4. 总的合并趟数是 $P = \lceil \log_{M-1} (b_r / M) \rceil$。其中有 $P-1$ 个中间趟数，每个成本是 $2b_r$。还有 1 个最终趟数，成本是 $b_r$。总合并成本 = $(P-1) \times 2b_r + 1 \times b_r = 2Pb_r - 2b_r + b_r = 2Pb_r - b_r = b_r(2P-1)$。
+
+    代入 $P$ 的表达式，就得到：$b_r(2 \lceil \log_{M-1} (b_r / M) \rceil - 1)$。
 
 ??? note "prove"
     ![img](./assets/15-22.png)
@@ -412,6 +502,15 @@ Total number of seeks:
 
 $$2 \lceil b_r / M \rceil + \lceil b_r / b_b \rceil (2 \lceil \log_{\lfloor M / b_b \rfloor - 1} (b_r / M) \rceil - 1)$$
 
+??? note "解释"
+    这个高级版本的核心思想是：**解决 Simple Version 中不切实际的寻道成本问题**。它通过引入一个关键参数 `$b_b$`（每个输入流的缓冲区大小，单位为块），来实现对磁盘I/O的显著优化。
+
+    在简单版本中，我们为每个要合并的顺串(run)分配1个块的内存作为输入缓冲区。在高级版本中，我们为每个顺串分配 `$b_b$` 个块。这样做的好处是我们可以一次性从磁盘读取一大块数据（`$b_b$` 个块），而不是读一个块就停一下。
+
+    由于总内存 `$M$` 是固定的，而每个输入流的缓冲区变大了，我们能同时处理的顺串数量就减少了。
+
+    假设我们仍然为输出流保留一个缓冲区（大小也为 `$b_b$`），那么可用于输入的内存为 `$M - b_b$`。所以我们可以同时处理的输入顺串数量为 `$\lfloor (M-b_b) / b_b \rfloor = \lfloor M/b_b \rfloor - 1$`。这就是新的**合并路数**。
+
 ---
 
 ## Join Operation
@@ -426,11 +525,28 @@ If the smaller relation fits entirely in memory, use that as the inner relation.
 
 Reduces cost to $b_r + b_s$ block transfers and 2 seeks
 
+这是最基础、最"暴力"的连接算法。它的思想极其简单：从第一张表（外层关系 r）中逐条取出记录，然后用这条记录去扫描整张第二张表（内层关系 s），找出所有匹配的记录。
+
+块传输成本: $n_r \times b_s + b_r$
+
+- $n_r$ 是 r 表的元组总数。$b_s$ 是 s 表的总块数。
+- 对于 r 表的每一条记录（共 $n_r$ 条），我们都需要完整地扫描一遍 s 表（成本为 $b_s$）。因此这部分成本是 $n_r \times b_s$.
+- 同时，我们还需要完整地读取一遍 r 表本身，成本是 $b_r$.
+
+寻道成本: $n_r + b_r$
+
+- 每次开始扫描 s 表都需要一次寻道，我们对 r 的每一条记录都要扫一遍 s，所以是 $n_r$ 次寻道。
+- 读取 r 表本身时，在最坏假设下（每个块都需要一次寻道），需要 $b_r$ 次寻道。
+
+优化：如果较小的关系（比如 s）能完全放入内存，那么我们只需要读取 s 一次（成本$b_s$）和读取 r 一次（成本$b_r$），总成本就骤降到 $b_r + b_s$，寻道也只有2次。
+
 ---
 
 ### Block Nested-Loop Join
 
 Variant of nested-loop join in which every block of inner relation is paired with every block of outer relation.
+
+这是对朴素NLJ的重大改进。它不再"逐条"比较，而是"逐块"比较。它一次性从外层关系 r 读取一个数据块 (Block) 到内存，然后用这个块里的所有记录，去和内层关系 s 的所有块进行比较。
 
 ![img](./assets/15-13.png)
 
@@ -447,16 +563,27 @@ end
 
 Worst case estimate: $b_r \times b_s + b_r$ block transfers + $2 \times b_r$ seeks
 
-Each block in the inner relation s is read once for each block
-in the outer relation
+Each block in the inner relation s is read once for each block in the outer relation
 
 Best case: $b_r + b_s$ block transfers + 2 seeks
+
+块传输成本: $b_r \times b_s + b_r$
+
+- $b_r$ 是 r 表的总块数。
+- 对于 r 表的每一个块（共 $b_r$ 块），我们都需要完整地扫描一遍 s 表（成本为 $b_s$）。因此这部分成本是 $b_r \times b_s$.
+- 同时，我们还需要完整地读取一遍 r 表本身，成本是 $b_r$.
 
 Improvements to block nested loop algorithms:
 
 Use M-2 disk blocks as blocking unit for outer relations, where M = memory size in blocks; use remaining two blocks to buffer inner relation and output
 
+我们不再是"一次一个块"，而是一次性读取尽可能多的 r 的块到内存中。
+
+假设总内存为 $M$ 块，我们用 $M-2$ 块内存作为 r 的"组块"缓冲区，1块给 s 做输入缓冲，1块做输出缓冲。
+
 Cost = $\lceil b_r / (M - 2) \rceil \times b_s + b_r$ block transfers + $2 \lceil b_r / (M - 2) \rceil$ seeks
+
+对应改进后的算法，我们需要读取 r 的每个大组块（1次寻道），并为每一次 s 的扫描进行一次寻道。
 
 If r fits in memory ( $b_r \le$ M-2)
 
@@ -475,6 +602,8 @@ Scan inner loop forward and backward alternately, to make use of the blocks rema
 
 ### Indexed Nested-Loop Join
 
+这是一种"精准打击"的算法。它利用内层关系 s 在连接属性上的索引，来避免全表扫描。对于外层关系 r 的每一条记录，它不再是盲目地扫描 s，而是通过索引直接定位到 s 中可能匹配的记录。
+
 Index lookups can replace file scans if
 
 - join is an equi-join or natural join and
@@ -485,6 +614,10 @@ For each tuple $t_r$ in the outer relation r, use the index to look up tuples in
 Worst case: buffer has space for only one page of r, and, for each tuple in r, we perform an index lookup on s.
 
 Cost of the join: $b_r(t_T + t_S) + n_r \times c$
+
+首先，需要完整扫描一遍外层关系 r。
+
+对于 r 中的每一条记录（共 $n_r$ 条），都需要进行一次索引查找。c 就是单次索引查找的成本（包括读取索引块和数据块的I/O）。
 
 ??? note "prove"
     ![img](./assets/15-24.png)
@@ -498,6 +631,8 @@ If indices are available on join attributes of both r and s, use the relation wi
 ---
 
 ### Merge-Join
+
+这是一种"齐头并进"的算法。它要求两个关系首先在连接属性上排好序，然后像拉拉链一样，同时扫描两个已排序的关系，只需过一遍数据就能完成连接。
 
 1. Sort both relations on their join attribute (if not already sorted on the join attributes).
 2. Merge the sorted relations to join them
@@ -513,6 +648,16 @@ Each block needs to be read only once (assuming all tuples for any given value o
 Thus the cost of merge join is:
 
 $b_r + b_s$ block transfers + $\lceil b_r / b_b \rceil + \lceil b_s / b_b \rceil$ seeks + the cost of sorting if relations are unsorted.
+
+如果数据未排序：
+
+排序成本通常是主要开销，成本为 $b_r(2 \lceil \log_{M-1} (b_r / M) \rceil + 1) + b_s(2 \lceil \log_{M-1} (b_s / M) \rceil + 1) 数量级的块传输。
+
+如果数据已排序（只计算合并成本）:
+
+块传输成本: $b_r + b_s$。因为我们只需要顺序地完整读取 r 和 s 各一次。
+
+寻道成本: $\lceil b_r / b_b \rceil + \lceil b_s / b_b \rceil$。这是使用大小为 $b_b$ 的缓冲区的优化结果，大大减少了寻道次数。
 
 ![img](./assets/15-15.png)
 
@@ -573,8 +718,9 @@ Sequential scan more efficient than random lookup
     ```
 
     **归并过程**：
+
     1. 同时扫描已排序的 `classes` 表和 `students` 的辅助索引叶子节点（两者均按 `class_id` 有序）。
-    2. 对匹配的 `class_id`，生成中间结果：`(classes表的班级记录, students表记录的物理地址)`  
+    2. 对匹配的 `class_id`，生成中间结果：`(classes 表的班级记录, students 表记录的物理地址)`  
 
     ```plaintext
     (1班数据, addr1), (1班数据, addr3), (2班数据, addr2), (3班数据, addr4)
@@ -584,13 +730,12 @@ Sequential scan more efficient than random lookup
 
     将中间结果按 `students` 表记录的物理地址（如 `addr1, addr2, addr3, addr4`）排序，目的是让后续对 `students` 表的读取**按物理存储顺序进行**（减少磁盘随机I/O）。
 
-    **3. 按物理顺序读取students表并完成连接**
+    **3. 按物理顺序读取 students 表并完成连接**
 
-    按排序后的物理地址顺序，高效（连续读取）地从 `students` 表中获取完整记录，与 `classes` 表的数据组合成最终结果。
-
-    ---
+    按排序后的物理地址顺序，高效（连续读取）地将 `students` 表与 `classes` 表的数据组合成最终结果。
 
     **扩展到两个未排序的关系**
+
     如果两个表均未排序，但**各自在连接属性上有辅助索引**，可以按以下方式处理：
 
     **1. 利用两个表的辅助索引叶子项归并**
@@ -664,17 +809,24 @@ Sequential scan more efficient than random lookup
     **关键区别总结**
 
     1. **隐式 vs 显式**  
+
     - 自然连接隐式匹配同名列，可能意外关联无关列（如两表都有 `created_at` 字段）。  
     - 等值连接显式指定条件，更安全可控。
 
     2. **结果列处理**  
+
     - 自然连接自动去重同名列。  
     - 等值连接保留所有列，需手动处理重复列名（如 `SELECT students.*, classes.class_name`）。
 
     3. **灵活性**  
+
     - 等值连接可以关联不同名的列（如 `students.sid = scores.student_id`），自然连接无法做到。
 
 Applicable for equi-joins and natural joins.
+
+Hash-Join 是一种执行等值连接 (equi-joins) 效率极高的算法。其核心思想是经典的"分而治之 (Divide and Conquer)"。
+
+它避免了像嵌套循环连接那样进行大量的重复比较，而是通过一个哈希函数，巧妙地将两个大表"分拆"成多个小的数据桶（称为分区 Partition）。由于哈希函数的特性，具有相同连接键的记录必然会进入编号相同的分区。这样，原来一个巨大无比的连接问题，就被分解成了多个"小分区之间"的连接问题，大大降低了问题的复杂度。
 
 A hash function h is used to partition tuples of both relations with common JoinAttrs
 
@@ -725,6 +877,22 @@ The hash-join of r and s is computed as follows.
 (b) Read the tuples in $r_i$ from the disk one by one. For each 
 tuple $t_r$ locate each matching tuple $t_s$ in $s_i$ using the inmemory hash index. Output the concatenation of their attributes.
 
+1. 选择一个哈希函数 h 和分区数量 n。这个哈希函数的作用是把连接键（如 user_id）映射到一个分区编号（如 0 到 n）。
+2. 分区 s 表： 顺序读取 s 表的每个元组 $t_s$，计算 i = h(t_s.join_key)，然后将 $t_s$ 写入到磁盘上的第 i 个分区文件 $s_i$ 中。内存中会为每个分区（$s_0$ 到 $s_n$）保留一个输出缓冲块，当某个分区的缓冲块满了，就把它刷写到磁盘。
+3. 分区 r 表： 对 r 表执行完全相同的操作，使用同一个哈希函数 h，将其分解为分区 $r_0, r_1, ...$.
+
+-  需要完整地读一遍 r 和 s，再完整地把它们按分区写回磁盘。成本为 $2(b_r + b_s)$ 次块传输。
+
+4. 构建 (Build):选择一个关系作为构建输入 (Build Input)，通常是较小的那个，即 s。将整个分区 $s_i$ 从磁盘读入内存。在内存中，使用一个新的、不同的哈希函数 h2，为 $s_i$ 的所有元组建立一个哈希表（Hash Table/Index）。这个哈希表的键是连接属性，值是指向具体元组的指针。这个过程非常快。
+5. 另一个关系 r 称为探测输入 (Probe Input)。顺序地从磁盘读取分区 $r_i$ 的每一个元组 $t_r$.对于每一个 $t_r$，计算 h2($t_r$.join_key)，然后利用这个哈希值去内存中的哈希表里查找。这是一个 O(1) 时间复杂度的操作，速度极快。如果找到了匹配的 $s$ 表元组（可能会有多个，通过链地址法等解决哈希冲突），则将 $t_r$ 和匹配的 $t_s$ 拼接起来，作为结果输出。
+
+- 需要完整地读一遍所有分区 $r_i$ 和 $s_i$。成本为 $b_r + b_s$ 次块传输。
+
+**关键点**：
+
+1.  r 和 s 必须使用完全相同的哈希函数 h 和分区数 n，这样才能保证 $t_r$.join_key == $t_s$.join_key 的元组一定会被分配到编号相同的分区对 ($r_i$, $s_i$) 中。
+2. 分区数量 n 的选择至关重要。必须保证较小关系 s 的任意一个分区 $s_i$ 都能完全载入内存。这就是为什么通常选择 $n \ge \lceil b_s / M \rceil$ 的原因。
+
 Relation s is called the build input
 
 Relation r is called the probe input
@@ -736,6 +904,8 @@ The value n and the hash function h is chosen such that each build input relatio
 Typically n is chosen as $\lceil b_s / M \rceil \times f$ where f is a "fudge factor(修正因子)", typically around 1.2
 
 The probe input relation partitions $r_i$ need not fit in memory
+
+修正因子 (Fudge Factor): 现实中数据可能分布不均（数据倾斜），导致某些分区特别大。为了保险起见，会使用一个修正因子（如1.2）来创建比理论值更多的分区，以确保即使在数据倾斜的情况下，最大的 $s_i$ 也能装入内存。
 
 ??? note "why need fudge factor"
     必须选择足够大的 $n_h$ 值，使得对于每个 i ，在内存中可以容纳构造关系的 $s_i$ 分区中的元组以及分区上的散列索引。内存中可以不必容纳探查用关系的分区。最好用较小的输入关系作为构造关系。如果构造关系的规模是 $b_s$ 个块，那么要使每个 $n_h$ 分区的规模都小于或等于 M ， $n_h$ 必须至少是 $b_s / M$。更准确地说，我们还必须考虑该分区上散列索引占用的额外空间，因此 $n_h$ 应当相应地取得更大一点。为了简单起见，在分析中我们有时忽略了散列索引所需的空间。
@@ -891,7 +1061,7 @@ Pipelines can be executed in either of two ways:
 
 1. demand-driven pipeline
 
-在一条需求驱动流水线(demand-driven pipeline)中，系统不停地向位于流水线顶端的运算发出需要元组的请求。每当一个运算收到需要元组的请求时，它就计算待返回的下一个(若干个)元组并返回这些元组。若该运算的输入不是流水线化的，则待返回的下一个(若干个)元组可以从输人关系计算出来，同时系统跟踪到目前为止已经返回了哪些元组。若该运算具有一些流水线化的输入，那么它也发出请求以获得来自其流水线输人的元组。该运算使用它从其流水线输入接收到的元组，并为其输出计算这些元组，然后把它们上传到它的父节点。
+在一条需求驱动流水线(demand-driven pipeline)中，系统不停地向位于流水线顶端的运算发出需要元组的请求。每当一个运算收到需要元组的请求时，它就计算待返回的下一个(若干个)元组并返回这些元组。若该运算的输入不是流水线化的，则待返回的下一个(若干个)元组可以从输入关系计算出来，同时系统跟踪到目前为止已经返回了哪些元组。若该运算具有一些流水线化的输入，那么它也发出请求以获得来自其流水线输入的元组。该运算使用它从其流水线输入接收到的元组，并为其输出计算这些元组，然后把它们上传到它的父节点。
 
 2. producer-driven pipeline
 

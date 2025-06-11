@@ -194,7 +194,7 @@ The records in the file are ordered by a **search-key**
 - In either case, pointer chain must be updated
 
 1. 在文件中定位按搜索码顺序位于待插入记录之前的那条记录。
-2. 如果在这条记录所在块中有一条自由的记录(即删除后留下来的空间)，就在这里插人新的记录。否则，将新记录插人一个溢出块(overflow block)中。
+2. 如果在这条记录所在块中有一条自由的记录(即删除后留下来的空间)，就在这里插入新的记录。否则，将新记录插入一个溢出块(overflow block)中。
 3. 无论哪种情况都要调整指针，使其能按搜索码顺序把记录链接在一起。
 
 Need to reorganize the file from time to time to restore sequential order.
@@ -345,7 +345,7 @@ Programs call on the buffer manager when they need a block from disk.
 
 #### **pin**
 
-一旦一个块被读入缓冲区，数据库进程就可以从缓冲存储器中读取该块的内容。然而，当块正在被读取时，如果一个并发进程移出了这个块，并把它替换成另一个不同的块，那么读原来块的内容的读取操作将读到不正确的数据;如果一个块被移出时它正在被写人，那么写人操作将最终损坏被替换的块的内容。
+一旦一个块被读入缓冲区，数据库进程就可以从缓冲存储器中读取该块的内容。然而，当块正在被读取时，如果一个并发进程移出了这个块，并把它替换成另一个不同的块，那么读原来块的内容的读取操作将读到不正确的数据;如果一个块被移出时它正在被写入，那么写入操作将最终损坏被替换的块的内容。
 
 **Pinned block**: memory block that is not allowed to be written back to disk
 

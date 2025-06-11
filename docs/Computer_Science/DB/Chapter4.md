@@ -39,7 +39,7 @@ Join operations are typically used as subquery expressions in the **from** claus
 
 ### Natural Join
 
-例如，假设我们要回答查询"出学生的姓名以及他们所选课程的名称"。
+例如，假设我们要回答查询出"学生的姓名以及他们所选课程的名称"。
 
 此查询可以用SQL写为如下形式:
 
@@ -58,7 +58,7 @@ select name, title
 from student natural join takes natural join course
 ```
 
-为了说明原因，请注意 `student` 和 `takes` 的自然连接包含的属性是 `(ID,name,dept name,totcred,course id,sec id)` ，而 `course` 关系包含的属性是 `(course id,title,dept name,credits)` 作为二者自然连接的结果，需要来自这两个关系的 `deptname` 属性取值相同，还要在 `course_id` 上取值相同。从而该查询将忽略所有这样的(学生姓名,课程名称)对:其中学生所选修的一门课程不是他所在系的课程。而前一个查询会正确输出这样的对。
+为了说明原因，请注意 `student` 和 `takes` 的自然连接包含的属性是 `(ID,name,dept_name,totcred,course_id,sec_id)` ，而 `course` 关系包含的属性是 `(course_id,title,dept_name,credits)` 作为二者自然连接的结果，需要来自这两个关系的 `dept_name` 属性取值相同，还要在 `course_id` 上取值相同。从而该查询将忽略所有这样的(学生姓名,课程名称)对:其中学生所选修的一门课程不是他所在系的课程。而前一个查询会正确输出这样的对。
 
 ---
 
@@ -68,7 +68,7 @@ from student natural join takes natural join course
 
 ```sql
 select name, title
-from (student natural join takes)join course using (course_id);
+from (student natural join takes) join course using (course_id);
 ```
 
 ---
@@ -79,8 +79,26 @@ SQL还支持另外一种形式的连接，其中可以指定任意的连接条�
 
 ```sql
 select *
-from student join takes on student.ID= takes.ID
+from student join takes on student.ID = takes.ID
 ```
+
+---
+
+`USING` vs `ON`
+
+1. `USING`子句
+
+- **用于有相同列名时简化语法**
+- **只用于等值连接**
+- **连接列在结果中只出现一次**
+- **语法**：`JOIN ... USING (column_name)`
+
+2. `ON` 子句
+
+- **更通用的连接条件指定方式**
+- **可以指定任何条件，不限于等值连接**
+- **连接列在结果中会出现两次(除非手动选择)**
+- **语法**：`JOIN ... ON table1.column = table2.column`
 
 ---
 
@@ -266,6 +284,12 @@ How to insert a tuple without causing constraint violation?
 - OR, set father and mother to null initially, update after inserting all persons (not possible if father and mother attributes declared to be not null) .
 - OR defer constraint checking to transaction end.
 
+??? note "Chinese explanation"
+    要插入一个人，需要先存在其父母记录。要插入父母记录，又可能需要先存在他们的父母记录。形成了一种"先有鸡还是先有蛋"的循环依赖问题。
+
+    可以采用分阶段插入的办法。第一阶段：插入没有父母信息的人(祖先)。第二阶段：插入知道父母的人。第三阶段：插入后代。
+
+    或者使用 `NULL` 值：先插入部分信息，后续更新。
 ---
 
 ### Check
@@ -357,7 +381,7 @@ create assertion credits_earned_constraint check
         where student.ID=takes.ID
             and grade is not null 
             and grade<>'F')))
- ```
+```
 
 实现这个功能代价很大。
 

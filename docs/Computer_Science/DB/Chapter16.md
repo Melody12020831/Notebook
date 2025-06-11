@@ -74,7 +74,11 @@ $$\sigma_{\theta_1} (\sigma_{\theta_2} (E)) = \sigma_{\theta_2} (\sigma_{\theta_
 
 3. Only the last in a sequence of projection operations is needed, the others can be omitted（可省略的）.
 
-$$\Pi_{L_1}(\Pi_{L_2}(\ldots \Pi_{L_n}(E))) = \Pi_{L_n}(E)$$
+$$\Pi_{L_1}(\Pi_{L_2}(\ldots \Pi_{L_n}(E))) = \Pi_{L_1}(E)$$
+
+等式成立的必要条件是:
+
+$$L_1 \subseteq L_2 \subseteq \ldots \subseteq L_n$$
 
 4. Selections can be combined with Cartesian products and theta joins.
 
@@ -427,7 +431,7 @@ $$V(A, r \bowtie s) = min(V(A, r), n_{r \bowtie s}(r))$$
 
 If A contains attributes $A_1$ from r and $A_2$ from s, then estimated
 
-$$V(A, r \bowtie s) = min(V(A_1, r) \times V(A_2 - A_1, s), V(A_1 - A_2, r) \times V(A_2, s), n_{r \bowtie s}(r))$$
+$$V(A, r \bowtie s) = min(V(A_1, r) \times V(A_2 - A_1, s), V(A_1 - A_2, r) \times V(A_2, s), n_{r \bowtie s})$$
 
 ??? note "Chinese Version"
     ![img](./assets/16-8.png)![img](./assets/16-9.png)

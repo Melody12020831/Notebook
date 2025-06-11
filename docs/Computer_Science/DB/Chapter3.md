@@ -146,7 +146,7 @@ primary key (ID));
 
 An SQL relation is defined using the create table command : 
 
-create table $r(A_1 \ D_1, A_2 \ D_2, \cdots , A_n \ D_n,(integrity_constraint_1),\cdots,(integrity_constraint_k))$
+create table $r(A_1 \ D_1, A_2 \ D_2, \cdots , A_n \ D_n,(integrity_{constraint_1}),\cdots,(integrity_{constraint_k}))$
 
 - `r` is the name of the relation
 - each $A_i$ is an attribute name in the schema of relation r
@@ -458,7 +458,9 @@ from instructor natural join teaches;
 **Example**: List the names of instructors along with the titles of courses that they teach.
 
 course(course_id, title, dept_name, credits)
+
 teaches(ID, course_id, sec_id,semester, year)
+
 instructor(ID,name, dept_name, salary)
 
 ??? Example "Incorrect version"
@@ -494,7 +496,9 @@ instructor(ID,name, dept_name, salary)
 **Example**: Find students who takes courses across his/her department.
 
 student( ID, name, dept_name, tot_cred)
+
 takes ( ID, course_id, sec_id, semester, year.grade)
+
 course( course_id, title, dept_name, credits)
 
 ??? Example "answer"
@@ -563,7 +567,7 @@ Pattern matching examples:
 
 - 'Intro%' matches any string beginning with "Intro".
 - '%Comp%' matches any string containing "Comp" as a substring.
-- '_ _ _' matches any string of exactly three characters.
+- '_ _ _ ' matches any string of exactly three characters.
 - '_ _ _ %' matches any string of at least three characters.
 
 SQL supports a variety of string operations (不同数据库系统所提供的字符串函数集是不同的) such as
@@ -586,7 +590,7 @@ List in alphabetic order the names of all instructors
     order by name
     ```
 
-We may specify desc for descending(降) order or asc forascending（升） order, for each attribute; ascending order is the default.
+We may specify desc for descending(降) order or asc for ascending（升） order, for each attribute; ascending order is the default.
 
 Example: `order by name desc`
 

@@ -51,7 +51,7 @@ That is, for every pair of transactions $T_i$ and $T_j$ , it appears to $T_i$ th
 
 事务一旦提交，其对数据库的修改就是永久性的，即使系统故障（如断电）也不会丢失。
 
-??? note "为什么断电可能影响持久性？"
+??? note "如何实现？"
     **WAL**（Write-Ahead Logging）: 在修改数据之前，数据库会先将变更记录写入日志（顺序写入），再写入实际数据文件（可能随机写入）。这样即使系统崩溃，也能通过日志恢复数据，确保持久性（Durability）。
 
     **LSM-Tree**（Log-Structured Merge-Tree）: 数据写入时 先追加到内存（MemTable），再顺序写入磁盘（SSTable），避免随机写入。读取时可能需要合并多个 SSTable，但写入性能极高。
@@ -151,7 +151,8 @@ Isolation can be ensured trivially by running transactions **serially**（串行
 
 However, executing multiple transactions concurrently has significant benefits, as we will see later.
 
-尽管串行执行能保证隔离性，但实际场景中 **并发（Concurrency）是必须的**，原因包括：  
+尽管串行执行能保证隔离性，但实际场景中 **并发（Concurrency）是必须的**，原因包括：
+
 - **提高吞吐量**：避免 CPU 和磁盘 I/O 空闲。  
 - **减少延迟**：短事务无需等待长事务完成。  
 - **用户体验**：支持多用户同时操作（如银行系统、电商秒杀）。
@@ -597,12 +598,17 @@ Different concurrency control protocols provide different tradeoffs between the 
 
 数据库必须确保所有可能的调度（Schedule）满足：
 
-1. **可串行化**（Conflict/View Serializable）  
-   - 并发执行的结果必须等价于某种串行执行顺序。  
-2. **可恢复性**（Recoverable）  
-   - 事务提交顺序必须保证依赖关系正确（读已提交数据）。  
-3. **无级联性**（Cascadeless，理想情况）  
-   - 禁止事务读取未提交的数据，避免级联回滚。  
+1. **可串行化**（Conflict/View Serializable）
+
+   - 并发执行的结果必须等价于某种串行执行顺序。
+   
+2. **可恢复性**（Recoverable）
+
+   - 事务提交顺序必须保证依赖关系正确（读已提交数据）。
+   
+3. **无级联性**（Cascadeless，理想情况）
+
+   - 禁止事务读取未提交的数据，避免级联回滚。
 
 ---
 
@@ -709,7 +715,7 @@ A transaction in SQL ends by:
 
 In almost all database systems, by default, every SQL statement also commits implicitly if it executes successfully
 
-    - Implicit commit can be turned off by a database directive
+  - Implicit commit can be turned off by a database directive
 
 **默认行为**：在多数数据库（如MySQL、Oracle）中，**每条SQL语句成功执行后会隐式提交**（即使没有显式`COMMIT`）。  
 
@@ -753,6 +759,7 @@ Lock-Based Protocols
 - Shared vs exclusive locks
 
 **1. 基于锁的协议（Lock-Based Protocols）**
+
 **核心机制**：通过锁限制数据访问权限
 
 - **锁粒度**：
@@ -781,20 +788,23 @@ Timestamp-Based Protocols
 - Timestamps are used to detect out of order accesses
 
 **2. 基于时间戳的协议（Timestamp-Based Protocols）**
+
 **核心思想**：为事务和数据项标记时间戳，按时间顺序处理冲突
 
 - **关键机制**：
-  1. 每个事务开始时分配**唯一时间戳**（如系统时钟或逻辑计数器）
-  2. 每个数据项维护两个时间戳：
-     - **Read-TS**：最后成功读取该数据的事务时间戳
-     - **Write-TS**：最后成功写入该数据的事务时间戳
+
+1. 每个事务开始时分配**唯一时间戳**（如系统时钟或逻辑计数器）
+2. 每个数据项维护两个时间戳：
+    - **Read-TS**：最后成功读取该数据的事务时间戳
+    - **Write-TS**：最后成功写入该数据的事务时间戳
 
 | 冲突场景                | 处理方式                          |
 |:----------------------:|:--------------------------------:|
 | 事务T读数据Q            | 若T的时间戳 < Q的Write-TS → 回滚T |
 | 事务T写数据Q            | 若T的时间戳 < Q的Read/Write-TS → 回滚T |
 
-**优点**：无锁，高并发  
+**优点**：无锁，高并发
+
 **缺点**：长事务易被短事务"饿死"（频繁回滚）
 
 Validation-Based Protocols

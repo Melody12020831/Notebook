@@ -159,6 +159,7 @@ nav:
       - Computer_Science/CO/Chapter 5.md
       - Computer_Science/CO/Chapter 6.md
       - Computer_Science/CO/COhomework.md
+      - Computer_Science/CO/PPT_download.md
     - "DB":
       - Computer_Science/DB/index.md
       - Computer_Science/DB/Chapter1.md
@@ -204,6 +205,7 @@ nav:
       - Computer_Science/CA/Chapter1.md
       - Computer_Science/CA/Chapter2.md
       - Computer_Science/CA/homework.md
+      - Computer_Science/CA/CA_review.md
     - "Visualization":
       - Computer_Science/Visualization/note.md
     - "编程语言":
