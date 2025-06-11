@@ -667,6 +667,8 @@
       
         
       
+        
+      
     
     
     
@@ -861,6 +863,29 @@
   
   <span class="md-ellipsis">
     CO homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/PPT_download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PPT
     
   </span>
   
@@ -2162,6 +2187,8 @@
       
         
       
+        
+      
     
     
     
@@ -2264,6 +2291,29 @@
   
   <span class="md-ellipsis">
     Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/CA_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CA review
     
   </span>
   
@@ -3839,7 +3889,7 @@
 </ul>
 <ol>
 <li>在文件中定位按搜索码顺序位于待插入记录之前的那条记录。</li>
-<li>如果在这条记录所在块中有一条自由的记录(即删除后留下来的空间)，就在这里插人新的记录。否则，将新记录插人一个溢出块(overflow block)中。</li>
+<li>如果在这条记录所在块中有一条自由的记录(即删除后留下来的空间)，就在这里插入新的记录。否则，将新记录插入一个溢出块(overflow block)中。</li>
 <li>无论哪种情况都要调整指针，使其能按搜索码顺序把记录链接在一起。</li>
 </ol>
 <p>Need to reorganize the file from time to time to restore sequential order.</p>
@@ -3950,7 +4000,7 @@
 <p><strong>Buffer replacement strategy</strong> (details coming up!)</p>
 <hr />
 <h4 id="pin"><strong>pin</strong><a class="headerlink" href="#pin" title="Permanent link">&para;</a></h4>
-<p>一旦一个块被读入缓冲区，数据库进程就可以从缓冲存储器中读取该块的内容。然而，当块正在被读取时，如果一个并发进程移出了这个块，并把它替换成另一个不同的块，那么读原来块的内容的读取操作将读到不正确的数据;如果一个块被移出时它正在被写人，那么写人操作将最终损坏被替换的块的内容。</p>
+<p>一旦一个块被读入缓冲区，数据库进程就可以从缓冲存储器中读取该块的内容。然而，当块正在被读取时，如果一个并发进程移出了这个块，并把它替换成另一个不同的块，那么读原来块的内容的读取操作将读到不正确的数据;如果一个块被移出时它正在被写入，那么写入操作将最终损坏被替换的块的内容。</p>
 <p><strong>Pinned block</strong>: memory block that is not allowed to be written back to disk</p>
 <p>因此，在一个进程从缓冲块中读取数据之前，确保此块不会被移出是很重要的。</p>
 <ul>
@@ -4023,7 +4073,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年5月11日 15:15:46 CST">2025年5月11日 15:15:46</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年6月11日 21:04:02 CST">2025年6月11日 21:04:02</span>
   </span>
 
     
