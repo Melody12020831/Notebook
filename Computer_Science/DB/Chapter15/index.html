@@ -4452,10 +4452,10 @@ memory.</p>
 <div class="arithmatex">\[2 \lceil b_r / M \rceil + \lceil b_r / b_b \rceil (2 \lceil \log_{\lfloor M / b_b \rfloor - 1} (b_r / M) \rceil - 1)\]</div>
 <details class="note">
 <summary>解释</summary>
-<p>这个高级版本的核心思想是：<strong>解决 Simple Version 中不切实际的寻道成本问题</strong>。它通过引入一个关键参数 <code>$b_b$</code>（每个输入流的缓冲区大小，单位为块），来实现对磁盘I/O的显著优化。</p>
-<p>在简单版本中，我们为每个要合并的顺串(run)分配1个块的内存作为输入缓冲区。在高级版本中，我们为每个顺串分配 <code>$b_b$</code> 个块。这样做的好处是我们可以一次性从磁盘读取一大块数据（<code>$b_b$</code> 个块），而不是读一个块就停一下。</p>
-<p>由于总内存 <code>$M$</code> 是固定的，而每个输入流的缓冲区变大了，我们能同时处理的顺串数量就减少了。</p>
-<p>假设我们仍然为输出流保留一个缓冲区（大小也为 <code>$b_b$</code>），那么可用于输入的内存为 <code>$M - b_b$</code>。所以我们可以同时处理的输入顺串数量为 <code>$\lfloor (M-b_b) / b_b \rfloor = \lfloor M/b_b \rfloor - 1$</code>。这就是新的<strong>合并路数</strong>。</p>
+<p>这个高级版本的核心思想是：<strong>解决 Simple Version 中不切实际的寻道成本问题</strong>。它通过引入一个关键参数 <span class="arithmatex">\(b_b\)</span>（每个输入流的缓冲区大小，单位为块），来实现对磁盘I/O的显著优化。</p>
+<p>在简单版本中，我们为每个要合并的顺串(run)分配1个块的内存作为输入缓冲区。在高级版本中，我们为每个顺串分配 <span class="arithmatex">\(b_b\)</span> 个块。这样做的好处是我们可以一次性从磁盘读取一大块数据（<span class="arithmatex">\(b_b\)</span> 个块），而不是读一个块就停一下。</p>
+<p>由于总内存 <span class="arithmatex">\(M\)</span> 是固定的，而每个输入流的缓冲区变大了，我们能同时处理的顺串数量就减少了。</p>
+<p>假设我们仍然为输出流保留一个缓冲区（大小也为 <span class="arithmatex">\(b_b\)</span>），那么可用于输入的内存为 <span class="arithmatex">\(M - b_b\)</span>。所以我们可以同时处理的输入顺串数量为 <span class="arithmatex">\(\lfloor (M-b_b) / b_b \rfloor = \lfloor M/b_b \rfloor - 1\)</span>。这就是新的<strong>合并路数</strong>。</p>
 </details>
 <hr />
 <h2 id="join-operation">Join Operation<a class="headerlink" href="#join-operation" title="Permanent link">&para;</a></h2>
@@ -4955,7 +4955,7 @@ b. At end of <span class="arithmatex">\(s_i\)</span> add the tuples in the hash 
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年6月11日 21:04:02 CST">2025年6月11日 21:04:02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年6月17日 14:41:42 CST">2025年6月17日 14:41:42</span>
   </span>
 
     
