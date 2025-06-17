@@ -537,7 +537,7 @@ At the end of the operation rollback, instead of logging an  operation-end recor
 Transaction rollback, scanning the log backwards (cont.):
 
 1. If a redo-only record is found ignore it  遇到只重做 (redo-only) 记录忽略它们，因为回滚阶段只关心撤销操作。
-2. If a <$T_i$, $O_j$, operation-abort> record is found: 遇到 <$T_i$, $O_j$ operation-begin> 记录
+2. If a <$T_i$, $O_j$, operation-abort> record is found: 遇到 <$T_i$, $O_j$ operation-abort> 记录
 
 - skip all preceding log records for $T_i$ until the record <$T_i$, $O_j$, operation-begin> is found. 这表示操作 $O_j$ 之前已经被（可能是部分地）回滚了（例如，在一次崩溃前的回滚尝试中）。为了避免重复回滚，此时需要跳过所有属于事务 $T_i$ 的、早于此 operation-abort 记录的、且与操作 $O_j$ 相关的日志记录，直到找到该操作对应的 <$T_i$, $O_j$, operation-begin> 记录。
 

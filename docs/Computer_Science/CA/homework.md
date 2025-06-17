@@ -90,7 +90,7 @@ comments: true
 
 ---
 
-![image-20250607171621147](./assets/hw1.15)
+![image-20250607171621147](./assets/hw1.15.png)
 
 ---
 
@@ -146,9 +146,9 @@ comments: true
 
 ## 第二次作业
 
-![image-20250607171709983](./assets/hw2.1.1)
+![image-20250607171709983](./assets/hw2.1.1.png)
 
-![image-20250607171742384](./assets/hw2.1.2)
+![image-20250607171742384](./assets/hw2.1.2.png)
 
 ---
 

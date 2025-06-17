@@ -150,7 +150,7 @@ comments: true
 ??? note "my"
     a.
 
-    $\Pi_{branch\_name}branch(\sigma_{branch\_city = 'Chicago'}(branch))$
+    $\Pi_{branch\_name}(\sigma_{branch\_city = 'Chicago'}(branch))$
     
     b.
     
@@ -295,7 +295,7 @@ comments: true
     
     borrower ($\underline{ID},\ \underline{loan\_number}$)
     
-    account ($\underline{account\_number}$ branch_name, balance)
+    account ($\underline{account\_number}$, branch_name, balance)
     
     depositor ($\underline{ID},\ \underline{account\_number}$)
 
@@ -456,13 +456,13 @@ comments: true
     SELECT x.company_name
     FROM company as x
     WHERE NOT EXISTS (
-    SELECT city
-    FROM company
-    WHERE company_name = 'Small Bank Corporation'
-    EXCEPT
-    SELECT city
-    FROM company as y
-    WHERE y.company_name = x.company_name
+        SELECT city
+        FROM company
+        WHERE company_name = 'Small Bank Corporation'
+        EXCEPT
+        SELECT city
+        FROM company as y
+        WHERE y.company_name = x.company_name
     )
     ```
     
@@ -1204,6 +1204,24 @@ comments: true
 
     ![img](./assets/hw6.1.png)
 
+??? note "revised"
+    解释为什么要有弱实体：
+
+    `Premium Payment` 是最明确的弱实体候选者，因为它在概念上和结构上都依赖于 `Insurance Policy` (保单) 而存在。
+
+    存在依赖 (Existence-Dependent)：如果没有保单，保费支付记录就毫无意义。一张支付记录必须属于某一张特定的保单。如果删除了某张保单，那么与之相关的所有支付记录也应该被一并删除。
+
+    标识依赖 (Identity-Dependent)：`Premium Payment` 自身很难有一个全局唯一的标识符。它的属性，如 `due_date` (到期日) 或 `received_date` (收款日)，对于整个公司来说肯定是重复的。它的唯一性是相对于其所属的保单而言的。
+
+    需要修改的地方有：
+
+    弱实体 `Premium Payment` 不应该有自己的主键，而必须是一个复合键，由"拥有者实体的主键" + "自身的某个部分键"组成。
+
+    - 移除 `payment_ID` 这个主键。
+    - `premium_payments` 的主键应该是 `(policy_ID, due_date)`。其中 `policy_ID` 是来自 `policy` 的外键，`due_date` 是部分键（在同一张保单内唯一）。
+
+    并且后续所有的主键都需要修改。
+
 ??? note "answer"
     ![img](./assets/hw5-3.jpg)
 
@@ -1223,6 +1241,8 @@ comments: true
 
     b. ![img](./assets/hw6.2.2.png)
 
+??? note "revised"
+    这里其实 `section` 不需要做成弱实体集的。
 
 ??? note "answer"
     a. ![img](./assets/hw5-4.webp)
@@ -1515,7 +1535,7 @@ comments: true
     
     2. 检查违反 BCNF 的函数依赖:
 
-    - $B \rightarrow D$ 都违反 BCNF 。   
+    - $B \rightarrow D$ 违反 BCNF 。   
 
     3. 分解：
 
@@ -1981,7 +2001,7 @@ comments: true
     ![img](./assets/hw9-1.png)
 
 ??? note "my"
-    $$\Pi_{T.branch_name}((\Pi_{branch\_name, assets}(\rho_T(branch))) \bowtie_{T.assets > S.assets} (\Pi_{assets}(\sigma_{branch\_city = 'Brooklyn'}(\rho_S(branch)))))$$
+    $$\Pi_{T.branch_{name}}((\Pi_{branch\_name, assets}(\rho_T(branch))) \bowtie_{T.assets > S.assets} (\Pi_{assets}(\sigma_{branch\_city = 'Brooklyn'}(\rho_S(branch)))))$$
 
     首先对 `branch` 表进行重命名为 `S` ，并应用选择条件 `σ_{branch_city='Brooklyn'}` ，仅保留部分分支。接着投影出 `assets` 属性，大幅减少数据量。同样，对 `branch` 表重命名为 `T` 后，仅投影出 `branch_name` 和 `assets` ，可以避免处理无关属性。这样 `S` 和 `T` 的规模被最小化。这使得后续的 `T.assets > S.assets` 连接操作需要处理的数据量显著降低，提升了效率。
 
