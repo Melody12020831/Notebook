@@ -4188,7 +4188,7 @@
 <p>b. </p>
 <p>the max frequency of the four-way set associative cache <span class="arithmatex">\(\frac{1}{0.83} \approx 1.20 GHz\)</span></p>
 <p>the max frequency of the way-predicted cache <span class="arithmatex">\(\frac{1}{0.5} \approx 2.00 GHz\)</span></p>
-<p>the ratio of the access times is $ \frac{2.00}{1.20} \approx 1.67$</p>
+<p>the ratio of the access times is <span class="arithmatex">\(\frac{2.00}{1.20} \approx 1.67\)</span></p>
 <p>c. </p>
 <p>way-predicted cache</p>
 <div class="arithmatex">\[AMAT = ((\lceil \frac{0.86}{0.5} \rceil \times 80\% + 15 \times 20 \% ) \times (1 - 0.33\%) + 0.33\% \times \lceil \frac{10}{0.5} \rceil) \times 0.5 \approx 2.33 \ ns\]</div>
@@ -4543,7 +4543,7 @@
 <hr />
 <h2 id="_3">第三次作业<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <h3 id="37">3.7<a class="headerlink" href="#37" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>Computers spend most of their time in loops, so multiple loop iterations are great places to speculatively find more work to keep CPU resources busy. Nothing is ever easy, though; the compiler emitted only one copy of that loop's code, so even though multiple iterations are handling distinct data, they will appear to use the same registers. To keep multiple iterations' register usages from colliding, we rename their registers. Figure 3.48 shows example code that we would like our hardware to rename. A compiler could have simply unrolled the loop and used different registers to avoid conflicts, but if we expect our hardware to unroll the loop, it must also do the register renaming. How? Assume your hardware has a pool of temporary registers (call them T registers, and assume that there are 64 of them, T0 through T63) that it can substitute for those registers designated by the compiler. This rename hardware is indexed by the src (source) register designation, and the value in the table is the T register of the last destination that targeted that register. (Think of these table values as producers, and the src registers are the consumers; it doesn't much matter where the producer puts its result as long as its consumers can find it.) Consider the code sequence in Figure 3.48. Every time you see a destination register in the code, substitute the next available T, beginning with T9. Then update all the src registers accordingly, so that true data dependences are maintained. Show the resulting code. (Hint: see Figure 3.49.)</p>
 <p><a class="glightbox" href="../assets/hw3-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/hw3-1.png" /></a></p>
@@ -4569,7 +4569,7 @@
 </details>
 <hr />
 <h3 id="38">3.8<a class="headerlink" href="#38" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>Exercise 3.7 explored simple register renaming: when the hardware register renamer sees a source register, it substitutes the destination T register ofthe last instruction to have targeted that source register, When the rename table sees a destination register, it substitutes the next available T for it, but superscalar designs need to handle multiple instructions per clock cycle at every stage in the machine, including the register renaming. A simple scalar processor would therefore look up both src register mappings for each instruction and allocate a new dest mapping per clock cycle. Superscalar processors must be able to do that as well, but they must also ensure that any dest-to-src relationships between the two concurrent instructions are handled correctly. Consider the sample codesequence in Figure 3.5l. Assume that we would like to simultaneously renamethe first two instructions. Further assume that the next two available T registers to be used are known at the beginning of the clock cycle in which these two instructions are being renamed. Conceptually, what we want is for the first instruction to do its rename table lookups and then update the table per its destination's T register. Then the second instruction would do exactly the same thing, and any interinstruction dependency would thereby be handled correctly. But there's not enough time to write that T register designation into the renaming table and then look it up again for the second instruction, all in the same clock cycle. That register substitution must instead be done live (in parallel with the register rename table update). Figure 3.52 shows a circuit diagram, using multiplexers and comparators, that will accomplish the necessary on-the-fly register renaming. Your task is to show the cycle-by-cycle state of the rename table for every instructionof the code shown in Figure 3.5l. Assume the table starts out with every entry equal to its index(T0 = 0; T1 = 1,...).</p>
 <p><a class="glightbox" href="../assets/hw3-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/hw3-2.png" /></a></p>
@@ -4754,7 +4754,7 @@
 </details>
 <hr />
 <h3 id="311">3.11<a class="headerlink" href="#311" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>Assume a five-stage single-pipeline micro architecture (fetch, decode, execute, memory, write-back) and the code in Figure 3.54. All ops are one cycle except LW and SW, which are 1 + 2 cycles, and branches, which are 1 + 1 cycles. There is no forwarding. Show the phases of each instruction per clock cycle for one iteration of the loop.</p>
 <p>a. How many clock cycles per loop iteration are lost to branch overhead?</p>
@@ -4936,7 +4936,7 @@
 </details>
 <hr />
 <h3 id="313">3.13(前两点)<a class="headerlink" href="#313" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>In this exercise, you will explore performance trade-offs between three processors that each employ different types of multithreading (MT). Each of these processors is superscalar, uses in-order pipelines, requires a fixed three-cycle stall following all loads and branches, and has identical L1 caches. Instructions from the same thread issued in the same cycle are read in program order and must not contain any data or control dependences.</p>
 <ul>
@@ -5018,7 +5018,7 @@
 </details>
 <hr />
 <h3 id="316">3.16<a class="headerlink" href="#316" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>Tomasulo's algorithm has a disadvantage: only one result can compute per clock per CDB. Use the hardware configuration and latencies from the previous question and find a code sequence of no more than 10 instructions where Tomasulo's algorithm must stall due to CDB contention. Indicate where this occurs in your sequence.</p>
 </details>
@@ -5076,7 +5076,7 @@
 <hr />
 <h2 id="_4">第四次作业<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="41">4.1<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>Assume the constants shown as follows.</p>
 <table>
@@ -5303,7 +5303,7 @@
 </details>
 <hr />
 <h3 id="43">4.3<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>Assume that the vector reduction instruction is executed on the vector functional unit, similar to a vector add instruction. Show how the code sequence lays out in convoys assuming a single instance of each vector functional unit. How many chimes will the code require? How many cycles per FLOP are needed, ignoring vector instruction issue overhead?</p>
 </details>
@@ -5375,7 +5375,7 @@
 </details>
 <hr />
 <h3 id="45">4.5<a class="headerlink" href="#45" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>Now assume we want to implement the MrBayes kernel on a GPU using a single thread block. Rewrite the C code of the kernel using CUDA. Assume that pointers to the conditional likelihood and transition probability tables are specified as parameters to the kernel. Invoke one thread for each iteration of the loop. Load any reused values into shared memory before performing operations on it.</p>
 </details>
@@ -5457,7 +5457,7 @@
 </details>
 <hr />
 <h3 id="47">4.7<a class="headerlink" href="#47" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>Convert your code from Exercise 4.6 into PTX code. How many instructions are needed for the kernel?</p>
 <blockquote>
@@ -5549,7 +5549,7 @@
 </details>
 <hr />
 <h3 id="411">4.11<a class="headerlink" href="#411" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>Section 4.5 discussed the reduction operation that reduces a vector down to a scalar by repeated application of an operation. A reduction is a special type of a loop recurrence. An example is shown as follows:</p>
 <p>dot=0.0;</p>
@@ -5593,7 +5593,7 @@
 </details>
 <hr />
 <h3 id="414">4.14<a class="headerlink" href="#414" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>In this exercise, we will examine several loops and analyze their potential for parallelization.</p>
 <p>a. Does the following loop have a loop-carried dependency?</p>
@@ -5685,7 +5685,7 @@
 <hr />
 <h2 id="_5">第五次作业<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="51">5.1<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>For each part of this exercise, the initial cache and memory state are assumed to initially have the contents shown in Figure 5.37. Each part of this exercise specifies a sequence of one or more CPU operations of the form</p>
 <p><a class="glightbox" href="../assets/hw4-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/hw4-2.png" /></a></p>
@@ -5854,7 +5854,7 @@
 </details>
 <hr />
 <h3 id="52">5.2<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>The performance of a snooping cache-coherent multiprocessor depends on many detailed implementation issues that determine how quickly a cache responds with data in an exclusive or M state block. In some implementations, a processor read miss to a cache block that is exclusive in another processor's cache is faster than a miss to a block in memory. This is because caches are smaller, and thus faster, than main memory. Conversely, in some implementations, misses satisfied by memory are faster than those satisfied by caches. This is because caches are generally optimized for "front side" or CPU references, rather than "back side" or snooping accesses. For the multiprocessor illustrated in Figure 5.37, consider the execution of a sequence of operations on a single processor core where</p>
 <p><a class="glightbox" href="../assets/hw4-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="img" src="../assets/hw4-2.png" /></a></p>
@@ -5979,7 +5979,7 @@
 </details>
 <hr />
 <h3 id="59">5.9<a class="headerlink" href="#59" title="Permanent link">&para;</a></h3>
-<details class="question">
+<details class="question" open="open">
 <summary>Question</summary>
 <p>For each part of this exercise, assume that initially all caches lines are invalid, and the data in memory <code>Mi</code> is the byte <code>i (0X00 &lt;= i &lt;= 0x07)</code> repeated as many times as the block size. Assume that successive requests are completely serialized. That is, no core will issue a coherency request until the previous request (by same or different core) is completed.</p>
 <p>For each of the following parts,</p>
@@ -6335,7 +6335,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年6月17日 14:41:42 CST">2025年6月17日 14:41:42</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年6月25日 09:30:49 CST">2025年6月25日 09:30:49</span>
   </span>
 
     
