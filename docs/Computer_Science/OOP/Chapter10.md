@@ -140,8 +140,7 @@ x + y // operator+(x, y);
 ```cpp
 class Integer {
 public:
-    friend Integer operator+(const Integer&,
-    const Integer&); 
+    friend Integer operator+(const Integer&, const Integer&); 
     ...
 private:
     int i;
@@ -638,12 +637,15 @@ public:
     operator double() const {
         return numerator / (double)denominator;
     }
-} 
+private:
+    int numerator;
+    int denominator;
+};
 Rational r(1,3);
 double d = 1.3 * r; // r => double
 ```
 
-- 如果要实现就要求 `r` 可以隐式转换成 `double` 类型。
+- 如果要实现就要求 `r` 可以隐式转换成 `double` 类型。类中定义了类型转换运算符（`operator double()`）。
 - 这个 `operator` 很特殊，因为它的名字就是要转换成的那个类型的名字，且它的返回值就是 `double` 类型的值。
 - The function will be called automatically
 - Return type is same as the function name
@@ -845,28 +847,6 @@ cin >> a >> b >> c; // ((cin >> a) >> b) >> c;
 int ch;
 while ((ch = cin.get()) != EOF)
      cout.put(ch);
-```
-
----
-
-#### Creating a stream inserter
-
-- Has to be a 2-argument free function
-
-1. The first argument is an ostream&
-2. The second argument is a const reference，读取后不需要改变，所以是 const
-
-```cpp
-ostream& operator<<(ostream& os, const T& obj) {
-    // specific code to write obj 
-    return os; 
-}
-```
-
-- Return an ostream& for chaining
-
-```cpp
-cout << a << b << c; // ((cout << a) << b) << c;
 ```
 
 ---

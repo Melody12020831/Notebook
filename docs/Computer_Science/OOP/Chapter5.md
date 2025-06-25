@@ -120,12 +120,12 @@ int main(){
 ### about `protected` and `private`
 
 1. **`private`成员**：
-   - 仅能被**本类的成员函数**和**友元**访问。
-   - **派生类无法直接访问**基类的`private`成员。
+    - 仅能被**本类的成员函数**和**友元**访问。
+    - **派生类无法直接访问**基类的`private`成员。
 
 2. **`protected`成员**：
-   - 允许**本类的成员函数**、**友元**，以及**派生类的成员函数**访问。
-   - 派生类可以直接访问基类的`protected`成员，但无法访问其他不相关对象的`protected`成员。
+    - 允许**本类的成员函数**、**友元**，以及**派生类的成员函数**访问。
+    - 派生类可以直接访问基类的`protected`成员，但无法访问其他不相关对象的`protected`成员。
 
 ---
 
@@ -153,22 +153,39 @@ class Derived : public Base {
 ---
 
 ### 关键细节
+
 - **继承方式的影响**：
-  - 若使用`private`或`protected`继承，基类的`public`和`protected`成员在派生类中的访问权限会被降级：
+    - 若使用`private`或`protected`继承，基类的`public`和`protected`成员在派生类中的访问权限会被降级：
+
     ```cpp
     class Derived : private Base {
         // Base的public和protected成员在此变为private
     };
     ```
+
   - 但`protected`和`private`本身的区别仍不变：基类的`private`成员始终对派生类不可见。
 - **外部类和对象**：
-  - 非友元的外部类或函数**无法直接访问**`protected`或`private`成员。
-  - 派生类**只能访问自身继承的`protected`成员**，不能通过其他基类对象访问：
+    - 非友元的外部类或函数**无法直接访问**`protected`或`private`成员。
+    - 派生类**只能访问自身继承的`protected`成员**，不能通过其他基类对象访问：
+
     ```cpp
     void Derived::modify(Base& other) {
         other.b = 10; // 错误：不能访问其他对象的protected成员
     }
     ```
+
+- **通过派生类的其他实例访问（同类型对象）**:
+
+```cpp
+class Derived : public Base {
+public:
+    void modifyOtherDerived(Derived& other) {
+        other.b = 20; // 合法：访问同类型对象的 protected 成员
+    }
+};
+```
+
+- **允许**：因为 `Derived` 和 `other` 是同一类型，共享相同的访问权限。
 
 ---
 
@@ -475,7 +492,7 @@ private:
 #include "LineSegment.h"
 
 int main(){
-    point p;
+    Point p;
     p.init(2, 3);
     p.print();
     p.move(5, 5);
@@ -484,6 +501,9 @@ int main(){
 ```
 
 - 当没有加上 `#ifndef` 和 `#endif` 时，`LineSegment.h` 和 `main.cpp` 中都定义了 `Point`，会出现 `redefinition of Point` 错误。
+- 当 `main.cpp` 同时包含 `point.h` 和 `LineSegment.h` 时：
+    - 第一次处理 `#include "point.h"`：定义 `__POINT_H__`，加载 `Point`。
+    - 第二次处理 `#include "LineSegment.h"` → 其内部 `#include "point.h"` 时，由于 `__POINT_H__` 已定义，跳过重复加载，但 `Point` 的定义依然可用。
 
 ---
 
@@ -674,7 +694,7 @@ int main(){
 ```
 
 - 可以理解为编译器自动填写为 `Y y1[3] = {Y(2), Y(3), Y()};`
-- 需要增加一个不带参数的版本 `struct Y {int i ; float f; Y(int a){i = a} Y(){} };`
+- 需要增加一个不带参数的版本 `struct Y {int i ; float f; Y(int a){i = a}; Y(){} };`
 - 一个构造器都没有的时候，例如这样 `struct Y {int i ; float f; };` ，编译器会自动写一个无参构造器。
 
 ---

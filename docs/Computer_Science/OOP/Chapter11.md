@@ -129,7 +129,7 @@ void swap ( int& x, int& y ) {
 }
 ```
 
-- What if we want to swap `floats` , string`s , `Currency` , `Person` ?
+- What if we want to swap `floats` , `strings` , `Currency` , `Person` ?
 
 ```cpp
 template < class T >
@@ -214,7 +214,7 @@ swap(int, double); // error! 此时不知道 T 究竟是哪个
 
 3. Even implicit conversions are ignored
 
-- 模板推导的时候是不允许隐私转换的。必须实际参数和模板完全匹配。
+- 模板推导的时候是不允许隐式转换的。必须实际参数和模板完全匹配。
 
 4. Template functions and regular functions coexist
 
@@ -239,8 +239,8 @@ int main() {
     print(2.3f, 5.3f); // print(float):2.3,5.3
     print(2.3, 5.3); // 2.3, 5.3
     print(2, 2.3); // Error
-    print<int>(2, 2.3); // print(int):2,2
-    print(2, 3.4);      // print(float):2,3.4
+    print<int>(2, 2.3); // 2,2
+    print(2, 3.4);      // Error
 }
 ```
 

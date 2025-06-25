@@ -15,7 +15,7 @@ comments: true
 ## RAII
 
 - Resource acquisition is initialization 
-    - Build the life cycle of a resource to the lifetimeof an object
+    - Build the life cycle of a resource to the lifetime of an object
     - Acquire resources in Ctor
     - Release resources in Dtor
 
@@ -136,6 +136,108 @@ int main(){
 - 就会报错，报错原因是 y 没有一个 default constructor.
 - 因为对于一个自定义类型来说 `y=10` 这句话已经不是初始化了，而是赋值。
 - 它真正的初始化是在初始化列表，也即 `X()` 这句话这里，相当于在做 `X() : y()` ，而 y 没有默认构造函数，所以报错。
+
+??? note "隐式默认构造函数"
+    在 C++ 中，编译器会在特定条件下自动生成一个**隐式默认构造函数**（implicit default constructor），但这一行为受到多种规则影响。
+
+    **1. 编译器自动生成默认构造函数的条件**
+
+    当以下所有条件满足时，编译器会自动生成一个**隐式默认构造函数**（无参数、不执行复杂操作）：
+
+    1. **用户没有显式定义任何构造函数**（包括默认、拷贝、移动构造函数等）。
+    2. **类的所有成员都有默认构造函数**（或为内置类型，如 `int`、`float` 等，它们不要求初始化）。
+    3. **基类（如果有）有默认构造函数**。
+
+    示例 1：自动生成默认构造函数
+
+    ```cpp
+    struct A {
+        int x;       // 内置类型，不阻止默认构造函数生成
+        std::string s; // string 有默认构造函数
+    }; // 编译器生成隐式默认构造函数 A::A()
+
+    int main() {
+        A a; // 合法：调用编译器生成的默认构造函数
+    }
+    ```
+
+    **2. 阻止编译器生成默认构造函数的情况**
+
+    如果以下任一条件成立，编译器**不会**自动生成默认构造函数：
+
+    1. **用户显式定义了任何构造函数**（即使定义了其他构造函数，如拷贝构造函数）。
+    2. **类中有成员或基类缺少默认构造函数**。
+    3. **类中有 `const` 成员或引用成员且未在类内初始化**（C++11 起允许类内初始化）。
+
+    示例 2：阻止默认构造函数生成
+
+    ```cpp
+    struct B {
+        B(int) {}    // 用户定义了构造函数，阻止隐式默认构造函数生成
+    };
+
+    struct C {
+        const int x; // const 成员未初始化，阻止默认构造函数生成
+    };
+
+    int main() {
+        // B b;      // 错误：B 没有默认构造函数
+        // C c;      // 错误：C 的 const 成员未初始化
+    }
+    ```
+
+    **3. 强制编译器生成默认构造函数（C++11）**
+
+    即使存在其他构造函数，可以通过 `= default` 显式要求编译器生成默认构造函数：
+
+    ```cpp
+    struct D {
+        D(int) {}
+        D() = default; // 显式要求生成默认构造函数
+    };
+
+    int main() {
+        D d; // 合法：调用显式生成的默认构造函数
+    }
+    ```
+
+    **4. 自动生成的默认构造函数的行为**
+
+    - **内置类型成员**（如 `int`、指针等）：**不初始化**（值未定义，除非在类内显式初始化）。
+    - **类类型成员**：调用其默认构造函数。
+    - **基类**：调用基类的默认构造函数。
+
+    示例 3：默认构造函数的行为
+
+    ```cpp
+    #include <iostream>
+    struct E {
+        int x;       // 未初始化
+        std::string s; // 默认构造（空字符串）
+    };
+
+    int main() {
+        E e;
+        std::cout << e.x << " " << e.s << "\n"; // x 是未定义值，s 为空
+    }
+    ```
+
+    **5. 特殊规则（C++11 起）**
+
+    - **类内初始化**：如果成员在类内初始化，即使有用户定义的构造函数，这些成员也会被初始化：
+
+    ```cpp
+    struct F {
+        int x = 42; // 类内初始化
+        F(int) {}   // 用户定义构造函数
+    };
+
+    int main() {
+        F f(10);
+        std::cout << f.x; // 输出 42（类内初始化生效）
+    }
+    ```
+
 - 可以像如下这样更改。也就是定义一个默认构造函数，这样就可以正常初始化了。
 
 ```cpp
@@ -196,6 +298,10 @@ int main(){
 }
 ```
 
+- 因为 `explicit` 关键字禁止构造函数的隐式转换，要求必须显式调用构造函数。
+- `y = 10` 试图将 `int` 值 `10` 赋值给 `Y` 类型的成员 `y`。
+- 这需要隐式调用 `Y(int) `构造函数，但 `explicit` 阻止了这种行为。
+
 ---
 
 ### Initialization vs. assignment
@@ -203,10 +309,26 @@ int main(){
 - `Student::Student(string s) : name(s) {}`
     - initialization before constructor body
     - explicit initialization
+
+1. `: name(s)` 是成员初始化列表（Member Initialization List）。
+2. `name` 在构造函数体执行之前就已经初始化完成。
+3. `name` 直接调用 `string` 的 拷贝构造函数 `string(const string&)`，一步完成构造。没有额外的临时对象生成，效率更高。
+4. 即使成员没有默认构造函数（如 `const` 成员、引用成员），也能正确初始化。
+5. 必须用初始化列表的情况
+
+    - `const` 成员（常量必须在初始化时赋值）。
+    - 引用成员（引用必须在初始化时绑定）。
+    - 没有默认构造函数的类成员（如 `std::mutex`）。
+
 - `Student::Student(string s) { name = s; }`
     - assignment inside constructor body
     - implicit initialization + assignment
     - string must have a default constructor
+
+1. `name = s;` 是 赋值操作，而不是初始化。`name` 会先调用默认构造函数，再调用 `operator=` 进行赋值。
+2. 隐含两步操作先调用 `string` 的 默认构造函数（`name` 初始化为空字符串）。再调用 `operator=` 进行赋值（`name = s`）。
+3. 要求成员必须有默认构造函数。如果 `string` 没有默认构造函数（比如某些自定义类），则无法编译。
+4. 不适用于 `const` 和引用成员。`const` 成员和引用成员必须在初始化时赋值，不能在构造函数体内修改。
 
 ---
 
@@ -428,7 +550,47 @@ void x::f(){ // definition
 }
 ```
 
-- 定义函数的时候不用加 static 关键词，写在外面就行。
+- 定义函数的时候不用加 static 关键词，写在外面就行。在 C++ 中，**静态成员（static members）** 的声明和定义是分开的。
+
+在类内部，使用 `static` 关键字 **声明** 静态成员（函数或变量）：
+
+```cpp
+struct X {
+    static void f(); // 声明静态成员函数
+    static int n;    // 声明静态成员变量
+};
+```
+
+- **静态成员属于类本身**，而不是类的某个对象。
+- 声明时必须在成员前加 `static` 关键字。
+
+在类 **外部** 定义静态成员时：
+
+- **静态成员变量**：需要单独分配存储空间（通常在源文件中定义）。
+- **静态成员函数**：实现函数逻辑，但 **不需要** 再加 `static` 关键字。
+
+**正确示例**
+
+```cpp
+// 定义静态成员变量（分配内存）
+int X::n = 7;
+
+// 定义静态成员函数（实现逻辑）
+void X::f() {
+    n = 1;
+}
+```
+
+**静态成员的使用**
+
+```cpp
+int main() {
+    X::n = 10;  // 直接通过类名访问静态变量
+    X::f();     // 直接调用静态函数
+}
+```
+
+- 静态成员属于类，无需创建对象即可访问。
 
 ---
 
@@ -505,7 +667,39 @@ int main(){
 ## Inline
 
 - An inline function is expanded in place, like a preprocessor macro in C, so the overhead of the function call is eliminated.
+- 类似于宏替换，但由编译器控制，而不是预处理器。
 - Much safer than macro. It checks the types of the parameters, and has no dangerous side effect.
+- 但是宏是纯文本替换，无类型检查。参数可能被多次求值，导致意外行为。
+- 对于内联函数，编译器会检查参数类型。参数只求值一次。
+
+??? note "避免重复求值"
+    宏
+
+    ```cpp
+    #define SQUARE(x) (x * x)
+    int a = 1;
+    SQUARE(a++); // 展开为 (a++ * a++)，未定义行为
+    ```
+
+    内联函数
+
+    ```cpp
+    inline int square(int x) { return x * x; }
+    int a = 1;
+    square(a++); // 安全：等价于 (a * a), 然后 a++
+    ```
+
+    这是是因为在 C++ 中函数参数在传入之前会先完成求值。所以实际上的流程是：
+
+    1. 计算 `a++` 的值（`a++` 是 后置递增，返回 `a` 的旧值 `1`，然后 `a` 变为 `2`）。
+
+    2. 将 `1` 作为参数 `x` 传入 `square`。
+
+    3. 执行 `return x * x`，即 `1 * 1`，返回 `1`。
+
+    4. 函数调用结束后，`a` 的值已经是 `2`。
+
+    也就是说最后 `result = 1`，`a = 2`。
 
 ```cpp
 // original
@@ -544,8 +738,8 @@ int main() {
 
 ### Inline may not in-line
 
-- The compiler does not have to honor yourrequest to make a function inline.
-- It might decide the function is too large or noticethat it calls itself, or the feature might not be implemented for your particular compiler.
+- The compiler does not have to honor your request to make a function inline.
+- It might decide the function is too large or notice that it calls itself, or the feature might not be implemented for your particular compiler.
 - Nowadays, the keyword inline for functions comes to mean "multiple definitions are permitted" rather than "inlining is preferred".
 
 ---

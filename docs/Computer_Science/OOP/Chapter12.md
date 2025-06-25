@@ -30,7 +30,7 @@ comments: true
 ## Usage
 
 ```cpp
-template <class InputIterator, class >
+template <class InputIterator, class T>
 InputIterator find(InputIterator first, InputIterator last, const T &value){
     while(first!=last && *first!=value){ // [first, last)
         ++first;
@@ -207,6 +207,7 @@ public:
     T* operator ->() { return pointee; }
 };
 ```
+
 - 以 `list` 为例
 
 ```cpp
@@ -404,8 +405,8 @@ int main(){
 
 - 不需要写析构函数，因为我只知道我现在存的状态是一个指针，并不管理这一块内存，所以不需要写析构函数。
 - `++` 操作的返回值是本类型的引用。
-- 这里只写了前缀的 `++` 操作符，因为返回值是已经修改后的内容。而[(📝后缀 `++` 操作符的撰写)](https://melody12020831.github.io/Notebook/Computer_Science/OOP/Chapter10/#Implementing `++` and `--`)
-- 对于 `T* operator->() { return &(*this); }` 来说。`operator->` 的作用是允许通过迭代器直接访问对象的成员，语法形式为 `iter->member`。`this` 是指向当前 `ListIter` 对象的指针。`*this` 调用 `operator*()` 解引用该指针，得到 `ListIter` 对象本身，返回 `T&`（也就是返回当前 `ListItem` 的 `value` 的引用）。`&(*this)` 等价于 `&(*this)`，即取 `T&` 的地址，得到 `T*`。
+- 这里只写了前缀的 `++` 操作符，因为返回值是已经修改后的内容。而[(📝后缀 `++` 操作符的撰写)](https://melody12020831.github.io/Notebook/Computer_Science/OOP/Chapter10/#implementing-and-)
+- `this` 是 `ListIter<T>*` 类型，指向当前迭代器对象，而非 `T*`。对于 `T* operator->() { return &(*this); }` 来说。`operator->` 的作用是允许通过迭代器直接访问对象的成员，语法形式为 `iter->member`。`this` 是指向当前 `ListIter` 对象的指针。`*this` 调用 `operator*()` 解引用该指针，返回 `T&`（即 `ListItem<T>::value` 的引用），得到 `ListIter` 对象本身。`&(*this)` 取该引用的地址，得到 `T*`，即指向 `value` 的指针。
 
 ---
 

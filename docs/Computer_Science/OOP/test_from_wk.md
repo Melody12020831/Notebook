@@ -189,7 +189,7 @@ comments: true
 
     B. 这个选项是错误的。`it` 从 `L.end()` 开始，但 `L.end()` 指向的是容器末尾的下一个位置，不能直接解引用 `*it`。此外，即使修正为 `--it` 后再解引用，逻辑也不如选项 A 直观和高效。
 
-    C. 这个选项是错误的。`break` 语句会导致循环在第一次满足 `*it > 'new str'` 时立即退出，即使后面还有更小的元素需要检查。
+    C. 这个选项是错误的。如果所有元素都小于 `new_str`，不会插入（漏掉末尾情况）。需额外检查 `it == L.end()`。
 
     D. 这个选项虽然可以实现目标，但效率较低。`push_back` 将 `'new_str'` 添加到列表末尾，然后调用 `sort` 对整个列表重新排序。这种方法的时间复杂度是 &O(N \log N)$，而直接找到插入位置并插入的时间复杂度是 $O(N)$。因此，这种方法不推荐。
 
@@ -214,7 +214,7 @@ comments: true
 ??? note "answer"
     B. 为了防止头文件被重复包含，避免编译错误
 
-    #ifndef 和 #endif 是预处理指令，用于防止头文件被重复包含。当编译器第一次遇到头文件时，它会检查是否已经定义了某个特定的宏。如果没有定义，那么编译器会定义这个宏，并继续编译头文件的内容。如果已经定义了，那么编译器会忽略头文件的内容，从而避免了重复包含的问题。
+    `#ifndef` 和 `#endif` 是预处理指令，用于防止头文件被重复包含。当编译器第一次遇到头文件时，它会检查是否已经定义了某个特定的宏。如果没有定义，那么编译器会定义这个宏，并继续编译头文件的内容。如果已经定义了，那么编译器会忽略头文件的内容，从而避免了重复包含的问题。
 
     这种方法可以确保头文件的内容只被编译一次，从而提高了编译速度并避免了编译错误。
 
@@ -447,7 +447,7 @@ comments: true
 
     4. 共享性：所有类的实例共享同一个静态成员函数。
 
-    C. 错误。静态成员函数的链接属性与普通函数类似（默认外部链接），且不能是虚函数（无法动态覆盖）。
+    C. 错误。静态成员函数的链接属性与普通函数类似（默认外部链接），且不能是虚函数（无法动态覆盖）。内部链接（Internal Linkage）是指符号（如函数、变量）仅在当前编译单元（通常是单个 `.cpp` 文件）内可见，其他文件无法访问。静态成员函数默认具有外部链接（可通过类名全局访问）。若在类内定义时用 `static` 修饰，其链接性不受影响（仍为外部链接）。
 
     D. 错误。静态成员函数可被多次调用，其调用次数不受限制。
 
@@ -662,7 +662,7 @@ comments: true
 ---
 
 ???+ question
-    What is the key difference between a delegating constructor and a targetconstructor?
+    What is the key difference between a delegating constructor and a target constructor?
     
     A. A delegating constructor can have other members initialized in its own initialization list, while a target constructor cannot
     
@@ -670,7 +670,7 @@ comments: true
     
     C. A target constructor can delegate to another constructor, while a delegating constructor cannot
 
-    D. A delegating constructor is always private, while a targetconstructor is always public
+    D. A delegating constructor is always private, while a target constructor is always public
 
 ??? note "answer"
     The key difference between a delegating constructor and a target constructor is **B. The execution of the target constructor precedes that of the delegating constructor**.
@@ -720,10 +720,53 @@ comments: true
 
     C. 'Fully' and 'by reference' both imply that constructors are called automatically.
 
-    D. 'By reference' means the object is embedded within theparent okject, while 'fully‘ implies referencing anexternal object.
+    D. 'By reference' means the object is embedded within the parent okject, while 'fully‘ implies referencing an external object.
 
 ??? note "answer"
     A. 'Fully' means the object is part of the parent object, while 'by reference' means it exists elsewhere and isreferenced.
+
+    1. **Fully（完全包含）** 
+
+    - **存储方式**：被包含的对象 **直接嵌入** 在父对象的内存中。  
+    - **生命周期**：当父对象被销毁时，被包含的对象 **自动销毁**。
+
+    - **示例**：
+
+        ```cpp
+        class Engine {};
+        class Car {
+            Engine engine;  // Engine 完全包含在 Car 中
+        };
+        ```
+
+    - **特点**：
+
+        - 内存连续，访问速度快。
+        - 父对象控制子对象的生命周期。
+
+    2. **By Reference（引用包含）**
+
+        - **存储方式**：父对象 **通过指针或引用** 持有另一个对象，但该对象 **独立存在**。  
+        - **生命周期**：被引用的对象 **不会被父对象自动销毁**，必须手动管理（或通过智能指针）。  
+        - **示例**：
+
+        ```cpp
+        class Wheel {};
+        class Car {
+            Wheel* wheel;  // Wheel 是引用包含
+        };
+        ```
+
+        - **特点**：
+
+            - 更灵活（可动态更换被引用的对象）。
+            - 需要额外管理生命周期（避免内存泄漏）。
+
+    | 选项 | 错误原因                                                                 |
+    |:----:|:------------------------------------------------------------------------:|
+    | B    | "Fully" 是自动销毁，"by reference" 需手动销毁。               |
+    | C    | 构造函数调用与包含方式无关，两者都会调用构造函数。                        |
+    | D    | 描述完全反了（"by reference" 是引用外部对象，"fully" 是嵌入）。           |
 
 ---
 
@@ -764,7 +807,7 @@ comments: true
 
     A. Initializer lists perform assignments after the constructor has been called.
 
-    B.Initializer lists initialize members before the constructor body executes.
+    B. Initializer lists initialize members before the constructor body executes.
 
     C. Assignment inside the constructor's body initializes const members.
 

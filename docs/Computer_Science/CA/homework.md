@@ -268,7 +268,7 @@ comments: true
     
     the max frequency of the way-predicted cache $\frac{1}{0.5} \approx 2.00 GHz$
     
-    the ratio of the access times is $ \frac{2.00}{1.20} \approx 1.67$
+    the ratio of the access times is $\frac{2.00}{1.20} \approx 1.67$
     
     c. 
     
@@ -552,7 +552,7 @@ comments: true
 
 ### 3.7
 
-??? question
+???+ question
     Computers spend most of their time in loops, so multiple loop iterations are great places to speculatively find more work to keep CPU resources busy. Nothing is ever easy, though; the compiler emitted only one copy of that loop's code, so even though multiple iterations are handling distinct data, they will appear to use the same registers. To keep multiple iterations' register usages from colliding, we rename their registers. Figure 3.48 shows example code that we would like our hardware to rename. A compiler could have simply unrolled the loop and used different registers to avoid conflicts, but if we expect our hardware to unroll the loop, it must also do the register renaming. How? Assume your hardware has a pool of temporary registers (call them T registers, and assume that there are 64 of them, T0 through T63) that it can substitute for those registers designated by the compiler. This rename hardware is indexed by the src (source) register designation, and the value in the table is the T register of the last destination that targeted that register. (Think of these table values as producers, and the src registers are the consumers; it doesn't much matter where the producer puts its result as long as its consumers can find it.) Consider the code sequence in Figure 3.48. Every time you see a destination register in the code, substitute the next available T, beginning with T9. Then update all the src registers accordingly, so that true data dependences are maintained. Show the resulting code. (Hint: see Figure 3.49.)
 
     ![img](./assets/hw3-1.png)
@@ -580,7 +580,7 @@ comments: true
 
 ### 3.8
 
-??? question
+???+ question
     Exercise 3.7 explored simple register renaming: when the hardware register renamer sees a source register, it substitutes the destination T register ofthe last instruction to have targeted that source register, When the rename table sees a destination register, it substitutes the next available T for it, but superscalar designs need to handle multiple instructions per clock cycle at every stage in the machine, including the register renaming. A simple scalar processor would therefore look up both src register mappings for each instruction and allocate a new dest mapping per clock cycle. Superscalar processors must be able to do that as well, but they must also ensure that any dest-to-src relationships between the two concurrent instructions are handled correctly. Consider the sample codesequence in Figure 3.5l. Assume that we would like to simultaneously renamethe first two instructions. Further assume that the next two available T registers to be used are known at the beginning of the clock cycle in which these two instructions are being renamed. Conceptually, what we want is for the first instruction to do its rename table lookups and then update the table per its destination's T register. Then the second instruction would do exactly the same thing, and any interinstruction dependency would thereby be handled correctly. But there's not enough time to write that T register designation into the renaming table and then look it up again for the second instruction, all in the same clock cycle. That register substitution must instead be done live (in parallel with the register rename table update). Figure 3.52 shows a circuit diagram, using multiplexers and comparators, that will accomplish the necessary on-the-fly register renaming. Your task is to show the cycle-by-cycle state of the rename table for every instructionof the code shown in Figure 3.5l. Assume the table starts out with every entry equal to its index(T0 = 0; T1 = 1,...).
 
     ![img](./assets/hw3-2.png)
@@ -754,7 +754,7 @@ comments: true
 
 ### 3.11
 
-??? question
+???+ question
     Assume a five-stage single-pipeline micro architecture (fetch, decode, execute, memory, write-back) and the code in Figure 3.54. All ops are one cycle except LW and SW, which are 1 + 2 cycles, and branches, which are 1 + 1 cycles. There is no forwarding. Show the phases of each instruction per clock cycle for one iteration of the loop.
 
     a. How many clock cycles per loop iteration are lost to branch overhead?
@@ -794,7 +794,7 @@ comments: true
 
 ### 3.13(前两点)
 
-??? question
+???+ question
     In this exercise, you will explore performance trade-offs between three processors that each employ different types of multithreading (MT). Each of these processors is superscalar, uses in-order pipelines, requires a fixed three-cycle stall following all loads and branches, and has identical L1 caches. Instructions from the same thread issued in the same cycle are read in program order and must not contain any data or control dependences.
 
     - Processor A is a superscalar simultaneous MT architecture, capable of issuing up to two instructions per cycle from two threads.
@@ -878,7 +878,7 @@ comments: true
 
 ### 3.16
 
-??? question
+???+ question
     Tomasulo's algorithm has a disadvantage: only one result can compute per clock per CDB. Use the hardware configuration and latencies from the previous question and find a code sequence of no more than 10 instructions where Tomasulo's algorithm must stall due to CDB contention. Indicate where this occurs in your sequence.
 
 ??? note "answer"
@@ -897,7 +897,7 @@ comments: true
 
 ### 4.1
 
-??? question
+???+ question
     Assume the constants shown as follows.
 
     |Constants|Values|
@@ -1101,7 +1101,7 @@ comments: true
 
 ### 4.3
 
-??? question
+???+ question
     Assume that the vector reduction instruction is executed on the vector functional unit, similar to a vector add instruction. Show how the code sequence lays out in convoys assuming a single instance of each vector functional unit. How many chimes will the code require? How many cycles per FLOP are needed, ignoring vector instruction issue overhead?
 
 ??? note "answer"
@@ -1136,7 +1136,7 @@ comments: true
 
 ### 4.5
 
-??? question
+???+ question
     Now assume we want to implement the MrBayes kernel on a GPU using a single thread block. Rewrite the C code of the kernel using CUDA. Assume that pointers to the conditional likelihood and transition probability tables are specified as parameters to the kernel. Invoke one thread for each iteration of the loop. Load any reused values into shared memory before performing operations on it.
 
 ??? note "answer"
@@ -1222,7 +1222,7 @@ comments: true
 
 ### 4.7
 
-??? question
+???+ question
     Convert your code from Exercise 4.6 into PTX code. How many instructions are needed for the kernel?
 
     > 4.6
@@ -1316,7 +1316,7 @@ comments: true
 
 ### 4.11
 
-??? question
+???+ question
     Section 4.5 discussed the reduction operation that reduces a vector down to a scalar by repeated application of an operation. A reduction is a special type of a loop recurrence. An example is shown as follows:
 
     dot=0.0;
@@ -1374,7 +1374,7 @@ comments: true
 
 ### 4.14
 
-??? question
+???+ question
     In this exercise, we will examine several loops and analyze their potential for parallelization.
 
     a. Does the following loop have a loop-carried dependency?
@@ -1472,7 +1472,7 @@ comments: true
 
 ### 5.1
 
-??? question
+???+ question
     For each part of this exercise, the initial cache and memory state are assumed to initially have the contents shown in Figure 5.37. Each part of this exercise specifies a sequence of one or more CPU operations of the form
 
     ![img](./assets/hw4-2.png)
@@ -1616,7 +1616,7 @@ comments: true
 
 ### 5.2
 
-??? question
+???+ question
     The performance of a snooping cache-coherent multiprocessor depends on many detailed implementation issues that determine how quickly a cache responds with data in an exclusive or M state block. In some implementations, a processor read miss to a cache block that is exclusive in another processor's cache is faster than a miss to a block in memory. This is because caches are smaller, and thus faster, than main memory. Conversely, in some implementations, misses satisfied by memory are faster than those satisfied by caches. This is because caches are generally optimized for "front side" or CPU references, rather than "back side" or snooping accesses. For the multiprocessor illustrated in Figure 5.37, consider the execution of a sequence of operations on a single processor core where
 
     ![img](./assets/hw4-2.png)
@@ -1732,7 +1732,7 @@ comments: true
 
 ### 5.9
 
-??? question
+???+ question
     For each part of this exercise, assume that initially all caches lines are invalid, and the data in memory `Mi` is the byte `i (0X00 <= i <= 0x07)` repeated as many times as the block size. Assume that successive requests are completely serialized. That is, no core will issue a coherency request until the previous request (by same or different core) is completed.
 
     For each of the following parts,

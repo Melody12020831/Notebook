@@ -563,7 +563,7 @@ void abc(int a) noexcept { ... }
     - optimize non-throwing functions
 
 - 是一个标识，承诺这个函数不会抛出异常。此时编译器可以做出相应的优化。
-- 加了这个标识后不是说会在这个函数种写异常，而是函数是层层调用的，调用的那个函数可能会抛出异常。
+- 加了这个标识后不是说会在这个函数中写异常，而是函数是层层调用的，调用的那个函数可能会抛出异常。
 - At run time, if an exception is thrown out, the `std::terminate` is called
 - 有很多函数需要加这个东西
 - Who use it:
@@ -761,7 +761,7 @@ public:
     }
     void init(){
         cout << "A::init()" << endl;
-        vdata new int[10]();
+        vdata = new int[10]();
         if(true){
             throw 2;
         }

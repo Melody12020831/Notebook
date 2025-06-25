@@ -283,7 +283,7 @@ int main(){
     如果定义为成员函数，调用方式会变成 `s << std::cout` ，这与常规用法相反。
 
 ??? note "attention if id and name are private"
-    如果 `id` 和 `nam`e 是 Student 类的私有成员，`operator<<` 需要声明为 Student 的友元函数。
+    如果 `id` 和 `name` 是 Student 类的私有成员，`operator<<` 需要声明为 Student 的友元函数。
 
     just like this:
 

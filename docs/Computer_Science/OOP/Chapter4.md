@@ -452,25 +452,6 @@ delete pa;
 delete[] parr;
 ```
 
-输出:
-
-```bash
-ps1->id = -1163005939
-Student::Student(): id = 0
-ps2->id = 0
-Student::~Student(): id = 0
-Student::Student(): id = 0
-Student::Student(): id = 0
-Student::Student(): id = 0
-Student::Student(): id = 0
-Student::Student(): id = 0
-Student::~Student(): id = 4
-Student::~Student(): id = 3
-Student::~Student(): id = 2
-Student::~Student(): id = 1
-Student::~Student(): id = 0
-```
-
 ---
 
 ```cpp
@@ -505,6 +486,25 @@ int main(){
 }
 ```
 
+输出:
+
+```bash
+ps1->id = -1163005939
+Student::Student(): id = 0
+ps2->id = 0
+Student::~Student(): id = 0
+Student::Student(): id = 0
+Student::Student(): id = 0
+Student::Student(): id = 0
+Student::Student(): id = 0
+Student::Student(): id = 0
+Student::~Student(): id = 4
+Student::~Student(): id = 3
+Student::~Student(): id = 2
+Student::~Student(): id = 1
+Student::~Student(): id = 0
+```
+
 - 此时构造函数被调用了，析构函数被调用了。自动触发构造函数和析构函数的触发。
 - new 和 delete 相当于多做了一步。
 - 构造和析构的顺序是相反的。结构体中的局部对象通常存储在栈上，而栈是一种"后进先出"（LIFO）的数据结构。最后构造的对象会最先被析构，因为它在栈的顶部。
@@ -534,8 +534,7 @@ delete[] a;
         - 如果指针是 `nullptr`（如 `a = 0`），`delete[]` 直接返回，不执行任何操作。
         - 如果指针非空，继续执行释放逻辑。
     2. 调用析构函数（仅对类对象）。
-    3. 调用析构函数（仅对类对象）。
-    4. 标记内存为"未分配"：堆管理器更新内部数据结构，标记该内存块可重用。
+    3. 标记内存为"未分配"：堆管理器更新内部数据结构，标记该内存块可重用。
 
 ??? question "My question about 为什么 delete 之后还能使用 a 并为 a 赋值"
     指针变量 `a` 是一个普通的变量，它的生命周期和作用域由声明的位置决定。`delete` 释放的是 `a` 指向的内存，而不是指针 `a` 本身。指针变量 `a` 仍然可以像其他变量一样被读取、赋值或修改。
@@ -651,6 +650,14 @@ const int z = y; // ok, const is safer
             return 0;
         }
         ```
+
+??? note "头文件里直接定义 const"
+    ```cpp
+    // Constants.h
+    const int globalConst = 42;  // 错误！每个包含该头文件的 .cpp 都会定义自己的 globalConst，导致链接冲突
+    ```
+
+    由于 `const` 默认是内部链接，每个 `.cpp` 文件包含 `Constants.h` 时都会生成一个独立的 `globalConst`，链接时不会报错，但逻辑上是错误的（多个副本）。
 
 ---
 

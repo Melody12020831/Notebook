@@ -83,7 +83,7 @@ Base::~Base()
 - The class itself controls the access
 - A friend can be:
     - a free function
-    - a member function of another classo or even an entire class
+    - a member function of another class or even an entire class
 
 ```cpp
 struct X;
@@ -146,11 +146,11 @@ int main(){
 
 ---
 
-### Access protection： `private` 
+### Access protection：`private` 
 
 - `private` is to class, not to object
 - A secret detour:
-    - `private members can be accessed
+    - `private` members can be accessed
     - indirect read/write by pointers
 
 ```cpp
@@ -361,6 +361,9 @@ Ellipse::render()
 Shape::move()
 Circle::render()
 ```
+
+- 不加 `virtual`：函数调用由指针类型决定（`Shape*` 永远调用 `Shape::render()`）。
+- 加 `virtual`：函数调用由对象实际类型决定（支持多态，调用正确的派生类版本）。
 
 ---
 
@@ -828,9 +831,9 @@ f1 == f1d: True
 
 通过基类指针/引用调用虚函数时：
 
-    - 通过对象的 vptr 找到对应的 vtable。
-    - 根据函数声明顺序，从 vtable 中取出目标函数的地址。
-    - 调用该地址的函数（实际指向派生类实现）。
+- 通过对象的 vptr 找到对应的 vtable。
+- 根据函数声明顺序，从 vtable 中取出目标函数的地址。
+- 调用该地址的函数（实际指向派生类实现）。
 
 ---
 
@@ -918,6 +921,38 @@ Derived::bar1(int): datad + a = 20
 - `Derived::bar1(int)` 是类的非静态成员函数，其调用需要隐式的 `this` 指针。
 - 如果是 `void (*vf)(int)` 则会导致编译错误，因为 `vf` 是一个普通函数指针，而不是成员函数指针。
 - 实际上成员函数指针的类型应为 `void (Derived::*)(int)`。
+
+??? note "成员函数指针"
+    - `f1d` 是从 `Derived` 类的虚函数表中提取的第二个虚函数地址（对应 `bar1(int)`）。
+    - 它本质是一个 `void*` 类型的指针，存储了 `Derived::bar1(int)` 的函数地址。
+
+    ```cpp
+    (void (*)(Derived*, int))f1d
+    ```
+
+    - 将 `f1d`（`void*` 类型）强制转换为函数指针：
+        - 函数类型：`void (*)(Derived*, int)`  
+            - 返回值：`void`  
+            - 参数：`Derived*`（隐含的 `this` 指针） + `int`（`bar1` 的参数）。  
+    - 转换后的函数指针命名为 `vf`。
+
+    ```cpp
+    vf(&d, 20);
+    ```
+
+    - 直接调用 `Derived::bar1(int)`，等价于：
+
+        ```cpp
+        d.bar1(20);  // 常规调用方式
+        ```
+
+    - 输出结果：
+
+        ```
+        Derived::bar1(int): datad + a = <不确定值> + 20
+        ```
+
+        （注：`datad` 未初始化，值是未定义的。）
 
 ---
 
@@ -1183,13 +1218,12 @@ virtual BinaryExpr* self() override;  // 或 virtual BinaryExpr& self() override
 ### **关键规则**
 
 1. **协变返回类型**：
-   - 只允许指针或引用。
-   - 派生类返回类型必须是基类返回类型的直接或间接子类。
+    - 只允许指针或引用。
+    - 派生类返回类型必须是基类返回类型的直接或间接子类。
 
 2. **对象返回类型**：
-   - 重写时返回类型必须与基类严格一致。
-   - 若不一致，视为函数签名不同，导致重写失败。
-
+    - 重写时返回类型必须与基类严格一致。
+    - 若不一致，视为函数签名不同，导致重写失败。
 
 ---
 

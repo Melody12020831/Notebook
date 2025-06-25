@@ -77,10 +77,10 @@ STL = Standard Template Library
 
 ```cpp
 std::vector<int> data{1, 2, 4, 5, 5, 6};
-data.at(1) = 88;
-data[0] = 5;
-data.front() = 10;  // data.front() 等价于 *data.begin()
-data.back() = 20;  // data.back() 等价于 *std::prev(data.end())
+data.at(1) = 88; // data.at(1) 等价于 data[1], 会进行边界检查（越界时抛出 std::out_of_range 异常）。 这里输出 [1, 88, 4, 5, 5, 6]; 
+data[0] = 5; // operator[] 直接访问元素，不进行边界检查（越界时行为未定义）。 这里输出 [5, 88, 4, 5, 5, 6];
+data.front() = 10;  // data.front() 等价于 *data.begin() 也即为 [10, 88, 4, 5, 5, 6]
+data.back() = 20;  // data.back() 等价于 *std::prev(data.end()) 也即为 [10, 88, 4, 5, 5, 20]
 
 pointer_func(data.data(), data.size());
 // 返回指向作为元素存储工作的底层数组的指针。
