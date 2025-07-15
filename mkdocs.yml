@@ -106,6 +106,7 @@ extra_css:
     - css/more_changelog.css
     - css/neoteroi-mkdocs.css
     - css/fold_toc.css
+    - css/sidebar.css
 
 extra_javascript:
     - https://polyfill.io/v3/polyfill.min.js?features=es6
