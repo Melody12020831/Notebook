@@ -1,0 +1,4822 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="央央的笔记本">
+      
+      
+      
+        <link rel="canonical" href="https://melody12020831.github.io/Notebook/Miscellaneous/UBC/UBC%20summer%20institute/">
+      
+      
+        <link rel="prev" href="../../mermaid/">
+      
+      
+        <link rel="next" href="../download/">
+      
+      
+      <link rel="icon" href="../../../assets/images/icon.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>block chain DAY 1 - 央央's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen+GB+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen GB Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/card.css">
+    
+      <link rel="stylesheet" href="../../../css/tasklist.css">
+    
+      <link rel="stylesheet" href="../../../css/flink.css">
+    
+      <link rel="stylesheet" href="../../../css/more_changelog.css">
+    
+      <link rel="stylesheet" href="../../../css/neoteroi-mkdocs.css">
+    
+      <link rel="stylesheet" href="../../../css/fold_toc.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-002T22X4FB"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-002T22X4FB",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-002T22X4FB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#block-chain-day-1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="央央&#39;s Notebook" class="md-header__button md-logo" aria-label="央央's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            央央's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              block chain DAY 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Melody12020831/Notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Melody
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Computer_Science/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Math/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Misccelleanous
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="央央&#39;s Notebook" class="md-nav__button md-logo" aria-label="央央's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    央央's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Melody12020831/Notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Melody
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Computer_Science/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Computer Science
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Computer_Science/ADS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ADS
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            ADS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/ADS/Homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/ADS/organisedproblems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organisedproblems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Computer_Science/CO/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CO
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            CO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CO/Chapter%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CO/Chapter%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CO/Chapter%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CO/Chapter%204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CO/Chapter%205/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    chapter 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CO/Chapter%206/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CO/COhomework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CO homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CO/PPT_download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PPT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Computer_Science/DB/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    DB
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            DB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 | Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 | Introduction to the Relational Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 | Introduction to SQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 | Intermediate SQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5 | Advanced SQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6 | Entity-Relationship Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 7 | Relational Database Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 8 | Complex Data Types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 12 | Physical Storage Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 13 | Data Storage Structures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 14 | Indexing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 15 | Query Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 16 | Query Optimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 17 | Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 18 | Concurrency Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/Chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 19 | Recovery System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/DB/sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SQL learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Computer_Science/OOP/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    OOP
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 | introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 | A tour of cpp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 | STL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 | Memory Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5 | Class
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6 | Ctor/Dtor &amp;&amp; Composition &amp; Inheritance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 7 | Polymorphism
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 8 | Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 9 | Copy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 10 | Operator Overloading &amp;&amp; Streams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 11 | templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 12 | Iterators
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 13 | Exceptions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 14 | Smart Pointers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/Chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 15 | Miscellaneous Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/test_from_wk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WK's 课前小测
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/OOP/105_STL_Algorithmsin_Less_Than_an_Hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    105 STL Algorithmsin Less Than an Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Computer_Science/CA/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CA
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            CA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CA/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch1 | Fundamentals of Computer Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CA/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch2 | Memory Hierarchy Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CA/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/CA/CA_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CA review
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Computer_Science/TOC/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    TOC
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            TOC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/TOC/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Visualization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Visualization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/Visualization/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数据可视化笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    编程语言
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/Programming_Language/python/CS50P_python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/Programming_Language/python/python100days/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python-100-Days
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/Tools/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Computer_Science/Tools/reveal-md/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 reveal-md 制作 PPT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Math/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Math
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    概率论与数理统计
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            概率论与数理统计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 概率论的基本概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 随机变量及其分布
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 多元随机变量及其分布
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 随机变量的数字特征
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5 大数定律和中心极限定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6 数理统计的基本概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 7 参数估计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 8 假设检验
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/PPT_download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PPT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_11" id="__nav_3_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            Homework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/Homework_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW1(习题一)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW2(习题一)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW3(习题一、二)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW4(习题二)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW5(习题二、三)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW6(习题三)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW7(习题三)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW8(习题四)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW9(习题四、五)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW10(习题五、六)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW11(习题六、七(只计算矩估计))
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW12(习题七)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW13(习题七)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW14(习题八)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Misccelleanous
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Misccelleanous
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prompt/prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mermaid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mermaid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    UBC
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            UBC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 1
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 1
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-overview-of-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. 区块链概览 (Overview of Blockchain)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. 区块链概览 (Overview of Blockchain)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链定义 (What is Blockchain?)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components-concepts-of-blockchain-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链的关键组成部分与概念 (Key Components &amp; Concepts of Blockchain Solutions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-blockchain-is-useful" class="md-nav__link">
+    <span class="md-ellipsis">
+      * 区块链的适用场景 (When Blockchain is Useful)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-blockchain-is-less-useful" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链的非适用场景 (When Blockchain is Less Useful)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-applications-of-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. 区块链应用 (Applications of Blockchain)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II. 区块链应用 (Applications of Blockchain)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-blockchain-use-cases-iso-tr-32422022" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链用例概览 (Overview of Blockchain Use Cases) (基于 ISO TR 3242:2022)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformative-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      变革性应用 (Transformative Applications) (区块链如何颠覆现有做事方式)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-the-three-layer-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. 三层模型 (The Three Layer Model)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III. 三层模型 (The Three Layer Model)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purposedlt-blockchaindlt-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      目的 (Purpose)：一个用于设计和分析区块链/DLT 系统 (blockchain/DLT systems) 的框架。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systems-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统思维 (Systems Thinking)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-a-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统定义 (Definition of a System)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities-transactions-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      活动 (Activities)、交易 (Transactions)、过程 (Processes)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-a-systems-approach-to-blockchain-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统方法设计区块链的优势 (Advantages of a Systems Approach to Blockchain Design)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-three-layers-abstraction-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      三层 (The Three Layers)：每一层都可以被视为不同的抽象层 (abstraction layers)。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motivation-for-blockchain-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链的动机 (Motivation for Blockchain) (信任 Trust)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dlt-deeper-understanding-about-key-aspects-of-blockchainsdlts" class="md-nav__link">
+    <span class="md-ellipsis">
+      深入理解区块链/DLT 的关键方面 (Deeper Understanding about Key Aspects of Blockchains/DLTs)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-question-led-design-framework-based-upon-the-three-layer-conceptual-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于三层概念模型的问题导向设计框架 (A Question-Led Design Framework Based Upon the Three Layer Conceptual Model)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-using-the-three-layer-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      三层模型的优势 (ADVANTAGES OF USING THE THREE LAYER MODEL)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-of-the-three-layer-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      三层模型的局限性 (LIMITATIONS OF THE THREE LAYER MODEL)：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-swear-case-study-swear-blockchain-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. 案例研究：Swear (区块链 + 人工智能) (Case Study: Swear (Blockchain + AI))
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV. 案例研究：Swear (区块链 + 人工智能) (Case Study: Swear (Blockchain + AI))">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      背景 (Background)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swear-swear-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swear 解决方案 (Swear Solution)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-study-analysis-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例研究分析下一步 (CASE STUDY ANALYSIS . . .NEXT STEPS)：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-overview-of-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. 区块链概览 (Overview of Blockchain)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I. 区块链概览 (Overview of Blockchain)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链定义 (What is Blockchain?)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-components-concepts-of-blockchain-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链的关键组成部分与概念 (Key Components &amp; Concepts of Blockchain Solutions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-blockchain-is-useful" class="md-nav__link">
+    <span class="md-ellipsis">
+      * 区块链的适用场景 (When Blockchain is Useful)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-blockchain-is-less-useful" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链的非适用场景 (When Blockchain is Less Useful)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-applications-of-blockchain" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. 区块链应用 (Applications of Blockchain)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="II. 区块链应用 (Applications of Blockchain)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview-of-blockchain-use-cases-iso-tr-32422022" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链用例概览 (Overview of Blockchain Use Cases) (基于 ISO TR 3242:2022)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transformative-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      变革性应用 (Transformative Applications) (区块链如何颠覆现有做事方式)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-the-three-layer-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. 三层模型 (The Three Layer Model)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="III. 三层模型 (The Three Layer Model)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purposedlt-blockchaindlt-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      目的 (Purpose)：一个用于设计和分析区块链/DLT 系统 (blockchain/DLT systems) 的框架。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systems-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统思维 (Systems Thinking)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definition-of-a-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统定义 (Definition of a System)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activities-transactions-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      活动 (Activities)、交易 (Transactions)、过程 (Processes)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-a-systems-approach-to-blockchain-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统方法设计区块链的优势 (Advantages of a Systems Approach to Blockchain Design)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-three-layers-abstraction-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      三层 (The Three Layers)：每一层都可以被视为不同的抽象层 (abstraction layers)。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motivation-for-blockchain-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      区块链的动机 (Motivation for Blockchain) (信任 Trust)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dlt-deeper-understanding-about-key-aspects-of-blockchainsdlts" class="md-nav__link">
+    <span class="md-ellipsis">
+      深入理解区块链/DLT 的关键方面 (Deeper Understanding about Key Aspects of Blockchains/DLTs)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-question-led-design-framework-based-upon-the-three-layer-conceptual-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于三层概念模型的问题导向设计框架 (A Question-Led Design Framework Based Upon the Three Layer Conceptual Model)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-using-the-three-layer-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      三层模型的优势 (ADVANTAGES OF USING THE THREE LAYER MODEL)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-of-the-three-layer-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      三层模型的局限性 (LIMITATIONS OF THE THREE LAYER MODEL)：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-swear-case-study-swear-blockchain-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. 案例研究：Swear (区块链 + 人工智能) (Case Study: Swear (Blockchain + AI))
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IV. 案例研究：Swear (区块链 + 人工智能) (Case Study: Swear (Blockchain + AI))">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      背景 (Background)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swear-swear-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swear 解决方案 (Swear Solution)：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-study-analysis-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例研究分析下一步 (CASE STUDY ANALYSIS . . .NEXT STEPS)：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="block-chain-day-1">block chain DAY 1<a class="headerlink" href="#block-chain-day-1" title="Permanent link">&para;</a></h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 12502 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 63 分钟</p>
+</div>
+<h2 id="i-overview-of-blockchain"><strong>I. 区块链概览 (Overview of Blockchain)</strong><a class="headerlink" href="#i-overview-of-blockchain" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-blockchain"><strong>区块链定义 (What is Blockchain?)</strong><a class="headerlink" href="#what-is-blockchain" title="Permanent link">&para;</a></h3>
+<ul>
+<li>区块链是一种数字账本 (digital ledger)，用于记录有价值的事物。</li>
+<li>它是分布式 (distributed) 的，并利用网络处理交易 (transactions)。</li>
+<li>它利用密码学 (cryptography) 使记录安全且不可篡改 (immutable)。</li>
+<li>一些区块链具备以下特性：代表资产的数字代币 (digital tokens that represent assets)、不同类型的权限 (different types of permissions) 和智能合约 (smart contracts)。</li>
+</ul>
+<h3 id="key-components-concepts-of-blockchain-solutions"><strong>区块链的关键组成部分与概念 (Key Components &amp; Concepts of Blockchain Solutions)</strong><a class="headerlink" href="#key-components-concepts-of-blockchain-solutions" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>区块 (Blocks)</strong>：区块链的"构建块 (building blocks)"。</li>
+</ol>
+<ul>
+<li>区块链中的每个区块都像一份详细的发票或费用清单，其中包含交易列表或摘要。</li>
+<li>区块链交易等同于价值单位的转移，表现为账本条目，用于跟踪"账户 (account)"中价值的累积及其在账户之间的移动。</li>
+<li>并非所有分布式数字账本 (distributed digital ledgers) 都使用区块数据结构 (block data structures) (例如，IOTA 和 Nano 使用有向无环图数据结构 (Directed Acyclic Graph data structures (DAGs)))。</li>
+</ul>
+<ol start="2">
+<li><strong>链 (Chain)</strong>：新数据以区块的形式添加，这些区块相互链接形成链。</li>
+</ol>
+<ul>
+<li>密码学 (Cryptography) 将区块链接在一起，有助于使账本"不可篡改 (immutable)"。</li>
+<li>链中越靠前的区块越"安全 (more secure)"。</li>
+</ul>
+<ol start="3">
+<li>
+<p><strong>分布式网络结构 (A Distributed Network Structure)</strong>：网络中的所有节点 (nodes) 都拥有账本的相同副本，这增强了信任 (trust)。</p>
+</li>
+<li>
+<p><strong>共识 (Consensus)</strong>：网络就账本状态达成一致的方式。</p>
+</li>
+</ol>
+<ul>
+<li>常见的共识机制 (Consensus Mechanisms) 包括工作量证明 (Proof of Work)、权益证明 (Proof of Stake) 和实用拜占庭容错 (Practical Byzantine Fault Tolerance (PBFT))。</li>
+<li><strong>工作量证明 (Proof of Work) (例如比特币)</strong>：矿工 (miners) "挖掘 (mine)"区块。随着区块链的增长，挖矿难度 (mining difficulty) 会增加，以保持约每 10 分钟创建一个区块的稳定速率，尽管计算能力 (computational power) 不断提高。当更多矿工加入网络且总哈希率 (hash rate) 增加时，协议会每 2,016 个区块（约 2 周）调整难度，以确保区块不会被挖得太快，从而保持系统的安全性 (security) 和可预测性 (predictability)。</li>
+<li><strong>权益证明 (Proof of Stake)</strong>：验证者 (Validators) "铸造 (mint)"或"锻造 (forge)"区块，而不是"挖掘"区块。</li>
+</ul>
+<ol start="5">
+<li><strong>公共与许可区块链 (Public vs. Permissioned Blockchains)</strong>：</li>
+</ol>
+<ul>
+<li><strong>公共区块链 (Public blockchain)</strong>：所有人都可以加入并参与。</li>
+<li><strong>许可区块链 (Permissioned blockchain)</strong>：参与者需要获得许可。</li>
+<li>存在不同类型的权限 (different types of permission)：加入权限 (permission to join)、写入交易权限 (permission to write transactions)、读取所有交易权限 (permission to read all transactions)，或读取特定交易权限 (permission to read certain transactions) (例如，只读取自己参与的交易)。</li>
+<li><strong>以太坊 (Ethereum)</strong>：公共 (public)、开源 (open-source) 区块链，首先实现了智能合约。它设计用于去中心化应用程序 ("dApps")，有自己的加密货币 (cryptocurrency) (以太币 Ether)。共识机制 (Consensus mechanism) 最初是工作量证明 (Proof of Work (PoW))，计划变更为权益证明 (Proof of Stake (PoS))。</li>
+<li><strong>超级账本 (Hyperledger)</strong>：一个开源项目 (open source project)，用于构建许可区块链 (permissioned blockchains)。它设计用于工业应用 (industrial applications) (例如供应链解决方案 (supply chain solutions))。由 Linux 基金会开发 (Developed by the Linux Foundation) 并被 IBM 大量使用。它没有自己的加密货币。共识机制可以根据应用而改变，但通常使用实用拜占庭容错 (Practical Byzantine Fault Tolerance (PBFT))。</li>
+<li><strong>许可区块链网络中的共识 (Consensus in permissioned blockchain networks)</strong>：用户是已知的（例如供应链），共识协议是可定制的 (customizable)，达成共识所需的能源消耗更少。由于节点数量较少，相对更容易被破坏 (corrupt)，因此用户之间需要信任。</li>
+</ul>
+<ol start="6">
+<li><strong>智能合约 (Smart contracts) 和数字代币 (digital tokens)</strong>：</li>
+</ol>
+<ul>
+<li><strong>智能合约 (Smart contracts)</strong>：执行"如果-那么 (if-then)"语句。</li>
+<li><strong>数字代币 (Digital Tokens)</strong>：基本上可以代表任何可以在区块链账本上记录和交易的资产。包括货币 (Currencies) (例如比特币)、商品 (Commodities)、财产 (Property)、艺术品 (Artwork)、积分 (Loyalty points) 和股票凭证 (Share certificates)。</li>
+<li><strong>代币化 (Tokenization)</strong>：将现实世界资产的权利转换为区块链上的数字代币的过程。可以是"一对一 (1 to 1)"的 (例如土地登记 (Land registry)) 或"一对多 (1 to Many)"的 (例如零碎的产权所有权 (Fragmented property ownership))。</li>
+</ul>
+<ol start="7">
+<li><strong>个人用户使用区块链 (Blockchain for the individual user)</strong>：</li>
+</ol>
+<ul>
+<li>使用"钱包 (wallet)"来访问、发送和接收价值。</li>
+<li>
+<p>钱包有一个"公钥 (public key)"和一个"私钥 (private key)"。</p>
+<ul>
+<li>公钥允许人们找到你的钱包并放入价值。</li>
+<li>私钥允许你查看钱包内部并取出价值。</li>
+</ul>
+</li>
+<li>
+<p><strong>数字签名 (Digital Signatures)</strong>：举例说明了 Sally 创建比特币钱包、Jim 向 Sally 的公钥发送比特币以及 Sally 钱包中拥有比特币的过程。</p>
+</li>
+<li><strong>"非你的密钥，非你的比特币 (Not Your Keys, Not Your Bitcoin)"</strong>：强调拥有私钥的重要性。</li>
+</ul>
+<h3 id="when-blockchain-is-useful">* <strong>区块链的适用场景 (When Blockchain is Useful)</strong><a class="headerlink" href="#when-blockchain-is-useful" title="Permanent link">&para;</a></h3>
+<ul>
+<li>当交易各方目标和激励不一致，导致不信任时。</li>
+<li>当缺乏透明度 (transparency) 时。</li>
+<li>当参与者不可信，可能作弊时。</li>
+<li>区块链解决方案在跨组织层面 (interorganizational level) 最有意义。</li>
+</ul>
+<h3 id="when-blockchain-is-less-useful"><strong>区块链的非适用场景 (When Blockchain is Less Useful)</strong><a class="headerlink" href="#when-blockchain-is-less-useful" title="Permanent link">&para;</a></h3>
+<ul>
+<li>当单个行为者可以被信任来维护记录和促进交易时 (例如公司内部的 IT 和会计部门)。</li>
+<li>区块链解决方案在单个组织内部通常是不必要的。</li>
+</ul>
+<h2 id="ii-applications-of-blockchain"><strong>II. 区块链应用 (Applications of Blockchain)</strong><a class="headerlink" href="#ii-applications-of-blockchain" title="Permanent link">&para;</a></h2>
+<h3 id="overview-of-blockchain-use-cases-iso-tr-32422022"><strong>区块链用例概览 (Overview of Blockchain Use Cases) (基于 ISO TR 3242:2022)</strong><a class="headerlink" href="#overview-of-blockchain-use-cases-iso-tr-32422022" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>数据溯源 (Data Provenance)</strong>：数据问责 (Data Accountability)、产权记录管理 (Property Records Management)、学生记录管理 (Student Records Management)、教育证书溯源 (Education Certificate Provenance)、自证主权身份 (Self-Sovereign Identity (SSID))、内容时间戳验证 (Content Timestamp Verification)。</p>
+<ul>
+<li><strong>产权记录管理 (Property Records Management)</strong>：印度于 2017 年启动了 PRMS 计划，旨在简化土地登记流程。</li>
+</ul>
+</li>
+<li>
+<p><strong>金融科技 (Fintech)</strong>：应收账款 (Accounts Receivable)、银行间贷款对账 (Interbank Loan Reconciliation)、有组织合会 (Organised CHIT Funds)、养老金流程优化 (Pension Process Optimisation)、透明证券化 (Transparent Securitisation)、去中心化慈善平台 (Decentralized Charity Platform)。</p>
+<ul>
+<li><strong>银行间对账和结算 (Interbank Reconciliation and Settlement)</strong>：区块链技术可以将结算周期从 <span class="arithmatex">\(T+1\)</span> 或 <span class="arithmatex">\(T+2\)</span> 天缩短到 <span class="arithmatex">\(T+0\)</span> 天，解决效率低下和信息不对称问题。这是中国的一个实际应用。</li>
+<li><strong>去中心化援助平台 (Decentralized Aid Platform) (WFP Building Blocks)</strong>：通过消除交易成本 (transaction costs)、直接向个人发送援助、整合生物识别扫描 (biometric scanning) 以防止欺诈 (fraud)、提供更大的隐私 (privacy) 以及为每个人创建不可篡改的数字身份 (immutable digital identity) 来解决向叙利亚难民提供粮食援助的挑战。由以太坊提供支持 (powered by Ethereum)。</li>
+</ul>
+</li>
+<li>
+<p><strong>供应链 (Supply Chain)</strong>：国际贸易透明度 (International Trade Transparency)、海运提单 (Maritime Bills of Lading)、特许制药供应链管理 (Franchised Pharma Supply Management)、药品防伪 (Anti-counterfeit Pharma)、IGP 可追溯性 (IGP Traceability)、通用农场合规 (Universal Farm Compliance)、国际废物管理系统 (Intl. Waste Management System)。</p>
+<ul>
+<li><strong>农产品可追溯性 (Traceability of Agricultural Food Products)</strong>：ROUGE (Red Orange Upgrading Green Economy) 解决方案为 IGP 红橙提供了经认证且不可更改的产品历史，支持打击欺诈和伪造，并确保供应链中的透明度、安全性 (security) 和弹性 (Resilience)。</li>
+</ul>
+</li>
+<li>
+<p><strong>智能能源 (Smart Energy)</strong>：合作能源交易 (Cooperative Energy Trading)、能源交易 (Energy Trading)、可再生能源产消者微电网 (Renewable Energy Prosumer Microgrids)。</p>
+</li>
+</ul>
+<h3 id="transformative-applications"><strong>变革性应用 (Transformative Applications) (区块链如何颠覆现有做事方式)</strong><a class="headerlink" href="#transformative-applications" title="Permanent link">&para;</a></h3>
+<ul>
+<li>实现没有中心权力机构 (no central authority) 的分布式组织 (distributed organizations)。</li>
+<li>规避中介 (Circumventing intermediaries) (例如公司、银行、政府)。</li>
+<li>实现新的治理结构 (new governance structures)。</li>
+<li>
+<p>实现个人数据所有权 (individual data ownership) 和控制权。</p>
+<ul>
+<li>允许个人在不同平台之间携带数据。</li>
+</ul>
+</li>
+<li>
+<p>创建新的资产和市场 (new assets and markets)。</p>
+<ul>
+<li>新的数字资产 (New digital assets) (例如效用代币 utility tokens、加密货币 cryptocurrencies)。</li>
+<li>现实世界资产的代币化 (Tokenization)、碎片化 (fragmentation) 和重组 (recombination)。</li>
+</ul>
+</li>
+</ul>
+<h2 id="iii-the-three-layer-model"><strong>III. 三层模型 (The Three Layer Model)</strong><a class="headerlink" href="#iii-the-three-layer-model" title="Permanent link">&para;</a></h2>
+<h3 id="purposedlt-blockchaindlt-systems"><strong>目的 (Purpose)</strong>：一个用于设计和分析区块链/DLT 系统 (blockchain/DLT systems) 的框架。<a class="headerlink" href="#purposedlt-blockchaindlt-systems" title="Permanent link">&para;</a></h3>
+<ul>
+<li>其必要性在于该技术仍处于理论不足阶段 (under theorized)，现有模型在全面考虑权衡 (trade-offs) 方面存在不足，这可能导致次优设计 (sub-optimal designs) 和意想不到的负面后果 (negative unintended consequences)。</li>
+</ul>
+<h3 id="systems-thinking"><strong>系统思维 (Systems Thinking)</strong>：<a class="headerlink" href="#systems-thinking" title="Permanent link">&para;</a></h3>
+<ul>
+<li>以整体方式 (holistically) 和事物之间相互关系 (inter-relationships) 的角度进行思考的过程，而不是将其视为不相关的实体。</li>
+</ul>
+<h3 id="definition-of-a-system"><strong>系统定义 (Definition of a System)</strong>：<a class="headerlink" href="#definition-of-a-system" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>一个被感知的整体，其元素随着时间不断相互影响，并朝着共同的目标运作。系统由子系统 (subsystems) 或功能 (functions)、过程 (processes)、活动 (activities) 和任务 (tasks) 组成。</p>
+</li>
+<li>
+<p><strong>功能 (Functions) (目的 Purpose)</strong>：系统实现其目的的方式。</p>
+</li>
+<li><strong>子系统 (Subsystems)</strong>：系统通常包含子系统。例如，地球是太阳系 (Solar System) 的一个子系统，但也可以被视为一个独立的系统，海洋则是地球的一个子系统。</li>
+</ul>
+<h3 id="activities-transactions-processes"><strong>活动 (Activities)、交易 (Transactions)、过程 (Processes)</strong>：<a class="headerlink" href="#activities-transactions-processes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>活动 (Activities)</strong>：系统通过开展活动来实现其目的。</li>
+<li><strong>交易 (Transaction)</strong>：涉及多人的行为或相互关联的行为，通过这些行为，这些人的关系发生改变，或是由两人或多个系统之间交换的最小工作过程单元。</li>
+<li><strong>业务 (或工作) 过程 (Business (or work) process)</strong>：一个或多个交易序列 (sequences of transactions)，需要产生符合管理规则 (governing rules) 的结果 (outcome)。</li>
+<li><strong>序列 (Sequence)</strong>：一系列交易，其连接要求是，后续交易的进行依赖于先前交易的完成。</li>
+</ul>
+<h3 id="advantages-of-a-systems-approach-to-blockchain-design"><strong>系统方法设计区块链的优势 (Advantages of a Systems Approach to Blockchain Design)</strong>：<a class="headerlink" href="#advantages-of-a-systems-approach-to-blockchain-design" title="Permanent link">&para;</a></h3>
+<ul>
+<li>使我们能够理解设计组件 ("子系统") 如何与其他组件动态交互。</li>
+<li>使我们能够整体评估系统，并识别盲点 (blind spots)、隐藏假设 (hidden assumptions) 和意外结果 (unexpected outcomes)。</li>
+<li>为深入研究不同的子系统提供了基础。</li>
+</ul>
+<h3 id="the-three-layers-abstraction-layers"><strong>三层 (The Three Layers)</strong>：每一层都可以被视为不同的抽象层 (abstraction layers)。<a class="headerlink" href="#the-three-layers-abstraction-layers" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>社会层 (Social Layer)</strong>：涵盖社会参与者 (social actors)，以及这些工具和平台的社会 (social)、政治 (political) 和经济影响 (economic implications)。</li>
+<li><strong>信息层 (Informational Layer)</strong>：侧重于账本本身作为交易数据 (transactional data) 的"不可篡改 (immutable)"存储库。</li>
+<li><strong>技术层 (Technical Layer)</strong>：指实施区块链和分布式账本系统的技术组件 (technical components)，即使仍存在需要克服的新技术挑战。</li>
+</ul>
+<h3 id="motivation-for-blockchain-trust"><strong>区块链的动机 (Motivation for Blockchain) (信任 Trust)</strong>：<a class="headerlink" href="#motivation-for-blockchain-trust" title="Permanent link">&para;</a></h3>
+<ul>
+<li>中本聪 (Satoshi Nakamoto) 创建比特币 (Bitcoin)（以及其底层技术区块链）是为了解决信任问题 (problem of TRUST)，而无需依赖受信任的中介 (trusted intermediary)（通常并不可靠），换句话说，实现"无信任的信任 (TRUSTLESS TRUST)"。</li>
+</ul>
+<h3 id="dlt-deeper-understanding-about-key-aspects-of-blockchainsdlts"><strong>深入理解区块链/DLT 的关键方面 (Deeper Understanding about Key Aspects of Blockchains/DLTs)</strong>：<a class="headerlink" href="#dlt-deeper-understanding-about-key-aspects-of-blockchainsdlts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>治理 (Governance)</strong>：区块链/DLT 的控制机制 (control mechanism)，可以是内部 (Internal) 或外部 (External) 的。</li>
+<li><strong>激励 (Incentives)</strong>：一种"执行器 (actuator)"，作用于所有系统组件所拥有的信息处理"逻辑 (logic)"或指令集 (set of instructions)。</li>
+<li><strong>安全 (Security)</strong>：设计涉及权衡，不仅包括安全性和可扩展性 (scalability) 之间常见的权衡，还包括不同安全属性 (security properties) 之间的权衡，即机密性 (confidentiality) 与透明度 (transparency)，或数据完整性 (data integrity) 与隐私 (privacy)。同样，在不同层或同一层内不同抽象级别 (levels of abstraction) 应用的同一安全属性内部也可能存在权衡。</li>
+<li><strong>去中心化 (Decentralization)</strong>：DLT 系统每个子系统/层的架构可以集中 (centralized) 或去中心化 (decentralized) 到不同程度，以影响整个系统的运行。</li>
+<li><strong>溯源追踪 (Provenance tracking)</strong>：一种功能能力 (functional capability)，而非 DLT 系统、其子系统或组件的固有属性 (inherent property)。</li>
+<li><strong>时间性 (Temporality)</strong>：区块链/DLT 系统并非静态的 (static)，其属性 (properties) 和能力 (capabilities) 可能并非完全可预测。</li>
+</ul>
+<h3 id="a-question-led-design-framework-based-upon-the-three-layer-conceptual-model"><strong>基于三层概念模型的问题导向设计框架 (A Question-Led Design Framework Based Upon the Three Layer Conceptual Model)</strong>：<a class="headerlink" href="#a-question-led-design-framework-based-upon-the-three-layer-conceptual-model" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>系统层面 (System Level)</strong>：</p>
+<ul>
+<li><strong>系统目标 (System Goal)</strong>：DLT 系统的既定目的是什么？既定目的如何支持社会信任？该系统应解决哪些问题？系统旨在支持哪些用例？。</li>
+<li><strong>系统约束 (System Constraints)</strong>：系统必须被设计成不容忍哪些行为？系统的允许行为空间是什么？。</li>
+<li><strong>系统能力 (System Capabilities)</strong>：系统需要具备哪些能力才能在其规定约束 (prescribed constraints) 内实现其目标？。</li>
+<li><strong>环境 (Environment)</strong>：DLT 系统运行的环境是相对同质的 (homogeneous) 还是更异质的 (heterogenous)？DLT 系统在其设计/运行中对环境做出了哪些假设？系统依赖于环境的哪些方面？在哪些点和为了什么目的依赖这些方面？DLT 系统与环境的所有方面匹配程度如何？环境中的哪些元素影响或约束 DLT 系统的设计者？环境中的哪些元素影响或约束系统参与者 (system actors) 或行动者 (actants)？。</li>
+<li><strong>时间性 (Temporality)</strong>：系统未来必须能够应对哪些已知变化？需要建立哪些机制来确保系统的寿命 (longevity)？未来的事件是否可能导致平台完全被替换或停止运行？治理子系统 (governance sub-system) 将如何随着时间推移处理参与者/行动者与系统之间不断变化的关系？如何解决风险因素 (risk factors)，包括那些未来未知且可能带来生存或系统性风险的因素？权力如何在社会参与者之间随时间推移而转移？。</li>
+</ul>
+</li>
+<li>
+<p><strong>子系统层面 (Sub-System Level)</strong>：</p>
+<ul>
+<li><strong>社会子系统 (Social Sub-System)</strong>：DLT 中的社会参与者是谁？他们如何被识别/代表？他们的身份如何被规范？DLT 系统如何赋予或限制他们的代理权 (agency)？哪些类型的社会参与者行为是被禁止、鼓励或容忍的？权力在社会参与者中位于何处？哪些价值观对该系统中的社会参与者很重要？我们对社会参与者的行为有什么期望？他们将或可能采取哪些行动？这些行动预计会如何影响其他人？何时需要、授予或假定社会参与者的同意 (consent)、许可 (permission) 和授权 (authority)？一些社会参与者是否会代表他人行事？他们基于什么（道德、法律？）基础执行他人的意愿？在出现冲突时，社会参与者如何需要行使（或者他们是否行使）酌情权 (discretion)？。</li>
+<li><strong>信息子系统 (Informational Sub-System)</strong>：账本如何在 DLT 系统中支持社会信任？哪些数据被捕获/流经系统以支持系统目标？生成哪些记录以支持系统目标，无论是在账本上还是链下？系统中数据/记录行动者如何被识别以及他们的身份如何被规范？系统必须存储哪些数据和/或记录？（法律或监管义务是什么？）系统中不得存储哪些数据和/或记录？（为了隐私、财务风险管理或公司政策。）是否存在需要特殊考虑的数据和/或记录？例如，是否存在包含个人可识别信息 (personally identifiable information) 且法律要求特殊处理的数据和/或记录？是否存在不得无限期保存的数据和/或记录？记录存储在哪里？它们如何在网络中传播？记录的知识组件如何被组装？。</li>
+<li><strong>技术子系统 (Technical Sub-System)</strong>：DLT 系统中的物理行动者 (physical actants) 是什么（例如传感器 (sensors)、车辆 (vehicles)）？系统中的技术行动者如何被识别以及他们的身份如何被规范？物理行动者如何在 DLT 系统中支持社会信任？他们需要哪些能力和属性来支持系统目标？系统架构 (system architecture) 是什么？网络架构/拓扑 (network architecture/topography) 是什么？哪些社会参与者控制 DLT 系统中的物理行动者？这些社会参与者如何赋予或限制物理行动者的活动？物理行动者拥有什么级别的权限/授权 (authority/authorization)？。</li>
+<li><strong>治理子系统 (Governance Sub-System)</strong>：在正常运行条件下，对内部或自律治理 (internal or self-regulating governance) 与外部治理 (external governance) 的依赖程度如何？在异常运行条件下呢？在技术、信息和社会行动者/参与者之间如何做出共识决策 (consensus decisions)？需要建立哪些激励措施，以使共识机制 (consensus mechanism) 按照支持系统目标的方式运行？决策管理权 (decision management rights) 和决策控制权 (decision control rights) 应如何在各种相互作用的组件（社会、信息或技术）之间分配？如何解决有关这些决策的分歧？。</li>
+</ul>
+</li>
+</ul>
+<h3 id="advantages-of-using-the-three-layer-model"><strong>三层模型的优势 (ADVANTAGES OF USING THE THREE LAYER MODEL)</strong>：<a class="headerlink" href="#advantages-of-using-the-three-layer-model" title="Permanent link">&para;</a></h3>
+<ul>
+<li>创建了一个用于多学科、问题导向的设计空间的通用概念框架 (common conceptual framework) 和语言。</li>
+<li>能够"看到"设计选择可能产生的交叉影响和连锁效应（即在设计背景下调动"系统思维" (systems thinking)）。</li>
+<li>通过利用问题导向框架 (Question-led Framework) 来锚定范围讨论，设计团队可以更清晰地界定即时原型 (immediate prototype) 的必要需求与完整系统的长期设计目标之间的区别。</li>
+<li>有助于识别以前的"未知未知 (unknown unknowns)"。</li>
+<li>技术问题的框架引导了对新颖技术能力 (novel technical capabilities) 的探索，例如与物联网 (IoT) 的集成。</li>
+</ul>
+<h3 id="limitations-of-the-three-layer-model"><strong>三层模型的局限性 (LIMITATIONS OF THE THREE LAYER MODEL)</strong>：<a class="headerlink" href="#limitations-of-the-three-layer-model" title="Permanent link">&para;</a></h3>
+<ul>
+<li>问题高层次且复杂，需要时间学习和理解。</li>
+<li>仍需要更广泛的实证验证 (empirical validation) 和可复现性 (reproducibility)。</li>
+<li>对其他技术（例如人工智能 (AI)）的适用性 (applicability) 仍有待观察。</li>
+</ul>
+<h2 id="iv-swear-case-study-swear-blockchain-ai"><strong>IV. 案例研究：Swear (区块链 + 人工智能) (Case Study: Swear (Blockchain + AI))</strong><a class="headerlink" href="#iv-swear-case-study-swear-blockchain-ai" title="Permanent link">&para;</a></h2>
+<h3 id="background"><strong>背景 (Background)</strong>：<a class="headerlink" href="#background" title="Permanent link">&para;</a></h3>
+<ul>
+<li>聚焦于深度伪造 (deepfakes)，其中伪造图像和视频正在侵蚀建立对真相主张 (truth claims) 信任的视觉基础。区块链被认为具有防御深度伪造的能力。</li>
+</ul>
+<h3 id="swear-swear-solution"><strong>Swear 解决方案 (Swear Solution)</strong>：<a class="headerlink" href="#swear-swear-solution" title="Permanent link">&para;</a></h3>
+<ul>
+<li>用于视频捕获的移动应用程序 (Mobile App for video capture)。</li>
+<li>支持的格式 (Supported formats)：D1, 960H, HD SDI, AHD, HD-TVI, HD-CVI, IP, 4k。</li>
+<li>编解码器 (Codecs)：H.264, AVI, AVCHD H.265 (HVEC)。</li>
+<li>兼容 DVR 和 NVR。</li>
+<li>Web3.0 区块链 (Web3.0 Blockchain) 保护指纹 (fingerprints)，建立不可篡改的保管链 (immutable chain-of-custody)。</li>
+<li>数字媒体真实性 (Digital media authenticity) 持续实时验证 (verified continuously and in real time)。</li>
+<li>在像素级别识别媒体篡改 (identification of media manipulation at the pixel level)。</li>
+<li>集成到现有监控系统 (Integrates into existing surveillance systems)。</li>
+</ul>
+<h3 id="case-study-analysis-next-steps"><strong>案例研究分析下一步 (CASE STUDY ANALYSIS . . .NEXT STEPS)</strong>：<a class="headerlink" href="#case-study-analysis-next-steps" title="Permanent link">&para;</a></h3>
+<ul>
+<li>使用三层模型审查和讨论 Swear 解决方案，根据三层模型对解决方案的特性 (features) 和能力 (capabilities) 进行分类；寻找模型各"层 (layer)"之间的相互联系和互动（例如，账本如何增强信任？社会参与者和机构 (social actors and institutions) 是谁？使用了哪种类型的区块链 (type of blockchain)？如何形成共识 (consensus is formed)？）。</li>
+</ul>
+<hr />
+<h1 id="ubc-block-chain-day-2">UBC block chain DAY 2<a class="headerlink" href="#ubc-block-chain-day-2" title="Permanent link">&para;</a></h1>
+<h2 id="_1">经济系统的问题分析<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2"><strong>干预无效论</strong>：<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>H.L. Mencken :"对于每一个复杂的问题，都有一个清晰、简单且错误的答案"</li>
+<li>Saint Bernard of Clairvaux :"通往地狱的道路是用良好意图铺成的"</li>
+<li>Hippocrates :"无为有时是良药"</li>
+</ul>
+<p>指出干预往往因为未能考虑系统的复杂性而失败。</p>
+<h3 id="_3"><strong>经济衰败的四个阶段</strong>：<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>现实脱节</strong>（Reality Disconnection）：干预使我们脱离真实情况，导致意想不到的后果，反而使问题持续存在。</li>
+<li><strong>扼杀竞争</strong>（Stifled Competition）：干预扼杀了创新和创造性破坏的自然过程，阻碍了新思想和产业的增长。</li>
+<li><strong>资本流向扭曲</strong>（Distorted Capital Flows）：干预扭曲了资本分配，将资源从蓬勃发展的行业重定向到衰退的行业，削弱了整体经济。</li>
+<li><strong>决策受损</strong>（Impaired Decision-Making）：创新受到抑制、资本和资源错配导致信息错误，从而损害决策，加剧经济脆弱性。</li>
+</ol>
+<h3 id="_4"><strong>货币对行为的影响</strong>：<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>时间偏好</strong>（Time Preference）：如果钱在贬值，我们是否有动力为未来储蓄？</li>
+<li><strong>无意义感与冷漠</strong>（Meaninglessness &amp; Apathy）：购买力下降是否真的能培养我们的掌控感？</li>
+<li><strong>利他主义努力</strong>（Altruistic Endeavours）：当我们为了满足最基本需求而奋斗时，我们真的能成为最好的自己吗？</li>
+<li>金钱始终是生活中排名第一的压力源。</li>
+</ul>
+<h2 id="_5"><strong>比特币的解决方案</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><strong>比特币的特性</strong>：稀缺、无许可、去信任、去中心化。它是一种有利于所有者的更好的货币。</p>
+<p><strong>经济繁荣的四个阶段</strong>（比特币模型）：</p>
+<ol>
+<li><strong>现实重新校准</strong>（Reality Re-Alignment）：比特币反映现实，将价格与真实市场状况对齐，随着创新推进导致成本下降。</li>
+<li><strong>促进竞争</strong>（Fostering Competition）：干预有限，比特币促进竞争，从而推动创新和创造性破坏——价值浮现。</li>
+<li><strong>资本流向同步</strong>（Capital Flow Synchronization）：比特币支持价值驱动的资本流动，奖励成功的行业而非失败的行业，反映了社会所重视的。</li>
+<li><strong>知情决策</strong>（Informed Decision-Making）：比特币通过提供对资本流动和社会价值观的清晰洞察，支持知情决策，促进进步和繁荣。</li>
+</ol>
+<p><strong>衡量"好货币"的标准</strong>：稀缺性、可携带性、耐用性、可分割性、可识别性、抗审查性。</p>
+<p><strong>比特币的工作原理</strong>：</p>
+<ul>
+<li><strong>挖矿</strong>：验证交易并保护网络的过程。</li>
+<li><strong>区块链技术</strong>：记录交易的分布式账本，确保安全。</li>
+<li><strong>私钥和公钥</strong>：用户发送和接收比特币的方式。</li>
+</ul>
+<h2 id="_6"><strong>容错机制</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="benign-failures-cft-crash-fault-tolerance"><strong>良性故障 (Benign failures) 与 CFT 共识 (Crash Fault Tolerance)</strong>：<a class="headerlink" href="#benign-failures-cft-crash-fault-tolerance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>故障类型</strong>：服务器崩溃、消息丢失、消息乱序、消息重复。</li>
+<li><strong>特点</strong>：节点要么正常，要么停止工作，不会恶意发送错误信息。</li>
+<li><strong>应用</strong>：文件系统（HDFS, GFS）、数据库（Spanner, etcd）、领导者选举/协调（Chubby, Zookeeper）等所有分布式系统。</li>
+</ul>
+<h3 id="arbitrary-failures-byzantine-failures-bft-byzantine-fault-tolerance"><strong>任意故障 (Arbitrary failures) / 拜占庭故障 (Byzantine failures) 与 BFT 共识 (Byzantine Fault Tolerance)</strong>：<a class="headerlink" href="#arbitrary-failures-byzantine-failures-bft-byzantine-fault-tolerance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>故障类型</strong>：任意行为；故障节点（有意或无意），节点可能撒谎、发送错误消息（不遵循协议、存在 Bug）。</li>
+<li><strong>特点</strong>：节点行为不可预测，可能恶意欺骗或因错误发送错误信息。</li>
+<li><strong>应用</strong>：安全关键系统（如指挥控制系统、飞机等）、分布式账本（DLs，如 Diem, CCF）。</li>
+</ul>
+<h3 id="prestigebft-prestigebft-summary"><strong>PrestigeBFT 总结 (PrestigeBFT - Summary)</strong>：<a class="headerlink" href="#prestigebft-prestigebft-summary" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>首个主动视图变更协议</strong>：服务器可以主动争取领导权，防止不可用或缓慢的领导者出现。</li>
+<li><strong>声誉系统</strong>：将节点的行为历史转化为声誉分数，代表节点行为正确的可能性。</li>
+<li><strong>鲁棒性与效率的独特结合</strong>：有故障的服务器在执行损害其声誉的攻击后，会被压制，无法窃取领导权。</li>
+</ul>
+<p>不同 <strong>failure types</strong> :</p>
+<ol>
+<li><strong>崩溃失效 (Crash Failure)</strong></li>
+</ol>
+<ul>
+<li><strong>定义内容</strong>：指系统或其组件突然停止响应或完全停止工作，无法继续提供其预期的服务。这种失效通常是由于内部错误、硬件故障或外部不可预测的事件（如蓝屏死机）导致系统终止。在检测到崩溃时，系统通常会停止所有操作。</li>
+<li><strong>在问题中的应用</strong>：在"蓝屏死机"的例子中，系统停止运行并显示错误，这就是典型的崩溃失效。在高尔夫球杆击穿物体的"hunting"事故中，物体（如自行车架）因物理冲击而损坏并失去功能，也可视为一种崩溃失效。</li>
+</ul>
+<ol start="2">
+<li><strong>遗漏失效 (Omission Failure)</strong></li>
+</ol>
+<ul>
+<li><strong>定义内容</strong>：指系统未能产生预期的输出或未能按时发送信息。它表示系统应该执行某个动作但未执行，导致信息丢失或服务未被提供。</li>
+<li><strong>在问题中的应用</strong>：在"信号衰减"的例子中，信号强度减弱可能导致数据包丢失或信息未被完整接收，这属于系统未能生成（接收）预期输出，因此是遗漏失效。</li>
+</ul>
+<ol start="3">
+<li><strong>时序失效 (Timing Failure)</strong></li>
+</ol>
+<ul>
+<li><strong>定义内容</strong>：指系统在错误的时间（过早或过晚）产生输出或执行操作。系统可能正确地生成了结果，但其交付或执行的时间点不符合规范或预期，导致功能异常。</li>
+<li><strong>在问题中的应用</strong>：在前面的例子中，没有直接的时序失效案例被明确提及作为主要原因。在"信号衰减"的背景下，严重的衰减可能导致传输延迟，间接影响时序，但它并非时序失效的核心定义。</li>
+</ul>
+<ol start="4">
+<li><strong>故障停止失效 (Fail-Stop Failure)</strong></li>
+</ol>
+<ul>
+<li><strong>定义内容</strong>：一种特殊的失效模式，指系统在发生故障时能够立即停止运行并明确地发出故障信号，而不会产生任何错误或误导性的输出。这种失效模式在设计容错系统时很受欢迎，因为它简化了错误检测和恢复。</li>
+<li><strong>在问题中的应用</strong>：在"切断通讯线路"的例子中，通讯线路被切断后，数据传输立即停止，系统无法再提供通讯服务，并且这种停止是显而易见的，符合故障停止失效的特点。</li>
+</ul>
+<ol start="5">
+<li><strong>良性失效 (Benign Failure)</strong></li>
+</ol>
+<ul>
+<li><strong>定义内容</strong>：指那些对系统功能影响较小，或者系统能够优雅地从其中恢复的失效。这类失效通常不会导致灾难性的后果或服务完全中断，系统可能能够容忍它们，或者通过简单的机制进行补偿和恢复。</li>
+<li><strong>在问题中的应用</strong>：在"信号衰减"的例子中，如果信号衰减不导致完全的服务中断，并且系统能够通过重传或纠错机制进行补偿，那么这种情况下可以被视为良性失效。</li>
+</ul>
+<ol start="6">
+<li><strong>任意失效 (Arbitrary Failure)</strong></li>
+</ol>
+<ul>
+<li><strong>定义内容</strong>：也称为"任意错误"（arbitrary error），指系统行为以不可预测且可能具有恶意的方式偏离其规范。在这种失效模式下，系统可能会产生任何输出，包括完全错误的、不一致的或恶意的数据，并且行为模式难以预测。</li>
+<li><strong>在问题中的应用</strong>：在"加密货币黑客攻击"的例子中，黑客利用系统漏洞，导致系统执行攻击者意图的恶意操作，这些操作对于系统的正常功能而言是"任意"和不可预测的，完全偏离了预期的规范。</li>
+</ul>
+<ol start="7">
+<li><strong>拜占庭失效 (Byzantine Failure)</strong></li>
+</ol>
+<ul>
+<li><strong>定义内容</strong>：是分布式系统中最为复杂和严重的失效模型。它描述的是系统中的一个或多个组件（或"节点"）可能以任何方式行为失常，包括发送错误、矛盾或恶意的消息，并且不遵守协议，甚至主动进行欺骗。在拜占庭失效下，无法区分是节点停止工作还是在发送错误信息。</li>
+<li><strong>在问题中的应用</strong>：在"加密货币黑客攻击"的例子中，尤其是在区块链这类分布式系统中，如果攻击者控制部分节点并以恶意方式行动（如双重支付，即一个币被消费了两次，或者向不同节点发送矛盾的交易信息），这种行为正是拜占庭失效的典型特征，因为它涉及恶意行为、信息不一致性以及对共识机制的破坏。</li>
+</ul>
+<h1 id="ubc-block-chain-day-3">UBC block chain DAY 3<a class="headerlink" href="#ubc-block-chain-day-3" title="Permanent link">&para;</a></h1>
+<h2 id="smart-contract-kill-switch"><strong>Smart Contract Kill Switch</strong><a class="headerlink" href="#smart-contract-kill-switch" title="Permanent link">&para;</a></h2>
+<p>简单来说，<strong>智能合约的"自毁开关"是一个预先设定好的功能，允许合约的创建者或特定授权方在紧急情况下禁用或销毁合约。</strong> 想象一下，你开发了一个非常重要的软件，但万一软件出现严重漏洞或被恶意攻击，你需要一个紧急停止的按钮，对吧？"自毁开关"在智能合约中就扮演了类似的角色。</p>
+<h3 id="_7">为什么需要"自毁开关"？<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>智能合约一旦部署到区块链上，通常是不可更改的。这意味着，如果合约代码中存在错误（bug）、安全漏洞，或者出现不可预见的紧急情况（比如，市场剧烈波动导致合约行为异常，或者被黑客攻击），传统的做法很难及时止损。</p>
+<p>有了"自毁开关"，合约的管理者可以在以下情况下采取行动：</p>
+<ul>
+<li><strong>修复漏洞：</strong> 如果发现合约有重大安全漏洞，可以通过触发"自毁开关"停止合约运行，防止更多损失，然后部署一个修复后的新合约。</li>
+<li><strong>应对攻击：</strong> 在遭受恶意攻击时，可以迅速禁用合约，阻止攻击者进一步窃取资产或破坏系统。</li>
+<li><strong>紧急情况处理：</strong> 应对一些极端但未预料到的市场或外部事件，避免合约按照原定逻辑造成不可挽回的损失。</li>
+<li><strong>升级合约：</strong> 在某些设计中，它也可以作为一种升级机制的一部分，旧合约被禁用后，用户可以迁移到新合约。</li>
+</ul>
+<h3 id="_8">"自毁开关"如何工作？<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>通常，"自毁开关"会作为智能合约代码的一部分进行编写。它会包含以下几个关键点：</p>
+<ol>
+<li><strong>触发条件：</strong> 只有满足特定条件才能触发。例如，只有合约的<strong>所有者</strong>（创建者）才能调用这个功能，或者需要<strong>多方签名</strong>才能激活（比如，需要3个密钥中的2个才能触发）。</li>
+<li>
+<p><strong>执行动作：</strong> 一旦触发，合约会执行预设的动作。这可能包括：</p>
+<ul>
+<li><strong>阻止新的交易：</strong> 合约不再接受新的资金或操作。</li>
+<li><strong>将合约中的资产转移到安全地址：</strong> 将所有剩余的加密货币转移到一个安全的地址，防止被盗。</li>
+<li><strong>让合约无法执行：</strong> 使合约进入一个"锁定"状态，所有功能都无法使用。</li>
+<li><strong>销毁合约本身：</strong> 从区块链上移除合约代码，释放存储空间（这个操作在以太坊等区块链上被称为 <code>selfdestruct</code>）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="_9">"自毁开关"的优缺点<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><strong>优点：</strong></p>
+<ul>
+<li><strong>增强安全性：</strong> 提供应对紧急情况的"安全网"，降低风险。</li>
+<li><strong>提高灵活性：</strong> 在一定程度上为不可更改的智能合约增加了可控性。</li>
+<li><strong>保护用户资产：</strong> 在遭受攻击时，可以及时止损，避免用户资产损失。</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><strong>中心化风险：</strong> 如果"自毁开关"的权限过于集中在一个人或少数几个人手中，可能会带来中心化风险。这些拥有权限的人可能会滥用权力，随意禁用合约，损害用户利益。</li>
+<li><strong>信任问题：</strong> 用户需要信任合约的创建者不会滥用这个功能。</li>
+<li><strong>复杂性增加：</strong> 设计一个安全且有效的"自毁开关"需要额外的代码和考虑，增加了合约的复杂性。</li>
+</ul>
+<h1 id="ubc-block-chain-day-4">UBC block chain DAY 4<a class="headerlink" href="#ubc-block-chain-day-4" title="Permanent link">&para;</a></h1>
+<p>在区块链领域，<strong>可验证计算 (Verifiable Computing)</strong>、<strong>乐观方法 (Optimistic Approach)</strong> 和 <strong>编码计算 (Coded Computing)</strong> 是三种不同的技术或范式，它们各自从不同角度解决区块链面临的挑战，主要是关于<strong>可扩展性、效率和信任</strong>。</p>
+<h3 id="1-verifiable-computing">1. 可验证计算 (Verifiable Computing)<a class="headerlink" href="#1-verifiable-computing" title="Permanent link">&para;</a></h3>
+<p><strong>核心思想：</strong></p>
+<p>可验证计算是一种密码学技术，允许一个<strong>验证者 (verifier)</strong> 能够高效地检查由另一个<strong>证明者 (prover)</strong> 执行的计算结果的正确性，而无需自己重新执行整个计算。它旨在将计算任务外包给可能不完全受信任的第三方，同时仍然确保计算结果的完整性和准确性。</p>
+<p><strong>工作原理：</strong></p>
+<ul>
+<li><strong>外包计算：</strong> 复杂的计算任务被外包给一个或多个计算提供者（证明者）。</li>
+<li><strong>生成证明：</strong> 证明者在执行计算的同时，会生成一个简洁的<strong>正确性证明 (proof of correctness)</strong>，这个证明通常比原始计算本身小得多。</li>
+<li><strong>高效验证：</strong> 验证者接收计算结果和证明，并使用密码学方法（如零知识证明 ZKP、SNARKs/STARKs）快速验证证明的有效性，从而确认计算结果的正确性。验证证明的开销远小于重新执行计算。</li>
+</ul>
+<p><strong>在区块链中的应用：</strong></p>
+<ul>
+<li><strong>链下计算 (Off-chain Computation)：</strong> 区块链本身处理复杂计算的效率很低，成本很高。可验证计算允许将大量计算从主链转移到链下执行，然后只将计算结果和相应的正确性证明提交到链上进行验证。这显著提高了区块链的可扩展性和吞吐量。</li>
+<li><strong>智能合约的复杂逻辑：</strong> 使得智能合约能够处理更复杂、计算密集型的任务，而无需在链上消耗大量Gas。</li>
+<li><strong>数据隐私：</strong> 某些可验证计算技术（如零知识证明）还可以用于在不泄露底层数据的情况下证明计算的正确性，从而增强隐私性。</li>
+</ul>
+<p><strong>优势：</strong></p>
+<ul>
+<li><strong>提高可扩展性：</strong> 大幅减少链上计算负担。</li>
+<li><strong>降低成本：</strong> 减少交易费用和资源消耗。</li>
+<li><strong>增强安全性：</strong> 即使在不信任的环境下也能保证计算结果的正确性。</li>
+</ul>
+<h3 id="2-optimistic-approach">2. 乐观方法 (Optimistic Approach)<a class="headerlink" href="#2-optimistic-approach" title="Permanent link">&para;</a></h3>
+<p><strong>核心思想：</strong></p>
+<p>乐观方法，尤其是在区块链的<strong>Optimistic Rollups (乐观汇总)</strong> 中，采取一种"性善论"的假设：<strong>默认情况下，所有链下执行的交易和计算都是有效的，除非有人证明它们是欺诈性的。</strong></p>
+<p><strong>工作原理：</strong></p>
+<ul>
+<li><strong>链下批处理：</strong> 大量的交易和计算在链下进行处理和打包（"汇总"），然后将汇总后的结果（通常是一个状态根的更新）提交到主链上。</li>
+<li><strong>挑战期 (Challenge Period)：</strong> 在提交到主链后，会有一个<strong>"挑战期"</strong>（通常为几天到几周）。在这个挑战期内，任何人都可以提交<strong>"欺诈证明 (fraud proof)"</strong>来质疑链下计算的正确性。</li>
+<li><strong>欺诈证明与争议解决：</strong> 如果有人发现欺诈行为，他们可以提交一个欺诈证明。主链上的智能合约会验证这个证明。如果欺诈被证实，则错误的状态更新会被回滚，并且提交欺诈行为的节点会受到惩罚（例如，他们的抵押资产会被罚没），而挑战者可能会获得奖励。</li>
+<li><strong>无挑战即最终确定：</strong> 如果在挑战期内没有提出有效的欺诈证明，那么链下提交的计算结果就被认为是最终有效的。</li>
+</ul>
+<p><strong>在区块链中的应用：</strong></p>
+<ul>
+<li><strong>Layer 2 扩容方案：</strong> Optimistic Rollups 是目前最流行的 Layer 2 扩容方案之一（例如 Optimism、Arbitrum），旨在提高以太坊等区块链的吞吐量并降低交易费用。</li>
+<li><strong>链下状态转换：</strong> 允许复杂的DApp逻辑在链下运行，显著减轻主链负担。</li>
+</ul>
+<p><strong>优势：</strong></p>
+<ul>
+<li><strong>高吞吐量：</strong> 通过链下批处理实现更高的交易处理速度。</li>
+<li><strong>成本效益：</strong> 大幅降低链上交易费用。</li>
+<li><strong>EVM兼容性好：</strong> 相对于零知识证明的方案，Optimistic Rollups 通常更容易与现有的以太坊虚拟机 (EVM) 兼容。</li>
+</ul>
+<p><strong>局限性：</strong></p>
+<ul>
+<li><strong>提款延迟：</strong> 由于挑战期的存在，从 Layer 2 提款到 Layer 1 需要等待挑战期结束，这导致了用户资金的锁定时间。</li>
+<li><strong>需要活跃的监督者：</strong> 尽管理论上任何人都可以在挑战期内提交欺诈证明，但在实践中，需要有足够的激励机制来确保有足够多的"诚实"节点来监控和提交欺诈证明。</li>
+</ul>
+<h3 id="3-coded-computing">3. 编码计算 (Coded Computing)<a class="headerlink" href="#3-coded-computing" title="Permanent link">&para;</a></h3>
+<p><strong>核心思想：</strong></p>
+<p>编码计算是一种利用<strong>编码理论</strong>（类似于通信中的纠错码）来提高<strong>分布式计算</strong>的鲁棒性、效率和安全性的技术。它通过在计算任务中<strong>引入冗余</strong>来应对分布式系统中常见的挑战，例如<strong>"掉队者" (stragglers)</strong>（运行缓慢或失败的节点）、通信开销和数据隐私问题。</p>
+<p><strong>工作原理：</strong></p>
+<ul>
+<li><strong>任务编码：</strong> 原始的计算任务或数据会被编码成带有冗余信息的形式，然后分发给多个工作节点。</li>
+<li><strong>冗余处理：</strong> 每个工作节点可能只执行部分编码后的计算，或者执行多个冗余的计算。</li>
+<li><strong>容错性：</strong> 即使某些节点失败或运行缓慢（掉队），系统仍然可以通过从其他成功完成任务的节点收集足够多的结果来恢复或完成整个计算，而无需等待所有节点。</li>
+<li><strong>减少通信或隐私：</strong> 通过巧妙的编码设计，有时可以减少通信量，或者在计算过程中提供额外的隐私保护。</li>
+</ul>
+<p><strong>在区块链中的应用（潜在或研究方向）：</strong></p>
+<p>虽然编码计算不像可验证计算和乐观方法那样直接应用于区块链的Layer 2扩容，但在更广义的分布式系统背景下，它与区块链的某些特性是契合的：</p>
+<ul>
+<li><strong>分布式存储：</strong> 在去中心化存储网络中，编码计算可以增强数据的可靠性和可用性，即使部分存储节点离线也能恢复数据。</li>
+<li><strong>分布式共识：</strong> 在某些需要大量计算的共识机制中，编码计算可能有助于提高其鲁棒性，应对节点故障。</li>
+<li><strong>链下计算的容错性：</strong> 在可验证计算的外包计算阶段，如果证明者是分布式集群，编码计算可以帮助提高其容错性，确保即使部分证明者出现问题也能生成证明。</li>
+</ul>
+<p><strong>优势：</strong></p>
+<ul>
+<li><strong>提高鲁棒性/容错性：</strong> 应对分布式系统中的节点故障或性能下降。</li>
+<li><strong>提高效率：</strong> 通过避免等待慢节点来加速整体计算。</li>
+<li><strong>潜在的数据安全和隐私：</strong> 某些编码方案可以提供额外的安全层。</li>
+</ul>
+<h3 id="_10">区别总结<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">特性</th>
+<th style="text-align: center;">可验证计算 (Verifiable Computing)</th>
+<th style="text-align: center;">乐观方法 (Optimistic Approach)</th>
+<th style="text-align: center;">编码计算 (Coded Computing)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>核心目标</strong></td>
+<td style="text-align: center;">证明计算结果的<strong>正确性</strong>，无需重新执行。</td>
+<td style="text-align: center;">默认计算<strong>有效</strong>，通过<strong>挑战</strong>纠正错误。</td>
+<td style="text-align: center;">提高分布式计算的<strong>鲁棒性、效率和安全性</strong>，应对故障。</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>信任假设</strong></td>
+<td style="text-align: center;">验证者信任证明的有效性，而非计算执行者的诚实性。</td>
+<td style="text-align: center;">乐观假设诚实，通过<strong>欺诈证明</strong>机制应对不诚实。</td>
+<td style="text-align: center;">基于编码冗余，容忍部分节点故障。</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>验证机制</strong></td>
+<td style="text-align: center;">密码学证明 (ZKP, SNARKs/STARKs)</td>
+<td style="text-align: center;"><strong>欺诈证明</strong> (Fraud Proofs)</td>
+<td style="text-align: center;">基于编码理论的<strong>冗余和恢复</strong>机制。</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>关键应用</strong></td>
+<td style="text-align: center;"><strong>链下计算扩容</strong>、隐私保护、智能合约复杂逻辑。</td>
+<td style="text-align: center;"><strong>Layer 2 扩容</strong> (Optimistic Rollups)。</td>
+<td style="text-align: center;">去中心化存储、分布式AI训练、通用分布式计算容错。</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>链上交互</strong></td>
+<td style="text-align: center;">提交简洁的<strong>证明</strong>进行验证。</td>
+<td style="text-align: center;">提交<strong>批处理结果</strong>，挑战期内可提交<strong>欺诈证明</strong>。</td>
+<td style="text-align: center;">间接相关，主要用于优化链下分布式计算或存储。</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>提款/最终性</strong></td>
+<td style="text-align: center;">证明验证后立即最终确定（如果证明是有效的）。</td>
+<td style="text-align: center;">有<strong>挑战期</strong>，导致提款延迟。</td>
+<td style="text-align: center;">依赖于底层应用，本身不直接涉及链上最终性。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="ubc-block-chain-day-5">UBC block chain DAY 5<a class="headerlink" href="#ubc-block-chain-day-5" title="Permanent link">&para;</a></h1>
+<h2 id="ethereum">以太坊 (Ethereum)<a class="headerlink" href="#ethereum" title="Permanent link">&para;</a></h2>
+<p>以太坊是一个<strong>去中心化的、全球共享的计算平台</strong>，能够运行各种应用程序，且一旦部署就无法被关闭或审查。其核心创新在于能够运行<strong>智能合约</strong>。</p>
+<h3 id="_11"><strong>诞生与发展</strong>：<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>由 Vitalik Buterin 在 2013 年提出，于 2015 年上线。2022 年 9 月，“The Merge”（合并）升级将其共识机制从<strong>工作量证明 (Proof-of-Work, PoW)</strong> 转换到了<strong>权益证明 (Proof-of-Stake, PoS)</strong>。</p>
+<h3 id="ether-eth"><strong>以太币 (Ether, ETH)</strong>：<a class="headerlink" href="#ether-eth" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>燃料 (Gas)</strong>：作为以太坊网络的<strong>原生加密货币</strong>，主要用于支付网络操作（发送 ETH、执行智能合约、部署合约等）所需的费用，并以此激励<strong>验证者 (Validators)</strong>。</li>
+<li><strong>价值储存和交换媒介</strong>：ETH 也是一种有价值的数字资产。</li>
+</ul>
+<h3 id="smart-contracts"><strong>智能合约 (Smart Contracts)</strong>：<a class="headerlink" href="#smart-contracts" title="Permanent link">&para;</a></h3>
+<ul>
+<li>存储在区块链上的<strong>计算机程序</strong>，按照预设规则自动执行，无需第三方干预。</li>
+<li><strong>图灵完备</strong>：其智能合约语言 <strong>Solidity</strong> 是图灵完备的，可实现任何复杂逻辑。</li>
+<li><strong>不可篡改与透明</strong>：部署后代码无法篡改，公开透明。</li>
+</ul>
+<h3 id="ethereum-virtual-machine-evm"><strong>以太坊虚拟机 (Ethereum Virtual Machine, EVM)</strong>：<a class="headerlink" href="#ethereum-virtual-machine-evm" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>运行环境</strong>：智能合约的运行时环境，每次合约执行都在 EVM 中。</li>
+<li><strong>沙盒环境</strong>：隔离合约执行，确保错误不影响网络。</li>
+</ul>
+<h3 id="blockchain"><strong>区块链 (Blockchain)</strong>：<a class="headerlink" href="#blockchain" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>分布式账本</strong>：去中心化、不可篡改的分布式账本，记录所有交易和合约执行。</li>
+<li><strong>共识机制</strong>：<ul>
+<li><strong>PoW (旧机制)</strong>：矿工通过解决数学难题竞争打包区块。</li>
+<li><strong>PoS (新机制)</strong>：验证者通过<strong>质押 32 ETH</strong> 获得验证区块的权利，并获得新发行的 ETH 奖励。不诚实行为可能导致 ETH 被“罚没 (Slashing)”。</li>
+</ul>
+</li>
+</ul>
+<h3 id="defi-nfts-gamefi-daos-metaverse"><strong>应用场景</strong>：去中心化金融 (DeFi)、非同质化代币 (NFTs)、游戏 (GameFi)、去中心化自治组织 (DAOs)、元宇宙 (Metaverse) 等。<a class="headerlink" href="#defi-nfts-gamefi-daos-metaverse" title="Permanent link">&para;</a></h3>
+<h3 id="_12"><strong>挑战与未来</strong>：<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>可扩展性</strong>：通过 Layer 2 解决方案（如 Arbitrum、Optimism）和未来分片 (Sharding) 升级来解决。</li>
+<li><strong>EIP-1559</strong>：升级后交易费用包含被销毁的“基本费用”和给验证者的“优先费用”，有助于 ETH 的通缩。</li>
+</ul>
+<h2 id="gas">Gas<a class="headerlink" href="#gas" title="Permanent link">&para;</a></h2>
+<p>Gas 在区块链中是执行操作所需的<strong>“燃料”或“计算力成本”</strong>。</p>
+<h3 id="_13"><strong>目的</strong>：<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>支付给验证者/矿工的报酬</strong>：激励他们维护网络。</li>
+<li><strong>防止网络滥用/垃圾信息</strong>：增加攻击成本。</li>
+<li><strong>衡量计算复杂性</strong>：不同操作消耗不同 Gas 单位。</li>
+</ul>
+<h3 id="gas-eth"><strong>工作原理</strong>：Gas 本身是计价单位，最终用 ETH 支付。<a class="headerlink" href="#gas-eth" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Gas 单位 (Gas Units)</strong>：每种操作的固定成本，例如简单 ETH 转账为 21,000 Gas 单位。</li>
+<li><strong>Gas 价格 (Gas Price)</strong>：你愿意为每 Gas 单位支付的 ETH 数量，通常以 <strong>Gwei</strong> (<span class="arithmatex">\(1 \text{ Gwei} = 10^{-9} \text{ ETH}\)</span>) 为单位，价格动态变化。</li>
+<li><strong>Gas 限制 (Gas Limit)</strong>：你为交易支付的最大 Gas 单位数量，用于防止无限循环。</li>
+</ul>
+<h3 id="gas_1"><strong>Gas 费用计算</strong>：<a class="headerlink" href="#gas_1" title="Permanent link">&para;</a></h3>
+<p>总 Gas 费用 = Gas 单位 (实际消耗量) <span class="arithmatex">\(\times\)</span> Gas 价格。</p>
+<h3 id="eip-1559"><strong>EIP-1559 变化</strong>：<a class="headerlink" href="#eip-1559" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>基本费用 (Base Fee)</strong>：由网络动态计算并<strong>销毁 (burned)</strong>，不进入验证者手中，有助于限制 ETH 供应量。</li>
+<li><strong>优先费用 (Priority Fee / Tip)</strong>：给验证者的“小费”，激励优先处理交易。</li>
+<li>销毁的 ETH 并非去了任何可访问的地址，而是发送到一个<strong>无法访问的地址</strong>，永久从流通中移除。</li>
+</ul>
+<h2 id="hardhat">Hardhat<a class="headerlink" href="#hardhat" title="Permanent link">&para;</a></h2>
+<p>Hardhat 是一个<strong>以太坊开发环境</strong>，帮助开发者构建、测试和部署智能合约及去中心化应用 (dApps)。</p>
+<h3 id="_14"><strong>主要功能</strong>：<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>本地以太坊网络 (Hardhat Network)</strong>：内置私有区块链，用于快速迭代和调试。</li>
+<li><strong>合约编译</strong>：将 Solidity 代码编译成 EVM 字节码和 ABI。</li>
+<li><strong>合约部署</strong>：自动化部署智能合约到各种网络。</li>
+<li><strong>自动化测试</strong>：集成 JavaScript 测试框架（Mocha, Chai），编写合约测试。</li>
+<li><strong>插件系统</strong>：提供大量插件扩展功能（如与 Ethers.js 集成、Gas 报告）。</li>
+<li><strong>任务运行器</strong>：定义和运行自定义任务，自动化开发流程。</li>
+</ul>
+<h2 id="ipfs-interplanetary-file-system">IPFS (InterPlanetary File System)<a class="headerlink" href="#ipfs-interplanetary-file-system" title="Permanent link">&para;</a></h2>
+<p>IPFS 是一个<strong>去中心化、点对点 (P2P) 的分布式文件存储和共享网络</strong>。</p>
+<h3 id="_15"><strong>解决问题</strong>：<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>中心化和单点故障</strong>：HTTP 依赖中心服务器，易受攻击和审查。</li>
+<li><strong>效率低下</strong>：请求需到特定服务器，速度慢。</li>
+<li><strong>内容重复存储</strong>：浪费资源。</li>
+</ul>
+<h3 id="_16"><strong>工作原理</strong>：<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>内容寻址 (Content Addressing)</strong>：文件通过其内容的加密哈希值（<strong>内容标识符，CID</strong>）来标识，而非位置。CID 具有唯一性、不变性和内容校验功能。</li>
+<li><strong>点对点网络 (P2P)</strong>：网络中的每个参与者都是一个节点，既是客户端也是服务器。</li>
+<li><strong>分布式哈希表 (DHT)</strong>：用于查找哪个节点拥有特定 CID 对应的文件。</li>
+<li><strong>文件持久性 (Pinning)</strong>：通过“钉住”文件来确保其长期可用性，通常需要支付存储费用（如通过 Filecoin）。</li>
+</ul>
+<h3 id="_17"><strong>优势</strong>：<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>去中心化、抗审查、高可用性、高效、版本控制、成本效益、Web3 基础。</p>
+<h3 id="_18"><strong>局限性</strong>：<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>数据持久性需额外保障、实时性挑战、难以移除非法内容、隐私问题、入门门槛。</p>
+<h3 id="_19"><strong>与区块链的关系</strong>：<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>互补。区块链存储小而重要的安全数据（如 CID），IPFS 存储大文件，共同构建高效的去中心化应用。</p>
+<h2 id="remix-web">Remix (Web 框架)<a class="headerlink" href="#remix-web" title="Permanent link">&para;</a></h2>
+<p>Remix 是一个<strong>全栈的 Web 框架</strong>，利用现代 Web 标准来构建高性能、高用户体验的应用程序。</p>
+<h3 id="_20"><strong>主要用途</strong>：<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>构建快速、流畅且具有弹性的 Web 应用程序。</p>
+<h3 id="_21"><strong>特点</strong>：<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>服务器端渲染 (SSR)</strong>：加快页面初始加载速度，利于用户体验和 SEO。</li>
+<li><strong>简化数据加载和表单提交</strong>：在路由中定义数据加载器（<code>loader</code>）和操作（<code>action</code>），在服务器上运行。</li>
+<li><strong>利用 Web 标准</strong>：基于 Web Fetch API、HTTP 缓存和 HTML 表单等。</li>
+<li><strong>优化用户体验 (UX)</strong>：嵌套路由、错误边界、渐进式增强。</li>
+<li><strong>与 Remix - Ethereum IDE 的区别</strong>：Remix IDE 是一个用于以太坊智能合约开发的<strong>在线 IDE</strong>，通常用 JavaScript/TypeScript 构建，<strong>与 Remix Web 框架是两个完全不同的概念</strong>。</li>
+</ul>
+<h2 id="solana">Solana<a class="headerlink" href="#solana" title="Permanent link">&para;</a></h2>
+<p>Solana 是一个<strong>高性能的区块链平台</strong>，旨在解决传统区块链在<strong>速度、可扩展性和成本</strong>方面的挑战。</p>
+<h3 id="_22"><strong>核心目标</strong>：<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>在不牺牲去中心化和安全性的前提下，大幅提高可扩展性。</p>
+<h3 id="_23"><strong>主要创新技术</strong>：<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>历史证明 (Proof of History, PoH)</strong>：核心时间戳技术，允许验证者对交易顺序和时间进行加密证明，提升效率。</li>
+<li><strong>塔式拜占庭容错 (Tower BFT)</strong>：基于 PoH 的权益证明 (PoS) 共识机制，快速达成共识。</li>
+<li><strong>管道化 (Pipelining)</strong>：将交易处理阶段分配给不同硬件，提高并发性。</li>
+<li><strong>海平面 (Sealevel)</strong>：并行智能合约运行时环境，允许合约并发执行。</li>
+<li><strong>涡轮 (Turbine)</strong>：区块传播协议，分片传播区块，降低延迟。</li>
+<li><strong>云裂 (Cloudbreak)</strong>：横向扩展的账户数据库，支持高并发读写。</li>
+<li><strong>海湾流 (Gulf Stream)</strong>：无内存池的交易转发协议，优化确认时间。</li>
+</ul>
+<h3 id="sol"><strong>SOL (原生代币)</strong>：<a class="headerlink" href="#sol" title="Permanent link">&para;</a></h3>
+<p>用于交易费用、质押和治理。</p>
+<h3 id="_24"><strong>优势</strong>：<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>极高的吞吐量和低延迟（每秒数万次交易）、低交易费用、活跃的生态系统、单链架构。</p>
+<h3 id="_25"><strong>挑战</strong>：<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>去中心化程度的权衡（节点硬件要求高）、网络稳定性问题、对 Rust 开发者友好度（学习成本）。</p>
+<h3 id="_26"><strong>现实世界问题及解决方案示例</strong>：<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>解决<strong>大规模微支付</strong>问题，例如在流媒体/游戏或物联网设备网络中，利用 Solana 的高吞吐量、低费用和快速最终性，实现每秒数万笔的自动化微支付交易，并用智能合约自动化分成和状态更新。</p>
+<h2 id="polygon">Polygon<a class="headerlink" href="#polygon" title="Permanent link">&para;</a></h2>
+<p>Polygon 是一个<strong>以太坊扩容解决方案</strong>和<strong>多链生态系统</strong>，旨在解决以太坊高交易费用、低速度和可扩展性不足的问题，同时保持以太坊的安全性、去中心化和兼容性。</p>
+<h3 id="_27"><strong>解决问题</strong>：<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>通过提供一系列扩容解决方案，如 PoS 侧链和 ZK Rollups，来提高以太坊的吞吐量并降低交易成本。</p>
+<h3 id="_28"><strong>核心技术和组件</strong>：<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Polygon PoS 链 (Matic PoS Chain)</strong>：最广泛使用的组件，是一个<strong>权益证明 (PoS) 侧链</strong>。它在链上处理交易，定期将验证状态提交到以太坊主网，安全性锚定以太坊。具有高吞吐量（最高可达 65,000 TPS）、极低费用和 EVM 兼容性。</li>
+<li><strong>Polygon ZK Rollups (如 Polygon zkEVM)</strong>：重要发展方向，通过<strong>零知识证明 (Zero-Knowledge Proofs)</strong> 将大量交易在链下打包并生成证明提交到以太坊主网，继承以太坊安全性，实现更高扩展性和 EVM 等效性。</li>
+<li><strong>Polygon Supernets (现在也称为 Polygon Chain Development Kit - CDK)</strong>：模块化框架，允许开发者构建自己的定制化区块链网络（应用专用链），可高度定制、具有主权性并与以太坊互操作。</li>
+</ul>
+<h3 id="matic-pol"><strong>MATIC 代币 (现在升级为 POL)</strong>：<a class="headerlink" href="#matic-pol" title="Permanent link">&para;</a></h3>
+<p>Polygon 网络的<strong>原生代币</strong>。用于质押、交易费用和治理。POL 代币旨在实现更灵活的多链质押。</p>
+<h3 id="_29"><strong>架构层次</strong>：<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p>通常包括以太坊层、安全层、Polygon 网络层和执行层。</p>
+<h3 id="_30"><strong>优势</strong>：<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p>解决以太坊痛点、EVM 兼容性、多样化的扩容方案、强大的生态系统。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年7月16日 02:03:55 CST">2025年7月16日 02:03:55</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年7月16日 02:03:55 CST">2025年7月16日 02:03:55</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://github.com/Melody12020831" target="_blank" rel="noopener">Melody</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Melody12020831/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../css/javascripts/tablesort.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
