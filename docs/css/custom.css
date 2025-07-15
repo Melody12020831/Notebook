@@ -133,6 +133,11 @@ li code {
   color: #6ca8a4;
 }
 
+[data-md-color-scheme="slate"] .md-header, [data-md-color-scheme="slate"] .md-tabs {
+  background-color: rgba(30, 30, 30, 1);
+  backdrop-filter: none;
+}
+
 /* p, li {
     font-family: "Times New Roman", "Songti SC";
     font-weight: 600;
