@@ -1,24 +1,24 @@
-.md-sidebar.md-sidebar--primary {
+.md-sidebar.md-sidebar--primary .md-sidebar__inner {
     opacity: 0;
     transform: translateX(-100%);
     transition: opacity 0.3s ease-out, transform 0.3s ease-out;
     pointer-events: none;
 }
 
-.md-sidebar.md-sidebar--primary:hover {
+.md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap:hover .md-sidebar__inner {
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
 }
 
-.md-sidebar.md-sidebar--secondary {
+.md-sidebar.md-sidebar--secondary .md-sidebar__inner {
     opacity: 0;
     transform: translateX(100%);
     transition: opacity 0.3s ease-out, transform 0.3s ease-out;
     pointer-events: none;
 }
 
-.md-sidebar.md-sidebar--secondary:hover {
+.md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap:hover .md-sidebar__inner {
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
