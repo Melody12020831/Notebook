@@ -206,6 +206,9 @@ nav:
       - Computer_Science/CA/Chapter2.md
       - Computer_Science/CA/homework.md
       - Computer_Science/CA/CA_review.md
+    - "TOC":
+      - Computer_Science/TOC/index.md
+      - Computer_Science/TOC/Chapter1.md
     - "Visualization":
       - Computer_Science/Visualization/note.md
     - "编程语言":
@@ -247,3 +250,6 @@ nav:
     - Miscellaneous/index.md
     - Miscellaneous/prompt/prompt.md
     - Miscellaneous/mermaid.md
+    - "UBC":
+      - Miscellaneous/UBC/UBC summer institute.md
+      - Miscellaneous/UBC/download.md

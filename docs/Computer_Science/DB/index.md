@@ -8,11 +8,11 @@ statistics: True
     - **智云链接**：[🔗](https://classroom.zju.edu.cn/coursedetail?course_id=69537)
     - **授课**：陈刚
     - **教材**：Database System Concepts, 7th edition - 2019
-    - **PPT**： [📁]
+    - **PPT**： 📁 第一是有点多，第二是知识产权问题，所以需要就给我发邮件叭~
     - **作业**：[📝](homework.md)
     - **我的笔记**：[📝](Chapter1.md)
-    - **历年题**：
-    - **复习资料**：
+    - **历年题**：98 上有很多。
+    - **复习资料**：也可以在 98 上找到。
 
 !!! note "学习建议"
     1. 复习时把所有老师的复习课看一遍
