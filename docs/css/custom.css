@@ -81,8 +81,8 @@ li code {
 
 [data-md-color-scheme="slate"] {
   /* --- 主色调 (头部/重要组件) --- */
-  --md-primary-fg-color:        #202020;
-  --md-primary-fg-color--dark:  #202020;
+  --md-primary-fg-color:        rgba(30, 30, 30, 1);
+  --md-primary-fg-color--dark:  rgba(30, 30, 30, 1);
 
   /* --- 文本颜色 --- */
   --md-default-fg-color:        rgba(235, 235, 235, 0.9);
