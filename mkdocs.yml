@@ -210,6 +210,12 @@ nav:
     - "TOC":
       - Computer_Science/TOC/index.md
       - Computer_Science/TOC/Chapter1.md
+    - "OS":
+      - Computer_Science/OS/index.md
+      - Computer_Science/OS/Chapter1.md
+    - "CN":
+      - Computer_Science/CN/index.md
+      - Computer_Science/CN/Chapter1.md
     - "Visualization":
       - Computer_Science/Visualization/note.md
     - "编程语言":
