@@ -61,7 +61,7 @@ comments: true
 * **数字签名 (Digital Signatures)**：举例说明了 Sally 创建比特币钱包、Jim 向 Sally 的公钥发送比特币以及 Sally 钱包中拥有比特币的过程。
 * **"非你的密钥，非你的比特币 (Not Your Keys, Not Your Bitcoin)"**：强调拥有私钥的重要性。
 
-### * **区块链的适用场景**
+### **区块链的适用场景**
 
 * 当交易各方目标和激励不一致，导致不信任时。
 * 当缺乏透明度 (transparency) 时。

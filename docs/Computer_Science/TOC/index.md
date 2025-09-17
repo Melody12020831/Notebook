@@ -5,8 +5,8 @@ statistics: True
 # Theory of Computation
 
 !!! info "课程信息"
-    - **智云链接**：[🔗]()
-    - **授课**：
+    - **智云链接**：[🔗](https://interactivemeta.cmc.zju.edu.cn/#/replay?course_id=72578&sub_id=1688271&tenant_code=112)
+    - **授课**：郑乾
     - **教材**：Elements of the Theory of Computation (Second Edition)
     - **PPT**： 📁
     - **作业**：[📝](homework.md)
