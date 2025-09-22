@@ -105,7 +105,7 @@ CPU、内存和各种外设通过总线和控制器实现数据交换和资源�
 
 ## Common Functions of Interrupts
 
-Interrupt transfers control to the interrupt service routine generally, through the interrupt vector, which contains the addresses of all the service routines.
+Interrupt transfers control to the interrupt service routine generally, through the **interrupt vector**, which contains the addresses of all the service routines.
 
 当中断发生时，控制权会转移到中断服务程序（Interrupt Service Routine, ISR）。这种转移通常通过“中断向量”实现，中断向量中保存了所有中断服务程序的地址。这样，系统可以根据中断类型快速找到对应的处理程序。
 
@@ -120,16 +120,20 @@ Incoming interrupts are disabled while another interrupt is being processed to p
 ??? Tip "为什么新中断可能会被忽略"
     在处理当前中断的过程中，如果允许新的中断进入，可能会导致系统无法正确保存和恢复现场，造成数据混乱或系统不稳定。
 
-A trap is a software-generated interrupt caused either by an error or a user request (the latter is often referred to as a system call). Note: names may vary across different architectures.
+A **trap** is a software-generated interrupt caused either by an **error** or a **user request** (the latter is often referred to as a **system call**). Note: names may vary across different architectures.
 
 Trap是一种由软件产生的中断，通常由程序错误（如除零错误）或用户请求（如系统调用）引发。不同体系结构对trap的命名可能不同。例如，在RISC-V架构中，trap可以细分为“异常（exception）和ecall（系统调用）”以及“中断（interrupt）”。
 
 - exceptions & ecalls：由程序错误或系统调用引发。
 - interrupts：由外部设备等硬件事件引发。
 
-An operating system is interrupt driven.
+An operating system is **interrupt** driven.
 
 操作系统的运行依赖于中断机制。无论是硬件事件（如I/O完成），还是软件事件（如系统调用），都通过中断机制通知操作系统进行相应处理。
+
+==通用的操作系统下，术语按照书本来。==
+
+在 RISC-V 当中中断叫 traps， 硬件引起的叫做 interrupts，软件引起的叫做 exceptions ，系统调用叫做 environment calls。
 
 ![img](./assets/1-3.png)
 
@@ -200,6 +204,16 @@ After I/O starts, control returns to user program without waiting for I/O comple
 - Device-status table contains entry for each I/O device indicating its type, address, and state.
 
 ![img](./assets/1-5.png)
+
+---
+
+### Device-Status Table
+
+Device-Status Table（设备状态表）是操作系统用来管理和跟踪所有I/O设备当前状态的数据结构。
+
+![img](./assets/1-13.png)
+
+当有进程请求某个I/O设备时，操作系统会在设备状态表中查找该设备的条目，判断其当前状态。设备完成当前操作后，会通过中断通知操作系统，操作系统再从设备状态表中取出下一个等待的请求，继续处理。
 
 ---
 
@@ -345,11 +359,20 @@ Operating systems need careful CPU scheduling and memory management
 
 job 1, job 2, job 3, job 4：表示当前驻留在内存中的多个作业（程序）。每个作业占用一部分内存空间。
 
+???+ note "multiprogramming vs. timesharing"
+    对于 multiprogramming 来说，强调的是 CPU 的高效利用率，确保 CPU 在任何时候都有作业可以执行。它主要关注的是系统资源的最大化利用。不在乎对里面的任务处理是 time-sharing 还是 batch processing（先处理一个再处理另一个）。
+
+    而 timesharing 则更强调用户的交互体验，确保每个用户都能感觉到自己的程序在独占运行。它关注的是系统响应时间和用户体验。
+
 ---
 
-Interrupt driven by hardware. Software error or request creates exception or trap. Division by zero, request for operating system service. Other process problems include infinite loop, processes modifying each other or the operating system
+## Operating System Operations
 
-Thus we need protection:
+Interrupt driven by hardware. Software error or request creates **exception** or **trap**. Division by zero, request for operating system service. Other process problems include infinite loop, processes modifying each other or the operating system
+
+我们希望操作系统是可以做到 isolation 的，不会在不被允许的情况下被修改或破坏。做到 program 之间是相互隔离的，并且 os 和用户程序之间也是相互隔离的。
+
+Thus we need **protection**:
 
 为了防止进程之间互相干扰、破坏操作系统或占用过多资源，操作系统必须具备保护机制。
 
@@ -364,6 +387,18 @@ Mode bit provided by hardware
 - System call changes mode to kernel, return from call resets it to user
 
 某些指令（如I/O操作、内存管理等）被指定为特权指令，只能在内核态下执行，防止用户程序随意操作硬件。用户程序通过系统调用（system call）请求操作系统服务时，CPU会将模式位切换为内核态，执行完毕后再切回用户态。
+
+???+ question
+    system call（间接调用）和直接用 library 调用系统程序有什么不同？
+
+??? note "answer"
+    系统调用通过陷阱指令（如 ecall）切换到内核态，由操作系统内核执行，拥有全部硬件控制权限。而用户程序只能通过受控的接口请求服务，内核可以检查和保护资源，防止非法访问，实现隔离和安全。
+
+    库调用只是普通的函数调用，运行在用户态，没有权限访问或操作内核资源。只能操作用户空间的数据，不能直接进行I/O、进程管理等特权操作。
+
+    例如 `printf()` 是库函数，最终会调用 `write()` 系统调用，`write()` 通过 `ecall` 进入内核态，由内核完成实际的输出操作。
+
+    如果没有系统调用机制，用户程序可以直接操作硬件或内核资源，系统就无法保证安全和隔离，容易被恶意程序破坏。
 
 ---
 
@@ -384,7 +419,7 @@ Timer to prevent infinite loop / process hogging resources
 
 内核态（kernel mode）：操作系统内核运行时所处的状态，拥有全部硬件控制权限，可以执行所有指令。mode bit = 0。
 
-程序在用户态下正常运行。当用户程序需要操作硬件资源（如文件、网络、设备等）或请求操作系统服务时，会通过系统调用接口发起请求。系统调用会触发一次陷阱（trap）指令，CPU将mode bit从1切换为0，进入内核态，转而执行操作系统内核中的系统调用处理代码。操作系统在内核态下完成所需的服务（如读写文件、分配内存等）。系统调用完成后，通过特定的返回指令，CPU将mode bit重新设置为1，恢复到用户态，继续执行用户进程后续代码。
+程序在用户态下正常运行。当用户程序需要操作硬件资源（如文件、网络、设备等）或请求操作系统服务时，会通过系统调用接口发起请求。系统调用会触发一次陷阱（trap）指令， CPU 将 mode bit 从 1 切换为 0，进入内核态，转而执行操作系统内核中的系统调用处理代码。操作系统在内核态下完成所需的服务（如读写文件、分配内存等）。系统调用完成后，通过特定的返回指令，CPU将mode bit重新设置为1，恢复到用户态，继续执行用户进程后续代码。
 
 **作用与意义**
 
@@ -527,7 +562,7 @@ I/O subsystem responsible for I/O子系统的主要职责：
 
 1. Basic requirements for OS
 
-    - Sharing/multiplexing 资源共享/复用
+    - Sharing/multiplexing 资源共享/复用（CPU 时间复用、内存空间复用、/O设备复用、文件系统复用、网络端口复用）
     - Isolation 隔离
     - Interaction 交互
     

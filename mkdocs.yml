@@ -213,6 +213,7 @@ nav:
     - "OS":
       - Computer_Science/OS/index.md
       - Computer_Science/OS/Chapter1.md
+      - Computer_Science/OS/Chapter2.md
     - "CN":
       - Computer_Science/CN/index.md
       - Computer_Science/CN/Chapter1.md
