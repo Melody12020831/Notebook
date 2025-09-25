@@ -28,3 +28,5 @@ statistics: True
     6. [咸鱼的思维导图、题目]([计算机网络 | Computer Network](https://www.yuque.com/xianyuxuan/coding/network))
    
     7. [朋辈辅学视频](https://www.bilibili.com/video/BV1Xr4y1r7gM)
+
+    8. 期末考试没有 A4 全靠记忆。

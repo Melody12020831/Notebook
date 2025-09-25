@@ -18,7 +18,7 @@ comments: true
 
 - A program that acts as an intermediary between a user ofa computer and the computer hardware.
 - Operating system goals:
-    - Execute user programs and make solving userproblems easier.
+    - Execute user programs and make solving user problems easier.
     - Make the computer system convenient to use.
 - Use the computer hardware in an efficient manner.
 
@@ -50,6 +50,58 @@ Computer system can be divided into four components
 
 ![img](./assets/1-1.png)
 
+???+ example "question"
+    操作系统是对()进行管理的软件。
+    
+    A.软件
+    
+    B.硬件
+    
+    C.计算机资源
+    
+    D.应用程序
+
+??? note "answer"
+    C.计算机资源
+
+    操作系统管理计算机的**硬件**和**软件**资源，这些资源统称为**计算机资源**。注意，操作系统不仅管理处理机、存储器等硬件资源，还管理文件，文件不属于硬件资源，但属于计算机资源。
+
+???+ example "question"
+    下面的()资源不是操作系统应该管理的。
+    
+    A.CPU
+    
+    B.内存
+    
+    C.外存
+    
+    D.源程序
+
+??? note "answer"
+    D.源程序
+
+    源程序是一种计算机代码，是用程序设计语言编写的程序，经编译或解释后可形成具有一定功能的可执行文件，是直接面向程序员用户的，而不是操作系统的管理内容。
+    
+    但有人会问操作系统不是也管理“文件”吗?源程序也存储在文件中吧?
+    
+    出现这种疑问的原因是，对操作系统管理文件的理解存在偏颇。操作系统管理文件，是指操作系统关心计算机中的文件的逻辑结构、物理结构、文件内部结构、多文件之间如何组织的问题，而不是关心文件的具体内容。
+
+???+ example "question"
+    下列选项中，()不是操作系统关心的问题。
+    
+    A.管理计算机裸机
+
+    B.设计、提供用户程序与硬件系统的界面
+    
+    C.管理计算机系统资源
+    
+    D.高级程序设计语言的编译器
+
+??? note "answer"
+    D.高级程序设计语言的编译器
+
+    操作系统管理计算机软/硬件资源，扩充裸机以提供功能更强大的扩充机器,并充当用户与硬件交互的中介。高级程序设计语言的编译器显然不是操作系统关心的问题。编译器的实质是一段程序指令，它存储在计算机中。
+
 ---
 
 ### Operating System Definition
@@ -71,6 +123,35 @@ OS is a control program
     实际上，操作系统并没有一个被普遍接受的标准定义。比如，有人认为“操作系统就是你买电脑时厂商预装的所有软件”，但不同厂商的理解和范围可能差别很大。
 
 严格来说，操作系统中“始终在计算机上运行的那个程序”被称为**内核**（kernel）。内核是操作系统的核心部分，负责最底层的资源管理和硬件控制。其他的系统程序和应用程序则运行在内核之上。可以把内核理解为一个功能丰富的代码库，被不同的程序调用。
+
+???+ example "question"
+    操作系统的基本功能是()。
+    
+    A.提供功能强大的网络管理工具
+    
+    B.提供用户界面方便用户使用
+    
+    C.提供方便的可视化编辑程序
+    
+    D.控制和管理系统内的各种资源
+
+??? note "answer"
+    D.控制和管理系统内的各种资源
+
+    操作系统是指控制和管理整个计算机系统的硬件和软件资源，合理地组织、调度计算机的工作和资源的分配，以便为用户和其他软件提供方便的接口与环境的程序集合。
+
+??? note "操作系统的特征"
+    操作系统的基本特征包括并发、共享、虚拟和异步。
+
+    1. 并发是指两个或多个事件在**同一时间间隔内发生**。在多道程序环境下，在内存中同时装有若干道程序，以便当运行某道程序时，利用其因 I/O 操作而暂停执行时的 CPU 空档时间，再调度另一道程序运行，从而实现多道程序交替运行，使 CPU 保持忙碌状态。
+    
+    2. **资源共享**即共享，是指系统中的资源可供内存中多个并发执行的进程共同使用。资源共享主要可分为互斥共享（例如打印机）和同时访问（分时共享）两种方式。
+
+    **并发**和**共享**是操作系统两个**最基本**的特征，两者之间互为存在的条件:①资源共享是以程序的并发为条件的，若系统不允许程序并发执行，则自然不存在资源共享问题:②若系统不能对资源共享实施有效的管理，则必将影响到程序的并发执行，甚至根本无法并发执行。
+
+    3. 虚拟是指将一个物理上的实体变为若干逻辑上的对应物。操作系统的虚拟技术可归纳为:**时分复用技术**，如虚拟处理器;**空分复用技术**，如虚拟存储器。利用多道程序设计技术将一个物理上的 CPU 虚拟为多个逻辑上的 CPU，称为虚拟处理器。采用虚拟存储器技术将一台机器的物理存储器变为虚拟存储器，以便从逻辑上扩充存储器的容量。
+
+    4. 多道程序环境允许多个程序并发执行，但由于资源有限，进程的执行并不是一贯到底的，而是走走停停的，它以不可预知的速度向前推进，这就是进程的**异步**性。
 
 ---
 
@@ -122,7 +203,7 @@ Incoming interrupts are disabled while another interrupt is being processed to p
 
 A **trap** is a software-generated interrupt caused either by an **error** or a **user request** (the latter is often referred to as a **system call**). Note: names may vary across different architectures.
 
-Trap是一种由软件产生的中断，通常由程序错误（如除零错误）或用户请求（如系统调用）引发。不同体系结构对trap的命名可能不同。例如，在RISC-V架构中，trap可以细分为“异常（exception）和ecall（系统调用）”以及“中断（interrupt）”。
+Trap 是一种由软件产生的中断，通常由程序错误（如除零错误）或用户请求（如系统调用）引发。不同体系结构对 trap 的命名可能不同。例如，在RISC-V架构中，trap可以细分为“异常（exception）和ecall（系统调用）”以及“中断（interrupt）”。
 
 - exceptions & ecalls：由程序错误或系统调用引发。
 - interrupts：由外部设备等硬件事件引发。
@@ -136,6 +217,72 @@ An operating system is **interrupt** driven.
 在 RISC-V 当中中断叫 traps， 硬件引起的叫做 interrupts，软件引起的叫做 exceptions ，系统调用叫做 environment calls。
 
 ![img](./assets/1-3.png)
+
+???+ example "question"
+    用户可以通过()两种方式来使用计算机。
+    
+    A.命令接口和函数
+    
+    B.命令接口和系统调用
+    
+    C.命令接口和文件管理
+    
+    D.设备管理方式和系统调用
+
+??? note "answer"
+    B
+
+    操作系统主要向用户提供命令接口和程序接口(系统调用)，此外还提供图形接口;当然，图形接口其实是调用了系统调用而实现的功能。
+
+    命令接口是指用户通过输入命令（通常是文本命令）与操作系统进行交互的方式。典型代表：命令行界面（CLI），如 Windows 的 cmd、Linux 的 shell（bash、zsh 等）。
+
+    程序接口是指应用程序通过调用操作系统提供的**系统调用（system call）**来请求操作系统服务的方式。典型代表：如 Linux 的 open()、read()、write()、fork() 等系统调用。
+
+???+ example "question"
+    系统调用是由操作系统提供给用户的，它()。
+    
+    A.直接通过键盘交互方式使用
+    
+    B.只能通过用户程序间接使用
+    
+    C.是命令接口中的命令
+    
+    D.与系统的命令一样
+
+??? note "answer"
+    B
+
+    系统调用需要在用户程序中通过特定的语句（如C语言的 `open()`、`read()`等）发起，操作系统通过陷阱指令（如`int 0x80`、`ecall`等）切换到内核态来完成服务。
+
+???+ example "question"
+    操作系统提供给编程人员的接口是()。
+    
+    A.库函数
+    
+    B.高级语言
+    
+    C.系统调用
+    
+    D.子程序
+
+??? note "answer"
+    C.系统调用
+
+???+ example "question"
+    系统调用的目的是()。
+    
+    A.请求系统服务   
+    
+    B.中止系统服务
+    
+    C.申请系统资源
+    
+    D.释放系统资源
+
+??? note "answer"
+    A.请求系统服务
+
+    操作系统不允许用户直接操作各种硬件资源，因此用户程序只能通过系统调用的方式来请求内核为其服务，间接地使用各种资源。
 
 ---
 
@@ -303,7 +450,7 @@ Operating systems need careful CPU scheduling and memory management
 
 ### Multiprogramming
 
-**Multiprogramming** needed for efficiency (CPU utilization)
+**Multiprogramming** needed for efficiency (**CPU utilization** 关注资源)
 
 多道程序设计的目的是提高CPU利用率和系统整体效率。
 
@@ -327,7 +474,7 @@ Operating systems need careful CPU scheduling and memory management
 
 ### Timesharing
 
-**Timesharing** (multitasking) is logical extension in which CPU switches jobs so frequently that users can interact with each job while it is running, creating interactive computing (interactivity)
+**Timesharing** (multitasking) is logical extension in which CPU switches jobs so frequently that users can interact with each job while it is running, creating interactive computing (**interactivity** 关注用户)
 
 分时系统是多道程序设计的进一步发展，强调交互性和多用户支持。CPU在多个作业之间快速切换，使每个用户都感觉自己的程序在独占运行，实现“交互式计算”。
 
@@ -452,7 +599,7 @@ Single-threaded process has one program counter specifying location of next inst
 
 Multi-threaded process has one program counter per thread
 
-多线程进程每个线程有自己的程序计数器，可以并发执行。
+多线程进程**每个线程有自己的程序计数器(PC)**，可以并发执行。
 
 Typically system has many processes, some user, some operating system running concurrently on one or more CPUs
 
@@ -465,7 +612,7 @@ Typically system has many processes, some user, some operating system running co
 The operating system is responsible for the following activities in  connection with process management:
 
 1. Creating and deleting both user and system processes 创建和删除用户及系统进程
-2. Suspending and resuming processes 挂起和恢复进程
+2. Suspending and resuming processes 挂起和恢复进程，挂起时进程不占用CPU，resume后继续执行
 3. Providing mechanisms for process synchronization 提供进程同步机制
 4. Providing mechanisms for process communication 提供进程通信机制
 5. Providing mechanisms for deadlock handling 提供死锁处理机制
@@ -562,11 +709,11 @@ I/O subsystem responsible for I/O子系统的主要职责：
 
 1. Basic requirements for OS
 
-    - Sharing/multiplexing 资源共享/复用（CPU 时间复用、内存空间复用、/O设备复用、文件系统复用、网络端口复用）
+    - Sharing/multiplexing 资源共享/复用（CPU 时间复用、内存空间复用、I/O设备复用、文件系统复用、网络端口复用）
     - Isolation 隔离
-    - Interaction 交互
+    - Interaction 交互，进程和进程之间
     
-2. Abstraction 对硬件资源进行抽象，简化编程和使用。
+2. Abstraction 对硬件资源进行抽象，简化编程和使用。CPU只需要对数据进行运行；内存只需要知道需要 malloc 而不需要知道要分配到哪里；file 只需要知道要 open 而不需要知道具体的磁盘位置。
 3. Security 保护系统和用户数据不被非法访问或破坏。
 4. Performance 高效利用系统资源，提升整体性能。
 5. Range of uses 支持多种应用场景和用户需求。
