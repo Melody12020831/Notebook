@@ -3,7 +3,7 @@ statistics: True
 comments: true
 ---
 
-# Chapter 1
+# Chapter 1 | Overview
 
 ## Overview
 
@@ -22,7 +22,7 @@ comments: true
     - Make the computer system convenient to use.
 - Use the computer hardware in an efficient manner.
 
-操作系统是一个程序，它作为计算机用户和计算机硬件之间的中介。操作系统的目标包括执行用户程序，让用户更容易解决问题。让计算机系统更方便使用。高效地利用计算机硬件资源。
+操作系统是一个**程序**，它作为计算机用户和计算机硬件之间的中介。操作系统的目标包括执行用户程序，让**用户更容易解决问题**。让计算机系统更方便使用。高效地利用计算机硬件资源。
 
 如果一个程序缺失后，计算机无法正常运作，那么这个程序就可以被称为操作系统。也就是说，操作系统是支撑整个计算机系统正常运行的核心软件，没有它，用户和应用程序都无法直接使用硬件资源。
 
@@ -32,19 +32,19 @@ comments: true
 
 Computer system can be divided into four components
 
-1. Hardware – provides basic computing resources
+1. **Hardware** – provides basic computing resources
 
 这是所有计算和存储的物理基础，包括CPU、内存、硬盘、I/O设备等。
 
-2. Operating system 
+2. **Operating system**
 
 操作系统作为中介，负责管理和协调硬件资源，为上层程序提供统一的接口和运行环境。它屏蔽了硬件的复杂性，使得上层软件可以方便地使用硬件资源。
 
-3. System & application programs – define the ways in which the system resources are used to solve the computing problems of the users
+3. **System & application programs** – define the ways in which the system resources are used to solve the computing problems of the users
 
 这里包括编译器（compiler）、汇编器（assembler）、文本编辑器（text editor）、数据库系统（database system）等。这些程序直接为用户提供服务，帮助用户完成各种任务。
 
-4. Users
+4. **Users**
 
 用户通过系统和应用程序与计算机进行交互，实现自己的需求。
 
@@ -106,18 +106,18 @@ Computer system can be divided into four components
 
 ### Operating System Definition
 
-OS is a resource allocator
+OS is a **resource allocator**
 
 - Manages all resources
 - Decides between conflicting requests for efficient and fair resource use
 
-操作系统的一个核心作用是作为资源分配者，负责管理计算机中的所有资源（如CPU、内存、磁盘、I/O设备等）。当多个程序或用户同时请求资源时，操作系统需要在它们之间做出决策，确保资源被高效且公平地分配和使用。
+操作系统的一个核心作用是作为**资源分配者**，负责管理计算机中的所有资源（如CPU、内存、磁盘、I/O设备等）。当多个程序或用户同时请求资源时，操作系统需要在它们之间做出决策，确保资源被高效且公平地分配和使用。
 
-OS is a control program
+OS is a **control program**
 
 - Controls execution of programs to prevent errors and improper use of the computer
 
-操作系统还充当控制程序，负责控制程序的执行，防止错误发生以及防止对计算机的不当使用。例如，操作系统会阻止一个程序非法访问其他程序的内存空间，保证系统的安全和稳定。
+操作系统还充当**控制程序**，负责控制程序的执行，防止错误发生以及防止对计算机的不当使用。例如，操作系统会阻止一个程序非法访问其他程序的内存空间，保证系统的安全和稳定。
 
 !!! info
     实际上，操作系统并没有一个被普遍接受的标准定义。比如，有人认为“操作系统就是你买电脑时厂商预装的所有软件”，但不同厂商的理解和范围可能差别很大。
@@ -163,7 +163,7 @@ bootstrap program is loaded at power-up or reboot
 - Initializes all aspects of system
 - Loads operating system kernel and starts execution
 
-当计算机加电或重启时，首先加载的是引导程序（bootstrap program）。引导程序通常存储在ROM或EPROM中，通常被称为固件（firmware）。它负责初始化系统的所有方面，包括硬件检测、内存测试等。引导程序完成初始化后，会加载操作系统内核并开始执行。
+当计算机加电或重启时，**首先加载的是引导程序**（bootstrap program）。引导程序通常存储在**ROM**或EPROM中，通常被称为固件（firmware）（并且是在一个**已知**的位置）。它负责初始化系统的所有方面，包括硬件检测、内存测试等。引导程序完成初始化后，会加载操作系统内核并开始执行。
 
 ---
 
@@ -173,22 +173,23 @@ bootstrap program is loaded at power-up or reboot
 
 CPU、内存和各种外设通过总线和控制器实现数据交换和资源共享，操作系统负责协调这些硬件资源的高效、公平使用。
 
-- One or more CPUs, device controllers connect through common bus providing access to shared memory
-- Concurrent execution of CPUs and devices competing for memory cycles
-- I/O devices and the CPU can execute concurrently.
-- Each device controller is in charge of a particular device type.
-- Each device controller has a local buffer.
-- CPU moves data from/to main memory to/from local buffers
-- I/O is from the device to local buffer of controller.
-- Device controller informs CPU that it has finished its operation by causing an interrupt (via system bus).
+??? info "CPU and devices"
+    - One or more CPUs, device controllers connect through common bus providing access to shared memory
+    - Concurrent execution of CPUs and devices competing for memory cycles
+    - I/O devices and the CPU can execute concurrently.
+    - Each device controller is in charge of a particular device type.
+    - Each device controller has a local buffer.
+    - CPU moves data from/to main memory to/from local buffers
+    - I/O is from the device to local buffer of controller.
+    - Device controller informs CPU that it has finished its operation by causing an interrupt (via system bus).
 
 ---
 
 ## Common Functions of Interrupts
 
-Interrupt transfers control to the interrupt service routine generally, through the **interrupt vector**, which contains the addresses of all the service routines.
+Interrupt transfers control to the **interrupt service** routine generally, through the **interrupt vector**, which contains the addresses of all the service routines.
 
-当中断发生时，控制权会转移到中断服务程序（Interrupt Service Routine, ISR）。这种转移通常通过“中断向量”实现，中断向量中保存了所有中断服务程序的地址。这样，系统可以根据中断类型快速找到对应的处理程序。
+当中断发生时，控制权会转移到**中断服务程序**（Interrupt Service Routine, ISR）。这种转移通常通过“中断向量”实现，中断向量中保存了所有中断服务程序的地址。这样，系统可以根据中断类型快速找到对应的处理程序。
 
 Interrupt architecture must save the address of the interrupted instruction.
 
@@ -203,7 +204,7 @@ Incoming interrupts are disabled while another interrupt is being processed to p
 
 A **trap** is a software-generated interrupt caused either by an **error** or a **user request** (the latter is often referred to as a **system call**). Note: names may vary across different architectures.
 
-Trap 是一种由软件产生的中断，通常由程序错误（如除零错误）或用户请求（如系统调用）引发。不同体系结构对 trap 的命名可能不同。例如，在RISC-V架构中，trap可以细分为“异常（exception）和ecall（系统调用）”以及“中断（interrupt）”。
+Trap 是一种由**软件产生**的中断，通常由**程序错误**（如除零错误）或**用户请求**（如系统调用）引发。不同体系结构对 trap 的命名可能不同。例如，在RISC-V架构中，trap可以细分为“异常（exception）和ecall（系统调用）”以及“中断（interrupt）”。
 
 - exceptions & ecalls：由程序错误或系统调用引发。
 - interrupts：由外部设备等硬件事件引发。
@@ -284,19 +285,21 @@ An operating system is **interrupt** driven.
 
     操作系统不允许用户直接操作各种硬件资源，因此用户程序只能通过系统调用的方式来请求内核为其服务，间接地使用各种资源。
 
+    **“申请系统资源”**只是系统调用众多功能中的一种，属于“请求服务”这个大类的一个子集。比如，释放资源、进程通信、I/O操作等都不是“申请资源”，但都是系统调用的内容。
+
 ---
 
 ### Interrupt Handling
 
-The operating system preserves the state of the CPU by storing registers and the program counter.
+The operating system preserves the state of the CPU by **storing** ==registers== and the ==program counter==.
 
 Determines which type of interrupt has occurred:
 
 1. a generic routine examines the interrupt info 
 
-有一个通用的中断处理程序，先检查中断信息，然后根据不同类型再分发到具体的处理程序。
+有一个**通用的**中断处理程序，先检查中断信息，然后根据不同类型再分发到具体的处理程序。
 
-2. vectored interrupt system, indexed by a unique number
+2. **vectored interrupt system**, indexed by a **unique number**
 
 每种中断类型都有唯一编号，通过中断向量表直接定位到对应的中断服务程序，提高了响应速度。
 
@@ -335,6 +338,8 @@ Separate segments of code determine what action should be taken for each type of
 
 ### Two I/O Methods
 
+**Synchronous**
+
 After I/O starts, control returns to user program only upon I/O completion.
 
 用户进程发起I/O请求后，必须等待I/O操作完成才能继续执行。
@@ -342,6 +347,8 @@ After I/O starts, control returns to user program only upon I/O completion.
 - Wait instruction idles the CPU until the next interrupt
 - Wait loop (contention for memory access).
 - At most one I/O request is outstanding at a time, no simultaneous I/O processing.
+
+**Asynchronous**
 
 After I/O starts, control returns to user program without waiting for I/O completion.
 
@@ -356,7 +363,7 @@ After I/O starts, control returns to user program without waiting for I/O comple
 
 ### Device-Status Table
 
-Device-Status Table（设备状态表）是操作系统用来管理和跟踪所有I/O设备当前状态的数据结构。
+Device-Status Table（设备状态表）是操作系统用来管理和跟踪**所有 I/O 设备当前状态**的数据结构。
 
 ![img](./assets/1-13.png)
 
@@ -368,7 +375,7 @@ Device-Status Table（设备状态表）是操作系统用来管理和跟踪所�
 
 Used for high-speed I/O devices able to transmit information at close to memory speeds.
 
-DMA是一种用于高速I/O设备的数据传输方式，适用于那些数据传输速度接近内存速度的设备。
+DMA是一种用于**高速I/O设备**的**数据传输**方式，适用于那些数据传输速度接近内存速度的设备。
 
 Device controller transfers blocks of data from buffer storage directly to main memory without CPU intervention.
 
@@ -388,8 +395,8 @@ Only one interrupt is generated per block, rather than the one interrupt per byt
 
 ### Migration of Integer A from Disk to Register
 
-- Multitasking environments must be careful to use most recent value, no matter where it is stored in the storage hierarchy
-- Multiprocessor environment must provide cache coherency in hardware such that all CPUs have the most recent value in their cache
+- **Multitasking** environments must **be careful** to use most recent value, no matter where it is stored in the storage hierarchy
+- **Multiprocessor** environment must provide **cache coherency** in hardware such that all CPUs have the most recent value in their cache
 
 ![img](./assets/1-7.png)
 
@@ -440,7 +447,7 @@ Remote memory across the interconnect is slow
 
 Operating systems need careful CPU scheduling and memory management
 
-尽量让进程在访问本地内存的CPU上运行，减少远程访问，提高效率。合理分配和迁移内存，保证数据局部性，避免频繁的远程内存访问。
+尽量让进程在访问本地内存的CPU上运行，减少远程访问，提高效率。**合理分配和迁移内存**，保证数据局部性，避免频繁的远程内存访问。
 
 ![img](./assets/1-10.png)
 
@@ -456,11 +463,11 @@ Operating systems need careful CPU scheduling and memory management
 
 - Single user cannot keep CPU and I/O devices busy at all times
 
-单用户无法让CPU和I/O设备始终保持忙碌：如果只有一个用户或一个作业在运行，当它等待I/O（如读写磁盘）时，CPU就会空闲，资源被浪费。
+单用户无法让 CPU 和 I/O 设备始终保持忙碌：如果只有一个用户或一个作业在运行，当它等待I/O（如读写磁盘）时，CPU就会空闲，资源被浪费。
 
 - Multiprogramming organizes jobs (code and data) so CPU always has one to execute
 
-操作系统会把多个作业（包括代码和数据）同时装入内存。这样，CPU总有作业可以执行。
+操作系统会把多个作业（包括代码和数据）**同时装入内存**。这样，CPU总有作业可以执行。
 
 - A subset of total jobs in system is kept in memory. One job selected and run via job scheduling
 
@@ -476,7 +483,7 @@ Operating systems need careful CPU scheduling and memory management
 
 **Timesharing** (multitasking) is logical extension in which CPU switches jobs so frequently that users can interact with each job while it is running, creating interactive computing (**interactivity** 关注用户)
 
-分时系统是多道程序设计的进一步发展，强调交互性和多用户支持。CPU在多个作业之间快速切换，使每个用户都感觉自己的程序在独占运行，实现“交互式计算”。
+分时系统是多道程序设计的进一步发展，强调交互性和多用户支持。CPU在多个作业之间**快速切换**，使每个用户都感觉自己的程序在独占运行，实现“交互式计算”。
 
 - Response time should be < 1 second
 
@@ -523,15 +530,15 @@ Thus we need **protection**:
 
 为了防止进程之间互相干扰、破坏操作系统或占用过多资源，操作系统必须具备保护机制。
 
-Dual-mode operation allows OS to protect itself and other system components
+**Dual-mode** operation allows OS to protect itself and other system components
 
-User mode and kernel mode 
+==User mode and kernel mode==
 
-Mode bit provided by hardware
+**Mode bit** provided by hardware
 
 - Provides ability to distinguish when system is running user code or kernel code
 - Some instructions designated as privileged, only executable in kernel mode
-- System call changes mode to kernel, return from call resets it to user
+- **System call changes mode to kernel, return from call resets it to user**
 
 某些指令（如I/O操作、内存管理等）被指定为特权指令，只能在内核态下执行，防止用户程序随意操作硬件。用户程序通过系统调用（system call）请求操作系统服务时，CPU会将模式位切换为内核态，执行完毕后再切回用户态。
 
@@ -547,18 +554,20 @@ Mode bit provided by hardware
 
     如果没有系统调用机制，用户程序可以直接操作硬件或内核资源，系统就无法保证安全和隔离，容易被恶意程序破坏。
 
+    ==库函数运行在用户空间而系统调用运行在内核空间。大部分库函数可能使用系统调用来实现目的。==
+
 ---
 
 ### Transition from User to Kernel Mode
 
-Timer to prevent infinite loop / process hogging resources
+**Timer** to prevent infinite loop / process hogging resources
 
 - Set interrupt after specific period
 - Operating system decrements counter
 - When counter zero generate an interrupt
 - Set up before scheduling process to regain control or terminate program that exceeds allotted time
 
-为了防止某个进程长时间占用CPU（如死循环），操作系统会设置定时器。定时器到期后产生中断，操作系统可以重新获得控制权，调度其他进程或终止违规进程。
+为了防止某个进程长时间占用CPU（如死循环），操作系统会设置定时器。**定时器到期后产生中断**，操作系统可以重新获得控制权，调度其他进程或终止违规进程。
 
 ![img](./assets/1-12.png)
 
@@ -578,7 +587,7 @@ Timer to prevent infinite loop / process hogging resources
 
 ## Process Management
 
-A process is a program in execution. It is a unit of work within the system. Program is a passive entity, process is an active entity.
+A **process** is a **program** in execution. It is a unit of work within the system. Program is a passive entity, process is an active entity.
 
 Process needs resources to accomplish its task
 
@@ -605,11 +614,16 @@ Typically system has many processes, some user, some operating system running co
 
 - Concurrency by multiplexing the CPUs among the processes / threads
 
-系统中通常有多个进程（用户进程和系统进程）同时运行，操作系统通过在进程/线程之间切换，实现并发。
+系统中通常有**多个进程**（用户进程和系统进程）同时运行，操作系统通过在进程/线程之间切换，实现并发。
+
+!!! info "about 线程 and 进程"
+    进程：是操作系统**资源分配的基本单位**，是正在运行的程序。每个进程有独立的地址空间、代码、数据和系统资源。
+
+    线程：是进程内的执行单元，是CPU**调度的基本单位**。一个进程可以包含多个线程，线程共享进程的资源。
 
 ---
 
-The operating system is responsible for the following activities in  connection with process management:
+The operating system is responsible for the following activities in connection with process management:
 
 1. Creating and deleting both user and system processes 创建和删除用户及系统进程
 2. Suspending and resuming processes 挂起和恢复进程，挂起时进程不占用CPU，resume后继续执行
@@ -619,7 +633,7 @@ The operating system is responsible for the following activities in  connection 
 
 ---
 
-All data must be in memory before and after processing. All instructions must be in memory in order to execute 
+All data must be in memory before and after processing. All instructions must be in memory in order to execute
 
 所有数据和指令在处理前后都必须在内存中。
 
@@ -629,9 +643,9 @@ Memory management determines what is in memory when
 
 Memory management activities
 
-- Keeping track of which parts of memory are currently being used and by whom 跟踪内存的使用情况和使用者
-- Deciding which processes (or parts thereof) and data to move into and out of memory 决定哪些进程（或其部分）和数据需要调入或调出内存
-- Allocating and deallocating memory space as needed 按需分配和回收内存空间
+- Keeping track of which parts of memory are currently being used and by whom **跟踪内存**的使用情况和使用者
+- Deciding which processes (or parts thereof) and data to move into and out of memory **决定**哪些进程（或其部分）和数据需要调入或调出内存
+- Allocating and deallocating memory space as needed **按需分配和回收内存空间**
 
 ---
 
@@ -639,7 +653,7 @@ Memory management activities
 
 OS provides uniform, logical view of information storage
 
-操作系统为信息存储提供统一的逻辑视图，把物理存储抽象为文件。
+操作系统为信息存储提供统一的逻辑视图，**把物理存储抽象为文件**。
 
 - Abstracts physical properties to logical storage unit  - file
 - Each medium is controlled by device (i.e., disk drive, tape drive)
@@ -691,7 +705,7 @@ Some storage needs not be fast
 
 One purpose of OS is to hide peculiarities of hardware devices from the user – ease of usage & programming
 
-操作系统的一个重要目标是屏蔽硬件设备的差异，简化用户和程序员的操作。
+操作系统的一个重要目标是**屏蔽硬件设备的差异**，简化用户和程序员的操作。
 
 I/O subsystem responsible for I/O子系统的主要职责：
 
@@ -709,13 +723,13 @@ I/O subsystem responsible for I/O子系统的主要职责：
 
 1. Basic requirements for OS
 
-    - Sharing/multiplexing 资源共享/复用（CPU 时间复用、内存空间复用、I/O设备复用、文件系统复用、网络端口复用）
-    - Isolation 隔离
-    - Interaction 交互，进程和进程之间
+    - Sharing/multiplexing **资源共享/复用**（CPU 时间复用、内存空间复用、I/O设备复用、文件系统复用、网络端口复用）
+    - Isolation **隔离**
+    - Interaction **交互，进程和进程之间**
     
-2. Abstraction 对硬件资源进行抽象，简化编程和使用。CPU只需要对数据进行运行；内存只需要知道需要 malloc 而不需要知道要分配到哪里；file 只需要知道要 open 而不需要知道具体的磁盘位置。
-3. Security 保护系统和用户数据不被非法访问或破坏。
-4. Performance 高效利用系统资源，提升整体性能。
+2. Abstraction **对硬件资源进行抽象**，简化编程和使用。CPU只需要对数据进行运行；内存只需要知道需要 malloc 而不需要知道要分配到哪里；file 只需要知道要 open 而不需要知道具体的磁盘位置。
+3. Security **保护系统和用户数据**不被非法访问或破坏。
+4. Performance 高效利用系统资源，**提升整体性能**。
 5. Range of uses 支持多种应用场景和用户需求。
 
 ---
