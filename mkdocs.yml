@@ -210,13 +210,20 @@ nav:
     - "TOC":
       - Computer_Science/TOC/index.md
       - Computer_Science/TOC/Chapter1.md
+      - Computer_Science/TOC/Chapter2.md
     - "OS":
       - Computer_Science/OS/index.md
       - Computer_Science/OS/Chapter1.md
       - Computer_Science/OS/Chapter2.md
+      - Computer_Science/OS/Chapter3.md
+      - Computer_Science/OS/Chapter4.md
+      - Computer_Science/OS/Chapter5.md
+      - Computer_Science/OS/Chapter8.md
     - "CN":
       - Computer_Science/CN/index.md
       - Computer_Science/CN/Chapter1.md
+      - Computer_Science/CN/Chapter2.md
+      - Computer_Science/CN/Chapter3.md
     - "Visualization":
       - Computer_Science/Visualization/note.md
     - "编程语言":
@@ -267,3 +274,4 @@ nav:
       - Miscellaneous/UBC/block chain DAY 6.md
       - Miscellaneous/UBC/block chain DAY 7.md
       - Miscellaneous/UBC/block chain DAY 8.md
+    - Miscellaneous/cs231n/note.md

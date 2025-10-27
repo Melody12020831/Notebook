@@ -3,7 +3,7 @@ statistics: True
 comments: true
 ---
 
-# Chapter 1
+# Chapter 1 | 概述
 
 ## 网络、互连网（互联网）与因特网的区别与关系
 
@@ -1057,5 +1057,23 @@ TCP/IP 参考模型（事实标准）：应用层、运输层、网际层、网�
 
 ??? note "answer"
     C
+
+---
+
+一些综合应用题
+
+???+ example "question"
+    ![img](./assets/1-30.png)
+
+    ![img](./assets/1-31.png)
+
+??? note "answer"
+    ![img](./assets/1-33.png)
+
+???+ example "question"
+    ![img](./assets/1-32.png)
+
+??? note "answer"
+    ![img](./assets/1-34.png)
 
 ---

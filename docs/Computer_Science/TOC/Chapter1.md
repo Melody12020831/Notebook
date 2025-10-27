@@ -971,98 +971,97 @@ $$f(d) = D$$
 
 定理得证。
 
+<div id = "infinite_sequences"></div>
+
 ???+ example
     Considering the set 𝑇 of all infinite sequences of binary digits (i.e. each digit is zero or one). Is 𝑇 countable?
     
     考虑一个集合 T，它包含了所有可能的“无限长度的二进制数字序列”（即序列中的每一位不是0就是1）。请问这个集合 T 是可数的（countable）吗？
 
 ??? note "answer"
+    首先，**无限二进制序列**与**自然数集合的子集**之间存在一一对应的关系。
 
+    1.  先考虑集合 `{1, 4}` 可以对应一个无限序列。这个序列的规则是：如果自然数 `n` 在这个集合里，那么序列的第 `n` 位就是1；如果不在，就是0。（这里我们假设位置从0开始计数）。
 
+    -   **集合 `{1, 4}`**
+    -   对应的序列：第1位和第4位是1，其他所有位都是0。
+    -   序列形式：`0 1 0 0 1 0 0 0 ...`
 
-首先，**无限二进制序列**与**自然数集合的子集**之间存在一一对应的关系。
+    反过来也一样，任何一个无限二进制序列也对应一个独一无二的自然数子集。例如：
 
-1.  先考虑集合 `{1, 4}` 可以对应一个无限序列。这个序列的规则是：如果自然数 `n` 在这个集合里，那么序列的第 `n` 位就是1；如果不在，就是0。（这里我们假设位置从0开始计数）。
+    -   序列 `1 0 1 0 0 ...` 对应集合 `{0, 2}`。
+    -   序列 `1 1 1 1 ...` 对应所有自然数的集合 `N`。
+    -   序列 `0 0 0 0 ...` 对应空集 `∅`。
 
--   **集合 `{1, 4}`**
--   对应的序列：第1位和第4位是1，其他所有位都是0。
--   序列形式：`0 1 0 0 1 0 0 0 ...`
+    2.  **问题的转化**：由于存在这种完美的一一对应关系，原问题“无限二进制序列的集合是否可数？”就等价于新问题：“**自然数集 N 的所有子集（即幂集 P(N)）是否可数？**”
 
-反过来也一样，任何一个无限二进制序列也对应一个独一无二的自然数子集。例如：
--   序列 `1 0 1 0 0 ...` 对应集合 `{0, 2}`。
--   序列 `1 1 1 1 ...` 对应所有自然数的集合 `N`。
--   序列 `0 0 0 0 ...` 对应空集 `∅`。
+    接着采用**反证法**（Proof by Contradiction）。
 
-2.  **问题的转化**：由于存在这种完美的一一对应关系，原问题“无限二进制序列的集合是否可数？”就等价于新问题：“**自然数集 N 的所有子集（即幂集 P(N)）是否可数？**”
+    1.  **提出假设**：
 
-接着采用**反证法**（Proof by Contradiction）。
+    我们首先**假设集合 T 是可数的**。如果这个假设成立，那么我们就可以把所有无限二进制序列排成一个完整的、无穷的列表，像这样：
 
-1.  **提出假设**：
+    -   序列0: $S_0$
+    -   序列1: $S_1$
+    -   序列2: $S_2$
+    -   ...
+    -   序列n: $S_n$
+    -   ...
 
-我们首先**假设集合 T 是可数的**。如果这个假设成立，那么我们就可以把所有无限二进制序列排成一个完整的、无穷的列表，像这样：
+    ![img](./assets/1-12.png)
 
--   序列0: $S_0$
--   序列1: $S_1$
--   序列2: $S_2$
--   ...
--   序列n: $S_n$
--   ...
+    每一行代表一个无限二进制序列。
 
-![img](./assets/1-12.png)
+    -   第0行是列表中的第一个序列 (`0 1 0 0 1 0 0 ...`)
+    -   第1行是第二个序列 (`1 1 0 1 1 0 0 ...`)
+    -   第2行是第三个序列 (`0 0 0 0 0 0 0 ...`)
+    -   以此类推。
 
-每一行代表一个无限二进制序列。
+    2.  **构造一个“幽灵序列”**：
 
--   第0行是列表中的第一个序列 (`0 1 0 0 1 0 0 ...`)
--   第1行是第二个序列 (`1 1 0 1 1 0 0 ...`)
--   第2行是第三个序列 (`0 0 0 0 0 0 0 ...`)
--   以此类推。
+    接下来，我们利用这个表格构造一个新的、特殊的序列，我们称之为 $S_{new}$。构造规则如下：
 
-2.  **构造一个“幽灵序列”**：
+    -   观察表格中**对角线上的数字**（用红色标出的部分）：`0, 1, 0, 0, 1, 0, 1, 0...`
+    -   将这些对角线数字**依次取反**（0变1，1变0），形成我们的新序列 $S_{new}$。
+    -   $S_{new}$ 的第0位 = (第0行第0位的数字) 取反 = (0) 取反 = **1**
+    -   $S_{new}$ 的第1位 = (第1行第1位的数字) 取反 = (1) 取反 = **0**
+    -   $S_{new}$ 的第2位 = (第2行第2位的数字) 取反 = (0) 取反 = **1**
+    -   $S_{new}$ 的第3位 = (第3行第3位的数字) 取反 = (0) 取反 = **1**
+    -   ...
 
-接下来，我们利用这个表格构造一个新的、特殊的序列，我们称之为 $S_{new}$。构造规则如下：
+    所以，我们构造出的新序列 $S_{new}$ 是 `1 0 1 1 ...`。
 
--   观察表格中**对角线上的数字**（用红色标出的部分）：`0, 1, 0, 0, 1, 0, 1, 0...`
--   将这些对角线数字**依次取反**（0变1，1变0），形成我们的新序列 $S_{new}$。
--   $S_{new}$ 的第0位 = (第0行第0位的数字) 取反 = (0) 取反 = **1**
--   $S_{new}$ 的第1位 = (第1行第1位的数字) 取反 = (1) 取反 = **0**
--   $S_{new}$ 的第2位 = (第2行第2位的数字) 取反 = (0) 取反 = **1**
--   $S_{new}$ 的第3位 = (第3行第3位的数字) 取反 = (0) 取反 = **1**
--   ...
+    3.  **导出矛盾**：
 
-所以，我们构造出的新序列 $S_{new}$ 是 `1 0 1 1 ...`。
+    -   这个新序列 $S_{new}$ 本身也是一个无限二进制序列，所以它**必须**属于集合 T。
+    -   既然它属于 T，而我们又假设表格里的列表是**完整**的，那么 $S_{new}$ **必定**是列表中的某一行。
+    -   **但这是不可能的！** 为什么？
 
-3.  **导出矛盾**：
+        -   $S_{new}$ 不可能是列表中的**第0行**，因为它的第0位（是1）与第0行的第0位（是0）不同。
+        -   $S_{new}$ 不可能是列表中的**第1行**，因为它的第1位（是0）与第1行的第1位（是1）不同。
+        -   $S_{new}$ 不可能是列表中的**第 n 行**，因为根据我们的构造方法，它的第 n 位永远与第 n 行的第 n 位（对角线上的数字）相反。
 
--   这个新序列 $S_{new}$ 本身也是一个无限二进制序列，所以它**必须**属于集合 T。
--   既然它属于 T，而我们又假设表格里的列表是**完整**的，那么 $S_{new}$ **必定**是列表中的某一行。
--   **但这是不可能的！** 为什么？
+    我们构造出的这个序列 $S_{new}$ 与列表中的**每一行**都至少有一个位置不同。这意味着，$S_{new}$ **根本不在这个列表里**！
+    这就产生了一个尖锐的矛盾：我们假设列表是完整的，但我们却找到了一个不在列表中的元素。
 
-    -   $S_{new}$ 不可能是列表中的**第0行**，因为它的第0位（是1）与第0行的第0位（是0）不同。
-    -   $S_{new}$ 不可能是列表中的**第1行**，因为它的第1位（是0）与第1行的第1位（是1）不同。
-    -   $S_{new}$ 不可能是列表中的**第 n 行**，因为根据我们的构造方法，它的第 n 位永远与第 n 行的第 n 位（对角线上的数字）相反。
+    4.  **得出结论**：
 
-我们构造出的这个序列 $S_{new}$ 与列表中的**每一行**都至少有一个位置不同。这意味着，$S_{new}$ **根本不在这个列表里**！
-这就产生了一个尖锐的矛盾：我们假设列表是完整的，但我们却找到了一个不在列表中的元素。
+    这个矛盾说明我们最初的假设——“集合T是可数的”——是**错误**的。
+    因此，**集合T（所有无限二进制序列的集合）是不可数的（uncountable）**。
 
-4.  **得出结论**：
+    > **What if the sequences is finite? （如果序列是有限的呢？）**
 
-这个矛盾说明我们最初的假设——“集合T是可数的”——是**错误**的。
-因此，**集合T（所有无限二进制序列的集合）是不可数的（uncountable）**。
+    如果序列的长度是**有限**的，那么这个集合就是**可数的**。
 
+    我们可以按照序列的长度来依次列出所有可能的有限序列，从而证明它是可数的：
 
-> **What if the sequences is finite? （如果序列是有限的呢？）**
+    -   长度为0的序列： (空序列)
+    -   长度为1的序列： 0, 1
+    -   长度为2的序列： 00, 01, 10, 11
+    -   长度为3的序列： 000, 001, 010, ...
+    -   ...
 
-如果序列的长度是**有限**的，那么这个集合就是**可数的**。
-
-我们可以按照序列的长度来依次列出所有可能的有限序列，从而证明它是可数的：
-
--   长度为0的序列： (空序列)
--   长度为1的序列： 0, 1
--   长度为2的序列： 00, 01, 10, 11
--   长度为3的序列： 000, 001, 010, ...
--   ...
-
-通过这种方式，我们可以不重不漏地将所有有限二进制序列排列起来，因此它是可数集。对角线论证法在这里会失效，因为我们无法构造出一个“无限长”的幽灵序列来证明列表不完整。
+    通过这种方式，我们可以不重不漏地将所有有限二进制序列排列起来，因此它是可数集。对角线论证法在这里会失效，因为我们无法构造出一个“无限长”的幽灵序列来证明列表不完整。
 
 ---
 
@@ -1178,6 +1177,8 @@ We write $w \in \Sigma^*$ to express that $w$ is a string **in** $\Sigma^*$
 - If 𝑤 is a string of length 0, then $w^R = w = e$
 - If 𝑤 is a string of length 𝑛 + 1 > 0, then 𝑤 = 𝑢𝑎 for some $a \in \Sigma$ , and $w^R = au^R$
 
+把最后一个字符移到最前面，然后递归地反转剩下的部分。
+
 ---
 
 ### Language：Set of Strings
@@ -1193,5 +1194,383 @@ $$L = \{w \in \Sigma^* | \text{𝑤 has property P} \}$$
 
 - 语言是 $\Sigma^*$ 的子集，即由 $\Sigma$ 上的字符串组成的集合。可以是有限的，也可以是无限的。
 - $\emptyset$ 也是 $\Sigma^*$ 的子集，因此也是一种语言。
+
+---
+
+**Theorem** : If $\Sigma$ is a finite alphabet, then $\Sigma^*$ is countably infinite set.
+
+**定理：如果 $\Sigma$ 是一个有限字母表，那么 $\Sigma^*$ 是一个可数无穷集。**
+
+我们可以按照字符串的长度和字典序来排列 $\Sigma^*$ 中的所有元素，从而证明它是可数的：
+
+1.  先列出长度为 0 的字符串。
+2.  再列出长度为 1 的所有字符串。
+3.  接着列出长度为 2 的所有字符串。
+4.  ...以此类推。
+
+对于 $\Sigma$ = {0, 1}，这个列表就是：`""`, `"0"`, `"1"`, `"00"`, `"01"`, `"10"`, `"11"`, `"000"`, ...
+
+因为我们可以用这种方式把所有字符串不重不漏地排列成一个序列，所以 $\Sigma^*$ 是可数无穷的。
+
+??? note "proof in English"
+    ![img](./assets/1-13.png)
+
+> 与之前的[命题](https://melody12020831.github.io/Notebook/Computer_Science/TOC/Chapter1/#infinite_sequences)（无限长度的二进制数字序列）不同。
+
+---
+
+> How many strings over a non-empty alphabet?
+
+- Countably infinite
+
+正如之前所解释的，我们可以通过按长度排序，再按字典序排序的方式，将所有可能的字符串（"", "0", "1", "00", "01", ...）不重不漏地排成一个无限长的列表。
+
+因为可以被列举并编号，所以这个集合是可数无穷的。它的 Cardinality 与自然数集 ℕ 相同，记为 $|\Sigma^*| = |\mathbb{N}| = \aleph_0$。
+
+> Is a language countable over a non-empty alphabet?
+
+- Any language over any alphabet is countable.
+
+一个语言就是从所有可能的字符串（Σ*）中挑选出来的一个集合（可以是空集，有限集，或无限集）。
+
+因为一个语言 L 是 Σ* 的一个子集，而 Σ* 本身是可数无穷的。一个可数无穷集合的任何子集，其元素数量要么是有限的，要么是可数无穷的。这两种情况都属于“可数”的范畴。一个子集的规模不可能超过母集。
+
+> How many languages over a non-empty alphabet?
+
+- $|\mathbb{R}|$
+
+1. 我们已经定义了“语言”是 Σ* 的任意子集。那么，“所有语言的总数”就等于“Σ* 的所有子集的总数”。
+2. 一个集合 S 的所有子集的集合被称为该集合的幂集 (Power Set)，记作 P(S)。所以，这个问题就是在问幂集 P(Σ*) 的基数。
+3. 由于 Σ* 是可数无穷的（与自然数集 ℕ 同构）。根据集合论中的一个基本定理（康托定理），一个无穷集合的幂集的基数严格大于原集合的基数。而对于可数无穷集（如 Σ* 或自然数集 ℕ），其幂集的基数等于实数集 ℝ 的基数。这是一种更“高级”的无穷，是不可数的。
+
+---
+
+#### Operations of Languages
+
+- Union, Intersection, Difference, Complement(补集) ($\overline{L} = \Sigma^* - L$)
+- Exponentiation
+
+    - $L^0 = \{e\}$
+    - $L^{i+1} = L^i \cdot L$ , for $i \ge 0$
+
+- Concatenation(连接) $L_1 \cdot L_2 = \{xy | x \in L_1 \land y \in L_2\}$
+- Kleene Star
+
+$$L^* = \{w \in \Sigma^*| w = w_1 \dots w_k \land k \ge 0, w_1, \dots, w_k \in L\} = \bigcup_{i \ge 0} L^i$$
+
+- We write $L^+$ for the language $LL^*$ . Equivalently, $L^+$ is the language
+
+$$L^+ = \{w \in \Sigma^*| w = w_1 \dots w_k \land k \ge 1, w_1, \dots, w_k \in L\} = \bigcup_{i \ge 1} L^i$$
+
+Note that $L^+$ can be considered as **the closure of 𝐿 under the function of concatenation**. That is, $L^+$ is the smallest language that include 𝐿 and all strings that are concatenations of strings in L.
+
+> Can $e \in L^+$ for some $\Sigma$ ?
+
+- Yes. If $e \in L$ , then $e \in L^+$ . For example, if $\Sigma = \{0,1\}$ and $L = \{e, 0, 1\}$ , then $e \in L^+$ .
+
+> When we have $L^* = L^+$ ?
+
+- $L^* = L^+ \cup \{e\}$ . So, if $e \in L^+$ , then $L^* = L^+$ .
+
+> Can $L^*$ or $\emptyset^*$ be empty?
+
+- For $L^*$ , no. Since $e \in L^*$ for any language L, $L^*$ is never empty. For $\emptyset^*$ , no. Since $\emptyset^0 = \{e\}$ , $\emptyset^*$ is never empty.
+
+---
+
+**Remark** : The use of $\Sigma^*$ to denote the set of all strings over $\Sigma$ is consistent with the notation for the Kleene star of $\Sigma$
+
+- $\emptyset^* = \{e\}$
+- $L^+ = L \cdot L^*$
+- For any language 𝐿, $(L^*)^* = L^* ; L \emptyset = \emptyset L = \emptyset$.
+
+??? example "question"
+    Proof $L = \{w \in \{0,1\}^* | w \text{ w has an unequal number of 0's and 1's } \}$ Then $L^* = \{0,1\}^*$
+
+    Hint: $L_1 \subseteq L_2 \rightarrow L_1^* \subseteq L_2^*$ and $\{0,1\} \subseteq L$
+
+??? note "answer"
+    如何证明两个集合相等？ $A = B$ 当且仅当 $A \subseteq B$ 且 $B \subseteq A$。
+
+    1. L 本身就是 $\{0,1\}^*$ 的一个子集，因为 L 里的字符串都是由 '0' 和 '1' 构成的。$L^*$ 是通过拼接 L 中的字符串得到的。既然原材料都是 '0' 和 '1'，拼接后的产品自然也只能由 '0' 和 '1' 构成。
+
+    $$\therefore L^* \subseteq \{0,1\}^*$$
+
+    2. 我们令 $L_1 = \{0,1\}$，令 $L_2 = L$。因此可以得到 $L_1 \subseteq L_2$。再根据提示可以得到 $L_1^* \subseteq L_2^*$，即 $\{0,1\}^* \subseteq L^*$。
+
+---
+
+### Finite Representations of Languages
+
+We can represent a **finite** language by **finite means**
+
+Languages are often **infinite**
+
+- and so a natural question arises: if a finite representation is possible and when it is possible when a **language is infinite**
+
+The representation of languages by **finite** specifications is a central issue of the **theory of computation**
+
+Of course we have to define first formally what do we mean by representation by **finite specifications**, or more precisely by a **finite representation**
+
+以上内容总结来说就是对于无限语言，我们能否用有限的方式来描述它？换句话说，是否存在一种“规则”或“公式”，用有限的信息就能描述出这个无限集合？
+
+---
+
+Let $L = \{w \in \{0,1\}^* : w \text{ has two or three occurrences of 1,the first and second of which are not consecutive } \}$
+
+> w 中有2个或3个'1'，且第1个和第2个'1'不相邻
+
+The language can be described using only singleton sets and the symbols as
+
+$$\{0\}^* \{1\} \{0\}^* \{0 1\} \{0\}^* ((\{1\} \{0\}^*) \cup \emptyset^*)$$
+
+The language can be written simply as
+
+$$0^* 1 0^* 010^*(1 0^* \cup \emptyset^*)$$
+
+---
+
+**Definition:** The regular expressions are all strings over the alphabet $\Sigma \cup \{(,),*,\cup, *\}$ that can be obtained as follows.
+
+1. $\emptyset$ and $\{x\}$ ($\forall a \in \Sigma$) is a regular expression.
+
+2. If $\alpha$ and $\beta$ are regular expressions, then so are $(\alpha \beta)$ , $(\alpha \cup \beta)$ and $(\alpha^*)$.
+
+> {a} 只包含字符串 "a"
+> 
+> {b} 只包含字符串 "b"
+>
+> ({a} $\cup$ {b}) 包含字符串 "a" 或 "b"
+> 
+> (({a} $\cup$ {b})$^*$) 包含所有由 "a" 和 "b" 组成的任意长度字符串（包括空串）
+> 
+> ({a}{b}) 只包含字符串 "ab"
+> 
+> ({a}$^*$) 包含由 0个或多个 "a" 组成的字符串
+
+---
+
+**Definition:** We define a $R$ of **regular expressions** over an alphabet $\Sigma$ as follows : $R \subseteq (\Sigma \cup \{(,) , \emptyset, *\})^*$ and $R$ is the smallest set such that
+
+- $\emptyset \in R$ and $\Sigma \subseteq R$
+- If $\alpha, \beta \in R$ , then $(\alpha \beta) \in R, (\alpha \cup \beta) \in R$ and $(\alpha^*) \in R$
+
+???+ example "question"
+    $$L = \{ab,aabb,aaabbb,...\} = \{a^n b^n | n \ge 1\}$$
+
+    这是正则语言吗？
+
+??? note "answer"
+    这是一个非常重要的反例！这个语言 L 不是一个正则语言。
+
+    正则表达式描述的语言可以用“有限状态自动机”来识别，这种机器没有记忆能力。而要识别 aⁿbⁿ，机器必须“记住”a 出现了多少次，以便检查b的数量是否完全相等。这种需要无限“计数”的能力，超出了正则表达式和有限状态自动机的范畴。
+
+Languages represented by **regular expressions** are called **regular languages**.
+
+???+ example "question"
+    Can we finitely represent all languages over an alphabet?
+
+??? note "answer"
+    No. 
+
+    对于任何一个有限的符号表，由它构成的所有有限长度字符串的集合 (Σ*) 是可数无穷的。
+
+    我们能写出来的所有可能的正则表达式（或者任何其他基于字符串的描述方法）的总数是可数无穷的。
+
+    “所有可能的语言”的总数，就等于 Σ* 的所有子集的总数。我们已经知道 Σ* 是一个可数无穷集。根据康托定理，一个可数无穷集的幂集是一个不可数无穷集。它的“大小”或“基数”与实数集 ℝ 相同，远比可数无穷大得多。
+
+---
+
+**Definition**: The representation relation between regular expressions 
+and languages they represent is established by a function $\mathcal{L}$ such that :
+
+- If $\alpha \in R$ is any regular expression, then $\mathcal{L}(\alpha)$ is the language represented by $\alpha$
+
+**Formal definition**
+
+The function $\mathcal{L} : R \rightarrow 2^{\Sigma^*}$ is defined recursively as follows:
+
+- $\mathcal{L}(\emptyset) = \emptyset$ , $\mathcal{L}(a) = \{a\}$ for all $a \in \Sigma$
+- If $\alpha, \beta \in R$ , then
+
+    - $\mathcal{L}((\alpha \beta)) = \mathcal{L}(\alpha) \cdot \mathcal{L}(\beta)$
+    - $\mathcal{L}(\alpha \cup \beta) = \mathcal{L}(\alpha) \cup \mathcal{L}(\beta)$
+    - $\mathcal{L}(\alpha^*) = (\mathcal{L}(\alpha))^*$
+
+---
+
+Regular Expression Identities
+
+![img](./assets/1-14.png)
+
+??? example "question"
+    ![img](./assets/1-15.png)
+
+---
+
+Every language that can be represented by a regular expression can be represented by infinitely many of them.
+
+任何一个可以用正则表达式来表示的语言（即正则语言），也都可以被**无穷多个**不同的正则表达式所表示。
+
+The regular expressions are an inadequate specification method in general.
+
+作为一个通用的语言描述方法，正则表达式是不完备的（能力不足）。
+
+---
+
+Two important and useful means of representing languages:
+
+**language recognition device**: to answer questions of the form “Is string 𝑤 a member of 𝐿?
+
+**language generators**: regular expression
+
+---
+
+## PPT 最后的一些题目
+
+![img](./assets/1-16.png)
+
+### **1.7.4. 证明下列等式**
+
+证明两个集合（语言）`A` 和 `B` 相等，通常需要证明 `A ⊆ B` 且 `B ⊆ A`。
+
+**(a) `{ε}* = {ε}`**
+
+* **证明:**
+
+    * 根据克莱尼星号 `*` 的定义，`L*` 是由 `L` 中的字符串进行0次或多次拼接而成的集合。
+    * 设 `L = {ε}`。
+    * **0次拼接：** 按照定义，结果是空字符串 `ε`。
+    * **1次或多次拼接：** 从 `L` 中取出字符串进行拼接，例如 `ε`, `εε`, `εεε`, ...。因为空字符串是拼接运算的单位元，任何字符串与 `ε` 拼接都等于其本身，所以 `εε...ε = ε`。
+    * 因此，无论进行多少次拼接，唯一能生成的字符串就是 `ε`。
+    * 所以，`{ε}* = {ε}`。
+
+**(b) `(L*)* = L*`** (题中 `any L ⊆ L*` 应为 `(L*)* = L*` 的笔误)
+
+* **证明:**
+
+    1.  **证明 `L* ⊆ (L*)*`:**
+
+        * 设 `w` 是 `L*` 中的任意一个字符串。
+        * `(L*)*` 的定义是 `L*` 中的字符串进行0次或多次拼接。如果我们只进行**1次**拼接，那么 `L*` 中的每一个字符串本身就都属于 `(L*)*`。
+        * 因此，`L*` 是 `(L*)*` 的子集。
+
+    2.  **证明 `(L*)* ⊆ L*`:**
+
+        * 设 `w` 是 `(L*)*` 中的任意一个字符串。这意味着 `w = w₁w₂...wₖ`，其中每一个 `wᵢ` 都来自于 `L*`。
+        * 而每一个 `wᵢ` 又是由 `L` 中的字符串拼接而成的。
+        * 所以 `w` 本质上是一个更长的、由 `L` 中的字符串拼接而成的序列。
+        * 根据 `L*` 的定义（由`L`中字符串进行任意次拼接），`w` 必然属于 `L*`。
+        * 因此，`(L*)*` 是 `L*` 的子集。
+
+    * **结论：** 既然它们互为子集，所以 `(L*)* = L*`。
+
+**(c) `{a, b}* = (a*b)*{a}*`**
+
+* **证明:**
+
+    1.  **证明 `(a*b)*{a}* ⊆ {a, b}*`:**
+
+        * 右侧表达式 `(a*b)*{a}*` 中的所有字符串都是由符号 `a` 和 `b` 构成的。
+        * 因此，它生成的任何字符串都必然属于由 `a` 和 `b` 构成的所有字符串的集合 `{a, b}*`。该方向成立。
+
+    2.  **证明 `{a, b}* ⊆ (a*b)*{a}*`:**
+
+        * 设 `w` 是 `{a, b}*` 中的任意一个字符串。
+        * **情况1：`w` 中不包含 `b`。** 那么 `w` 是一个纯由 `a` 组成的字符串（如 `aaa` 或 `ε`）。这种字符串可以由 `(a*b)*{a}*` 生成，只需让 `(a*b)*` 部分生成 `ε`（拼接0次），让 `{a}*` 部分生成 `w` 即可。
+        * **情况2：`w` 中包含 `b`。** 我们可以找到 `w` 中**最后一个 `b`** 的位置。那么 `w` 可以写成 `xby` 的形式，其中 `y` 是一个纯由 `a` 组成的字符串（可能为空）。`y` 可以由 `{a}*` 部分匹配。现在我们只需证明 `xb` 可以被 `(a*b)*` 匹配。字符串 `xb` 是一个以 `b` 结尾的字符串，我们可以将其分解为多个 `(任意个a后跟一个b)` 的块。例如，`aababb` 可以分解为 `(aab)(ab)(b)`。每一个这样的块都符合 `a*b` 的形式。因此 `xb` 可以被 `(a*b)*` 匹配。
+
+    * **结论：** 两个方向都成立，所以等式成立。
+
+**(d) 如果 `ε ∈ L₁` 且 `ε ∈ L₂`，那么 `(L₁Σ*L₂)* = Σ*`**
+
+* **证明:**
+
+    1.  **证明 `(L₁Σ*L₂)* ⊆ Σ*`:**
+        * 因为 `L₁ ⊆ Σ*` 且 `L₂ ⊆ Σ*`，所以 `L₁Σ*L₂` 拼接出的字符串必然属于 `Σ*`。
+        * 对其进行星号运算，结果 `(L₁Σ*L₂)*` 依然是 `Σ*` 的子集。该方向成立。
+
+    2.  **证明 `Σ* ⊆ (L₁Σ*L₂)*`:**
+
+        * 我们要证明 `Σ`（字母表本身）是 `L₁Σ*L₂` 的子集。
+        * 对于字母表 `Σ` 中的任意一个符号 `σ`，我们可以构造字符串 `εσε`。
+        * 因为 `ε ∈ L₁` 且 `ε ∈ L₂`，所以 `εσε` 是 `L₁Σ*L₂` 中的一个合法字符串。
+        * 而 `εσε = σ`。所以，对于任意 `σ ∈ Σ`，都有 `σ ∈ L₁Σ*L₂`。这意味着 `Σ ⊆ L₁Σ*L₂`。
+        * 根据 `A ⊆ B ⇒ A* ⊆ B*` 的性质，我们得出 `Σ* ⊆ (L₁Σ*L₂)*`。
+
+    * **结论：** 两个方向都成立，所以等式成立。
+
+**(e) `∅L = L∅ = ∅`**
+
+* **证明:**
+
+    * 语言的拼接 `AB` 定义为 `{ab | a ∈ A, b ∈ B}`。
+    * 对于 `∅L`，我们需要从 `∅`（空语言）中取一个字符串，再从 `L` 中取一个字符串进行拼接。但 `∅` 中没有任何字符串可以取出。因此，无法生成任何字符串。
+    * 所以 `∅L = ∅`。同理 `L∅ = ∅`。
+
+---
+
+### **1.7.6. 在什么情况下 `L⁺ = L* - {ε}`?**
+
+* **分析:**
+
+    * `L*` 的定义是 `L⁺ ∪ {ε}` (1个或多个拼接，再加上0个拼接的情况)。
+    * `L* - {ε}` 的意思是将空字符串 `ε` 从 `L*` 集合中移除。
+    * 要使 `L⁺ = L* - {ε}` 成立，就意味着 `L⁺` 本身不能含有 `ε`。
+    * `L⁺` 是由 `L` 中的字符串进行**1次或多次**拼接构成的。怎样才能从中得到 `ε` 呢？唯一的可能是 `L` 语言本身就包含 `ε`。如果 `ε ∈ L`，那么进行1次拼接就可以得到 `ε`，从而 `ε ∈ L⁺`。
+
+* **结论：**
+
+    * 当 `ε ∉ L` (空字符串**不属于**语言L) 时，`L⁺` 中不可能包含 `ε`，此时 `L*` 恰好比 `L⁺` 多一个 `ε`，等式成立。
+    * 当 `ε ∈ L` 时，`L⁺` 中也包含 `ε`，此时 `L* = L⁺`，而 `L* - {ε}` 从 `L*` 中移除了 `ε`，导致两边不相等。
+    * 所以，答案是：**当且仅当 `ε ∉ L` 时。**
+
+---
+
+### **1.8.5. 下列哪个是真？请解释**
+
+**(a) `baa ∈ a*b*a*b*` -- 真 (True)**
+
+* **解释：** 我们需要看字符串 `baa` 能否被正则表达式 `a*b*a*b*` 匹配。
+* `a*` 匹配 `ε` (0个a)
+* `b*` 匹配 `b` (1个b)
+* `a*` 匹配 `aa` (2个a)
+* `b*` 匹配 `ε` (0个b)
+* 拼接起来就是 `εb aa ε = baa`。匹配成功。
+
+**(b) `b*a* ∩ a*b* = a* ∪ b*` -- 真 (True)**
+
+* **解释：**
+
+    * `b*a*`: 由任意个`b`后跟任意个`a`组成的字符串。
+    * `a*b*`: 由任意个`a`后跟任意个`b`组成的字符串。
+    * `∩` (交集): 我们要寻找同时符合两种模式的字符串。
+    * 一个字符串如果同时包含`a`和`b`，它不可能是`b`在`a`前，又是`a`在`b`前。
+    * 唯一能同时满足两种模式的，是那些只包含一种字母的字符串：
+        * 纯`a`串 (`a*`)：在`b*a*`中匹配（`b*`为空），在`a*b*`中也匹配（`b*`为空）。
+        * 纯`b`串 (`b*`)：在`b*a*`中匹配（`a*`为空），在`a*b*`中也匹配（`a*`为空）。
+    * 因此，交集就是纯`a`串或纯`b`串的集合，即 `a* ∪ b*`。
+
+**(c) `a*b* ∩ b*c* = ∅` -- 假 (False)**
+
+* **解释：**
+
+    * 我们要寻找 `a*b*` 和 `b*c*` 的交集。
+    * 考虑一个纯由`b`组成的字符串，例如 `bb`。
+    * `bb` 属于 `a*b*` (因为`a*`可以匹配 `ε`)。
+    * `bb` 属于 `b*c*` (因为`c*`可以匹配 `ε`)。
+    * 所以，两个语言的交集不是空集 `∅`，而是 `b*`。
+
+**(d) `abcd ∈ (a(cd)*b)*` -- 假 (False)**
+
+* **解释：**
+
+    * 我们先分析括号内的部分 `a(cd)*b`。它匹配的字符串以`a`开头，以`b`结尾，中间是0个或多个`cd`。例如 `ab`, `acdb`, `acdcdb`。
+    * 整个表达式 `(a(cd)*b)*` 是将上述这些字符串进行0次或多次拼接。
+    * 字符串 `abcd` 无法匹配。
+        * 它不能是0次拼接，因为不是空串。
+        * 它不能是1次拼接，因为它不是以 `b` 结尾的。
+        * 它不能是多次拼接，因为它里面连一个完整的 `a...b` 结构都没有。
+    * 因此，`abcd` 不属于这个语言。
 
 ---
