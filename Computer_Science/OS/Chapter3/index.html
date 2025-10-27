@@ -1,0 +1,5452 @@
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="央央的笔记本">
+      
+      
+      
+        <link rel="canonical" href="https://melody12020831.github.io/Notebook/Computer_Science/OS/Chapter3/">
+      
+      
+        <link rel="prev" href="../Chapter2/">
+      
+      
+        <link rel="next" href="../Chapter4/">
+      
+      
+      <link rel="icon" href="../../../assets/images/icon.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Chapter 3 | Processes - 央央's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen+GB+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen GB Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/card.css">
+    
+      <link rel="stylesheet" href="../../../css/tasklist.css">
+    
+      <link rel="stylesheet" href="../../../css/flink.css">
+    
+      <link rel="stylesheet" href="../../../css/more_changelog.css">
+    
+      <link rel="stylesheet" href="../../../css/neoteroi-mkdocs.css">
+    
+      <link rel="stylesheet" href="../../../css/fold_toc.css">
+    
+      <link rel="stylesheet" href="../../../css/sidebar.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-002T22X4FB"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-002T22X4FB",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-002T22X4FB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-3-processes" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="央央's Notebook" class="md-header__button md-logo" aria-label="央央's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            央央's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 3 | Processes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="light-blue" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Melody12020831/Notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Melody
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Math/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Miscellaneous/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Misccelleanous
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="央央's Notebook" class="md-nav__button md-logo" aria-label="央央's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+
+    </a>
+    央央's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Melody12020831/Notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Melody
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Computer Science
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Computer Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ADS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    ADS
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            ADS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/Homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/organisedproblems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Organisedproblems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CO/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CO
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            CO
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%205/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    chapter 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%206/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/COhomework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CO homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/PPT_download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PPT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../DB/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    DB
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            DB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 | Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 | Introduction to the Relational Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 | Introduction to SQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 | Intermediate SQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5 | Advanced SQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6 | Entity-Relationship Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 7 | Relational Database Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 8 | Complex Data Types
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 12 | Physical Storage Systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 13 | Data Storage Structures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 14 | Indexing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 15 | Query Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 16 | Query Optimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 17 | Transactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 18 | Concurrency Control
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 19 | Recovery System
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SQL learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OOP/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    OOP
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            OOP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 | introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 | A tour of cpp
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 | STL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 | Memory Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5 | Class
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6 | Ctor/Dtor &amp;&amp; Composition &amp; Inheritance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 7 | Polymorphism
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 8 | Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 9 | Copy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 10 | Operator Overloading &amp;&amp; Streams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 11 | templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 12 | Iterators
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 13 | Exceptions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 14 | Smart Pointers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 15 | Miscellaneous Topics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/test_from_wk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WK's 课前小测
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/105_STL_Algorithmsin_Less_Than_an_Hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    105 STL Algorithmsin Less Than an Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CA/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CA
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            CA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch1 | Fundamentals of Computer Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ch2 | Memory Hierarchy Design
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/CA_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CA review
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TOC/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    TOC
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            TOC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 | Simple Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    OS
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            OS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 | Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 | Operating-System Structures
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 | Processes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 | Processes
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#process-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process concept
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process concept">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-in-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process in Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process State
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-of-process-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram of Process State
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-block-pcb-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Block (PCB) Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Block (PCB) Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-switch-from-process-to-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Switch From Process to Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Scheduling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Scheduling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-scheduling-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Scheduling Queues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Scheduling Queues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ready-queue-and-various-io-device-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ready Queue And Various I/O Device Queues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-process-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Process Scheduling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedulers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schedulers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schedulers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-process-scheduling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Process Scheduling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addition-of-medium-term-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addition of Medium Term Scheduling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Switch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operations-on-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operations on Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operations on Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Creation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-program-forking-separate-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      C Program Forking Separate Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-tree-of-processes-on-a-typical-solaris" class="md-nav__link">
+    <span class="md-ellipsis">
+      A tree of processes on a typical Solaris
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Termination
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cooperating-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cooperating Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cooperating Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#producer-consumer-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Producer-Consumer Problem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Producer-Consumer Problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bounded-buffer-shared-memory-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounded-Buffer – Shared-Memory Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bounded-buffer-insert-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounded-Buffer – Insert() Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bounded-buffer-remove-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounded Buffer – Remove() Method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interprocess-communication-ipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interprocess Communication (IPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interprocess Communication (IPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#communication-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direct-communication-of-messages-passing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct Communication of Messages Passing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indirect-communication-of-messages-passing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indirect Communication of Messages Passing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 | Threads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5 | CPU Scheduling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 8 | Main Memory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CN/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    CN
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            CN
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 | 概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 | 物理层
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 数据链路层
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10">
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Visualization
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Visualization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Visualization/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    数据可视化笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    编程语言
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            编程语言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming_Language/python/CS50P_python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming_Language/python/python100days/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python-100-Days
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12">
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            Tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/reveal-md/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    使用 reveal-md 制作 PPT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Math/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Math
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Math
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    概率论与数理统计
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            概率论与数理统计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1 概率论的基本概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 随机变量及其分布
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3 多元随机变量及其分布
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 随机变量的数字特征
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5 大数定律和中心极限定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6 数理统计的基本概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 7 参数估计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 8 假设检验
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/PPT_download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PPT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_11" id="__nav_3_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            Homework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/Homework_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW1(习题一)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW2(习题一)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW3(习题一、二)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW4(习题二)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW5(习题二、三)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW6(习题三)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW7(习题三)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW8(习题四)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW9(习题四、五)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW10(习题五、六)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW11(习题六、七(只计算矩估计))
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW12(习题七)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW13(习题七)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW14(习题八)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Miscellaneous/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Misccelleanous
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Misccelleanous
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/prompt/prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prompt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/mermaid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mermaid
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    UBC
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            UBC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%205/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%206/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%207/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%208/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    block chain DAY 8
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/cs231n/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Note
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#process-concept" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process concept
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process concept">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-in-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process in Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process State
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process State">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-of-process-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram of Process State
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-block-pcb-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Control Block (PCB) Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Control Block (PCB) Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-switch-from-process-to-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Switch From Process to Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#process-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Scheduling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Scheduling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-scheduling-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Scheduling Queues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Scheduling Queues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ready-queue-and-various-io-device-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ready Queue And Various I/O Device Queues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-process-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Process Scheduling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedulers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schedulers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schedulers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#representation-of-process-scheduling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation of Process Scheduling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addition-of-medium-term-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Addition of Medium Term Scheduling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context Switch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operations-on-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operations on Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operations on Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Creation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Process Creation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c-program-forking-separate-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      C Program Forking Separate Process
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-tree-of-processes-on-a-typical-solaris" class="md-nav__link">
+    <span class="md-ellipsis">
+      A tree of processes on a typical Solaris
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process Termination
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cooperating-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cooperating Processes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cooperating Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#producer-consumer-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Producer-Consumer Problem
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Producer-Consumer Problem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bounded-buffer-shared-memory-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounded-Buffer – Shared-Memory Solution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bounded-buffer-insert-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounded-Buffer – Insert() Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bounded-buffer-remove-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounded Buffer – Remove() Method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interprocess-communication-ipc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interprocess Communication (IPC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interprocess Communication (IPC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#communication-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#direct-communication-of-messages-passing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct Communication of Messages Passing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indirect-communication-of-messages-passing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indirect Communication of Messages Passing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buffering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="chapter-3-processes">Chapter 3 | Processes<a class="headerlink" href="#chapter-3-processes" title="Permanent link">¶</a></h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 5997 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 19 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 12 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 30 分钟</p>
+</div>
+<h2 id="process-concept">Process concept<a class="headerlink" href="#process-concept" title="Permanent link">¶</a></h2>
+<p>An operating system executes a variety of programs:</p>
+<ul>
+<li>Batch system – jobs</li>
+<li>Time-shared systems – user programs or tasks</li>
+</ul>
+<p>Textbook uses the terms job and process almost interchangeably</p>
+<p>Process – a program in execution; process execution must progress in sequential fashion</p>
+<p>A process includes:</p>
+<ul>
+<li>text section (code)</li>
+<li>program counter</li>
+<li>stack (function parameters, local vars, return addresses)</li>
+<li>data section (global vars)</li>
+<li>heap (dynamically allocated memory)</li>
+</ul>
+<hr>
+<h3 id="process-in-memory">Process in Memory<a class="headerlink" href="#process-in-memory" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-1.png" data-desc-position="bottom"><img alt="img" src="../assets/3-1.png"></a></p>
+<ul>
+<li>text 存放程序的机器指令（代码）。只读，防止程序自我修改。</li>
+<li>data 存放全局变量和静态变量。程序启动时分配，生命周期贯穿整个进程。</li>
+<li>heap 用于动态分配内存（如 C/C++ 的 malloc/new，Java 的 new）。堆空间从低地址向高地址增长（图中向上箭头）。适合存储大小和生命周期不确定的数据结构（如链表、树等）。</li>
+<li>stack 用于存储函数调用相关信息：参数、局部变量、返回地址等。每次函数调用会在栈上分配一块空间，函数返回后释放。栈空间从高地址向低地址增长（图中向下箭头）。适合存储临时数据，自动管理内存。</li>
+<li>中间的蓝色区域表示堆和栈之间的“未分配空间”。堆和栈分别向中间增长，防止互相覆盖。如果堆和栈相遇，说明内存耗尽，进程会崩溃。</li>
+</ul>
+<p>进程看到和使用的地址空间，并不是物理内存的真实地址，而是操作系统为每个进程分配的<strong>虚拟地址空间</strong>。这样每个进程只能访问自己的虚拟空间，不能随意访问其他进程的内存，提高安全性。</p>
+<details class="example" open="open">
+<summary>question</summary>
+<p>若一个进程实体由PCB、共享正文段、数据堆段和数据栈段组成，请指出下列C语言程序中的内容及相关数据结构各位于哪一段中。</p>
+<p>I.全局赋值变量()  II.未赋值的局部变量()  Ⅲ.函数调用实参传递值()  IV.用malloc()要求动态分配的存储区()  V.常量值(如1995、"string")()  VI.进程的优先级()</p>
+<p>A.PCB  B.正文段  C.堆段  D.栈段</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>I.B  II.D  III.D  IV.C  V.B  VI.A</p>
+<p>全局赋值变量存放在数据段中，未赋值的局部变量和函数调用实参传递值存放在栈段中，用malloc()要求动态分配的存储区存放在堆段中，常量值存放在正文段中，进程的优先级等信息存放在PCB中。</p>
+<p>C语言编写的程序在使用内存时一般分为三个段:正文段(代码和赋值数据段)、数据堆段和数据栈段。二进制代码和常量存放在正文段，动态分配的存储区存放在数据堆段，临时使用的变量存放在数据栈段。由此，我们可以确定全局赋值变量在正文段赋值数据段，未赋值的局部变量和实参传递在栈段，动态内存分配在堆段，常量在正文段，进程的优先级只能在 PCB 内。</p>
+</details>
+<hr>
+<h3 id="process-state">Process State<a class="headerlink" href="#process-state" title="Permanent link">¶</a></h3>
+<p>As a process executes, it changes <strong>state</strong></p>
+<ul>
+<li>new: The process is being created 进程正在被创建，还没有进入系统调度队列。</li>
+<li>running: Instructions are being executed 进程正在 CPU 上执行指令。</li>
+<li>waiting: The process is waiting/blocked for some event to occur 进程因为等待某个事件（如 I/O 完成、资源可用等）而暂停执行，暂时不能运行。</li>
+<li>ready: The process is waiting to be assigned to a processor 进程已经创建好，等待被分配 CPU（等待调度）。</li>
+<li>terminated: The process has finished execution 进程执行完毕或被操作系统强制结束，生命周期结束。</li>
+</ul>
+<hr>
+<h4 id="diagram-of-process-state">Diagram of Process State<a class="headerlink" href="#diagram-of-process-state" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-2.png" data-desc-position="bottom"><img alt="img" src="../assets/3-2.png"></a></p>
+<ul>
+<li>new → ready：进程被创建并加入就绪队列（admitted）。</li>
+<li>ready → running：调度器分配 CPU，进程开始执行（scheduler dispatch）。</li>
+<li>running → waiting：进程需要等待某个事件（如 I/O），主动让出 CPU（I/O or event wait）。</li>
+<li>waiting → ready：等待的事件完成，进程重新进入就绪队列（I/O or event completion）。</li>
+<li><strong>running → ready</strong>：进程被中断（如时间片用完），让出 CPU，回到就绪队列（interrupt）。</li>
+<li>running → terminated：进程正常结束或被强制终止（exit）。</li>
+</ul>
+<hr>
+<h3 id="control-block-pcb-process">Control Block (PCB) Process<a class="headerlink" href="#control-block-pcb-process" title="Permanent link">¶</a></h3>
+<p>Information associated with each process</p>
+<ul>
+<li>Process state</li>
+<li>Program counter</li>
+<li>Contents of CPU registers</li>
+<li>CPU scheduling information</li>
+<li>Memory-management information</li>
+<li>Accounting information</li>
+<li>I/O status information</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-3.png" data-desc-position="bottom"><img alt="img" src="../assets/3-3.png"></a></p>
+<p><strong>进程控制块（PCB）</strong>是操作系统为每个进程分配的数据结构，记录了进程的所有关键信息。操作系统通过 PCB 来管理和调度进程。</p>
+<p>当进程切换时，操作系统会<strong>保存当前进程的 PCB</strong>，并加载下一个进程的 PCB，实现<strong>上下文切换</strong>。</p>
+<p>PCB 是进程管理、调度、资源分配的核心数据结构。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-12.png" data-desc-position="bottom"><img alt="img" src="../assets/3-12.png"></a></p>
+<details class="example" open="open">
+<summary>question</summary>
+<p>一个进程映像是()。</p>
+<p>A.由协处理器执行的一个程序</p>
+<p>B.一个独立的程序+数据集</p>
+<p>C.PCB结构与程序和数据的组合</p>
+<p>D.一个独立的程序</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>进程映像是 PCB、程序段和数据的组合，其中PCB是进程存在的<strong>唯一</strong>标志。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>操作系统是根据()来对并发执行的进程进行控制和管理的。
+A.进程的基本状态</p>
+<p>B.进程控制块</p>
+<p>C.多道程序设计</p>
+<p>D.进程的优先权</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>B.进程控制块</p>
+<p>在进程的整个生命周期中，系统总是通过其 PCB 对进程进行控制。也就是说，系统是根据进程的 PCB 而非任何其他因素来感知到进程存在的，PCB 是进程存在的唯一标志。同时 PCB 常驻内存。A 和 D 选项的内容都包含在进程 PCB 中。</p>
+</details>
+<hr>
+<h4 id="cpu-switch-from-process-to-process">CPU Switch From Process to Process<a class="headerlink" href="#cpu-switch-from-process-to-process" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-4.png" data-desc-position="bottom"><img alt="img" src="../assets/3-4.png"></a></p>
+<hr>
+<h2 id="process-scheduling">Process Scheduling<a class="headerlink" href="#process-scheduling" title="Permanent link">¶</a></h2>
+<h3 id="process-scheduling-queues">Process Scheduling Queues<a class="headerlink" href="#process-scheduling-queues" title="Permanent link">¶</a></h3>
+<p>操作系统会用不同的队列来管理进程的状态和调度过程。每个队列代表进程在生命周期中的不同阶段。</p>
+<p><strong>Job queue</strong> – set of all processes in the system</p>
+<p>包含系统中所有进程（无论是否在内存）。新创建的进程首先进入作业队列，等待被调度进入内存。</p>
+<p><strong>Ready queue</strong> – set of all processes residing in main memory, ready and waiting to execute</p>
+<p>包含所有已经在<strong>主存</strong>（内存）中，并且<strong>准备好可以运行</strong>的进程。</p>
+<p><strong>Device queues</strong> – set of processes waiting for an I/O device</p>
+<p>包含所有正在<strong>等待某个 I/O 设备</strong>的进程。当 I/O 操作完成，进程会从设备队列移回就绪队列。</p>
+<p>Processes <strong>migrate</strong> among the various queues</p>
+<hr>
+<h4 id="ready-queue-and-various-io-device-queues">Ready Queue And Various I/O Device Queues<a class="headerlink" href="#ready-queue-and-various-io-device-queues" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-5.png" data-desc-position="bottom"><img alt="img" src="../assets/3-5.png"></a></p>
+<hr>
+<h4 id="representation-of-process-scheduling">Representation of Process Scheduling<a class="headerlink" href="#representation-of-process-scheduling" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-6.png" data-desc-position="bottom"><img alt="img" src="../assets/3-6.png"></a></p>
+<ol>
+<li>进程从 ready queue 被调度到 CPU</li>
+<li>进程运行期间可能发生的事件:</li>
+</ol>
+<ul>
+<li>进程需要进行 I/O 操作（如读文件），会进入 I/O queue 等待设备完成。</li>
+<li>如果采用时间片轮转调度，进程运行到时间片结束会被强制让出 CPU，重新进入 ready queue。</li>
+<li>进程可以通过 fork 创建子进程，子进程进入 ready queue 或直接执行。</li>
+<li>进程可能等待某个外部事件或中断，进入等待状态。</li>
+</ul>
+<ol start="3">
+<li>I/O完成或中断发生</li>
+</ol>
+<ul>
+<li>I/O操作完成后，进程回到 ready queue，等待再次被调度。</li>
+<li>中断发生后，相关进程也会回到 ready queue。</li>
+</ul>
+<hr>
+<h3 id="schedulers">Schedulers<a class="headerlink" href="#schedulers" title="Permanent link">¶</a></h3>
+<p>What is a scheduler? A piece of program</p>
+<p>调度器是操作系统中的一个<strong>程序模块</strong>，负责决定哪个进程可以<strong>获得系统资源</strong>（主要是 CPU），以及进程在<strong>不同队列之间的迁移</strong>。</p>
+<ul>
+<li><strong>Long-term scheduler</strong>  (or job scheduler) – selects which processes should be brought into memory (the ready queue)</li>
+</ul>
+<p>决定哪些进程应该被调入内存，进入就绪队列（ready queue）。</p>
+<p>对于现在的计算机，我们这些<strong>用户</strong>相当于 Long-term scheduler。（这是一个在历史上的概念，现在我们不需要一个软件叫做 Long-term scheduler）。</p>
+<ul>
+<li><strong>Short-term scheduler</strong>  (or CPU scheduler) – selects which process should be executed next and allocates CPU</li>
+</ul>
+<p>决定下一个要执行的进程，并分配 CPU。</p>
+<hr>
+<h4 id="representation-of-process-scheduling_1">Representation of Process Scheduling<a class="headerlink" href="#representation-of-process-scheduling_1" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-7.png" data-desc-position="bottom"><img alt="img" src="../assets/3-7.png"></a></p>
+<hr>
+<h4 id="addition-of-medium-term-scheduling">Addition of Medium Term Scheduling<a class="headerlink" href="#addition-of-medium-term-scheduling" title="Permanent link">¶</a></h4>
+<p>Sometimes, it can be good to swap processes out.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-8.png" data-desc-position="bottom"><img alt="img" src="../assets/3-8.png"></a></p>
+<p>当系统内存紧张，或者有太多进程在等待时，操作系统可以把部分进程“换出”到磁盘（swap out），腾出内存给其他进程使用。</p>
+<p>被换出的进程不会被终止，只是暂时不在内存，等需要时再“换入”内存（swap in）继续执行。</p>
+<hr>
+<p>Short-term scheduler is invoked very <strong>frequently</strong> (milliseconds) <span class="arithmatex">\(\rightarrow\)</span> (must be <strong>fast</strong>)</p>
+<p>调用非常<strong>频繁</strong>（毫秒级），因为每次进程切换都要用到它，所以必须非常<strong>快</strong>。如果进程切换很慢，就不能保证考虑用户交互需要的 <code>time-sharing</code> 。</p>
+<p>Long-term scheduler is invoked very <strong>infrequently</strong> (seconds, minutes) <span class="arithmatex">\(\rightarrow\)</span> (may be slow)</p>
+<p><strong>调用很少</strong>（秒级、分钟级），可以慢一些。</p>
+<p>The long-term scheduler controls the <strong>degree of multiprogramming</strong></p>
+<p>控制系统的<strong>多道程序度</strong>（即系统中同时在内存中的进程数量）。</p>
+<p>Processes can be described as either:</p>
+<ul>
+<li><strong>I/O-bound process</strong> – spends more time doing I/O than computations, many short CPU bursts 计算时间短，CPU突发很短但频繁。(例如微信、浏览器等)</li>
+<li><strong>CPU-bound process</strong> – spends more time doing computations; few very long CPU bursts 主要花时间在计算上，I/O操作少，CPU突发很长但不频繁。(例如编译器、科学计算等)</li>
+</ul>
+<hr>
+<h3 id="context-switch">Context Switch<a class="headerlink" href="#context-switch" title="Permanent link">¶</a></h3>
+<p>When CPU switches to another process, the system must save the state of the old process and load the saved state for the new process</p>
+<p>当CPU从一个进程切换到另一个进程时，系统必须<strong>保存当前进程的状态</strong>（如寄存器、程序计数器等），并<strong>加载新进程的状态</strong>。</p>
+<p>Context-switch time is overhead; the system does no useful work while switching - typically takes <strong>milliseconds</strong></p>
+<p>上下文切换期间，系统不能做实际工作，是一种开销，通常需要<strong>几毫秒</strong>。</p>
+<p>Time dependent on hardware support. In the SPARC architecture, groups of registers are provided.</p>
+<p>上下文切换的速度依赖于硬件支持，比如SPARC架构有专门的寄存器组来加速切换。</p>
+<hr>
+<h2 id="operations-on-processes">Operations on Processes<a class="headerlink" href="#operations-on-processes" title="Permanent link">¶</a></h2>
+<h3 id="process-creation">Process Creation<a class="headerlink" href="#process-creation" title="Permanent link">¶</a></h3>
+<p>Parent process creates children processes, which, in turn create other processes, forming a tree of processes</p>
+<p>操作系统允许一个进程（称为父进程）创建新的进程（称为子进程）。子进程也可以继续创建自己的子进程，最终形成进程树结构。这种树状结构有助于操作系统管理和追踪进程之间的关系。</p>
+<p><strong>Resource sharing</strong></p>
+<ul>
+<li>Parent and children share all resources 父子进程共享所有资源</li>
+<li>Children share subset of parent’s resources 子进程只继承父进程的一部分资源。</li>
+<li>Parent and child share no resources 父子进程各自拥有独立的资源，互不影响。</li>
+</ul>
+<p><strong>Execution</strong></p>
+<ul>
+<li>Parent and children execute concurrently 父进程和子进程可以同时运行，各自独立调度。</li>
+<li>Parent waits until children terminate 父进程创建子进程后，自己暂停，直到所有子进程结束再继续。</li>
+</ul>
+<p><strong>Address space</strong></p>
+<ul>
+<li>Child duplicate of parent 子进程是父进程的副本。子进程刚创建时，拥有和父进程一样的代码和数据（内存空间的拷贝）。</li>
+<li>Child has a program loaded into it 子进程可以用新的程序替换自己的地址空间，变成完全不同的进程。</li>
+</ul>
+<p><strong>UNIX examples</strong></p>
+<ul>
+<li><strong>fork</strong> system call creates new process 用于创建一个新的子进程。子进程是父进程的完整副本（包括代码、数据、打开的文件等）。</li>
+<li><strong>exec</strong> system call used after a <strong>fork</strong> to replace the process’ memory space with a new program 通常在 fork 之后使用，用于让子进程加载并运行一个新的程序，替换原有的内存空间。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-9.png" data-desc-position="bottom"><img alt="img" src="../assets/3-9.png"></a></p>
+<ol>
+<li>父进程通过 <code>fork()</code> 系统调用创建一个新的子进程。子进程是父进程的副本，拥有相同的代码和数据空间（但资源可以部分或全部独立）。</li>
+<li>子进程通常会调用 <code>exec()</code> 系统调用，加载一个新的程序到自己的地址空间。这样，子进程就变成了一个全新的进程，运行不同的代码。</li>
+<li>子进程完成任务后，调用 <code>exit()</code> 终止自身，释放资源。进程终止时会通知父进程。</li>
+<li>父进程可以调用 <code>wait()</code>，等待子进程结束。当子进程终止后，父进程会被唤醒（resumes），继续执行后续操作。</li>
+</ol>
+<details class="info">
+<summary>创建新进程时的操作</summary>
+<p>1)为新进程分配一个唯一的进程标识号，并申请一个空白PCB(PCB是有限的)。若PCB申请失败，则创建失败。</p>
+<p>2)为进程分配其运行所需的资源，如内存、文件、I/O设备和CPU时间等(在PCB中体现)。这些资源或从操作系统获得，或仅从其父进程获得。若资源不足(如内存),则并不是创建失败，而是处于创建态，等待内存资源。</p>
+<p>3)初始化PCB,主要包括初始化标志信息、初始化CPU状态信息和初始化CPU控制信息，以及设置进程的优先级等。</p>
+<p>4)若进程就绪队列能够接纳新进程，则将新进程插入就绪队列，等待被调度运行。</p>
+</details>
+<hr>
+<h4 id="c-program-forking-separate-process">C Program Forking Separate Process<a class="headerlink" href="#c-program-forking-separate-process" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">pid_t</span><span class="w">  </span><span class="n">pid</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="cm">/* fork another process */</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* error occurred */</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"Fork Failed"</span><span class="p">);</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* child process */</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="n">execlp</span><span class="p">(</span><span class="s">"/bin/ls"</span><span class="p">,</span><span class="w"> </span><span class="s">"ls"</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* parent process */</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="cm">/* parent will wait for the child to complete */</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="n">wait</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">"Child Complete"</span><span class="p">);</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
+</code></pre></div>
+<hr>
+<h4 id="a-tree-of-processes-on-a-typical-solaris">A tree of processes on a typical Solaris<a class="headerlink" href="#a-tree-of-processes-on-a-typical-solaris" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-10.png" data-desc-position="bottom"><img alt="img" src="../assets/3-10.png"></a></p>
+<hr>
+<h3 id="process-termination">Process Termination<a class="headerlink" href="#process-termination" title="Permanent link">¶</a></h3>
+<p>Process executes last statement and asks the operating system to delete it (<strong>exit</strong>)</p>
+<p>当进程执行完最后一条语句后，会调用 <code>exit</code>，请求操作系统删除自己。</p>
+<ul>
+<li>Output data from child to parent (via <strong>wait</strong>) 子进程可以通过 <code>wait</code> 把输出数据传递给父进程。</li>
+<li>Process’ resources are deallocated by operating system 操作系统释放该进程占用的资源</li>
+</ul>
+<p>僵尸进程（zombie）：子进程已结束但父进程还没调用 <code>wait</code> 收其状态时，子进程在内核中保留少量信息（PCB）称为僵尸，直到父进程 <code>wait</code>。僵尸占用很小内核资源但会消耗 <code>PID</code>。</p>
+<p>Parent may terminate execution of children processes (<strong>abort</strong>)</p>
+<p>父可以强制终止子进程（例如资源超限或任务取消）。有时系统为父终止子做自动回收。</p>
+<ul>
+<li>Child has exceeded allocated resources</li>
+<li>Task assigned to child is no longer required</li>
+<li>
+<p>If parent is exiting</p>
+<ul>
+<li>
+<p>Some operating system do not allow child to continue if its parent terminates 父终止时同时终止所有子（级联终止）。</p>
+<ul>
+<li>All children terminated - cascading termination</li>
+</ul>
+</li>
+<li>
+<p>In some other operating systems, the child gets orphaned – and its parent becomes the “init” process (PID=1). 子进程被孤立（orphan），由 init（PID=1）收养并负责后续 wait/收尸工作。</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="cooperating-processes">Cooperating Processes<a class="headerlink" href="#cooperating-processes" title="Permanent link">¶</a></h2>
+<p><strong>Independent</strong> process cannot affect or be affected by the execution of another process</p>
+<p>运行互不影响，不需要进程间同步或通信。</p>
+<p><strong>Cooperating</strong> process can affect or be affected by the execution of another process</p>
+<p>进程之间会共享信息、资源或相互依赖，需要通信和同步。</p>
+<p>Advantages of process cooperation</p>
+<ul>
+<li>Information sharing 信息共享</li>
+<li>Computation speed-up (Multiple CPUs) 利用多核并行加速</li>
+<li>Modularity 模块化设计(所以需要进程间通信合作)</li>
+<li>Convenience 方便分摊任务与资源</li>
+</ul>
+<hr>
+<h3 id="producer-consumer-problem">Producer-Consumer Problem<a class="headerlink" href="#producer-consumer-problem" title="Permanent link">¶</a></h3>
+<p>Paradigm for cooperating processes, producer process produces information that is consumed by a consumer process</p>
+<p>生产者产生数据放入缓冲区，消费者从缓冲区取数据消费。核心是如何在并发下保证数据一致与缓冲区边界（空/满）的正确处理。</p>
+<ul>
+<li>unbounded-buffer places no practical limit on the size of the buffer. Consumer has to wait if no new item. 理论上缓冲无限大，生产者通常不会阻塞，消费者在空时等待。</li>
+<li>bounded-buffer assumes that there is a fixed buffer size. Producer must wait if buffer full. 缓冲容量固定，生产者在缓冲满时必须等待，消费者在缓冲空时等待。</li>
+</ul>
+<hr>
+<h4 id="bounded-buffer-shared-memory-solution">Bounded-Buffer – <strong>Shared-Memory</strong> Solution<a class="headerlink" href="#bounded-buffer-shared-memory-solution" title="Permanent link">¶</a></h4>
+<p>Shared data</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>#define BUFFER_SIZE 10
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>typedef struct {
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    . . .
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>} item;
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>item buffer[BUFFER_SIZE];
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>int in = 0;
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>int out = 0;
+</code></pre></div>
+<ul>
+<li><code>buffer[BUFFER_SIZE]</code>：循环队列（环形缓冲区）。</li>
+<li><code>in</code>：下一个生产者写入的位置索引。</li>
+<li><code>out</code>：下一个消费者读取的位置索引。</li>
+<li>索引按模 <code>BUFFER_SIZE</code> 增加：<code>in = (in+1) % BUFFER_SIZE</code>。</li>
+</ul>
+<hr>
+<h4 id="bounded-buffer-insert-method">Bounded-Buffer – <code>Insert()</code> Method<a class="headerlink" href="#bounded-buffer-insert-method" title="Permanent link">¶</a></h4>
+<p>Producer pseudo-code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>while (true) { 
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    Produce an item;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    while (((in + 1) % BUFFER_SIZE ) == out); /* do nothing -- no free buffers */
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    buffer[in] = item;
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    in = (in + 1) % BUFFER_SIZE;
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>}
+</code></pre></div>
+<p>先生产 <code>item</code>，然后等待有空位（busy-wait），把 <code>item</code> 写到 <code>buffer[in]</code>，再更新 <code>in</code>。</p>
+<hr>
+<h4 id="bounded-buffer-remove-method">Bounded Buffer – <code>Remove()</code> Method<a class="headerlink" href="#bounded-buffer-remove-method" title="Permanent link">¶</a></h4>
+<p>Consumer pseudo-code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>while (true) {
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    while (in == out); //do nothing, nothing to consume
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    Remove an item from the buffer;
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    item = buffer[out];
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    out = (out + 1) % BUFFER_SIZE;
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    return item;
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>}
+</code></pre></div>
+<p>Solution is correct, but can only use <code>BUFFER_SIZE ⎯1</code> elements</p>
+<p>等待有可用元素（busy-wait），从 <code>buffer[out]</code> 读出 <code>item</code>，更新 <code>out</code>。</p>
+<p>使用上面这组判定方法时，“满”与“空”都会出现 <code>in</code> 与 <code>out</code> 值相等的情形。为了让两个条件（空与满）能通过简单比较区分，约定当 <code>in</code> 的下一个位置等于 <code>out</code> 时视为“满”。因此实际可用槽为 <code>BUFFER_SIZE−1</code>。</p>
+<p>另一种避免浪费槽的办法是额外维护一个计数变量 <code>count</code>（或 <code>full/empty</code> 计数信号量），通过 <code>count==0</code> 表示空，<code>count==BUFFER_SIZE</code> 表示满。</p>
+<hr>
+<h2 id="interprocess-communication-ipc">Interprocess Communication (IPC)<a class="headerlink" href="#interprocess-communication-ipc" title="Permanent link">¶</a></h2>
+<p>Mechanism for processes to communicate and to synchronize their actions</p>
+<p>IPC 是不同进程之间交换数据与进行同步的机制。目的是让进程能够共享信息、协调工作、避免竞态条件。</p>
+<p>Two models for IPC: <strong>message passing</strong> and <strong>shared memory</strong></p>
+<p>Message passing – processes communicate with each other without resorting to shared variables</p>
+<p>通过 <code>send/receive</code> 操作传递离散消息，进程不直接共享内存。由内核或通信库转发/缓冲消息。</p>
+<p>Message-passing facility provides two operations:</p>
+<ul>
+<li>send(message) – message size fixed or variable </li>
+<li>receive(message) </li>
+</ul>
+<p>If P and Q wish to communicate, they need to:</p>
+<ul>
+<li>establish a <strong>communication</strong> link between them 需要在发送方与接收方之间建立“通信通道”。</li>
+<li>exchange messages via <strong>send/receive</strong> operations 通过 <code>send/receive</code> 操作交换消息。</li>
+</ul>
+<p>Implementation of communication link</p>
+<ul>
+<li>physical (e.g., shared memory, hardware bus) </li>
+<li>logical (e.g., logical properties)</li>
+</ul>
+<hr>
+<h3 id="communication-models">Communication Models<a class="headerlink" href="#communication-models" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-11.png" data-desc-position="bottom"><img alt="img" src="../assets/3-11.png"></a></p>
+<p><code>Shared memory</code> ：进程 A、B 都映射到同一块用户态“共享内存”区域，数据直接读写，内核只负责建立映射。共享内存零拷贝、延迟低，但需要程序自行同步（互斥、信号量等）。</p>
+<p>在通信的进程之间存在一块可直接访问的共享空间，通过对这片共享空间进行读/写操作实现进程之间的信息交换。在对共享空间进行读/写操作时，需要使用同步互斥工具对共享空间的读/写进行控制。</p>
+<p>共享存储又分为两种：低级方式的共享是基于数据结构的共享；高级方式的共享则是基于存储区的共享。操作系统只负责为通信进程提供可共享使用的存储空间和同步互斥工具，而数据交换则由用户自己安排读/写指令完成。</p>
+<p>注意，进程空间一般都是<strong>独立</strong>的，进程运行期间一般不能访问其他进程的空间，想让两个进程共享空间，必须通过<strong>特殊的系统调用</strong>实现，而进程内的线程是自然共享进程空间的。</p>
+<p><code>Message passing</code> ：内核维护消息队列（message queue）；进程通过 send/receive 将消息拷贝到内核队列或从队列取出。消息传递保留消息边界并由内核处理阻塞/缓冲，易于使用但有拷贝与内核开销。</p>
+<p>在消息传递系统中，进程间的数据交换以<strong>格式化的消息</strong>(Message)为单位。进程通过操作系统提供的<strong>发送消息</strong>和<strong>接收消息</strong>两个原语进行数据交换。这种方式隐藏了通信实现细节，使通信过程对用户透明，简化了通信程序的设计，是当前应用最广泛的进程间通信机制。</p>
+<hr>
+<h4 id="direct-communication-of-messages-passing">Direct Communication of Messages Passing<a class="headerlink" href="#direct-communication-of-messages-passing" title="Permanent link">¶</a></h4>
+<p>Processes must name each other explicitly:</p>
+<p>进程之间要<strong>明确指定对方的名字</strong>（即进程ID或标识）。</p>
+<ul>
+<li><strong>send</strong> (P, message) – send a message to process P</li>
+<li><strong>receive</strong> (Q, message) – receive a message from process Q</li>
+</ul>
+<p>Properties of communication link</p>
+<ul>
+<li>Links are established <strong>automatically</strong> 只要两个进程需要通信，系统会自动建立链路。</li>
+<li>A link is associated with <strong>exactly one pair</strong> of communicating processes 每条链路只关联一对进程。</li>
+<li>Between each pair there exists <strong>exactly one link</strong> 每对进程之间只有一条链路。</li>
+<li>The link may be unidirectional, but is usually bi-directional 链路可以是单向（只能一方发消息）或双向（双方都能发消息），但通常是双向。</li>
+</ul>
+<p>直接通信方式。发送进程直接将消息发送给接收进程，并将它挂在接收进程的消息缓冲队列上，接收进程从消息缓冲队列中取得消息。</p>
+<hr>
+<h4 id="indirect-communication-of-messages-passing">Indirect Communication of Messages Passing<a class="headerlink" href="#indirect-communication-of-messages-passing" title="Permanent link">¶</a></h4>
+<p>Messages are directed and received from <strong>mailboxes</strong> (also referred to as <strong>ports</strong>)</p>
+<p>进程之间通过<strong>邮箱（mailbox）</strong>或<strong>端口（port）</strong>进行通信。</p>
+<p>间接通信方式。发送进程将消息发送到某个中间实体，接收进程从中间实体取得消息。这种中间实体一般称为<strong>信箱</strong>。</p>
+<ul>
+<li>Each mailbox has a unique id 邮箱是一个具有唯一ID的内核对象。进程可以向邮箱发送消息，也可以从邮箱接收消息。</li>
+<li>Processes can communicate only if they share a mailbox 进程之间不需要直接知道对方，只要共享同一个邮箱即可通信。</li>
+</ul>
+<p>Properties of communication link</p>
+<ul>
+<li>Link established only if processes share a common mailbox 只有共享同一个邮箱的进程之间才能通信。</li>
+<li>A link may be associated with <strong>many processes</strong> 一个邮箱可以被多个进程共享，实现多对多通信。</li>
+<li>Each pair of processes may share <strong>several communication links</strong> 每对进程可以共享多个邮箱，实现多条通信链路。</li>
+<li>Link may be unidirectional or bi-directional 邮箱可以设计为单向或双向通信。</li>
+</ul>
+<p>Operations</p>
+<ul>
+<li>create a new mailbox 操作系统提供接口，允许进程创建一个具有唯一ID的邮箱（或端口）。</li>
+<li>send and receive messages through mailbox 发送消息、接收消息</li>
+<li>destroy a mailbox 销毁邮箱</li>
+</ul>
+<p>Primitives are defined as:</p>
+<ul>
+<li><strong>send</strong>(A, message) – send a message to mailbox A</li>
+<li><strong>receive</strong>(A, message) – receive a message from mailbox A</li>
+</ul>
+<p>Mailbox sharing</p>
+<ul>
+<li><span class="arithmatex">\(P_1\)</span> , <span class="arithmatex">\(P_2\)</span> , and <span class="arithmatex">\(P_3\)</span> share mailbox A</li>
+<li><span class="arithmatex">\(P_1\)</span> sends; <span class="arithmatex">\(P_2\)</span> and <span class="arithmatex">\(P_3\)</span> receive</li>
+<li>Who gets the message?</li>
+</ul>
+<p>Solutions</p>
+<ul>
+<li>Allow a link to be associated with at most two processes 限制邮箱只关联两个进程</li>
+<li>Allow only one process at a time to execute a receive operation 系统保证同一时刻只有一个进程能从邮箱接收消息，其他进程必须等待。</li>
+<li>Allow the system to select arbitrarily the receiver.  Sender is notified who the receiver was. 系统自动选择接收者</li>
+</ul>
+<hr>
+<h3 id="synchronization">Synchronization<a class="headerlink" href="#synchronization" title="Permanent link">¶</a></h3>
+<p>Message passing may be either blocking or non-blocking</p>
+<p><strong>Blocking</strong> is considered <strong>synchronous</strong> 同步</p>
+<ul>
+<li><strong>Blocking send</strong> has the sender blocked until the message is received</li>
+<li>发送方在消息被接收之前会一直等待，直到接收方收到消息后才继续执行。</li>
+<li><strong>Blocking receive</strong> has the receiver block until a message is available</li>
+<li>接收方如果没有消息可收，会一直等待，直到有消息到达才继续执行。</li>
+</ul>
+<p><strong>Non-blocking</strong> is considered asynchronous</p>
+<ul>
+<li><strong>Non-blocking</strong> send has the sender send the message and continue</li>
+<li>发送方把消息发出去后立即返回，不管接收方是否收到消息。</li>
+<li><strong>Non-blocking</strong> receive has the receiver receive a valid message or null</li>
+<li>接收方尝试接收消息，如果没有消息就返回空值或错误，不会阻塞等待。</li>
+</ul>
+<hr>
+<h3 id="buffering">Buffering<a class="headerlink" href="#buffering" title="Permanent link">¶</a></h3>
+<p>Queue of messages attached to the link; implemented in one of three ways</p>
+<p>消息传递时，系统会为每条通信链路维护一个消息队列（缓冲区），用于存放尚未被接收的消息。</p>
+<ol>
+<li>Zero capacity – 0 messages 零容量</li>
+</ol>
+<p>Sender must wait for receiver</p>
+<p>缓冲区不能存放任何消息（容量为0）。发送方必须等接收方准备好接收，才能发送消息。发送和接收必须严格配对，双方都要同步。</p>
+<ol start="2">
+<li>Bounded capacity – finite length of n messages 有限容量</li>
+</ol>
+<p>Sender must wait if link full</p>
+<p>缓冲区可以存放有限数量的消息（如 n 条）。如果缓冲区满了，发送方必须等待（阻塞），直到有空间才能继续发送。如果缓冲区有空间，发送方可以直接发送消息，接收方可以随时接收。</p>
+<ol start="3">
+<li>Unbounded capacity – infinite length 无限容量</li>
+</ol>
+<p>Sender never waits</p>
+<p>Control of Buffering</p>
+<p>缓冲区理论上可以存放无限多条消息。发送方永远不会因为缓冲区满而阻塞，可以一直发送消息。</p>
+<hr>
+<details class="example" open="open">
+<summary>question</summary>
+<p>下列关于信号的处理的描述中，错误的是()。</p>
+<p>A.当进程从内核态转为用户态时，会检查是否有待处理的信号</p>
+<p>B.当进程从用户态转为内核态时，也会检查是否有待处理的信号</p>
+<p>C.操作系统对某些信号的处理是可以忽略的</p>
+<p>D.操作系统允许进程通过系统调用，自定义某些信号的处理程序</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>B</p>
+<p>信号的处理时机只会在进程从内核态转为用户态时。当进程从用户态转为内核态时，不会检查是否有待处理的信号，选项B错误。操作系统对某些信号的默认处理可能就是忽略。</p>
+</details>
+<hr>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年10月27日 09:41:30 CST">2025年10月27日 09:41:30</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年10月27日 09:41:30 CST">2025年10月27日 09:41:30</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+  <h2 id="__comments">评论</h2>
+  <script src="https://giscus.app/client.js" data-repo="Melody12020831/Notebook" data-repo-id="R_kgDONR_9AA" data-category="Announcements" data-category-id="DIC_kwDONR_9AM4CkboN" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async>
+  </script>
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024 <a href="https://github.com/Melody12020831" target="_blank" rel="noopener">Melody</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Melody12020831/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../css/javascripts/tablesort.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
