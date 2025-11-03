@@ -520,7 +520,7 @@ Properties of communication link
 - Between each pair there exists **exactly one link** 每对进程之间只有一条链路。
 - The link may be unidirectional, but is usually bi-directional 链路可以是单向（只能一方发消息）或双向（双方都能发消息），但通常是双向。
 
-直接通信方式。发送进程直接将消息发送给接收进程，并将它挂在接收进程的消息缓冲队列上，接收进程从消息缓冲队列中取得消息。
+**直接通信方式**。发送进程直接将消息发送给接收进程，并将它挂在接收进程的消息缓冲队列上，接收进程从消息缓冲队列中取得消息。
 
 ---
 
@@ -530,7 +530,7 @@ Messages are directed and received from **mailboxes** (also referred to as **por
 
 进程之间通过**邮箱（mailbox）**或**端口（port）**进行通信。
 
-间接通信方式。发送进程将消息发送到某个中间实体，接收进程从中间实体取得消息。这种中间实体一般称为**信箱**。
+**间接通信方式**。发送进程将消息发送到某个中间实体，接收进程从中间实体取得消息。这种中间实体一般称为**信箱**。
 
 - Each mailbox has a unique id 邮箱是一个具有唯一ID的内核对象。进程可以向邮箱发送消息，也可以从邮箱接收消息。
 - Processes can communicate only if they share a mailbox 进程之间不需要直接知道对方，只要共享同一个邮箱即可通信。
