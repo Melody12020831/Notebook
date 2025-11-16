@@ -591,9 +591,9 @@ $$D = \frac{D_0}{1 - U}$$
 
 ### 常见的三种计算机网络体系结构
 
-OSI 参考标准（法律标准）：应用层、表示层、会话层、运输层、网络层、数据链路层、物理层
+OSI 参考标准（法律标准）：应用层(Application Layer)、表示层(Presentation Layer)、会话层(Session Layer)、运输层(Transport Layer)、网络层(Network Layer)、数据链路层(Data Link Layer)、物理层(Physical Layer)
 
-TCP/IP 参考模型（事实标准）：应用层、运输层、网际层、网络接口层
+TCP/IP 参考模型（事实标准）：应用层(Application Layer)、运输层(Transport Layer)、网际层(Internet Layer)、网络接口层(Network Interface Layer)
 
 ???+ example "question"
     下列选项中，不属于对网络模型进行分层的目标的是()。

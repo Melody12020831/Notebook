@@ -672,11 +672,31 @@ System maintains a **ready queue** of ready-to-run processes which have memory i
 
 系统会维护一个**就绪队列**（ready queue），队列中的进程有的在内存，有的在磁盘，等待被调度运行。
 
+Standard swapping: moving entire processes between mainmemory and a backing store
+
+将整个进程的内存映像从主存（RAM）移动到外部存储（backing store，如磁盘），或从外部存储再调回主存。
+
+- Entire process image swapped to the backing store
+
+Swapping with paging: pages of a process can be swapped
+
+不是整个进程换出/换入，而是以“页”为单位，只把部分页面从内存移到磁盘，或从磁盘调回内存。
+
+- A **page out** operation moves a page from memory to the backing store
+- The reverse process is known as a **page in**
+- Much less expensive
+
 ---
 
-### Schematic View of Swapping
+### Standard swapping of two processes
 
 ![img](./assets/8-21.png)
+
+---
+
+### Swapping with Paging
+
+![img](./assets/8-27.png)
 
 ---
 
@@ -900,5 +920,147 @@ A program is a collection of segments. A segment is a logical unit such as:
 
 ??? note "answer"
     答案：B
+
+---
+
+### Segmentation Architecture
+
+Logical address consists of a two tuple: `<segment-number, offset>`
+
+**Segment table**- maps two-dimensional physical addresses; each table entry has:
+
+段表用于将二维的逻辑地址映射为物理地址。
+
+- base – contains the starting physical address where the segments reside in memory
+- limit – specifies the length of the segment
+
+**Segment-table base register** (STBR) points to the segment table’s location in memory. 指向段表在内存中的起始位置。
+
+**Segment-table length register** (STLR) indicates number of segments used by a program; 记录该进程使用了多少个段（段表的长度）。
+
+$$\text{segment number s is legal if s < STLR}$$
+
+Protection: With each entry in segment table associate:
+
+- validation bit = 0 $\Rightarrow$ illegal segment
+- read/write/execute privileges
+
+段表项中可以有保护位（如只读/可写/可执行），实现更细粒度的内存保护。
+
+Protection bits associated with segments; code sharing occurs at segment level
+
+代码**共享**通常在**段**级别实现，多个进程的段表可以指向同一个物理段。
+
+Since segments vary in length, memory allocation is a dynamic storage-allocation problem
+
+由于段长不等，分段系统的内存分配是一个动态分配问题，容易产生**外部碎片**（即内存中出现许多不连续的小空洞）。
+
+---
+
+#### Segmentation Hardware
+
+![img](./assets/8-28.png)
+
+1. CPU生成逻辑地址：给出段号s和段内偏移量d。
+2. 越界检查：
+
+- 检查s是否小于STLR（段号是否合法）。
+- 检查d是否小于该段的limit（偏移量是否合法）。
+
+3. 查段表：用段号s查段表，得到该段的base和limit。
+
+4. 物理地址计算：物理地址 = base + offset
+
+5. 访问主存：用计算出的物理地址访问内存。
+
+---
+
+#### Example of Segmentation
+
+![img](./assets/8-29.png)
+
+---
+
+## Example: The Intel Pentium
+
+Supports both segmentation and segmentation with paging
+
+CPU generates logical address
+
+- Logical address space divided into local and global partitions.
+- LDT vs. GDT tables
+- Given to segmentation unit: Which produces linear addresses
+- Linear address given to paging unit: Which generates physical address in main memory ; Paging units form equivalent of MMU
+
+**地址转换的整体流程**
+
+1. CPU生成逻辑地址: 程序员看到和使用的是逻辑地址，格式为 `<段号, 段内偏移>` 。
+2. 分段机制（Segmentation）: 逻辑地址首先由分段单元处理。
+
+- `Pentium` 支持本地描述符表（LDT）和全局描述符表（GDT），分别管理进程**私有段**和**系统/共享段**。
+- 段表项（描述符）中包含**段的基址、长度和权限**等信息。
+- 分段单元将逻辑地址转换为线性地址（linear address），即：线性地址 = 段基址 + 段内偏移
+
+3. 分页机制
+
+- 线性地址再经过分页单元处理。
+- 分页单元将线性地址分为页号和页内偏移，通过查页表，将线性地址映射为物理地址。
+- 最终，物理地址用于访问主存。
+
+---
+
+### Logical to Physical Address Translation in Pentium
+
+![img](./assets/8-30.png)
+
+![img](./assets/8-31.png)
+
+- `selector`（16位）：选择子，包含段号（s，13位）、GDT/LDT标志（g，1位）、特权级（p，2位）。
+- `offset`（32位）：段内偏移量。
+
+选择子决定查全局描述符表（GDT）还是本地描述符表（LDT），段号用于定位段表项，特权级用于权限检查。
+
+步骤一：分段（Segmentation）
+
+1. CPU生成逻辑地址（selector, offset）。
+2. 分段单元根据selector中的g位选择GDT或LDT，再用s位查找段表项，得到该段的基址（base）和段长（limit）。
+3. 检查offset是否小于limit（越界检查），合法则继续。
+线性地址 = 段基址 + offset
+4. 这一步把二维的逻辑地址（段号+偏移）转换为一维的线性地址（32位）。
+
+步骤二：分页（Paging）
+
+1. 线性地址再被分页单元处理。
+2. 线性地址被分为：
+
+- $p_1$（10位）：一级页表索引
+- $p_2$（10位）：二级页表索引
+- $d$（12位）：页内偏移
+
+3. 先用 $p_1$ 查一级页表，找到对应的页表页，再用 $p_2$ 查页表页，得到物理帧号，最后加上 $d$ 得到物理地址。
+
+---
+
+### Linear Address
+
+32-bit linear address
+
+![img](./assets/8-32.png)
+
+---
+
+### Intel Pentium Segmentation
+
+![img](./assets/8-33.png)
+
+Local Descriptor Table contains entries for the segments local to each program itself;
+
+Global Descriptor Table contains entries of the system (OS).
+
+Each 8-byte segment descriptor contains base location and limit of the Segment.
+
+- 分段：支持模块化、保护、共享（如代码段、数据段、栈段等），逻辑结构清晰。
+- 分页：解决物理内存分配的灵活性和碎片问题，实现虚拟内存。
+- **两级结合**：既有灵活的**逻辑结构**，又有高效的**物理内存管理**。
 
 ---

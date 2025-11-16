@@ -212,6 +212,7 @@ nav:
       - Computer_Science/TOC/Chapter1.md
       - Computer_Science/TOC/Chapter2.md
       - Computer_Science/TOC/Chapter3.md
+      - Computer_Science/TOC/Chapter4.md
     - "OS":
       - Computer_Science/OS/index.md
       - Computer_Science/OS/Chapter1.md
@@ -220,11 +221,13 @@ nav:
       - Computer_Science/OS/Chapter4.md
       - Computer_Science/OS/Chapter5.md
       - Computer_Science/OS/Chapter8.md
+      - Computer_Science/OS/Chapter9.md
     - "CN":
       - Computer_Science/CN/index.md
       - Computer_Science/CN/Chapter1.md
       - Computer_Science/CN/Chapter2.md
       - Computer_Science/CN/Chapter3.md
+      - Computer_Science/CN/Chapter4.md
       - Computer_Science/CN/quiz.md
     - "Visualization":
       - Computer_Science/Visualization/note.md
@@ -276,4 +279,4 @@ nav:
       - Miscellaneous/UBC/block chain DAY 6.md
       - Miscellaneous/UBC/block chain DAY 7.md
       - Miscellaneous/UBC/block chain DAY 8.md
-    - Miscellaneous/cs231n/note.md
+    - Miscellaneous/cs231n/cs231n_note.md.md
