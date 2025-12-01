@@ -281,6 +281,13 @@ Performance
 
 RR 非常适合**分时系统**和**多用户环境**，能保证每个进程都能及时响应，不会出现某个进程长期占用CPU的情况。但是由于经常需要切换进程，可能导致**系统开销增加**，效率降低，**一般不会说为了让系统更高效**。
 
+!!! info
+    To implement RR scheduling, we again treat the ready queue as a FIFO queue of processes. New processes are added to the tail of the ready queue. The CPU scheduler picks the first process from the ready queue, sets a timer to interrupt after 1 time quantum, and dispatches the process.
+
+    One of two things will then happen. The process may have a CPU burst of less than 1 time quantum. In this case, the process itself will release the CPU voluntarily. The scheduler will then proceed to the next process in the ready queue. If the CPU burst of the currently running process is longer than 1 time quantum, the timer will go off and will cause an interrupt to the operating system. A context switch will be executed, and the process will be put at the tail of the ready queue. The CPU scheduler will then select the next processin the ready queue.
+
+    这里最需要注意的一点就是，当前一个进程 $P_1$ 时间片恰好用完，但是进程 $P_1$ 还没有完成，此时下一个进程 $P_2$ 到达时，调度器会把 $P_1$ 放到就绪队列尾部，也就是说会先调度 $P_2$，然后再调度 $P_1$。优先调度新到达的进程。
+
 ---
 
 ### Multilevel Queue

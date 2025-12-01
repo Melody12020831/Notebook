@@ -948,7 +948,7 @@ Thrashing 指进程或系统在不停地进行页面换入/换出（大量缺页
 
 ??? note "answer"
     ![img](./assets/9-40.png)
-    
+
     ![img](./assets/9-39.png)
 
 ---
@@ -1222,5 +1222,311 @@ Benefits include no fragmentation, fast memory request satisfaction
 - 图左侧是需要分配的内核对象，比如3KB对象和7KB对象。每种对象类型有自己的cache。
 - 每个cache专门用于分配某种类型的对象。cache中维护了对象的分配状态（空闲或已用）。cache中预先分配和初始化了很多对象实例，分配时直接从cache中取空闲对象，释放时只需标记为free。
 - 每个slab是一组物理连续的页（如多个4KB页组成一个slab）。slab中包含多个对象实例，分配时直接从slab中取空闲对象。
+
+> Slab分配器通常以Buddy系统为底层内存分配器，即slab需要物理页时，向Buddy系统申请连续页。
+> 
+> Buddy负责大块页分配，Slab负责小对象管理，两者结合满足内核各种内存需求。
+> 
+> Buddy是底层大块分配，Slab是上层小对象高效管理，Slab建立在Buddy之上。
+
+---
+
+### Other Issues -- Prepaging
+
+To reduce the large number of page faults that occurs at process startup
+
+Prepage all or some of the pages a process will need, before they are referenced
+
+预调页是指在进程启动或某些关键时刻，操作系统提前将进程可能会用到的页面一次性调入内存，而不是等到实际访问时再发生缺页中断。目的是减少进程启动初期的大量缺页中断，提升响应速度。
+
+But if prepaged pages are unused, I/O and memory was wasted
+
+如果预调入的页面确实会被访问，可以显著减少缺页次数，提升性能。如果预调入的页面实际没有被访问，反而浪费了I/O和内存资源。
+
+Assume s pages are prepaged and α of the pages is used
+
+- Is benefit of s * α  saved pages faults > or < than the cost of prepaging s * (1- α) unnecessary pages?  
+- α near zero $\Rightarrow$ prepaging loses 
+
+假设预调入了 s 个页面，其中只有 α 比例的页面最终被访问。
+
+- 收益：节省了 s × α 次缺页中断。
+- 成本：浪费了 s × (1-α) 个页面的I/O和内存。
+- 如果 α 很小（即实际用到的页面很少），预调页反而得不偿失。
+
+---
+
+### Other Issues – Page Size
+
+Page size selection must take into consideration:
+
+- Fragmentation – small page size
+- table size -> large page size
+- I/O overhead -> large page size
+- Locality -> small page size , accurate locality
+
+页面大小的选择需要综合考虑以下几个因素：
+
+1. Fragmentation（碎片）
+
+- 小页面：页内碎片少，内存利用率高。
+- 大页面：页内碎片多，可能浪费内存。
+
+2. Page Table Size（页表大小）
+
+- 小页面：需要更多页表项，页表变大，占用更多内存。
+- 大页面：页表项减少，页表变小。
+
+3. I/O Overhead（I/O开销）
+
+- 大页面：一次I/O可以传输更多数据，效率高。
+- 小页面：I/O次数多，效率低。
+
+4. Locality（局部性）
+
+- 小页面：更能精确反映程序的局部性，减少无用数据调入。
+- 大页面：可能把暂时不用的数据也调入内存，降低局部性效果。
+
+**综合权衡**
+
+- 页面太小：页表太大，I/O频繁。
+- 页面太大：碎片多，局部性差。
+
+---
+
+### Other Issues – TLB Reach 
+
+TLB Reach - The amount of memory accessible from the TLB
+
+TLB Reach = (TLB Size) X (Page Size)
+
+TLB Reach指的是TLB能直接覆盖的内存总量：TLB Reach = TLB Size × Page Size
+
+Ideally, the working set of each process is stored in the TLB, otherwise there is a high degree of page faults.
+
+如果TLB能覆盖进程的整个工作集（即进程当前活跃的所有页面），则大部分内存访问都能命中TLB，缺页率低，性能高。如果TLB覆盖范围太小，工作集超出TLB容量，则频繁发生TLB未命中，导致更多缺页和性能下降。
+
+优化方法：
+
+**Increase the Page Size**
+
+- This may lead to an increase in fragmentation as not all applications require a large page size
+
+增大页面大小（Page Size），可以提升TLB Reach，但可能导致碎片增加。
+
+**Provide Multiple Page Sizes**
+
+- This allows applications that require larger page sizes the opportunity to use them without an increase in fragmentation
+
+提供多种页面大小，让不同应用根据需求选择，既能提升TLB覆盖率，又能减少碎片。
+
+---
+
+### Other Issues – Program Structure
+
+`Int[128,128] data;`
+
+Each row is stored in one page 
+
+以二维数组 `Int[128,128] data` 为例，假设每行存储在一个页面。
+
+**Program 1**
+
+```c
+for (j = 0; j <128; j++)
+    for (i = 0; i < 128; i++)
+        data[i,j] = 0;
+```
+
+访问顺序是按列访问，每次都跨越不同页面。每访问一个元素都可能导致一次缺页，总共 128 × 128 = 16,384 次缺页。
+
+128 x 128 = 16,384 page faults
+
+**Program 2**
+
+```c
+for (i = 0; i < 128; i++)
+    for (j = 0; j < 128; j++)
+        data[i,j] = 0;
+```
+
+访问顺序是按行访问，每行只需一次缺页，总共 128 次缺页。
+
+128 page faults
+
+---
+
+### Other Issues – I/O interlock
+
+**I/O Interlock** – Pages must sometimes be locked into memory
+
+某些页面在进行I/O操作（如文件读写、设备通信）时，必须锁定在内存，不能被页面置换算法换出。
+
+Consider I/O - Pages that are used for copying a file from a device must be locked from being selected for eviction by a page replacement algorithm
+
+例如，正在用于设备数据传输的页面，如果被换出，会导致数据丢失或I/O错误。操作系统会将这些页面“锁定”，直到I/O操作完成，保证数据安全和正确性。
+
+---
+
+好的，这是对为您生成的演示文稿中每一页内容的详细中文讲解。在讲解过程中，关键的英文术语我会保留并标注。
+
+---
+
+## ADDITION
+
+**Virtual Memory: Core Concepts**
+
+**Isolation & Indirection (隔离性与间接层)**：
+
+* **Isolation (隔离性)**：这是操作系统的基石。虚拟内存为每个进程提供了一个独立的“沙盒”，使得进程之间互不干扰，同时也保护内核（Kernel）不被用户进程破坏。
+* **Level of Indirection (间接层)**：计算机科学有一句名言：“所有问题都可以通过增加一个间接层来解决”。CPU 指令使用的是 **Virtual Address (虚拟地址)**，而硬件（MMU）和内核负责将其翻译为 **Physical Address (物理地址)**。这种映射关系就是那个“间接层”。
+
+**Mapping Dynamics (映射的动态性)**：
+
+* **Direct Mapping (直接映射)**：虚拟地址直接对应物理地址（例如 1:1），这种方式简单但缺乏灵活性。
+* **Static Page Tables (静态页表)**：映射关系一旦建立就不再改变。
+* **Dynamic Page Tables (动态页表)**：这是现代操作系统的精髓。通过 **Page Fault (缺页异常)**，内核可以在程序运行时动态地修改页表。这使得操作系统可以制造出“内存无限大”的假象，或者实现很多巧妙的优化。
+
+---
+
+### Process Address Spaces (Linux) (Linux 进程地址空间)
+
+这一页介绍了 Linux 操作系统是如何管理地址空间的。
+
+* **Request Paging (请求式分页)**：Linux 采用的是“按需分配”的策略。它不会在进程启动时就把整个程序加载到物理内存中，而是等到进程真正用到某块代码或数据时，才通过缺页异常将其载入。
+* **Uniform Size (统一大小)**：系统“欺骗”每个进程，让它们都以为自己拥有一个巨大的、连续的、大小相同的虚拟内存空间（例如 32位系统下通常是 4GB）。这对编译器和链接器非常友好。
+* **VM Split (虚拟内存分割)**：这块巨大的虚拟内存被切分为两部分：
+
+1. **User Virtual Address (UVA, 用户虚拟地址)**：每个进程独享，互不干扰。
+2. **Kernel Virtual Address (KVA, 内核虚拟地址)**：所有进程共享同一份内核映射。
+
+---
+
+### Address Space Details (地址空间详情)
+
+这一页深入探讨了地址空间的具体结构。
+
+**Flat Address Space (扁平地址空间)**：
+
+* 进程看到的是一个从 0 到 最大值（例如 $2^{32}-1$ 或 $2^{64}-1$）的连续地址范围。
+*  **Threads (线程)**：如果多个执行流选择共享同一个地址空间，它们就成为了线程。
+* **Permissions (权限)**：虽然进程拥有 4GB 的寻址能力（32位下），但它没有权限访问所有区域（特别是属于内核的高地址区域）。
+
+**Legal Areas & Faults (合法区域与错误)**：
+
+* **Memory Areas (内存区域)**：只有被操作系统标记为“合法”的区间（如代码段、堆、栈）才能被访问。
+* **Segmentation Fault (段错误)**：如果进程试图访问一个未定义的、不在合法区域内的地址，CPU 会报错，操作系统会发送信号杀死该进程。
+
+---
+
+### The VM Split Visualized (虚拟内存分割可视化)
+
+这一页通过图示展示了经典的内存布局（以 32位 x86 为例）。
+
+* **Kernel Space (内核空间)**：位于内存的高地址部分（High Memory），通常占 1GB。所有进程看到的这部分内容都是一模一样的。
+* **User Space (用户空间)**：位于低地址部分（Low Memory），通常占 3GB。这是进程存放自己代码、数据、堆栈的地方，每个进程都不一样（P1, P2... Pn）。
+* **Context Switch (上下文切换)**：当 CPU 从进程 P1 切换到 P2 时，它会切换用户空间的页表（User Space），但内核空间的映射（Kernel Space）保持不变。
+
+---
+
+### 64-bit Address Space (64位地址空间)
+
+这一页解释了现代 64位系统的特殊情况。
+
+* **The Split (分割)**：64位地址空间非常巨大，目前的硬件并不使用全部 64位。通常使用 **Top Bit (最高位)** 来区分用户和内核：最高位为 0 的是用户空间，最高位为 1 的是内核空间。
+* **48-bit Limit (48位限制)**：目前的 x86_64 CPU 实际上只使用了 48位虚拟地址（256 TB）。
+* **Canonical Form (规范形式)**：要求第 48 到 63 位必须与第 47 位相同。这意味着地址空间中间有一个巨大的“空洞”是不可用的。
+* **Future Proofing (面向未来)**：未来的硬件可能会扩展到 57位虚拟地址，支持更大的内存（PB 级别）。
+
+---
+
+### Kernel Physical Mapping (内核的物理映射)
+
+这一页讲述了内核在物理内存中是如何存在的。
+
+* **Never Swapped Out (永不换出)**：内核代码和数据必须时刻在物理内存中，不能像用户数据那样被交换（Swap）到硬盘上，否则操作系统就崩溃了。
+* **Direct Map (直接映射)**：为了效率，内核的虚拟地址往往直接映射到物理地址。例如，物理地址的 `0x00000000` 可能直接映射到内核虚拟地址的某个偏移处。
+* **Kernel Image (内核镜像)**：内核代码通常加载在物理内存的 `0x00100000`（1MB）位置，避开低地址的一些 BIOS 或硬件保留区。
+
+---
+
+### VM Trick: Lazy Allocation (虚拟内存技巧：惰性分配)
+
+这是利用 Page Fault 实现的第一个高级技巧。
+
+* **The Concept (概念)**：应用程序经常会通过 `sbrk` 或 `malloc` 申请一大块内存，但可能只用其中很小一部分。如果立刻分配物理内存，是一种巨大的浪费。
+* **The Mechanism (机制)**：
+
+1.  当应用申请内存时，内核只是在页表中把那块虚拟地址范围“圈”出来，但标记为 **Invalid (无效)**，并不分配物理页。
+2.  当应用真的去读写这块内存时，会触发 **Page Fault (缺页异常)**。
+3.  内核捕获这个异常，发现是合法的申请，才会在通过分配物理页，更新页表，让程序继续运行。
+
+* **Benefit (收益)**：只有真正被使用的内存才消耗物理 RAM。
+
+---
+
+### VM Trick: Copy-on-Write (COW) (虚拟内存技巧：写时复制)
+
+这是优化进程创建（fork）的关键技术。
+
+**Optimizing fork() (优化 fork)**：传统的 `fork()` 需要把父进程的所有内存复制一份给子进程，非常慢且浪费。
+
+**Mechanism (机制)**：
+
+*   `fork()` 时，父子进程共享同一个物理页面。
+*   内核将这些页面的页表项（PTE）都设为 **Read-Only (只读)**。
+*   如果只是 **Read (读)**，双方相安无事，效率极高。
+*   一旦有一方尝试 **Write (写)**，CPU 触发 **Page Fault**。
+*   内核捕获异常，把该页面复制一份，让父子进程各拿一份（变为可读写），然后让它们继续运行。
+
+**RSW Bit**：内核利用页表项中的保留位（RSW）来区分“真·只读页面”和“因 COW 而标记为只读的页面”。
+
+---
+
+### VM Trick: Zero Fill On-Demand (虚拟内存技巧：按需零填充)
+
+这是对 BSS 段（未初始化全局变量）的优化。
+
+**The BSS Section (BSS 段)**：存放未初始化的全局变量。根据 C 语言标准，这些变量在程序开始时必须全是 0。
+
+**Implementation (实现)**：
+
+* 如果一个程序有 1MB 的 BSS 段，内核不会分配 1MB 的物理内存并填满 0。
+* 内核让这 1MB 的虚拟地址全部映射到**同一个**物理页面——系统的 **Zero Page (零页)**（这是一个内容全为 0 的只读物理页）。
+* **On Write (写入时)**：当程序试图修改某个变量时，触发 Page Fault。内核此时才分配一个新的物理页（填零），替换掉原来的零页映射。
+
+**Benefit (收益)**：极大地加快了程序启动速度，并节省了内存。
+
+---
+
+### VM Trick: Memory-Mapped Files (虚拟内存技巧：内存映射文件)
+
+解释了 `mmap` 系统调用的原理。
+
+* **mmap()**：这是一种将磁盘文件直接映射到进程虚拟地址空间的技术。
+* **Load/Store (加载/存储)**：程序员可以像操作内存数组一样去读写文件，而不需要使用 `read()` 或 `write()` 系统调用。
+* **Demand Paging (按需分页)**：文件内容并不是一次性读入内存。当你访问某个地址时，触发缺页异常，内核才去磁盘把对应的文件块（Block）读入内存。
+* **Unmap & Dirty Pages (解除映射与脏页)**：当调用 `unmap` 时，或者内存不足时，内核会检查哪些页面被修改过（**Dirty Bit** 为 1），并将这些“脏页”写回磁盘保存。
+
+---
+
+### Implementing PF in RISC-V (在 RISC-V 中实现缺页处理)
+
+这一页从硬件实现角度，讲解了当 Page Fault 发生时，RISC-V CPU 提供了哪些信息给内核。
+
+**Faulting Address (出错地址)** -> **stval 寄存器**：
+
+* 告诉内核：是哪个虚拟地址导致了错误？（例如：程序试图访问 0x4000 附近的地址）。
+
+**The Cause (原因)** -> **scause 寄存器**：
+
+* 告诉内核：这是什么类型的错误？
+* 是 **Load Page Fault**（读引起的）？
+* 是 **Store/AMO Page Fault**（写引起的）？
+* 还是 **Instruction Page Fault**（取指令引起的）？
+
+**Instruction Address (指令地址)** -> **sepc 寄存器**：
+    
+* 告诉内核：是哪条指令触发了这个错误？（也就是程序计数器 PC 的值）。处理完异常后，通常会重新执行这条指令。
 
 ---
