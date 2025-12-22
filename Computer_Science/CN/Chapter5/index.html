@@ -13,14 +13,14 @@
         <link rel="prev" href="../Chapter4/">
       
       
-        <link rel="next" href="../quiz/">
+        <link rel="next" href="../Chapter6/">
       
       
         
       
       
       <link rel="icon" href="../../../assets/images/icon.jpg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2669,6 +2669,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -2896,6 +2900,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../OS/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Deadlocks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../OS/Chapter8/" class="md-nav__link">
         
   
@@ -2945,6 +2977,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10 | File-System Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2966,6 +3026,8 @@
       
         
           
+        
+      
         
       
         
@@ -3382,10 +3444,510 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tcp_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的运输连接管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP的运输连接管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “三报文握手”建立TCP连接
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP“三报文握手”过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP“四报文挥手”释放连接
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的流量控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP的流量控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP流量控制的基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的流量控制方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的拥塞控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP的拥塞控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拥塞控制的基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拥塞控制的基本方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的四种拥塞控制方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP的四种拥塞控制方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基础概念与变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slow-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一阶段：慢开始 (Slow Start)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#congestion-avoidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二阶段：拥塞避免 (Congestion Avoidance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三阶段：网络拥塞的处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-retransmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四阶段：快重传 (Fast Retransmit)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五阶段：快恢复 (Fast Recovery)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP拥塞控制与网际层拥塞控制的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP可靠传输的实现
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP可靠传输的实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 基本假定与概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 滑动窗口的结构与指针
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 可靠传输的工作流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 可靠传输的工作流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 初始状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 发送数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 接收方确认与窗口滑动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 异常情况处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 补充说明
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP超时重传时间的选择
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP超时重传时间的选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 为什么选择RTO很复杂？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rto-rfc-6298" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. RTO 的计算方法 (RFC 6298标准)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. RTO 的计算方法 (RFC 6298标准)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rtt_s-smoothed-rtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (1) 加权平均往返时间 RTT_S (Smoothed RTT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rtt-rtt_d-rtt-deviation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (2) RTT偏差的加权平均值 RTT_D (RTT Deviation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (3) 超时重传时间 RTO 的计算公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rtt-karn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. RTT 测量的困境与 Karn 算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. RTT 测量的困境与 Karn 算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-karn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (1) Karn 算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-karn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (2) 修正的 Karn 算法 (指数退避)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 实例演示
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的选择确认
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | 应用层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -5355,6 +5917,478 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tcp_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的运输连接管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP的运输连接管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        “三报文握手”建立TCP连接
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP“三报文握手”过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP“四报文挥手”释放连接
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的流量控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP的流量控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP流量控制的基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的流量控制方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的拥塞控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP的拥塞控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拥塞控制的基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拥塞控制的基本方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的四种拥塞控制方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP的四种拥塞控制方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基础概念与变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slow-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一阶段：慢开始 (Slow Start)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#congestion-avoidance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二阶段：拥塞避免 (Congestion Avoidance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三阶段：网络拥塞的处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-retransmit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第四阶段：快重传 (Fast Retransmit)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fast-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第五阶段：快恢复 (Fast Recovery)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP拥塞控制与网际层拥塞控制的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP可靠传输的实现
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP可靠传输的实现">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 基本假定与概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 滑动窗口的结构与指针
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 可靠传输的工作流程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 可靠传输的工作流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 初始状态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: 发送数据
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 接收方确认与窗口滑动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 异常情况处理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 补充说明
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP超时重传时间的选择
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TCP超时重传时间的选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 为什么选择RTO很复杂？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rto-rfc-6298" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. RTO 的计算方法 (RFC 6298标准)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. RTO 的计算方法 (RFC 6298标准)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rtt_s-smoothed-rtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (1) 加权平均往返时间 RTT_S (Smoothed RTT)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rtt-rtt_d-rtt-deviation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (2) RTT偏差的加权平均值 RTT_D (RTT Deviation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (3) 超时重传时间 RTO 的计算公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-rtt-karn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. RTT 测量的困境与 Karn 算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. RTT 测量的困境与 Karn 算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-karn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (1) Karn 算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-karn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (2) 修正的 Karn 算法 (指数退避)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 实例演示
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TCP的选择确认
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5426,7 +6460,7 @@
 
 <h1 id="chapter-5">Chapter 5 | 运输层<a class="headerlink" href="#chapter-5" title="Permanent link">¶</a></h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 1958 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 17 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 10 分钟</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 16939 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 53 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 85 分钟</p>
 </div>
 <h2 id="_1">运输层概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <h3 id="_2">进程间基于网络的通信<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
@@ -5454,6 +6488,76 @@
 <p>UDP不需要实现可靠传输，因此不需要使用实现可靠传输的各种机制。</p>
 <p>UDP的<strong>实现简单</strong>，UDP用户数据报的<strong>首部比较小</strong>。</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-7.png" data-desc-position="bottom"><img alt="img" src="../assets/5-7.png"></a></p>
+<details class="example" open="open">
+<summary>question</summary>
+<p>下列关于UDP的描述中，错误的是()。</p>
+<p>A.UDP报头主要包括端口号、长度、检验和等字段</p>
+<p>B.UDP长度字段是UDP数据报的长度，包括伪首部的长度</p>
+<p>C.UDP检验和对伪首部、UDP报文头及应用层数据进行检验</p>
+<p>D.伪首部包括IP分组报头的一部分</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>B.UDP长度字段是UDP数据报的长度，但不包括伪首部的长度。</p>
+<p>伪首部只是在计算检验和时临时添加的，不计入 UDP的长度。对于选项 D，伪首部包括源IP 和目的 IP，这是 IP 分组报头的一部分。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>下列关于UDP检验和的说法中，错误的是()。</p>
+<p>A.计算检验和时需按2字节对齐，若数据部分不足，则需用一个全0字节填充</p>
+<p>B.若UDP检验和计算结果为0,则在检验和字段填充0</p>
+<p>C.UDP检验和字段的计算包括一个伪首部、UDP首部和携带的用户数据</p>
+<p>D.UDP检验和的计算方法是二进制反码运算求和再取反</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>B</p>
+<p>UDP 检验和不是必需的，若不使用检验和，则将检验和字段设置为0。而若检验和的计算结果恰好为 0，则将检验和字段置为全1(这个结论了解即可)。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>下列关于UDP检验的描述中，错误的是()。</p>
+<p>A.UDP检验和段的使用是可选的，若源主机不想计算检验和，则该检验和段应为全0</p>
+<p>B.在计算检验和的过程中，需要生成一个伪首部，源主机需要把该伪首部发送给目的主机</p>
+<p>C.检验出UDP数据报出错时，可以丢弃或交付给上层</p>
+<p>D.UDP检验和还能检验IP数据报的源IP地址和目的IP地址</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>B</p>
+<p>UDP 数据报的伪首部包含了 IP 地址信息,目的是通过数据检验保证 UDP 数据报正确到达目的主机。伪首部是临时添加的，只是为了计算检验和，既不向下传送，又不向上递交。若检验出UDP 数据报出错，则可以丢弃，也可以交付给上层，但是需要告诉上层这是错误的数据报。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>一个UDP数据报的数据字段长度为9192B,如在数据链路层要采用以太网来传送，则应当将其划分为IP数据报片的片数是()。</p>
+<p>A.6    B.7    C.8    D.9</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>C</p>
+<p>UDP 数据字段长度 9192B，加上 UDP 首部长度 8B，共 9200B。每个 IP 数据报片的最大长度为 1500B，减去 IP 首部 20B,剩下 1480B 用来存放 UDP 数据报。因此需要将 UDP 数据报划分为 <span class="arithmatex">\(\lceil 9200/1480 \rceil\)</span> = 7 个数据报片。每个IP 数据报片的数据字段长度为 1480B，除了最后一个为320B。每个 IP 数据报片的偏移字段的值依次为 0,185,370,555,740,925,1110。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>某应用层数据大小为200B,传输层使用UDP,网际层使用IP(采用最大首部长度),使用以太网进行传输(不考虑前导码和VLAN),则该应用层数据的传输效率是()。</p>
+<p>A.82.6%    B.77.5%    C.69.9%    D.67.1%</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>C</p>
+<p>以太网 MAC 帧首部和尾部为 18B,网际层 IP 首部为 60B(采用最大首部长度),传输层 UDP首部为 8B，所以该应用层数据的传输效率为200 <span class="arithmatex">\(\div\)</span> (200+18+60+8)=69.9%。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>在进行跨网络的IP通信时，不考虑NAT,传输层使用UDP进行封装，数据链路层采用以太网MAC帧进行封装，则下列字段中一定保持不变的是()。</p>
+<p>I.UDP总长度    II.UDP检验和    ⅢI.FCS帧检验序列    IV.目的MAC地址    V.目的IP地址    VI.IP检验和</p>
+<p>A.V    B.I、Ⅱ、V    C.IV、VI    D.Ⅲ、IV、V</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>A</p>
+<p>UDP 提供的是无连接服务，选项1正确;同时 UDP也提供复用/分用服务，选项I正确;UDP虽然有差错检验机制，但 UDP 的差错检验只是检査数据在传输的过程中有没有出错，出错则直接丢弃，没有重传等机制，不保证可靠传输。使用 UDP 时，可靠传输必须由应用层实现，选项错误。</p>
+</details>
 <hr>
 <h3 id="_3">运输层端口号<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
 <p>运行在计算机上的进程是使用<strong>进程标识符</strong>（Process Identification，<strong>PID</strong>）来标识的。</p>
@@ -5531,6 +6635,7 @@
 <hr>
 <h3 id="udptcp_5">UDP首部和TCP首部的对比<a class="headerlink" href="#udptcp_5" title="Permanent link">¶</a></h3>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-12.png" data-desc-position="bottom"><img alt="img" src="../assets/5-12.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-44.png" data-desc-position="bottom"><img alt="img" src="../assets/5-44.png"></a></p>
 <hr>
 <h2 id="tcp_1">TCP报文段的首部格式<a class="headerlink" href="#tcp_1" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-13.png" data-desc-position="bottom"><img alt="img" src="../assets/5-13.png"></a></p>
@@ -5554,6 +6659,1146 @@
 <li><strong>窗口</strong>: 占16比特，该字段的取值以字节为单位。指出发送本报文段的一方的接收窗口的大小，即接收缓存的可用空间大小，这用来表征接收方的接收能力。在计算机网络中，经常用接收方的接收能力的大小来控制发送方的数据发送量，这就是所谓的流量控制。</li>
 <li><strong>检验和</strong>: 占16比特。用来检查整个TCP报文段在传输过程中是否出现了误码。</li>
 </ul>
+<p><strong>伪首部的内容</strong>(就是网络层的一些信息):</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-18.png" data-desc-position="bottom"><img alt="img" src="../assets/5-18.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-19.png" data-desc-position="bottom"><img alt="img" src="../assets/5-19.png"></a></p>
+<details class="note">
+<summary>发送方检验和计算方法</summary>
+<ol>
+<li>
+<p>将TCP首部中检验和字段的值置为0。</p>
+</li>
+<li>
+<p>将伪首部、TCP首部以及数据载荷这三部分划分成若干个2字节的字。若伪首部、TCP首部以及数据载荷这三部分的总长度不是偶数个字节，则在最后添加1个“全0”字节。</p>
+</li>
+<li>
+<p>对划分出的全部2字节的字进行<strong>反码算数运算求和</strong>，并将<strong>求和结果取反码</strong>。</p>
+</li>
+<li>
+<p>将步骤 3 得到的结果写入TCP首部中的检验和字段。</p>
+</li>
+</ol>
+<p>与IPv4数据报首部检验和的计算方法类似，差别仅在于前者只对首部进行检验。</p>
+</details>
+<details class="note">
+<summary>接收方通过检验和字段的值判断TCP报文段在传输过程中是否误码的方法</summary>
+<ol>
+<li>
+<p>给接收到的TCP报文段前面添加一个12字节的伪首部。</p>
+</li>
+<li>
+<p>将伪首部、TCP首部以及数据载荷这三部分划分成若干个2字节的字。</p>
+</li>
+<li>
+<p>对划分出的全部2字节的字进行反码算数运算求和，并将求和结果取反码。</p>
+</li>
+<li>
+<p>若步骤 3 得到的结果为0，则表示TCP报文段在传输过程中没有误码。否则，表示出现了误码。</p>
+</li>
+</ol>
+</details>
+<ul>
+<li><strong>同步标志位SYN</strong>: 用于TCP“三报文握手”<strong>建立连接</strong>。当<strong>SYN=1且ACK=0</strong>时，表明这是一个<strong>TCP连接请求报文段</strong>。对方若<strong>同意建立连接</strong>，则应在<strong>响应</strong>的TCP报文段的首部中<strong>使SYN=1且ACK=1</strong>。综上所述，SYN为1的TCP报文段要么是一个连接请求报文段，要么是一个连接响应报文段。</li>
+<li><strong>终止标志位FIN</strong>: 用于TCP“四报文挥手”<strong>释放连接</strong>。当<strong>FIN=1</strong>时，表明此TCP报文段的发送方已经将全部数据发送完毕，现在<strong>要求释放TCP连接</strong>。</li>
+<li><strong>复位标志位RST</strong>: <strong>用于复位TCP连接</strong>。当<strong>RST=1</strong>时，表明<strong>TCP连接中出现严重差错，必须释放连接，然后再重新建立连接</strong>。RST置1还用来<strong>拒绝一个非法的TCP报文段</strong>或<strong>拒绝打开一个TCP连接</strong>。</li>
+<li><strong>推送标志位PSH</strong>: 发送方TCP把PSH置1，并立即创建一个TCP报文段发送出去，而不需要积累到足够多的数据再发送。接收方TCP收到PSH为1的TCP报文段，就尽快地交付给应用进程，而不再等到接收到足够多的数据才向上交付。</li>
+</ul>
+<details class="note">
+<summary>Note</summary>
+<p>出于效率的考虑，TCP的发送方可能会延迟发送数据，而TCP的接收方可能会延迟向应用进程交付数据。这样可以一次处理更多的数据。</p>
+<p>但是当两个应用进程进行交互式通信时，有时在一端的应用进程希望在键入一个命令后立即就能够收到对方的响应。在这种情况下，应用进程可以通知TCP使用推送（PUSH）操作。</p>
+</details>
+<ul>
+<li><strong>紧急标志位URG</strong>: 当URG=1时，紧急指针字段有效。当URG=0时，紧急指针字段无效。</li>
+</ul>
+<details class="note">
+<summary>Note</summary>
+<p>占16比特，以字节为单位，用来指明紧急数据的长度。当发送方有<strong>紧急数据</strong>时，可将紧急数据“<strong>插队</strong>”到发送缓存的最前面，并立刻封装到一个TCP报文段中进行发送。<strong>紧急指针会指出本报文段数据载荷部分包含了多长的紧急数据</strong>，紧急数据之后是普通数据。<strong>接收方收到紧急标志位为1的TCP报文段</strong>，会按照紧急指针字段的值从报文段数据载荷中取出<strong>紧急数据</strong>并直接上交应用进程，而<strong>不必在接收缓存中排队</strong>。</p>
+</details>
+<ul>
+<li>
+<p><strong>选项</strong>（长度可变，最大40字节）: </p>
+<ul>
+<li>最大报文段长度MSS选项：指出TCP报文段数据载荷部分的最大长度，而不是整个TCP报文段的长度。</li>
+<li>窗口扩大选项：用来扩大窗口，提高吞吐率。</li>
+<li>时间戳选项：用来测量往返时间RTT，改进超时重传算法。用于处理序号超范围的情况，又称为防止序号绕回PAWS。</li>
+<li>选择确认SACK选项：用来实现选择确认功能。</li>
+</ul>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>数据偏移: 用来实现选择确认功能。</p>
+<p>选项: 长度可变（0~40字节）</p>
+<p>填充: 若选项字段的长度加上20字节固定首部的长度不能被4字节整除时，需要填充相应数量的比特0，以确保首部长度能被4字节整除。</p>
+</div>
+<details class="example" open="open">
+<summary>question</summary>
+<p>TCP在 40Gb/s的线路上传送数据，若TCP充分利用了线路的带宽，则经过()的时间TCP会发生序号绕回(使用了之前用过的字节序号，已知<span class="arithmatex">\(2^{32} / 5×10^9 = 0.859\)</span>)。</p>
+<p>A.859ms    B.85.9ms    C.8.59ms    D.0.859ms</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>A</p>
+<p>序号字段占32比特，因此TCP序号的取值范围是0~<span class="arithmatex">\(2^{32}-1\)</span>。当TCP发送的数据量达到<span class="arithmatex">\(2^{32}\)</span>字节时，序号就会发生绕回，重新使用之前用过的字节序号。要计算发生序号绕回所需的时间，只需将序号的取值范围除以线路的传输速率，即可得到答案：<span class="arithmatex">\(2^{32} \div 40×10^9 = 0.859\)</span>秒 = 859毫秒。</p>
+</details>
+<hr>
+<h2 id="tcp_2">TCP的运输连接管理<a class="headerlink" href="#tcp_2" title="Permanent link">¶</a></h2>
+<h3 id="tcp_3">“三报文握手”建立TCP连接<a class="headerlink" href="#tcp_3" title="Permanent link">¶</a></h3>
+<p>TCP是<strong>面向连接</strong>的协议，它基于运输连接来传送TCP报文段。</p>
+<ul>
+<li>TCP运输连接的建立和释放，是<strong>每一次面向连接的通信中必不可少的过程</strong>。</li>
+</ul>
+<p>TCP运输连接有以下三个阶段：</p>
+<ol>
+<li>通过“三报文握手”来建立TCP连接。</li>
+<li>基于已建立的TCP连接进行可靠的数据传输。</li>
+<li>在数据传输结束后，还要通过“四报文挥手”来释放TCP连接。</li>
+</ol>
+<p>“三报文握手”建立TCP连接的目的在于解决以下三个主要问题：</p>
+<ol>
+<li>使TCP双方能够<strong>确知对方的存在</strong>。</li>
+<li>使TCP双方能够<strong>协商一些参数</strong>（例如最大报文段长度、最大窗口大小、时间戳选项等）。</li>
+<li>使TCP双方能够<strong>对运输实体资源进行分配和初始化</strong>。运输实体资源包括缓存大小、各状态变量、连接表中的项目等。</li>
+</ol>
+<hr>
+<h3 id="tcp_4">TCP“三报文握手”过程<a class="headerlink" href="#tcp_4" title="Permanent link">¶</a></h3>
+<ol start="0">
+<li>准备阶段：传输控制块 (TCB) 与被动打开</li>
+</ol>
+<p>在连接建立之前，通信双方（TCP 客户和 TCP 服务器）都需要进行初始化。</p>
+<p><strong>传输控制块 (TCB):</strong> 主机在建立连接前会创建 <strong>传输控制块 (TCB, Transmission Control Block)</strong>。TCB 中存储了重要信息，包括：</p>
+<ul>
+<li>TCP 连接表</li>
+<li>指向发送和接收缓存的指针</li>
+<li>指向重传队列的指针</li>
+<li>当前的发送和接收序号</li>
+</ul>
+<p><strong>服务器状态:</strong> TCP 服务器进程首先创建 TCB，然后进入 <strong>LISTEN (监听)</strong> 状态，准备接受客户进程的连接请求。这被称为 <strong>“被动打开”</strong>。</p>
+<p><strong>客户状态:</strong> TCP 客户进程最初处于 <strong>CLOSED (关闭)</strong> 状态，随后准备发起主动连接。</p>
+<ol>
+<li>第一次握手：客户发送连接请求 (Client <span class="arithmatex">\(\to\)</span> Server)</li>
+</ol>
+<p>TCP 客户进程打算建立连接时，会执行 <strong>“主动打开”</strong>。</p>
+<p><strong>报文段内容:</strong></p>
+<ul>
+<li>
+<p><strong>标志位:</strong> 同步标志位 <span class="arithmatex">\(SYN=1\)</span>。</p>
+<ul>
+<li><em>注意:</em> TCP 规定，<span class="arithmatex">\(SYN=1\)</span> 的报文段不能携带数据，但要<strong>消耗掉一个序号</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>序号 (Sequence Number):</strong> <span class="arithmatex">\(seq=x\)</span>。</p>
+<ul>
+<li>这里 <span class="arithmatex">\(x\)</span> 是 TCP 客户进程所选择的初始序号。</li>
+</ul>
+</li>
+</ul>
+<p><strong>状态变化:</strong></p>
+<ul>
+<li>发送完该报文段后，TCP 客户进程进入 <strong>SYN-SENT (同步已发送)</strong> 状态。</li>
+</ul>
+<p><strong>关键点:</strong> 此时客户端已经消耗了序号 <span class="arithmatex">\(x\)</span>，所以下一个数据载荷的第一个字节序号应该是 <span class="arithmatex">\(x+1\)</span>。</p>
+<ol start="2">
+<li>第二次握手：服务器确认并请求同步 (Server <span class="arithmatex">\(\to\)</span> Client)</li>
+</ol>
+<p>TCP 服务器收到连接请求报文段后，如果同意建立连接，会向客户发送确认。</p>
+<p><strong>报文段内容:</strong></p>
+<ul>
+<li>
+<p><strong>标志位:</strong></p>
+<ul>
+<li><span class="arithmatex">\(SYN=1\)</span>: 表示这也是一个同步报文段，用于同步服务器端的序号。</li>
+<li><span class="arithmatex">\(ACK=1\)</span>: 表示确认号字段有效。</li>
+</ul>
+</li>
+<li>
+<p><strong>确认号 (Acknowledgment Number):</strong> <span class="arithmatex">\(ack=x+1\)</span>。这表示服务器已经收到了序号为 <span class="arithmatex">\(x\)</span> 的报文，期望收到的下一个序号是 <span class="arithmatex">\(x+1\)</span>。这也是对第一次握手的确认。</p>
+</li>
+<li><strong>序号 (Sequence Number):</strong> <span class="arithmatex">\(seq=y\)</span>。这里 <span class="arithmatex">\(y\)</span> 是 TCP 服务器进程所选择的初始序号。</li>
+</ul>
+<p><strong>状态变化:</strong> 发送完该报文段后，TCP 服务器进程进入 <strong>SYN-RCVD (同步已接收)</strong> 状态。</p>
+<p><strong>关键点:</strong> 同样地，<span class="arithmatex">\(SYN=1\)</span> 的报文段虽然不能携带数据，但也要<strong>消耗掉一个序号</strong>。</p>
+<ol start="3">
+<li>第三次握手：客户确认服务器的同步 (Client <span class="arithmatex">\(\to\)</span> Server)</li>
+</ol>
+<p>TCP 客户进程收到服务器的确认后，还要向服务器给出确认。</p>
+<ul>
+<li>
+<p><strong>报文段内容:</strong></p>
+</li>
+<li>
+<p><strong>标志位:</strong></p>
+<ul>
+<li><span class="arithmatex">\(ACK=1\)</span>: 表示确认号字段有效。</li>
+<li><em>注意:</em> 此时 <span class="arithmatex">\(SYN\)</span> 标志位已归 0，这是一个普通的 TCP 确认报文段。</li>
+</ul>
+</li>
+<li>
+<p><strong>确认号 (Acknowledgment Number):</strong> <span class="arithmatex">\(ack=y+1\)</span>。这表示客户已经收到了序号为 <span class="arithmatex">\(y\)</span> 的报文，期望收到的下一个序号是 <span class="arithmatex">\(y+1\)</span>。这是对服务器初始序号 <span class="arithmatex">\(y\)</span> 的确认。</p>
+</li>
+<li><strong>序号 (Sequence Number):</strong> <span class="arithmatex">\(seq=x+1\)</span>。因为第一次握手的 SYN 报文消耗了序号 <span class="arithmatex">\(x\)</span>，所以这一步的序号是 <span class="arithmatex">\(x+1\)</span>。</li>
+</ul>
+<p><strong>关于序号消耗的特殊规则:</strong></p>
+<ul>
+<li>TCP 规定普通的 TCP 确认报文段（<span class="arithmatex">\(ACK=1, SYN=0\)</span>）<strong>可以携带数据</strong>。</li>
+<li><strong>如果不携带数据:</strong> 则<strong>不消耗序号</strong>。这意味着，如果该报文段不带数据，下一个发送的数据报文段的序号<strong>仍然是 <span class="arithmatex">\(x+1\)</span></strong>。</li>
+</ul>
+<p><strong>状态变化:</strong></p>
+<ul>
+<li><strong>TCP 客户:</strong> 发送该报文段后，进入 <strong>ESTABLISHED (连接已建立)</strong> 状态。</li>
+<li><strong>TCP 服务器:</strong> 收到该确认报文段后，也进入 <strong>ESTABLISHED (连接已建立)</strong> 状态。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-47.png" data-desc-position="bottom"><img alt="img" src="../assets/5-47.png"></a></p>
+<details class="example">
+<summary>PPT上例题</summary>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-20.png" data-desc-position="bottom"><img alt="img" src="../assets/5-20.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-21.png" data-desc-position="bottom"><img alt="img" src="../assets/5-21.png"></a></p>
+</details>
+<details class="note">
+<summary>第三个 TCP 报文是否多余</summary>
+<p><strong>第一步：</strong> TCP 客户进程发送了一个 <code>TCP连接请求报文段</code>。</p>
+<ul>
+<li><strong>异常情况：</strong> 这个报文段并没有立即到达服务器，而是滞留在了网络中的某个节点（比如网络拥塞），经历了长时间的延迟。</li>
+<li><strong>超时重传：</strong> 客户端因为迟迟没有收到确认，以为刚才的报文丢失了，于是触发了 <strong>“超时重传”</strong> 机制，发送了一个新的连接请求。</li>
+</ul>
+<p><strong>第二步：</strong> 第二个（重传的）请求顺利到达服务器。双方完成了交互（如果是两报文握手）：</p>
+<ol>
+<li>服务器确认。</li>
+<li>连接建立（进入“连接已建立状态”）。</li>
+<li>数据传输。</li>
+<li>释放连接（双方进入“关闭状态”）。</li>
+</ol>
+<ul>
+<li><strong>当前状态：</strong> 此时，客户端和服务器都已经完成了任务，处于 <code>CLOSED</code>（关闭）状态。</li>
+</ul>
+<p><strong>第三步：</strong>意外发生。那个早在第一步就滞留在网络中的、<strong>已失效的</strong> <code>TCP连接请求报文段</code>，在连接已经结束后，竟然“姗姗来迟”，到达了 TCP 服务器。</p>
+<p>如果 TCP 使用“两报文握手”，服务器会做出以下错误判断：</p>
+<ol>
+<li><strong>误判：</strong> 服务器收到这个失效的报文，误认为客户端又发起了一个<strong>新的</strong>连接请求。</li>
+<li><strong>直接建立连接：</strong> 服务器发送 <code>TCP连接请求确认报文段</code>，并<strong>立刻进入“连接已建立状态”</strong>。</li>
+<li><strong>资源浪费：</strong></li>
+</ol>
+<ul>
+<li><strong>服务端视角：</strong> 我已经建立了连接，我在等客户端发数据过来。</li>
+<li><strong>客户端视角：</strong> 我处于 <code>CLOSED</code> 状态，并没有发出请求，所以我不会理睬服务器的确认，也不会发送任何数据。</li>
+<li><strong>结局：</strong> 服务器会一直挂着这个“僵尸连接”，白白消耗内存和端口资源，一直等待那个永远不会到来的数据。</li>
+</ul>
+<p>采用“三报文握手”就是为了解决这个问题。如果是三报文握手，会变成这样：</p>
+<ol>
+<li>服务器收到那个失效的报文，发出确认（第二次握手）。</li>
+<li>服务器<strong>不会</strong>立即进入“连接已建立状态”，而是进入 <code>SYN-RCVD</code>（同步已接收）状态，等待客户端的<strong>再次确认（第三次握手）</strong>。</li>
+<li>客户端收到服务器的确认后，发现自己并没有请求连接，就不会发送第三次握手的确认（或者发送一个 RST 复位报文）。</li>
+<li>服务器收不到第三次握手，就知道连接建立失败，从而回收资源，避免了浪费。</li>
+</ol>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>TCP使用三次握手协议来建立连接，设A、B双方发送报文的初始序列号分别为X和Y,A发送(①)的报文给B,B接收到报文后发送(②)的报文给A,然后A发送一个确认报文给B便建立了连接(注意，ACK的下标为捎带的序号)。</p>
+<p>①A.SYN=1,序号=X    B.SYN=1,序号=X+1,ACKx=1    C.SYN=1,序号=Y    D.SYN=1,序号=Y,ACKy+1=1</p>
+<p>②A.SYN=1,序号=X+1    B.SYN=1,序号=X+1,ACKx=1    C.SYN=1,序号=Y,ACKx+1=1     D.SYN=1,序号=Y,ACKy+1=1</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>① A ② C</p>
+<p>TCP 使用三次握手来建立连接,第一次握手 A 发给 B 的 TCP 报文中应置其首部 SYN 位为 1,并选择序号 seq=X,表明传送数据时的第一个数据字节的序号是 X ;在第二次握手中，即 B 接收到报文后，发给 A 的确认报文段中应使 SYN=1，使 ACK=1，且确认号 ACK=X+1，即 <span class="arithmatex">\(ACK_{x+1}\)</span> = 1 (ACK 的下标为捎带的序号)，同时告诉自己选择的序号 seq=Y。</p>
+</details>
+<hr>
+<h3 id="tcp_5">TCP“四报文挥手”释放连接<a class="headerlink" href="#tcp_5" title="Permanent link">¶</a></h3>
+<ol start="0">
+<li>初始状态</li>
+</ol>
+<ul>
+<li><strong>TCP 客户</strong> 和 <strong>TCP 服务器</strong> 最初都处于 <strong>ESTABLISHED (连接已建立)</strong> 状态，双方正在进行双向的数据传输。</li>
+</ul>
+<ol>
+<li>客户发起连接释放 (Client <span class="arithmatex">\(\to\)</span> Server)</li>
+</ol>
+<p>TCP 客户进程决定结束数据传输，执行 <strong>“主动关闭”</strong>。</p>
+<ul>
+<li><strong>动作:</strong> 客户向服务器发送 <strong>TCP 连接释放报文段</strong>。</li>
+<li>
+<p><strong>报文段细节:</strong></p>
+</li>
+<li>
+<p><strong>标志位:</strong></p>
+<ul>
+<li><span class="arithmatex">\(FIN=1\)</span>: 表示这是一个连接释放报文段。</li>
+<li><em>注意:</em> TCP 规定，<span class="arithmatex">\(FIN=1\)</span> 的报文段即使不携带数据，也要<strong>消耗掉一个序号</strong>。</li>
+<li><span class="arithmatex">\(ACK=1\)</span>: 表示确认号有效，同时也对之前收到的报文进行确认。</li>
+</ul>
+</li>
+<li>
+<p><strong>序号:</strong> <span class="arithmatex">\(seq=u\)</span>。这里的 <span class="arithmatex">\(u\)</span> 等于 TCP 客户进程之前<strong>已传送过的数据的最后一个字节的序号加 1</strong>。</p>
+</li>
+<li>
+<p><strong>确认号:</strong> <span class="arithmatex">\(ack=v\)</span>。这里的 <span class="arithmatex">\(v\)</span> 等于 TCP 客户进程之前<strong>已收到的数据的最后一个字节的序号加 1</strong>。</p>
+</li>
+<li>
+<p><strong>状态变化:</strong>发送后，TCP 客户进程进入 <strong>FIN-WAIT-1 (终止等待 1)</strong> 状态。</p>
+</li>
+</ul>
+<ol start="2">
+<li>服务器确认收到 (Server <span class="arithmatex">\(\to\)</span> Client)</li>
+</ol>
+<p>TCP 服务器收到连接释放报文段后，执行 <strong>“被动关闭”</strong>。</p>
+<ul>
+<li><strong>动作:</strong> 服务器发送 <strong>TCP 普通确认报文段</strong>。</li>
+<li>
+<p><strong>报文段细节:</strong></p>
+<ul>
+<li><strong>标志位:</strong> <span class="arithmatex">\(ACK=1\)</span> (这是一个普通的确认报文)。</li>
+<li><strong>序号:</strong> <span class="arithmatex">\(seq=v\)</span>。这与之前客户端发来的确认号 <span class="arithmatex">\(v\)</span> 相匹配。</li>
+<li><strong>确认号:</strong> <span class="arithmatex">\(ack=u+1\)</span>。这是对客户端发来的 <span class="arithmatex">\(seq=u\)</span> 的确认。</li>
+</ul>
+</li>
+<li>
+<p><strong>状态变化:</strong></p>
+<ul>
+<li><strong>服务器:</strong> 进入 <strong>CLOSE-WAIT (关闭等待)</strong> 状态。此时，TCP 服务器进程会<strong>通知高层应用进程</strong>：连接正在释放。</li>
+<li><strong>客户:</strong> 收到该确认后，从 <code>FIN-WAIT-1</code> 进入 <strong>FIN-WAIT-2 (终止等待 2)</strong> 状态。</li>
+</ul>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">半关闭 (Half-Close) 状态</p>
+<p>在服务器发送了确认报文段后，连接处于 <strong>“半关闭”</strong> 状态：</p>
+<ul>
+<li>
+<p><strong>客户端 <span class="arithmatex">\(\to\)</span> 服务器:</strong> 连接已释放。客户端没有数据要发了。</p>
+</li>
+<li>
+<p><strong>服务器 <span class="arithmatex">\(\to\)</span> 客户端:</strong> 连接<strong>未关闭</strong>。如果服务器还有数据，客户端仍需接收。</p>
+</li>
+<li>
+<p>在这个阶段，服务器发送的数据序号假设为 <span class="arithmatex">\(seq=w\)</span>，确认号<strong>依然维持</strong> <span class="arithmatex">\(ack=u+1\)</span>。</p>
+</li>
+</ul>
+</div>
+<ol start="3">
+<li>服务器发起连接释放 (Server <span class="arithmatex">\(\to\)</span> Client)</li>
+</ol>
+<p>当服务器将剩余的数据发送完毕，应用进程通知 TCP 释放连接。</p>
+<ul>
+<li><strong>动作:</strong> 服务器发送 <strong>TCP 连接释放报文段</strong>。</li>
+<li>
+<p><strong>报文段细节:</strong></p>
+<ul>
+<li>
+<p><strong>标志位:</strong></p>
+<ul>
+<li><span class="arithmatex">\(FIN=1\)</span>: 再次置位，表示服务器也要结束发送了。<em>注意:</em> 同样，这个报文段也要<strong>消耗掉一个序号</strong>。</li>
+<li><span class="arithmatex">\(ACK=1\)</span>: 确认号有效。</li>
+</ul>
+</li>
+<li>
+<p><strong>序号:</strong> <span class="arithmatex">\(seq=w\)</span>。<em>注意:</em> 这里的 <span class="arithmatex">\(w\)</span> 不一定等于 <span class="arithmatex">\(v\)</span>。如果在“半关闭”状态下服务器发送了一些数据，<span class="arithmatex">\(w\)</span> 就会变大；如果没有发送数据，则 <span class="arithmatex">\(w=v\)</span>。</p>
+</li>
+<li><strong>确认号:</strong> <span class="arithmatex">\(ack=u+1\)</span>。这是对之前收到的客户端释放报文段的<strong>重复确认</strong>。</li>
+</ul>
+</li>
+<li>
+<p><strong>状态变化:</strong>发送后，TCP 服务器进程进入 <strong>LAST-ACK (最后确认)</strong> 状态。</p>
+</li>
+</ul>
+<ol start="4">
+<li>客户确认并进入时间等待 (Client <span class="arithmatex">\(\to\)</span> Server)</li>
+</ol>
+<p>TCP 客户收到服务器的释放报文段后，必须对此发出确认。</p>
+<ul>
+<li><strong>动作:</strong> 客户发送 <strong>TCP 普通确认报文段</strong>。</li>
+<li>
+<p><strong>报文段细节:</strong></p>
+<ul>
+<li><strong>标志位:</strong> <span class="arithmatex">\(ACK=1\)</span>。</li>
+<li><strong>序号:</strong> <span class="arithmatex">\(seq=u+1\)</span>。这是因为第一步中的 <span class="arithmatex">\(FIN\)</span> 报文消耗了序号 <span class="arithmatex">\(u\)</span>，所以现在的序号是 <span class="arithmatex">\(u+1\)</span>。</li>
+<li><strong>确认号:</strong> <span class="arithmatex">\(ack=w+1\)</span>。这是对服务器 <span class="arithmatex">\(seq=w\)</span> 的确认。</li>
+</ul>
+</li>
+<li>
+<p><strong>状态变化:</strong></p>
+<ul>
+<li><strong>服务器:</strong> 收到该确认后，进入 <strong>CLOSED (关闭)</strong> 状态，并撤销相应的传输控制块 TCB。</li>
+<li><strong>客户:</strong> 发送后，<strong>并没有立即关闭</strong>，而是进入 <strong>TIME-WAIT (时间等待)</strong> 状态。</li>
+</ul>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">TIME-WAIT 与 2MSL</p>
+<p>客户进程进入 <code>TIME-WAIT</code> 状态后，需要等待 <strong>2MSL</strong> 的时长。</p>
+<ul>
+<li><strong>MSL (Maximum Segment Lifetime):</strong> 最长报文段寿命。[RFC793] 建议为 2 分钟，但工程实现上允许使用更小的值。因此 2MSL 通常为 4 分钟。</li>
+</ul>
+<p><strong>为什么要等待 2MSL？</strong></p>
+<ol>
+<li><strong>确保服务器收到最后的确认 (可靠性):</strong></li>
+</ol>
+<ul>
+<li>
+<p>如果客户端发送的最后一个 <span class="arithmatex">\(ACK\)</span> 报文段在网络中<strong>丢失</strong>，服务器因为收不到确认，会触发<strong>超时重传</strong>，再次发送 <code>FIN+ACK</code> 报文。</p>
+</li>
+<li>
+<p>如果客户端已经关闭（CLOSED），就无法响应这个重传。</p>
+</li>
+<li>
+<p>通过等待，客户端可以收到重传的 <code>FIN</code>，并重新发送 <code>ACK</code>，确保服务器顺利进入 <code>CLOSED</code> 状态。</p>
+</li>
+</ul>
+<ol start="2">
+<li><strong>防止“已失效的连接请求”干扰新连接 (网络净化):</strong></li>
+</ol>
+<ul>
+<li>
+<p>等待 2MSL 可以确保本次连接持续时间内所产生的所有报文段都从网络中消失。</p>
+</li>
+<li>
+<p>这样可以保证在建立下一个新的 TCP 连接时，不会出现旧连接中“游荡”的失效报文段。</p>
+</li>
+</ul>
+</div>
+<ol start="5">
+<li><strong>最终结果</strong></li>
+</ol>
+<p>经过 2MSL 时间后，TCP 客户进程进入 <strong>CLOSED (关闭)</strong> 状态，并撤销传输控制块 TCB。至此，TCP 连接彻底释放。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-48.png" data-desc-position="bottom"><img alt="img" src="../assets/5-48.png"></a></p>
+<details class="example">
+<summary>PPT上例题</summary>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-22.png" data-desc-position="bottom"><img alt="img" src="../assets/5-22.png"></a></p>
+</details>
+<p><strong>异常处理</strong> —— TCP 保活计时器 (Keep-Alive Timer)</p>
+<p><strong>问题场景:</strong> TCP 连接已建立，但客户端突然故障（主机断电等）。此时服务器如果没有数据要发，就会一直傻等，浪费资源。</p>
+<p><strong>解决机制:</strong> <strong>保活计时器 (Keep-Alive Timer)</strong>。</p>
+<ol>
+<li>服务器每收到一次客户的数据，就重置保活计时器（通常设置为 <strong>2小时</strong>）。</li>
+<li>若 2 小时没有收到客户数据，服务器发送一个 <strong>探测报文段</strong>。</li>
+<li>之后每隔 <strong>75秒</strong> 发送一次。</li>
+<li>若一连发送 <strong>10个</strong> 探测报文段后仍无响应，服务器就认为客户端出了故障，自动关闭连接。</li>
+</ol>
+<details class="example" open="open">
+<summary>question</summary>
+<p>主机A和B之间建立了一个TCP连接，A向B发送的第一个SYN报文段中的序号值(seq)等于211,数据传输结束在释放连接时，A向B发送的第4次挥手报文段的seq等于985,则在本次通信过程中，A向B总共发送了()字节的数据。</p>
+<p>A.771    B.772    C.773    D.774</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>B</p>
+<p>比较细节，做的时候需要注意一下。注意哪里是消耗了序号，哪里是不消耗序号的。</p>
+<p>A 向 B发送的第一个 SYN 段虽然不携带数据,但仍会消耗一个序号 211,A 向B发送的第 4 次挥手报文段的 seq 等于 985，说明之前发送的数据的序号为 212~984，因为在断开连接时发送的第一个 FIN 段会消耗一个序号，因此发送的总数据量为 984-212=772B。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>假设客户 C 和服务器 S 已建立一个 TCP 连接，通信往返时间 RTT=50ms ,最长报文段寿命 MSL=800ms ,数据传输结束后，C 主动请求断开连接。若从 C 主动向 S 发出 FIN 段时刻算起，则 C 和 S 进入 CLOSED 状态所需的时间至少分别是()。</p>
+<p>A.850 ms, 50 ms    B.1650 ms, 50 ms    C.850 ms, 75 ms    D.1650 ms, 75ms</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>D</p>
+<p>题目问的是最少时间，所以当服务器 S 收到客户 C 发送的 FIN 请求后不再发送数据,即服务器 S 同时发出确认 ACK 报文段和连接释放 FIN 报文段，忽略 FIN-WAIT-2和 CLOSE-WAIT 状态。客户 C 收到服务器 S 发来的 FIN 报文段后,进入 CLOSED 状态还需等到 TIME-WAIT 结束，总用时至少为 1RTT + 2MSL = 50 + 800 x 2= 1650 ms。服务器 S 进入 CLOSED 状态需要经过 3 次报文段的传输时间，即 1.5RTT=75ms。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>假设主机 H 通过 TCP 向服务器发送长度为 3000B 的报文，往返时间 RTT = 10 ms ,最长报文段寿命 MSL = 30 s ,最大报文段长度 MSS = 1000 B ,忽略 TCP 段的传输时延，报文传输结束后 H 首先请求断开连接，则从 H 请求建立 TCP 连接时刻起，到 H 进入 CLOSED 状态为止，所需的时间至少是()。</p>
+<p>A.30.03s    B.30.04s    C.60.03s    D.60.04s</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>D</p>
+<p>建立 TCP 连接的前两次握手需要 1 RTT ,第三次握手的报文段可以携带 MSS = 1000 B 的数据, H 收到该报文段的确认后，发送窗口增大到 2000 B ，因此第 3 个 RTT 可以发送 2000 B 的数据，经过 3RTT 后，3000 B 的报文传输结束。第 4 个 RTT 开始时，H 向服务器发送 FIN 报文段请求断开连接，题目问的是最少时间，因此服务器收到 FIN 请求后不再发送数据，即服务器同时发出连接释放 ACK 报文段和 FIN 报文段。H 收到服务器发来的 FIN 报文段后开启时间等待计时器，等待 2 MSL 的时间(60 s)，进入 CLOSED 状态，总时间为 40 ms + 60 s = 60.04 s。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-46.png" data-desc-position="bottom"><img alt="img" src="../assets/5-46.png"></a></p>
+</details>
+<hr>
+<h2 id="tcp_6">TCP的流量控制<a class="headerlink" href="#tcp_6" title="Permanent link">¶</a></h2>
+<h3 id="tcp_7">TCP流量控制的基本概念<a class="headerlink" href="#tcp_7" title="Permanent link">¶</a></h3>
+<p><strong>问题</strong>: 如果发送方发得太快，接收方来不及处理，接收缓存就会溢出，导致丢包。</p>
+<p><strong>机制</strong>: 接收方根据自己 接收缓存的可用空间大小，动态调整发送方的发送速率。</p>
+<p>TCP为应用程序提供了<strong>流量控制</strong>（Flow Control）机制，以解<strong>决因发送方发送数据太快而导致接收方来不及接收</strong>，<strong>造成接收方的接收缓存溢出的问题</strong>。</p>
+<p><strong>流量控制的基本方法</strong>：接收方根据自己的接收能力（接收缓存的可用空间大小）控制发送方的发送速率。</p>
+<hr>
+<h3 id="tcp_8">TCP的流量控制方法<a class="headerlink" href="#tcp_8" title="Permanent link">¶</a></h3>
+<ol>
+<li>初始状态与数据丢包 (Initial State &amp; Packet Loss)</li>
+</ol>
+<p><strong>前提假设</strong>：</p>
+<ol>
+<li>网络不会发生拥塞（不考虑拥塞控制）。</li>
+<li>连接建立时，B 告诉 A 其接收窗口 <span class="arithmatex">\(rwnd=400\)</span>。因此 A 将发送窗口 <span class="arithmatex">\(swnd\)</span> 设置为 400。</li>
+</ol>
+<p><strong>发送过程</strong>：</p>
+<p>A 连续发送了三个数据报文段：</p>
+<ul>
+<li><span class="arithmatex">\(seq=1\)</span> (数据字节 1-100) [已到达]</li>
+<li><span class="arithmatex">\(seq=101\)</span> (数据字节 101-200) [已到达]</li>
+<li><span class="arithmatex">\(seq=201\)</span> (数据字节 201-300) [<strong>在传输中丢失</strong>]</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-23.png" data-desc-position="bottom"><img alt="img" src="../assets/5-23.png"></a></p>
+<p><strong>第一次流量控制</strong>：</p>
+<ul>
+<li>
+<p>B 收到了 seq=1 和 seq=101，但没收到 seq=201。因此 B 发回确认报文：</p>
+<ul>
+<li><span class="arithmatex">\(ACK=1, ack=201\)</span>（期待收到 201）。</li>
+<li><span class="arithmatex">\(rwnd=300\)</span>（B 的接收缓存减少，通知 A 将窗口调整为 300）。</li>
+</ul>
+</li>
+<li>
+<p>A 收到确认后，将发送窗口 <span class="arithmatex">\(swnd\)</span> 调整为 300（当前窗口范围为 201-500）。</p>
+</li>
+<li>A 继续发送 <span class="arithmatex">\(seq=301\)</span> (301-400)。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-24.png" data-desc-position="bottom"><img alt="img" src="../assets/5-24.png"></a></p>
+<ol start="2">
+<li>超时重传与窗口收缩 (Retransmission &amp; Window Shrinking)</li>
+</ol>
+<p><strong>继续发送</strong>：A 发送 <span class="arithmatex">\(seq=401\)</span> (401-500)。此时 A 的发送窗口内数据（201-500）已全部发出，无法再发送新数据。
+<strong>超时重传</strong>：</p>
+<ul>
+<li>A 针对 <span class="arithmatex">\(seq=201\)</span> 的 <strong>重传计时器超时</strong>。</li>
+<li>A <strong>重传</strong> <span class="arithmatex">\(seq=201\)</span> (数据字节 201-300)。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-25.png" data-desc-position="bottom"><img alt="img" src="../assets/5-25.png"></a></p>
+<p><strong>第二次流量控制</strong>：</p>
+<ul>
+<li>B 收到了重传的 seq=201。由于 B 之前已经收到了 seq=301 和 seq=401（被暂时缓存在接收窗口中），现在数据连续了。</li>
+<li>
+<p>B 发回确认报文：</p>
+<ul>
+<li><span class="arithmatex">\(ACK=1, ack=501\)</span>（确认收到了 500 为止的所有数据，期待 501）。</li>
+<li><span class="arithmatex">\(rwnd=100\)</span>（B 的接收缓存进一步减少，通知 A 窗口减小为 100）。</li>
+</ul>
+</li>
+<li>
+<p>A 收到后，将 <span class="arithmatex">\(swnd\)</span> 调整为 100（当前窗口范围 501-600）。</p>
+</li>
+</ul>
+<ol start="3">
+<li>零窗口通知 (Zero Window Advertisement)</li>
+</ol>
+<p><strong>发送最后一段数据</strong>：A 发送 <span class="arithmatex">\(seq=501\)</span> (501-600)。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-26.png" data-desc-position="bottom"><img alt="img" src="../assets/5-26.png"></a></p>
+<p><strong>第三次流量控制</strong>：</p>
+<ul>
+<li>B 收到 seq=501。此时 B 的接收缓存已完全填满。</li>
+<li>
+<p>B 发回确认报文：</p>
+<ul>
+<li><span class="arithmatex">\(ACK=1, ack=601\)</span>。</li>
+<li><span class="arithmatex">\(rwnd=0\)</span>（<strong>零窗口通知</strong>，告诉 A 停止发送）。</li>
+</ul>
+</li>
+<li>
+<p>A 收到后，将 <span class="arithmatex">\(swnd\)</span> 设置为 0，停止发送数据。</p>
+</li>
+</ul>
+<ol start="4">
+<li>死锁局面的形成 (The Deadlock Scenario)</li>
+</ol>
+<p><strong>非零窗口通知丢失</strong>：</p>
+<ul>
+<li>过了一段时间，B 的应用层读取了数据，接收窗口腾出了 300 字节的空间。</li>
+<li>B 向 A 发送一个通知报文：<span class="arithmatex">\(rwnd=300\)</span>。</li>
+<li><strong>关键事件</strong>：这个非零窗口通知报文在传输过程中 <strong>丢失</strong> 了。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-27.png" data-desc-position="bottom"><img alt="img" src="../assets/5-27.png"></a></p>
+<p><strong>死锁 (Deadlock)</strong>：</p>
+<ul>
+<li><strong>B 在等</strong>：B 以为通知发过去了，等待 A 发送数据。</li>
+<li><strong>A 在等</strong>：A 一直以为 B 的窗口是 0，在等待 B 发送非零窗口通知。</li>
+<li>如果不采取措施，双方将一直互相等待下去。</li>
+</ul>
+<ol start="5">
+<li>持续计时器与零窗口探测 (Persistence Timer &amp; Zero Window Probe)</li>
+</ol>
+<p>为了打破死锁，TCP 为每一个连接设有一个 <strong>持续计时器 (Persistence Timer)</strong>。</p>
+<p><strong>启动机制</strong>：只要 TCP 连接的一方（A）收到对方（B）的零窗口通知，就启动持续计时器。</p>
+<p><strong>探测过程</strong>：</p>
+<ol>
+<li>当持续计时器 <strong>超时</strong> 时，A 发送一个 <strong>零窗口探测报文段</strong>（仅携带 1 字节数据）。</li>
+<li><strong>情况一：B 的窗口仍为 0</strong></li>
+</ol>
+<ul>
+<li>B 收到探测报文，确认该报文（<span class="arithmatex">\(ACK=1, rwnd=0\)</span>）。</li>
+<li>A 收到确认后，<strong>重新启动</strong> 持续计时器，等待下一次超时再探测。</li>
+</ul>
+<ol start="3">
+<li><strong>情况二：探测报文丢失</strong></li>
+</ol>
+<ul>
+<li>问题：如果零窗口探测报文段丢失了怎么办？</li>
+<li>答案：零窗口探测报文段也有 <strong>重传计时器</strong>。当重传计时器超时后，该探测报文段会被 <strong>重传</strong>。因此即使丢失也能打破僵局。</li>
+</ul>
+<ol start="4">
+<li><strong>情况三：B 的窗口有空间了</strong></li>
+</ol>
+<ul>
+<li>B 处理了数据，腾出了空间。</li>
+<li>当 A 发送探测报文时，B 回复：<span class="arithmatex">\(ACK=1, rwnd=300\)</span>（举例）。</li>
+<li><strong>死锁被打破</strong>，A 恢复数据发送。</li>
+</ul>
+<details class="note">
+<summary>Note</summary>
+<p>A发送的零窗口探测报文段到达B时，如果B此时的接收窗口值仍然为0，那么B根本就无法接受该报文段，又怎么会针对该报文段给A发回确认呢？</p>
+<p>实际上TCP规定：即使接收窗口值为0，也必须接受<strong>零窗口探测报文段</strong>、<strong>确认报文段</strong>以及<strong>携带有紧急数据的报文段</strong>。</p>
+</details>
+<details class="example">
+<summary>PPT上例题</summary>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-28.png" data-desc-position="bottom"><img alt="img" src="../assets/5-28.png"></a></p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>主机甲和主机乙之间已建立一个TCP连接，TCP最大段长为1000B。若主机甲的当前拥塞窗口为4000B,在主机甲向主机乙连续发送两个最大段后，成功收到主机乙发送的第一个段的确认段，确认段中通告的接收窗口大小为2000B,则此时主机甲还可以向主机乙发送的最大字节数是()。</p>
+<p>A.1000    B.2000    C.3000    D.4000</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>A</p>
+<p>发送方的发送窗口的上限值取接收窗口和拥塞窗口这两个值中的较小一个，于是此时发送方的发送窗口为 min{4000,2000}=2000B。因为确认段是对第一个段的确认，所以 2000B 的含义是甲发送第一个段后还能再发送 2000B，又因为之前甲连续发送了两个最大段，也就是说，第二个段还未收到确认，所以甲还能继续向乙发送的最大字节数是 2000-1000=1000B。</p>
+</details>
+<hr>
+<h2 id="tcp_9">TCP的拥塞控制<a class="headerlink" href="#tcp_9" title="Permanent link">¶</a></h2>
+<h3 id="_5">拥塞控制的基本概念<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<p>在某段时间，若对网络中<strong>某一资源的需求超过了该资源所能提供的可用部分</strong>，<strong>网络性能就要变坏</strong>，这种情况就叫作<strong>拥塞</strong>（congestion）。</p>
+<ul>
+<li>计算机网络中的链路容量（带宽）、交换节点中的缓存和处理机等都是网络的资源。</li>
+</ul>
+<p>若出现拥塞而<strong><em>不进行控制</em></strong>，整个网络的吞吐量将随输入负荷的增大而<strong>下降</strong>。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-29.png" data-desc-position="bottom"><img alt="img" src="../assets/5-29.png"></a></p>
+<ul>
+<li><strong>流量控制</strong>: 应用程序可能正忙于其他任务，并不一定能够立刻取走数据。以<strong>接收方的接收能力</strong>控制发送方（源点）的发送速率。只与特定的点对点通信的发送方和接收方之间的流量有关。</li>
+<li><strong>拥塞控制</strong>: 防止过多的数据注入到网络中，使网络能够承受现有的网络负荷。源点根据<strong>各方面因素</strong>，按拥塞控制算法自行控制发送速率。全局性问题，涉及网络中所有的主机、路由器等。</li>
+</ul>
+<hr>
+<h3 id="_6">拥塞控制的基本方法<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<ol>
+<li>开环控制</li>
+</ol>
+<ul>
+<li>试图用良好的设计来解决问题。</li>
+<li>从一开始就保证问题不会发生。</li>
+<li>一旦系统启动并运行起来，就不需要中途修正。</li>
+</ul>
+<p>当网络的流量特征可以准确规定且性能要求可以事先获得时，适合使用开环控制。</p>
+<ol start="2">
+<li>闭环控制</li>
+</ol>
+<ul>
+<li>基于反馈的控制方法，包括以下三个部分：</li>
+</ul>
+<p>a. 监测网络拥塞在何时、何地发生。</p>
+<p>b. 把拥塞发生的相关信息传送到可以采取行动的地方。</p>
+<p>c. 调整网络的运行以解决拥塞问题。</p>
+<p>当网络的流量特征不能准确描述或者当网络不提供资源预留时，适合使用闭环控制。</p>
+<p><strong>因特网采用的就是闭环控制方法</strong>。</p>
+<p><strong>衡量网络拥塞的指标</strong></p>
+<ul>
+<li>由于缓存溢出而丢弃的分组的百分比</li>
+<li>路由器的平均队列长度</li>
+<li>超时重传的分组数量</li>
+<li>平均分组时延和分组时延的标准差</li>
+</ul>
+<p>根据<strong>拥塞信息的反馈形式</strong>，可将闭环拥塞控制算法分为</p>
+<ul>
+<li>显式反馈算法: 从<strong>拥塞节点</strong>（即路由器）向源点提供关于网络中拥塞状态的显式反馈信息。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-30.png" data-desc-position="bottom"><img alt="img" src="../assets/5-30.png"></a></p>
+<ul>
+<li>隐式反馈算法: <strong>源点自身</strong>通过对网络行为的观察（例如超时重传或往返时间RTT）来推断网络是否发生了拥塞。<strong>TCP采用的就是隐式反馈算法</strong>。</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>拥塞控制并不仅仅是运输层要考虑的问题。显式反馈算法就必须涉及网络层。虽然一些网络体系结构（如ATM网络）主要在网络层实现拥塞控制，但因特网主要利用隐式反馈在运输层实现拥塞控制。</p>
+</div>
+<p>进行拥塞控制是需要付出代价的:</p>
+<ul>
+<li>可能需要在节点之间<strong>交换信息和各种命令</strong>，以便选择拥塞控制的策略并实施控制，这样会产生额外开销。</li>
+<li>可能需要<strong>预留一些资源</strong>用于特殊用户或特殊情况，这样就降低了网络资源的共享程度。</li>
+</ul>
+<p>然而，为了确保网络性能的稳定，不会因为输入负载的增长而导致网络性能的恶化甚至出现崩溃，使用拥塞控制而付出一定的代价是值得的。</p>
+<hr>
+<h3 id="tcp_10">TCP的四种拥塞控制方法<a class="headerlink" href="#tcp_10" title="Permanent link">¶</a></h3>
+<p>为了集中精力讨论拥塞控制算法的基本原理，假定如下条件</p>
+<ol>
+<li><strong>数据是单方向传送的</strong>，而另一个方向只传送确认。</li>
+<li>接收方总是有足够大的接收缓存空间，因而发送方的发送窗口的大小仅由网络的拥塞程度来决定，也就是<strong>不考虑接收方对发送方的流量控制</strong>。</li>
+<li><strong>以TCP最大报文段MSS</strong>（即TCP报文段的数据载荷部分）的个数作为讨论问题的单位，而不是以字节为单位（尽管TCP是面向字节流的）。</li>
+</ol>
+<hr>
+<h4 id="_7"><strong>基础概念与变量</strong><a class="headerlink" href="#_7" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong><span class="arithmatex">\(cwnd\)</span> (Congestion Window，拥塞窗口)：</strong> 发送方维护的一个状态变量，其值取决于网络的拥塞程度。</li>
+<li><strong><span class="arithmatex">\(rwnd\)</span> (Receive Window，接收窗口)：</strong> 接收方通告给发送方的接收缓存的可用空间大小。</li>
+<li><strong><span class="arithmatex">\(ssthresh\)</span> (Slow Start Threshold，慢开始门限)：</strong> 一个阈值，用于决定使用慢开始算法还是拥塞避免算法。</li>
+<li><strong>传输轮次 (Transmission Round, RTT)：</strong> 往返时间，指发送方发送数据到接收到确认为止经历的时间。</li>
+<li><strong><span class="arithmatex">\(swnd\)</span> (Send Window，发送窗口)：</strong> 发送方当前可以发送的数据量。公式为：</li>
+</ul>
+<div class="arithmatex">\[swnd = \min(cwnd, rwnd)\]</div>
+<p>我们假设 <span class="arithmatex">\(rwnd\)</span> 很大，因此忽略流量控制，直接认为 <span class="arithmatex">\(swnd = cwnd\)</span></p>
+<p>cwnd的<strong>维护原则</strong>：只要网络没有出现拥塞，拥塞窗口就再增大一些，但只要网络出现拥塞，拥塞窗口就减少一些。</p>
+<p><strong>判断网络出现拥塞的依据</strong>：没有按时收到应当到达的TCP确认报文段而产生了<strong>超时重传</strong>。</p>
+<ul>
+<li>当 <span class="arithmatex">\(cwnd &lt; ssthresh\)</span> 时，使用<strong>慢开始</strong>算法。</li>
+<li>当 <span class="arithmatex">\(cwnd &gt; ssthresh\)</span> 时，停止慢开始，改用<strong>拥塞避免</strong>算法。</li>
+<li>当 <span class="arithmatex">\(cwnd = ssthresh\)</span> 时，既可使用慢开始也可使用拥塞避免。</li>
+</ul>
+<hr>
+<h4 id="slow-start"><strong>第一阶段</strong>：慢开始 (Slow Start)<a class="headerlink" href="#slow-start" title="Permanent link">¶</a></h4>
+<p><strong>启动条件：</strong> TCP 连接建立初期，或者发生超时重传（RTO）后，或者 <span class="arithmatex">\(cwnd &lt; ssthresh\)</span> 时。</p>
+<p><strong>初始状态：</strong></p>
+<ul>
+<li><span class="arithmatex">\(cwnd\)</span> 设置为 1 个最大报文段。</li>
+<li><span class="arithmatex">\(ssthresh\)</span> 设置为一个较大的初始值。</li>
+</ul>
+<p><strong>增长规律（指数增长）：</strong></p>
+<ul>
+<li>每经过一个传输轮次（RTT），只要收到确认，<span class="arithmatex">\(cwnd\)</span> 就加倍（<span class="arithmatex">\(1 \to 2 \to 4 \to 8 \dots\)</span>）。</li>
+<li>虽然名字叫“慢开始”，但这仅指起始值小（从 1 开始），其增长速度非常快（指数级）。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-31.png" data-desc-position="bottom"><img alt="img" src="../assets/5-31.png"></a></p>
+<hr>
+<h4 id="congestion-avoidance">第二阶段：拥塞避免 (Congestion Avoidance)<a class="headerlink" href="#congestion-avoidance" title="Permanent link">¶</a></h4>
+<p><strong>启动条件：</strong> 当 <span class="arithmatex">\(cwnd \ge ssthresh\)</span> 时进入此阶段。</p>
+<p><strong>增长规律（加法增大）：</strong></p>
+<ul>
+<li>“加法增大” (Additive Increase)：每经过一个传输轮次（RTT），<span class="arithmatex">\(cwnd\)</span> 的值只增加 1 (<span class="arithmatex">\(cwnd = cwnd + 1\)</span>)。</li>
+<li>
+<p>这是一种线性增长，目的是让拥塞窗口缓慢增大，探测网络的带宽上限，避免过早引发网络拥塞。</p>
+</li>
+<li>
+<p><strong>说明：</strong> “拥塞避免”<strong>并非指完全能够避免拥塞</strong>，而是指将 <span class="arithmatex">\(cwnd\)</span> 控制为按线性规律增长，使网络不容易出现拥塞。</p>
+</li>
+</ul>
+<hr>
+<h4 id="_8">第三阶段：网络拥塞的处理<a class="headerlink" href="#_8" title="Permanent link">¶</a></h4>
+<h5 id="a-rto">情况 A：严重拥塞（超时重传 RTO）<a class="headerlink" href="#a-rto" title="Permanent link">¶</a></h5>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-32.png" data-desc-position="bottom"><img alt="img" src="../assets/5-32.png"></a></p>
+<p>这是 TCP Tahoe 版本（早期版本）的主要处理方式，或者在现代 TCP 中当发生严重丢包导致超时时的回退机制。</p>
+<ol>
+<li><strong>判断依据：</strong> 重传计时器超时（Timeout），发送方迟迟没有收到确认。</li>
+<li><strong>处理措施：</strong></li>
+</ol>
+<ul>
+<li><strong>调整门限：</strong> 将 <span class="arithmatex">\(ssthresh\)</span> 更新为发生拥塞时 <span class="arithmatex">\(cwnd\)</span> 值的一半。公式：</li>
+</ul>
+<div class="arithmatex">\[ssthresh_{new} = cwnd_{old} / 2\]</div>
+<ul>
+<li><strong>重置窗口：</strong> 将 <span class="arithmatex">\(cwnd\)</span> 重置为 1。</li>
+<li><strong>重新开始：</strong> 重新执行<strong>慢开始</strong>算法。</li>
+</ul>
+<ol start="3">
+<li><strong>缺点：</strong> 网络可能并没有发生严重拥塞，只是个别报文丢失，但由于超时重传的机制，发送方不得不将 <span class="arithmatex">\(cwnd\)</span> 降到 1，重新开始慢开始阶段。这种方式将传输效率突然降到最低，对网络性能影响较大。</li>
+</ol>
+<hr>
+<h5 id="b3">情况 B：个别报文丢失（3 个重复确认）<a class="headerlink" href="#b3" title="Permanent link">¶</a></h5>
+<p>这是 TCP Reno 版本（改进版本）引入的机制，包含<strong>快重传</strong>和<strong>快恢复</strong>。</p>
+<hr>
+<h4 id="fast-retransmit">第四阶段：快重传 (Fast Retransmit)<a class="headerlink" href="#fast-retransmit" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>目的：</strong> 让发送方尽早知道发生了个别报文段的丢失，而不是等待超时的发生。</li>
+<li><strong>机制要求：</strong></li>
+</ul>
+<ol>
+<li><strong>接收方：</strong> 即使收到了失序的报文段，也要<strong>立即</strong>发出对已收到报文段的重复确认（Duplicate ACK），而不要等待自己发送数据时进行捎带确认。</li>
+<li><strong>发送方：</strong> 一旦收到 <strong>3 个连续的重复确认</strong>，就立即重传该丢失的报文段，而不需要等待重传计时器超时。</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-33.png" data-desc-position="bottom"><img alt="img" src="../assets/5-33.png"></a></p>
+<ul>
+<li>发送方发送 M1, M2, M3, M4, M5, M6。</li>
+<li>M1, M2 到达，接收方确认。</li>
+<li><strong>M3 丢失</strong>。</li>
+<li>M4 到达（失序），接收方重复确认 M2。</li>
+<li>M5 到达（失序），接收方再次重复确认 M2。</li>
+<li>M6 到达（失序），接收方第三次重复确认 M2。</li>
+<li>发送方收到 3 个对 M2 的重复确认，<strong>立即重传 M3</strong>。</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>对于个别丢失的报文段，发送方不会出现超时重传，也就不会误认为出现了拥塞而错误地把拥塞窗口cwnd的值减为1。实践证明，使用快重传可以使整个网络的吞吐量提高约20%。</p>
+</div>
+<hr>
+<h4 id="fast-recovery">第五阶段：快恢复 (Fast Recovery)<a class="headerlink" href="#fast-recovery" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>启动条件：</strong> 发送方收到 3 个重复确认，执行快重传之后，<strong>不启动慢开始</strong>，而是执行<strong>快恢复</strong>算法。</li>
+<li><strong>逻辑：</strong> 既然能收到 3 个重复确认，说明网络只是丢失了个别报文，并没有发生严重的拥塞（因为后续报文 M4, M5, M6 依然到达了接收方），因此不需要像超时那样把 <span class="arithmatex">\(cwnd\)</span> 降为 1。</li>
+<li><strong>处理措施：</strong></li>
+</ul>
+<ol>
+<li><strong>乘法减小 (Multiplicative Decrease)：</strong> 将慢开始门限 <span class="arithmatex">\(ssthresh\)</span> 和拥塞窗口 <span class="arithmatex">\(cwnd\)</span> 都调整为当前 <span class="arithmatex">\(cwnd\)</span> 的一半。</li>
+</ol>
+<div class="arithmatex">\[ssthresh_{new} = cwnd_{old} / 2\]</div>
+<div class="arithmatex">\[cwnd_{new} = ssthresh_{new}\]</div>
+<p>部分实现会将 <span class="arithmatex">\(cwnd\)</span> 设置为 <span class="arithmatex">\(ssthresh_{new} + 3\)</span>，考虑到那 3 个已离开网络进入缓存的报文。这3个报文段不再消耗网络资源而是停留在接收方的接收缓存中。可见现在网络中不是堆积了报文段而是减少了3个报文段，因此可以适当把cwnd值增大一些。</p>
+<ol start="2">
+<li><strong>执行拥塞避免：</strong> 设置好新的参数后，直接进入<strong>拥塞避免</strong>阶段（线性增长），而不是慢开始。</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-34.png" data-desc-position="bottom"><img alt="img" src="../assets/5-34.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-35.png" data-desc-position="bottom"><img alt="img" src="../assets/5-35.png"></a></p>
+<details class="note">
+<summary>完整流程</summary>
+<ol>
+<li><strong>慢开始阶段 (Round 0-4)：</strong></li>
+</ol>
+<ul>
+<li>
+<p>初始 <span class="arithmatex">\(cwnd=1, ssthresh=16\)</span>。</p>
+</li>
+<li>
+<p>指数增长：<span class="arithmatex">\(1 \to 2 \to 4 \to 8 \to 16\)</span>。</p>
+</li>
+</ul>
+<ol start="2">
+<li><strong>拥塞避免阶段 (Round 4-12)：</strong></li>
+</ol>
+<ul>
+<li>
+<p>达到 <span class="arithmatex">\(ssthresh=16\)</span>，转为线性增长。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(16 \to 17 \to \dots \to 24\)</span>。</p>
+</li>
+</ul>
+<ol start="3">
+<li><strong>超时重传 (Round 12)：</strong></li>
+</ol>
+<ul>
+<li>在 <span class="arithmatex">\(cwnd=24\)</span> 时发生<strong>超时</strong>（图中红色点）。</li>
+</ul>
+<p><strong>动作：</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\(ssthresh = 24 / 2 = 12\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(cwnd = 1\)</span></p>
+</li>
+<li>
+<p>重新进入慢开始。</p>
+</li>
+</ul>
+<ol start="4">
+<li><strong>慢开始重启 (Round 13-17)：</strong></li>
+</ol>
+<ul>
+<li>
+<p><span class="arithmatex">\(cwnd\)</span> 从 1 开始指数增长：<span class="arithmatex">\(1 \to 2 \to 4 \to 8 \to 12\)</span>。</p>
+</li>
+<li>
+<p>注意：这里增长到新的 <span class="arithmatex">\(ssthresh=12\)</span> 就停止慢开始了。</p>
+</li>
+</ul>
+<ol start="5">
+<li><strong>拥塞避免重启 (Round 17-22)：</strong></li>
+</ol>
+<ul>
+<li>从 12 开始线性增长：<span class="arithmatex">\(12 \to 13 \to 14 \to 15 \to 16\)</span>。</li>
+</ul>
+<ol start="6">
+<li><strong>快重传与快恢复 (Round 22)：</strong></li>
+</ol>
+<ul>
+<li>在 <span class="arithmatex">\(cwnd=16\)</span> 时，发送方收到了 <strong>3 个重复确认</strong>（图中紫色三角）。</li>
+</ul>
+<p><strong>动作 (快恢复)：</strong></p>
+<ul>
+<li>
+<p><span class="arithmatex">\(ssthresh = 16 / 2 = 8\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(cwnd = ssthresh = 8\)</span> (直接降到新的门限值，而不是 1)。</p>
+</li>
+<li>
+<p><strong>动作 (拥塞避免)：</strong> 从 <span class="arithmatex">\(cwnd=8\)</span> 开始执行拥塞避免（线性增长 <span class="arithmatex">\(8 \to 9 \to \dots\)</span>）。</p>
+</li>
+</ul>
+</details>
+<details class="example">
+<summary>PPT上例题</summary>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-36.png" data-desc-position="bottom"><img alt="img" src="../assets/5-36.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-37.png" data-desc-position="bottom"><img alt="img" src="../assets/5-37.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-38.png" data-desc-position="bottom"><img alt="img" src="../assets/5-38.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-39.png" data-desc-position="bottom"><img alt="img" src="../assets/5-39.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-40.png" data-desc-position="bottom"><img alt="img" src="../assets/5-40.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-41.png" data-desc-position="bottom"><img alt="img" src="../assets/5-41.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-42.png" data-desc-position="bottom"><img alt="img" src="../assets/5-42.png"></a></p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>甲和乙刚建立TCP连接，并约定最大段长为2KB,假设乙总是及时清空缓存，保证接收窗口始终为20KB,ssthresh为16KB,若双向传输时间为10ms,发送时延忽略不计，且没有发生拥塞的情况，则经过()甲的发送窗口第一次达到20KB。</p>
+<p>A.40ms    B.50ms    C.60ms    D.70ms</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>B</p>
+<p>这里需要注意的是后面增加的是 1 MSS。并且需要注意的是这里说的是发送窗口第一次为多少。我们需要注意当发完这一次之后发送窗口即变大了。这里会有一个相差一次的 RTT 的问题，需要注意。下一题即这个坑。</p>
+<p>当拥塞窗口小于 ssthresh 时，拥塞窗口以指数方式增长，拥塞窗口从 2KB 到 16KB 需经过 3RTT，超过 16KB 后，每经过 1RTT，拥塞窗口加 1MSS，所以从 16KB 到 20KB 经过了 2RTT共经过 5RTT，RTT=10ms，故经过 50ms 后甲的发送窗口第一次为 20KB。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>在一个TCP连接中，MSS为1KB,当拥塞窗口为34KB时收到了3个冗余ACK报文。若在接下来的4RTT内报文段传输都是成功的，则当这些报文段均得到确认后，拥塞窗口的大小是()。</p>
+<p>A.8KB    B.16KB    C.20KB    D.21KB</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>D</p>
+<p>条件“收到了3个冗余 ACK报文”说明此时应执行快恢复算法,因此慢开始门限值设为17KB,并且此时 cwnd 也被设为 17KB，第1个RTT后cwnd=18KB，第2个RTT后cwnd=19KB，第3个 RTT 后 cwnd=20KB,第4个 RTT后,发出的报文全部得到确认,cwnd 再增加 1KB,变为 21KB。注意 cwd 的增加都发生在收到确认报文后。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>某客户通过一个TCP连接向服务器发送数据的部分过程如下图所示。客户在to时刻第一次收到确认序列号ack_seq=100的段，并发送序列号seq=100的段，但发生丢失。若TCP支持快速重传，则客户重新发送seq=100段的时刻是()。</p>
+<p>A. <span class="arithmatex">\(t_1\)</span>    B. <span class="arithmatex">\(t_2\)</span>    C. <span class="arithmatex">\(t_3\)</span>    D. <span class="arithmatex">\(t_4\)</span></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-45.png" data-desc-position="bottom"><img alt="img" src="../assets/5-45.png"></a></p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>C</p>
+<p>这里需要注意的是，这里是立即执行快速重传算法，也就是马上就重新发送丢失的报文段。</p>
+<p>TCP 规定当发送方收到对同一个报文段的3个重复确认时,就可以认为这个被确认报文段之后的报文已丢失，立即执行快速重传算法。<span class="arithmatex">\(t_3\)</span> 时刻连续收到来自服务器的三个确认序号 ack_seq=100 的段(注意，如时刻首次收到的 ack_seq=100 的段并不计入冗余 ACK)，发送方认为 seg=100 的段已经丢失，执行快速重传算法，重新发送 seq=100 的段。</p>
+</details>
+<hr>
+<h3 id="tcp_11">TCP拥塞控制与网际层拥塞控制的关系<a class="headerlink" href="#tcp_11" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-43.png" data-desc-position="bottom"><img alt="img" src="../assets/5-43.png"></a></p>
+<p>路由器的输入缓存（可看作缓存队列，以下简称为队列）通常都按照“先进先出FIFO” 的规则来处理到达的IP数据报。由于队列长度总是有限的，因此当队列已满时，之后再到达的所有IP数据报都将被丢弃，这就叫作<strong>尾部丢弃策略</strong>。</p>
+<ol>
+<li>接收缓存溢出而导致尾部丢弃</li>
+<li>TCP报文段的这些发送方产生超时重传，这将导致它们将拥塞窗口cwnd的值陡降为1，因此发送窗口swnd的值也降低为1，并且进入TCP拥塞控制的慢开始阶段，称为全局同步。</li>
+<li>全网的通信量骤降，而在网络恢复正常后，其通信量又突然增大很多。</li>
+</ol>
+<p>为了避免网络中出现全局同步问题，在1998年提出了<strong>主动队列管理</strong>（Active Queue Management，AQM）。</p>
+<ul>
+<li>所谓“主动”，就是在<strong>路由器的队列长度达到某个阈值但还未满时就主动丢弃IP数据报</strong>，而不是要等到路由器的队列已满时才不得不丢弃后面到达的IP数据报，这样就太被动了。</li>
+<li>应当在<strong>路由器队列长度达到某个值得警惕的数值</strong>时，也就是<strong>网络出现了某些拥塞征兆</strong>时，就<strong>主动丢弃到达的IP数据报来造成发送方的超时重传</strong>，进而<strong>降低发送方的发送速率</strong>，因而<strong>有可能减轻网络的拥塞程度</strong>，甚至不出现网络拥塞。 </li>
+</ul>
+<p>主动队列管理AQM可以有不同的实现方法，其中曾流行多年的就是随机早期检测（Random Early Detection，RED），也称为<strong>随机早期丢弃</strong>（Random Early Drop，RED 或 Random Early Discard，RED）。</p>
+<ul>
+<li>路由器需要维护<strong>两个参数</strong>来实现RED：<strong>队列长度最小门限</strong>和<strong>最大门限</strong>。当每一个IP数据报到达路由器时，RED就按照规定的算法计算出当前的平均队列长度。</li>
+</ul>
+<ol>
+<li>若平均队列长度小于最小门限，则把新到达的IP数据报存入队列进行排队。</li>
+<li>若平均队列长度大于最大门限，则把新到达的IP数据报丢弃。</li>
+<li>若平均队列长度在最小门限和最大门限之间，则按照某一丢弃概率p把新到达的IP数据报丢弃（这体现了丢弃IP数据报的随机性）。</li>
+</ol>
+<p>但多年的实践证明，RED的使用效果并不理想。</p>
+<hr>
+<h2 id="tcp_12">TCP可靠传输的实现<a class="headerlink" href="#tcp_12" title="Permanent link">¶</a></h2>
+<h3 id="1">1. 基本假定与概念<a class="headerlink" href="#1" title="Permanent link">¶</a></h3>
+<p>为了简化讨论，首先设定了以下前提条件：</p>
+<ul>
+<li><strong>忽略拥塞控制</strong>：假定网络不存在拥塞问题，发送方的发送窗口 (<code>swnd</code>) 大小直接等于接收方告知的接收窗口 (<code>rwnd</code>) 大小。</li>
+<li><strong>以字节为单位</strong>：TCP的滑动窗口是基于字节序号的，而不是基于报文段个数 。</li>
+</ul>
+<hr>
+<h3 id="2">2. 滑动窗口的结构与指针<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
+<p>TCP发送方的窗口状态通常用三个指针 <span class="arithmatex">\(P_1\)</span> 、<span class="arithmatex">\(P_2\)</span> 、<span class="arithmatex">\(P_3\)</span> 来描述和维护 。</p>
+<p>发送窗口的三个指针含义 ：</p>
+<ul>
+<li><strong>P_1 (后沿)</strong>：指向发送窗口内<strong>已发送但尚未收到确认</strong>的第一个字节的序号。</li>
+<li>
+<p>小于 P_1 的部分：代表<strong>已发送且已收到确认</strong>的数据，可以从缓存中删除。</p>
+</li>
+<li>
+<p><strong>P_2</strong>：指向发送窗口内<strong>允许发送但尚未发送</strong>的第一个字节的序号。</p>
+</li>
+<li>
+<p>P_2 与 P_1 之间的部分：<strong>已发送但未收到确认</strong>的字节数（<span class="arithmatex">\(P_2 - P_1\)</span>）。</p>
+</li>
+<li>
+<p><strong>P_3 (前沿)</strong>：指向发送窗口外<strong>不允许发送</strong>的第一个字节的序号。</p>
+</li>
+<li>P_3 与 P_1 之间的部分：<strong>发送窗口的大小</strong>（<span class="arithmatex">\(P_3 - P_1 = \text{swnd}\)</span>）。</li>
+<li>P_3 与 P_2 之间的部分：<strong>可用窗口</strong>或<strong>有效窗口</strong>，即允许发送但当前还未发送的字节数量（<span class="arithmatex">\(P_3 - P_2\)</span>）。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-49.png" data-desc-position="bottom"><img alt="img" src="../assets/5-49.png"></a></p>
+<hr>
+<h3 id="3">3. 可靠传输的工作流程<a class="headerlink" href="#3" title="Permanent link">¶</a></h3>
+<h4 id="step-1">Step 1: 初始状态<a class="headerlink" href="#step-1" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>接收方</strong>：通知发送方 <code>rwnd=20</code>，并发送确认号 <code>ack=31</code>。这意味着序号30及以前的数据都已正确接收，期望收到的下一个序号是31。</li>
+<li><strong>发送方</strong>：设置发送窗口 <code>swnd=20</code>。窗口范围覆盖序号 <code>31~50</code> 。此时，<span class="arithmatex">\(P_1\)</span> =31，<span class="arithmatex">\(P_2\)</span> =31（假设还没开始发新数据），<span class="arithmatex">\(P_3\)</span> =51。</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>注意：</p>
+<p><span class="arithmatex">\(ack_n\)</span> 在选择重传协议与TCP协议中并不完全相同。</p>
+<p>在选择重传协议中，<span class="arithmatex">\(ack_n\)</span>表明序号到 n 为止的数据已正确接收，现在期望收到序号为 n+1 的数据。</p>
+<p>在TCP协议中， <span class="arithmatex">\(ack_n\)</span>表明序号到 n-1 为止的数据已正确接收，现在期望收到序号为 n 的数据。</p>
+</div>
+<hr>
+<h4 id="step-2">Step 2: 发送数据<a class="headerlink" href="#step-2" title="Permanent link">¶</a></h4>
+<ul>
+<li>发送方发送了序号 <strong>31~41</strong> 的数据。</li>
+<li><strong>指针变化</strong>：</li>
+<li><span class="arithmatex">\(P_1\)</span> 保持 31（因为还没收到新的确认）。</li>
+<li><span class="arithmatex">\(P_2\)</span> 移至 42（指向下一个要发送的字节）。</li>
+<li>此时发送窗口内有已发送未确认数据（31<sub>41）和可用窗口（42</sub>50）。</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>发送方在没有收到接收方确认的情况下，可以把序号落入发送窗口内的数据依次全部发送出去。</p>
+<p>凡是已经发送过的数据，在未收到确认之前都必须暂时保留，以便在超时重传时使用。</p>
+</div>
+<hr>
+<h4 id="step-3">Step 3: 接收方确认与窗口滑动<a class="headerlink" href="#step-3" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>累计确认机制</strong>：TCP接收方只能对<strong>按序收到</strong>的数据中的最高序号给出确认。</li>
+</ul>
+<p><strong>场景A：收到新的确认</strong> </p>
+<ul>
+<li>假设接收方收到了序号31~33的数据，发送确认报文 <code>ack=34</code>，并维持 <code>rwnd=20</code>。</li>
+<li><strong>发送方处理</strong>：收到 <code>ack=34</code> 后，发送窗口后沿（<span class="arithmatex">\(P_1\)</span>）向前移动到 34。发送窗口前沿（<span class="arithmatex">\(P_3\)</span>）也相应向前移动，新的发送窗口范围变为 34~53。</li>
+</ul>
+<p><strong>场景B：收到不连续的数据（乱序）</strong> </p>
+<ul>
+<li>如果发送方发送了31<sub>41，但接收方未收到31，却收到了32</sub>33。</li>
+</ul>
+<p><strong>处理</strong>：接收方不能发送 <code>ack=34</code>，只能重复发送 <code>ack=31</code>（期望收到31）。未按序到达的数据（32~33）通常会先<strong>临时存放</strong>在接收窗口中，等缺失字节收到后再按序交付，而不是直接丢弃 。</p>
+<hr>
+<h4 id="step-4">Step 4: 异常情况处理<a class="headerlink" href="#step-4" title="Permanent link">¶</a></h4>
+<p><strong>超时重传</strong> ：如果发送方发送的数据（如序号31）在规定时间内没有收到确认，重传计时器超时，发送方会重传这部分已发送但未确认的数据。</p>
+<p><strong>窗口耗尽</strong> ：如果 <span class="arithmatex">\(P_2\)</span> 追上了 <span class="arithmatex">\(P_3\)</span>，意味着可用窗口为0。此时发送方必须停止发送，等待接收方新的确认到来以腾出窗口空间。</p>
+<hr>
+<h3 id="4">4. 补充说明<a class="headerlink" href="#4" title="Permanent link">¶</a></h3>
+<ul>
+<li>虽然发送方的发送窗口是根据接收方的接收窗口设置的，但在同一时刻，<strong>发送方的发送窗口并不总是和接收方的接收窗口一样大</strong>，这是因为：</li>
+</ul>
+<ol>
+<li>网络传送窗口值需要经历一定的时间滞后，并且这个时间还是不确定的。</li>
+<li>发送方还可能根据网络当时的拥塞情况适当减小自己的发送窗口尺寸。</li>
+</ol>
+<ul>
+<li><strong>对于不按序到达的数据应如何处理，TCP并无明确规定。</strong></li>
+</ul>
+<ol>
+<li>如果接收方把不按序到达的数据一律丢弃，那么接收窗口的管理将会比较简单，但这样做对网络资源的利用不利，因为发送方会重复传送较多的数据。</li>
+<li>TCP通常对不按序到达的数据先临时存放在接收窗口中，等到字节流中所缺少的字节收到后，再按序交付上层的应用进程。</li>
+</ol>
+<ul>
+<li>TCP要求接收方必须<strong>有累积确认</strong>（这一点与选择重传协议不同）和<strong>捎带确认机制</strong>。这样可以减小传输开销。接收方可以在合适的时候发送确认，也可以在自己有数据要发送时把确认信息顺便捎带上。</li>
+</ul>
+<ol>
+<li><strong>接收方不应过分推迟发送确认</strong>，否则会导致发送方不必要的超时重传，这反而浪费了网络资源。TCP标准规定，确认推迟的时间不应超过0.5秒。若收到一连串具有最大长度的报文段，则必须每隔一个报文段就发送一个确认。</li>
+<li><strong>捎带确认</strong>实际上并不经常发生，因为大多数应用程序很少同时在两个方向上发送数据。</li>
+</ol>
+<ul>
+<li><strong>TCP的通信是全双工通信</strong>。通信中的每一方都在发送和接收报文段。因此，每一方都有自己的发送窗口和接收窗口。在谈到这些窗口时，一定要弄清楚是哪一方的窗口。</li>
+</ul>
+<details class="example">
+<summary>PPT上例题</summary>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-50.png" data-desc-position="bottom"><img alt="img" src="../assets/5-50.png"></a></p>
+</details>
+<hr>
+<h2 id="tcp_13">TCP超时重传时间的选择<a class="headerlink" href="#tcp_13" title="Permanent link">¶</a></h2>
+<h3 id="1-rto">1. 为什么选择RTO很复杂？<a class="headerlink" href="#1-rto" title="Permanent link">¶</a></h3>
+<p><strong>网络环境复杂</strong>：TCP报文段可能经过高速局域网，也可能经过低速广域网，且每次路由路径可能不同。</p>
+<p><strong>两难境地</strong>：</p>
+<ul>
+<li>若 <strong>RTO 太短</strong>：会引起不必要的重传，增加网络负荷。</li>
+<li>若 <strong>RTO 太长</strong>：会导致网络空闲时间增加，降低传输效率。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-51.png" data-desc-position="bottom"><img alt="img" src="../assets/5-51.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-52.png" data-desc-position="bottom"><img alt="img" src="../assets/5-52.png"></a></p>
+<ul>
+<li><strong>基本原则</strong>：RTO 应略大于往返时间 (RTT)。</li>
+</ul>
+<hr>
+<h3 id="2-rto-rfc-6298">2. RTO 的计算方法 (RFC 6298标准)<a class="headerlink" href="#2-rto-rfc-6298" title="Permanent link">¶</a></h3>
+<p><strong>不能直接使用略大于某次测量得到的往返时间RTT样本的值</strong>作为超时重传时间RTO。而是需要计算<strong>加权平均往返时间</strong> (<span class="arithmatex">\(RTT_S\)</span>) 和 <strong>RTT的偏差加权平均值</strong> (<span class="arithmatex">\(RTT_D\)</span>)。</p>
+<hr>
+<h4 id="1-rtt_s-smoothed-rtt">(1) 加权平均往返时间 RTT_S (Smoothed RTT)<a class="headerlink" href="#1-rtt_s-smoothed-rtt" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>首次测量</strong>：</li>
+</ul>
+<div class="arithmatex">\[RTT_{S1} = RTT_1\]</div>
+<ul>
+<li><strong>后续测量</strong>：</li>
+</ul>
+<div class="arithmatex">\[RTT_{S_{new}} = (1 - \alpha) \times RTT_{S_{old}} + \alpha \times RTT_{样本}\]</div>
+<ul>
+<li><strong>参数说明</strong>：<span class="arithmatex">\(\alpha\)</span> 推荐值为 <strong>0.125 (1/8)</strong>。<span class="arithmatex">\(\alpha\)</span> 越小，新样本对平均值影响越小，数值越平滑。</li>
+</ul>
+<hr>
+<h4 id="2-rtt-rtt_d-rtt-deviation">(2) RTT偏差的加权平均值 RTT_D (RTT Deviation)<a class="headerlink" href="#2-rtt-rtt_d-rtt-deviation" title="Permanent link">¶</a></h4>
+<p>显然，超时重传时间RTO的值应略大于加权平均往返时间RTTs的值（而不是某个RTT样本的值）。</p>
+<p><span class="arithmatex">\(RTT_D\)</span> 用于衡量 RTT 的波动情况。</p>
+<ul>
+<li><strong>首次测量</strong>：</li>
+</ul>
+<div class="arithmatex">\[RTT_{D1} = RTT_1 \div 2\]</div>
+<ul>
+<li><strong>后续测量</strong>：</li>
+</ul>
+<div class="arithmatex">\[RTT_{D_{new}} = (1 - \beta) \times RTT_{D_{old}} + \beta \times |RTT_{S_{old}} - RTT_{样本}|\]</div>
+<ul>
+<li><strong>参数说明</strong>：<span class="arithmatex">\(\beta\)</span> 推荐值为 <strong>0.25 (1/4)</strong>。</li>
+</ul>
+<h4 id="3-rto">(3) 超时重传时间 RTO 的计算公式<a class="headerlink" href="#3-rto" title="Permanent link">¶</a></h4>
+<p>[RFC 6298]建议使用下式来计算超时重传时间RTO：</p>
+<div class="arithmatex">\[RTO = RTT_S + 4 \times RTT_D\]</div>
+<hr>
+<h3 id="3-rtt-karn">3. RTT 测量的困境与 Karn 算法<a class="headerlink" href="#3-rtt-karn" title="Permanent link">¶</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>如果所测量到的RTT样本不正确，那么所计算出的RTTS和RTTD自然就不正确，进而所计算出的RTO也就不正确。</p>
+<p>然而，RTT的测量确实是比较复杂的。</p>
+</div>
+<p>在发生重传时，测量 RTT 会遇到歧义问题：</p>
+<p><strong>问题</strong>：发送方发出报文段，超时未收到确认，于是重传。当收到确认报文（ACK）时，无法判断这个ACK是对<strong>原报文段</strong>的确认，还是对<strong>重传报文段</strong>的确认。</p>
+<ul>
+<li>若误认为是原报文段的确认：会导致计算出的 RTT 偏大。</li>
+<li>若误认为是重传报文段的确认：会导致计算出的 RTT 偏小。</li>
+</ul>
+<hr>
+<h4 id="1-karn">(1) Karn 算法<a class="headerlink" href="#1-karn" title="Permanent link">¶</a></h4>
+<p>为了解决上述问题，Karn 提出了一个规则：</p>
+<p><strong>规则</strong>：在计算加权平均 RTT_S 时，<strong>只要报文段重传了，就不采用其 RTT 样本</strong>。即出现重传时，不更新 <span class="arithmatex">\(RTT_S\)</span> 和 <span class="arithmatex">\(RTT_D\)</span>。</p>
+<hr>
+<h4 id="2-karn">(2) 修正的 Karn 算法 (指数退避)<a class="headerlink" href="#2-karn" title="Permanent link">¶</a></h4>
+<p>设想出现这样的情况：报文段的时延突然增大很多，并且之后很长一段时间都会保持这种时延（这可能是因为网络拓扑发生了变化）。因此在原来得出的RTO内，不会收到确认报文段，于是就重传报文段。但根据Karn算法，不考虑重传的报文段的RTT样本，因此RTO就无法更新，这会导致报文段反复被重传。</p>
+<p>因此引入了修正策略：</p>
+<ul>
+<li><strong>策略</strong>：报文段每重传一次，就将 RTO 值<strong>增大一倍</strong>（ <span class="arithmatex">\(RTO_{new} = 2 \times RTO_{old}\)</span> ）。</li>
+<li><strong>恢复</strong>：直到当不再发生重传时，才重新根据计算公式更新 RTO。</li>
+</ul>
+<hr>
+<h3 id="4_1">4. 实例演示<a class="headerlink" href="#4_1" title="Permanent link">¶</a></h3>
+<p><strong>设定</strong>：\alpha = 0.1, \beta = 0.1（注意：这里为了计算方便取了0.1，标准推荐是0.125和0.25）。
+<strong>测量序列</strong>：RTT依次为 30ms, 26ms, 32ms, 24ms。<strong>第5次测量时出现超时重传</strong>。</p>
+<p><strong>Step 1: 第一次测量 (RTT_1 = 30ms)</strong></p>
+<ul>
+<li><span class="arithmatex">\(RTT_{S1}\)</span> = 30ms</li>
+<li><span class="arithmatex">\(RTT_{D1} = 30 \div 2 = 15ms\)</span></li>
+<li><span class="arithmatex">\(RTO_1 = 30 + 4 \times 15 = \mathbf{90ms}\)</span></li>
+</ul>
+<p><strong>Step 2: 第二次测量 (RTT_2 = 26ms)</strong></p>
+<ul>
+<li><span class="arithmatex">\(RTT_{S2} = 0.9 \times 30 + 0.1 \times 26 = 29.6ms\)</span></li>
+<li><span class="arithmatex">\(RTT_{D2} = 0.9 \times 15 + 0.1 \times |29.6 - 26| = 13.86ms\)</span></li>
+<li><span class="arithmatex">\(RTO_2 = 29.6 + 4 \times 13.86 = \mathbf{85.04ms}\)</span></li>
+</ul>
+<p><strong>Step 3: 第三次测量 (RTT_3 = 32ms)</strong></p>
+<ul>
+<li><span class="arithmatex">\(RTT_{S3} = 0.9 \times 29.6 + 0.1 \times 32 = 29.84ms\)</span></li>
+<li><span class="arithmatex">\(RTT_{D3} = 0.9 \times 13.86 + 0.1 \times |29.84 - 32| = 12.69ms\)</span></li>
+<li><span class="arithmatex">\(RTO_3 = 29.84 + 4 \times 12.69 = \mathbf{80.6ms}\)</span></li>
+</ul>
+<p><strong>Step 4: 第四次测量 (RTT_4 = 24ms)</strong></p>
+<ul>
+<li><span class="arithmatex">\(RTT_{S4} = 0.9 \times 29.84 + 0.1 \times 24 = 29.256ms\)</span></li>
+<li><span class="arithmatex">\(RTT_{D4} = 0.9 \times 12.69 + 0.1 \times |29.256 - 24| = 11.9466ms\)</span></li>
+<li><span class="arithmatex">\(RTO_4 = 29.256 + 4 \times 11.9466 = \mathbf{77.0424ms}\)</span></li>
+</ul>
+<p><strong>Step 5: 第五次出现超时重传</strong></p>
+<ul>
+<li><strong>处理</strong>：根据修正的 Karn 算法，不计算 <span class="arithmatex">\(RTT_{S5}\)</span> 和 <span class="arithmatex">\(RTT_{D5}\)</span>。</li>
+<li><strong>RTO更新</strong>：直接将旧的 RTO 翻倍。</li>
+<li><span class="arithmatex">\(RTO_5 = 2 \times RTO_4 = 2 \times 77.0424 = \mathbf{154.0848ms}\)</span></li>
+</ul>
+<hr>
+<h2 id="tcp_14">TCP的选择确认<a class="headerlink" href="#tcp_14" title="Permanent link">¶</a></h2>
+<p>在之前介绍TCP的快重传和可靠传输时，TCP接收方<strong>只能对按序收到的数据中的最高序号给出确认</strong>。当发送方<strong>超时重传</strong>时，接收方之前<strong>已收到的未按序到达的数据也会被重传</strong>。</p>
+<p>能否设法只传送缺少的数据而不重传已经正确到达、只是未按序到达的数据呢？</p>
+<p>TCP可以使用<strong>选择确认</strong>（Selective ACK，<strong>SACK</strong>）</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/5-53.png" data-desc-position="bottom"><img alt="img" src="../assets/5-53.png"></a></p>
+<p>假设这些字节的序号都在接收窗口内，那么接收方就先收下这些数据，但要把这些信息准确地告诉发送方，使发送方不再重复发送这些数据。</p>
+<p>SACK相关文档并没有指明发送方应当怎样响应SACK。因此大多数的TCP实现还是重传所有未被确认的数据块。</p>
 <hr>
 
 
@@ -5577,7 +7822,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年12月9日 16:39:13 CST">2025年12月9日 16:39:13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年12月22日 13:23:23 CST">2025年12月22日 13:23:23</span>
   </span>
 
     
@@ -5698,10 +7943,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

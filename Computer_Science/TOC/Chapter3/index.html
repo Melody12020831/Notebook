@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/icon.jpg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3069,6 +3069,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -3296,6 +3300,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../OS/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Deadlocks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../OS/Chapter8/" class="md-nav__link">
         
   
@@ -3345,6 +3377,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10 | File-System Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3364,6 +3424,8 @@
       
         
           
+        
+      
         
       
         
@@ -3557,6 +3619,34 @@
     
   
     Chapter 5 | 运输层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | 应用层
   
 
     
@@ -6480,7 +6570,7 @@
 <li>这<strong>精确地</strong>证明了：<span class="arithmatex">\(S \Rightarrow_L^* w \iff (p, w, e) \vdash_M^* (q, e, e)\)</span></li>
 <li>也就是：<span class="arithmatex">\(w \in L(G) \iff w \in L(M)\)</span></li>
 </ul>
-<p>我们现在开始用数学归纳法证明这个“断言”的 <span class="arithmatex">\(<span class="arithmatex">\(\Rightarrow\)</span>\)</span> (正) 方向：</p>
+<p>我们现在开始用数学归纳法证明这个“断言”的 $<span class="arithmatex">\(\Rightarrow\)</span>$ (正) 方向：</p>
 <div class="arithmatex">\[\text{Suppose} S \Rightarrow_L^* w\alpha, \text{ THEN } (q, w, S) \vdash_M^* (q, e, \alpha)\]</div>
 <ol>
 <li>Basis step: If the derivation is of length 0, then it must be that <span class="arithmatex">\(w = e\)</span> and <span class="arithmatex">\(\alpha = S\)</span>. Show that <span class="arithmatex">\((q, e, S) \vdash_M^* (q, e, S)\)</span>.</li>
@@ -6693,7 +6783,7 @@
 <p><strong>如果 <span class="arithmatex">\(M'\)</span> 有规则 <code>((p, a, A), (q, e))</code></strong> (Pop 1, Push 0)</p>
 <ul>
 <li>这是一个从 <span class="arithmatex">\(p\)</span> 到 <span class="arithmatex">\(q\)</span>，消耗 <span class="arithmatex">\(A\)</span>，只读 <span class="arithmatex">\(a\)</span> 的“计算”。</li>
-<li><strong>我们生成 CFG 规则：</strong> <span class="arithmatex">\(<span class="arithmatex">\(A_{p, q} \rightarrow a\)</span>\)</span></li>
+<li><strong>我们生成 CFG 规则：</strong> $<span class="arithmatex">\(A_{p, q} \rightarrow a\)</span>$</li>
 </ul>
 </li>
 <li>
@@ -6701,7 +6791,7 @@
 <ul>
 <li>这代表从 <span class="arithmatex">\(p\)</span> 到 <span class="arithmatex">\(q\)</span> 的计算 <span class="arithmatex">\(A_{p,q}\)</span>。</li>
 <li>它由两部分组成：1. 读 <span class="arithmatex">\(a\)</span>。 2. 留下一个“新任务”：从状态 <span class="arithmatex">\(q\)</span> 开始，最终消耗掉 <span class="arithmatex">\(B\)</span>，并停在某个状态 <span class="arithmatex">\(r\)</span>。这个新任务就是 <span class="arithmatex">\(A_{q, r}\)</span>。</li>
-<li><strong>我们生成 CFG 规则：</strong> <span class="arithmatex">\(<span class="arithmatex">\(A_{p, r} \rightarrow a A_{q, r}\)</span>\)</span> (对所有可能的 <span class="arithmatex">\(r\)</span> 状态)</li>
+<li><strong>我们生成 CFG 规则：</strong> $<span class="arithmatex">\(A_{p, r} \rightarrow a A_{q, r}\)</span>$ (对所有可能的 <span class="arithmatex">\(r\)</span> 状态)</li>
 </ul>
 </li>
 <li>
@@ -6709,7 +6799,7 @@
 <ul>
 <li>这是最关键的。它代表从 <span class="arithmatex">\(p\)</span> 到某个最终状态 <span class="arithmatex">\(r\)</span> 的计算 <span class="arithmatex">\(A_{p,r}\)</span>。</li>
 <li>它由三部分组成：1. 读 <span class="arithmatex">\(a\)</span>。 2. 留下一个“新任务”：从 <span class="arithmatex">\(q\)</span> 开始，消耗 <span class="arithmatex">\(B\)</span>，停在某个<strong>中间状态 <span class="arithmatex">\(k\)</span></strong> (即 <span class="arithmatex">\(A_{q, k}\)</span>) 。 3. 再留下一个“后续任务”：从 <span class="arithmatex">\(k\)</span> 开始，消耗 <span class="arithmatex">\(C\)</span>，停在<strong>最终状态 <span class="arithmatex">\(r\)</span></strong> (即 <span class="arithmatex">\(A_{k, r}\)</span>)。</li>
-<li><strong>我们生成 CFG 规则：</strong> <span class="arithmatex">\(<span class="arithmatex">\(A_{p, r} \rightarrow a A_{q, k} A_{k, r}\)</span>\)</span> (对所有可能的 <span class="arithmatex">\(k, r\)</span> 状态)</li>
+<li><strong>我们生成 CFG 规则：</strong> $<span class="arithmatex">\(A_{p, r} \rightarrow a A_{q, k} A_{k, r}\)</span>$ (对所有可能的 <span class="arithmatex">\(k, r\)</span> 状态)</li>
 </ul>
 </li>
 </ul>
@@ -7394,10 +7484,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
