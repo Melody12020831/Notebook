@@ -226,6 +226,8 @@ nav:
       - Computer_Science/OS/Chapter8.md
       - Computer_Science/OS/Chapter9.md
       - Computer_Science/OS/Chapter10.md
+      - Computer_Science/OS/Chapter11.md
+      - Computer_Science/OS/Chapter12.md
     - "CN":
       - Computer_Science/CN/index.md
       - Computer_Science/CN/Chapter1.md
@@ -234,6 +236,7 @@ nav:
       - Computer_Science/CN/Chapter4.md
       - Computer_Science/CN/Chapter5.md
       - Computer_Science/CN/Chapter6.md
+      - Computer_Science/CN/Chapter7.md
       - Computer_Science/CN/quiz.md
     - "Visualization":
       - Computer_Science/Visualization/note.md
