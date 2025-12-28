@@ -10,6 +10,10 @@
         <link rel="canonical" href="https://melody12020831.github.io/Notebook/Computer_Science/OS/Chapter11/">
       
       
+        <link rel="prev" href="../Chapter10/">
+      
+      
+        <link rel="next" href="../Chapter12/">
       
       
         
@@ -280,10 +284,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../../" class="md-tabs__link">
           
   
@@ -458,6 +464,8 @@
       
   
   
+    
+  
   
   
     
@@ -493,14 +501,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -522,13 +533,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2633,6 +2644,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2662,6 +2675,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -2669,11 +2686,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -2701,7 +2718,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2994,6 +3011,332 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11 | File System Implementation
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11 | File System Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#file-system-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File-System Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-structures-used-to-implement-fs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Structures Used to Implement FS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Structures Used to Implement FS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-typical-file-control-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Typical File control Block
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-memory-file-system-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In-Memory File System Structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-file-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Virtual File Systems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Virtual File Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-memory-vfs-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In-Memory VFS objects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#allocation-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Allocation Methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Allocation Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contiguous-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contiguous Allocation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contiguous Allocation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extent-based-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extent-Based Systems
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linked-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linked Allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexed-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indexed Allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free-space-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free-Space Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Free-Space Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linked-free-space-list-on-disk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linked Free Space List on Disk
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficiency-and-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Efficiency and Performance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page Cache
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unified-buffer-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unified Buffer cache
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 | Mass-Storage Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3013,6 +3356,8 @@
       
         
           
+        
+      
         
       
         
@@ -3236,6 +3581,34 @@
     
   
     Chapter 6 | 应用层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | 网络安全
   
 
     
@@ -5181,6 +5554,84 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#indexed-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Indexed Allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#free-space-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Free-Space Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Free-Space Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linked-free-space-list-on-disk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linked Free Space List on Disk
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#efficiency-and-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Efficiency and Performance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page Cache
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Page Cache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unified-buffer-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unified Buffer cache
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5202,6 +5653,49 @@
 
 
 
+  <nav class="md-path" aria-label="导航栏">
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    OS
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -5214,7 +5708,7 @@
 
 <h1 id="chapter-11-file-system-implementation">Chapter 11 | File System Implementation<a class="headerlink" href="#chapter-11-file-system-implementation" title="Permanent link">¶</a></h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 3484 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 10 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 17 分钟</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 7359 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 22 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 37 分钟</p>
 </div>
 <p>Tmpfs, a temporary file system in memory, fast but not persistent</p>
 <p>一种基于内存的临时文件系统，速度非常快，但数据不会持久保存（重启后数据丢失）。常用于存放临时文件，比如 /tmp 目录。</p>
@@ -5505,13 +5999,299 @@
 <p>Mapping</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-8.png" data-desc-position="bottom"><img alt="img" src="../assets/11-8.png"></a></p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-9.png" data-desc-position="bottom"><img alt="img" src="../assets/11-9.png"></a></p>
-<p>File-allocation table (FAT) – disk-space allocation used by MS-DOS and OS/2.</p>
+<p><strong>File-allocation table</strong> (FAT) – disk-space allocation used by MS-DOS and OS/2.</p>
 <p>FAT 是一种特殊的链接分配实现方式，广泛用于 MS-DOS、Windows 的 FAT12/16/32 文件系统，以及U盘、SD卡等。</p>
 <p>文件分配表（FAT）是一个数组，每个元素对应一个磁盘块，存储该块的“下一个块号”。</p>
 <p>文件的目录项只需记录起始块号，后续块号通过查表依次获得。</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-10.png" data-desc-position="bottom"><img alt="img" src="../assets/11-10.png"></a></p>
 <p>FAT 表较大时，需常驻内存，占用空间。</p>
 <p>随机访问效率较低，需要多次查表。</p>
+<hr>
+<h3 id="indexed-allocation">Indexed Allocation<a class="headerlink" href="#indexed-allocation" title="Permanent link">¶</a></h3>
+<p>Brings all pointers together into the index block.</p>
+<p>索引分配是将一个文件所有的数据块指针集中存放在一个<strong>索引块（index block）</strong>中。</p>
+<p>Logical view.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-11.png" data-desc-position="bottom"><img alt="img" src="../assets/11-11.png"></a></p>
+<ul>
+<li>每个文件有一个索引块，索引块中每个条目指向该文件的一个数据块。</li>
+<li>目录项只需记录索引块的地址。</li>
+</ul>
+<p><strong>Example of Indexed Allocation</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-12.png" data-desc-position="bottom"><img alt="img" src="../assets/11-12.png"></a></p>
+<ul>
+<li>directory（目录）：目录项记录文件名（如 jeep）和该文件的索引块号（如 19）。</li>
+<li>index block（索引块）：每个文件有一个索引块，索引块中每个条目存放一个数据块的物理块号。例如，索引块 19 中依次存放：9、16、1、10、25、-1、-1、-1。</li>
+<li>磁盘块：磁盘上所有的数据块可以分布在任意位置，索引块中的每个数字指向一个实际的数据块。</li>
+</ul>
+<p><strong>访问流程</strong></p>
+<ol>
+<li>查目录项，找到文件 jeep 的索引块号为 19。</li>
+<li>查索引块，读取索引块 19，获得 jeep 文件所有数据块的物理地址列表。</li>
+<li>访问数据块，例如 jeep 文件的数据依次存放在块号 9、16、1、10、25。-1 表示文件结束（或未用）。</li>
+</ol>
+<p>Need <strong>index table</strong> (analogous to <strong>page table</strong>)</p>
+<p>索引分配解决了连续分配的外部碎片问题和链接分配不能有效支持随机访问的问题。它为每个文件分配一个索引块 (Index Block)，这个块就像是一个“目录”或“索引表”，包含了指向文件所有数据块的指针。</p>
+<p>Random access</p>
+<p>可以直接通过索引块找到第 <span class="arithmatex">\(n\)</span> 个数据块，无需像链接分配那样逐个遍历。</p>
+<p>Dynamic access without external fragmentation, but have overhead of index block.</p>
+<p>数据块可以分布在磁盘的任何位置，只要有空闲块即可。即使是很小的文件也需要占用一整个索引块。</p>
+<p>When mapping from logical to physical in a file of maximum size of 256K words and block size of 512 words. We need only 1 block for index table.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-13.png" data-desc-position="bottom"><img alt="img" src="../assets/11-13.png"></a></p>
+<ul>
+<li>Q = LA / 512：Q 是逻辑地址 LA 所在的数据块号，也是在索引表（index table）中的偏移（即第几个数据块）。</li>
+<li>R = LA % 512：R 是逻辑地址 LA 在数据块内的偏移（即块内字节偏移）。</li>
+</ul>
+<p>When mapping from logical to physical in a file of unbounded length (block size of 512 words). – more pointers are needed</p>
+<p>如果每个磁盘地址（指针）占用 <span class="arithmatex">\(1\)</span> 个字，那么一个大小为 <span class="arithmatex">\(512\)</span> 字的索引块正好可以存放 <span class="arithmatex">\(512\)</span> 个指针。因此，只需要 1 个索引块即可覆盖该文件的最大范围。</p>
+<p><strong>Linked scheme</strong> – Link blocks of index table (no limit on size).</p>
+<p><strong>对于超出单个索引块容量的超大文件，或者长度不确定的文件，我们需要扩展索引块。</strong>链接方案是其中一种常见的解决方法。在链接方案中，一个索引块通常包含一个指向文件数据块的指针列表，但其<strong>最后一个条目</strong>（或特定位置）存储的是<strong>下一个索引块的地址</strong>。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-14.png" data-desc-position="bottom"><img alt="img" src="../assets/11-14.png"></a></p>
+<ul>
+<li>LA / (512 x 511) 得到 <span class="arithmatex">\(Q_1\)</span> 和 <span class="arithmatex">\(R_1\)</span>：<span class="arithmatex">\(Q_1\)</span> 是第几个索引块。</li>
+<li><span class="arithmatex">\(R_1\)</span> % (512 x 511) 得到 <span class="arithmatex">\(Q_2\)</span> 和 <span class="arithmatex">\(R_2\)</span>：<span class="arithmatex">\(Q_2\)</span> 是索引块内的第几个条目，<span class="arithmatex">\(R_2\)</span> 是数据块内的字节偏移。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-15.png" data-desc-position="bottom"><img alt="img" src="../assets/11-15.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-16.png" data-desc-position="bottom"><img alt="img" src="../assets/11-16.png"></a></p>
+<p><strong>Combined Scheme: UNIX (4K bytes per block)</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-17.png" data-desc-position="bottom"><img alt="img" src="../assets/11-17.png"></a></p>
+<ul>
+<li>mode：文件类型和权限（如普通文件、目录、可读/写/执行等）。</li>
+<li>owners (2)：文件所有者和所属组。</li>
+<li>timestamps (3)：文件的时间戳（创建、访问、修改时间）。</li>
+<li>size block count：文件大小和所占块数。</li>
+<li>直接块（direct blocks）：inode 里有若干直接指针，每个指针直接指向一个数据块。适合小文件，访问速度快，结构简单。</li>
+<li>单重间接块（single indirect）：指针指向一个间接块，间接块里存放更多数据块的指针。适合中等大小文件，扩展了可管理的数据块数量。</li>
+<li>双重间接块（double indirect）：指针指向一个块，这个块里存放的是间接块的指针，每个间接块再指向数据块。适合更大的文件，进一步扩展了文件最大长度。</li>
+<li>三重间接块（triple indirect）：指针指向一个块，这个块里存放的是双重间接块的指针，每个双重间接块再指向间接块，间接块再指向数据块。适合超大文件，理论上文件长度几乎无限制。</li>
+</ul>
+<details class="note">
+<summary>为什么页表不这样设计？</summary>
+<p>第一就是，如果是这样的话，页表查询是由 MMU 硬件来完成的，而不是由操作系统软件来完成的。MMU 硬件实现条件的复杂度会大大增加，从而增加成本。</p>
+<p>第二就是，像栈是由高地址向低地址增长的，如果页表设计成这样的话，那么栈页表项就会放在页表的末尾。也就是说，如果我要访问栈页表项的话，就需要逐层访问下去，直到最后一层才能找到栈页表项，这样效率就会很低。</p>
+</details>
+<hr>
+<h3 id="free-space-management">Free-Space Management<a class="headerlink" href="#free-space-management" title="Permanent link">¶</a></h3>
+<p>Bit vector (n blocks)</p>
+<p>用一个<strong>位图（bit vector）</strong>来表示磁盘上的每个块是否空闲。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-18.png" data-desc-position="bottom"><img alt="img" src="../assets/11-18.png"></a></p>
+<p>每一位对应一个磁盘块，0 表示空闲，1 表示已分配。</p>
+<p>查找空闲块时，只需扫描位图，找到第一个 0 即可。</p>
+<p>Block number calculation (finding the first free block)</p>
+<p>找到第一个空闲块的位置：</p>
+<p>(number of bits per word) * (number of 0-value words) + offset of first 1 bit</p>
+<p>Bit map requires extra space</p>
+<p>位图本身需要占用额外空间（但通常很小）。</p>
+<ul>
+<li>Example: </li>
+</ul>
+<p>block size = <span class="arithmatex">\(2^{12}\)</span> bytes = 4096 bytes</p>
+<p>disk size = <span class="arithmatex">\(2^{30}\)</span> bytes = 1 GB</p>
+<p>n = <span class="arithmatex">\(\frac{2^{30}}{2^{12}} = 2^{18}\)</span> bits = 256 Kbits = 32 Kbytes</p>
+<p>例如：块大小 4096 字节，磁盘 1GB，则需要 32KB 的位图。</p>
+<p><strong>Easy to get contiguous files</strong></p>
+<p>易于查找连续空闲块，适合需要分配大文件或连续空间的场景。</p>
+<p><strong>Bit map</strong> 也有一些变种。</p>
+<p><strong>Linked list</strong> (free list)</p>
+<p>用链表记录所有空闲块，每个空闲块包含指向下一个空闲块的指针。只需记录链表头即可。</p>
+<ul>
+<li>Cannot get contiguous space easily 不易获得连续空间，每次只能分配一个块，查找连续空闲块效率低。</li>
+<li>But basically can work (FAT) 实现简单，适合 FAT 文件系统。</li>
+<li>No waste of space 无空间浪费，只用空闲块自身存储指针。</li>
+</ul>
+<p><strong>Grouping</strong> – a modification of the Linked List</p>
+<ul>
+<li>Addresses of the n free blocks are stored in the first block.</li>
+<li>每个分组块存储 n 个空闲块的地址，最后一个地址指向下一个分组块。</li>
+<li>The first n-1 blocks are actually free. The last block contains addresses of another n free blocks</li>
+<li>前 n-1 个块是实际空闲块，最后一个块指向下一个分组。</li>
+</ul>
+<p>Counting</p>
+<ul>
+<li>Address of the first free block and number n contiguous blocks</li>
+<li>只记录第一个空闲块的地址和连续空闲块的数量。</li>
+</ul>
+<hr>
+<h4 id="linked-free-space-list-on-disk">Linked Free Space List on Disk<a class="headerlink" href="#linked-free-space-list-on-disk" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-19.png" data-desc-position="bottom"><img alt="img" src="../assets/11-19.png"></a></p>
+<hr>
+<p>Need to protect:</p>
+<ul>
+<li>Pointer to free list</li>
+<li>Bit map</li>
+</ul>
+<ol>
+<li>Must be kept on disk</li>
+</ol>
+<p>空闲空间信息（如空闲链表指针、位图）必须保存在磁盘上，否则断电或系统崩溃后会丢失。</p>
+<ol start="2">
+<li>The copy in memory and disk may differ</li>
+</ol>
+<p>内存中的副本和磁盘上的副本可能会不一致，比如内存已标记为分配，磁盘还没更新。</p>
+<ol start="3">
+<li>Cannot allow for block[i] to have a situation where bit[i] = 1 in memory and bit[i] = 0 on disk</li>
+</ol>
+<p>不能出现内存和磁盘状态不一致的情况（如 block[i] 在内存中是已分配，磁盘上却是空闲）。</p>
+<ul>
+<li>Solution:</li>
+</ul>
+<ol>
+<li>Set bit[i] = 1 in disk</li>
+</ol>
+<p>先更新磁盘：先把 bit[i]（位图或链表）在磁盘上设置为已分配（1）。</p>
+<ol start="2">
+<li>deallocate block[i]</li>
+</ol>
+<p>再释放块：执行实际的块释放操作（deallocate block[i]）。</p>
+<ol start="3">
+<li>Set bit[i] = 1 in memory</li>
+</ol>
+<p>最后更新内存：最后把 bit[i] 在内存中也设置为已分配（1）。</p>
+<hr>
+<h2 id="efficiency-and-performance">Efficiency and Performance<a class="headerlink" href="#efficiency-and-performance" title="Permanent link">¶</a></h2>
+<p>Efficiency dependent on:</p>
+<ul>
+<li><strong>disk allocation</strong> and <strong>directory</strong> algorithms 磁盘分配和目录算法</li>
+<li>types of data kept in file’s directory entry (for example “last write date” is recorded in directory) 目录项中保存的数据类型（如“最后写入日期”）</li>
+</ul>
+<p><strong>Generally, every data item has to be considered for its effect.</strong></p>
+<p>文件系统设计时，每一项元数据、每一个结构的选择都会影响整体效率和性能。</p>
+<p>Performance</p>
+<ul>
+<li><strong>disk cache</strong> – separate section of main memory for frequently used blocks</li>
+</ul>
+<p>在主存（RAM）中划出一块区域，专门缓存经常访问的磁盘块。</p>
+<ul>
+<li><strong>free-behind and read-ahead</strong> – techniques to optimize sequential access</li>
+</ul>
+<p>free-behind：顺序读取文件时，已经读取过的数据块可以立即从缓存中释放，腾出空间给后续数据块，适合顺序访问场景。</p>
+<p>read-ahead：顺序读取文件时，系统会预先加载后续的数据块到缓存中，减少等待磁盘I/O的时间，提高顺序读的效率。</p>
+<ul>
+<li>improve PC performance by dedicating section of memory as virtual disk, or <strong>RAM disk</strong></li>
+</ul>
+<p>用一部分内存模拟磁盘，作为虚拟磁盘使用，速度极快（因为直接在内存中操作）。适合存放临时文件或对性能要求极高的场景，但数据不持久，断电即失。</p>
+<hr>
+<h2 id="page-cache">Page Cache<a class="headerlink" href="#page-cache" title="Permanent link">¶</a></h2>
+<p>A <strong>page cache</strong> caches pages rather than disk blocks using <strong>virtual memory</strong> techniques</p>
+<p>Page Cache（页缓存）是操作系统利用虚拟内存技术，把磁盘文件的数据以“页”为单位缓存在内存中的机制。</p>
+<details class="note">
+<summary>Note</summary>
+<p>Page Cache (页缓存)：面向虚拟内存的。它以“页”（通常是 <span class="arithmatex">\(4\text{KB}\)</span>）为单位，缓存文件的逻辑内容。</p>
+<p>Buffer Cache (块缓存/缓冲池)：面向磁盘设备的。它以“磁盘块”为单位，缓存物理磁盘上的原始数据。</p>
+</details>
+<p>Memory-mapped I/O uses a page cache</p>
+<p>Memory-mapped I/O（内存映射I/O）：</p>
+<ul>
+<li>进程通过 <code>mmap</code> 等系统调用，把文件内容直接映射到自己的虚拟地址空间。</li>
+<li>访问文件就像访问普通内存一样，实际数据由 <code>Page Cache</code> 管理。</li>
+<li>这种方式直接利用 <code>Page Cache</code> 。</li>
+</ul>
+<p>Routine I/O through the file system uses the buffer (disk) cache</p>
+<p>常规文件I/O（Routine I/O）：</p>
+<ul>
+<li>通过 <code>read</code> 、 <code>write</code> 等系统调用访问文件。</li>
+<li>传统上使用 <code>buffer cache</code> （磁盘块缓存），但现代操作系统会将 <code>buffer cache</code> 和 <code>page cache</code> 合并，统一管理。</li>
+</ul>
+<p>This leads to the following figure</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-20.png" data-desc-position="bottom"><img alt="img" src="../assets/11-20.png"></a></p>
+<p>带来的问题：</p>
+<ul>
+<li>浪费空间：同一份文件数据在物理内存中可能存了两份：一份在 <code>page cache</code> 中，一份在 <code>buffer cache</code> 中。</li>
+<li>一致性风险：如果一个进程用 <code>mmap</code> 修改了 <code>Page Cache</code>，另一个进程用 <code>read</code> 读取 <code>Buffer Cache</code>，可能会读到旧数据。</li>
+<li>CPU 损耗：在两个缓存之间移动数据需要消耗大量的 CPU 周期。</li>
+</ul>
+<hr>
+<h3 id="unified-buffer-cache">Unified Buffer cache<a class="headerlink" href="#unified-buffer-cache" title="Permanent link">¶</a></h3>
+<p>A unified buffer cache uses the same page cache to cache both <strong>memory-mapped pages</strong> and ordinary <strong>file system I/O</strong></p>
+<p>为了解决上述缺陷，现代操作系统（如 Linux、Windows）采用了统一缓冲缓存 (Unified Buffer Cache)。</p>
+<p>合二为一：操作系统不再维护两个独立的缓存。无论是 mmap 还是 read/write，最终都指向同一个内存区域——统一页缓存 (Unified Page Cache)。</p>
+<p>工作流程：</p>
+<ol>
+<li>当调用 <code>read()</code> 时，内核先检查 <code>Page Cache</code>。</li>
+<li>如果数据不在内存，它会请求文件系统将磁盘块加载到 <code>Page Cache</code> 中。</li>
+<li><code>mmap</code> 同样直接映射到这些 <code>Page</code>。</li>
+</ol>
+<p>Avoids double caching</p>
+<p><strong>I/O Using a Unified Buffer cache</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-21.png" data-desc-position="bottom"><img alt="img" src="../assets/11-21.png"></a></p>
+<hr>
+<details class="example" open="open">
+<summary>question</summary>
+<p>有些操作系统中将文件描述信息从目录项中分离出来，这样做的好处是（）。</p>
+<p>A.减少读文件时的I/O信息量</p>
+<p>B.减少写文件时的I/O信息量</p>
+<p>C.减少查找文件时的I/O信息量</p>
+<p>D.减少复制文件时的I/O信息量</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>C</p>
+<p>将文件描述信息从目录项中分离出来，可以减少查找文件时的I/O信息量。即使用了索引节点（inode）来存储文件的元数据，目录项只存储文件名和对应的inode号。这样，在查找文件时，只需读取目录项获取inode号，然后直接访问inode获取文件描述信息，避免了多次I/O操作，提高了查找效率。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>某文件系统采用显示链接分配方式组织文件，磁盘块大小为4KB，一个簇包含两个磁盘块，操作系统以簇为单位进行盘块分配。已知系统支持的最大文件长度为512MB,若FAT的每个表项仅存放簇号，则FAT表占用的空间大约是（）。</p>
+<p>A.64KB B.128KB C.512KB D.1024KB</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>B</p>
+<p>最大文件长度为512MB，磁盘块大小为4KB，一个簇包含两个磁盘块，因此每个簇的大小为8KB。要计算FAT表的大小，首先需要计算文件系统中最大支持的簇数：</p>
+<p>最大文件长度 / 每个簇的大小 = 512MB / 8KB = <span class="arithmatex">\(2^{16}\)</span>个簇</p>
+<p>FAT（文件分配表）的每个表项用于存放簇号。为了能够寻址 <span class="arithmatex">\(2^{16}\)</span> 个簇，簇号的位数必须足以表示这个范围。</p>
+<p>簇号位数：要表示 <span class="arithmatex">\(2^{16}\)</span> 个不同的地址，至少需要 <span class="arithmatex">\(16\)</span> 位（bit）。<span class="arithmatex">\(16\text{ bits} = 2\text{ bytes}\)</span></p>
+<p>簇数 * 每个表项大小 = <span class="arithmatex">\(2^{16}\)</span> * 2字节 = 128KB</p>
+<p>因此，FAT表占用的空间大约是128KB，选项B正确。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>某文件系统中，针对每个文件，用户类别分为4类：安全管理员、文件主、文件主的伙伴、其他用户；访问权限分为5种：完全控制、执行、修改、读取、写入。若文件控制块中用二进制位串表示文件权限，为表示不同类别用户对一个文件的访问权限，则描述文件权限的位数至少应为（）。</p>
+<p>A.5    B.9    C. 12    D. 20</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/11-22.png" data-desc-position="bottom"><img alt="img" src="../assets/11-22.png"></a></p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>逻辑文件系统的功能有（）。</p>
+<p>I.文件按名存取  II.文件目录组织管理  III.把文件名转换为文件描述符或文件句柄  IV.存储保护</p>
+<p>A.I、II和III    B.II、III和IV   C.I、II和IV   D.I、II、III和IV</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>D</p>
+<p>逻辑文件系统的功能包括文件按名存取、文件目录组织管理、把文件名转换为文件描述符或文件句柄以及存储保护。因此，选项D是正确的。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>UNIX操作系统中，文件的索引结构放在（）。</p>
+<p>A.超级块    B.索引节点    C.目录项    D.空闲块</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>B</p>
+<p>在UNIX操作系统中，文件的索引结构存储在索引节点（inode）中。索引节点包含文件的元数据，如文件类型、权限、所有者、大小以及数据块的位置等。因此，选项B是正确的。超级块用于存储文件系统的总体信息，用来描述文件系统的。目录项用于存储文件名和对应的索引节点号。空闲块用于管理未使用的磁盘空间。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>文件的存储空间管理实质上是对（）的组织和管理。</p>
+<p>A.文件目录    B.外存已占用区域    C.外存空闲区    D.文件控制块</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>C</p>
+<p>文件存储空间管理即文件空闲空间管理。文件管理要解决的重要问题是，如何为创建文件分配存储空间，即如何找到空闲盘块，并对其管理。</p>
+</details>
+<details class="example" open="open">
+<summary>question</summary>
+<p>对外存文件区的管理应以（）为主要目标。</p>
+<p>A.提高系统吞吐量    B.提高换入换出速度    C.降低存储费用    D.提高存储空间的利用率</p>
+</details>
+<details class="note">
+<summary>answer</summary>
+<p>D</p>
+<p>文件区占磁盘空间的大部分，因为通常的文件都较长时间地驻留在外存上，对它们的访问频率是较低的，所以对文件区管理的主要目标是提高存储空间的利用率。</p>
+</details>
 <hr>
 
 
@@ -5535,7 +6315,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年12月22日 13:23:23 CST">2025年12月22日 13:23:23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年12月28日 18:50:51 CST">2025年12月28日 18:50:51</span>
   </span>
 
     

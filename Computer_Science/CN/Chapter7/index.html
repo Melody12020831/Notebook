@@ -1,0 +1,7715 @@
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="央央的笔记本">
+      
+      
+      
+        <link rel="canonical" href="https://melody12020831.github.io/Notebook/Computer_Science/CN/Chapter7/">
+      
+      
+        <link rel="prev" href="../Chapter6/">
+      
+      
+        <link rel="next" href="../quiz/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/icon.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Chapter 7 | 网络安全 - 央央's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen+GB+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen GB Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/card.css">
+    
+      <link rel="stylesheet" href="../../../css/tasklist.css">
+    
+      <link rel="stylesheet" href="../../../css/flink.css">
+    
+      <link rel="stylesheet" href="../../../css/more_changelog.css">
+    
+      <link rel="stylesheet" href="../../../css/neoteroi-mkdocs.css">
+    
+      <link rel="stylesheet" href="../../../css/fold_toc.css">
+    
+      <link rel="stylesheet" href="../../../css/sidebar.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-002T22X4FB"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-002T22X4FB",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-002T22X4FB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-7" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="央央's Notebook" class="md-header__button md-logo" aria-label="央央's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            央央's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 7 | 网络安全
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="light-blue" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Melody12020831/Notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Melody
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Math/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Miscellaneous/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Misccelleanous
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="央央's Notebook" class="md-nav__button md-logo" aria-label="央央's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+
+    </a>
+    央央's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Melody12020831/Notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Melody
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Science
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ADS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ADS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/Homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/organisedproblems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organisedproblems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CO/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CO
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%205/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chapter 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%206/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/COhomework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CO homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/PPT_download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../DB/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 | Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | Introduction to the Relational Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | Introduction to SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Intermediate SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | Advanced SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | Entity-Relationship Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Relational Database Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 | Complex Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 | Physical Storage Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13 | Data Storage Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14 | Indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15 | Query Processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16 | Query Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 17 | Transactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 18 | Concurrency Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 19 | Recovery System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OOP/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OOP
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OOP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 | introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | A tour of cpp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | STL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Memory Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | Ctor/Dtor &amp;&amp; Composition &amp; Inheritance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Polymorphism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 | Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9 | Copy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10 | Operator Overloading &amp;&amp; Streams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11 | templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 | Iterators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13 | Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14 | Smart Pointers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15 | Miscellaneous Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/test_from_wk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WK's 课前小测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/105_STL_Algorithmsin_Less_Than_an_Hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    105 STL Algorithmsin Less Than an Hour
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CA/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CA
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch1 | Fundamentals of Computer Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch2 | Memory Hierarchy Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/CA_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CA review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TOC/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOC
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TOC
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | Simple Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | Context-free Language and Pushdown Automata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Turing Machine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | Undecidability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 | Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | Operating-System Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | CPU Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | Process Synchronization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Deadlocks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 | Main Memory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9 | Virtual Memory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10 | File-System Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11 | File System Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 | Mass-Storage Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CN
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CN
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 | 概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | 物理层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 数据链路层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | 网络层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | 运输层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | 应用层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | 网络安全
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | 网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络安全概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络安全概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全威胁
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全服务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密码学与保密性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="密码学与保密性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密码学相关基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称密钥密码体制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="对称密钥密码体制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称密钥密码体制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#des" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据加密标准DES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高级加密标准AES
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥密码体制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="公钥密码体制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥密码体制的产生原因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥密码体制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报文完整性与鉴别
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="报文完整性与鉴别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报文摘要和报文鉴别码
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="报文摘要和报文鉴别码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报文完整性与鉴别的概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报文摘要和报文鉴别码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密码散列函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实用的报文摘要算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        散列报文鉴别码
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字签名
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字签名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字签名概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字签名的实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        具有保密性的数字签名
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实体鉴别
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密钥分发
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="密钥分发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密钥分发的相关概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称密钥的分发
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥的分发
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        访问控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="访问控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        访问控制的基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三类典型的访问控制策略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三类典型的访问控制策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discretionary-access-controldac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自主访问控制策略 (Discretionary Access Control，DAC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mandatory-access-controlmac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        强制访问控制策略 (Mandatory Access Control，MAC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role-based-access-controlrbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        角色访问控制策略 (Role-Based Access Control，RBAC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络体系结构各层采取的安全措施
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络体系结构各层采取的安全措施">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络体系结构各层采取的安全措施 —— 网络层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络体系结构各层采取的安全措施 —— 网络层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipsec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPSec协议族概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全关联
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IP安全数据报的格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipsec_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPSec的其他构件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络体系结构各层采取的安全措施 —— 运输层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络体系结构各层采取的安全措施 —— 应用层
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        防火墙访问控制与入侵检测系统
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="防火墙访问控制与入侵检测系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        防火墙
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="防火墙">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分组过滤路由器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用网关
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入侵检测系统
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="入侵检测系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于特征的入侵检测系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于异常的入侵检测系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见的网络攻击及其防范
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见的网络攻击及其防范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络扫描
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络扫描">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主机发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        端口扫描
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        操作系统检测
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络监听
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络监听">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分组嗅探器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交换机毒化攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARP 欺骗
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拒绝服务攻击
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拒绝服务攻击">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        防范拒绝服务攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于资源消耗的DoS攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分布式DoS攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quiz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10">
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visualization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visualization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Visualization/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据可视化笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编程语言
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    编程语言
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming_Language/python/CS50P_python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming_Language/python/python100days/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python-100-Days
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12">
+        
+          
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/reveal-md/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 reveal-md 制作 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Math/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Math
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    概率论与数理统计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 概率论的基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 随机变量及其分布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 多元随机变量及其分布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 随机变量的数字特征
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 大数定律和中心极限定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 数理统计的基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 参数估计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 假设检验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/PPT_download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_11" id="__nav_3_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Homework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/Homework_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW1(习题一)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW2(习题一)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW3(习题一、二)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW4(习题二)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW5(习题二、三)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW6(习题三)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW7(习题三)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW8(习题四)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW9(习题四、五)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW10(习题五、六)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW11(习题六、七(只计算矩估计))
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW12(习题七)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW13(习题七)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW14(习题八)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Miscellaneous/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misccelleanous
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misccelleanous
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/prompt/prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/mermaid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mermaid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UBC
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UBC
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%205/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%206/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%207/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%208/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/cs231n/cs231n_note.md.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    None
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络安全概述
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络安全概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全威胁
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全服务
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密码学与保密性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="密码学与保密性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密码学相关基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称密钥密码体制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="对称密钥密码体制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称密钥密码体制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#des" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据加密标准DES
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高级加密标准AES
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥密码体制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="公钥密码体制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥密码体制的产生原因
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥密码体制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报文完整性与鉴别
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="报文完整性与鉴别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报文摘要和报文鉴别码
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="报文摘要和报文鉴别码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报文完整性与鉴别的概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        报文摘要和报文鉴别码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密码散列函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实用的报文摘要算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        散列报文鉴别码
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字签名
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字签名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字签名概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字签名的实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        具有保密性的数字签名
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实体鉴别
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密钥分发
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="密钥分发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        密钥分发的相关概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        对称密钥的分发
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        公钥的分发
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        访问控制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="访问控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        访问控制的基本概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三类典型的访问控制策略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三类典型的访问控制策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discretionary-access-controldac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自主访问控制策略 (Discretionary Access Control，DAC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mandatory-access-controlmac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        强制访问控制策略 (Mandatory Access Control，MAC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role-based-access-controlrbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        角色访问控制策略 (Role-Based Access Control，RBAC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络体系结构各层采取的安全措施
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络体系结构各层采取的安全措施">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络体系结构各层采取的安全措施 —— 网络层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络体系结构各层采取的安全措施 —— 网络层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipsec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPSec协议族概述
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安全关联
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IP安全数据报的格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipsec_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IPSec的其他构件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络体系结构各层采取的安全措施 —— 运输层
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络体系结构各层采取的安全措施 —— 应用层
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        防火墙访问控制与入侵检测系统
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="防火墙访问控制与入侵检测系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        防火墙
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="防火墙">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分组过滤路由器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用网关
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        入侵检测系统
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="入侵检测系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于特征的入侵检测系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于异常的入侵检测系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见的网络攻击及其防范
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="常见的网络攻击及其防范">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络扫描
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络扫描">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主机发现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        端口扫描
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        操作系统检测
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        网络监听
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="网络监听">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分组嗅探器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交换机毒化攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARP 欺骗
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拒绝服务攻击
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="拒绝服务攻击">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        防范拒绝服务攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基于资源消耗的DoS攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        分布式DoS攻击
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+  <nav class="md-path" aria-label="导航栏">
+    <ol class="md-path__list">
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Computer Science
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    CN
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="chapter-7">Chapter 7 | 网络安全<a class="headerlink" href="#chapter-7" title="Permanent link">¶</a></h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 11293 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 41 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 56 分钟</p>
+</div>
+<h2 id="_1">网络安全概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-1.png" data-desc-position="bottom"><img alt="img" src="../assets/7-1.png"></a></p>
+<hr>
+<h3 id="_2">安全威胁<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
+<p>安全威胁分为被动攻击和主动攻击两大类。</p>
+<ul>
+<li><strong>被动攻击（Passive Attacks）</strong>：攻击者通过<strong>窃听</strong>手段仅观察和分析网络中传输数据流中的敏感信息，而<strong>不对其进行干扰</strong>。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-3.png" data-desc-position="bottom"><img alt="img" src="../assets/7-3.png"></a></p>
+<ul>
+<li><strong>主动攻击（Active Attacks）</strong>：攻击者对网络中传输着的数据流进行<strong>各种处理</strong>。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-4.png" data-desc-position="bottom"><img alt="img" src="../assets/7-4.png"></a></p>
+<hr>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-2.png" data-desc-position="bottom"><img alt="img" src="../assets/7-2.png"></a></p>
+<ol>
+<li>拒绝服务攻击 (DoS, Denial of Service)</li>
+</ol>
+<ul>
+<li><strong>流程</strong>：单一攻击者通过因特网向目标服务器发送<strong>大量恶意请求</strong>。</li>
+<li><strong>后果</strong>：导致服务器因处理这些请求而过度“忙碌”，从而对正常用户的请求<strong>拒绝服务</strong>。</li>
+</ul>
+<ol start="2">
+<li>分布式拒绝服务攻击 (DDoS, Distributed Denial of Service)</li>
+</ol>
+<ul>
+<li><strong>流程</strong>：攻击者控制大量遍布网络的“僵尸”主机，同时向目标服务器发送恶意请求。</li>
+<li><strong>后果</strong>：由于攻击源极多且分散，力量远超单机 DoS，会导致服务器彻底<strong>“瘫痪”</strong>。</li>
+</ul>
+<ol start="3">
+<li>交换机中毒 (Switch Poisoning/MAC Flooding)</li>
+</ol>
+<p>这种攻击旨在破坏以太网交换机的正常转发功能：</p>
+<ul>
+<li><strong>攻击行为</strong>：攻击者向交换机端口（如端口 1）快速发送大量<strong>伪造了不同源 MAC 地址的帧</strong>。</li>
+<li><strong>结果</strong>：交换机的<strong>转发表被填满</strong>，记录了大量指向攻击者端口的虚假 MAC 地址（如伪造的 MAC1 到 MACn 对应端口 1）。</li>
+<li><strong>影响</strong>：当正常通信流量进入时，交换机因转发表溢出无法正确查找目标端口，可能被迫退化为“广播”模式，使攻击者能窃听数据。</li>
+</ul>
+<hr>
+<p><strong>主动攻击</strong>容易检测。</p>
+<p>对付主动攻击除要采取数据加密技术、访问控制技术等<strong>预防措施</strong>，还需要采取<strong>各种检测技术</strong>及时发现并阻止攻击，同时还要对攻击源进行追踪，并利用<strong>法律手段</strong>对其进行打击。</p>
+<p><strong>被动攻击</strong>不涉及对数据的更改，<strong>很难被发现</strong>。</p>
+<p>对付被动攻击主要采用<strong>各种数据加密技术进行预防</strong>，而不是主动检测。</p>
+<p>为了防止上述各种安全威胁，一个安全的计算机网络应设法提供相应的安全服务。</p>
+<hr>
+<h3 id="_3">安全服务<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">安全服务</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>保密性</strong></td>
+<td style="text-align: center;">确保网络中传输的信息只有其发送方和接收方才能懂得其含义，而信息的截获者则看不懂所截获的数据。显然，保密性是计算机网络中最基本的安全服务，也是对付被动攻击所必须具备的功能</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>报文完整性</strong></td>
+<td style="text-align: center;">确保网络中传输的信息不被攻击者篡改或伪造，它在应对主动攻击时也是必不可少的</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>实体鉴别</strong></td>
+<td style="text-align: center;">通信两端的实体能够相互验证对方的真实身份，确保不会与冒充者进行通信。目前频发的网络诈骗，多数情况都是由于在网络上不能鉴别出对方的真实身份。实体鉴别在对付主动攻击时是非常重要的</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>不可否认性</strong></td>
+<td style="text-align: center;">用来防止发送方或接收方否认发送或接收过某信息。在电子商务中这是一种非常重要的安全服务</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>访问控制</strong></td>
+<td style="text-align: center;">可以限制和控制不同实体对信息源或其他系统资源进行访问的能力。必须在鉴别实体身份的基础上对实体的访问权限进行控制</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>可用性</strong></td>
+<td style="text-align: center;">确保授权用户能够正常访问系统信息和资源。很多攻击都会导致系统可用性的损失，拒绝服务DoS攻击就是可用性最直接的威胁</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="_4">密码学与保密性<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<h3 id="_5">密码学相关基本概念<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<p>将发送的数据变换成对任何不知道如何做逆变换的人都不可理解的形式，从而保证数据的机密性，这种变换称为<strong>加密</strong>（Encryption）。</p>
+<ul>
+<li>加密前的数据被称为<strong>明文</strong>（Plaintext）。</li>
+<li>加密后的数据被称为<strong>密文</strong>（Ciphertext）。</li>
+</ul>
+<p>通过某种逆变换将密文重新变换回明文，这种逆变换称为<strong>解密</strong>（Decryption）。</p>
+<p>加密和解密过程可以使用<strong>密钥</strong>（Key）作为参数。</p>
+<ul>
+<li><strong>密钥必须保密，但加密和解密的过程可以公开。</strong></li>
+<li><strong>只有知道密钥的人才能解密密文，否则即使知道加密或解密算法也无法解密密文。</strong></li>
+</ul>
+<details class="info" open="open">
+<summary>为什么依靠密钥进行保密而不依靠密码算法进行保密呢</summary>
+<p>一旦<strong>算法失密就必须放弃该算法</strong>，这意味着需要频繁地修改密码算法，而开发一个新的密码算法是非常困难的事情。</p>
+<p>密钥空间可以很大，用密钥将密码算法参数化，同一个密码算法可以为大量用户提供加密服务。</p>
+</details>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-5.png" data-desc-position="bottom"><img alt="img" src="../assets/7-5.png"></a></p>
+<p>加密密钥和解密密钥<strong>可以相同</strong>，也<strong>可以不同</strong>（即使不同，这两个密钥也必然有某种相关性），这取决于采用的是对称密钥密码体制还是公开密钥（公钥）密码体制。</p>
+<p><strong>密钥长度的影响</strong>：</p>
+<ul>
+<li>一般情况下，使用<strong>长密钥</strong>可以有效增加破解密文的难度。</li>
+<li>代价是会增加加密方和解密方的<strong>计算量</strong>。</li>
+</ul>
+<p><strong>两种安全性定义</strong>：</p>
+<ol>
+<li><strong>无条件安全（理论上不可破）</strong>：无论攻击者截获了多少密文，密文中都没有足够的信息来唯一地确定出对应的明文。</li>
+<li><strong>计算上安全</strong>：在现实中，几乎所有实用的密码体制在无限制条件下都是可破的。因此，人们追求的是在<strong>计算上不可破</strong>，即：如果一个密码不能在一定时间内被可以使用的计算资源破解，则称之为计算上是安全的。</li>
+</ol>
+<hr>
+<h3 id="_6">对称密钥密码体制<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<h4 id="_7">对称密钥密码体制<a class="headerlink" href="#_7" title="Permanent link">¶</a></h4>
+<p>对称密钥密码体制是指<strong>加密密钥与解密密钥相同的密码体制</strong>。</p>
+<hr>
+<h4 id="des">数据加密标准DES<a class="headerlink" href="#des" title="Permanent link">¶</a></h4>
+<p>DES的保密性仅取决于对密钥的保密和密钥的长度，而算法是公开的。</p>
+<ul>
+<li>20世纪70年代设计的DES，经过了世界上无数优秀学者几十年的密码分析，除了其56比特密钥长度太短，没有发现其任何大的设计缺陷。</li>
+<li>56比特长的密钥，可用密钥数量为 <span class="arithmatex">\(2^{56} \approx 7.6 \times 10^{16}\)</span> 。</li>
+</ul>
+<p><strong>1μs</strong>执行一次DES加密，平均只需要<strong>搜索密钥空间的一半</strong>即可找到密码，则破译DES要超过<strong>1000年</strong>。</p>
+<p>为了<strong>解决56比特DES密钥太短</strong>的问题，学者们提出了<strong>三重DES</strong>（Triple DES，3DES）。3DES在1985年成为美国的一个商用加密标准[RFC 2420]。</p>
+<p>3DES使用<strong>3个密钥执行三次DES算法</strong>。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-6.png" data-desc-position="bottom"><img alt="img" src="../assets/7-6.png"></a></p>
+<hr>
+<h4 id="aes">高级加密标准AES<a class="headerlink" href="#aes" title="Permanent link">¶</a></h4>
+<p><strong>高级加密标准</strong>（Advanced Encryption Standard，AES）支持128比特、192比特和256比特的密钥长度，<strong>用硬件和软件都可以快速实现</strong>。</p>
+<p>AES不需要太多内存，因此适用于<strong>小型移动设备</strong>。</p>
+<hr>
+<h3 id="_8">公钥密码体制<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
+<h4 id="_9">公钥密码体制的产生原因<a class="headerlink" href="#_9" title="Permanent link">¶</a></h4>
+<p>在对称密钥密码体制中，加解密双方要共享同一个密钥。给密钥的管理和更换带来极大的不便</p>
+<p>尽管使用复杂但高度安全的<strong>密钥分配中心</strong>（Key Distribution Center，KDC）可以解决该问题，但是采用<strong>公钥密码体制</strong>可以比较容易地解决该问题。</p>
+<hr>
+<h4 id="_10">公钥密码体制<a class="headerlink" href="#_10" title="Permanent link">¶</a></h4>
+<p><strong>公钥密码体制使用不同的加密密钥和解密密钥</strong>，其概念是由Stanford大学的研究人员Diffie和Hellman于1976年提出的。</p>
+<ul>
+<li><strong>加密密钥</strong>是向公众<strong>公开</strong>的，称为<strong>公钥</strong>（Public Key，𝑷𝑲）。</li>
+<li><strong>解密密钥</strong>是需要<strong>保密</strong>的，称为<strong>私钥</strong>或<strong>密钥</strong>（Secret Key，𝑺𝑲）。</li>
+<li><strong>加密算法</strong> 𝑬 和<strong>解密算法</strong> 𝑫 都是公开的。</li>
+</ul>
+<p>由于从公钥𝑷𝑲不能推导出私钥𝑺𝑲，并且𝑷𝑲不能用来解密，因此𝑷𝑲可以是公开的。</p>
+<p>显然，采用<strong>公钥密码体制更易解决密钥分发的问题</strong>。</p>
+<p>公钥密码体制提出不久，研究人员就找到了三种公钥密码算法。1976年由美国三位科学家Rivest、Shamir和Adleman提出，并在1978年正式发表的<strong>RSA</strong>（Rivest、Shamir and Adleman）算法，就是目前最著名的公钥密码算法，它是基于数论中大数分解问题的算法。</p>
+<p>公钥密码体制不仅用于加密，还可以很方便地用于<strong>鉴别</strong>和<strong>数字签名</strong>。</p>
+<p>目前的公钥密码算法比对称密钥密码算法慢好几个数量级。</p>
+<ul>
+<li>公钥密码体制通常用于<strong>会话密钥</strong>的建立；</li>
+<li>对称密钥密码体制被用于其他大多数情况下的加密。</li>
+</ul>
+<p><strong>混合加密体制</strong>（Hybrid Cryptosystem）的工作流程：</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-8.png" data-desc-position="bottom"><img alt="img" src="../assets/7-8.png"></a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">阶段</th>
+<th style="text-align: center;">任务</th>
+<th style="text-align: center;">使用算法类型</th>
+<th style="text-align: center;">操作细节</th>
+<th style="text-align: center;">目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>第一步</strong></td>
+<td style="text-align: center;">密钥分发</td>
+<td style="text-align: center;"><strong>公钥密码 (RSA)</strong></td>
+<td style="text-align: center;">用B的公钥加密会话密钥</td>
+<td style="text-align: center;">保证密钥安全传递</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>第二步</strong></td>
+<td style="text-align: center;">密钥获取</td>
+<td style="text-align: center;"><strong>公钥密码 (RSA)</strong></td>
+<td style="text-align: center;">用B的私钥解密会话密钥</td>
+<td style="text-align: center;">双方安全共享密钥</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>第三步</strong></td>
+<td style="text-align: center;">数据通信</td>
+<td style="text-align: center;"><strong>对称密码 (DES/AES)</strong></td>
+<td style="text-align: center;">使用会话密钥加密大量数据</td>
+<td style="text-align: center;">保证通信效率与安全</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>任何加密方法的安全性取决于密钥的长度和攻破密文所需的计算量，而不是简单地取决于加密体制。因此不能简单地判断，对称密钥密码体制与公钥密码体制相比，哪个密码体制的安全性更好。</p>
+</div>
+<hr>
+<h2 id="_11">报文完整性与鉴别<a class="headerlink" href="#_11" title="Permanent link">¶</a></h2>
+<h3 id="_12">报文摘要和报文鉴别码<a class="headerlink" href="#_12" title="Permanent link">¶</a></h3>
+<h4 id="_13">报文完整性与鉴别的概念<a class="headerlink" href="#_13" title="Permanent link">¶</a></h4>
+<p>如果报文被攻击者篡改或伪造，则报文就不具备<strong>完整性</strong>。</p>
+<p><strong>对报文进行完整性验证就是进行报文鉴别</strong>，也就是鉴别报文的真伪。</p>
+<p><strong>使用加密技术通常就可以达到报文鉴别的目的</strong>，因为被篡改的报文解密后一般不能得到可理解的内容。</p>
+<ul>
+<li>然而，对于不需要保密而只需要报文鉴别的网络应用（例如从因特网的某个网站下载一个应用软件，用户只关心该软件是否与官方发布的一致），对整个报文进行加密和解密，会使计算机花费相当多的CPU时间。</li>
+<li>使用报文摘要（Message Digest，MD）进行报文鉴别是一种更有效的方法。</li>
+</ul>
+<hr>
+<h4 id="_14">报文摘要和报文鉴别码<a class="headerlink" href="#_14" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-7.png" data-desc-position="bottom"><img alt="img" src="../assets/7-7.png"></a></p>
+<p>使用报文摘要对报文进行鉴别的好处是：只对长度固定且比整个报文长度短得多的报文摘要𝑯(𝒎)进行加密，比对整个报文𝒎进行加密要简单得多。</p>
+<p>密钥𝑲仅在通信双方之间共享，没有第三方能用伪造报文产生出使用密钥𝑲加密的伪造报文摘要。</p>
+<p>附加在报文后面用于报文鉴别的码串（即加密后的报文摘要），称为<strong>报文鉴别码</strong>（Message Authentication Code，MAC）。</p>
+<hr>
+<h4 id="_15">密码散列函数<a class="headerlink" href="#_15" title="Permanent link">¶</a></h4>
+<p>报文摘要MD实际上与之前介绍过的帧检验序列（第3章）、首部检验和（第4章）等都是<strong>散列函数</strong>（Hash Function）的一种应用，用于接收方对收到的数据进行检查以便发现是否有误码。</p>
+<p>散列函数具有以下两个特点：</p>
+<ol>
+<li>散列函数的输入长度是可变的，并且可以很长，但其<strong>输出长度是固定的</strong>，并且较短。散列函数的输出称为<strong>散列值</strong>，也可简称为散列。</li>
+<li>不同的散列值对应不同的输入，但不同的输入却可能得出相同的散列值。换句话说，散列函数的输入和输出并非一一对应，而是<strong>多对一</strong>的。</li>
+</ol>
+<p>为了抵御攻击者的篡改，报文摘要算法必须满足以下条件：</p>
+<ol>
+<li>对于任意给定的某个报文摘要值𝑯(𝒙)，若想找到一个报文y使得𝑯(𝒚)=𝑯(𝒙)，在计算上是不可行的。</li>
+<li>若想找到任意两个报文𝒙和𝒚，使得𝑯(𝒚)=𝑯(𝒙)，在计算上是不可行的。</li>
+</ol>
+<p>满足上述两个条件表明：对于发送方产生的报文𝒙和其相应的报文摘要𝑯(𝒙)，攻击者不可能伪造出另一个报文𝒚，使得𝒚与𝒙具有同样的报文摘要。</p>
+<p>满足上述条件的散列函数就称为<strong>密码散列函数</strong>或<strong>安全散列函数</strong>。密码散列函数实际上是一种<strong>单向函数</strong>，由于无法通过报文摘要还原出原文，因此<strong>可把密码散列函数运算看作没有密钥的加密运算</strong>。</p>
+<hr>
+<h4 id="_16">实用的报文摘要算法<a class="headerlink" href="#_16" title="Permanent link">¶</a></h4>
+<p>最有名的报文摘要算法（或称密码散列函数或散列算法）有MD5（Message Digest，MD-5）和安全散列算法1（Secure Hash Algorithm，SHA-1）。</p>
+<hr>
+<h4 id="_17">散列报文鉴别码<a class="headerlink" href="#_17" title="Permanent link">¶</a></h4>
+<p>利用密码散列函数的特殊性质，可以设计出<strong>无需对报文摘要进行加密的报文鉴别方法</strong>，只要通信双方共享一个称为<strong>鉴别密钥</strong>的秘密比特串𝒔即可。</p>
+<p>直接使用密码散列函数实现报文鉴别的技术又称为<strong>散列报文鉴别码</strong>（Hashed MAC，HMAC）。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-9.png" data-desc-position="bottom"><img alt="img" src="../assets/7-9.png"></a></p>
+<p>攻击者不知道仅由通信双方共享的鉴别密钥𝒔，也不能从截获的散列报文鉴别码HMAC中计算出𝒔，因此不能伪造报文 m' 产生（ m' + s ）的HMAC。</p>
+<hr>
+<h3 id="_18">数字签名<a class="headerlink" href="#_18" title="Permanent link">¶</a></h3>
+<h4 id="_19">数字签名概述<a class="headerlink" href="#_19" title="Permanent link">¶</a></h4>
+<p>在计算机网络中传送的报文可以使用<strong>数字签名</strong>（Digital Signature）来证明其真实来源。</p>
+<p>数字签名必须保证以下三点：</p>
+<ol>
+<li>接收方能够<strong>核实</strong>发送方对报文的数字签名。</li>
+<li>包括接收方在内的任何人都<strong>不能伪造</strong>对报文的数字签名。</li>
+<li>发送方事后<strong>不能抵赖</strong>对报文的数字签名。</li>
+</ol>
+<hr>
+<h4 id="_20">数字签名的实现<a class="headerlink" href="#_20" title="Permanent link">¶</a></h4>
+<p>现在已有多种实现数字签名的方法。采用<strong>公钥密码算法</strong>比采用对称密钥密码算法更<strong>容易实现数字签名</strong>。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-10.png" data-desc-position="bottom"><img alt="img" src="../assets/7-10.png"></a></p>
+<details class="info" open="open">
+<summary>报文𝒎还没有加密怎么就进行解密呢</summary>
+<p>其实这并没有什么关系。因为解密运算𝑫仅仅是一个数学运算，运算结果只是将报文𝒎变成了某种不可读的密文。此时的运算并非想将报文𝒎加密而是为了数字签名。</p>
+</details>
+<p>由于除 A 外的其他任何人都没有 A 的私钥 <span class="arithmatex">\(SK_A\)</span> ，所以除 A 外没有其他任何人能产生带有数字签名的报文 <span class="arithmatex">\(D_{SK_A}(m)\)</span>，而任何伪造的报文经过 <span class="arithmatex">\(E_{PK_A}\)</span> 运算后都不会得到可理解的内容。因此，B 就通过这种方式核实了报文 m 的确是 A 签名发送的。</p>
+<p>如果 A 要<strong>抵赖</strong>曾发送报文 m 给 B ，B 可以把报文 m 和带有数字签名的报文 <span class="arithmatex">\(D_{SK_A}(m)\)</span> 出具给第三方。第三方很容易用 A 的公钥 <span class="arithmatex">\(PK_A\)</span> 去证实 A 确实发送过报文 m 给 B 。</p>
+<p>反之，若 B 把报文 m 伪造成 m′，则 B 不能在第三方前出示带有数字签名的报文 <span class="arithmatex">\(D_{SK_A}(m′)\)</span> ，因为 B 不可能具有 A 的私钥 <span class="arithmatex">\(SK_A\)</span> 。这样就证明 B 伪造了报文。</p>
+<p>需要说明的是，由于公钥密码算法的计算代价非常高，对整个报文进行数字签名是一件非常耗时的事情，更有效的方法是仅对<strong>报文摘要</strong>进行数字签名。</p>
+<hr>
+<h4 id="_21">具有保密性的数字签名<a class="headerlink" href="#_21" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-11.png" data-desc-position="bottom"><img alt="img" src="../assets/7-11.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-12.png" data-desc-position="bottom"><img alt="img" src="../assets/7-12.png"></a></p>
+<hr>
+<h2 id="_22">实体鉴别<a class="headerlink" href="#_22" title="Permanent link">¶</a></h2>
+<p>实体鉴别就是通信双方的一方验证另一方身份的技术，常简称为鉴别。</p>
+<p><strong>通信实体的鉴别</strong>通常是两个通信实体之间传输实际数据之前或进行访问控制之前的<strong>必要过程</strong>，这是很多安全协议的重要组成部分。</p>
+<p>实体鉴别的最简单方法就是使用用户名和口令。为了应对用户名和口令被攻击者截获的安全威胁，需要对用户名和口令进行加密。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-13.png" data-desc-position="bottom"><img alt="img" src="../assets/7-13.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-14.png" data-desc-position="bottom"><img alt="img" src="../assets/7-14.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-15.png" data-desc-position="bottom"><img alt="img" src="../assets/7-15.png"></a></p>
+<p>为了应对重放攻击，可以使用<strong>不重数</strong>（nonce）。所谓“不重数”，就是指一个不重复使用的大随机数。</p>
+<p>在实体鉴别过程中，<strong>不重数可以使用户把重复的实体鉴别请求和新的实体鉴别请求区分开</strong>。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-16.png" data-desc-position="bottom"><img alt="img" src="../assets/7-16.png"></a></p>
+<p>使用公钥密码体制也可以实现实体鉴别。</p>
+<hr>
+<h2 id="_23">密钥分发<a class="headerlink" href="#_23" title="Permanent link">¶</a></h2>
+<h3 id="_24">密钥分发的相关概念<a class="headerlink" href="#_24" title="Permanent link">¶</a></h3>
+<p>在对称密钥密码体制中，通信双方共享的密钥是需要保密的。</p>
+<p>在公钥密码体制中，公钥是公开的，但私钥仍然需要保密。</p>
+<p>密钥分发是密钥系统中一个非常重要的问题。密钥必须通过安全的通路进行分发。</p>
+<p><strong>密钥系统的安全性完全依赖于对密钥的安全保护！</strong></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-17.png" data-desc-position="bottom"><img alt="img" src="../assets/7-17.png"></a></p>
+<hr>
+<h3 id="_25">对称密钥的分发<a class="headerlink" href="#_25" title="Permanent link">¶</a></h3>
+<p>对于对称密钥密码体制，目前常用的密钥分发方式是建立<strong>密钥分配中心</strong>（Key Distribution Center，KDC）。</p>
+<p>KDC是一个公众都信任的机构，其任务就是给需要<strong>进行秘密通信的用户临时分配一个会话密钥</strong>。</p>
+<p>假设用户 A 和 B 都是 KDC 的登记用户，他们在 KDC 登记时就分别拥有了与 KDC 通信的主密钥 <span class="arithmatex">\(K_A\)</span> 和 <span class="arithmatex">\(K_B\)</span> 。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-18.png" data-desc-position="bottom"><img alt="img" src="../assets/7-18.png"></a></p>
+<ol>
+<li>假设用户 A 和 B 都是 KDC 的登记用户，他们在 KDC 登记时就分别拥有了与 KDC 通信的主密钥 <span class="arithmatex">\(K_A\)</span> 和 <span class="arithmatex">\(K_B\)</span> 。</li>
+<li>假设用户 A 和 B 都是 KDC 的登记用户，他们在 KDC 登记时就分别拥有了与 KDC 通信的主密钥 <span class="arithmatex">\(K_A\)</span> 和 <span class="arithmatex">\(K_B\)</span> 。</li>
+<li>KDC可以在报文中加入时间戳，以防止报文的截获者利用之前已记录下的报文进行重放攻击。</li>
+</ol>
+<p>如果每个用户都知道其他用户的公钥，用户之间就可以实现安全通信。然而，如果通过网络来随意公布用户的公钥，会面临极大的安全风险。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-19.png" data-desc-position="bottom"><img alt="img" src="../assets/7-19.png"></a></p>
+<p>因此，需要有一个值得信赖的机构<strong>将公钥与其对应的实体（人或机器）进行绑定</strong>（binding）。这种机构被称为认证中心（Certification Authority，CA），一般由政府出资建立。</p>
+<p>需要发布公钥的用户可以让CA为其公钥签发一个<strong>证书</strong>（Certification），证书中<strong>包含有公钥及其拥有者的身份标识信息</strong>（人名、公司名或IP地址等）。</p>
+<hr>
+<h3 id="_26">公钥的分发<a class="headerlink" href="#_26" title="Permanent link">¶</a></h3>
+<p>如果全世界仅使用一个CA来签发证书，则会出现负载过重和单点故障等问题。</p>
+<p>因特网采用的是[RFC 5280]（现在是建议标准）给出的、在全球范围内为所有因特网用户提供证书签发与认证服务的公钥基础结构（Public Key Infrastructure，PKI）。</p>
+<hr>
+<h2 id="_27">访问控制<a class="headerlink" href="#_27" title="Permanent link">¶</a></h2>
+<h3 id="_28">访问控制的基本概念<a class="headerlink" href="#_28" title="Permanent link">¶</a></h3>
+<p>对合法用户访问权限的授予一般遵循<strong>最小特权原则</strong>。</p>
+<ul>
+<li>最小特权是指能够满足用户完成工作所需的权限，用户不会被赋予超出其实际需求的权限。</li>
+<li>最小特权原则可以<strong>有效防范合法用户滥用权限所带来的安全风险</strong>。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-20.png" data-desc-position="bottom"><img alt="img" src="../assets/7-20.png"></a></p>
+<p>访问控制包含以下基本要素：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">要素</th>
+<th style="text-align: center;">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>主体</strong></td>
+<td style="text-align: center;">访问活动的发起者，可以是某个用户，也可以是代表用户执行操作的进程、服务和设备等</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>客体</strong></td>
+<td style="text-align: center;">访问活动中被访问的对象，凡是可以被操作的信息、文件、设备、服务等资源都可以认为是客体</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>访问</strong></td>
+<td style="text-align: center;">主体对客体的各种操作类型。例如创建、读取、修改、删除、执行、发送、接收等操作。不同的系统有不同的访问类型</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>访问策略</strong></td>
+<td style="text-align: center;">访问控制的核心，访问控制根据访问策略限制主体对客体的访问</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>访问控制策略可用三元组（S、O、P）来描述，其中S表示主体，O表示客体，P表示许可（Permission）。许可P明确了允许主体S对客体O所进行的访问类型。访问策略通常存储在系统的授权服务器中。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-21.png" data-desc-position="bottom"><img alt="img" src="../assets/7-21.png"></a></p>
+<hr>
+<h3 id="_29">三类典型的访问控制策略<a class="headerlink" href="#_29" title="Permanent link">¶</a></h3>
+<h4 id="discretionary-access-controldac">自主访问控制策略 (Discretionary Access Control，DAC)<a class="headerlink" href="#discretionary-access-controldac" title="Permanent link">¶</a></h4>
+<p>DAC策略中“自主”的意思是客体的拥有者可以自主地决定其他主体对其拥有的客体所进行访问的权限。</p>
+<ul>
+<li>优点：具有很强的灵活性</li>
+<li>缺点：权限管理过于分散，容易出现漏洞，并且无法有效地控制被攻击主体破坏系统安全性的行为。</li>
+</ul>
+<p>木马程序利用自主访问控制策略的上述缺点，可以很容易地破坏系统的安全性。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-22.png" data-desc-position="bottom"><img alt="img" src="../assets/7-22.png"></a></p>
+<p>自主访问控制策略的最大特点是“自主”，也就是资源的拥有者对资源的访问策略具有决策权，因此是一种限制比较弱的访问控制策略。这种访问控制策略给用户带来灵活性的同时，也带来了安全隐患。</p>
+<hr>
+<h4 id="mandatory-access-controlmac">强制访问控制策略 (Mandatory Access Control，MAC)<a class="headerlink" href="#mandatory-access-controlmac" title="Permanent link">¶</a></h4>
+<p>强制访问控制策略与自主访问控制策略不同，它<strong>不允许</strong>一般的主体进行访问权限的设置。</p>
+<p>在强制访问控制策略中，主体和客体被赋予一定的<strong>安全级别</strong>。通常只有系统的<strong>安全管理员</strong>可以进行安全级别的设定，而普通用户不能改变自己或任何客体的安全级别。</p>
+<ul>
+<li>系统通过比较主体和客体的安全级别来决定某个主体是否能够访问某个客体。</li>
+</ul>
+<p>在强制访问控制策略中广泛使用以下两项原则：</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-23.png" data-desc-position="bottom"><img alt="img" src="../assets/7-23.png"></a></p>
+<p>“下读”和“上写”原则限制了信息只能由低级别的对象流向高级别或同级别的对象，这样能够有效防止木马等恶意程序的窃密攻击。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-24.png" data-desc-position="bottom"><img alt="img" src="../assets/7-24.png"></a></p>
+<hr>
+<h4 id="role-based-access-controlrbac">角色访问控制策略 (Role-Based Access Control，RBAC)<a class="headerlink" href="#role-based-access-controlrbac" title="Permanent link">¶</a></h4>
+<p>基于角色的访问控制策略的核心思想是：根据安全策略划分不同的角色，用户不再直接与许可关联，而是通过<strong>角色与许可</strong>关联。</p>
+<p>基于角色的访问控制策略<strong>通过角色将用户和访问权限进行了逻辑隔离</strong>。</p>
+<ul>
+<li>给<strong>角色配置许可</strong>的工作一般比较复杂，需要一定的专业知识，可以由专门的技术人员来完成。</li>
+<li>为用户赋予角色则较为简单，可以由一般的<strong>系统管理员</strong>来完成。</li>
+</ul>
+<p>角色与许可之间的关系比角色与用户的关系要更加稳定。</p>
+<p>很显然，将用户和访问权限通过角色进行逻辑隔离能够减小授权的复杂性、增强权限的可管理性、减少因授权失误导致安全漏洞的风险。</p>
+<hr>
+<h2 id="_30">网络体系结构各层采取的安全措施<a class="headerlink" href="#_30" title="Permanent link">¶</a></h2>
+<h3 id="_31">网络体系结构各层采取的安全措施 —— 网络层<a class="headerlink" href="#_31" title="Permanent link">¶</a></h3>
+<h4 id="ipsec">IPSec协议族概述<a class="headerlink" href="#ipsec" title="Permanent link">¶</a></h4>
+<p>目前，在因特网的网际层、运输层和应用层都有相应的网络安全协议。</p>
+<p>IPSec是“IP Security”（IP安全）的缩写词，它是为<strong>因特网的网际层提供安全服务的协议族</strong>（也有人不太严格地称其为“IPSec协议” ）[RFC 4301，RFC6071]。</p>
+<p><strong>IPSec并不限定用户使用何种特定的加密和鉴别算法</strong>，通信双方可以选择合适的算法和参数（例如，密钥长度）。</p>
+<ul>
+<li>为了保证互操作性，IPSec也包含了一套加密算法，所有IPSec的实现都必须实现这套加密算法。</li>
+</ul>
+<p>IPSec包含两种不同的工作方式：<strong>运输方式</strong>和<strong>隧道方式</strong>。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-25.png" data-desc-position="bottom"><img alt="img" src="../assets/7-25.png"></a></p>
+<p>无论使用上述哪种方式，所封装出的IP安全数据报的首部都是不加密的。这是为了使因特网中的各路由器能够识别IP安全数据报首部中的相关信息，进而可以将IP安全数据报在不安全的因特网中从源点安全地转发到终点。所谓“IP安全数据报”，是指数据报的数据载荷是经过加密并能够被鉴别的。</p>
+<hr>
+<h4 id="_32">安全关联<a class="headerlink" href="#_32" title="Permanent link">¶</a></h4>
+<p>在使用隧道方式传送IP安全数据报之前，应当首先为通信双方建立一条网际层的<strong>逻辑连接</strong>（即<strong>安全隧道</strong>），称为<strong>安全关联</strong>（Security Association，SA）。</p>
+<ul>
+<li>这样，<strong>传统因特网无连接的网际层就变成了具有逻辑连接的一个层</strong>。</li>
+</ul>
+<p>提供安全服务的<strong>安全关联SA是从源点到终点的单向连接</strong>。如果需要进行双向安全通信，则两个方向都需要建立SA。IP安全数据报就在这些SA中传送。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-26.png" data-desc-position="bottom"><img alt="img" src="../assets/7-26.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-27.png" data-desc-position="bottom"><img alt="img" src="../assets/7-27.png"></a></p>
+<hr>
+<h4 id="ip">IP安全数据报的格式<a class="headerlink" href="#ip" title="Permanent link">¶</a></h4>
+<p>在IPSec协议族中有两个主要的协议：<strong>鉴别首部</strong>（Authentication Header，AH）协议和<strong>封装安全有效载荷</strong>（Encapsulation Security Payload，ESP）协议。</p>
+<ul>
+<li>AH协议提供源点鉴别和数据完整性服务，但不能提供保密性服务。</li>
+<li>ESP协议比AH协议复杂得多，它提供源点鉴别、数据完整性和保密性服务。</li>
+</ul>
+<p>由于AH协议的功能都已包含在ESP协议中，因此使用ESP协议就无须使用AH协议。</p>
+<p>使用ESP或AH协议的IP数据报称为<strong>IP安全数据报</strong>（或<strong>IPSec数据报</strong>），它可以在两台主机之间、两台路由器之间或一台主机和一台路由器之间的安全关联SA（安全隧道）中传送。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-28.png" data-desc-position="bottom"><img alt="img" src="../assets/7-28.png"></a></p>
+<hr>
+<h4 id="ipsec_1">IPSec的其他构件<a class="headerlink" href="#ipsec_1" title="Permanent link">¶</a></h4>
+<p>安全关联数据库（Security Association Database，SAD）发送IP安全数据报的实体（路由器或主机）使用安全关联数据库SAD来存储可能要用到的很多条安全关联SA。</p>
+<p>安全策略数据库（Security Policy Database，SPD）安全策略数据库SPD指明了什么样的IP数据报需要进行IPSec处理。</p>
+<p>因特网密钥交换协议（Internet Key Exchange，IKE）因特网密钥交换IKE协议为IP安全数据报自动创建安全关联SA（而无需人工配置）。</p>
+<hr>
+<h3 id="_33">网络体系结构各层采取的安全措施 —— 运输层<a class="headerlink" href="#_33" title="Permanent link">¶</a></h3>
+<p>现在广泛使用的运输层安全协议有以下两个：</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-29.png" data-desc-position="bottom"><img alt="img" src="../assets/7-29.png"></a></p>
+<p>SSL/TLS作用于TCP/IP体系结构的应用层与运输层之间，在应用层中使用SSL/TLS最多的协议是HTTP。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-30.png" data-desc-position="bottom"><img alt="img" src="../assets/7-30.png"></a></p>
+<p>SSL提供以下三种安全服务：</p>
+<ol>
+<li><strong>SSL服务器鉴别</strong>：支持SSL的客户端通过<strong>验证</strong>来自服务器的证书，来鉴别服务器的真实身份并<strong>获得服务器的公钥</strong>。</li>
+<li><strong>SSL客户鉴别</strong>：用于服务器<strong>证实客户</strong>的身份，这是SSL的可选安全服务。</li>
+<li><strong>加密的SSL会话</strong>：<strong>加密客户和服务器之间传送的所有报文</strong>，并检测报文是否被篡改。</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-31.png" data-desc-position="bottom"><img alt="img" src="../assets/7-31.png"></a></p>
+<hr>
+<h3 id="_34">网络体系结构各层采取的安全措施 —— 应用层<a class="headerlink" href="#_34" title="Permanent link">¶</a></h3>
+<p>以电子邮件相关安全协议为例。</p>
+<p><strong>PGP</strong>（Pretty Good Privacy）是已被广泛应用的，为电子邮件提供加密、鉴别、电子签名和压缩等技术的电子邮件安全软件包，它是Zimmermann于1995年开发的。</p>
+<ul>
+<li>PGP使用<strong>对称密钥和公钥的组合</strong>进行加密，为电子邮件提供<strong>保密性</strong>。</li>
+<li>PGP通过<strong>报文摘要</strong>和<strong>数字签名</strong>技术为电子邮件提供<strong>完整性和不可否认性</strong>。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-32.png" data-desc-position="bottom"><img alt="img" src="../assets/7-32.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-33.png" data-desc-position="bottom"><img alt="img" src="../assets/7-33.png"></a></p>
+<hr>
+<h2 id="_35">防火墙访问控制与入侵检测系统<a class="headerlink" href="#_35" title="Permanent link">¶</a></h2>
+<h3 id="_36">防火墙<a class="headerlink" href="#_36" title="Permanent link">¶</a></h3>
+<p>防火墙（Firewall）属于一种<strong>访问控制技术</strong>，具体实现为一种可编程的特殊路由器。</p>
+<ul>
+<li>防火墙把一个单位（机构或公司）的<strong>内部网络</strong>与<strong>其他网络</strong>（一般为因特网）进行<strong>安全隔离</strong>。</li>
+<li>根据防火墙中配置的<strong>访问控制策略</strong>，某些分组允许通过防火墙，而某些分组则被禁止通过。</li>
+<li>访问控制策略由使用防火墙的单位根据自己的安全需要自行制定。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-34.png" data-desc-position="bottom"><img alt="img" src="../assets/7-34.png"></a></p>
+<p>实现防火墙技术的设备: 分组过滤路由器和应用网关。</p>
+<hr>
+<h4 id="_37">分组过滤路由器<a class="headerlink" href="#_37" title="Permanent link">¶</a></h4>
+<p>分组过滤路由器是一种具有分组过滤功能的路由器，它根据所配置的<strong>分组过滤规则</strong>对出入内部网络的分组执行转发或丢弃（即分组过滤）。</p>
+<p>分组过滤规则所采用的各参数来自分组的网际层和/或运输层首部中的某些字段的值。</p>
+<ul>
+<li>网际层：源IP地址和目的IP地址</li>
+<li>运输层：源端口和目的端口、以及协议类型（TCP或UDP）</li>
+</ul>
+<p>通常，分组过滤规则以<strong>访问控制列表</strong>（Access Control List，ACL）的形式存储在分组过滤路由器中。</p>
+<ul>
+<li>网络管理人员可以通过<strong>命令行</strong>或<strong>图形界面</strong>来配置ACL中的规则。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-35.png" data-desc-position="bottom"><img alt="img" src="../assets/7-35.png"></a></p>
+<p>该ACL所进行的分组过滤是<strong>无状态</strong>的，也就是独立地处理每一个分组。</p>
+<p>功能更强的分组过滤路由器还支持<strong>有状态</strong>的分组过滤，也就是要跟踪每个连接或会话的通信状态，并根据这些状态信息来决定是否转发分组。</p>
+<p>分组过滤路由器<strong>简单高效</strong>，对用户是<strong>透明</strong>的（用户感觉不到分组过滤路由器的存在）。</p>
+<p>然而，<strong>分组过滤路由器不能对应用层数据进行过滤</strong>。</p>
+<ul>
+<li>不能禁止某个用户对某个特定网络应用进行某个特定的操作。</li>
+<li>不支持应用层用户鉴别。</li>
+</ul>
+<p><strong>需要使用应用网关来实现</strong>。</p>
+<hr>
+<h4 id="_38">应用网关<a class="headerlink" href="#_38" title="Permanent link">¶</a></h4>
+<p><strong>应用网关</strong>又称为<strong>代理服务器</strong>（Proxy Server），它可以实现<strong>应用层数据的过滤</strong>和<strong>高层用户的鉴别</strong>。</p>
+<p>当用户通过应用网关访问内网或外网资源时，应用网关可以要求用户进行身份鉴别，然后<strong>根据用户身份对用户做出相应的访问控制</strong>。</p>
+<p>应用网关也有一些<strong>局限</strong>：</p>
+<ul>
+<li><strong>每种网络应用都需要一个专用的应用网关</strong>。当然，多个不同的应用网关可以运行在同一台主机上。</li>
+<li>在应用层处理和转发报文，<strong>处理负担较重</strong>。</li>
+<li><strong>应用网关对应用程序是不透明的</strong>，用户需要在应用程序客户端指明应用网关（代理服务器）的地址。</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-36.png" data-desc-position="bottom"><img alt="img" src="../assets/7-36.png"></a></p>
+<p>尽管<strong>防火墙</strong>提高了内部网络的安全防护程度，但仍存在以下<strong>局限</strong>：</p>
+<ol>
+<li>对防火墙的配置是否<strong>正确和完善</strong>，在很大程度上决定了防火墙可以发挥的<strong>安全防护作用</strong>。</li>
+<li>防火墙对<strong>恶意代码</strong>（病毒、木马等）的查杀能力非常有限，因此不能有效地防止恶意代码通过网络的传播。</li>
+</ol>
+<ul>
+<li>由于查杀恶意代码的计算开销非常大，若提高防火墙的查杀力度，则会降低防火墙的处理速度，进而降低用户的网络带宽。</li>
+</ul>
+<ol start="3">
+<li>防火墙<strong>对于一些利用系统漏洞或网络协议漏洞进行的攻击是无法防范的</strong>。</li>
+</ol>
+<ul>
+<li>攻击者通过分组过滤规则中允许的端口对某个服务器的漏洞进行攻击，这对于一般的分组过滤路由器是无法防护的。</li>
+<li>即使使用应用网关，也必须具有能够识别该特定漏洞的应用网关才能阻断攻击。</li>
+</ul>
+<ol start="4">
+<li>防火墙技术自身存在不足。</li>
+</ol>
+<ul>
+<li>分组过滤路由器不能防止IP地址和端口号欺骗。</li>
+<li>应用软件自身也可能有软件漏洞而存在被渗透攻击的风险。</li>
+</ul>
+<hr>
+<h3 id="_39">入侵检测系统<a class="headerlink" href="#_39" title="Permanent link">¶</a></h3>
+<p>防火墙并不能阻止所有的入侵行为。</p>
+<p>在入侵已经开始但还未造成危害或在造成更大危害之前，<strong>及时检测到入侵并尽快阻止入侵</strong>，尽量把危害降到最小，就是非常有必要的。<strong>入侵检测系统</strong>（Intrusion Detection System，IDS）正是这样一种技术。</p>
+<p>IDS对出入网络的分组执行<strong>深度检查</strong>，当<strong>检查到可疑分组</strong>时，会<strong>及时向网络管理员发出警报或进行阻断</strong>。</p>
+<ul>
+<li>由于IDS的误报率较高，因此<strong>一般情况下不建议对可疑分组进行自动阻断</strong>。</li>
+</ul>
+<p>IDS能够检测多种网络攻击：</p>
+<ul>
+<li>端口扫描</li>
+<li>拒绝服务攻击</li>
+<li>网络映射</li>
+<li>恶意代码</li>
+<li>系统漏洞</li>
+</ul>
+<hr>
+<h4 id="_40">基于<strong>特征</strong>的入侵检测系统<a class="headerlink" href="#_40" title="Permanent link">¶</a></h4>
+<p>只能检测已知攻击，对于未知攻击则无法防范。</p>
+<ul>
+<li>维护一个<strong>已知各类攻击的标志性特征的数据库</strong>。</li>
+<li>检测到<strong>与某种攻击特征匹配的分组或分组序列时</strong>，就判断可能出现了某种入侵行为。</li>
+<li>标志性特征必须具有很好的<strong>区分度</strong>。</li>
+<li><strong>标志性特征一般由网络安全专家提供</strong>，由单位的网络管理员定制并将其加入到数据库中。</li>
+</ul>
+<hr>
+<h4 id="_41">基于<strong>异常</strong>的入侵检测系统<a class="headerlink" href="#_41" title="Permanent link">¶</a></h4>
+<ul>
+<li>通过观察正常运行的网络流量来学习正常网络流量的<strong>统计特性和规律</strong>。</li>
+<li>检测到网络流量的某种统计规律<strong>不符合正常情况</strong>时，则判断可能发生了入侵行为。</li>
+<li>区分正常流量和统计异常流量是非常困难的。</li>
+<li>现在很多研究致力于将<strong>机器学习方法</strong>应用于入侵检测，减少对网络安全专家的依赖。</li>
+</ul>
+<hr>
+<h2 id="_42">常见的网络攻击及其防范<a class="headerlink" href="#_42" title="Permanent link">¶</a></h2>
+<h3 id="_43">网络扫描<a class="headerlink" href="#_43" title="Permanent link">¶</a></h3>
+<p>网络扫描是获取<strong>攻击目标信息</strong>的一种重要技术。</p>
+<ul>
+<li>攻击目标信息包括目的主机的IP地址、操作系统、运行的程序及存在的漏洞等。</li>
+<li>在进行网络攻击之前，对攻击目标的信息掌握得越全面和具体，就越能有效合理地制定出攻击策略和攻击方法，进而提高网络攻击的成功率。</li>
+</ul>
+<p>网络扫描主要有四种类型：</p>
+<ol>
+<li>主机发现</li>
+<li>端口扫描</li>
+<li>操作系统检测</li>
+<li>漏洞扫描</li>
+</ol>
+<hr>
+<h4 id="_44">主机发现<a class="headerlink" href="#_44" title="Permanent link">¶</a></h4>
+<p>主机发现是指搜索要攻击的主机，这是对其进行攻击的前提。搜索要攻击的主机，实际上是要<strong>确定该目标主机的IP地址</strong>。</p>
+<p>进行主机发现的主要方法是利用<strong>网际控制报文协议ICMP</strong>。</p>
+<p>攻击者：使用ping命令对某个IP地址范围内的所有IP地址进行连通性测试，来发现正在运行的目标主机。</p>
+<p>对于主机：可以<strong>配置防火墙</strong>，禁止ICMP回显请求报文通过防火墙。</p>
+<p>一般情况下，防火墙不会阻断<strong>ICMP差错报告报文</strong>，否则目标主机将失去进行ICMP差错报告的功能，而影响正常的网络通信。</p>
+<hr>
+<h4 id="_45">端口扫描<a class="headerlink" href="#_45" title="Permanent link">¶</a></h4>
+<p>在进行主机发现确定了要攻击的目标主机后，攻击者可以进一步通过<strong>端口扫描来获取目标主机所有端口的工作状态</strong>，进而得出目标主机上开放了哪些网络服务。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-37.png" data-desc-position="bottom"><img alt="img" src="../assets/7-37.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-38.png" data-desc-position="bottom"><img alt="img" src="../assets/7-38.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-39.png" data-desc-position="bottom"><img alt="img" src="../assets/7-39.png"></a></p>
+<hr>
+<h4 id="_46">操作系统检测<a class="headerlink" href="#_46" title="Permanent link">¶</a></h4>
+<p>不同的操作系统所存在的安全漏洞可能有很多不同。要利用这些安全漏洞进行攻击，首先必须检测远程目标主机所使用的操作系统类型，通常有三种方法：</p>
+<ol>
+<li>获取操作系统旗标信息</li>
+</ol>
+<ul>
+<li>在客户机与服务器建立连接的过程中，服务器往往会返回<strong>各种独特的欢迎信息</strong>。</li>
+<li>攻击者可根据这些信息来推断出服务器的操作系统类型。</li>
+</ul>
+<ol start="2">
+<li>获取主机端口状态信息</li>
+</ol>
+<ul>
+<li><strong>操作系统通常会默认开启一些常用的网络服务，这些服务会打开各自特定的端口进行网络监听</strong>。</li>
+<li>攻击者可对目标主机进行端口扫描，根据端口扫描结果来推断目标主机的操作系统类型。</li>
+</ul>
+<ol start="3">
+<li>获取TCP/IP协议栈指纹</li>
+</ol>
+<ul>
+<li>尽管RFC文档严格规定了各种协议的三要素（语法、语义和同步），但并没有规定各种协议的具体实现。</li>
+<li><strong>同一个协议在不同操作系统中的实现细节可能会有所不同</strong>，攻击者可据此推断目标主机的操作系统类型。</li>
+</ul>
+<hr>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-40.png" data-desc-position="bottom"><img alt="img" src="../assets/7-40.png"></a></p>
+<p><strong>防范上述各种类型的网络扫描，可采取以下措施</strong></p>
+<ul>
+<li>仅打开确实需要使用的端口，关闭闲置和危险端口。</li>
+<li>限制因特网（不可信网络）中的主机主动与内部网络（可信网络）中的主机进行通信。</li>
+<li>设置防火墙，根据安全要求设置分组过滤策略（例如过滤不必要的ICMP报文）。</li>
+<li>使用入侵检测系统IDS及时发现网络扫描行为和攻击者IP地址，配置防火墙对来自该地址的分组进行阻断。</li>
+</ul>
+<ol>
+<li>网络扫描的行为特征是比较明显的，例如在短时间内对某一IP地址范围内的每个地址和端口发起连接等。</li>
+<li>目前，大部分防火墙都具有识别简单的网络扫描行为的功能。</li>
+<li>然而，很多攻击者也在研究如何隐蔽自己的网络攻击行为。例如利用虚假源地址、减缓扫描速度、动态调整扫描顺序、分布式扫描等。</li>
+</ol>
+<hr>
+<h3 id="_47">网络监听<a class="headerlink" href="#_47" title="Permanent link">¶</a></h3>
+<p>网络中传输的数据大部分都是<strong>明文</strong>形式。如果攻击者对网络进行监听并截获了包含有大量明文信息的一系列分组，则可从这些分组中直接分析出<strong>账号、密码</strong>等敏感信息。</p>
+<p>常见的网络监听类型有：</p>
+<ol>
+<li>分组嗅探器</li>
+<li>交换机毒化攻击</li>
+<li>ARP欺骗</li>
+</ol>
+<hr>
+<h4 id="_48">分组嗅探器<a class="headerlink" href="#_48" title="Permanent link">¶</a></h4>
+<p>分组嗅探器（Packet Sniffer）是一种网络监听工具软件，它运行在网络中的某台主机上，<strong>被动接收所有出入该主机的网络适配器</strong>（网卡）<strong>的数据链路层协议数据单元</strong>（即帧）。</p>
+<p>如果将网络适配器配置为混杂方式，网络适配器就会接收所有进入自己接口的MAC帧，而不管这些帧的目的MAC地址是否指向该网络适配器。</p>
+<p><strong>环境差异</strong>：</p>
+<ul>
+<li>在<strong>共享式以太网（集线器）</strong>中，所有数据会广播到每个接口，嗅探非常容易。</li>
+<li>在<strong>交换式以太网</strong>中，交换机会通过自学习只把数据发给目标主机，普通嗅探较难实现。</li>
+</ul>
+<hr>
+<h4 id="_49">交换机毒化攻击<a class="headerlink" href="#_49" title="Permanent link">¶</a></h4>
+<p>为了在交换机环境下也能偷听，攻击者会采取主动出击：</p>
+<ul>
+<li><strong>填满转发表</strong>：攻击者 A 发送大量伪造不同源 MAC 地址的帧给交换机。</li>
+<li><strong>强制泛洪</strong>：当交换机的 MAC 地址表被填满后，它无法学习新地址，对于找不到目标的数据包就会退化成“集线器”模式进行<strong>盲目转发（泛洪）</strong>。这样攻击者 A 就能接收到本不属于它的数据。</li>
+</ul>
+<hr>
+<h4 id="arp">ARP 欺骗<a class="headerlink" href="#arp" title="Permanent link">¶</a></h4>
+<p>这是最危险的攻击方式：</p>
+<ul>
+<li><strong>欺骗原理</strong>：攻击者 C 发送错误的 ARP 响应。告诉 A：“我是 B”，同时告诉 B：“我是 A”。</li>
+<li><strong>截获流量</strong>：A 和 B 都会误以为 C 是对方，从而把数据都发给 C。</li>
+<li><strong>伪装网关</strong>：如果攻击者对网络内所有主机进行 ARP 欺骗，可以将自己<strong>伪装成路由器</strong>，从而监听到全网的所有通信。</li>
+</ul>
+<hr>
+<p><strong>防范上述各种类型的网络监听，可采取以下措施</strong></p>
+<ul>
+<li>使用交换机替代集线器，这不但可以提高网络性能，还能使攻击者在交换机环境中更难实施监听。</li>
+<li>禁用交换机的自学习功能，将IP地址、MAC地址与交换机的接口进行静态绑定，这样可以限制非法主机的接入，使攻击者无法实施交换机毒化攻击，也使ARP欺骗难以实施。</li>
+<li>对于ARP欺骗，主机或路由器可以仅使用静态ARP表，而不再依据ARP请求报文或响应报文动态更新。</li>
+<li>划分VLAN可以限制攻击者的监听范围，因为分组嗅探器只能在单个局域网范围内进行。</li>
+<li>防范网络监听的最有效的方法是进行数据加密和实体鉴别技术。</li>
+</ul>
+<hr>
+<h3 id="_50">拒绝服务攻击<a class="headerlink" href="#_50" title="Permanent link">¶</a></h3>
+<p>拒绝服务DoS攻击是<strong>最容易实现却又最难防范</strong>的攻击手段。</p>
+<p>DoS攻击类型有：</p>
+<ol>
+<li>基于漏洞的DoS攻击</li>
+<li>基于资源消耗的DoS攻击</li>
+<li>分布式DoS攻击</li>
+</ol>
+<hr>
+<h4 id="_51">防范拒绝服务攻击<a class="headerlink" href="#_51" title="Permanent link">¶</a></h4>
+<p>主要利用<strong>网络协议漏洞</strong>或<strong>操作系统漏洞</strong>。攻击者向目标系统发送一些特殊分组，使目标系统在处理这些分组时出现异常，甚至崩溃。这种攻击又称为<strong>剧毒包</strong>或<strong>杀手包</strong>（Killer Packet）攻击。</p>
+<p><strong>“死亡之 ping” 攻击</strong>：</p>
+<ul>
+<li>攻击者发送长度超过 65535 字节的超长 IP 数据报（超大 ICMP 回送请求报文）。</li>
+<li><strong>后果</strong>：目标主机在重组这些超长报文时，会导致内存分配错误、堆栈崩溃，最终系统死机。</li>
+</ul>
+<hr>
+<h4 id="dos">基于资源消耗的DoS攻击<a class="headerlink" href="#dos" title="Permanent link">¶</a></h4>
+<p>这种攻击是DoS攻击中采用<strong>最多的一种攻击</strong>。攻击者通过<strong>向目标系统发送大量的分组</strong>，从而<strong>耗尽目标系统的资源</strong>，致使目标系统崩溃而<strong>无法向正常用户提供服务</strong>。</p>
+<ol>
+<li><strong>TCP SYN 洪泛</strong>：攻击者发送大量伪造源 IP 的 TCP 连接请求（SYN），但不响应服务器的回应（SYN+ACK）。</li>
+</ol>
+<ul>
+<li><strong>后果</strong>：当<strong>半连接</strong>的数量超过了系统允许的上限时，系统就不会再接受任何TCP连接请求，这将导致TCP服务器无法为正常客户提供服务。</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>分片攻击</strong>：攻击者发送大量 IP 数据报分片，但故意不发完所有分片。服务器会一直缓存已收到部分，导致系统缓存耗尽崩溃。</p>
+</li>
+<li>
+<p><strong>反射攻击 (Smurf 攻击)</strong>：攻击者伪造目标主机 C 的源 IP 地址，向网络广播地址发送 ICMP 请求报文。</p>
+</li>
+</ol>
+<ul>
+<li><strong>流量放大</strong>：网络中所有主机（反射节点）都会向目标主机 C 发送响应报文。</li>
+<li><strong>后果</strong>：攻击流量被成倍放大，导致目标主机崩溃或网络拥塞。</li>
+</ul>
+<hr>
+<h4 id="dos_1">分布式DoS攻击<a class="headerlink" href="#dos_1" title="Permanent link">¶</a></h4>
+<p>基于资源消耗的DoS攻击是由攻击者向目标主机发送大量的分组来实现的。但是仅靠一个攻击源很难达到效果，所以产生了<strong>分布式Dos攻击</strong>。</p>
+<p>攻击者通过漏洞、木马等手段控制因特网上大量“僵尸”主机，同时向目标服务器发送恶意请求，导致其瘫痪。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/7-41.png" data-desc-position="bottom"><img alt="img" src="../assets/7-41.png"></a></p>
+<hr>
+<p><strong>防范上述各种类型的拒绝服务攻击，可采取以下措施</strong></p>
+<ul>
+<li><strong>利用防火墙对恶意分组进行过滤</strong>，例如过滤掉所有ICMP回送请求报文可以防范Smurf攻击。然而，对于像“TCP SYN洪泛”这类攻击，一般很难区分哪些TCP连接请求报文是恶意的。</li>
+<li><strong>使用支持源端过滤的路由器</strong>，尽量减少IP地址伪造的现象。如果要通过源端过滤来防范DoS攻击，则必须使因特网上所有的路由器都具有源端过滤的功能。然而，目前源端过滤并不是路由器的强制功能，支持源端过滤的路由器还是少数。</li>
+<li><strong>追溯DoS攻击源</strong>。路由器对通过自己的IP数据报的首部进行标记，通过该标记可追溯到DoS攻击源。这个过程通常很慢，并且需要人工干预，因此目前主要用于事后追查以及采取相应的法律手段提供依据。</li>
+<li><strong>进行DoS攻击检测</strong>，通过分析分组首部特征和流量特征来检测正在发生的DoS攻击并发出警报。</li>
+</ul>
+<p><strong>上述措施并不能彻底防范DoS攻击，DoS攻击是目前最容易实现却又最难防范的攻击手段。</strong></p>
+<hr>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年12月28日 18:50:51 CST">2025年12月28日 18:50:51</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2025年12月28日 18:50:51 CST">2025年12月28日 18:50:51</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+  <h2 id="__comments">评论</h2>
+  <script src="https://giscus.app/client.js" data-repo="Melody12020831/Notebook" data-repo-id="R_kgDONR_9AA" data-category="Announcements" data-category-id="DIC_kwDONR_9AM4CkboN" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async>
+  </script>
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024 <a href="https://github.com/Melody12020831" target="_blank" rel="noopener">Melody</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Melody12020831/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../css/javascripts/tablesort.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
