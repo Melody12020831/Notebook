@@ -62,10 +62,10 @@ To make it responsive enough, we need to
 
 ```
 main(){
-CreateThread (RetrieveData());
-CreateThread (DisplayData());
-CreateThread (GetInputEvents());
-WaitForThreads();
+    CreateThread (RetrieveData());
+    CreateThread (DisplayData());
+    CreateThread (GetInputEvents());
+    WaitForThreads();
 }
 // Each thread routine enters a loop.
 

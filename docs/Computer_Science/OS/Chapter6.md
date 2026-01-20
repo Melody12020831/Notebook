@@ -53,7 +53,15 @@ while (true) {
     A.PCB    B.程序    C.数据    D.共享程序段
 
 ??? note "answer"
-    同步是指为了完成某项任务而建立的多个进程的相互合作关系，由于并发进程的执行是异步的(按各自独立的、不可预知的速度向前推进)，需要保证进程之间操作的先后次序的约束。例如，读进程和写进程对同一段缓冲区的读和写就需要进行同步，以保证正确的执行顺序。
+    D. 共享程序段
+
+    可重入编码（也称为“纯代码”）是指可以被多个进程同时调用而不会产生冲突的代码。它的核心特征是：
+
+    - **只读性**：代码段在执行过程中绝不修改自身（即没有自修改代码）。
+
+    - **数据分离**：它不持有任何静态或全局的可变数据。所有的局部变量、中间处理状态都保存在调用者的堆栈（Stack）或寄存器中。
+
+    - **可中断性**：代码可以在执行到一半时被中断，转去执行另一段程序（甚至是同一段代码），返回后仍能正确运行。
 
 ---
 
@@ -74,19 +82,29 @@ while (true) {
 Consider this execution interleaving with “count = 5” initially:
 
 S0: producer execute register1 = count {register1 = 5}
+
 S1: producer execute register1 = register1 + 1 {register1 = 6}
+
 S2: consumer execute register2 = count {register2 = 5}
+
 S3: consumer execute register2 = register2 - 1 {register2 = 4}
+
 S4: producer execute count = register1 {count = 6 }
+
 S5: consumer execute count = register2 {count = 4}
 
 假设初始 count = 5，生产者和消费者并发执行，具体步骤如下：
 
 S0: 生产者执行 register1 = count，此时 register1 = 5
+
 S1: 生产者执行 register1 = register1 + 1，此时 register1 = 6
+
 S2: 消费者执行 register2 = count，此时 register2 = 5（注意，此时 count 还没被生产者写回，还是5）
+
 S3: 消费者执行 register2 = register2 - 1，此时 register2 = 4
+
 S4: 生产者执行 count = register1，此时 count = 6
+
 S5: 消费者执行 count = register2，此时 count = 4
 
 ???+ example "question"
@@ -151,9 +169,11 @@ Q: critical section problems in OS kernel
 2. Progress - If no process is executing in its critical section and there exist some processes that wish to enter their critical section, then the selection of the processes that will enter the critical section next cannot be postponed indefinitely
 3. Bounded Waiting - A bound must exist on the number of times that other processes are allowed to enter their critical sections after a process has made a request to enter its critical section and before that request is granted
 
-1. 互斥（Mutual Exclusion）任意时刻，最多只有一个进程在临界区内。防止多个进程同时修改共享资源。
-2. 进展（Progress）如果没有进程在临界区，且有进程想进入临界区，必须保证某个进程能进入，不能无限推迟。不会出现“饿死”或无休止等待。
-3. 有限等待（Bounded Waiting）每个进程请求进入临界区后，最多只能有有限个其他进程先进入临界区，保证公平性。防止某个进程长期得不到进入机会。
+a. 互斥（Mutual Exclusion）任意时刻，最多只有一个进程在临界区内。防止多个进程同时修改共享资源。
+
+b. 进展（Progress）如果没有进程在临界区，且有进程想进入临界区，必须保证某个进程能进入，不能无限推迟。不会出现“饿死”或无休止等待。
+
+c. 有限等待（Bounded Waiting）每个进程请求进入临界区后，最多只能有有限个其他进程先进入临界区，保证公平性。防止某个进程长期得不到进入机会。
 
 - Assume that each process executes at a nonzero speed
 - No assumption concerning relative speed of the N processes
@@ -334,7 +354,7 @@ while (true) {
 ##### The Respective Algorithm for Process $P_j$
 
 ```c
-    while (true) {
+while (true) {
     flag[j] = TRUE;
     turn = i;
     while ( flag[i] && turn == i);
@@ -687,8 +707,7 @@ Two CPUs may enter race condition, both holding the lock
 错误实现（不安全）
 
 ```c
-void
-acquire(struct spinlock *lk){
+void acquire(struct spinlock *lk){
     for(;;){
         if(lk->locked ==0){
             lk->locked =1;
@@ -705,10 +724,9 @@ acquire(struct spinlock *lk){
 Solution: to use **amoswap** instruction which prevents any other CPU from using the memorylocation between the memory r/w
 
 ```c
-void
-acquire(struct spinlock *lk){
+void acquire(struct spinlock *lk){
     push off(); // disable interrupts to avoid deadlock.
-    while( sync lock test and set(&lk->locked, 1)!= 0);
+    while( sync_lock_test_and_set(&lk->locked, 1)!= 0);
     sync_synchronize();
     // Record info about lock acquisition for holding() and debugging
     lk->cpu = mycpu();
@@ -959,8 +977,7 @@ See Example 2
 #### Example2: sleep and wakeup operations
 
 ```c
-void
-V(struct semaphore *s){
+void V(struct semaphore *s){
     acquire(&s->lock);
     s->count +=1;
     wakeup(s);
@@ -1019,18 +1036,18 @@ Lost wakeup prevented, but Deadlocks!!! Solution?
 
 ```c
 void V(struct semaphore *s){
-acquire(&s->lock);
-s->count +=1;
-wakeup(s);
-release(&s->lock);
+    acquire(&s->lock);
+    s->count +=1;
+    wakeup(s);
+    release(&s->lock);
 }
 
 void P(struct semaphore *s){
-acquire(&s->lock);
-while(s->count==0)
-    sleep(s, &s->lock);
-s->count -=1;
-release(&s->lock);
+    acquire(&s->lock);
+    while(s->count==0)
+        sleep(s, &s->lock);
+    s->count -=1;
+    release(&s->lock);
 }
 ```
 

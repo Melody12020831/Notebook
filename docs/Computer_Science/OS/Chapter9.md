@@ -256,7 +256,7 @@ Restart instruction
 ??? note "answer"
     **D. 16384 次缺页中断。**
 
-    一个页框可以存放一行数据。当访问 a[0][0]时，发数组大小为 128x128，int 型数据占 4B，生第一次缺页中断，此时调入第一行数据;之后访问 a[110]，又发生缺页中断。每访问一个元素,都发生一次缺页中断，共有 128x128=16384 个元素，因此共发生 16384 次缺页中断。
+    一个页框可以存放一行数据。当访问 a[0][0]时，发数组大小为 128x128，int 型数据占 4B，产生第一次缺页中断，此时调入第一行数据;之后访问 a[1][0]，又发生缺页中断。每访问一个元素,都发生一次缺页中断，共有 128x128=16384 个元素，因此共发生 16384 次缺页中断。
 
 ???+ example
     假设某个进程分配有4个页框，每个页框大小为128个字(一个整数占一个字)。进程的代码段正好可以存放在一页中，而且总是占用0号页框。数据会在其他3个页框中换进或换出。数组X为按行优先存储，则执行该进程会发生()次缺页中断。
@@ -341,7 +341,7 @@ Restart instruction
 ??? note "answer"
     D. 页内碎片
 
-    页面越小，页表项数量越多，页表所占的空间就更大;页面越小，缺页率越高;页面越小，换入换出的次数就越多，I0操作更频繁。页面越小，页内浪费的空间越少，内存利用率越高。
+    页面越小，页表项数量越多，页表所占的空间就更大;页面越小，缺页率越高;页面越小，换入换出的次数就越多，I/O操作更频繁。页面越小，页内浪费的空间越少，内存利用率越高。
 
 ???+ example
     某请求分页存储系统的页大小为4KB,按字节编址。系统给进程P分配2个固定的页框，并采用改进型Clock置换算法，进程P页表的部分内容见下表。
@@ -1368,10 +1368,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 
 ---
 
-好的，这是对为您生成的演示文稿中每一页内容的详细中文讲解。在讲解过程中，关键的英文术语我会保留并标注。
-
----
-
 ## ADDITION
 
 **Virtual Memory: Core Concepts**
@@ -1391,8 +1387,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 
 ### Process Address Spaces (Linux) (Linux 进程地址空间)
 
-这一页介绍了 Linux 操作系统是如何管理地址空间的。
-
 * **Request Paging (请求式分页)**：Linux 采用的是“按需分配”的策略。它不会在进程启动时就把整个程序加载到物理内存中，而是等到进程真正用到某块代码或数据时，才通过缺页异常将其载入。
 * **Uniform Size (统一大小)**：系统“欺骗”每个进程，让它们都以为自己拥有一个巨大的、连续的、大小相同的虚拟内存空间（例如 32位系统下通常是 4GB）。这对编译器和链接器非常友好。
 * **VM Split (虚拟内存分割)**：这块巨大的虚拟内存被切分为两部分：
@@ -1403,8 +1397,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 ---
 
 ### Address Space Details (地址空间详情)
-
-这一页深入探讨了地址空间的具体结构。
 
 **Flat Address Space (扁平地址空间)**：
 
@@ -1421,8 +1413,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 
 ### The VM Split Visualized (虚拟内存分割可视化)
 
-这一页通过图示展示了经典的内存布局（以 32位 x86 为例）。
-
 * **Kernel Space (内核空间)**：位于内存的高地址部分（High Memory），通常占 1GB。所有进程看到的这部分内容都是一模一样的。
 * **User Space (用户空间)**：位于低地址部分（Low Memory），通常占 3GB。这是进程存放自己代码、数据、堆栈的地方，每个进程都不一样（P1, P2... Pn）。
 * **Context Switch (上下文切换)**：当 CPU 从进程 P1 切换到 P2 时，它会切换用户空间的页表（User Space），但内核空间的映射（Kernel Space）保持不变。
@@ -1430,8 +1420,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 ---
 
 ### 64-bit Address Space (64位地址空间)
-
-这一页解释了现代 64位系统的特殊情况。
 
 * **The Split (分割)**：64位地址空间非常巨大，目前的硬件并不使用全部 64位。通常使用 **Top Bit (最高位)** 来区分用户和内核：最高位为 0 的是用户空间，最高位为 1 的是内核空间。
 * **48-bit Limit (48位限制)**：目前的 x86_64 CPU 实际上只使用了 48位虚拟地址（256 TB）。
@@ -1442,8 +1430,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 
 ### Kernel Physical Mapping (内核的物理映射)
 
-这一页讲述了内核在物理内存中是如何存在的。
-
 * **Never Swapped Out (永不换出)**：内核代码和数据必须时刻在物理内存中，不能像用户数据那样被交换（Swap）到硬盘上，否则操作系统就崩溃了。
 * **Direct Map (直接映射)**：为了效率，内核的虚拟地址往往直接映射到物理地址。例如，物理地址的 `0x00000000` 可能直接映射到内核虚拟地址的某个偏移处。
 * **Kernel Image (内核镜像)**：内核代码通常加载在物理内存的 `0x00100000`（1MB）位置，避开低地址的一些 BIOS 或硬件保留区。
@@ -1451,8 +1437,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 ---
 
 ### VM Trick: Lazy Allocation (虚拟内存技巧：惰性分配)
-
-这是利用 Page Fault 实现的第一个高级技巧。
 
 * **The Concept (概念)**：应用程序经常会通过 `sbrk` 或 `malloc` 申请一大块内存，但可能只用其中很小一部分。如果立刻分配物理内存，是一种巨大的浪费。
 * **The Mechanism (机制)**：
@@ -1466,8 +1450,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 ---
 
 ### VM Trick: Copy-on-Write (COW) (虚拟内存技巧：写时复制)
-
-这是优化进程创建（fork）的关键技术。
 
 **Optimizing fork() (优化 fork)**：传统的 `fork()` 需要把父进程的所有内存复制一份给子进程，非常慢且浪费。
 
@@ -1485,8 +1467,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 
 ### VM Trick: Zero Fill On-Demand (虚拟内存技巧：按需零填充)
 
-这是对 BSS 段（未初始化全局变量）的优化。
-
 **The BSS Section (BSS 段)**：存放未初始化的全局变量。根据 C 语言标准，这些变量在程序开始时必须全是 0。
 
 **Implementation (实现)**：
@@ -1501,8 +1481,6 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 
 ### VM Trick: Memory-Mapped Files (虚拟内存技巧：内存映射文件)
 
-解释了 `mmap` 系统调用的原理。
-
 * **mmap()**：这是一种将磁盘文件直接映射到进程虚拟地址空间的技术。
 * **Load/Store (加载/存储)**：程序员可以像操作内存数组一样去读写文件，而不需要使用 `read()` 或 `write()` 系统调用。
 * **Demand Paging (按需分页)**：文件内容并不是一次性读入内存。当你访问某个地址时，触发缺页异常，内核才去磁盘把对应的文件块（Block）读入内存。
@@ -1512,7 +1490,7 @@ Consider I/O - Pages that are used for copying a file from a device must be lock
 
 ### Implementing PF in RISC-V (在 RISC-V 中实现缺页处理)
 
-这一页从硬件实现角度，讲解了当 Page Fault 发生时，RISC-V CPU 提供了哪些信息给内核。
+从硬件实现角度，讲解了当 Page Fault 发生时，RISC-V CPU 提供了哪些信息给内核。
 
 **Faulting Address (出错地址)** -> **stval 寄存器**：
 

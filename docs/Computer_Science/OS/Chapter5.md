@@ -91,6 +91,11 @@ Dispatcher module gives control of the CPU to the process selected by the short-
 - **Waiting time** (等待时间)– amount of time a process has been waiting in the **ready queue** 进程在就绪队列中等待CPU的总时间。等待时间越短，说明调度算法公平且高效。
 - **Response time** (响应时间)– amount of time it takes from when a request was submitted until the first response is produced, not output (for time-sharing environment) 从用户提交请求到系统产生第一个响应所需的时间（主要用于分时系统）。响应时间越短，系统交互性越好。
 
+??? note
+    Turnaround time = $Time_{completion}$ - $Time_{arrival}$
+
+    Waiting time = $\text{Turnaround time}$ - $\text{CPU Burst time}$ - $\text{I/O Burst time}$ 
+
 ---
 
 ### Optimization Criteria

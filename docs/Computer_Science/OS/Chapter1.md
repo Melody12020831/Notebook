@@ -16,7 +16,7 @@ comments: true
 
 ### What is an Operating System?
 
-- A program that acts as an intermediary between a user ofa computer and the computer hardware.
+- A program that acts as an intermediary between a user of a computer and the computer hardware.
 - Operating system goals:
     - Execute user programs and make solving user problems easier.
     - Make the computer system convenient to use.
@@ -832,9 +832,11 @@ I/O subsystem responsible for I/O子系统的主要职责：
 2. General device-driver interface
 3. Drivers for specific hardware devices
 
-1. I/O的内存管理，包括缓冲（临时存储）、缓存（加速访问）、假脱机（输入输出重叠）
-2. 提供通用设备驱动接口
-3. 针对具体硬件的驱动程序
+a. I/O的内存管理，包括缓冲（临时存储）、缓存（加速访问）、假脱机（输入输出重叠）
+
+b. 提供通用设备驱动接口
+
+c. 针对具体硬件的驱动程序
 
 ---
 

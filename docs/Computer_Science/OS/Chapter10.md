@@ -317,7 +317,7 @@ The directory can be viewed as a **symbol table** that translates file names int
 
 A collection of nodes containing (management) information about all files
 
-目录（Directory）可以看作是一个符号表（symbol table），它的作用是将文件名转换为文件控制块（File Control Block, FCB）。
+一个包含所有文件管理信息的节点集合。
 
 ![img](./assets/10-6.png)
 
@@ -620,7 +620,7 @@ mount /dev/dsk /users
     
     IV.为防止系统故障造成系统内文件受损，常采用存取控制矩阵方法保护文件
     
-    A.Ⅱ    B.I、I    C.I、Ⅲ、IV    D.全选
+    A.Ⅱ    B.I、Ⅱ    C.I、Ⅲ、IV    D.全选
 
 ??? note "answer"
     D

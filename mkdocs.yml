@@ -239,6 +239,12 @@ nav:
       - Computer_Science/CN/Chapter6.md
       - Computer_Science/CN/Chapter7.md
       - Computer_Science/CN/quiz.md
+    - "CP":
+      - Computer_Science/CP/index.md
+    - "SE":
+      - Computer_Science/SE/index.md
+    - "AI":
+      - Computer_Science/AI/index.md
     - "Visualization":
       - Computer_Science/Visualization/note.md
     - "编程语言":
