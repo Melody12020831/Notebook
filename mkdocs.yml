@@ -241,8 +241,19 @@ nav:
       - Computer_Science/CN/quiz.md
     - "CP":
       - Computer_Science/CP/index.md
+      - Computer_Science/CP/Chapter1.md
+      - Computer_Science/CP/Chapter2.md
+      - "Homework":
+          - Computer_Science/CP/HW/HW1.md
     - "SE":
       - Computer_Science/SE/index.md
+      - Computer_Science/SE/Chapter1.md
+      - Computer_Science/SE/Chapter2.md
+      - Computer_Science/SE/Chapter3.md
+      - Computer_Science/SE/Chapter4.md
+      - Computer_Science/SE/Chapter6.md
+      - Computer_Science/SE/Chapter7.md
+      - Computer_Science/SE/Chapter31.md
     - "AI":
       - Computer_Science/AI/index.md
     - "Visualization":

@@ -23,4 +23,6 @@ statistics: True
 
     4. 画图题速成和讲解：https://zhuanlan.zhihu.com/p/158772811?utm_source=wechat_session&utm_medium=social&utm_oi=811192664501391360&utm_campaign=shareopn
 
-    
+    5. https://www.cc98.org/topic/5927302
+
+    6. [求是潮历年卷](https://github.com/QSCTech/zju-icicles/tree/master/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AF%95%E5%8D%B7)
