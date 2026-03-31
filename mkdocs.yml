@@ -141,6 +141,7 @@ plugins:
         - index.md
   - statistics:
       words_per_minute: 200
+  - mkjupyter
 
 nav:
   - Home: 
@@ -243,8 +244,11 @@ nav:
       - Computer_Science/CP/index.md
       - Computer_Science/CP/Chapter1.md
       - Computer_Science/CP/Chapter2.md
+      - Computer_Science/CP/Chapter3.md
       - "Homework":
           - Computer_Science/CP/HW/HW1.md
+          - Computer_Science/CP/HW/HW2.md
+          - Computer_Science/CP/HW/HW3.md
     - "SE":
       - Computer_Science/SE/index.md
       - Computer_Science/SE/Chapter1.md
@@ -253,6 +257,10 @@ nav:
       - Computer_Science/SE/Chapter4.md
       - Computer_Science/SE/Chapter6.md
       - Computer_Science/SE/Chapter7.md
+      - Computer_Science/SE/Chapter8.md
+      - Computer_Science/SE/Chapter9.md
+      - Computer_Science/SE/Chapter10.md
+      - Computer_Science/SE/Chapter11.md
       - Computer_Science/SE/Chapter31.md
     - "AI":
       - Computer_Science/AI/index.md
@@ -307,3 +315,4 @@ nav:
       - Miscellaneous/UBC/block chain DAY 7.md
       - Miscellaneous/UBC/block chain DAY 8.md
     - Miscellaneous/cs231n/cs231n_note.md.md
+    - Miscellaneous/MIT_6.5940/lab1.ipynb
