@@ -36,5 +36,5 @@ jobs:
       - run: pip install mkdocs mkdocs-glightbox
       # - run: pip install mkdocs-rss-plugin
       - run: pip install mkdocs-material 
-      - run: pip install mkdocs-jupyter
+      # - run: pip install mkdocs-jupyter
       - run: mkdocs gh-deploy --force

@@ -141,8 +141,8 @@ plugins:
         - index.md
   - statistics:
       words_per_minute: 200
-  - mkdocs-jupyter:
-      execute: false
+  # - mkdocs-jupyter:
+  #     execute: false
 
 nav:
   - Home: 
