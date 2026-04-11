@@ -13,7 +13,7 @@
         <link rel="prev" href="../Chapter2/">
       
       
-        <link rel="next" href="../HW/HW1/">
+        <link rel="next" href="../Chapter4/">
       
       
         
@@ -3445,6 +3445,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -4924,10 +4928,527 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parser-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parser Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yacc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Yacc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yacc-an-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: An Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-auxiliary-routines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Auxiliary Routines（辅助例程）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Definitions（定义部分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-rules-action-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Rules (Action Code)（规则与动作代码）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-rules-pseudo-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Rules (Pseudo variables)（伪变量）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-rules-example-3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Rules (Example: 3 * 4)（实例演算）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-rules-yystype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Rules (YYSTYPE)（语义值类型）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Yacc: Rules (YYSTYPE)（语义值类型）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解决方案一：使用 %union 声明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yystype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解决方案二：自定义数据类型并重定义 YYSTYPE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-union-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: %union &amp; %type
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Yacc: %union &amp; %type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#op" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运算符的捕获 (op)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        逻辑分支的处理 (exp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedded-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        嵌入式动作（Embedded Actions）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        冲突（Conflicts）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="冲突（Conflicts）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#else-dangling-else_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        经典案例解析：悬空 Else 问题 (Dangling Else)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precedence-directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        优先级指令（Precedence Directives）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="优先级指令（Precedence Directives）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shiftreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通过 Shift/Reduce 解决歧义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何在 Yacc 中编写指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解析器冲突解决算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一元运算符与 %prec
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-syntax-vs-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Syntax v.s. Semantics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-recovery_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误恢复（Error Recovery）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="错误恢复（Error Recovery）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-error-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        局部错误恢复（Local Error Recovery）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="局部错误恢复（Local Error Recovery）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实例演算 (Step-by-Step)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LR 解析器的恢复四部曲
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语义动作的副作用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-error-repair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全局错误修复（Global Error Repair）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#burke-fisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Burke-Fisher 错误修复
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Burke-Fisher 错误修复">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        双栈与队列（数据结构实现）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最大的优点：文法零修改
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何处理“副作用”（Semantic Actions）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        插入符号的语义值来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人工干预：%change 指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="人工干预：%change 指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stack-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误恢复的实战跟踪 (Stack Trace)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        底层的 DFA 状态机视图
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Abstract Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | Semantic Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -4948,6 +5469,8 @@
       
         
       
+        
+      
     
     
     
@@ -4959,10 +5482,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10_7">
         
           
-          <label class="md-nav__link" for="__nav_2_10_5" id="__nav_2_10_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_10_7" id="__nav_2_10_7_label" tabindex="0">
             
   
   
@@ -4980,8 +5503,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_10_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5075,6 +5598,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../HW/HW4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -5102,6 +5653,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -5445,6 +6002,90 @@
     
   
     Chapter 11 | Requirements Modeling: Behavior, Patterns, and Web/Mobile Apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SE/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 | Design Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SE/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13 | Architectural Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SE/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14 | Component-Level Design
   
 
     
@@ -6849,8 +7490,6 @@
       
         
       
-        
-      
     
     
     
@@ -7274,34 +7913,6 @@
     
   
     Cs231n note
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../Miscellaneous/MIT_6.5940/Lab1(1).ipynb" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
   
 
     
@@ -8653,6 +9264,467 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parser-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parser Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yacc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Yacc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yacc-an-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: An Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-auxiliary-routines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Auxiliary Routines（辅助例程）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Definitions（定义部分）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-rules-action-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Rules (Action Code)（规则与动作代码）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-rules-pseudo-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Rules (Pseudo variables)（伪变量）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-rules-example-3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Rules (Example: 3 * 4)（实例演算）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-rules-yystype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Rules (YYSTYPE)（语义值类型）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Yacc: Rules (YYSTYPE)（语义值类型）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#union" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解决方案一：使用 %union 声明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yystype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解决方案二：自定义数据类型并重定义 YYSTYPE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-union-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: %union &amp; %type
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Yacc: %union &amp; %type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#op" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运算符的捕获 (op)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        逻辑分支的处理 (exp)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedded-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        嵌入式动作（Embedded Actions）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        冲突（Conflicts）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="冲突（Conflicts）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#else-dangling-else_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        经典案例解析：悬空 Else 问题 (Dangling Else)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precedence-directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        优先级指令（Precedence Directives）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="优先级指令（Precedence Directives）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shiftreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通过 Shift/Reduce 解决歧义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何在 Yacc 中编写指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解析器冲突解决算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一元运算符与 %prec
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yacc-syntax-vs-semantics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Yacc: Syntax v.s. Semantics
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-recovery_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误恢复（Error Recovery）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="错误恢复（Error Recovery）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-error-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        局部错误恢复（Local Error Recovery）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="局部错误恢复（Local Error Recovery）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        实例演算 (Step-by-Step)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LR 解析器的恢复四部曲
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语义动作的副作用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-error-repair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全局错误修复（Global Error Repair）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#burke-fisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Burke-Fisher 错误修复
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Burke-Fisher 错误修复">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        双栈与队列（数据结构实现）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最大的优点：文法零修改
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantic-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        如何处理“副作用”（Semantic Actions）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        插入符号的语义值来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人工干预：%change 指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="人工干预：%change 指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stack-trace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误恢复的实战跟踪 (Stack Trace)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        底层的 DFA 状态机视图
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -8724,7 +9796,7 @@
 
 <h1 id="chapter-3-syntax-analysis">Chapter 3 | Syntax Analysis<a class="headerlink" href="#chapter-3-syntax-analysis" title="Permanent link">¶</a></h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 18307 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 83 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 12 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 93 分钟</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 27446 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 104 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 19 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 139 分钟</p>
 </div>
 <h2 id="what-is-syntax-analysis">What is Syntax Analysis?<a class="headerlink" href="#what-is-syntax-analysis" title="Permanent link">¶</a></h2>
 <p>语法分析是编译原理中的一个重要阶段，主要任务是分析单词（token）如何组合成短语、子句或句子，即分析程序结构是否符合语言的语法规则。</p>
@@ -10360,6 +11432,814 @@
 * <strong>Shift-Reduce 冲突</strong>有时可以通过设定 <strong>优先级（Precedence）</strong> 和 <strong>结合性（Associativity）</strong> 来优雅解决。</p>
 </blockquote>
 <hr>
+<h2 id="parser-implementation">Parser Implementation<a class="headerlink" href="#parser-implementation" title="Permanent link">¶</a></h2>
+<p><strong>从头写一个解析器（Write a parser from scratch）</strong>：手写解析器通常采用递归下降（recursive-descent）或手工实现的移入-归约解析逻辑。优点是可按需定制、便于学习与调试；缺点是当文法复杂或含有左递归/二义性时，手写实现会变得繁琐甚至不可行。</p>
+<p><strong>能否自动生成解析器？（Can we automatically generate parsers?）</strong>：答案是肯定的。常见的自动生成器基于两大类表驱动算法：自顶向下的 LL(k)（需要 FIRST/FOLLOW 等集合）和自底向上的 LR(k)（通过项目集族构造 ACTION/GOTO 表）。不同文法会产生不同的解析表，生成器负责将文法转为可执行的表与状态机。</p>
+<ul>
+<li>LL(k) 与 LR(k) 都可以用自动化的表驱动方法生成解析器，但各自的适用语法类和工程折中不同；</li>
+<li>文法的写法会影响生成的解析表（例如左递归会阻止直接生成 LL(1) 的递归下降解析器）；</li>
+<li>我们已经学习了如何自动构造这些解析表（如 FIRST/FOLLOW、项目集构造与闭包/转移函数）。</li>
+</ul>
+<p><strong>使用 Parser Generator（使用解析器生成器）</strong>：常见工具（如 Bison/Yacc、ANTLR 等）能从文法描述自动生成解析器代码。优点是通用、健壮、能自动处理大部分语法细节并提供错误处理钩子；缺点是相对于精心手写的解析器在性能或错误信息可定制性上有时不及手工实现，但对大多数编译器作者而言这是更高效的方案。</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-13.png" data-desc-position="bottom"><img alt="img" src="../assets/3-13.png"></a></p>
+<ul>
+<li><code>Parser Specification</code>（文法/语法规范）作为输入；</li>
+<li><code>parser generator</code>（生成器）读取规范并生成 <code>Parser</code>（解析器实现，通常是表驱动或代码化的解析器）；</li>
+<li>运行时解析器从<code>stream of tokens</code>（来自词法分析器的 token 流）中读取，输出 <code>abstract syntax</code>（抽象语法树或中间表示）。</li>
+</ul>
+<hr>
+<h2 id="yacc">Yacc<a class="headerlink" href="#yacc" title="Permanent link">¶</a></h2>
+<p>Yacc 全称为 "Yet Another Compiler-Compiler"，是早期广泛使用的解析器生成器之一（BSD/Unix 生态里常见）。现代中常用 GNU Bison 作为兼容且功能更强的替代品，但 Yacc 的概念与工作流仍然具有代表性。</p>
+<p><strong>输入（Input）</strong>：</p>
+<ul>
+<li>Yacc 的输入是一个规范文件，通常以 <code>.y</code> 为后缀。该文件包含文法产生式、终结符声明、优先级/结合性声明、以及在匹配产生式时要执行的 C 语言语句（语义动作）。</li>
+</ul>
+<p><strong>输出（Output）</strong>：</p>
+<ul>
+<li>运行 Yacc（或 Bison）会生成用于解析的 C 源代码文件（传统上名为 <code>y.tab.c</code> 或 <code>parser.tab.c</code>），并通常会生成一个头文件（如 <code>y.tab.h</code>）保存 token 定义。生成器同时会构造 LALR 的解析表（ACTION/GOTO），并把表与驱动代码输出为 C 代码。</li>
+</ul>
+<p><strong>.y 文件的基本格式（A Yacc specification file has the basic format）</strong>：</p>
+<p>一个典型的 Yacc <code>.y</code> 文件由三部分用 <code>%%</code> 分隔：</p>
+<ol>
+<li><code>{definitions}</code> — 定义区</li>
+</ol>
+<p>在此区可以放置 C 语言的 include、类型定义，以及 Yacc 的声明指令，例如：</p>
+<ul>
+<li><code>%token</code> 声明终结符（token）名称；</li>
+<li><code>%left</code> / <code>%right</code> / <code>%nonassoc</code> 用于声明运算符优先级与结合性，解决 shift/reduce 冲突；</li>
+<li><code>%union</code> 定义语义值（<code>yylval</code>）的联合类型（当不同产生式携带不同类型的语义值时使用）；</li>
+<li><code>%type</code> 标注非终结符对应的语义值类型。</li>
+</ul>
+<p>还常包含 <code>#include</code>、全局变量声明和辅助函数的原型（这些 C 代码会被复制到生成的 C 文件的顶部或合适位置）。</p>
+<ol start="2">
+<li>
+<p><code>%%</code> （规则区开始）</p>
+</li>
+<li>
+<p><code>{rules}</code> — 产生式与语义动作</p>
+</li>
+</ol>
+<p>这里是最核心的部分，每条产生式的右侧可以跟随花括号包裹的 C 代码（语义动作），在该产生式被规约（reduce）时执行。语义动作中可访问 <code>$1, $2, ...</code>（对应右侧各符号的语义值）以及 <code>$$</code>（对应左侧非终结符的语义值）。</p>
+<p>示例：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>expr: expr '+' expr { $$ = make_node(PLUS, $1, $3); }
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>        | NUM           { $$ = make_num($1); }
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>;
+</code></pre></div>
+<ol start="4">
+<li>
+<p><code>%%</code> （规则区结束）</p>
+</li>
+<li>
+<p><code>{auxiliary routines}</code> — 辅助例程（C 代码区）</p>
+</li>
+</ol>
+<ul>
+<li>在最后一部分放置辅助函数（如 <code>yyerror()</code>），以及通常需要由用户提供的词法分析器函数 <code>yylex()</code> 的实现或引用（例如由 <code>lex</code>/<code>flex</code> 生成的 <code>yylex()</code>）。</li>
+<li>也可以放置 <code>main()</code>，用于将词法分析器和解析器连接起来并驱动解析流程。</li>
+</ul>
+<p><strong>常见使用流程（简要）</strong>：</p>
+<ol>
+<li>编写 <code>lexer.l</code>（供 <code>flex</code>/<code>lex</code> 使用）与 <code>parser.y</code>（供 Yacc/Bison 使用）。</li>
+<li>运行 <code>lex lexer.l</code> 生成 <code>lex.yy.c</code>（或 <code>flex lexer.l</code>）；运行 <code>yacc -d parser.y</code> 或 <code>bison -d parser.y</code> 生成 <code>y.tab.c</code> / <code>parser.tab.c</code> 和 <code>.h</code> 文件。</li>
+<li>编译并链接：例如 <code>cc y.tab.c lex.yy.c -o parser -ly -ll</code>（具体链接库名视平台与实现而定）。</li>
+</ol>
+<p><strong>解析冲突与解决方式</strong>：</p>
+<p>在生成 LALR 表时可能会出现 <code>shift/reduce</code> 或 <code>reduce/reduce</code> 冲突。常用解决方法：</p>
+<ul>
+<li>使用 <code>%left</code>/<code>%right</code> 指令声明运算符优先级与结合性（例如给 <code>+</code> 和 <code>*</code> 不同优先级）；</li>
+<li>手工调整文法（重写产生式、左因子化或消除二义性）；</li>
+<li>使用 <code>%expect</code> 或 <code>%expect-rr</code> 告知编译器某些预期冲突（较少用）。</li>
+</ul>
+<p><strong>语义值（semantic values）与 %union</strong>：</p>
+<p>当不同产生式需要携带不同类型的语义信息时，用 <code>%union</code> 定义一个联合类型，并通过 <code>%type</code> 或在 <code>%token</code> 后声明类型，Yacc/Bison 会使用 <code>yylval</code> / <code>$$</code> 来传递这些值。</p>
+<hr>
+<h3 id="yacc-an-example">Yacc: An Example<a class="headerlink" href="#yacc-an-example" title="Permanent link">¶</a></h3>
+<p>示例文法：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>exp   -&gt; exp addop term | term
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>addop -&gt; + | -
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>term  -&gt; term mulop factor | factor
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>mulop -&gt; *
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>factor -&gt; ( exp ) | number
+</code></pre></div>
+<p>逐条说明：</p>
+<ul>
+<li><code>exp</code>：表示算术表达式，使用 <code>exp -&gt; exp addop term | term</code> 表示加/减操作在表达式层处理；这是<strong>左递归</strong>写法，适用于自底向上的解析器（如 Yacc/Bison），并隐含了加法的左结合性（例如 <code>1-2-3</code> 解析为 <code>(1-2)-3</code>）。</li>
+<li><code>addop</code>：加法运算符，终结符为 <code>+</code> 或 <code>-</code>。在 Yacc 中通常把 <code>+</code>/<code>-</code> 定义为 token（例如 <code>%token PLUS MINUS</code> 或直接用字符）。</li>
+<li><code>term</code>：表示乘法/除法这一优先级更高的层次，采用 <code>term -&gt; term mulop factor | factor</code> 同样是左递归，保证乘法的左结合性。</li>
+<li><code>mulop</code>：乘法运算符（示例只列出 <code>*</code>），可扩展为 <code>* | /</code>。</li>
+<li><code>factor</code>：最底层的因子，可以是带括号的子表达式 <code>( exp )</code> 或一个数字 <code>number</code>（通常由词法器返回一个 <code>NUMBER</code> token）。</li>
+</ul>
+<p>优先级与结合性：</p>
+<ul>
+<li>该分层式文法（<code>exp</code> 包含 <code>term</code>，<code>term</code> 包含 <code>factor</code>）自然地把乘法绑定在比加法更紧的层级上——因此表达式 <code>1 + 2 * 3</code> 会被解析为 <code>1 + (2 * 3)</code>，满足常见的算术优先级。</li>
+<li>左递归的产生式实现了<strong>左结合</strong>（left-associative），这是处理 <code>1-2-3</code>、<code>1/2/3</code> 等运算时常用的策略。</li>
+</ul>
+<hr>
+<h3 id="yacc-auxiliary-routines">Yacc: Auxiliary Routines（辅助例程）<a class="headerlink" href="#yacc-auxiliary-routines" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>%%
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>int main() {
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>  return yyparse();
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>}
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>int yylex(void){
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>  int c;
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>  // eliminate blanks
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>  while ( (c=getchar()) == ' '); 
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>  if (isdigit(c)) {
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    ungetc(c, stdin);
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>    scanf("%d", &amp;yylval);
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>    return (NUMBER);
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>  }
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>  if (c == '\n')
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>    return 0; // stop the parse 
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>  return c;
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>}
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>int yyerror (char * s){ 
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>  fprintf (stderr, "%s\n",s ) ; 
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>  return 0;
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>}
+</code></pre></div>
+<ul>
+<li>
+<p><strong><code>yyparse()</code></strong>: 这是 Yacc 生成的主解析函数。</p>
+</li>
+<li>
+<p>返回 <code>0</code> 表示解析成功。</p>
+</li>
+<li>
+<p>返回 <code>1</code> 表示解析失败（语法错误）。</p>
+</li>
+<li>
+<p><strong><code>yylex()</code></strong>: 解析器本身不读字符，它不断调用 <code>yylex()</code> 来获取下一个 <strong>Token</strong>（记号）。</p>
+</li>
+<li><strong>输入结束标志</strong>: 当 <code>yylex()</code> 返回 <code>0</code> 或负数时，Yacc 认为输入已结束。</li>
+<li><strong>语义值传递</strong>: <code>yylex</code> 返回的是 Token 的类型（如 <code>NUMBER</code>），而该 Token 的具体数值（如 <code>42</code>）必须存放在全局变量 <strong><code>yylval</code></strong> 中。</li>
+<li><strong><code>yyerror()</code></strong>: 当解析器遇到语法错误时会调用这个函数。你可以在这里定义自己的错误处理逻辑，比如打印错误信息、记录日志，或者直接退出程序。</li>
+</ul>
+<p><strong>代码示例解析</strong>:</p>
+<ul>
+<li><code>main()</code> 函数简单的调用 <code>yyparse()</code>。</li>
+<li>自定义的 <code>yylex()</code>：跳过空格，识别数字。如果识别到数字，用 <code>scanf</code> 把值存入 <code>yylval</code>，并返回 <code>NUMBER</code> 标签；如果读到换行符 <code>\n</code>，返回 <code>0</code> 结束解析。</li>
+</ul>
+<hr>
+<h3 id="yacc-definitions">Yacc: Definitions（定义部分）<a class="headerlink" href="#yacc-definitions" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>%%
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>int main() {
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  return yyparse();
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>}
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>int yylex(void){
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>  int c;
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>  // eliminate blanks
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>  while ( (c=getchar()) == ' '); 
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>  if (isdigit(c)) {
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>    ungetc(c, stdin);
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>    scanf("%d", &amp;yylval);
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>    return (NUMBER);
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>  }
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>  if (c == '\n')
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>    return 0; // stop the parse 
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>  return c;
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>}
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>int yyerror (char * s){ 
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>  fprintf (stderr, "%s\n",s ) ; 
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>  return 0;
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>}
+</code></pre></div>
+<p>Yacc 文件通常以 <code>.y</code> 结尾，由 <code>%{%}</code> 包含的 C 代码、定义区和规则区组成。</p>
+<p><strong>符号声明</strong>:</p>
+<ul>
+<li><code>%token NUMBER</code>: 告诉 Yacc，<code>NUMBER</code> 是一个由词法分析器返回的终结符。</li>
+<li><code>%start symbol</code>: 指定文法的起始符。</li>
+</ul>
+<p><strong>Token 的两种识别方式</strong>:</p>
+<ul>
+<li><strong>单引号字符</strong>: 如 <code>'+'</code> 或 <code>'*'</code>。你不需要额外声明，直接在规则里用就行。</li>
+<li><strong>符号 Token</strong>: 如 <code>NUMBER</code>，必须先用 <code>%token</code> 声明。</li>
+</ul>
+<hr>
+<h3 id="yacc-rules-action-code">Yacc: Rules (Action Code)（规则与动作代码）<a class="headerlink" href="#yacc-rules-action-code" title="Permanent link">¶</a></h3>
+<p>Yacc 不仅仅是检查语法，还能在匹配到规则时执行 C 代码。</p>
+<ul>
+<li><strong>动作执行时机</strong>: 动作代码（花括号 <code>{}</code> 里的内容）会在解析器执行 <strong>归约（Reduce）</strong> 操作时立即执行。</li>
+<li><strong>放置位置</strong>: 通常放在规则的末尾。例如 <code>exp: exp '+' term { $$ = $1 + $3; }</code>。</li>
+<li><strong>嵌入式动作</strong>: 动作也可以写在规则中间，但那会引入隐藏的非终结符，稍复杂一些。</li>
+</ul>
+<hr>
+<h3 id="yacc-rules-pseudo-variables">Yacc: Rules (Pseudo variables)（伪变量）<a class="headerlink" href="#yacc-rules-pseudo-variables" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong><code>$$</code></strong>: 代表产生式左部（LHS）的语义值。</li>
+<li><strong><code>$i</code></strong>: 代表产生式右部（RHS）第 <span class="arithmatex">\(i\)</span> 个元素的语义值。</li>
+</ul>
+<p>例如 <code>exp '+' term</code>：<code>$1</code> 是 <code>exp</code> 的值，<code>$2</code> 是 <code>'+'</code> 的值（通常不用），<code>$3</code> 是 <code>term</code> 的值。</p>
+<ul>
+<li><strong>传递过程</strong>: 解析器通过这些伪变量在堆栈上移动数据，实现从局部到整体的计算。</li>
+</ul>
+<hr>
+<h3 id="yacc-rules-example-3-4">Yacc: Rules (Example: 3 * 4)（实例演算）<a class="headerlink" href="#yacc-rules-example-3-4" title="Permanent link">¶</a></h3>
+<p><strong>移进-归约（Shift-Reduce）</strong> 算法如何处理 <code>3 * 4</code>:</p>
+<ol>
+<li><strong>Shift Num</strong>: 将数字 3 压入符号栈，其值 <code>yylval</code> (3) 进入值栈。</li>
+<li><strong>Reduce factor</strong>: 根据 <code>factor: NUMBER</code> 归约。此时符号栈变 <code>factor</code>，值栈顶仍是 3。</li>
+<li><strong>Reduce term</strong>: 根据 <code>term: factor</code> 归约。</li>
+<li><strong>Shift '*'</strong>: 运算符进入符号栈，默认值 <code>0</code> 进入值栈。</li>
+<li><strong>Shift Num</strong>: 数字 4 进入。</li>
+<li><strong>Reduce factor</strong>: 4 归约为 <code>factor</code>。</li>
+<li><strong>Reduce term '*' factor</strong>: 这是核心步骤！执行动作 <code>$$ = $1 * $3</code>。</li>
+</ol>
+<ul>
+<li><code>$1</code> 是第一个 <code>term</code> 的值 (3)。</li>
+<li><code>$3</code> 是 <code>factor</code> 的值 (4)。</li>
+<li>计算结果 <code>12</code> 存入 <code>$$</code>，并压回值栈顶。</li>
+</ul>
+<ol start="8">
+<li><strong>后续归约</strong>: 最终归约为起始符 <code>command</code>。</li>
+</ol>
+<hr>
+<h3 id="yacc-rules-yystype">Yacc: Rules (YYSTYPE)（语义值类型）<a class="headerlink" href="#yacc-rules-yystype" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong><code>YYSTYPE</code></strong>: 这是值栈中每个元素的 C 数据类型。</li>
+<li><strong>默认类型</strong>: 默认情况下，Yacc 假设所有值都是 <code>int</code>（即 <code>#define YYSTYPE int</code>）。</li>
+<li><strong>自定义</strong>: 如果你需要处理浮点数或抽象语法树（AST）节点指针，你可以重新定义 <code>YYSTYPE</code> 为一个 <code>union</code>（联合体），以便让不同类型的符号持有不同类型的数据。</li>
+</ul>
+<p>文法示例：</p>
+<ul>
+<li><span class="arithmatex">\(exp \to exp \text{ op } term \mid term\)</span></li>
+<li><span class="arithmatex">\(op \to \text{ '+' } \mid \text{ '-' }\)</span></li>
+</ul>
+<p><strong>问题：</strong></p>
+<ul>
+<li><code>exp</code> 的值通常是一个数值（比如 <code>double</code> 或 <code>int</code>），代表计算结果。</li>
+<li><code>op</code> 的值通常是一个字符（比如 <code>char</code>），代表运算符本身。</li>
+<li><strong>YYSTYPE 默认只能有一种类型</strong>（比如默认是 <code>int</code>），那么如何让一个堆栈既能存 <code>double</code> 又能存 <code>char</code> 呢？</li>
+</ul>
+<hr>
+<h4 id="union">解决方案一：使用 <code>%union</code> 声明<a class="headerlink" href="#union" title="Permanent link">¶</a></h4>
+<p>这是 Yacc 提供的一种原生且最常用的方法。</p>
+<p><strong>原理</strong>：利用 C 语言中的 <code>union</code>（联合体）。联合体允许在同一块内存空间存储不同类型的数据。</p>
+<p><strong>代码示例解析</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">%</span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">val</span><span class="p">;</span><span class="w">  </span><span class="c1">// 用于存放数值（如 exp, term, factor）</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">op</span><span class="p">;</span><span class="w">    </span><span class="c1">// 用于存放运算符（如 addop, mulop）</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>效果</strong>：一旦定义了 <code>%union</code>，Yacc 产生的 <code>YYSTYPE</code> 就会变成这个联合体类型。</p>
+<p><strong>后续步骤</strong>：定义完 union 后，你还需要在声明区告诉 Yacc 哪个符号用哪个成员。例如：</p>
+<ul>
+<li><code>%token &lt;val&gt; NUMBER</code></li>
+<li><code>%type &lt;val&gt; exp term</code></li>
+<li><code>%type &lt;op&gt; addop</code></li>
+</ul>
+<hr>
+<h4 id="yystype">解决方案二：自定义数据类型并重定义 <code>YYSTYPE</code><a class="headerlink" href="#yystype" title="Permanent link">¶</a></h4>
+<p>如果你不想用 Yacc 自动生成的 union，或者你的需求更复杂（比如要构建抽象语法树 AST），你可以完全自定义类型。</p>
+<p><strong>原理</strong>：在 Yacc 定义部分或头文件中定义一个结构体或类，然后通过 <code>#define</code> 将 <code>YYSTYPE</code> 指向它。</p>
+<p><strong>代码示例解析</strong>：<code>#define YYSTYPE ASTNode</code>：这意味着值栈中的每一个元素现在都是一个 <code>ASTNode</code> 对象（或指针）。</p>
+<p><strong>手动构造（By hand）</strong>：这意味着在动作代码中，你需要自己编写逻辑来创建和填充这些复杂的结构。</p>
+<p>例如：<code>exp: exp '+' term { $$ = new_node('+', $1, $3); }</code></p>
+<hr>
+<h3 id="yacc-union-type">Yacc: <code>%union</code> &amp; <code>%type</code><a class="headerlink" href="#yacc-union-type" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>%token NUMBER
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>%union { double val;
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>         char op;}
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>%type &lt;val&gt; exp term NUMBER 
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>%type &lt;op&gt; op
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>%%
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>command : exp { printf("%f\n",$1);}
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>;
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>exp : exp op term { 
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>      switch ($2){
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>        case '+' : $$=$1+$3; break;
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>        case '-' : $$=$1-$3; break; 
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>      }
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>     }
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    | term {$$ = $1;}
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>;
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>op : '+' {$$ = $1;}
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>   | '-' {$$ = $1;}
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>;
+</code></pre></div>
+<p>在 <code>%{%}</code> 之后的定义区，可以看到两个关键动作：</p>
+<p><strong><code>%union</code></strong>: 定义了所有可能的语义值类型集合。</p>
+<ul>
+<li><code>double val;</code>：用于存储计算结果。</li>
+<li><code>char op;</code>：用于存储运算符。</li>
+</ul>
+<p><strong><code>%type</code> (关键步骤)</strong>: 这是 Yacc 的“类型分配器”。它告诉解析器，特定的符号应该使用 <code>union</code> 中的哪一个成员。</p>
+<ul>
+<li><code>%type &lt;val&gt; exp term NUMBER</code>：指定 <code>exp</code>、<code>term</code> 和终结符 <code>NUMBER</code> 的语义值都使用 <code>double val</code> 类型。</li>
+<li><code>%type &lt;op&gt; op</code>：指定非终结符 <code>op</code> 的语义值使用 <code>char op</code> 类型。</li>
+</ul>
+<hr>
+<h4 id="op"><strong>运算符的捕获 (op)</strong><a class="headerlink" href="#op" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nl">op</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="sc">'+'</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="sc">'-'</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>这里 <code>$1</code> 是字符 <code>'+'</code> 或 <code>'-'</code>。</li>
+<li>由于我们声明了 <code>%type &lt;op&gt; op</code>，这里的 <code>$$</code> 实际上会自动对应到 <code>union</code> 里的 <code>op</code> 成员。</li>
+</ul>
+<hr>
+<h4 id="exp"><strong>逻辑分支的处理 (exp)</strong><a class="headerlink" href="#exp" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nl">exp</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">exp</span><span class="w"> </span><span class="n">op</span><span class="w"> </span><span class="n">term</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">$2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'+'</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="sc">'-'</span><span class="p">:</span><span class="w"> </span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">$3</span><span class="p">;</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong><code>$1</code> 和 <code>$3</code></strong>: Yacc 知道它们是 <code>&lt;val&gt;</code> 类型（<code>double</code>）。</li>
+<li><strong><code>$2</code></strong>: Yacc 知道它是 <code>&lt;op&gt;</code> 类型（<code>char</code>）。</li>
+<li>解析器自动处理了类型提取，你可以在 <code>switch</code> 语句中直接把 <code>$2</code> 当作字符来比较。</li>
+</ul>
+<hr>
+<p><strong>非终结符 (Non-terminals)</strong>: 它们的值（如 <code>exp</code> 的结果）完全由用户编写的 <strong>Action Code</strong>（动作代码）决定。</p>
+<p><strong>记号 (Tokens/Terminals)</strong>: 它们的值是在 <strong>Lexer（词法分析器）</strong> 中通过给 <code>yylval</code> 赋值来确定的。</p>
+<p><strong>工具职责</strong>:</p>
+<ul>
+<li>使用 <code>%union</code> 来<strong>定义</strong>所有可能的类型。</li>
+<li>使用 <code>%type</code> 来<strong>关联</strong>每个文法符号的具体类型。</li>
+</ul>
+<hr>
+<h3 id="embedded-actions"><strong>嵌入式动作（Embedded Actions）</strong><a class="headerlink" href="#embedded-actions" title="Permanent link">¶</a></h3>
+<p>在 Yacc 的标准逻辑中，动作代码通常放在规则的<strong>末尾</strong>。这意味着动作只有在整条规则被完全匹配并执行“归约（Reduce）”时才会运行。</p>
+<p>考虑变量声明的文法：</p>
+<ul>
+<li><span class="arithmatex">\(decl \to type \text{ var-list}\)</span></li>
+<li><span class="arithmatex">\(type \to \text{int} \mid \text{float}\)</span></li>
+<li><span class="arithmatex">\(var\text{-}list \to var\text{-}list, id \mid id\)</span></li>
+</ul>
+<p><strong>问题所在：</strong></p>
+<p>当我们解析到 <code>var-list</code> 中的每一个 <code>id</code> 时，我们需要把这个变量存入符号表，并记录它的类型。但是，按照标准的自底向上解析顺序，<code>type</code> 的信息在解析 <code>id</code> 的时候已经“漂”在栈里了，如果动作只在 <code>decl</code> 规则结束时执行，我们就无法在遇到每个 <code>id</code> 的那一刻实时地知道它的类型。</p>
+<p>在解析过程中，有必要在完全识别语法规则之前执行某些代码。</p>
+<p>所谓“嵌入式动作”，就是把花括号 <code>{ ... }</code> 里的 C 代码直接插在产生式中间，而不是末尾。</p>
+<p>那么，如何记录每个 id 的 type？即如何利用 <strong>嵌入式动作（Embedded Actions）</strong> 在变量声明中实时传递类型信息。</p>
+<p>这是 Yacc 编程中非常经典的一个模式。我们将代码分为三个部分来逐步拆解：</p>
+<ol>
+<li>核心逻辑：捕获类型并存储</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nl">decl</span><span class="p">:</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="p">{</span><span class="n">current_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">$1</span><span class="p">;}</span><span class="w"> </span><span class="n">var</span><span class="o">-</span><span class="n">list</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
+<ul>
+<li><strong>执行时机</strong>：当解析器读完 <code>type</code>（即识别出 <code>int</code> 或 <code>float</code>）之后，在处理 <code>var-list</code> 之前，会<strong>立即执行</strong>花括号里的代码。</li>
+<li><strong>作用</strong>：它将 <code>type</code> 返回的语义值（<code>$1</code>）保存到一个全局变量 <code>current_type</code> 中。这就解决了“上下文丢失”的问题。</li>
+</ul>
+<ol start="2">
+<li>基础组件：定义类型值</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nl">type</span><span class="p">:</span><span class="w"> </span><span class="n">INT</span><span class="w"> </span><span class="p">{</span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">INT_TYPE</span><span class="p">;}</span><span class="w"> </span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">FLOAT</span><span class="w"> </span><span class="p">{</span><span class="n">$$</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FLOAT_TYPE</span><span class="p">;}</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
+<ul>
+<li>这里定义了具体的类型。当词法分析器返回 <code>INT</code> 记号时，<code>type</code> 的语义值 <code>$$</code> 会被设置为 <code>INT_TYPE</code>（这通常是一个预定义的常数）。</li>
+<li>这个值随后会被上一层 <code>decl</code> 的 <code>$1</code> 获取，并存入 <code>current_type</code>。</li>
+</ul>
+<ol start="3">
+<li>应用逻辑：为每个 ID 设置类型</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nl">var_list</span><span class="p">:</span><span class="w"> </span><span class="n">var_list</span><span class="w"> </span><span class="sc">','</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="p">{</span><span class="n">setType</span><span class="p">(</span><span class="n">tokenString</span><span class="p">,</span><span class="w"> </span><span class="n">current_type</span><span class="p">);}</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="p">{</span><span class="n">setType</span><span class="p">(</span><span class="n">tokenString</span><span class="p">,</span><span class="w"> </span><span class="n">current_type</span><span class="p">);}</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
+<ul>
+<li>无论变量列表有多长（例如 <code>int a, b, c;</code>），每当解析器识别到一个 <code>ID</code> 时，都会执行 <code>setType</code> 函数。</li>
+<li><strong><code>tokenString</code></strong>：当前变量的名字（如 "a"）。</li>
+<li><strong><code>current_type</code></strong>：它利用了我们在第一步存下的全局变量。</li>
+<li><strong>结果</strong>：通过这种方式，即使 <code>int</code> 关键字只出现一次，后面的 <code>a</code>, <code>b</code>, <code>c</code> 都能被正确地标记为整数类型。</li>
+</ul>
+<ol start="4">
+<li>进阶：嵌入式动作中的伪变量索引</li>
+</ol>
+<p>一个非常容易出错的知识点：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nl">list</span><span class="p">:</span><span class="w"> </span><span class="n">item1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">do_item1</span><span class="p">(</span><span class="n">$1</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">item2</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">do_item2</span><span class="p">(</span><span class="n">$3</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">item3</span>
+</code></pre></div>
+<p><strong>伪变量 <code>$n</code> 的位置计算</strong>：在 Yacc 中，<strong>嵌入式动作本身也占据一个位置</strong>。</p>
+<p>在这条规则中：</p>
+<ul>
+<li><code>$1</code> 指向 <code>item1</code>。</li>
+<li><strong><code>$2</code> 实际上指向第一个花括号里的动作的值</strong>（虽然通常不用）。</li>
+<li><strong><code>$3</code> 指向 <code>item2</code></strong>。</li>
+</ul>
+<p><strong>注意</strong>：如果你想在 <code>do_item2</code> 里引用 <code>item2</code> 的值，你必须用 <code>$3</code> 而不是 <code>$2</code>。这是因为中间那个嵌入式动作把位置“挤”占了一个。</p>
+<hr>
+<h3 id="conflicts"><strong>冲突（Conflicts）</strong><a class="headerlink" href="#conflicts" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>移进-归约冲突 (Shift-Reduce Conflict)</strong>：解析器面临两个选择：是把当前的记号（Token）<strong>移进</strong>栈里（等待更长的匹配），还是根据现有规则把栈里的内容<strong>归约</strong>为一个非终结符？</li>
+<li><strong>归约-归约冲突 (Reduce-Reduce Conflict)</strong>：解析器发现当前内容可以同时匹配两条不同的语法规则。这是非常严重的问题，通常意味着文法逻辑有误。</li>
+</ul>
+<p>Yacc 的默认处理策略：虽然有冲突，但 Yacc 还是会生成解析器，它有一套固定的“生存法则”来强行平息争端：</p>
+<ul>
+<li><strong>遇到 Shift-Reduce 冲突</strong>：默认选择 <strong>Shift（移进）</strong>。</li>
+<li><strong>遇到 Reduce-Reduce 冲突</strong>：默认选择在文法文件中<strong>出现位置更靠前</strong>的那条规则。</li>
+</ul>
+<blockquote>
+<p><strong>警告</strong>：虽然 Yacc 能强行跑起来，但这种默认选择可能不是你想要的逻辑，所以：<strong>应该通过重写文法来消除这些冲突。</strong></p>
+</blockquote>
+<hr>
+<h4 id="else-dangling-else_1">经典案例解析：悬空 Else 问题 (Dangling Else)<a class="headerlink" href="#else-dangling-else_1" title="Permanent link">¶</a></h4>
+<p><strong>场景：</strong> <code>if (a) if (b) s1 else s2</code></p>
+<ul>
+<li>这个 <code>else</code> 应该属于第一个 <code>if</code> 还是第二个 <code>if</code>？</li>
+</ul>
+<p><strong>解析器状态分析（state 17）：</strong></p>
+<ul>
+<li><strong>规则 1 (Reduce 4)</strong>: <code>stm : IF ID THEN stm .</code> （如果到此为止，就完成了一个没有 else 的 if）</li>
+<li><strong>规则 2 (Shift 19)</strong>: <code>stm : IF ID THEN stm . ELSE stm</code> （如果要匹配包含 else 的完整 if）</li>
+</ul>
+<p><strong>冲突点：</strong></p>
+<p>当解析器读到 <code>ELSE</code> 时，它可以选择：</p>
+<ol>
+<li><strong>Reduce</strong>：把 <code>IF ID THEN stm</code> 看作一个整体，把 <code>else</code> 留给外层的 <code>if</code>。</li>
+<li><strong>Shift</strong>：把 <code>else</code> 吞进来，作为当前这个 <code>if</code> 的一部分。</li>
+</ol>
+<p><strong>Yacc 的处理</strong>：它会选择 <strong>Shift</strong>。这正好符合大多数编程语言的习惯——<strong>else 总是与最近的 if 结合</strong>。</p>
+<hr>
+<h3 id="precedence-directives"><strong>优先级指令（Precedence Directives）</strong><a class="headerlink" href="#precedence-directives" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-14.png" data-desc-position="bottom"><img alt="img" src="../assets/3-14.png"></a></p>
+<p>这张图解释了为什么要引入优先级指令。</p>
+<ul>
+<li><strong>左侧文法 (<span class="arithmatex">\(E \to E + E\)</span> 等)</strong>：非常自然，符合人类直觉，但它是<strong>二义性</strong>的。对于 <code>1+2*3</code>，它既可以先算加法也可以先算乘法，这会导致大量的移进-归约冲突。</li>
+<li><strong>右侧文法 (<code>exp</code>, <code>term</code>, <code>factor</code>)</strong>：这是我们之前讨论的分层文法，它虽然没有歧义，但<strong>写起来很繁琐</strong>，层次多了之后很难维护。</li>
+<li><strong>核心问题</strong>：有没有一种方法，既能写左边这种简单的文法，又能强制执行优先级？</li>
+<li><strong>答案</strong>：有，就是 Yacc 的内置优先级指令（Disambiguating rules）。</li>
+</ul>
+<hr>
+<h4 id="shiftreduce">通过 Shift/Reduce 解决歧义<a class="headerlink" href="#shiftreduce" title="Permanent link">¶</a></h4>
+<p>通过设置优先级和结合性，Yacc 能在遇到冲突时自动做出正确的选择：</p>
+<p><strong>优先级 (Precedence)</strong>：</p>
+<ul>
+<li>当遇到 <code>E -&gt; E + E .</code>（准备归约加法）且下一个 Token 是 <code>*</code> 时。</li>
+<li>如果 <code>*</code> 的优先级更高，解析器选择 <strong>Shift</strong>（移进），即保留加法，先去处理乘法。</li>
+</ul>
+<p><strong>结合性 (Associativity)</strong>：</p>
+<ul>
+<li>当遇到 <code>E -&gt; E + E .</code> 且下一个 Token 又是 <code>+</code> 时（如 <code>1+2+3</code>）。</li>
+<li>如果是<strong>左结合</strong>，解析器选择 <strong>Reduce</strong>（归约），即先算出 <code>1+2</code> 的值。</li>
+</ul>
+<p>如果 <code>a != b != c</code> 是不合法的，那么 <code>!=</code> 就是不可结合的（non-associative）。在这种情况下，如果解析器遇到 <code>E -&gt; E != E .</code> 且下一个 Token 又是 <code>!=</code>，它会因为没有明确的优先级和结合性而报错。</p>
+<hr>
+<h4 id="yacc_1">如何在 Yacc 中编写指令<a class="headerlink" href="#yacc_1" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>%nonassoc EQ NEQ 
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>%left PLUS MINUS 
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>%left TIMES DIV 
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>%right EXP
+</code></pre></div>
+<p><strong>指令类型</strong>：</p>
+<ul>
+<li><code>%left</code>：左结合（最常用，如加减乘除）。</li>
+<li><code>%right</code>：右结合（如赋值运算 <code>=</code> 或幂运算 <code>^</code>）。</li>
+<li><code>%nonassoc</code>：不可结合。例如 <code>a &lt; b &lt; c</code> 在某些语言中是非法的，就可以用这个。</li>
+</ul>
+<p><strong>优先级顺序</strong>：</p>
+<ul>
+<li><code>EXP</code> (幂) &gt; <code>TIMES/DIV</code> (乘除) &gt; <code>PLUS/MINUS</code> (加减) &gt; <code>EQ/NEQ</code> (等于/不等)。</li>
+</ul>
+<hr>
+<h4 id="_30">解析器冲突解决算法<a class="headerlink" href="#_30" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>比较优先级</strong>：如果 Token 的优先级高于当前规则，则 Shift；反之则 Reduce。</li>
+<li><strong>优先级相等时看结合性</strong>：</li>
+</ol>
+<ul>
+<li><code>%left</code>：倾向于 <strong>Reduce</strong>（先算左边的）。</li>
+<li><code>%right</code>：倾向于 <strong>Shift</strong>（先算右边的）。</li>
+</ul>
+<ol start="3">
+<li><strong>规则的优先级定义</strong>：一条规则的优先级，默认由它最右边的<strong>终结符</strong>决定。</li>
+</ol>
+<hr>
+<h4 id="prec">一元运算符与 <code>%prec</code><a class="headerlink" href="#prec" title="Permanent link">¶</a></h4>
+<p>处理<strong>一元负号</strong>（如 <code>-6 * 8</code>）。</p>
+<p><strong>挑战</strong>：减号 <code>-</code> 有两个身份。作为减法优先级低，作为负号优先级必须比乘法还高。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>%{ // declarations of yylex and yyerror 
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>%} 
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>%token INT PLUS MINUS TIMES UMINUS 
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>%start exp 
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>%left PLUS MINUS 
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>%left TIMES 
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>%left UMINUS 
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>%% 
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>exp : INT
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>| exp PLUS exp 
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>| exp MINUS exp
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>| exp TIMES exp
+<a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a>| MINUS exp %prec UMINUS 
+</code></pre></div>
+<p><strong>解决方案</strong>：</p>
+<ol>
+<li>声明一个虚拟 Token：<code>%token UMINUS</code>。</li>
+<li>把它放在优先级声明的最高位（图中 <code>%left UMINUS</code> 在 <code>TIMES</code> 之后）。</li>
+<li><strong><code>%prec</code> 指令</strong>：在规则 <code>| MINUS exp %prec UMINUS</code> 中，强制将这条规则的优先级“伪装”成 <code>UMINUS</code> 的级别，而不是普通的 <code>MINUS</code>。</li>
+</ol>
+<blockquote>
+<p>有了 %prec UMINUS：规则 exp : MINUS exp 的优先级 = UMINUS 的优先级。</p>
+<p>%prec 就像是一个优先级修改插件。</p>
+</blockquote>
+<p><strong>效果</strong>：这样 <code>-6 * 8</code> 就会被正确解析为 <code>(-6) * 8</code> 而不是 <code>-(6 * 8)</code>。</p>
+<hr>
+<h3 id="yacc-syntax-vs-semantics">Yacc: Syntax v.s. Semantics<a class="headerlink" href="#yacc-syntax-vs-semantics" title="Permanent link">¶</a></h3>
+<p>简单来说，<strong>语法</strong>关乎“句子结构是否正确”，而<strong>语义</strong>关乎“这个句子是否有意义”（比如类型是否匹配）。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>%{ //declarations of yylex and yyerror 
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>%} 
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>%token ID ASSIGN PLUS MINUS AND EQUAL 
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>%start stm 
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>%left OR 
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>%left AND 
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>%left PLUS 
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>%%
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>stm : ID ASSIGN ae
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>| ID ASSIGN be
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>be : be OR be
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>| be AND be
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>| ae EQUAL ae
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>| ID 
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>ae : ae PLUS ae
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>| ID 
+</code></pre></div>
+<p>这里展示了一个常见的尝试：程序员想在 Yacc 文法中直接区分<strong>算术表达式（ae）</strong>和<strong>布尔表达式（be）</strong>。</p>
+<ol>
+<li>文法设计意图：</li>
+</ol>
+<ul>
+<li><strong><code>ae</code> (Arithmetic Expression)</strong>：处理加法 <code>ae PLUS ae</code> 和数字/变量。</li>
+<li><strong><code>be</code> (Boolean Expression)</strong>：处理逻辑运算 <code>OR</code>, <code>AND</code> 以及比较运算 <code>ae EQUAL ae</code>。</li>
+</ul>
+<p><strong>设计目标</strong>：</p>
+<ul>
+<li>算术运算符（如 <code>+</code>）比布尔运算符（如 <code>AND</code>）结合更紧。</li>
+<li><strong>禁止混合运算</strong>：你不应该能写出 <code>5 + (a &gt; b)</code>，因为布尔值不能加数字。</li>
+</ul>
+<ol start="2">
+<li>隐藏的危机：</li>
+</ol>
+<p>文法中定义了：</p>
+<ul>
+<li><code>be : ID</code></li>
+<li><code>ae : ID</code></li>
+</ul>
+<p>这就是问题的根源。当解析器看到一个 <code>ID</code>（变量名）时，它<strong>根本无法通过语法</strong>判断这个变量到底是布尔型的还是数值型的。</p>
+<p><strong>不要试图在语法分析（Parsing）阶段解决所有问题，应该推迟到语义分析（Semantic Phase）阶段。</strong></p>
+<p><strong>策略调整</strong>：</p>
+<ul>
+<li><strong>语法上放宽限制</strong>：写一个通用的表达式文法 <code>E -&gt; E + E | E &amp; E | id</code>。这个文法允许 <code>a + 5 &amp; b</code> 这种在结构上合法的表达式。</li>
+<li><strong>语义上严加检查</strong>：在解析树构建好之后，再去检查类型。如果发现 <code>+</code> 号两边一个是数字一个是布尔值，再报错。</li>
+</ul>
+<p>为什么这样做更好？</p>
+<ol>
+<li><strong>消除冲突</strong>：通用的 <code>E</code> 文法不会产生刚才那种 <code>ae/be</code> 的归约冲突。</li>
+<li><strong>错误提示更友好</strong>：解析器报错通常只能说 "Syntax Error"，而语义分析阶段可以明确告诉用户 "Type mismatch: cannot add a boolean to an integer"。</li>
+</ol>
+<hr>
+<h2 id="error-recovery_1"><strong>错误恢复（Error Recovery）</strong><a class="headerlink" href="#error-recovery_1" title="Permanent link">¶</a></h2>
+<p>当编译器在你的代码中发现一个语法错误时，它有两种选择：要么立即停止工作（这会让开发者很痛苦，因为你得改一个错、编译一次，再改下一个），要么尝试“跳过”或“修复”这个错误，继续寻找后面的错误。</p>
+<blockquote>
+<p><strong>"Developers would like to have all the errors in the program reported, not just the first error."</strong></p>
+</blockquote>
+<ul>
+<li><strong>效率</strong>：一次性报出所有错误，能让开发者在一次修改循环中搞定所有问题。</li>
+<li><strong>用户体验</strong>：优秀的编译器（如现代的 GCC 或 Clang）能像医生一样，虽然发现你有病，但还是坚持帮你做完整个全身检查。</li>
+</ul>
+<p>错误恢复技术（Techniques）</p>
+<p><strong>A. 局部错误恢复 (Local Error Recovery)</strong></p>
+<p>这是最常用的策略，也是 Yacc/Bison 默认采用的思路。</p>
+<ul>
+<li><strong>原理</strong>：当解析器在某个位置遇到错误时，它会局部地调整状态。</li>
+<li><strong>常见做法（恐慌模式 Panic Mode）</strong>：</li>
+</ul>
+<ol>
+<li><strong>跳过 Token</strong>：不断抛弃输入中的记号，直到遇到一个“同步记号”（Synchronizing Token），比如分号 <code>;</code> 或右花括号 <code>}</code>。</li>
+<li><strong>插入 Token</strong>：假装输入中多了一个缺失的符号（例如自动补全一个丢失的右括号）。</li>
+</ol>
+<ul>
+<li><strong>特点</strong>：实现简单，但可能会引发“连锁反应”（由于跳过了关键符号，导致后面原本正确的代码也报出假错误）。</li>
+</ul>
+<p><strong>B. 全球错误修复 (Global Error Repair)</strong></p>
+<p>这是一个理论上更完美但代价更高昂的方案。</p>
+<ul>
+<li><strong>原理</strong>：将错误的源程序转换成一个最接近它的、语法正确的程序。</li>
+<li><strong>实现</strong>：通常使用算法计算“最小编辑距离”（Minimum Edit Distance）。它会考虑插入、删除或替换哪些符号能用最少的改动让程序变合法。</li>
+<li><strong>特点</strong>：由于计算量巨大（对于长程序来说，搜索空间呈爆炸式增长），这种方法在实际的工业级编译器中较少完整使用，更多作为理论参考。</li>
+</ul>
+<hr>
+<h3 id="local-error-recovery"><strong>局部错误恢复（Local Error Recovery）</strong><a class="headerlink" href="#local-error-recovery" title="Permanent link">¶</a></h3>
+<p><strong>核心逻辑</strong>：通过<strong>调整解析栈</strong>和<strong>输入流</strong>，在检测到错误的位置寻找一个可以“重启”解析的状态。</p>
+<p><strong>Yacc 的特殊 Token: <code>error</code></strong>：</p>
+<ul>
+<li>你可以手动在文法中加入 <code>error</code> 这个符号。</li>
+<li>示例规则：<code>exp -&gt; ( error )</code>。这意味着如果在括号中间发生了语法错误，解析器可以匹配这条规则，假装括号里是一个合法的表达式，从而继续解析括号外的内容。</li>
+</ul>
+<p><strong>同步记号 (Synchronizing Tokens)</strong>：如分号 <code>;</code> 或右括号 <code>)</code>。它们是解析器用来“重新找回节奏”的锚点。</p>
+<p><code>error</code> 在解析器眼里是什么？</p>
+<ul>
+<li><strong><code>error</code> 是一个终结符 (Terminal Symbol)</strong>。</li>
+<li>解析器生成器（如 Yacc）会像对待普通记号（如 <code>NUMBER</code>）一样，在分析表中为 <code>error</code> 生成 <strong>Shift</strong> 动作。</li>
+<li>这意味着错误恢复本质上是<strong>将解析过程切换到一条包含 <code>error</code> 符号的备用路径上</strong>。</li>
+</ul>
+<hr>
+<h4 id="step-by-step">实例演算 (Step-by-Step)<a class="headerlink" href="#step-by-step" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-15.png" data-desc-position="bottom"><img alt="img" src="../assets/3-15.png"></a></p>
+<ol>
+<li><strong>正常解析阶段</strong>：</li>
+</ol>
+<ul>
+<li>移进 <code>(</code>，移进 <code>ID</code>。</li>
+<li>将 <code>ID</code> 归约为 <code>exp</code>。此时栈内为 <code>( exp</code>。</li>
+</ul>
+<ol start="2">
+<li><strong>触发错误</strong>：</li>
+</ol>
+<ul>
+<li>下一个输入是 <code>+</code>。但文法规则中 <code>exp</code> 后面只能接 <code>+ exp</code> 或者 <code>)</code>。</li>
+<li>解析器发现没有合法动作，报错 <code>error</code>。</li>
+</ul>
+<ol start="3">
+<li><strong>恢复过程 (核心逻辑)</strong>：</li>
+</ol>
+<ul>
+<li><strong>Pop Stack (出栈)</strong>：解析器开始弹出栈顶元素，寻找一个能处理 <code>error</code> 记号的状态。</li>
+<li>它弹出了 <code>exp</code>，回到了刚读完 <code>(</code> 的状态。</li>
+<li>在 <code>exp -&gt; ( exps )</code> 规则中，它发现可以匹配 <code>exp -&gt; ( error )</code>。</li>
+<li><strong>Shift error</strong>：将 <code>error</code> 压入栈。</li>
+</ul>
+<ol start="4">
+<li><strong>同步输入</strong>：</li>
+</ol>
+<ul>
+<li><strong>Discard Input (丢弃输入)</strong>：解析器跳过不匹配的 <code>+</code> 和下一个 <code>+</code>，直到遇到 <code>)</code>。</li>
+<li>匹配到 <code>)</code>，完成 <code>( error )</code> 的归约。解析成功重启。</li>
+</ul>
+<hr>
+<h4 id="lr">LR 解析器的恢复四部曲<a class="headerlink" href="#lr" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>退栈 (Pop)</strong>：弹出栈顶，直到当前状态有针对 <code>error</code> 的 <strong>Shift</strong> 动作。</li>
+<li><strong>移进 (Shift)</strong>：将 <code>error</code> 记号压入栈。</li>
+<li><strong>跳过输入 (Discard)</strong>：丢弃当前的输入符号，直到遇到一个在当前状态下有<strong>合法动作</strong>（非 error 动作）的符号。</li>
+<li><strong>恢复 (Resume)</strong>：恢复正常的解析流程。</li>
+</ol>
+<hr>
+<h4 id="_31"><strong>语义动作的副作用</strong><a class="headerlink" href="#_31" title="Permanent link">¶</a></h4>
+<p>假设你在解析左括号时执行了 <code>nest = nest + 1</code>，解析右括号时执行 <code>nest = nest - 1</code>。</p>
+<p><strong>问题所在</strong>：</p>
+<ul>
+<li>如果在括号中间发生了错误，解析器会直接 <strong>Pop Stack</strong>。</li>
+<li><strong>退栈是物理操作，它不会自动撤销你之前执行的 C 代码！</strong></li>
+<li>这意味着 <code>nest + 1</code> 执行了，但由于右括号被跳过或出栈，<code>nest - 1</code> <strong>永远不会被执行</strong>。</li>
+<li><strong>结果</strong>：错误恢复后，你的全局变量 <code>nest</code> 的值变乱了，导致后续逻辑连锁崩溃。</li>
+</ul>
+<p><strong>解决方案</strong>：尽量编写 <strong>Side-effect-free (无副作用)</strong> 的语义动作，或者在错误处理规则中手动编写补偿代码。</p>
+<hr>
+<h3 id="global-error-repair"><strong>全局错误修复（Global Error Repair）</strong><a class="headerlink" href="#global-error-repair" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-16.png" data-desc-position="bottom"><img alt="img" src="../assets/3-16.png"></a></p>
+<p>方框定义了两类规则：</p>
+<ul>
+<li><strong><code>tydec</code> (类型声明)</strong>：格式为 <code>type 类型名 = 类型定义</code>。注意中间用的是 <strong><code>=</code></strong>。</li>
+<li><strong><code>vardec</code> (变量声明)</strong>：格式为 <code>var 变量名 := 初始值</code>。注意中间用的是 <strong><code>:=</code></strong>。</li>
+</ul>
+<p>看中间这行代码：</p>
+<p><code>let type a := intArray [ 10 ] of 0 in ...</code></p>
+<p>用户写了关键字 <code>type</code>（表示我要定义一个类型），但后面却用了变量赋值号 <code>:=</code>。</p>
+<ul>
+<li>如果它是类型声明，应该用 <code>=</code>。</li>
+<li>如果它是变量声明，应该以 <code>var</code> 开头。</li>
+</ul>
+<p>这种“张冠李戴”会让解析器非常困惑。</p>
+<p>局部错误恢复（Local Recovery）的表现:</p>
+<p>局部恢复通常在发现错误的那一点（即看到 <code>:=</code> 时）才开始“恐慌”：</p>
+<p><strong>策略一（删除）</strong>：它可能会把从 <code>type</code> 到 <code>0</code> 之间的所有内容全部删掉，假装这里发生了一个 <code>error</code>，然后寻找下一个同步记号 <code>in</code>。</p>
+<ul>
+<li><em>结果</em>：虽然跳过了错误，但这一整行有用的信息都丢失了。</li>
+</ul>
+<p><strong>策略二（简单替换）</strong>：尝试把 <code>:=</code> 换成 <code>=</code>。</p>
+<ul>
+<li><em>结果</em>：换完之后，解析器继续往后读，发现后面跟着 <code>intArray [ 10 ]</code>（这是数组创建，通常用于变量初始化），在类型定义 <code>ty</code> 的文法里依然是不合法的。于是刚恢复解析，马上又遇到了第二个语法错误。</li>
+</ul>
+<hr>
+<p>全局错误修复（Global Repair）的优势</p>
+<p><strong>核心定义</strong>：寻找<strong>最小的插入和删除集合（Smallest set of insertions and deletions）</strong>，将错误的字符串转变为合法的字符串。</p>
+<p><strong>它是如何思考的？</strong></p>
+<p>全局修复不会死盯着 <code>:=</code> 不放，它会通盘考虑整行代码。它可能会发现：</p>
+<blockquote>
+<p>“噢！用户其实是想写一个变量声明，只是不小心把开头的 <code>var</code> 写成了 <code>type</code>。”</p>
+</blockquote>
+<p><strong>超越解析器限制</strong>：全局修复甚至能在 <strong>LL 或 LR 解析器报错之前</strong>（即在解析器意识到有问题之前）就定位到更好的修改点。</p>
+<ul>
+<li>在上面的例子中，它可能会建议把开头的 <code>type</code> 改成 <code>var</code>。这样整行代码就完美合法了，且保留了所有语义信息。</li>
+</ul>
+<hr>
+<h3 id="burke-fisher"><strong>Burke-Fisher 错误修复</strong><a class="headerlink" href="#burke-fisher" title="Permanent link">¶</a></h3>
+<p>它属于“全局修复”思想的一种简化实现。它的核心逻辑是：<strong>“如果我现在发现错了，可能早在几个词之前就已经埋下了祸根。让我回退几步，试着修改一下过去，看看能不能改变未来。”</strong></p>
+<p><strong>核心动作</strong>：在报错点之前的 <strong><span class="arithmatex">\(K\)</span> 个 Token</strong> 范围内，尝试所有的单 Token <strong>插入、删除或替换</strong>。</p>
+<p><strong>如何评价“修复成功”？</strong></p>
+<ul>
+<li>解析器会尝试用修改后的序列重新运行。</li>
+<li>如果某种修改能让解析器在原报错点之后<strong>推行得最远</strong>，那它就是最佳修复方案。</li>
+<li><strong>“足够好”标准</strong>：通常如果修复后能让解析器多走 <span class="arithmatex">\(R = 4\)</span> 个 Token 而不再报错，我们就认为修复成功。</li>
+</ul>
+<p><strong>代价</strong>：解析引擎必须具备“回滚（Back up）” <span class="arithmatex">\(K\)</span> 个 Token 并重新解析的能力。</p>
+<hr>
+<h4 id="_32">双栈与队列（数据结构实现）<a class="headerlink" href="#_32" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-17.png" data-desc-position="bottom"><img alt="img" src="../assets/3-17.png"></a></p>
+<p>为了实现这种“回滚”，Burke-Fisher 引入了一套巧妙的结构：</p>
+<ol>
+<li><strong>Current Stack（当前栈）</strong>：解析器实时工作的栈，遇到新 Token 就正常处理。</li>
+<li><strong>Old Stack（旧栈）</strong>：这是一个<strong>落后 <span class="arithmatex">\(K\)</span> 个步骤</strong>的解析快照。</li>
+<li><strong>K-token Queue（长度为 K 的队列）</strong>：记录了从“旧状态”到“当前状态”之间经过的所有 Token。图中展示的是一个 <strong>6-token queue</strong>。</li>
+</ol>
+<p><strong>工作流程</strong>：</p>
+<ul>
+<li>每当解析器移进（Shift）一个新 Token：</li>
+</ul>
+<ol>
+<li>压入 <strong>Current Stack</strong>。</li>
+<li>放入 <strong>Queue</strong> 的末尾。</li>
+<li><strong>Queue</strong> 头部弹出一个 Token，并移进到 <strong>Old Stack</strong> 中。</li>
+</ol>
+<ul>
+<li>这样，<strong>Old Stack 始终保存着 <span class="arithmatex">\(K\)</span> 个 Token 之前的解析现场</strong>。</li>
+</ul>
+<p>当解析器在 <code>current token</code> 发现语法错误时，Burke-Fisher 开始大显身手：</p>
+<ol>
+<li><strong>穷举修改</strong>：它会对队列（Queue）中的每一个位置尝试修改（插入、删除或替换一个 Token）。</li>
+<li><strong>模拟解析</strong>：对于每一种修改方案，解析器都会<strong>从 Old Stack 出发</strong>，配合修改后的队列内容进行重新解析。</li>
+<li><strong>成功判定</strong>：如果模拟解析能顺利越过原报错点，并且能继续往后解析 3 到 4 个 Token，解析器就会正式采纳这个修改，并向用户报告一个建议（例如：“你是不是在第 X 行漏掉了一个分号？”）。</li>
+</ol>
+<hr>
+<h4 id="_33">最大的优点：文法零修改<a class="headerlink" href="#_33" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>对比</strong>：传统的 Yacc 恢复需要你手动在文法里塞满 <code>error</code> 产生式，这会让文法变得臃肿且难以维护。</li>
+<li><strong>Burke-Fisher</strong>：<strong>完全不需要修改文法</strong>。它只修改了解析引擎本身。解析器在报错时自动回退并尝试修改 Token 序列。</li>
+</ul>
+<hr>
+<h4 id="semantic-actions">如何处理“副作用”（Semantic Actions）<a class="headerlink" href="#semantic-actions" title="Permanent link">¶</a></h4>
+<p>Burke-Fisher 频繁回退和重新解析，如果每次归约都执行 <code>{nest++}</code>，全局变量岂不是乱套了？</p>
+<p><strong>解决方案</strong>：<strong>延迟执行</strong>。</p>
+<ul>
+<li>解析器维护两个栈：<strong>Current Stack</strong>（领先的、用于试错）和 <strong>Old Stack</strong>（落后的、确定的）。</li>
+<li><strong>Current Stack 只做“物理归约”</strong>：它会为了验证修复方案而不断进行 Shift 和 Reduce，但<strong>绝对不执行</strong>任何花括号里的 C 代码动作。</li>
+<li>
+<p><strong>Old Stack 执行“永久归约”</strong>：只有当一个 Token 序列被确认正确（或者修复成功），并从队列头部移进到 Old Stack 时，相关的语义动作才会被执行。</p>
+</li>
+<li>
+<p><strong>结果</strong>：这完美解决了副作用问题。因为 Old Stack 永远不会回退，它走过的每一步都是“确定”的，所以 <code>nest++</code> 和 <code>nest--</code> 永远是成对平衡的。</p>
+</li>
+</ul>
+<hr>
+<h4 id="_34">插入符号的语义值来源<a class="headerlink" href="#_34" title="Permanent link">¶</a></h4>
+<p>Burke-Fisher 的修复手段包括<strong>插入（Insertion）</strong>。例如，如果发现你漏了一个变量名或数字，它会帮你“变”一个出来。</p>
+<p>如果解析器决定插入一个 <code>INT</code>（整数），那么这个 <code>INT</code> 的语义值（<code>yylval</code>）应该是多少？如果没有值，后续的计算（如 <code>$1 + $3</code>）就会因为引用了空指针或野数值而导致编译器崩溃。</p>
+<p>解决方案：<code>%value</code> 指令</p>
+<p>ML-Yacc（以及其他高级解析器生成器）提供了专门的指令来定义这些“备胎值”：</p>
+<ul>
+<li><strong><code>%value ID ("bogus")</code></strong>：如果需要插入一个标识符，默认名字叫 "bogus"（伪造的）。</li>
+<li><strong><code>%value INT (1)</code></strong>：如果缺个数字，默认补个 1。</li>
+<li><strong><code>%value STRING ("")</code></strong>：如果缺个字符串，默认补个空串。</li>
+</ul>
+<p><strong>为什么要这么做？</strong>这样做的目的不是为了算出正确的结果（毕竟代码已经错了），而是为了让解析器能<strong>顺利跑完语义检查</strong>。只要编译器不崩溃，它就能继续往后找更多的语法错误。</p>
+<hr>
+<h3 id="change">人工干预：%change 指令<a class="headerlink" href="#change" title="Permanent link">¶</a></h3>
+<p>即使有了 Burke-Fisher 这种自动修复技术，解析器有时还是会“猜错”。程序员可以利用 <code>%change</code> 指令提供人工干预。</p>
+<p><strong>核心功能</strong>：预定义一些常见的输入错误，并告诉解析器：“如果你看到左边的序列，优先把它换成右边的，再试试看。”</p>
+<p><strong>常见示例解析</strong>：</p>
+<ul>
+<li><code>%change EQ -&gt; ASSIGN</code>：如果用户在需要赋值的地方写了 <code>==</code>，尝试换成 <code>:=</code>。</li>
+<li><code>%change ASSIGN -&gt; EQ</code>：反之亦然。</li>
+<li><code>| -&gt; IN INT END</code>：这是一种<strong>插入建议</strong>。如果在某些结构中解析失败，尝试自动补全一个“作用域结束符”（Scope closer）。如果用户忘了写 <code>end</code>，解析器可以根据 <code>%change</code> 规则自动补上，从而关闭当前作用域。</li>
+</ul>
+<hr>
+<h4 id="stack-trace">错误恢复的实战跟踪 (Stack Trace)<a class="headerlink" href="#stack-trace" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-18.png" data-desc-position="bottom"><img alt="img" src="../assets/3-18.png"></a></p>
+<p>这张图通过处理输入 <code>(a++;b)$</code> 详细展示了栈（Stack）的变化。请注意，输入中 <code>++</code> 是一个明显的语法错误。</p>
+<ol>
+<li><strong>错误发生</strong>：当栈内为 <code>1463, (e+</code> 时，输入遇到了第二个 <code>+</code>。根据文法，加号后面不能直接跟加号，于是触发 <strong>action: error</strong>。</li>
+<li><strong>寻找恢复点（s12）</strong>：解析器开始<strong>退栈（Pop）</strong>。它丢弃了 <code>3</code> (即对应的 <code>+</code>) 和 <code>6</code> (即对应的 <code>e</code>)，回到了状态 <code>4</code>（刚读完左括号的状态）。</li>
+<li><strong>移进 error</strong>：状态 <code>4</code> 下遇到 <code>error</code> 符号，执行 <strong>s12</strong>，将 <code>error</code> 压入栈。</li>
+<li><strong>同步输入（discard）</strong>：解析器跳过输入中的 <code>+</code>，直到遇到 <code>;</code>。</li>
+<li><strong>重启解析</strong>：</li>
+</ol>
+<ul>
+<li>在状态 <code>12</code> 遇到 <code>;</code>，执行 <strong>s10</strong>，将 <code>;</code> 压栈。</li>
+<li>随后正常处理 <code>b</code> 和 <code>)</code>。</li>
+</ul>
+<ol start="6">
+<li><strong>最终归约</strong>：最后将 <code>(error; b)</code> 成功归约为 <code>exp</code>。</li>
+</ol>
+<hr>
+<h4 id="dfa">底层的 DFA 状态机视图<a class="headerlink" href="#dfa" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../assets/3-19.png" data-desc-position="bottom"><img alt="img" src="../assets/3-19.png"></a></p>
+<p>展示了各个状态（State）是如何通过 Token 转换的。<strong>蓝色部分</strong>是专门处理 <code>error</code> 的路径。</p>
+<p><strong>状态 4（核心调度点）</strong>：</p>
+<ul>
+<li>如果一切正常，它走 <code>exp</code> 路径。</li>
+<li>如果发生错误，它有一条 <strong>蓝色线条</strong> 指向 <strong>状态 12</strong>（标记为 <code>error</code>）。</li>
+</ul>
+<p><strong>状态 12（恢复状态）</strong>：</p>
+<ul>
+<li>它在等待两个救命稻草：一个是 <code>)</code>（直接走向状态 14 完成归约），另一个是 <code>;</code>（走向状态 10 开启列表解析）。</li>
+</ul>
+<p><strong>意义</strong>：这张图展示了 <code>error</code> 在文法中并不是虚无的，它在编译器的有限自动机里占据了真实的物理状态。当错误发生时，解析器就像在迷宫里“瞬移”到了蓝色的应急通道上。</p>
+<hr>
 
 
 
@@ -10382,7 +12262,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年3月31日 20:30:20 CST">2026年3月31日 20:30:20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年4月9日 14:30:45 CST">2026年4月9日 14:30:45</span>
   </span>
 
     
