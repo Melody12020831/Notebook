@@ -248,11 +248,15 @@ nav:
       - Computer_Science/CP/Chapter3.md
       - Computer_Science/CP/Chapter4.md
       - Computer_Science/CP/Chapter5.md
+      - Computer_Science/CP/Chapter6.md
+      - Computer_Science/CP/Chapter7.md
       - "Homework":
           - Computer_Science/CP/HW/HW1.md
           - Computer_Science/CP/HW/HW2.md
           - Computer_Science/CP/HW/HW3.md
           - Computer_Science/CP/HW/HW4.md
+          - Computer_Science/CP/HW/HW5.md
+          - Computer_Science/CP/HW/HW6.md
     - "SE":
       - Computer_Science/SE/index.md
       - Computer_Science/SE/Chapter1.md
@@ -268,6 +272,17 @@ nav:
       - Computer_Science/SE/Chapter12.md
       - Computer_Science/SE/Chapter13.md
       - Computer_Science/SE/Chapter14.md
+      - Computer_Science/SE/Chapter15.md
+      - Computer_Science/SE/Chapter16.md
+      - Computer_Science/SE/Chapter17.md
+      - Computer_Science/SE/Chapter18.md
+      - Computer_Science/SE/Chapter20.md
+      - Computer_Science/SE/Chapter21.md
+      - Computer_Science/SE/Chapter22.md
+      - Computer_Science/SE/Chapter23.md
+      - Computer_Science/SE/Chapter24.md
+      - Computer_Science/SE/Chapter25.md
+      - Computer_Science/SE/Chapter26.md
       - Computer_Science/SE/Chapter31.md
     - "AI":
       - Computer_Science/AI/index.md
