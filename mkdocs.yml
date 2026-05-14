@@ -250,6 +250,8 @@ nav:
       - Computer_Science/CP/Chapter5.md
       - Computer_Science/CP/Chapter6.md
       - Computer_Science/CP/Chapter7.md
+      - Computer_Science/CP/Chapter8.md
+      - Computer_Science/CP/Chapter9.md
       - "Homework":
           - Computer_Science/CP/HW/HW1.md
           - Computer_Science/CP/HW/HW2.md
@@ -257,6 +259,9 @@ nav:
           - Computer_Science/CP/HW/HW4.md
           - Computer_Science/CP/HW/HW5.md
           - Computer_Science/CP/HW/HW6.md
+          - Computer_Science/CP/HW/HW7.md
+          - Computer_Science/CP/HW/HW8.md
+          - Computer_Science/CP/HW/HW9.md
     - "SE":
       - Computer_Science/SE/index.md
       - Computer_Science/SE/Chapter1.md
@@ -283,7 +288,17 @@ nav:
       - Computer_Science/SE/Chapter24.md
       - Computer_Science/SE/Chapter25.md
       - Computer_Science/SE/Chapter26.md
+      - Computer_Science/SE/Chapter27.md
+      - Computer_Science/SE/Chapter28.md
+      - Computer_Science/SE/Chapter29.md
+      - Computer_Science/SE/Chapter30.md
       - Computer_Science/SE/Chapter31.md
+      - Computer_Science/SE/Chapter32.md
+      - Computer_Science/SE/Chapter33.md
+      - Computer_Science/SE/Chapter34.md
+      - Computer_Science/SE/Chapter35.md
+      - Computer_Science/SE/Chapter36.md
+      - Computer_Science/SE/敏捷开发2.0.md
     - "AI":
       - Computer_Science/AI/index.md
     - "Visualization":
