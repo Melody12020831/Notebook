@@ -253,6 +253,7 @@ nav:
       - Computer_Science/CP/Chapter8.md
       - Computer_Science/CP/Chapter9.md
       - Computer_Science/CP/Chapter10.md
+      - Computer_Science/CP/Chapter11.md
       - "Homework":
           - Computer_Science/CP/HW/HW1.md
           - Computer_Science/CP/HW/HW2.md
@@ -263,6 +264,8 @@ nav:
           - Computer_Science/CP/HW/HW7.md
           - Computer_Science/CP/HW/HW8.md
           - Computer_Science/CP/HW/HW9.md
+          - Computer_Science/CP/HW/HW10.md
+          - Computer_Science/CP/HW/HW11.md
     - "SE":
       - Computer_Science/SE/index.md
       - Computer_Science/SE/Chapter1.md
@@ -300,6 +303,7 @@ nav:
       - Computer_Science/SE/Chapter35.md
       - Computer_Science/SE/Chapter36.md
       - Computer_Science/SE/敏捷开发2.0.md
+      - Computer_Science/SE/大模型驱动需求与设计.md
     - "AI":
       - Computer_Science/AI/index.md
     - "Visualization":
