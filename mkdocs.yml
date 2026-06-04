@@ -109,7 +109,7 @@ extra_css:
     - css/sidebar.css
 
 extra_javascript:
-    - https://polyfill.io/v3/polyfill.min.js?features=es6
+    # - https://polyfill.io/v3/polyfill.min.js?features=es6
     - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
     - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     - https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
@@ -254,6 +254,8 @@ nav:
       - Computer_Science/CP/Chapter9.md
       - Computer_Science/CP/Chapter10.md
       - Computer_Science/CP/Chapter11.md
+      - Computer_Science/CP/Chapter13.md
+      - Computer_Science/CP/Chapter14.md
       - "Homework":
           - Computer_Science/CP/HW/HW1.md
           - Computer_Science/CP/HW/HW2.md
@@ -266,6 +268,7 @@ nav:
           - Computer_Science/CP/HW/HW9.md
           - Computer_Science/CP/HW/HW10.md
           - Computer_Science/CP/HW/HW11.md
+          - Computer_Science/CP/HW/HW13.md
     - "SE":
       - Computer_Science/SE/index.md
       - Computer_Science/SE/Chapter1.md
@@ -304,6 +307,8 @@ nav:
       - Computer_Science/SE/Chapter36.md
       - Computer_Science/SE/敏捷开发2.0.md
       - Computer_Science/SE/大模型驱动需求与设计.md
+      - Computer_Science/SE/大模型驱动编码与评审.md
+      - Computer_Science/SE/大模型驱动赋能测试.md
     - "AI":
       - Computer_Science/AI/index.md
     - "Visualization":
