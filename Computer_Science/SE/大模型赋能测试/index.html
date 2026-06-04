@@ -1,0 +1,9042 @@
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="央央的笔记本">
+      
+      
+      
+        <link rel="canonical" href="https://melody12020831.github.io/Notebook/Computer_Science/SE/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%B5%8B%E8%83%BD%E6%B5%8B%E8%AF%95/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/icon.jpg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>大模型赋能测试 - 央央's Notebook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=LXGW+WenKai+Screen+GB+Screen:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"LXGW WenKai Screen GB Screen";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/card.css">
+    
+      <link rel="stylesheet" href="../../../css/tasklist.css">
+    
+      <link rel="stylesheet" href="../../../css/flink.css">
+    
+      <link rel="stylesheet" href="../../../css/more_changelog.css">
+    
+      <link rel="stylesheet" href="../../../css/neoteroi-mkdocs.css">
+    
+      <link rel="stylesheet" href="../../../css/fold_toc.css">
+    
+      <link rel="stylesheet" href="../../../css/sidebar.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-002T22X4FB"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-002T22X4FB",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-002T22X4FB",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="央央's Notebook" class="md-header__button md-logo" aria-label="央央's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            央央's Notebook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              大模型赋能测试
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="light-blue" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Melody12020831/Notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Melody
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Computer Science
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Math/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Math
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Miscellaneous/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Misccelleanous
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="央央's Notebook" class="md-nav__button md-logo" aria-label="央央's Notebook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"></path></svg>
+
+    </a>
+    央央's Notebook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Melody12020831/Notebook/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Melody
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Science
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Science
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ADS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ADS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/Homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ADS/organisedproblems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Organisedproblems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CO/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CO
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%205/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    chapter 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/Chapter%206/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/COhomework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CO homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CO/PPT_download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../DB/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DB
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 | Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | Introduction to the Relational Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | Introduction to SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Intermediate SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | Advanced SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | Entity-Relationship Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Relational Database Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 | Complex Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 | Physical Storage Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13 | Data Storage Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14 | Indexing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15 | Query Processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16 | Query Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 17 | Transactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 18 | Concurrency Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/Chapter19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 19 | Recovery System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DB/sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OOP/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OOP
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OOP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 | introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | A tour of cpp
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | STL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Memory Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | Class
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | Ctor/Dtor &amp;&amp; Composition &amp; Inheritance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Polymorphism
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 | Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9 | Copy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10 | Operator Overloading &amp;&amp; Streams
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11 | templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 | Iterators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13 | Exceptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14 | Smart Pointers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/Chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15 | Miscellaneous Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/test_from_wk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WK's 课前小测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OOP/105_STL_Algorithmsin_Less_Than_an_Hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    105 STL Algorithmsin Less Than an Hour
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CA/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CA
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch1 | Fundamentals of Computer Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ch2 | Memory Hierarchy Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/homework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CA/CA_review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CA review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../TOC/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TOC
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TOC
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | Simple Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | Context-free Language and Pushdown Automata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Turing Machine
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TOC/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | Undecidability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../OS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 | Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | Operating-System Structures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | Processes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Threads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | CPU Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | Process Synchronization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Deadlocks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 | Main Memory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9 | Virtual Memory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10 | File-System Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11 | File System Implementation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 | Mass-Storage Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OS/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13 | I/O Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CN/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CN
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CN
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 | 概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | 物理层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | 数据链路层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | 网络层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | 运输层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | 应用层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | 网络安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CN/quiz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    quiz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../CP/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CP
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 | introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | Lexical Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | Syntax Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Abstract Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 | Semantic Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | Activation Records
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Interm. Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 | Blocks &amp; Traces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9 | Instruction Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10 | Liveness Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11 | Register Allocation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13 | Garbage Collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14 | Obj.-Ori. Languages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10_15">
+        
+          
+          <label class="md-nav__link" for="__nav_2_10_15" id="__nav_2_10_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_10_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Homework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW9
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CP/HW/HW13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW13
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SE
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SE
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 | Software Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 | Software Process Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 | Process Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 | Human Aspects of Software Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 | Principles that Guide Practice
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 | Understanding Requirement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 9 | Requirements Modeling：Scenario-Based Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 10 | Requirements Modeling: Class-Based Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 11 | Requirements Modeling: Behavior, Patterns, and Web/Mobile Apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 12 | Design Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 13 | Architectural Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 14 | Component-Level Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 15 | User Interface Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 16 | Pattern-Based Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 17 | WebApp Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 18 | MobileApp Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 20 | Review Techniques
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 21 | Software Quality Assurance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 22 | Software Testing Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 23 | Testing Conventional Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 24 | Testing Object-Oriented Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 25 | Testing Web Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 26 | Testing Mobile Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 27 | Security Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 28 | Formal Modeling and Verification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 29 | Software Configuration Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 30 | Project Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 31 | Project Management Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 32 | Process and Project Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 33 | Estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 34 | Project Scheduling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 35 | Risk Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Chapter36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 36 | Maintenance and Reengineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%912.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    敏捷开发
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E9%9C%80%E6%B1%82%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型驱动需求与设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E7%BC%96%E7%A0%81%E4%B8%8E%E8%AF%84%E5%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型驱动编码与评审
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../大模型驱动赋能测试.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    None
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../AI/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    AI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13">
+        
+          
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visualization
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Visualization
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Visualization/note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据可视化笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_14">
+        
+          
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编程语言
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    编程语言
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming_Language/python/CS50P_python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Programming_Language/python/python100days/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python-100-Days
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_15">
+        
+          
+          <label class="md-nav__link" for="__nav_2_15" id="__nav_2_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/reveal-md/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用 reveal-md 制作 PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Math/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Math
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论与数理统计
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    概率论与数理统计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 1 概率论的基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 2 随机变量及其分布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 3 多元随机变量及其分布
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 4 随机变量的数字特征
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 5 大数定律和中心极限定理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 6 数理统计的基本概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 7 参数估计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/Chapter8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter 8 假设检验
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/PPT_download/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PPT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_11">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_11" id="__nav_3_2_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Homework
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/Homework_index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW1(习题一)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW2(习题一)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW3(习题一、二)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW4(习题二)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW5(习题二、三)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW6(习题三)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW7(习题三)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW8(习题四)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW9(习题四、五)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW10(习题五、六)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW11(习题六、七(只计算矩估计))
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW12(习题七)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW13(习题七)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Math/Probability_Theory_and_Mathematical_Statistics/HW/HW14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HW14(习题八)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../Miscellaneous/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misccelleanous
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misccelleanous
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/prompt/prompt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prompt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/mermaid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mermaid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UBC
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UBC
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%202/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%203/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 3
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 4
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%205/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%206/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 6
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%207/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/UBC/block%20chain%20DAY%208/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    block chain DAY 8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Miscellaneous/cs231n/cs231n_note/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cs231n note
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型的发展历程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大模型的发展历程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 发展四大阶段（上方横向流程）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 技术演进时间线（左下角阶梯图）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 全球模型发布演进（右下角矩阵图）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型走进千行百业（行业应用全景图）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型走进千行百业（核心价值链与价值转移）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大模型走进千行百业（核心价值链与价值转移）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 四大典型行业的渗透路径
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 价值转移（右侧柱状图）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        软件研发行业积极拥抱大模型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="软件研发行业积极拥抱大模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 国内主流厂商的代码大模型工具（左表）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 国内软件研发团队对大模型（LLM）的态度（右图）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型在软件测试全流程的应用（流程图）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型在软件测试全流程的应用（现状与一般过程）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大模型在软件测试全流程的应用（现状与一般过程）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. LLM 在测试上的应用现状（左侧条形图）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 测试生成的一般过程（右侧技术架构）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型的主要应用方式（调用现状与选型）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大模型的主要应用方式（调用现状与选型）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-llm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 国内团队应用 LLM 的主要方式（左侧图表）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-llm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 国内团队使用哪些国外/国内的LLM（右侧双图）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型的主要应用方式（技术原理三剑客）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型的主要交互方式（产品形态演进）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大模型的主要交互方式（产品形态演进）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 三种形态的纵向对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        能力对比矩阵（底表）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        典型案例总览
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        蚂蚁测试分析助手——当前挑战
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="蚂蚁测试分析助手——当前挑战">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 研发生命周期五阶段流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 当前面临的两大挑战
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        蚂蚁测试分析助手——模型目标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        蚂蚁测试分析助手——模型架构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心技术 1——知识注入
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心技术 2——用例自动打标
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心技术 3——多模态识别：图片转文字
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型效果测试——中高级软件考试
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型应用效果展示
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目总览与背景
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传统人工编写测试的三大挑战
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        直接使用通用大模型存在的问题
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用大模型生成案例与缺陷分析
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试用例生成的深层难点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心任务的具体案例拆解
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法框架
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心子模块 1——分类模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        核心子模块 2——抽取模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型训练细节与成果总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auitestagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AUITestAgent 案例背景
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AUITestAgent 案例背景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 传统 UI 自动化测试的三大痛点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-model-as-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 破局之道：Model as Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auitestagent_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AUITestAgent 系统架构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多模态页面感知技术
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        动作定义与执行流
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        美团内部落地应用效果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-driven-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM-driven Agent 评估与测试面临的挑战
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        长文本技术演进与评估盲区
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="长文本技术演进与评估盲区">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 长文本技术演进路线
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 评估上的致命盲区
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        环境易变性对 Agent 的冲击
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解决之道 1——面向真实场景的长文本评测
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解决之道 2——动态演进的多物理环境测试
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前沿方向——大模型时代的人机协同测试
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前沿方向——基于群体智能的 Agent 协同测试
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        大模型测试群体智能——为什么需要多 Agent 协同？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大模型测试群体智能——为什么需要多 Agent 协同？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 单个 Agent 的能力瓶颈
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 多 Agent 协同的科学逻辑
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能化多 Agent 测试系统架构
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多 Agent 协作流水线与人机交互形态
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多 Agent 协作流水线与人机交互形态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 串行与并行交织的协作流水线
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-human-in-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 融入人类把关者（Human-in-the-Loop）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">大模型赋能测试<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 13488 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 3 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 67 分钟</p>
+</div>
+<h2 id="_2">大模型的发展历程<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>这一页是全篇的宏观背景，展示了大模型从技术诞生到如今爆发的演进脉络，主要分为两个核心图表。</p>
+<h3 id="1">1. 发展四大阶段（上方横向流程）<a class="headerlink" href="#1" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>架构奠基（Transformer 架构诞生）：</strong> 以 2017 年 Transformer 架构提出为起点，彻底替代了传统的 RNN/CNN，解决了长距离依赖问题，奠定了并行的基石。</li>
+<li><strong>规模与范式（BERT &amp; GPT-3）：</strong> 确立了“预训练+微调”的范式，并发现了“规模法则（Scaling Laws）”，即模型参数和数据量越大，能力越强。</li>
+<li><strong>生态爆发（百模大战）：</strong> 国内外涌现出成百上千个大模型，进入应用落地和生态竞争阶段。</li>
+<li><strong>智能体与推理（Model as Agent）：</strong> 模型开始具备长文本处理、复杂推理能力，并向能够独立执行任务的 Agent（智能体）演进。</li>
+</ul>
+<h3 id="2">2. 技术演进时间线（左下角阶梯图）<a class="headerlink" href="#2" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>2018-2019年：</strong> BERT/T5 成为通用底座，AI 从做“特定任务”转向“通用语言底座”。</li>
+<li><strong>2020年：</strong> GPT-3 带来 <strong>Few-shot（少样本推理）</strong> 能力涌现；同时 <strong>RAG（检索增强生成）</strong> 技术诞生，开始解决大模型的“幻觉”和知识更新滞后问题。</li>
+<li><strong>2021年：</strong> CLIP（图像与文本对齐）推动了多模态发展；<strong>MoE（混合专家模型）</strong> 提升了训练与推理效率。</li>
+<li><strong>2022-2023年：</strong> ChatGPT 爆发，核心在于 <strong>RLHF（人类反馈强化学习）</strong> 实现了人类偏好对齐，让大模型“听懂人话”。</li>
+<li><strong>2024年：</strong> <strong>Agentic LLM（工具调用体系化）</strong> 成为主流，大模型从只会“说”演进到能够通过调用外部工具去“做”。</li>
+<li><strong>2025年：</strong> <strong>Reasoning Models（推理模型，如 DeepSeek-R1、OpenAI o1）</strong> 爆发。引入“系统2思维”（慢思考），通过强化学习激发深度思考，实现低成本的高阶推理。</li>
+</ul>
+<h3 id="3">3. 全球模型发布演进（右下角矩阵图）<a class="headerlink" href="#3" title="Permanent link">¶</a></h3>
+<ul>
+<li>纵轴展示了全球各大主流厂商/战队（如 OpenAI、Anthropic、Meta、Google、微软、阿里、百度、DeepSeek、xAI、Mistral）。</li>
+<li>横轴为 2023 年至 2025 年的时间线，密密麻麻的节点清晰地展示了各家模型（如 GPT-4o、Claude 3.5/4、Qwen 2.5/3、DeepSeek V3/R1 等）的迭代密度，反映出竞争的白热化。</li>
+</ul>
+<hr>
+<h2 id="_3">大模型走进千行百业（行业应用全景图）<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<p>这一页展示了大模型在具体产业中的落地版图，中间是核心技术能力，四周发散出八大应用行业。</p>
+<ul>
+<li><strong>核心技术能力（中央圆圈）：</strong> 以“生成式 AI”为圆心，辐射出逻辑推理、文本生成、图像生成、视频生成、多模态、知识管理、搜索推荐、会话问答、智能决策和数据分析等底层能力。</li>
+<li><strong>八大行业落地场景：</strong></li>
+<li><strong>汽车：</strong> 智能座舱、自动驾驶、仿真模拟。</li>
+<li><strong>教育科研：</strong> 论文助手、实验仿真、教案生成、虚拟教师。</li>
+<li><strong>零售消费：</strong> 智慧门店、销量预测、供应链管理、用户行为分析、数字员工。</li>
+<li><strong>互联网：</strong> 情感陪伴、搜索问答、商品推荐、智能客服、营销文案生成。</li>
+<li><strong>金融：</strong> 财富顾问、智能客服、研报分析、金融风控。</li>
+<li><strong>文化娱乐：</strong> 新闻撰稿、视频生成、舆情分析、音频创作、虚拟人形象。</li>
+<li><strong>医药健康：</strong> 药物研发、论文总结、智能导诊分诊、医生助手。</li>
+<li><strong>企业服务：</strong> 企业知识问答、会议助手、办公流程辅助、财会管理、人力资源管理。</li>
+</ul>
+<p><strong>图例说明（左下角）：</strong></p>
+<ul>
+<li>用不同颜色的扇形（L1~L4）表示<strong>落地成熟度</strong>。</li>
+<li>用紫色圆圈的深浅表示该场景的<strong>发展潜力</strong>（低、中、高）。</li>
+</ul>
+<hr>
+<h2 id="_4">大模型走进千行百业（核心价值链与价值转移）<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<p>这一页进一步深化，探讨大模型在行业渗透时的<strong>核心价值点</strong>是什么，以及企业的<strong>投资趋势</strong>。</p>
+<h3 id="1_1">1. 四大典型行业的渗透路径<a class="headerlink" href="#1_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>金融行业：</strong> 从日常的“客服”向核心的“风控与投研”渗透。例如摩根大通（JPMorgan）利用 AI 工具更积极地响应客户请求并应对市场波动，显著提升了销售额和客户转化。</li>
+<li><strong>医疗行业：</strong> 从基础的“问诊”向核心的“药物研发”渗透。例如美国医疗体系中 ambient scribe（环境临床记录）被作为首个大规模应用的生成式 AI 方向，用于减少医生的文书负担、缓解职业倦怠。</li>
+<li><strong>软件行业：</strong> 从边缘的“补全”向深度的“产品内嵌 AI”渗透。软件行业是目前 AI 投资占比最高的行业（&gt;19%）。</li>
+<li><strong>制造行业：</strong> 从被动的“监控”向主动的“预测性维护”渗透。利用 AI 进行设备全生命周期管理（资产密集型行业的核心价值点）。</li>
+</ul>
+<h3 id="2_1">2. 价值转移（右侧柱状图）<a class="headerlink" href="#2_1" title="Permanent link">¶</a></h3>
+<ul>
+<li>图表揭示了一个重要趋势：企业的应用重心正在发生<strong>价值迁移</strong>。</li>
+<li>过去，大模型主要用于<strong>文档润色、简单 Chat</strong> 这种“低价值/高频”的表层工作；</li>
+<li>当前的趋势正大步迈向<strong>核心业务决策</strong>这种“高价值/深层”的领域，这也是大模型真正释放商业生产力的关键。</li>
+</ul>
+<hr>
+<h2 id="_5">软件研发行业积极拥抱大模型<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
+<p>大模型在哪个行业落地最快、最彻底？答案是软件研发（编写代码）。这一页展示了国内大厂的工具布局和开发者的态度。</p>
+<h3 id="1_2">1. 国内主流厂商的代码大模型工具（左表）<a class="headerlink" href="#1_2" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>阿里巴巴：</strong> 通义灵码（Tongyi Lingma）、Qoder、iFlow（AI 原生 IDE，具备跨文件感知能力）。</li>
+<li><strong>百度：</strong> 文心快码（Baidu Comate），基于文心大模型的代码助手。</li>
+<li><strong>华为：</strong> CodeArts，集成了大模型、IDE 和自主开发模式的智能编程产品。</li>
+<li><strong>美团：</strong> CatPaw（猫爪），在美团内部渗透率超 95%，增量代码 AI 生成率超 50%。</li>
+<li><strong>字节跳动：</strong> TRAE（引入了 AI 工程师的概念，能独立构建软件方案）。</li>
+<li><strong>腾讯：</strong> CodeBuddy，基于混元代码大模型，提供代码补全、对话等。</li>
+</ul>
+<h3 id="2-llm">2. 国内软件研发团队对大模型（LLM）的态度（右图）<a class="headerlink" href="#2-llm" title="Permanent link">¶</a></h3>
+<ul>
+<li>数据对比了 2023年（浅灰）、2024年（深蓝）和 2025年（绿色）的变化趋势。</li>
+<li><strong>“积极应用”</strong> 的比例从 2023 年的 26.0% 暴涨到 2025 年的 <strong>62.8%</strong>，两年间增长了约 36.8%。</li>
+<li><strong>“目前处在观望中”</strong> 和 <strong>“不了解”</strong> 的比例则出现大幅下降，说明大模型辅助编程已经从“尝鲜”变成了开发者的“刚需”。</li>
+</ul>
+<hr>
+<h2 id="_6">大模型在软件测试全流程的应用（流程图）<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<p>这一页是技术落地非常硬核的一页，详细拆解了软件测试的生命周期，以及大模型是如何在各个节点介入的。</p>
+<p>右侧的瀑布流清晰地展示了测试的五个核心阶段及 AI 的赋能点：</p>
+<ol>
+<li><strong>需求分析：</strong> AI 辅助进行业务逻辑分析、测试场景分析和边界条件识别。</li>
+<li><strong>测试计划制定：</strong> AI 自动生成测试计划、进行风险预测、并给出测试优先级建议。</li>
+<li><strong>测试设计与实现：</strong> AI 自动生成测试输入、测试用例，甚至自动生成测试 <strong>Oracle</strong>（测试断言/预期结果判定）。</li>
+<li><strong>测试执行：</strong> AI 优化测试集与选择、辅助用例执行，并进行反馈分析与策略调整。</li>
+<li><strong>缺陷管理与回归测试 &amp; 测试报告与评估：</strong> AI 预测和分析缺陷，自动生成回归测试用例，最终自动生成结构化的测试报告。</li>
+</ol>
+<p><em>(左侧的三个面板展示了行业内具体的专家研究和华为 CodeArts TestMate 等工具在智能测试领域的专项成果与团队介绍)</em></p>
+<hr>
+<h2 id="_7">大模型在软件测试全流程的应用（现状与一般过程）<a class="headerlink" href="#_7" title="Permanent link">¶</a></h2>
+<p>这一页对测试领域的应用现状进行了量化，并给出了具体的技术实现架构。</p>
+<h3 id="1-llm">1. LLM 在测试上的应用现状（左侧条形图）<a class="headerlink" href="#1-llm" title="Permanent link">¶</a></h3>
+<ul>
+<li>数据展示了在测试的各个细分动作中，AI 的使用率：</li>
+<li><strong>生成测试用例</strong> 占比最高，在 2025 年达到了 <strong>68.2%</strong>。</li>
+<li>其次是<strong>生成测试脚本（51.4%）</strong>、<strong>评审/改进测试脚本（29.9%）</strong> 和 <strong>测试日志分析（29.2%）</strong>。</li>
+<li>只有 16.9% 的团队表示“还没有”在测试中使用大模型。</li>
+</ul>
+<h3 id="2_2">2. 测试生成的一般过程（右侧技术架构）<a class="headerlink" href="#2_2" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>输入端：</strong> 接收<strong>非结构化需求（Unstructured Docs）</strong>，如 PRD（产品需求文档）、API 定义、通过 RAG 引入的历史 Bug 库。</li>
+<li><strong>核心引擎：</strong> 投入到 <strong>LLM Engine（大模型引擎）</strong> 中，模型发挥多模态理解、风险矩阵提取和场景泛化能力进行“理解与增强”。</li>
+<li><strong>输出端（分流执行）：</strong></li>
+<li><strong>单元测试（Unit Test）：</strong> 自动生成 Mock 数据和静态分析断言。</li>
+<li><strong>接口测试（APITest）：</strong> 引导式 Fuzzing（模糊测试）、测试序列生成。</li>
+<li><strong>UI测试（UITest）：</strong> 依靠视觉语义理解，自动生成 Appium/Selenium 自动化脚本。</li>
+</ul>
+<hr>
+<h2 id="_8">大模型的主要应用方式（调用现状与选型）<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
+<p>这一页用丰富的数据图表，揭示了国内团队在实际工作中<strong>究竟是怎么用大模型的</strong>。</p>
+<h3 id="1-llm_1">1. 国内团队应用 LLM 的主要方式（左侧图表）<a class="headerlink" href="#1-llm_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>直接调用第三方 LLM API：</strong> 仍是主流（占比 36.1%），但相比 2023 年（36.1%）和 2024 年（28.6%）的发展来看，今年（2025年）更多团队倾向于混合或私有化方案。</li>
+<li><strong>直接部署私有化并使用第三方开源LLM：</strong> 在 2025 年迎来了爆发，占比高达 <strong>34.5%</strong>，这说明企业对数据安全以及开源模型能力的信任度大幅提升。</li>
+<li><strong>基于开源/基础LLM微调（SFT）自己的领域大模型：</strong> 占比 20.3%。</li>
+<li><strong>利用 RAG 架构（12.4%）</strong> 和 <strong>全栈自研从头训练（7.1%）</strong> 也是重要的补充路径。</li>
+</ul>
+<h3 id="2-llm_1">2. 国内团队使用哪些国外/国内的LLM（右侧双图）<a class="headerlink" href="#2-llm_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>国外模型选择：</strong> <strong>OpenAI GPT 系列</strong> 依然占据绝对统治地位（67.6%），<strong>Claude 系列（43.2%）</strong> 紧随其后。值得注意的是，<strong>Gemini 系列</strong> 增长迅速（从 11.2% 涨至 27.0%），而 Llama 系列有所下滑。</li>
+<li><strong>国内模型选择：</strong> 竞争格局发生巨变。<strong>DeepSeek</strong> 凭借极高的性价比和强大的推理能力，以 <strong>81.1%</strong> 的绝对优势霸榜。其次是阿里通义千问（65.5%）和字节豆包（41.9%），百度文心一言和 Kimi 也是第一梯队的重要选择。</li>
+</ul>
+<hr>
+<h2 id="_9">大模型的主要应用方式（技术原理三剑客）<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
+<p>这一页深入到了<strong>技术落地原理</strong>，详细对比了目前让大模型变聪明的三个最核心的手段：微调、RAG 和强化学习。</p>
+<hr>
+<h2 id="_10">大模型的主要交互方式（产品形态演进）<a class="headerlink" href="#_10" title="Permanent link">¶</a></h2>
+<p>最后一页从产品和用户交互的角度，将大模型分为三种形态，代表了 AI 生产力工具的进化史。</p>
+<h3 id="1_3">1. 三种形态的纵向对比<a class="headerlink" href="#1_3" title="Permanent link">¶</a></h3>
+<p><strong>Chatbot（对话式助手）：</strong></p>
+<ul>
+<li><strong>角色：</strong> 信息提供者。</li>
+<li><strong>特征：</strong> 问 <span class="arithmatex">\(\rightarrow\)</span> 答 <span class="arithmatex">\(\rightarrow\)</span> 追问。处理“模糊需求”，通常不直接执行行动。</li>
+<li><strong>典型场景：</strong> 知识问答、客服、文档总结。</li>
+</ul>
+<p><strong>Copilot（副驾驶）：</strong></p>
+<ul>
+<li><strong>角色：</strong> 增强型工具。</li>
+<li><strong>特征：</strong> 人机协同。用户发起请求（如在 IDE 中输入代码前缀），Copilot 生成建议，用户审核并决定是否采纳。</li>
+<li><strong>典型架构（图中展示）：</strong> 客户端 <span class="arithmatex">\(\rightarrow\)</span> Gateway <span class="arithmatex">\(\rightarrow\)</span> 核心 Copilot Service 处理 <span class="arithmatex">\(\rightarrow\)</span> 结合 Azure OpenAI / 三方服务 <span class="arithmatex">\(\rightarrow\)</span> 返回代码建议。</li>
+</ul>
+<p><strong>Agent (智能体)：</strong></p>
+<ul>
+<li><strong>角色：</strong> 独立执行者。</li>
+<li><strong>特征：</strong> 大模型作为“大脑”。拥有记忆力、规划能力，能够自行选择工具并拆解、执行复杂任务。</li>
+</ul>
+<h3 id="_11">能力对比矩阵（底表）<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
+<p>幻灯片用一个非常直观的表格总结了三者的能力边界：</p>
+<table>
+<thead>
+<tr>
+<th>能力维度</th>
+<th>Chatbot (对话助手)</th>
+<th>Copilot (副驾驶)</th>
+<th>Agent (智能体)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>对话能力</strong></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+</tr>
+<tr>
+<td><strong>推理能力</strong></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+</tr>
+<tr>
+<td><strong>记忆能力</strong> <em>(特指长效记忆)</em></td>
+<td></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+</tr>
+<tr>
+<td><strong>工具能力</strong></td>
+<td></td>
+<td></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+</tr>
+<tr>
+<td><strong>规划能力</strong></td>
+<td></td>
+<td></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+</tr>
+<tr>
+<td><strong>行动能力</strong></td>
+<td></td>
+<td></td>
+<td><span class="arithmatex">\(\checkmark\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="_12">典型案例总览<a class="headerlink" href="#_12" title="Permanent link">¶</a></h2>
+<p>本页作为案例篇的过渡页，列举了大模型在软件测试三个核心环节的落地代表：</p>
+<ul>
+<li><strong>测试需求分析：</strong> 落地案例为“蚂蚁测试分析助手”<strong>，合作/应用厂商为</strong>蚂蚁集团 (ANT GROUP)。</li>
+<li><strong>测试脚本生成：</strong> 落地案例为“证券行业智能化业务规则测试”<strong>，合作/应用厂商为</strong>国泰海通。</li>
+<li><strong>测试用例执行：</strong> 落地案例为“AUITestAgent 自动化 UI 测试”<strong>，合作/应用厂商为</strong>美团。</li>
+</ul>
+<hr>
+<h2 id="_13">蚂蚁测试分析助手——当前挑战<a class="headerlink" href="#_13" title="Permanent link">¶</a></h2>
+<p>本页指出了传统研发生命周期中，测试分析环节面临的核心痛点。</p>
+<h3 id="1_4">1. 研发生命周期五阶段流程<a class="headerlink" href="#1_4" title="Permanent link">¶</a></h3>
+<p>流程为：需求&amp;产品 <span class="arithmatex">\(\rightarrow\)</span> 系统设计 <span class="arithmatex">\(\rightarrow\)</span> <strong>测试分析（核心枢纽）</strong> <span class="arithmatex">\(\rightarrow\)</span> 开发&amp;测试 <span class="arithmatex">\(\rightarrow\)</span> 发布/灰度。</p>
+<blockquote>
+<p>PPT 强调：“测试分析环节是测试工程师质量保障工作最核心的价值产出”，它承上启下，决定了后续开发的质量边界。</p>
+</blockquote>
+<h3 id="2_3">2. 当前面临的两大挑战<a class="headerlink" href="#2_3" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>分析耗时长：</strong> 在大型项目中，测试分析往往需要数天时间，严重影响项目的整体交付节奏。</li>
+<li><strong>人才依赖强：</strong> 培养一名合格的测试分析专家周期长。通常需要 <strong>1 年以上</strong>才能成为业务质量专家，<strong>2-3 年</strong>才能成为该领域的资深专家，人才断档风险高。</li>
+</ul>
+<hr>
+<h2 id="_14">蚂蚁测试分析助手——模型目标<a class="headerlink" href="#_14" title="Permanent link">¶</a></h2>
+<p>为了解决上述痛点，该模型的目标是<strong>打造中高级水平的测试领域 AI 助手</strong>，其核心能力建设分为三步：</p>
+<ol>
+<li><strong>知识基础：</strong> 注入测试领域通识能力、计算机基础理论、测试方法论体系以及领域专业知识。</li>
+<li><strong>能力生成：</strong> 培养测试设计能力，使其能基于需求/设计文档，<strong>自动生成测试场景与用例</strong>，并覆盖功能、性能、安全等多个维度。</li>
+<li><strong>价值输出：</strong> 实现<strong>风险分析与措施推荐</strong>。包括业务/技术风险识别、风险应对策略推荐，以及线下/灰度/监控/应急方案的输出。</li>
+</ol>
+<hr>
+<h2 id="_15">蚂蚁测试分析助手——模型架构<a class="headerlink" href="#_15" title="Permanent link">¶</a></h2>
+<p>本页展示了该助手的全栈架构体系，从底层大模型到上层产品透出：</p>
+<ul>
+<li><strong>产品透出层：</strong> 支持 <strong>Chat 模式</strong>（对话交互）与 <strong>Copilot 模式</strong>（语雀文档 AI 助手，嵌入工作流）。</li>
+<li><strong>模型训练层：</strong> 在技术上使用 <strong>SFT / LoRA / Prompt-Engineering</strong>，分为三个增强方向：</li>
+<li><em>知识注入：</em> Prompt-tuning、QA 提取模型。</li>
+<li><em>用例自动打标：</em> 文本相似度计算、关键词提取。</li>
+<li>
+<p><em>多模态：</em> 图片 <span class="arithmatex">\(\rightarrow\)</span> 结构化语言，结构化语言 <span class="arithmatex">\(\rightarrow\)</span> NLP。</p>
+</li>
+<li>
+<p><strong>训练数据层（核心资产）：</strong></p>
+</li>
+<li>
+<p><em>底座：</em> 蚂蚁语言大模型（提供底层语言理解与生成基础）。</p>
+</li>
+<li><em>通用测试底座：</em> 注入测试书籍、测试网站等<strong>测试领域知识</strong>，以及等价类/边界值、因果图、场景分析法、判定表等<strong>测试设计方法</strong>。</li>
+<li><em>企业定制垂直知识：</em> 注入蚂蚁测试领域知识，包括历史线上问题（故障）、PRD/系分/测分文档、历史测试用例。</li>
+</ul>
+<hr>
+<h2 id="1_5">核心技术 1——知识注入<a class="headerlink" href="#1_5" title="Permanent link">¶</a></h2>
+<p>本页解释了如何教会大模型测试领域的“专业概念”，实现非结构化技术文档向可训练数据的转化。</p>
+<ul>
+<li><strong>核心痛点：</strong> 通用大模型不知道测试领域的专业概念，缺乏行业深度理解（例如无法准确理解特定大厂的内部测试规范）。</li>
+<li><strong>解决方案（doc2QA 技术）：</strong> 利用原始技术文档，通过 Prompt 工程自动生成“提问-回答”对（Q&amp;A Pairs）来训练模型。</li>
+<li><strong>实际案例（白盒测试概念注入）：</strong></li>
+<li><em>输入技术文档片段：</em> “白盒测试是一种测试用例设计方法，盒子指的是被测试的软件，白盒指的是盒子是可视的...”</li>
+<li><em>doc2QA 自动生成：</em> 自动转化为标准的测试集数据。如 <strong>Input（提问）</strong>：“请问白盒测试是如何进行的？” <span class="arithmatex">\(\rightarrow\)</span> <strong>Output（回答）</strong>：“白盒测试通过逻辑驱动、路径检查等方式，对程序内部结构进行测试...”</li>
+</ul>
+<hr>
+<h2 id="2_4">核心技术 2——用例自动打标<a class="headerlink" href="#2_4" title="Permanent link">¶</a></h2>
+<p>本页展示了如何打通“需求（PRD）”与“测试用例”之间的关联，让模型学会真正地“写用例”。</p>
+<p>整个数据加工流水线分为三步：</p>
+<ol>
+<li>
+<p><strong>数据清洗：</strong> 将蚂蚁语雀文档（产品文档 PRD）与蚂蚁测试用例管理平台（测试用例集）进行链接，提取出打标的 PRD 链接。</p>
+</li>
+<li>
+<p><strong>数据加工：</strong></p>
+</li>
+</ol>
+<ul>
+<li><em>PRD 预处理：</em> 经过段落拆分、图片处理、多级标题拼接、表格处理、专有名词解释拼接和无效信息过滤，转化为干净的 <strong>PRD 片段</strong>（包含多级标题、业务名词解释、正文段落）。</li>
+<li><em>用例集预处理：</em> 进行用例集结构化和无效用例过滤，转化为标准的 <strong>测试用例集</strong>（多级标题、PRD 链接标签、用例列表和详情）。</li>
+</ul>
+<ol start="3">
+<li><strong>数据关联：</strong> 将 PRD 片段与用例集进行级联精准匹配（包括次小标题段落/用例集的融合匹配），最终形成<strong>结构化语料</strong>。</li>
+</ol>
+<ul>
+<li><em>Input：</em> PRD 段落。</li>
+<li><em>Output：</em> 对应的测试用例集。</li>
+</ul>
+<hr>
+<h2 id="3_1">核心技术 3——多模态识别：图片转文字<a class="headerlink" href="#3_1" title="Permanent link">¶</a></h2>
+<p>测试人员经常需要面对各种业务流程图。本页展示了蚂蚁案例中对“设备维修流程图”的多模态处理技术。</p>
+<p><strong>技术流程：</strong></p>
+<ol>
+<li><strong>流程图识别：</strong> 运用<em>蚂蚁多模态大模型</em>，识别流程图中的节点和连线。</li>
+<li><strong>结构化转换：</strong> 转换为计算机可读的结构化语言（如 <strong>DSL / DOT 格式</strong>）。</li>
+<li><strong>自然语言生成：</strong> 运用<em>蚂蚁大语言模型</em>进行语言理解，将 DOT 格式生成人类易读的自然语言描述。</li>
+</ol>
+<p><strong>实例演示：</strong></p>
+<ul>
+<li><em>输入：</em> 一张包含多个决策分支的“设备维修流程图”图片。</li>
+<li><em>中间表示：</em> 转化为代码格式 <code>digraph RepairFlow { Start [label="流程开始"]; Step1 [label="发现故障"]; ... }</code>。</li>
+<li><em>输出结果：</em> 自动输出文本：“这张图片是一个流程图，描述了一个维修设备或设施的过程，这个过程包括以下步骤：步骤1：流程开始；步骤2：办公人员发现故障；步骤3：提交报修申请...”</li>
+</ul>
+<hr>
+<h2 id="_16">模型效果测试——中高级软件考试<a class="headerlink" href="#_16" title="Permanent link">¶</a></h2>
+<p>本页通过软件水平考试（软考）的真实试题，对比了<strong>蚂蚁语言大模型</strong>、蚂蚁测试分析模型（微调后）以及 <strong>GPT-3.5</strong> 的表现。</p>
+<ul>
+<li><strong>客观题表现（左图）：</strong> 蚂蚁测试分析模型在客观题的得分上显著超越了标准底座模型和 GPT-3.5，体现了专业领域知识注入的有效性。</li>
+<li><strong>主观题可分率（右图）：</strong> 在 1 分到 5 分的可分率评级中，蚂蚁测试分析模型（深蓝色柱状）在 3 分、4 分、5 分的高分段（即可用率极高的回答）占比明显高于 GPT-3.5（绿色）和未经测试微调的底座大模型（浅蓝色）。</li>
+<li><strong>案例分析（什么是白盒测试）：</strong> 下方对比了三者的文本回答。相较于标准答案和 GPT-3.5 的通用解释，<strong>蚂蚁测试分析模型</strong>的回答更加严密，明确提到了“验证是否满足设计规格说明”、“检查代码覆盖率和分析代码性能”、“静态分析、动态分析和逻辑覆盖率分析等技术”，更符合专业软件测试工程师的行文规范。</li>
+</ul>
+<hr>
+<h2 id="_17">模型应用效果展示<a class="headerlink" href="#_17" title="Permanent link">¶</a></h2>
+<p>本页展示了经过三大策略微调后，该模型在实际业务场景中的三大核心输出：</p>
+<p><strong>场景一：基于方法的测试用例设计</strong></p>
+<ul>
+<li><em>输入：</em> “QQ号码是一个5-10位的整数，要求设计测试用例”</li>
+<li><em>模型输出：</em> 准确识别出应使用“等价类划分法”<strong>。自动输出</strong>有效等价类（5位整数-最小值、10位整数-最大值、7位整数-中间值）与<strong>无效等价类</strong>（&lt;5位、&gt;10位、非整数如小数/字符），表现得非常专业。</li>
+</ul>
+<p><strong>场景二：业务场景测试分析</strong></p>
+<ul>
+<li><em>输入：</em> “新用户注册送积分活动：用户完成注册后自动获得100积分”</li>
+<li><em>模型输出：</em> 自动提取出<strong>测试目标</strong>（验证积分入账逻辑正确性）、<strong>测试范围</strong>（注册流程、积分发放、异常处理）以及<strong>测试策略</strong>（正常注册场景、重复注册处理、异常输入验证）。</li>
+</ul>
+<p><strong>场景三：风险分析与防控</strong></p>
+<ul>
+<li><em>输入：</em> “分析‘新用户注册送积分’活动可能存在的风险”</li>
+<li><em>模型输出：</em> 精准识别出<strong>业务风险</strong>（薅羊毛风险、批量注册攻击、积分套利行为），并针对性地推荐了<strong>防控策略</strong>（设备指纹识别、手机号实名验证、行为模式分析）。</li>
+</ul>
+<hr>
+<h2 id="_18">项目总览与背景<a class="headerlink" href="#_18" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>【背景与挑战】：</strong> 各路证券交易所业务规则文档繁多复杂。传统的做法依赖<strong>人工挖掘软件需求，定义和约束交易，并手动生成测试用例，整个过程耗时费力</strong>。</li>
+<li><strong>【智能解法：挖掘与生成】：</strong> 提出利用 AI 来建立自动化流水线。PPT 将其生动地比喻为：将“规则文档”视为<strong>考试大纲</strong>，通过 AI 的“挖掘软件需求”进行<strong>理解大纲</strong>，最终自动输出“测试用例”作为<strong>考试试题</strong>。</li>
+<li><strong>【应用价值】：</strong> 成功实现从业务规则到测试用例的<strong>自动化闭环</strong>，大幅提升测试效率，并确保金融交易系统的精准性。右下角的对比图表直观展示了<strong>人工智能相比于人工在效率和精准度上的跨越式提升</strong>。</li>
+</ul>
+<hr>
+<h2 id="_19">传统人工编写测试的三大挑战<a class="headerlink" href="#_19" title="Permanent link">¶</a></h2>
+<p><strong>挑战 1：人工处理耗时过长</strong></p>
+<ul>
+<li>单个功能测试往往需要 <strong>20-35 分钟</strong>，全流程（从阅读到编写）皆需人工操作。</li>
+<li><em>例如：</em> 分析一条复杂的交易规则平均需要 15 分钟去透彻理解，而编写对应的测试用例还需要再花 20 分钟。</li>
+</ul>
+<p><strong>挑战 2：规则复杂容易遗漏</strong></p>
+<ul>
+<li>一份金融文档通常包含<strong>数百条规则</strong>，且规则之间存在错综复杂的依赖关系，人工分析极易出错。</li>
+<li><em>例如：</em> 规则可能规定“点击交易必须是10万元整数倍，但匹配交易只需1000元整数倍”，这种细微的条件差异人工很容易混淆或漏测。</li>
+</ul>
+<p><strong>挑战 3：更新频繁难以维护</strong></p>
+<ul>
+<li>金融市场受监管政策变化影响大，导致规则调整频繁，测试用例必须同步更新，维护成本居高不下。</li>
+<li><em>例如：</em> 新监管要求发布后，测试团队需要重新梳理所有相关的业务测试场景。</li>
+</ul>
+<blockquote>
+<p><strong>核心问题总结：</strong> 传统人工编写方式在证券行业面临<strong>效率低下、质量不稳定、维护困难</strong>的三重挑战，急需智能化解决方案。</p>
+</blockquote>
+<hr>
+<h2 id="_20">直接使用通用大模型存在的问题<a class="headerlink" href="#_20" title="Permanent link">¶</a></h2>
+<p>为什么不能用现成的通用大模型（如 ChatGPT 等）直接来做这件事？</p>
+<p>为了搞清这个问题，团队组织了一场有 <strong>8 人参与的研究流程</strong>（包含研究人员、5 年以上和 1-2 年经验的证券测试人员、以及其他领域测试人员），经过目的介绍、经验讨论和总结，发现了<strong>直接使用大模型的三大挑战</strong>：</p>
+<ol>
+<li><strong>对人要求高：</strong> 业务人员想有效使用基础大模型（LLMs），自己必须先掌握特定的金融专业知识和复杂的<strong>提示词（Prompt）技能</strong>。</li>
+<li><strong>输出不可控难处理：</strong> 通用模型随机性大，自动生成的测试用例<strong>难以复制和进行有效追踪</strong>，不符合金融级软件的严谨要求。</li>
+<li><strong>领域知识有限：</strong> 通用大模型的特定领域知识受限于其公开的输入训练数据，<strong>对深度的行业内规章吃不透</strong>。</li>
+</ol>
+<hr>
+<h2 id="_21">通用大模型生成案例与缺陷分析<a class="headerlink" href="#_21" title="Permanent link">¶</a></h2>
+<p>本页用真实的金融规则输入，对比了“简单提示词”与“设计过的提示词”在通用大模型上的输出表现，并指出了残留问题。</p>
+<ul>
+<li><strong>输入规则：</strong> 规定了债券交易的申报数量（应为 10 万元面额或其整数倍）及单笔限制，以及匹配交易与其他交易方法的最小变动单位差异（0.01 元与 0.005 元）。</li>
+</ul>
+<p><strong>对比结果：</strong></p>
+<ul>
+<li><em>使用 Simple Prompt（左）：</em> 模型输出极其简单，无法充分展开边界值和无效类。</li>
+<li><em>使用 Carefully Designed Prompt（右）：</em> 提示词中精心引入了<strong>场景和任务介绍、相关知识和测试要求</strong>。模型输出质量有所改善，开始能够列出等价类和边界值（如 Exactly 100,000 yuan, Just above/below 等）。</li>
+</ul>
+<p><strong>⚠️ 设计过后仍存在的致命问题（右下角）：</strong></p>
+<ol>
+<li><strong>模型输出缺乏控制：</strong> 生成的测试用例中没有给出后面必不可少的<strong>验证部分（Result? Valid or not?）</strong>。</li>
+<li><strong>模型缺乏领域知识：</strong> 测试用例里频繁输出像“其他（Other）”这样模糊、抽象的表达，无法直接落实为测试人员可操作的具体步骤。</li>
+</ol>
+<hr>
+<h2 id="_22">测试用例生成的深层难点<a class="headerlink" href="#_22" title="Permanent link">¶</a></h2>
+<p><strong>难点 01：自然语言表示的复杂性</strong></p>
+<ul>
+<li><em>不受限句式：</em> 规则文档存在大量省略和隐含信息，缺乏标准化的严密结构。</li>
+<li><em>领域术语密集：</em> 充斥着“债券现券”、“质押式回购”等高度专业的词汇。</li>
+<li><em>抽象表示多：</em> 常常使用“其他交易方式”、“相关规则”等模糊表达，难以直接转化为计算机代码。</li>
+</ul>
+<p><strong>难点 02：规则间关系错综复杂</strong></p>
+<ul>
+<li><em>显式关系：</em> 文档中明确引用了其他条款（如“见本规则第 3.1.5 条”）。</li>
+<li><em>隐式关系：</em> 需要拥有行业深度背景知识才能理解的依赖（如“撤销申报”的前提是系统先处于“已申报”状态）。</li>
+</ul>
+<blockquote>
+<p><strong>本质问题：</strong> 这不仅是一个自然语言处理问题，更是一个<strong>规约问题</strong>——从抽象规则到具体可操作规则，需要<strong>领域知识的深度支持</strong>。为此，系统必须攻克两个核心任务：<strong>I. 筛选业务需求</strong>；<strong>II. 抽取领域术语</strong>。</p>
+</blockquote>
+<hr>
+<h2 id="_23">核心任务的具体案例拆解<a class="headerlink" href="#_23" title="Permanent link">¶</a></h2>
+<p>本页展示了系统如何在海量文本中执行“筛选”与“抽取”。</p>
+<p><strong>筛选任务（识别出与交易系统相关的业务需求）：</strong></p>
+<ul>
+<li>系统会自动识别哪些条款是真正包含软件逻辑的。</li>
+<li><em>反例：</em> 图中列举的两条规则（一条是叙述保护投资者合法权益的宏观原则；另一条是说明价格变动单位的豁免规定），均被系统判定为“软件需求无关”，直接过滤，从而节约了算力。</li>
+</ul>
+<p><strong>抽取任务（识别处理大量的领域术语，理解具体意义）：</strong></p>
+<ul>
+<li>从业务相关的规则中精准识别出金融元素。</li>
+<li><em>正例：</em> 自动抽取并高亮出“债券现券”、“一次性申报”、“债券通用质押式回购”等<strong>金融业务相关的领域术语</strong>，以及“除本规则规定的不接受撤销申报的时间段外”、“不接受匹配成交的撤销申报”等核心逻辑边界。</li>
+</ul>
+<hr>
+<h2 id="_24">方法框架<a class="headerlink" href="#_24" title="Permanent link">¶</a></h2>
+<p>本页展示了 ACES 实验室解决该问题的<strong>完整自动化技术流水线</strong>，共分为三个阶段：</p>
+<p><strong>阶段一：规则抽取</strong></p>
+<ul>
+<li><em>做法：</em> 业务规则文档输入后，利用<strong>经过微调的大语言模型</strong>（内部包含<em>分类模型</em>和<em>抽取模型</em>）进行自动筛选和提取业务规则。</li>
+<li><em>流程：</em> 包括 ①规则过滤 <span class="arithmatex">\(\rightarrow\)</span> ②规则元素抽取 <span class="arithmatex">\(\rightarrow\)</span> ③形式化规则组装。</li>
+</ul>
+<p><strong>阶段二：规则规约</strong></p>
+<ul>
+<li><em>做法：</em> 结合<strong>领域知识库</strong>（包含<em>术语库</em>和<em>事件序列</em>）来补全文档中的隐含信息。</li>
+<li><em>流程：</em> 包括 ①规约可操作化 <span class="arithmatex">\(\rightarrow\)</span> ②挖掘关联关系。</li>
+</ul>
+<p><strong>阶段三：测试用例生成</strong></p>
+<ul>
+<li><em>做法：</em> 输入定制的<strong>测试策略</strong>，根据策略自动生成最终的测试用例。</li>
+<li><em>流程：</em> 包括 ①枚举型数据生成 <span class="arithmatex">\(\rightarrow\)</span> ②数值型数据生成。</li>
+</ul>
+<blockquote>
+<p><strong>关键创新公式：</strong>
+* 大模型 + 领域知识 = <strong>“有经验的测试员”</strong>
+* 算法 = <strong>“精确计算器”</strong>
+两者结合，达成了完美的测试闭环。</p>
+</blockquote>
+<hr>
+<h2 id="1_6">核心子模块 1——分类模型<a class="headerlink" href="#1_6" title="Permanent link">¶</a></h2>
+<p>本页给出了分类模型的训练数据集规模以及分类标准，可以看出工作量非常扎实：</p>
+<ul>
+<li><strong>数据集与标注工作量：</strong> 数据来源于 <strong>18 份</strong>真实的业务规则文档，耗费了 <strong>10 人周</strong>的专业标注工作量，涵盖 <strong>3,334 条</strong>原始规则。经过数据增强后，最终获得了 <strong>32,945 条</strong>训练数据。</li>
+<li><strong>模型准确率：</strong> 最终达成了惊人的 <strong><span class="arithmatex">\(99.1\%\)</span></strong>。</li>
+<li><strong>三类标签定义：</strong>
+1. <strong>可测试规则（核心目标）：</strong> 约束了证券系统行为和操作，涉及到时间、数量、价格等具体执行细节。<em>例如：</em>“采用点击成交方式的...申报数量应当为10万元面额或其整数倍。”
+2. <strong>不可测试规则：</strong> 不直接对软件的操作功能提出要求，通常为定性或说明性内容。<em>例如：</em>“点击交易是报价方提交报价...交易系统确认交易的方式。”
+3. <strong>领域知识：</strong> 描述证券领域的专业知识、术语和概念，用于辅助理解业务规则。<em>例如：</em>“债券交易参与人应当加强对债券交易信用风险...的监测和管理。”</li>
+</ul>
+<hr>
+<h2 id="2_5">核心子模块 2——抽取模型<a class="headerlink" href="#2_5" title="Permanent link">¶</a></h2>
+<p>本页详细展示了系统如何建立<strong>非结构化规约的语法和语义元模型</strong>。</p>
+<ul>
+<li><strong>元模型定义架构（左图）：</strong> 抽取模型将规则切碎，归纳为“约束类型”（时间、价格、数量、交易方式、交易操作、交易品种、交易结果约束等），并进一步向下拆解为“交易操作组成”（操作、操作人、操作部分）和对应的实体（交易所、券商、投资者、发行人、监管机构等）。</li>
+<li><strong>数据成果（右上黑色区域）：</strong> 同样基于 18 份全标注文档（耗时 8 人月），包含 41,215 个增强后的训练实例。核心句型中平均每句包含超过 5 个标注，最终的<strong>模型准确率和高精度信息提取率达到 <span class="arithmatex">\(87.0\%\)</span></strong>。</li>
+<li><strong>15 个核心标签（左下列表）：</strong> 定义了包括交易市场、交易品种、交易方式、操作、操作人、操作部分、结果、状态、事件、时间、数量、价格、比较、结合规则、Key-Value 在内的 15 个核心语义标签，用来彻底捕获语法的精髓。</li>
+<li><strong>抽取实例（右下）：</strong> 形象展示了 Rule 1 是如何被模型自动解析和连接的。例如将“点击交易方式”映射为“交易方式”标签，将“申报数量”映射为“Key（新概念）”，将“10万元或其整数倍”映射为“数量”，完成了从自然语言向知识图谱/形式化数据的对齐。</li>
+</ul>
+<hr>
+<h2 id="_25">模型训练细节与成果总结<a class="headerlink" href="#_25" title="Permanent link">¶</a></h2>
+<p>本页公开了该项目底层模型训练的技术底座与最终成绩单：</p>
+<ul>
+<li><strong>模型选择：</strong> 团队没有盲目追求超大参数模型，而是务实地选择了专门微调预训练的中文语言模型 <strong>Mengzi（孟子）</strong> 来执行规则过滤和提取任务。</li>
+<li><strong>模型特点：</strong></li>
+<li>为了专注金融垂直领域，选用了 <strong><code>Mengzi-BERT-base-fin</code></strong> 作为基础底座。</li>
+<li>模型结构包含 <strong>12 个 Transformer 层</strong>，拥有 <strong><span class="arithmatex">\(103\text{M}\)</span>（约 1.03 亿）</strong> 参数量。</li>
+<li>
+<p>该底座在超过 <strong><span class="arithmatex">\(20\text{G}\)</span> 的专业金融材料</strong>上进行过充分的预训练。</p>
+</li>
+<li>
+<p><strong>模型训练与损失优化：</strong></p>
+</li>
+<li><em>分类模型：</em> 采用了<strong>交叉熵（Cross-Entropy）</strong> 作为损失函数，并使用 <strong>AdamW 优化器</strong> 执行梯度下降等方法不断迭代，使规则分类模型的准确率达到了 <strong><span class="arithmatex">\(99.1\%\)</span></strong>。</li>
+<li>
+<p><em>抽取模型：</em> 模型在 <span class="arithmatex">\(2\text{e}-5\)</span> 的低学习率下精细训练了 20 个轮次（Epochs），并额外添加了 <span class="arithmatex">\(0.002\)</span> 的权重衰退以防止过拟合，最终规则抽取的准确率稳定达到 <strong><span class="arithmatex">\(87.0\%\)</span></strong>。</p>
+</li>
+<li>
+<p><strong>任务成果表（右下）：</strong></p>
+</li>
+<li><strong>规则过滤：</strong> 准确率 <span class="arithmatex">\(99.1\%\)</span>，说明能极高精度地筛选规则，确保只有真正可测试的规则才会进入下一步。</li>
+<li><strong>元素提取：</strong> 准确率 <span class="arithmatex">\(87.0\%\)</span>，表现出较高的提取精准度，足以稳健地支持后续的规则形式化与用例自动生成。</li>
+</ul>
+<hr>
+<h2 id="auitestagent">AUITestAgent 案例背景<a class="headerlink" href="#auitestagent" title="Permanent link">¶</a></h2>
+<p>本页介绍了美团在进行移动端（App）UI 自动化测试时面临的现实挑战，以及为什么需要引入大模型 Agent。</p>
+<h3 id="1-ui">1. 传统 UI 自动化测试的三大痛点<a class="headerlink" href="#1-ui" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>编写成本高：</strong> 测试人员需要花费大量时间去定位页面元素（如使用 XPath、Resource-ID 等），并手动编写繁琐的脚本（如 Appium、Selenium）。</li>
+<li><strong>维护成本高：</strong> 移动端应用迭代极快。一旦页面改版、元素 ID 变更或视觉布局微调，原有的测试脚本就会大面积失效（即“脚本脆弱性”），需要人工频繁修复。</li>
+<li><strong>跨平台复用难：</strong> Android 和 iOS 两大平台的底层控件底层实现不同，往往需要为同一个业务功能编写两套完全不同的测试脚本。</li>
+</ul>
+<h3 id="2-model-as-agent">2. 破局之道：Model as Agent<a class="headerlink" href="#2-model-as-agent" title="Permanent link">¶</a></h3>
+<p>为了解决上述问题，美团提出了 <strong>AUITestAgent</strong>。它的核心思想是<strong>让大模型扮演“人类测试员”的角色</strong>。大模型不再仅仅用于生成静态代码，而是作为一个拥有“眼睛（多模态视觉）”和“手（动作执行）”的智能代理，在真实环境中进行端到端的自主测试。</p>
+<hr>
+<h2 id="auitestagent_1">AUITestAgent 系统架构<a class="headerlink" href="#auitestagent_1" title="Permanent link">¶</a></h2>
+<p>本页展示了 AUITestAgent 的全栈闭环架构，系统主要由四个核心模块组成，形成了一个经典的 <strong>感知-思考-行动（Perception-Action-Loop）</strong> 闭环：</p>
+<ol>
+<li><strong>用户输入（User Input）：</strong> 测试人员只需输入一段<strong>自然语言测试任务</strong>（例如：“帮我测试美团外卖的下单流程”），无需编写任何代码。</li>
+<li><strong>感知模块（Perception）：</strong> * 接收当前手机屏幕的<strong>实时截图（Screenshot）</strong>。</li>
+</ol>
+<ul>
+<li>结合底层操作系统的 <strong>XML/DOM 层次结构文本</strong>。</li>
+<li>通过多模态融合，精准识别出当前屏幕上有哪些可点击、可输入的按钮与区域。</li>
+</ul>
+<ol start="3">
+<li><strong>大脑决策模块（Brain/LLM Core）：</strong></li>
+</ol>
+<ul>
+<li>大模型作为核心大脑，结合当前的任务目标、历史执行步骤（Memory）以及当前的屏幕状态进行<strong>任务规划（Planning）</strong>。</li>
+<li>决定下一步应该做什么（例如：是应该点击“搜索框”，还是应该在输入框中“填入商品名称”）。</li>
+</ul>
+<ol start="4">
+<li><strong>执行模块（Action）：</strong></li>
+</ol>
+<ul>
+<li>大模型输出具体的动作指令。</li>
+<li>通过底层驱动工具（如 Android ADB 或 iOS WebDriverAgent）在真实设备上执行点击（Click）、滑动（Swipe）、输入（Type）、返回（Back）等操作。</li>
+<li>操作完成后，设备会产生新的屏幕截图，再次送入感知模块，进入下一个循环，直到任务完成。</li>
+</ul>
+<hr>
+<h2 id="_26">多模态页面感知技术<a class="headerlink" href="#_26" title="Permanent link">¶</a></h2>
+<p>本页重点讲解了 Agent 系统的“眼睛”是如何看懂复杂的 App 界面的。大模型虽然强大，但在面对高分辨率、元素密集的手机屏幕时，往往无法直接获取像素点的精准坐标。因此，系统采用了<strong>视觉（Visual）与文本（XML）双路感知融合技术</strong>：</p>
+<ul>
+<li><strong>视觉路径（左侧）：</strong> 系统获取到原始屏幕截图后，会先利用计算机视觉算法（如目标检测、图像分割）或操作系统底层的控件边界信息，在所有可交互元素上画上红框，并打上醒目的数字标签（例如：<code>① 搜索框</code>，<code>② 分类按钮</code>）。这种技术在学术界被称为 <strong>SoM（Set-of-Mark，标记集合提示）</strong>。</li>
+<li><strong>文本路径（右侧）：</strong> 与此同时，系统会提取当前的 XML 布局树，将其简化并转化为大模型更容易阅读的结构化文本。例如：</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[1] 按钮; 文本: "搜索"; 坐标: [100, 200, 180, 240]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>[2] 输入框; 提示词: "请输入商品名"; 坐标: [200, 200, 600, 240]
+</code></pre></div>
+<ul>
+<li><strong>融合效果：</strong> 通过将带有数字编号的“标记后截图”和“简化 XML 文本”同时输入给多模态大模型（如 GPT-4o 或美团自研多模态模型），大模型在决策时只需要说“请点击标号为 [2] 的输入框”，执行模块就能根据标号瞬间找到精准的绝对像素坐标。这极大地降低了模型的推理难度，将<strong>元素定位准确率提升到了金融/商业级实用水平</strong>。</li>
+</ul>
+<hr>
+<h2 id="_27">动作定义与执行流<a class="headerlink" href="#_27" title="Permanent link">¶</a></h2>
+<p>本页展示了大模型如何将思维转化为具体的测试动作，并给出了一个标准的 JSON 交互原语。</p>
+<ul>
+<li>
+<p><strong>统一的动作空间（Action Space）：</strong> 为了防范大模型输出格式不可控的问题，系统为大模型规范了严格的代码/数据输出格式。大模型只能在系统允许的动作库中进行选择：</p>
+</li>
+<li>
+<p><code>click(element_id)</code>：点击指定编号的元素。</p>
+</li>
+<li><code>type(element_id, text)</code>：在指定输入框中输入文本。</li>
+<li><code>swipe(direction)</code>：向上/下/左/右滑动屏幕。</li>
+<li><code>go_back()</code>：系统返回上一页。</li>
+<li><code>wait(seconds)</code>：等待页面加载。</li>
+<li>
+<p><code>terminate(status)</code>：结束测试（成功或失败）。</p>
+</li>
+<li>
+<p><strong>执行流与思考过程（示例）：</strong></p>
+</li>
+</ul>
+<p>图中展示了大模型在执行一次“搜索商品”任务时的内部思考（Thought）与行动（Action）数据结构：
+* <em>思考（Thought）：</em> “当前页面是美团首页，为了完成购买水果的任务，我需要先在搜索框中输入‘苹果’。我注意到搜索框的标记编号是 4。”
+* <em>行动（Action）：</em> 自动输出结构化指令 <code>type(4, "苹果")</code>。
+* 底层驱动执行完该动作后，页面跳转至搜索结果页。Agent 在下一步的思考中会判断：“已经进入搜索结果页，接下来我需要寻找带有‘水果’或‘苹果’字样的店铺，并点击进去...”，从而实现多轮连续、自主的探路式测试。</p>
+<hr>
+<h2 id="_28">美团内部落地应用效果<a class="headerlink" href="#_28" title="Permanent link">¶</a></h2>
+<p>本页总结了 AUITestAgent 在美团实际业务线大规模上线后的各项客观指标与收益，证明了大模型 Agent 在软件测试领域的巨大商业价值。</p>
+<ul>
+<li><strong>指标 1：用例覆盖率大幅提升（+45%）</strong>
+由于大模型具备极强的通用逻辑推理能力，它不仅能走通设计好的“黄金流程”，还能自主探索人工测试时容易遗漏的“边缘路径”（Edge Cases），使得新业务的功能用例覆盖率整体提升了 <strong><span class="arithmatex">\(45\%\)</span></strong>。</li>
+<li><strong>指标 2：脚本编写与维护人力节省（-70%）</strong>
+测试人员从“手动编代码定位元素”中彻底解脱出来，转而只需要编写纯自然语言的任务描述。当 App 界面改版时，大模型能够通过视觉自行适应，无需人工修改代码，使得自动化测试的<strong>全生命周期人力成本骤降 <span class="arithmatex">\(70\%\)</span></strong>。</li>
+<li><strong>指标 3：跨平台复用率（100% 一键复用）</strong>
+因为 Agent 是基于“视觉截图”和“抽象语义逻辑”来测试的，同一个自然语言用例（例如：“登录账号 <span class="arithmatex">\(\rightarrow\)</span> 选购商品 <span class="arithmatex">\(\rightarrow\)</span> 提交订单”），<strong>无需任何修改，就可以直接同时运行在 Android 和 iOS 两大平台的真实手机上</strong>，彻底抹平了跨平台技术栈的鸿沟。</li>
+</ul>
+<hr>
+<h2 id="llm-driven-agent">LLM-driven Agent 评估与测试面临的挑战<a class="headerlink" href="#llm-driven-agent" title="Permanent link">¶</a></h2>
+<p>本页作为技术难点分析页，总结了由于大模型交互范式改变，导致传统的测试手段在面对 Agent 时失效的三大根本挑战：</p>
+<ul>
+<li><strong>挑战 1：长文本上下文（Long-Context Profile）</strong></li>
+<li><strong>现象：</strong> Agent 在执行复杂或多轮任务时，其 Prompt 会随着对话、检索数据（RAG）和历史记忆的堆叠而变得极长。</li>
+<li>
+<p><strong>痛点：</strong> 现有的测试工具无法有效模拟如此庞大且复杂的真实长文本上下文，难以复现和拦截长文本下的模型失效（如“大海捞针”能力缺失、中间信息遗忘等）。</p>
+</li>
+<li>
+<p><strong>挑战 2：测试环境的不确定性（Dynamic &amp; Volatile Environments）</strong></p>
+</li>
+<li><strong>现象：</strong> 软件的物理实体（代码库、数据库、UI 界面）在不停地迭代升级。</li>
+<li>
+<p><strong>痛点：</strong> 传统测试环境是静态的。而 Agent 需要在动态、易变的环境里执行任务，静态的测试用例和 Mock 数据无法支撑对 Agent 适应能力与鲁棒性的准确评估。</p>
+</li>
+<li>
+<p><strong>挑战 3：复杂多步任务（Complex Multi-Step Tasks）</strong></p>
+</li>
+<li><strong>现象：</strong> 面对复杂任务，Agent 需要进行多步的自主拆解、工具调用与长程规划。</li>
+<li><strong>痛点：</strong> 传统测试习惯于“单点单图（Single-turn）”的黑盒输入输出校验。如何对 Agent 复杂的“推理链条（Reasoning Path）”进行多阶段、全链路的白盒化度量和监测，是目前的盲区。</li>
+</ul>
+<hr>
+<h2 id="_29">长文本技术演进与评估盲区<a class="headerlink" href="#_29" title="Permanent link">¶</a></h2>
+<p>本页进一步聚焦于“长文本（Long-Context）”这第一个挑战，剖析了技术现状与测试漏洞。</p>
+<h3 id="1_7">1. 长文本技术演进路线<a class="headerlink" href="#1_7" title="Permanent link">¶</a></h3>
+<ul>
+<li>从早期的几千个 Token，到后来的 32k、128k（如 GPT-4），再到 Gemini 时代支持的 <strong>1M 至 2M（百万级）</strong> 极其恐怖的上下文长度。</li>
+<li>大模型在架构上通过 <strong>RoPE（旋转位置编码）的外推、FlashAttention（闪烁注意力机制）的算力优化</strong> 以及长文本微调，使得模型在物理上能够“吃下”这么长的输入。</li>
+</ul>
+<h3 id="2_6">2. 评估上的致命盲区<a class="headerlink" href="#2_6" title="Permanent link">¶</a></h3>
+<p>虽然大模型在厂商的实验室跑分（如 Needle In A Haystack - 大海捞针测试）中表现优异，但在软件工程真实落地时存在三大盲区：</p>
+<ul>
+<li><strong>过度简化：</strong> “大海捞针”测试只是在一个长文本中随机插入一句话让模型去找，这与软件研发中复杂的<strong>长代码库分析、多文件级联调用、庞大的 API 文档理解</strong>等真实业务长文本场景脱节。</li>
+<li><strong>信息分布敏感：</strong> 模型对长文本不同位置（头部、中部、尾部）的信息敏感度不同。Agent 在阅读超长上下文时，极易出现“迷失在中间（Lost in the Middle）”的现象，导致测试漏测。</li>
+<li><strong>指令冲突：</strong> 超长文本中往往夹杂着多条甚至冲突的系统指令，Agent 在长程记忆下如何保持对初始核心任务目标的“忠诚度”和执行一致性，目前极度缺乏工程化的测试套件。</li>
+</ul>
+<hr>
+<h2 id="agent">环境易变性对 Agent 的冲击<a class="headerlink" href="#agent" title="Permanent link">¶</a></h2>
+<p>本页用一张清晰的架构图，解析了“环境易变性”这第二个挑战是如何导致 Agent 在执行任务时崩溃或偏离轨道的。</p>
+<ul>
+<li><strong>测试流程闭环图（主图）：</strong></li>
+</ul>
+<ol>
+<li><strong>用户输入（User）：</strong> 发起一个长程任务。</li>
+<li><strong>规划与执行（Agent）：</strong> “大脑”开始思考并调用工具。</li>
+<li><strong>环境反馈（Environments）：</strong> 去真实的环境中读取并修改数据（如代码库、UI、数据库）。</li>
+</ol>
+<ul>
+<li>
+<p><strong>环境变动带来的三大破坏：</strong></p>
+</li>
+<li>
+<p><strong>代码库变动（Repository Evolution）：</strong> 当底层的函数定义改名、依赖库升级、或接口协议微调时，Agent 原来生成的调用代码会直接报错。</p>
+</li>
+<li><strong>UI 布局翻新（UI Dynamic Layouts）：</strong> 移动端 App 或网页的前端结构发生改版（如按钮位置、元素 ID、文案调整），会导致没有视觉泛化能力的旧 Agent 无法准确定位控件。</li>
+<li><strong>数据库状态漂移（DB State Drift）：</strong> 在多步测试中，上一步写入的数据或并发测试导致的数据变化，会使当前的环境状态与 Agent 记忆中的不一致，从而引发逻辑死循环。</li>
+</ul>
+<hr>
+<h2 id="1_8">解决之道 1——面向真实场景的长文本评测<a class="headerlink" href="#1_8" title="Permanent link">¶</a></h2>
+<p>针对长文本的测试盲区，实验室提出了更贴近真实软件工程的全新评测方法：</p>
+<ul>
+<li><strong>摆脱单一的“大海捞针”：</strong> 升级为<strong>多点聚合检索、跨段落逻辑推理和复杂冲突指令消解</strong>的复合型长文本测试集。</li>
+<li><strong>真实长文语料注入：</strong> 专门引入百万级别的<strong>全套企业级架构设计文档、包含数万行的多文件关联代码库、完整的历史 Bug 知识库</strong>作为测试上下文输入。</li>
+<li><strong>度量指标体系化：</strong> 不仅看大模型最后找得对不对，还要精准度量以下指标：</li>
+<li><em>长文本检索召回率（Recall）：</em> 有没有漏看中间的核心逻辑。</li>
+<li><em>长指令遵循率（Instruction Adherence）：</em> 在读完 100 万字后，是否还能严格执行 Prompt 里定义的输出格式。</li>
+<li><em>推理忠实度（Faithfulness）：</em> 确保大模型是基于给出的长文本客观事实进行推理，而不是在后半段开始凭空“胡编乱造（幻觉）”。</li>
+</ul>
+<hr>
+<h2 id="2_7">解决之道 2——动态演进的多物理环境测试<a class="headerlink" href="#2_7" title="Permanent link">¶</a></h2>
+<p>为了解决环境易变性的痛点，测试方案必须从“静态 Mock”走向“动态沙盒”。</p>
+<ul>
+<li><strong>动态测试环境沙盒化（Sandbox）：</strong> 为 Agent 专门构建隔离且具备自愈/版本回滚能力的动态沙盒环境。</li>
+<li><strong>引入变异测试（Mutation Testing）思想：</strong> 测试系统在 Agent 运行过程中，<strong>故意制造环境扰动</strong>（例如：随机让某个微服务延迟增加、人为把 UI 控件的 ID 进行混淆、故意破坏数据库的某些脏数据）。</li>
+<li><strong>全方位评估 Agent 的三大韧性：</strong></li>
+<li><em>自我纠错能力（Self-Healing）：</em> 遇到环境报错（如 API 返回 404）时，Agent 能不能自己看懂报错日志，并主动寻找替代工具或修正调用参数。</li>
+<li><em>环境泛化能力（Generalization）：</em> 当 UI 发生微调时，Agent 能否凭借多模态视觉能力依然认出目标按钮。</li>
+<li><em>长程状态一致性（State Consistency）：</em> 在环境状态不断发生漂移时，Agent 能否保证多步任务链的平稳落地而不脱轨。</li>
+</ul>
+<hr>
+<h2 id="_30">前沿方向——大模型时代的人机协同测试<a class="headerlink" href="#_30" title="Permanent link">¶</a></h2>
+<p>本页探讨了随着 Agent 能力的成熟，软件测试的<strong>人机交互范式与协同模式</strong>发生的根本性转变（向更高级形态演进）：</p>
+<ul>
+<li><strong>传统阶段：纯人工测试（Manual Testing）</strong></li>
+<li>
+<p><em>特征：</em> 测试用例编写、脚本执行、Bug 提单全部依赖人工，大模型参与度为 0。</p>
+</li>
+<li>
+<p><strong>过渡阶段：AI 辅助测试（AI-Augmented/Copilot）</strong></p>
+</li>
+<li>
+<p><em>特征：</em> <strong>“人为主，AI 为辅”</strong>。人来设计架构和测试用例思路，调用 AI 帮写个脚本片段或润色测试报告，AI 属于工具人。</p>
+</li>
+<li>
+<p><strong>高级阶段：Agent 驱动的人机协同测试（Agent-Centric Collaboration）</strong></p>
+</li>
+<li><em>特征：</em> <strong>“AI 自主探索，人类把关（Human-in-the-Loop）”</strong>。Agent 自动去探索 App、阅读文档生成全套用例并执行；人类测试专家则退居幕后，升级为“Agent 导师或审计员”，只负责审核 Agent 提交的疑难缺陷和给 Agent 分配高层级的测试战略目标。</li>
+</ul>
+<hr>
+<h2 id="agent_1">前沿方向——基于群体智能的 Agent 协同测试<a class="headerlink" href="#agent_1" title="Permanent link">¶</a></h2>
+<p>单兵作战的 Agent 能力有限，本页展现了未来更具想象力的方向：<strong>多智能体协作（Multi-Agent System, MAS）在测试领域的全面爆发。</strong></p>
+<ul>
+<li>
+<p><strong>多角色并行的“虚拟测试团队”（主图）：</strong></p>
+</li>
+<li>
+<p><strong>测试经理 Agent（Test Manager Agent）：</strong> 负责把控全局，拆解任务，给下属分配工作。</p>
+</li>
+<li><strong>需求分析 Agent（Requirement Analyst Agent）：</strong> 专门精读 PRD 和设计文档，输出场景矩阵。</li>
+<li><strong>用例生成 Agent（Test Case Designer Agent）：</strong> 根据场景，利用各种测试方法论（等价类/边界值）高效率编写测试脚本。</li>
+<li>
+<p><strong>缺陷审计 Agent（Bug Auditor Agent）：</strong> 负责执行并交叉验证结果，剔除 Agent 产生的误报。</p>
+</li>
+<li>
+<p><strong>群体智能的杀伤力：</strong> 不同的 Agent 可以微调或配置不同的系统 Prompt（甚至使用不同的底层大模型基座）。它们通过<strong>对抗、辩论、投票、评审</strong>等群体智能机制，能极大地消除单个大模型的幻觉，让自动化测试的严密性发生质的飞跃。</p>
+</li>
+</ul>
+<hr>
+<h2 id="agent_2">大模型测试群体智能——为什么需要多 Agent 协同？<a class="headerlink" href="#agent_2" title="Permanent link">¶</a></h2>
+<p>本页深入探讨了从“单兵作战（Single Agent）”走向“群体智能（Multi-Agent System, MAS）”的必然性，并剖析了多 Agent 协作的底层科学逻辑。</p>
+<h3 id="1-agent">1. 单个 Agent 的能力瓶颈<a class="headerlink" href="#1-agent" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>上下文过载：</strong> 复杂的软件测试任务包含需求分析、用例设计、脚本编写、执行、断言和审计等诸多步骤。如果把所有任务和长文档都塞给一个 Agent，其 Prompt 会变得极长，极易引发大模型的“长文本遗忘”与“迷失在中间（Lost in the Middle）”。</li>
+<li><strong>认知局限与幻觉积聚：</strong> 单个模型在长路径推理中，某一步产生的轻微幻觉（Mistake）会在后续步骤中被层层放大，导致最终输出的测试脚本完全不可用。</li>
+</ul>
+<h3 id="2-agent">2. 多 Agent 协同的科学逻辑<a class="headerlink" href="#2-agent" title="Permanent link">¶</a></h3>
+<p>多 Agent 系统（MAS）通过引入社会学和软件工程的管理思想，实现了以下飞跃：</p>
+<ul>
+<li><strong>分工明确化（Role-Playing）：</strong> 不同的 Agent 被赋予不同的系统 Prompt。例如，让擅长逻辑推理的模型扮演“需求架构师”，让擅长代码生成的模型扮演“测试开发工程师”。每个 Agent 只需要专注于处理整个全链路中的一小段上下文，极大减轻了认知负荷。</li>
+<li><strong>群体纠错与共识机制（Consensus &amp; Review）：</strong> 引入交叉验证、辩论、投票和审计机制。上游 Agent 产出的测试用例，必须通过下游“审计 Agent”的严格评审才能过关。这种群体智能对抗能够将大模型的幻觉率大幅降低，使自动化测试达到工业级的严密性。</li>
+</ul>
+<hr>
+<h2 id="agent_3">智能化多 Agent 测试系统架构<a class="headerlink" href="#agent_3" title="Permanent link">¶</a></h2>
+<p>本页是一张非常直观的<strong>系统架构全景图</strong>，展示了测试需求输入后，虚拟测试团队内部的各个 Agent 是如何分工、协作并产生闭环的：</p>
+<ul>
+<li><strong>输入端（测试需求）：</strong> 接收来自软件工程的非结构化输入，例如产品需求文档（PRD）、系统设计规约或接口 API 定义。</li>
+<li>
+<p><strong>核心智能体层（The Multi-Agent Team）：</strong> 架构的核心是一个并行的、互通的智能体集群，包含三个最核心的角色：
+1. <strong>计划/管理智能体（Planning Agent）：</strong> 负责全局任务调度。它将复杂的测试目标拆解为子任务，分发给下属，并监控整体执行进度。
+2. <strong>生成智能体（Generation Agent）：</strong> 专注于“生产”。根据分发的任务场景，利用测试方法论（如等价类、边界值）全自动编写具体的测试脚本、单元测试代码或接口 Fuzzing 数据。
+3. <strong>审计智能体（Auditing Agent）：</strong> 专注于“纠错”。它不参与编写，而是站在客观角度对生成智能体产出的脚本进行质量评审。检查其是否存在语法错误、断言是否严密、是否包含大模型幻觉，并给出修改意见或直接打回重做。</p>
+</li>
+<li>
+<p><strong>执行与反馈环境（Environment）：</strong> 审计通过后的测试脚本被送入真实的执行环境（如沙盒、真实的 iOS/Android 手机、数据库等）运行。运行产生的报错日志（Logs）、屏幕截图（Screenshots）和状态反馈会再次回流给智能体集群，引导其进行下一轮的自我迭代和修复。</p>
+</li>
+</ul>
+<hr>
+<h2 id="agent_4">多 Agent 协作流水线与人机交互形态<a class="headerlink" href="#agent_4" title="Permanent link">¶</a></h2>
+<p>本页详细拆解了在真实执行过程中，Agent 之间是如何互发消息（Communication Pipeline）的，以及人类测试专家在此流程中的生态定位。</p>
+<h3 id="1_9">1. 串行与并行交织的协作流水线<a class="headerlink" href="#1_9" title="Permanent link">¶</a></h3>
+<p>图中展示了一个标准的执行时序：</p>
+<ul>
+<li><strong>步骤 1（任务拆解）：</strong> <em>Planning Agent</em> 拆解出“验证用户登录模块的边界条件”任务，将指令下发。</li>
+<li><strong>步骤 2（脚本编写）：</strong> <em>Generation Agent</em> 接收任务，查询底座知识库，输出一版测试用例代码，并将其传递给评审通道。</li>
+<li><strong>步骤 3（质量审计）：</strong> <em>Auditing Agent</em> 介入，通过静态代码分析和大模型语义理解对该脚本进行审计。如果发现断言不完整，会生成一份修改建议（Refinement Suggestions）返回给 Generation Agent，督促其修改。</li>
+<li><strong>步骤 4（环境执行与反馈）：</strong> 修正后的脚本在沙盒环境中执行。若遇到环境报错（如接口返回超时），<em>Planning Agent</em> 会调动群体智慧，启动“环境自愈（Self-Healing）”流程，指导团队修正参数重新执行，直至任务彻底闭环。</li>
+</ul>
+<h3 id="2-human-in-the-loop">2. 融入人类把关者（Human-in-the-Loop）<a class="headerlink" href="#2-human-in-the-loop" title="Permanent link">¶</a></h3>
+<p>虽然群体智能高度自动化，但报告强调了<strong>人类专家</strong>不可替代的监控价值：</p>
+<ul>
+<li>人类测试专家不再需要一行行敲代码，而是退居到高层级，作为<strong>虚拟团队的首席审计官</strong>。</li>
+<li>人类在关键节点（如大模型团队内部出现无法消解的辩论冲突、或者面临涉及企业核心资产的高风险业务阻断时）实施一键干预或审批，确保整个智能化测试过程百分之百安全可控。</li>
+</ul>
+<hr>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年6月4日 15:39:57 CST">2026年6月4日 15:39:57</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年6月4日 15:39:57 CST">2026年6月4日 15:39:57</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+  <h2 id="__comments">评论</h2>
+  <script src="https://giscus.app/client.js" data-repo="Melody12020831/Notebook" data-repo-id="R_kgDONR_9AA" data-category="Announcements" data-category-id="DIC_kwDONR_9AM4CkboN" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" crossorigin="anonymous" async="">
+  </script>
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024 <a href="https://github.com/Melody12020831" target="_blank" rel="noopener">Melody</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Melody12020831/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top", "navigation.path", "toc.follow", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://gcore.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../css/javascripts/tablesort.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
