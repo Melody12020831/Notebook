@@ -256,6 +256,7 @@ nav:
       - Computer_Science/CP/Chapter11.md
       - Computer_Science/CP/Chapter13.md
       - Computer_Science/CP/Chapter14.md
+      - Computer_Science/CP/Chapter18.md
       - "Homework":
           - Computer_Science/CP/HW/HW1.md
           - Computer_Science/CP/HW/HW2.md
@@ -309,6 +310,7 @@ nav:
       - Computer_Science/SE/大模型驱动需求与设计.md
       - Computer_Science/SE/大模型驱动编码与评审.md
       - Computer_Science/SE/大模型驱动赋能测试.md
+      - Computer_Science/SE/大模型驱动运维与管理.md
     - "AI":
       - Computer_Science/AI/index.md
     - "Visualization":
