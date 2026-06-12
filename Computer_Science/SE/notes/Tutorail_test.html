@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>软件工程 Tutorial — 综合实践指南</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+/* === Interactive Test Styles === */
+
+/* ── Score box ── */
+#score-box {
+  display: none; background: var(--paper-dark); color: var(--ink);
+  padding: 16px 20px; border-radius: var(--radius); margin: 14px 0;
+  text-align: center; border: 1px solid var(--card-border);
+}
+#score-box .score-num { font-size: 2.2em; font-weight: 700; }
+#score-box .score-label { font-size: 0.85em; color: var(--ink-light); }
+
+/* ── Question card ── */
+.q-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 12px 14px; margin: 10px 0;
+  transition: all 0.15s;
+}
+.q-card.correct { border-left: 3px solid var(--correct); background: #f7fdf4; }
+.q-card.wrong   { border-left: 3px solid var(--wrong); background: #fef9f9; }
+
+.q-num  { font-weight: 700; font-size: 0.98em; margin-bottom: 4px; }
+.q-text { margin-bottom: 8px; font-size: 0.98em; }
+
+/* ── Options (compact) ── */
+.option {
+  display: block; padding: 4px 10px; margin: 3px 0;
+  border: 1px solid var(--card-border); border-radius: 4px;
+  cursor: pointer; transition: all 0.12s; font-size: 0.93em;
+  background: #fefcf5;
+}
+.option:hover            { background: #f0ede0; }
+.option input            { margin-right: 6px; }
+.option.selected         { border-color: var(--accent); background: #eff6ff; }
+.option.correct-answer   { border-color: var(--correct); background: var(--correct-bg); }
+.option.wrong-answer     { border-color: var(--wrong); background: var(--wrong-bg); }
+
+/* ── Textareas (compact) ── */
+.q-textarea {
+  width: 100%; min-height: 56px; border: 1px solid var(--card-border);
+  border-radius: 4px; padding: 6px 10px; font-family: inherit;
+  font-size: 0.93em; background: #fefcf5; resize: vertical;
+}
+.q-textarea:focus { outline: none; border-color: var(--accent); }
+.q-code {
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  font-size: 0.88em; line-height: 1.5; background: #1e1e2e; color: #e0e0e0;
+  tab-size: 4; white-space: pre;
+}
+.q-code:focus { border-color: var(--accent); }
+
+/* ── Partial-credit badge ── */
+.badge-partial { background: #fef3c7; color: #92400e; }
+.q-card.partial { border-color: #f59e0b; }
+
+/* ── Result after grading ── */
+.result {
+  display: none; margin-top: 8px; padding: 8px 12px;
+  background: #fefcf5; border: 1px solid var(--card-border);
+  border-radius: 4px; font-size: 0.9em; line-height: 1.6;
+}
+.result .badge {
+  display: inline-block; padding: 1px 9px; border-radius: 3px;
+  font-weight: 700; font-size: 0.82em; margin-right: 6px;
+}
+.badge-ok  { background: var(--correct-bg); color: #166534; }
+.badge-no  { background: var(--wrong-bg); color: #991b1b; }
+.badge-ref { background: #dbeafe; color: #1e40af; }
+
+.result .explanation { margin-top: 4px; color: var(--ink); }
+.result .pitfall { color: #b45309; margin-top: 3px; font-size: 0.9em; }
+
+/* ── Grading button ── */
+.grading-bar { text-align: center; margin: 20px 0; }
+.grading-bar button {
+  font-size: 1em; padding: 8px 32px; background: var(--accent);
+  color: #fff; border: none; border-radius: var(--radius);
+  cursor: pointer; font-weight: 600; letter-spacing: 0.3px;
+}
+.grading-bar button:hover     { background: var(--accent-hover); }
+.grading-bar button:disabled  { background: #bbb; cursor: not-allowed; }
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>软件工程 Tutorial — 综合实践指南</h1>
+<h2 style="text-align:center">章节测试</h2>
+<p style="text-align:center;color:var(--ink-light);font-size:0.95em">满分 100 分 | 选择 10 题 + 判断 10 题 + 填空 5 题 + 简答 3 题 + 问答 2 题 + 综合 1 题</p>
+
+<div id="score-box"><div class="score-num" id="score-num">0</div><div class="score-label">总分</div></div>
+<div id="questions-container"></div>
+<div class="grading-bar no-print"><button onclick="gradeAll()" id="grade-btn">提交批改</button></div>
+
+<script>
+var Q = [{"type": "choice", "points": 2, "question": "期末考试题型不包括？", "options": ["选择（多选）", "判断", "简答", "编程题"], "answer": 3, "explanation": "Final Exam：选择（多选）+ 判断 + 简答 + 画图。不包含编程题。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "Project 评分中需求分析占多少？", "options": ["10%", "20%", "30%", "40%"], "answer": 2, "explanation": "需求分析 30%、项目计划 10%、系统设计 20%、原型系统 20%、系统测试 20%。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "课程教材的作者是？", "options": ["Brooks", "Pressman", "Boehm", "Karpathy"], "answer": 1, "explanation": "Pressman R S. 软件工程：实践者的研究方法。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "总成绩中 Final Exam 占多少？", "options": ["20%", "30%", "40%", "50%"], "answer": 2, "explanation": "Project × 40% + Discussions × 20% + Final × 40% = 100%。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "以下哪个概念对是正确匹配的？", "options": ["验证=Are we building the right product?", "确认=Are we building the product right?", "验证=Are we building the product right? 确认=Are we building the right product?", "两者没有区别"], "answer": 2, "explanation": "Verification = Are we building the product right? Validation = Are we building the right product?", "pitfall": "验证 vs 确认经常考——验证=做对了，确认=做了对的事。"}, {"type": "choice", "points": 2, "question": "CMMI 由哪个组织提出？", "options": ["IEEE", "ISO", "CMU SEI", "NATO"], "answer": 2, "explanation": "CMU Software Engineering Institute。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "《人月神话》的作者是谁？", "options": ["Pressman", "Brooks", "Boehm", "Karpathy"], "answer": 1, "explanation": "Frederick P. Brooks Jr.——从 IBM 360 项目教训中写出的经典。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "SOLID 五个原则中 O 代表？", "options": ["Open", "Object", "Open-Closed（开闭原则）", "Override"], "answer": 2, "explanation": "O = Open-Closed Principle: open for extension, closed for modification。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "软件工程 1.0、2.0、3.0 之间的关系是？", "options": ["完全替代", "叠加关系——各阶段各有侧重和适用场景", "互不相关", "3.0 已经淘汰了 1.0"], "answer": 1, "explanation": "三个版本是叠加关系——1.0 工程原则+2.0 敏捷实践+3.0 AI 增强。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "课程要求所有文档使用什么格式？", "options": ["Word", "PDF", "Markdown", "LaTeX"], "answer": 2, "explanation": "所有文档使用 Markdown，并通过 Git 统一管理。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "验证 (Verification) 回答「我们是否在做正确的产品」。", "options": [], "answer": 1, "explanation": "Verification=做对了。Validation=做了对的事。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "Brooks 法则说向滞后项目增加人手会加快进度。", "options": [], "answer": 1, "explanation": "向滞后的软件项目添加人手只会使其更滞后。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "功能内聚是最优的内聚类型。", "options": [], "answer": 0, "explanation": "Functional cohesion = best。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "CMMI 最高等级是 Level 5（优化级）。", "options": [], "answer": 0, "explanation": "Level 5 = Optimizing。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "软件维护成本通常低于开发成本。", "options": [], "answer": 1, "explanation": "维护占总成本的 60-80%——远高于初始开发。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "GPL 是宽松式开源许可证。", "options": [], "answer": 1, "explanation": "GPL = Copyleft（强保护式），MIT/Apache 才是宽松式。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "可观测性三支柱是 Metrics、Logs 和 Traces。", "options": [], "answer": 0, "explanation": "Observability = Metrics + Logs + Traces。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "Scrum Master 负责对 Product Backlog 排序。", "options": [], "answer": 1, "explanation": "PO 负责 Backlog 排序，Scrum Master 是过程教练。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "开源供应链安全中 SBOM 代表软件物料清单。", "options": [], "answer": 0, "explanation": "Software Bill of Materials。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "DevOps 和 CI/CD 是完全相同的概念。", "options": [], "answer": 1, "explanation": "CI/CD 是 DevOps 的技术支柱之一，DevOps 范围更广（文化+自动化+度量+共享）。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "验证回答：我们是否____。", "options": [], "answer": "把产品做对了", "explanation": "Verification = building the product right。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "SOLID 中 O 代表____原则。", "options": [], "answer": "开闭", "explanation": "Open-Closed Principle。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "Project 占最终成绩的____%。", "options": [], "answer": "40", "explanation": "Project 40% + Discussions 20% + Final 40%。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "教材作者是____。", "options": [], "answer": "Pressman", "explanation": "Pressman R S. 软件工程：实践者的研究方法。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "《人月神话》作者是____。", "options": [], "answer": "Brooks", "explanation": "Frederick P. Brooks Jr。", "pitfall": ""}, {"type": "short", "points": 10, "question": "阐述验证 (Verification) 和确认 (Validation) 的区别并各举一例。", "options": [], "answer": -1, "explanation": "Verification=做对了——如单元测试验证代码符合设计。Validation=做了对的事——如验收测试验证软件满足用户需求。<br><br><strong>评分要点</strong>：两个概念各 5 分。", "pitfall": ""}, {"type": "short", "points": 10, "question": "列出课程 Project 五个阶段的占比。", "options": [], "answer": -1, "explanation": "需求分析 30% + 项目计划 10% + 系统设计 20% + 原型系统 20% + 系统测试 20%。<br><br><strong>评分要点</strong>：五阶段各 2 分。", "pitfall": ""}, {"type": "short", "points": 10, "question": "简述软件工程 1.0/2.0/3.0 的核心差异。", "options": [], "answer": -1, "explanation": "1.0=计划驱动（瀑布/CMMI/经典方法）→ 2.0=反馈驱动（敏捷/CI/CD/DevOps）→ 3.0=AI 驱动（LLM 辅助需求/编码/测试/运维）。<br><br><strong>评分要点</strong>：三版本各 3.3 分。", "pitfall": ""}, {"type": "essay", "points": 10, "question": "从项目管理的四个 P 出发，分析为什么「人」是软件项目成功的第一因素。", "options": [], "answer": -1, "explanation": "差团队用好过程=挣扎但可能成功。好团队用差过程=可能靠人的智慧补过程不足。无人能克服的：没有能力的人任何过程都救不了。People 第一位→好的过程、产品和项目管理服务于人。<br><br><strong>评分要点</strong>：四P 关系 4 分，人第一论证 6 分。", "pitfall": ""}, {"type": "essay", "points": 10, "question": "综合讨论：软件工程这门课从「编程序」到「做软件」的转变体现在哪些方面？", "options": [], "answer": -1, "explanation": "编程关注算法和数据结构→软件工程关注过程/质量/团队/管理/度量。转变体现在：从个人 hero coding→团队协作开发；从写完就行→维护 60-80% 成本；从直觉→工程方法和度量。<br><br><strong>评分要点</strong>：转变维度分析 5 分，课程对应 5 分。", "pitfall": ""}, {"type": "comprehensive", "points": 10, "question": "回顾整个课程：软件工程 1.0（过程模型/需求/设计/测试/项目管理）、2.0（敏捷/CI/CD/DevOps）、3.0（LLM 驱动），分析三者如何层层叠加构建现代软件工程体系。", "options": [], "answer": -1, "explanation": "1.0 提供工程基础（不能跳跃的步骤）→ 2.0 提升交付效率和应变能力→ 3.0 用 AI 增强每个环节的效率。三者不是竞争而是叠加：1.0 的严谨+2.0 的灵活+3.0 的智能。<br><br><strong>评分要点</strong>：三个版本各 3 分，叠加关系 1 分。", "pitfall": ""}];
+var LABELS = {"page_title": "章节测试", "section": {"choice": "一、选择题", "multi": "二、多选题", "tf": "三、判断题", "fill": "四、填空题", "short": "五、简答题", "calc": "六、计算题", "code": "七、代码题", "essay": "八、问答题", "comprehensive": "九、综合题"}, "section_order": ["choice", "multi", "tf", "fill", "short", "calc", "code", "essay", "comprehensive"], "points_suffix": "分", "true_label": "正确", "false_label": "错误", "placeholder": "在此作答...", "code_placeholder": "在此编写代码...", "pitfall_prefix": "易错提醒：", "correct_label": "正确", "wrong_label": "错误", "partial_label": "部分正确", "answer_prefix": "正确答案：", "reference_label": "参考答案", "graded_label": "已批改", "grade_button": "提交批改", "score_label": "总分", "duration_prefix": "满分 100 分 | 建议 ", "duration_suffix": " 分钟 | 选择答案后点击提交批改"};
+
+// ─── Answer normalization (robust to how the JSON was authored) ──────
+// tf / choice answers may arrive as int index, boolean, letter ("A"),
+// or label string ("正确"/"错误"/"对"/"错"). All are coerced to an
+// option index so grading never silently fails on a type mismatch.
+
+function tfAnswerIndex(ans) {
+  // option 0 = true_label (正确), option 1 = false_label (错误)
+  if (typeof ans === 'boolean') return ans ? 0 : 1;
+  if (typeof ans === 'number') return ans === 0 ? 0 : 1;
+  var s = ('' + ans).trim().toLowerCase();
+  var truthy = ['0', 't', 'true', '正确', '对', '是', 'yes', 'y', '√', '✓'];
+  var falsy  = ['1', 'f', 'false', '错误', '错', '否', 'no', 'n', '×', 'x'];
+  if (truthy.indexOf(s) !== -1) return 0;
+  if (falsy.indexOf(s) !== -1) return 1;
+  return ans ? 0 : 1;
+}
+
+function choiceAnswerIndex(ans, options) {
+  if (typeof ans === 'number') return ans;
+  var s = ('' + ans).trim();
+  if (/^[A-Za-z]$/.test(s)) return s.toUpperCase().charCodeAt(0) - 65;
+  if (/^\d+$/.test(s)) return parseInt(s, 10);
+  if (options) {
+    for (var i = 0; i < options.length; i++) {
+      if (('' + options[i]).trim() === s) return i;
+    }
+  }
+  return parseInt(s, 10);
+}
+
+function multiAnswerSet(ans, options) {
+  var arr = Array.isArray(ans) ? ans : [ans];
+  var set = {};
+  for (var i = 0; i < arr.length; i++) {
+    set[choiceAnswerIndex(arr[i], options)] = true;
+  }
+  return set;
+}
+
+// Normalize free text for fill-in-the-blank comparison: trim, lowercase,
+// drop surrounding whitespace and common punctuation, unify full/half width.
+function normText(s) {
+  s = ('' + s).trim().toLowerCase();
+  s = s.replace(/[\s　]+/g, '');
+  s = s.replace(/[.,;:!?。，、；：！？“”"'（）()【】\[\]<>《》]/g, '');
+  // full-width ASCII -> half-width
+  s = s.replace(/[！-～]/g, function (c) {
+    return String.fromCharCode(c.charCodeAt(0) - 0xfee0);
+  });
+  return s;
+}
+
+// How many blanks does a fill question have? Count underscore / ＿ runs.
+function fillBlankCount(question) {
+  var m = ('' + question).match(/(_{2,}|＿+)/g);
+  return m ? m.length : 0;
+}
+
+// Coerce a fill `answer` into an array (one entry per blank) of accepted
+// answer lists. Handles: string, [synonyms], [[blank1 syns],[blank2 syns]].
+function fillBlankAnswers(ans, nBlanks) {
+  if (nBlanks < 1) nBlanks = 1;
+  if (!Array.isArray(ans)) return padBlanks([[ans]], nBlanks);
+  if (ans.length && Array.isArray(ans[0])) return padBlanks(ans, nBlanks);
+  // flat array of strings
+  if (nBlanks === 1) return [ans];                 // synonyms for one blank
+  if (ans.length === nBlanks) {                    // one answer per blank
+    return ans.map(function (a) { return [a]; });
+  }
+  return padBlanks([ans], nBlanks);                // ambiguous -> all on blank 1
+}
+
+function padBlanks(arr, n) {
+  var out = arr.slice(0, n);
+  while (out.length < n) out.push(['']);
+  return out;
+}
+
+// ─── Build ───────────────────────────────────────────────────────────
+
+function build() {
+  var container = document.getElementById('questions-container');
+  if (!container) { console.error('ExamPass: questions-container not found'); return; }
+
+  // Stable-sort questions by section order so headings group correctly
+  // regardless of input order.
+  var order = LABELS.section_order || [];
+  Q.forEach(function (q, i) { q._i = i; });
+  Q.sort(function (a, b) {
+    var oa = order.indexOf(a.type); if (oa === -1) oa = 99;
+    var ob = order.indexOf(b.type); if (ob === -1) ob = 99;
+    return oa - ob || a._i - b._i;
+  });
+
+  var h = '';
+  var sec = '';
+  var titles = LABELS.section;
+
+  for (var i = 0; i < Q.length; i++) {
+    var q = Q[i];
+    if (q.type !== sec) {
+      sec = q.type;
+      if (titles[q.type]) h += '<h3>' + titles[q.type] + '</h3>';
+    }
+
+    var qid = 'q' + i;
+    h += '<div class="q-card" id="card-' + qid + '">';
+    h += '<div class="q-num">' + (i + 1) + '. (' + q.points + ' ' + LABELS.points_suffix + ')</div>';
+
+    if (q.type === 'fill') {
+      h += '<div class="q-text">' + renderFill(q, qid) + '</div>';
+    } else {
+      h += '<div class="q-text">' + q.question + '</div>';
+    }
+
+    if (q.type === 'choice') {
+      var opts = q.options || [];
+      for (var j = 0; j < opts.length; j++) {
+        h += '<label class="option" id="opt-' + qid + '-' + j + '" onclick="sel(\'' + qid + '\',' + j + ')">';
+        h += '<input type="radio" name="' + qid + '" value="' + j + '">' + String.fromCharCode(65 + j) + '. ' + opts[j] + '</label>';
+      }
+    } else if (q.type === 'multi') {
+      var mopts = q.options || [];
+      for (var k = 0; k < mopts.length; k++) {
+        h += '<label class="option" id="opt-' + qid + '-' + k + '" onclick="toggle(\'' + qid + '\',' + k + ')">';
+        h += '<input type="checkbox" name="' + qid + '" value="' + k + '">' + String.fromCharCode(65 + k) + '. ' + mopts[k] + '</label>';
+      }
+    } else if (q.type === 'tf') {
+      h += '<label class="option" id="opt-' + qid + '-0" onclick="sel(\'' + qid + '\',0)">';
+      h += '<input type="radio" name="' + qid + '" value="0">' + LABELS.true_label + '</label>';
+      h += '<label class="option" id="opt-' + qid + '-1" onclick="sel(\'' + qid + '\',1)">';
+      h += '<input type="radio" name="' + qid + '" value="1">' + LABELS.false_label + '</label>';
+    } else if (q.type === 'fill') {
+      // inputs already rendered inline inside q-text
+    } else if (q.type === 'code') {
+      h += '<textarea class="q-textarea q-code" id="text-' + qid + '" placeholder="' + (LABELS.code_placeholder || LABELS.placeholder) + '" rows="8" spellcheck="false"></textarea>';
+    } else {
+      h += '<textarea class="q-textarea" id="text-' + qid + '" placeholder="' + LABELS.placeholder + '" rows="3"></textarea>';
+    }
+
+    h += '<div class="result" id="result-' + qid + '">';
+    h += '<span class="badge" id="badge-' + qid + '"></span><span id="correct-' + qid + '"></span>';
+    h += '<div class="explanation">' + (q.explanation || '') + '</div>';
+    if (q.pitfall) {
+      h += '<div class="pitfall">' + LABELS.pitfall_prefix + q.pitfall + '</div>';
+    }
+    h += '</div></div>';
+  }
+
+  container.innerHTML = h;
+
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise([container]).catch(function (err) {
+      console.error('MathJax typeset error:', err);
+    });
+  }
+}
+
+// Render fill question text with inline <input> boxes replacing blanks.
+function renderFill(q, qid) {
+  var nBlanks = fillBlankCount(q.question);
+  var k = 0;
+  var html = ('' + q.question).replace(/(_{2,}|＿+)/g, function () {
+    var inp = '<input type="text" class="fill-input" id="fill-' + qid + '-' + k + '" autocomplete="off" spellcheck="false">';
+    k++;
+    return inp;
+  });
+  if (k === 0) {
+    // No markers in text -> append boxes based on answer shape
+    var n = fillBlankAnswers(q.answer, 1).length;
+    var ans = q.answer;
+    if (Array.isArray(ans)) n = Array.isArray(ans[0]) ? ans.length : (ans.length || 1);
+    if (n < 1) n = 1;
+    html += '<div class="fill-row">';
+    for (var b = 0; b < n; b++) {
+      if (n > 1) html += '<span class="fill-tag">' + (b + 1) + '.</span>';
+      html += '<input type="text" class="fill-input" id="fill-' + qid + '-' + b + '" autocomplete="off" spellcheck="false">';
+    }
+    html += '</div>';
+  }
+  return html;
+}
+
+document.addEventListener('DOMContentLoaded', build);
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  build();
+}
+
+// ─── Selection handlers ──────────────────────────────────────────────
+
+function sel(qid, idx) {
+  var prefix = 'opt-' + qid + '-';
+  var all = document.querySelectorAll('[id^="' + prefix + '"]');
+  for (var i = 0; i < all.length; i++) all[i].classList.remove('selected');
+  var target = document.getElementById('opt-' + qid + '-' + idx);
+  if (target) target.classList.add('selected');
+  var radio = document.querySelector('input[name="' + qid + '"][value="' + idx + '"]');
+  if (radio) radio.checked = true;
+}
+
+function toggle(qid, idx) {
+  var box = document.querySelector('input[name="' + qid + '"][value="' + idx + '"]');
+  var label = document.getElementById('opt-' + qid + '-' + idx);
+  if (!box) return;
+  box.checked = !box.checked;
+  if (label) label.classList.toggle('selected', box.checked);
+}
+
+// ─── Grading ─────────────────────────────────────────────────────────
+
+function gradeAll() {
+  var score = 0;
+  for (var i = 0; i < Q.length; i++) {
+    var q = Q[i];
+    var qid = 'q' + i;
+    var card = document.getElementById('card-' + qid);
+    var result = document.getElementById('result-' + qid);
+    var badge = document.getElementById('badge-' + qid);
+    var correctEl = document.getElementById('correct-' + qid);
+    if (!card || !result) continue;
+
+    result.style.display = 'block';
+
+    if (q.type === 'choice' || q.type === 'tf') {
+      score += gradeSingle(q, qid, card, badge, correctEl);
+    } else if (q.type === 'multi') {
+      score += gradeMulti(q, qid, card, badge, correctEl);
+    } else if (q.type === 'fill') {
+      score += gradeFill(q, qid, card, badge, correctEl);
+    } else {
+      card.classList.add('correct');
+      badge.className = 'badge badge-ref';
+      badge.textContent = LABELS.reference_label;
+    }
+  }
+
+  var sb = document.getElementById('score-box');
+  if (sb) {
+    sb.style.display = 'block';
+    document.getElementById('score-num').textContent = roundScore(score);
+    sb.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  var opts = document.querySelectorAll('.option');
+  for (var a = 0; a < opts.length; a++) opts[a].style.pointerEvents = 'none';
+  var tas = document.querySelectorAll('.q-textarea');
+  for (var b = 0; b < tas.length; b++) tas[b].disabled = true;
+  var fis = document.querySelectorAll('.fill-input');
+  for (var c = 0; c < fis.length; c++) fis[c].disabled = true;
+
+  var btn = document.getElementById('grade-btn');
+  if (btn) { btn.disabled = true; btn.textContent = LABELS.graded_label; }
+
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise().catch(function (err) {
+      console.error('MathJax typeset error:', err);
+    });
+  }
+}
+
+function roundScore(s) {
+  return Math.round(s * 10) / 10;
+}
+
+function gradeSingle(q, qid, card, badge, correctEl) {
+  var ansIdx = q.type === 'tf' ? tfAnswerIndex(q.answer) : choiceAnswerIndex(q.answer, q.options);
+  var radio = document.querySelector('input[name="' + qid + '"]:checked');
+  if (radio && parseInt(radio.value, 10) === ansIdx) {
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+    correctEl.innerHTML = '';
+    var ok = document.getElementById('opt-' + qid + '-' + ansIdx);
+    if (ok) ok.classList.add('correct-answer');
+    return q.points;
+  }
+  card.classList.add('wrong');
+  badge.className = 'badge badge-no';
+  badge.textContent = LABELS.wrong_label;
+  var ansText = q.type === 'choice'
+    ? String.fromCharCode(65 + ansIdx) + '. ' + (q.options ? q.options[ansIdx] : '')
+    : (ansIdx === 0 ? LABELS.true_label : LABELS.false_label);
+  correctEl.innerHTML = LABELS.answer_prefix + ansText;
+  if (radio) {
+    var wrongOpt = document.getElementById('opt-' + qid + '-' + radio.value);
+    if (wrongOpt) wrongOpt.classList.add('wrong-answer');
+  }
+  var corr = document.getElementById('opt-' + qid + '-' + ansIdx);
+  if (corr) corr.classList.add('correct-answer');
+  return 0;
+}
+
+function gradeMulti(q, qid, card, badge, correctEl) {
+  var want = multiAnswerSet(q.answer, q.options);
+  var wantKeys = Object.keys(want).map(Number);
+  var checked = document.querySelectorAll('input[name="' + qid + '"]:checked');
+  var picked = [];
+  for (var i = 0; i < checked.length; i++) picked.push(parseInt(checked[i].value, 10));
+
+  var anyWrong = false, hitCorrect = 0;
+  for (var p = 0; p < picked.length; p++) {
+    if (want[picked[p]]) hitCorrect++;
+    else anyWrong = true;
+  }
+
+  // reveal correct / wrong option markers
+  var mopts = q.options || [];
+  for (var j = 0; j < mopts.length; j++) {
+    var el = document.getElementById('opt-' + qid + '-' + j);
+    if (!el) continue;
+    if (want[j]) el.classList.add('correct-answer');
+    else if (picked.indexOf(j) !== -1) el.classList.add('wrong-answer');
+  }
+
+  var earned;
+  if (!anyWrong && hitCorrect === wantKeys.length && picked.length === wantKeys.length) {
+    earned = q.points;
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+    correctEl.innerHTML = '';
+  } else if (!anyWrong && hitCorrect > 0) {
+    // 少选不错选 -> partial credit
+    earned = roundScore(q.points * hitCorrect / wantKeys.length);
+    card.classList.add('partial');
+    badge.className = 'badge badge-partial';
+    badge.textContent = LABELS.partial_label;
+    correctEl.innerHTML = LABELS.answer_prefix + multiAnswerText(wantKeys, mopts);
+  } else {
+    earned = 0;
+    card.classList.add('wrong');
+    badge.className = 'badge badge-no';
+    badge.textContent = LABELS.wrong_label;
+    correctEl.innerHTML = LABELS.answer_prefix + multiAnswerText(wantKeys, mopts);
+  }
+  return earned;
+}
+
+function multiAnswerText(keys, options) {
+  return keys.sort(function (a, b) { return a - b; }).map(function (k) {
+    return String.fromCharCode(65 + k) + '. ' + (options ? options[k] : '');
+  }).join('  ');
+}
+
+function gradeFill(q, qid, card, badge, correctEl) {
+  var nBlanks = fillBlankCount(q.question);
+  var blanks = fillBlankAnswers(q.answer, nBlanks);
+  var n = blanks.length;
+  var hit = 0;
+  var displays = [];
+
+  for (var b = 0; b < n; b++) {
+    var inp = document.getElementById('fill-' + qid + '-' + b);
+    var accepted = blanks[b] || [''];
+    var user = inp ? normText(inp.value) : '';
+    var ok = false;
+    for (var a = 0; a < accepted.length; a++) {
+      if (accepted[a] !== '' && normText(accepted[a]) === user && user !== '') { ok = true; break; }
+    }
+    if (inp) inp.classList.add(ok ? 'fill-ok' : 'fill-no');
+    if (ok) hit++;
+    displays.push((n > 1 ? (b + 1) + '. ' : '') + accepted.filter(function (x) { return x !== ''; }).join(' / '));
+  }
+
+  var earned = roundScore(q.points * hit / n);
+  correctEl.innerHTML = LABELS.answer_prefix + displays.join('   ');
+
+  if (hit === n) {
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+  } else if (hit > 0) {
+    card.classList.add('partial');
+    badge.className = 'badge badge-partial';
+    badge.textContent = LABELS.partial_label;
+  } else {
+    card.classList.add('wrong');
+    badge.className = 'badge badge-no';
+    badge.textContent = LABELS.wrong_label;
+  }
+  return earned;
+}
+
+</script>
+</body>
+</html>

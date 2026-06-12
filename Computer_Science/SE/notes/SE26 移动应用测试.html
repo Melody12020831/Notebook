@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.26 Testing Mobile Applications (测试移动应用)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.26 Testing Mobile Applications (测试移动应用)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s68535889">26.1-26.2 移动测试策略与指南</a></li>
+  <li><a href="#s13609549">测试策略关键问题 重点</a></li>
+  <li><a href="#s39253389">移动测试指南 必考</a></li>
+<li><a href="#s78795679">26.3 移动应用测试类型 必考</a></li>
+  <li><a href="#s27250479">移动可用性要素 重点</a></li>
+<li><a href="#s85020129">26.4-26.5 自动化测试与压力测试 重点</a></li>
+  <li><a href="#s31341233">自动化测试七步法</a></li>
+  <li><a href="#s43364362">移动端特有的压力测试用例</a></li>
+<li><a href="#s59604129">26.7 专项可用性测试 高频</a></li>
+<li><a href="#s75053188">26.8 测试工具生态</a></li>
+</ul>
+</div>
+
+<h2 id="s68535889">26.1-26.2 移动测试策略与指南</h2>
+
+<p>核心问题：移动应用测试面临<span class="kp">桌面应用没有的独特挑战</span>——设备碎片化、网络多样性、传感器集成、手势交互、电量约束。</p>
+
+<h3 id="s13609549">测试策略关键问题 <span class="tag-key">重点</span></h3>
+<ul>
+<li>在用户测试前是否需要构建全功能原型？</li>
+<li>用用户自己的设备还是提供测试设备？</li>
+<li>什么设备和用户组应包含在测试中？</li>
+<li>实验室测试 vs 远程测试——何时各自合适？</li>
+</ul>
+
+<h3 id="s39253389">移动测试指南 <span class="tag-must">必考</span></h3>
+<ol>
+<li><span class="kp">理解网络环境和设备环境</span></li>
+<li>在<span class="kp">不受控的真实世界条件</span>下进行测试</li>
+<li>选择合适的自动化测试工具</li>
+<li>识别<span class="kp">最关键的平台/硬件组合</span>进行测试</li>
+<li>在所有可能的平台上至少检查一次端到端功能流</li>
+<li>使用<span class="kp">真实设备</span>进行性能/GUI/兼容性测试</li>
+<li>在真实网络负载条件下测量 MobileApp 性能</li>
+</ol>
+
+<blockquote>易错：使用真实设备而非模拟器是关键——模拟器无法复制真实的网络延迟、电量消耗、GPS 信号变化和硬件特性。</blockquote>
+
+<h2 id="s78795679">26.3 移动应用测试类型 <span class="tag-must">必考</span></h2>
+
+<table>
+<tr><th>测试类型</th><th>关注内容</th></tr>
+<tr><td><span class="kp">概念测试 (Conceptual)</span></td><td>产品概念是否被目标用户理解和接受</td></tr>
+<tr><td><span class="kp">单元与系统测试</span></td><td>功能正确性——与传统测试对应</td></tr>
+<tr><td><span class="kp">用户体验测试 (UX)</span></td><td>功能、信息架构、屏幕设计、输入机制、移动场景适配、界面可用性、信任感、反馈、帮助</td></tr>
+<tr><td><span class="kp">稳定性测试</span></td><td>长时间运行、中断（来电/短信/低电量）、后台切换</td></tr>
+<tr><td><span class="kp">连接性测试</span></td><td>WiFi/4G/5G/飞行模式切换、弱信号、网络丢失恢复</td></tr>
+<tr><td><span class="kp">性能测试</span></td><td>启动时间、响应速度、内存占用、电量消耗</td></tr>
+<tr><td><span class="kp">兼容性测试</span></td><td>不同设备型号/OS 版本/屏幕尺寸</td></tr>
+<tr><td><span class="kp">安全测试</span></td><td>数据存储安全、传输加密、权限使用</td></tr>
+<tr><td><span class="kp">认证测试 (Certification)</span></td><td>满足应用商店（App Store/Google Play）上架要求</td></tr>
+</table>
+
+<h3 id="s27250479">移动可用性要素 <span class="tag-key">重点</span></h3>
+<ul>
+<li><span class="kp">功能 (Functionality)</span>：功能是否完整可用</li>
+<li><span class="kp">信息架构 (Information Architecture)</span>：信息组织和导航</li>
+<li><span class="kp">屏幕设计 (Screen Design)</span>：布局适配小屏</li>
+<li><span class="kp">用户输入机制</span>：键盘、手势、语音</li>
+<li><span class="kp">移动场景考虑</span>：单手操作、碎片化使用、环境光</li>
+<li><span class="kp">界面可用性</span>：触控目标大小、操作流畅度</li>
+<li><span class="kp">信任感 (Trustworthiness)</span>：数据安全、隐私保护</li>
+<li><span class="kp">反馈 (Feedback)</span>：操作确认和状态提示</li>
+<li><span class="kp">帮助设施 (Help)</span>：新手引导和帮助文档</li>
+</ul>
+
+<h2 id="s85020129">26.4-26.5 自动化测试与压力测试 <span class="tag-key">重点</span></h2>
+
+<h3 id="s31341233">自动化测试七步法</h3>
+<ol>
+<li>可行性分析</li><li>概念验证</li><li>最佳实践测试框架</li><li>定制测试工具</li>
+<li>真实条件下测试</li><li>快速缺陷解决</li><li>测试脚本复用</li>
+</ol>
+
+<h3 id="s43364362">移动端特有的压力测试用例</h3>
+<ul>
+<li>同一设备上<span class="kp">同时运行多个 App</span></li>
+<li>用病毒/恶意软件感染系统软件</li>
+<li>尝试接管设备并用于<span class="kp">发送垃圾信息</span></li>
+<li>强制 App 处理<span class="kp">过大数量的事务</span></li>
+<li>在设备上<span class="kp">存储大量数据</span></li>
+</ul>
+
+<h2 id="s59604129">26.7 专项可用性测试 <span class="tag-freq">高频</span></h2>
+<ul>
+<li><span class="kp">手势 (Gestures)</span>：滑动、捏合、长按、双击等</li>
+<li><span class="kp">语音输入与识别 (Voice Input)</span>：语音命令、语音转文字</li>
+<li><span class="kp">虚拟键盘输入</span>：不同键盘布局、自动纠错</li>
+<li><span class="kp">提醒与错误 (Alerts & Errors)</span>：通知、弹窗、错误提示</li>
+</ul>
+
+<h2 id="s75053188">26.8 测试工具生态</h2>
+<ul>
+<li><span class="kp">移动页面合规检查器</span></li>
+<li><span class="kp">移动浏览器模拟器</span></li>
+<li><span class="kp">设备模拟器</span>（但不可替代真机！）</li>
+<li><span class="kp">按键记录和回放</span></li>
+<li><span class="kp">网络监控器</span></li>
+<li><span class="kp">移动分析收集器</span></li>
+</ul>
+<p><span class="kp">云测试平台</span>（如百度 MTC、Testin）：一键提交，多设备多系统全自动测试——安装卸载测试、遍历测试（记录崩溃和操作路径）、UI 适配测试、稳定性测试、远程可视化调试。</p>
+
+<blockquote>易错：移动测试中模拟器 ≠ 真机。模拟器用于早期开发阶段的快速验证，但性能/兼容性/传感器相关测试必须用真机。用户测试应使用用户自己的设备以反映真实使用场景。</blockquote>
+
+
+
+</body>
+</html>

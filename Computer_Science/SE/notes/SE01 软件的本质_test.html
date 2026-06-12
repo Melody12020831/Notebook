@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.1 The Nature of Software (软件的本质)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+/* === Interactive Test Styles === */
+
+/* ── Score box ── */
+#score-box {
+  display: none; background: var(--paper-dark); color: var(--ink);
+  padding: 16px 20px; border-radius: var(--radius); margin: 14px 0;
+  text-align: center; border: 1px solid var(--card-border);
+}
+#score-box .score-num { font-size: 2.2em; font-weight: 700; }
+#score-box .score-label { font-size: 0.85em; color: var(--ink-light); }
+
+/* ── Question card ── */
+.q-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 12px 14px; margin: 10px 0;
+  transition: all 0.15s;
+}
+.q-card.correct { border-left: 3px solid var(--correct); background: #f7fdf4; }
+.q-card.wrong   { border-left: 3px solid var(--wrong); background: #fef9f9; }
+
+.q-num  { font-weight: 700; font-size: 0.98em; margin-bottom: 4px; }
+.q-text { margin-bottom: 8px; font-size: 0.98em; }
+
+/* ── Options (compact) ── */
+.option {
+  display: block; padding: 4px 10px; margin: 3px 0;
+  border: 1px solid var(--card-border); border-radius: 4px;
+  cursor: pointer; transition: all 0.12s; font-size: 0.93em;
+  background: #fefcf5;
+}
+.option:hover            { background: #f0ede0; }
+.option input            { margin-right: 6px; }
+.option.selected         { border-color: var(--accent); background: #eff6ff; }
+.option.correct-answer   { border-color: var(--correct); background: var(--correct-bg); }
+.option.wrong-answer     { border-color: var(--wrong); background: var(--wrong-bg); }
+
+/* ── Textareas (compact) ── */
+.q-textarea {
+  width: 100%; min-height: 56px; border: 1px solid var(--card-border);
+  border-radius: 4px; padding: 6px 10px; font-family: inherit;
+  font-size: 0.93em; background: #fefcf5; resize: vertical;
+}
+.q-textarea:focus { outline: none; border-color: var(--accent); }
+.q-code {
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  font-size: 0.88em; line-height: 1.5; background: #1e1e2e; color: #e0e0e0;
+  tab-size: 4; white-space: pre;
+}
+.q-code:focus { border-color: var(--accent); }
+
+/* ── Partial-credit badge ── */
+.badge-partial { background: #fef3c7; color: #92400e; }
+.q-card.partial { border-color: #f59e0b; }
+
+/* ── Result after grading ── */
+.result {
+  display: none; margin-top: 8px; padding: 8px 12px;
+  background: #fefcf5; border: 1px solid var(--card-border);
+  border-radius: 4px; font-size: 0.9em; line-height: 1.6;
+}
+.result .badge {
+  display: inline-block; padding: 1px 9px; border-radius: 3px;
+  font-weight: 700; font-size: 0.82em; margin-right: 6px;
+}
+.badge-ok  { background: var(--correct-bg); color: #166534; }
+.badge-no  { background: var(--wrong-bg); color: #991b1b; }
+.badge-ref { background: #dbeafe; color: #1e40af; }
+
+.result .explanation { margin-top: 4px; color: var(--ink); }
+.result .pitfall { color: #b45309; margin-top: 3px; font-size: 0.9em; }
+
+/* ── Grading button ── */
+.grading-bar { text-align: center; margin: 20px 0; }
+.grading-bar button {
+  font-size: 1em; padding: 8px 32px; background: var(--accent);
+  color: #fff; border: none; border-radius: var(--radius);
+  cursor: pointer; font-weight: 600; letter-spacing: 0.3px;
+}
+.grading-bar button:hover     { background: var(--accent-hover); }
+.grading-bar button:disabled  { background: #bbb; cursor: not-allowed; }
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.1 The Nature of Software (软件的本质)</h1>
+<h2 style="text-align:center">章节测试</h2>
+<p style="text-align:center;color:var(--ink-light);font-size:0.95em">满分 100 分 | 选择 10 题 + 判断 10 题 + 填空 5 题 + 简答 3 题 + 问答 2 题 + 综合 1 题</p>
+
+<div id="score-box"><div class="score-num" id="score-num">0</div><div class="score-label">总分</div></div>
+<div id="questions-container"></div>
+<div class="grading-bar no-print"><button onclick="gradeAll()" id="grade-btn">提交批改</button></div>
+
+<script>
+var Q = [{"type": "choice", "points": 2, "question": "根据定义，软件配置 (Software Configuration) 包含哪三部分？", "options": ["代码 + 测试 + 部署", "指令 + 数据结构 + 文档", "算法 + 界面 + 数据库", "程序 + 硬件 + 网络"], "answer": 1, "explanation": "软件是一组构成「配置」的要素集合，包括：指令（计算机程序）、数据结构、文档。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "软件与硬件最本质的区别是什么？", "options": ["软件比硬件便宜", "软件不会出错", "软件是被开发而非制造的", "软件运行速度更快"], "answer": 2, "explanation": "软件是逻辑产物（被开发/工程化），硬件是物理实体（被制造）。这是本质区别。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "软件不会磨损，但会怎样？", "options": ["自动修复", "退化 (deteriorate)", "保持不变", "逐渐加速"], "answer": 1, "explanation": "软件不会磨损，但会退化——每次修改可能引入新错误，失效率突然升高。", "pitfall": "判断关键：软件不磨损但退化，每次变更都引入风险。"}, {"type": "choice", "points": 2, "question": "IBM 360 操作系统项目的教训主要记录在哪本经典著作中？", "options": ["《设计模式》", "《代码大全》", "《人月神话》", "《敏捷软件开发》"], "answer": 2, "explanation": "Brooks 博士从 IBM 360 项目教训中写出《人月神话》(The Mythical Man-Month)。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "云计算的三种服务模型从底层到顶层依次是？", "options": ["SaaS → PaaS → IaaS", "IaaS → PaaS → SaaS", "PaaS → IaaS → SaaS", "IaaS → SaaS → PaaS"], "answer": 1, "explanation": "三层模型：IaaS（基础设施）→ PaaS（平台）→ SaaS（软件），自下而上抽象层次递增。", "pitfall": "顺序从底层到顶层：IaaS → PaaS → SaaS。"}, {"type": "choice", "points": 2, "question": "Software 2.0 的核心编程方式是什么？", "options": ["程序员编写显式指令", "通过数据训练神经网络权重", "用自然语言提示", "可视化拖拽编程"], "answer": 1, "explanation": "Software 2.0：weights → programs → neural net。通过数据训练模型参数（神经网络权重）。", "pitfall": "区分：1.0 写代码，2.0 训权重，3.0 写提示词。"}, {"type": "choice", "points": 2, "question": "Vibe Coding（氛围编程）是谁在哪一年提出的？", "options": ["Brooks, 1975", "Andrej Karpathy, 2025", "Pressman, 2011", "Linus Torvalds, 2020"], "answer": 1, "explanation": "Andrej Karpathy 于 2025 年提出 Vibe Coding——通过自然语言提示与 AI 生成代码。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "产品线软件 (Product Line Software) 的核心优势是什么？", "options": ["每个产品完全独立开发", "利用公共核心可复用组件和共享资产", "不需要测试", "只适用于小型项目"], "answer": 1, "explanation": "产品线软件利用公共核心可复用组件，共享需求、架构、设计模式、测试用例等资产，通过共性最大化来高效开发多个产品。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "遗留软件必须变更的原因<strong>不</strong>包括？", "options": ["适应新计算环境", "实现新业务需求", "与其他系统互操作", "降低软件维护成本"], "answer": 3, "explanation": "遗留软件变更的四个原因：适应环境、增强功能、扩展互操作、重新架构。变更恰恰增加了维护成本。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "关于 Software 1.0/2.0/3.0 的关系，正确的是？", "options": ["3.0 完全取代了 1.0 和 2.0", "它们是相互替代的关系", "它们是叠加关系，各自适用于不同场景", "1.0 已经过时不再使用"], "answer": 2, "explanation": "三个版本是叠加关系而非替代关系。1.0 仍是基础，2.0 增加了数据驱动，3.0 增加了自然语言交互。", "pitfall": "常见错误：说新版本「取代」了旧版本。"}, {"type": "tf", "points": 1, "question": "软件定义的三个组成部分不包括硬件。", "options": [], "answer": 0, "explanation": "软件配置包括指令、数据结构、文档，不包含硬件。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "软件的失效曲线与硬件相同，都是浴缸曲线。", "options": [], "answer": 1, "explanation": "软件不会磨损，没有浴缸曲线的磨损期。软件失效率曲线：平稳期中有突变（每次修改引入新错误）。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "软件是「制造」出来的，这一点与硬件相同。", "options": [], "answer": 1, "explanation": "软件是被「开发/工程化」的，不是被「制造」的。硬件才是在传统意义上被制造的。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "Web 3.0（语义 Web）的核心特征包括语义数据库、灵活数据表示和 API 访问。", "options": [], "answer": 0, "explanation": "Web 3.0 语义 Web 技术演化为复杂的语义数据库、灵活的 web 链接和 API 访问。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "云架构中前端服务包括服务器、数据存储和驻留应用。", "options": [], "answer": 1, "explanation": "前端服务 = 客户端设备 + 应用软件。后端服务 = 服务器 + 数据存储 + 驻留应用。", "pitfall": "前后端服务内容容易混淆。"}, {"type": "tf", "points": 1, "question": "软件产品的双重作用是产品和产品交付载体。", "options": [], "answer": 0, "explanation": "软件既作为产品（信息转换器），又作为产品交付载体（OS、网络、工具）。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "Software 2.0 的代表案例是 AlexNet 图像识别网络。", "options": [], "answer": 0, "explanation": "AlexNet (2012) 是 Software 2.0（固定功能神经网络）的代表案例。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "Karpathy 提出的 Vibe Coding 强调代码规范和测试覆盖率。", "options": [], "answer": 1, "explanation": "Vibe Coding 强调通过自然语言提示与 AI 生成代码，开发者进入「创意 flow」状态。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "CMU SEI 提出的 CMM/CMMI 是软件过程评估模型。", "options": [], "answer": 0, "explanation": "CMU SEI（软件工程研究所）提出著名的 CMM/CMMI 软件成熟度模型。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "移动 Web App 和移动 App 的区别将随时间推移变得模糊。", "options": [], "answer": 0, "explanation": "PPT 原文：As time passes these differences will become blurred。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "软件配置由三部分组成：指令、____、文档。", "options": [], "answer": "数据结构", "explanation": "软件 = 指令（程序）+ 数据结构 + 文档。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "IBM 360 项目导致 Brooks 写出了经典著作《____》。", "options": [], "answer": "人月神话", "explanation": "Brooks 从 IBM 360 的教训中写出《人月神话》(The Mythical Man-Month)。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "云计算的三层服务模型：____ → PaaS → SaaS。", "options": [], "answer": "IaaS", "explanation": "三层：IaaS（基础设施）→ PaaS（平台）→ SaaS（软件）。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "Software 1.0 的核心是计算机代码，Software 2.0 的核心是____。", "options": [], "answer": "神经网络权重", "explanation": "Software 2.0 = 神经网络权重（weights）代替代码。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "Software 3.0 的编程方式是使用____来驱动 LLM。", "options": [], "answer": "提示词", "explanation": "Software 3.0 = LLM 提示词（prompts）驱动可编程神经网络。", "pitfall": ""}, {"type": "short", "points": 10, "question": "解释软件与硬件的本质区别，并说明为什么软件的失效模式与硬件不同。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>本质区别</strong>：软件是逻辑产物（被开发/工程化），硬件是物理实体（被制造）。软件没有物理损耗，没有「备件」的概念。大多数软件仍是定制化构建。<br><br><strong>失效模式差异</strong>：硬件遵循「浴缸曲线」——初期高失效率（设计/生产缺陷）→ 平稳期 → 磨损期失效率升高。软件不会磨损但会退化——每次修改引入新错误，失效率曲线是「平稳期 + 突变尖峰」。理想的软件失效率是持续下降趋近于零，但现实中每次变更都会制造新的错误尖峰。<br><br><strong>评分要点</strong>：本质区别 4 分，硬件浴缸曲线 2 分，软件退化曲线 4 分。", "pitfall": "常见错误：只说「软件不退变」而忽略「软件会退化(deteriorate)」这一关键概念。"}, {"type": "short", "points": 10, "question": "简述 Software 1.0、2.0、3.0 三个版本的核心差异。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>Software 1.0（约 1940s-）</strong>：程序员显式编写计算机代码（programs → computer）。传统编程范式，如 GitHub 上的代码库。<br><br><strong>Software 2.0（约 2012-）</strong>：通过数据训练神经网络权重（weights → neural net）。程序员不再直接写逻辑，而是设计模型架构和准备训练数据。代表：AlexNet、HuggingFace 模型。<br><br><strong>Software 3.0（约 2019-）</strong>：LLM 成为可编程神经网络。用户通过自然语言提示词（prompts）驱动模型。代表：GPT 系列。2025 年 Karpathy 提出 Vibe Coding 概念。<br><br><strong>关系</strong>：叠加而非替代。1.0 仍是基础，需大量软件（重）写。<br><br><strong>评分要点</strong>：三个版本各 3 分，关系说明 1 分。", "pitfall": "常见错误：把三个版本说成替代关系。"}, {"type": "short", "points": 10, "question": "列出遗留软件必须变更的四个原因，并简要说明每个原因。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br>1. <strong>适应 (Adaptation)</strong>：软件必须适应新的计算环境或技术（如从本地部署迁移到云端）。<br>2. <strong>增强 (Enhancement)</strong>：软件必须被增强以实现新的业务需求（如增加新功能、支持新法规）。<br>3. <strong>扩展 (Extension)</strong>：软件必须被扩展以与其他更现代的系统或数据库互操作（如通过 API 与服务对接）。<br>4. <strong>重新架构 (Re-architecture)</strong>：软件必须被重新架构以在网络环境中可行（如从单体架构转为微服务）。<br><br><strong>评分要点</strong>：四个原因各 2.5 分，需有简要说明。", "pitfall": "常见遗漏：忽略「重新架构」这个原因。"}, {"type": "essay", "points": 10, "question": "分析 IBM 360 操作系统项目的失败教训，说明 Brooks 从中总结出的核心观点如何影响现代软件工程实践。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>IBM 360 教训</strong>：5000 人-年、最多 1000 人同时开发、约 100 万行代码。每个新版本从前版本修复约 1000 个错误。说明大型软件的复杂度超出人类直觉管理范畴。<br><br><strong>Brooks 核心观点</strong>：<br>1. <strong>人月不可互换</strong>：向滞后项目加人只会使其更滞后。沟通路径 n(n-1)/2 指数增长。<br>2. <strong>没有银弹</strong>：不存在能大幅提升软件开发效率的单一技术突破。<br>3. <strong>概念完整性</strong>：系统应由少数人设计以保证架构一致性。<br><br><strong>现代影响</strong>：敏捷开发接受不确定性（快速迭代而非试图提前规划完美）；DevOps 通过自动化减少沟通成本；AI 辅助编码作为工具而非替代品。<br><br><strong>评分要点</strong>：IBM 360 案例 3 分，Brooks 观点 4 分，现代影响 3 分。", "pitfall": "常见不足：只讲教训不联系现代实践。"}, {"type": "essay", "points": 10, "question": "结合 Karpathy 的 Vibe Coding 概念，讨论 Software 3.0 时代软件工程师的角色转变——从「编写代码」到「描述需求」意味着什么？", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>角色转变的核心</strong>：从「如何实现」（how）转向「实现什么」（what）。工程师的重点从编写具体算法转变为定义需求、约束和评估标准。<br><br><strong>新能力要求</strong>：<br>1. <strong>需求精确表达</strong>：模糊的自然语言提示产生模糊的结果，精确的需求描述成为核心能力。<br>2. <strong>代码审查与验证</strong>：AI 生成的代码需要人工审查正确性、安全性、性能。<br>3. <strong>系统架构思维</strong>：将复杂问题分解为 AI 可处理的子问题。<br>4. <strong>领域专业知识</strong>：AI 缺乏特定领域的深厚知识，工程师的判断力不可替代。<br><br><strong>不变的工程原则</strong>：质量关注、过程管理、测试验证、文档编写等软件工程基本原则仍然是必须的。<br><br><strong>评分要点</strong>：角色转变阐述 4 分，新能力要求 4 分，不变原则 2 分。", "pitfall": "常见极端：要么认为 AI 会取代程序员，要么否认 AI 的影响。合理立场是角色转变+能力升级。"}, {"type": "comprehensive", "points": 10, "question": "从软件的本质、软件的变化形态、以及软件开发的根本问题三个维度，综合分析为什么「软件工程」这门学科是必要的——单靠编程技能为什么不够？", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>从软件本质维度</strong>：软件是复杂的逻辑产物，不是物理实体。它不会磨损但会退化——每次修改都引入风险。软件由指令+数据结构+文档组成，编程技能只覆盖了「指令」部分。<br><br><strong>从变化形态维度</strong>：软件形态从单机程序演变到 WebApps、移动应用、云计算、产品线软件，再到 AI 驱动软件。每种形态引入新的工程挑战（规模、分布、安全、互操作），纯编程无法应对这些维度的复杂性。<br><br><strong>从根本问题维度</strong>：为什么软件总是延期？为什么成本居高不下？为什么无法找到所有错误？为什么维护如此困难？这些问题的答案不在编程技术中，而在过程管理、质量管理、度量方法——即软件工程的范畴。<br><br><strong>结论</strong>：编程技能解决「写代码」的问题，软件工程解决「做软件」的问题——后者包含了沟通、计划、建模、测试、质量保证、项目管理等系统化方法。<br><br><strong>评分要点</strong>：软件本质维 3 分，变化形态维 3 分，根本问题维 2 分，结论 2 分。", "pitfall": "需从三个维度分别具体分析，每个维度都要回答「为什么编程不够」。"}];
+var LABELS = {"page_title": "章节测试", "section": {"choice": "一、选择题", "multi": "二、多选题", "tf": "三、判断题", "fill": "四、填空题", "short": "五、简答题", "calc": "六、计算题", "code": "七、代码题", "essay": "八、问答题", "comprehensive": "九、综合题"}, "section_order": ["choice", "multi", "tf", "fill", "short", "calc", "code", "essay", "comprehensive"], "points_suffix": "分", "true_label": "正确", "false_label": "错误", "placeholder": "在此作答...", "code_placeholder": "在此编写代码...", "pitfall_prefix": "易错提醒：", "correct_label": "正确", "wrong_label": "错误", "partial_label": "部分正确", "answer_prefix": "正确答案：", "reference_label": "参考答案", "graded_label": "已批改", "grade_button": "提交批改", "score_label": "总分", "duration_prefix": "满分 100 分 | 建议 ", "duration_suffix": " 分钟 | 选择答案后点击提交批改"};
+
+// ─── Answer normalization (robust to how the JSON was authored) ──────
+// tf / choice answers may arrive as int index, boolean, letter ("A"),
+// or label string ("正确"/"错误"/"对"/"错"). All are coerced to an
+// option index so grading never silently fails on a type mismatch.
+
+function tfAnswerIndex(ans) {
+  // option 0 = true_label (正确), option 1 = false_label (错误)
+  if (typeof ans === 'boolean') return ans ? 0 : 1;
+  if (typeof ans === 'number') return ans === 0 ? 0 : 1;
+  var s = ('' + ans).trim().toLowerCase();
+  var truthy = ['0', 't', 'true', '正确', '对', '是', 'yes', 'y', '√', '✓'];
+  var falsy  = ['1', 'f', 'false', '错误', '错', '否', 'no', 'n', '×', 'x'];
+  if (truthy.indexOf(s) !== -1) return 0;
+  if (falsy.indexOf(s) !== -1) return 1;
+  return ans ? 0 : 1;
+}
+
+function choiceAnswerIndex(ans, options) {
+  if (typeof ans === 'number') return ans;
+  var s = ('' + ans).trim();
+  if (/^[A-Za-z]$/.test(s)) return s.toUpperCase().charCodeAt(0) - 65;
+  if (/^\d+$/.test(s)) return parseInt(s, 10);
+  if (options) {
+    for (var i = 0; i < options.length; i++) {
+      if (('' + options[i]).trim() === s) return i;
+    }
+  }
+  return parseInt(s, 10);
+}
+
+function multiAnswerSet(ans, options) {
+  var arr = Array.isArray(ans) ? ans : [ans];
+  var set = {};
+  for (var i = 0; i < arr.length; i++) {
+    set[choiceAnswerIndex(arr[i], options)] = true;
+  }
+  return set;
+}
+
+// Normalize free text for fill-in-the-blank comparison: trim, lowercase,
+// drop surrounding whitespace and common punctuation, unify full/half width.
+function normText(s) {
+  s = ('' + s).trim().toLowerCase();
+  s = s.replace(/[\s　]+/g, '');
+  s = s.replace(/[.,;:!?。，、；：！？“”"'（）()【】\[\]<>《》]/g, '');
+  // full-width ASCII -> half-width
+  s = s.replace(/[！-～]/g, function (c) {
+    return String.fromCharCode(c.charCodeAt(0) - 0xfee0);
+  });
+  return s;
+}
+
+// How many blanks does a fill question have? Count underscore / ＿ runs.
+function fillBlankCount(question) {
+  var m = ('' + question).match(/(_{2,}|＿+)/g);
+  return m ? m.length : 0;
+}
+
+// Coerce a fill `answer` into an array (one entry per blank) of accepted
+// answer lists. Handles: string, [synonyms], [[blank1 syns],[blank2 syns]].
+function fillBlankAnswers(ans, nBlanks) {
+  if (nBlanks < 1) nBlanks = 1;
+  if (!Array.isArray(ans)) return padBlanks([[ans]], nBlanks);
+  if (ans.length && Array.isArray(ans[0])) return padBlanks(ans, nBlanks);
+  // flat array of strings
+  if (nBlanks === 1) return [ans];                 // synonyms for one blank
+  if (ans.length === nBlanks) {                    // one answer per blank
+    return ans.map(function (a) { return [a]; });
+  }
+  return padBlanks([ans], nBlanks);                // ambiguous -> all on blank 1
+}
+
+function padBlanks(arr, n) {
+  var out = arr.slice(0, n);
+  while (out.length < n) out.push(['']);
+  return out;
+}
+
+// ─── Build ───────────────────────────────────────────────────────────
+
+function build() {
+  var container = document.getElementById('questions-container');
+  if (!container) { console.error('ExamPass: questions-container not found'); return; }
+
+  // Stable-sort questions by section order so headings group correctly
+  // regardless of input order.
+  var order = LABELS.section_order || [];
+  Q.forEach(function (q, i) { q._i = i; });
+  Q.sort(function (a, b) {
+    var oa = order.indexOf(a.type); if (oa === -1) oa = 99;
+    var ob = order.indexOf(b.type); if (ob === -1) ob = 99;
+    return oa - ob || a._i - b._i;
+  });
+
+  var h = '';
+  var sec = '';
+  var titles = LABELS.section;
+
+  for (var i = 0; i < Q.length; i++) {
+    var q = Q[i];
+    if (q.type !== sec) {
+      sec = q.type;
+      if (titles[q.type]) h += '<h3>' + titles[q.type] + '</h3>';
+    }
+
+    var qid = 'q' + i;
+    h += '<div class="q-card" id="card-' + qid + '">';
+    h += '<div class="q-num">' + (i + 1) + '. (' + q.points + ' ' + LABELS.points_suffix + ')</div>';
+
+    if (q.type === 'fill') {
+      h += '<div class="q-text">' + renderFill(q, qid) + '</div>';
+    } else {
+      h += '<div class="q-text">' + q.question + '</div>';
+    }
+
+    if (q.type === 'choice') {
+      var opts = q.options || [];
+      for (var j = 0; j < opts.length; j++) {
+        h += '<label class="option" id="opt-' + qid + '-' + j + '" onclick="sel(\'' + qid + '\',' + j + ')">';
+        h += '<input type="radio" name="' + qid + '" value="' + j + '">' + String.fromCharCode(65 + j) + '. ' + opts[j] + '</label>';
+      }
+    } else if (q.type === 'multi') {
+      var mopts = q.options || [];
+      for (var k = 0; k < mopts.length; k++) {
+        h += '<label class="option" id="opt-' + qid + '-' + k + '" onclick="toggle(\'' + qid + '\',' + k + ')">';
+        h += '<input type="checkbox" name="' + qid + '" value="' + k + '">' + String.fromCharCode(65 + k) + '. ' + mopts[k] + '</label>';
+      }
+    } else if (q.type === 'tf') {
+      h += '<label class="option" id="opt-' + qid + '-0" onclick="sel(\'' + qid + '\',0)">';
+      h += '<input type="radio" name="' + qid + '" value="0">' + LABELS.true_label + '</label>';
+      h += '<label class="option" id="opt-' + qid + '-1" onclick="sel(\'' + qid + '\',1)">';
+      h += '<input type="radio" name="' + qid + '" value="1">' + LABELS.false_label + '</label>';
+    } else if (q.type === 'fill') {
+      // inputs already rendered inline inside q-text
+    } else if (q.type === 'code') {
+      h += '<textarea class="q-textarea q-code" id="text-' + qid + '" placeholder="' + (LABELS.code_placeholder || LABELS.placeholder) + '" rows="8" spellcheck="false"></textarea>';
+    } else {
+      h += '<textarea class="q-textarea" id="text-' + qid + '" placeholder="' + LABELS.placeholder + '" rows="3"></textarea>';
+    }
+
+    h += '<div class="result" id="result-' + qid + '">';
+    h += '<span class="badge" id="badge-' + qid + '"></span><span id="correct-' + qid + '"></span>';
+    h += '<div class="explanation">' + (q.explanation || '') + '</div>';
+    if (q.pitfall) {
+      h += '<div class="pitfall">' + LABELS.pitfall_prefix + q.pitfall + '</div>';
+    }
+    h += '</div></div>';
+  }
+
+  container.innerHTML = h;
+
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise([container]).catch(function (err) {
+      console.error('MathJax typeset error:', err);
+    });
+  }
+}
+
+// Render fill question text with inline <input> boxes replacing blanks.
+function renderFill(q, qid) {
+  var nBlanks = fillBlankCount(q.question);
+  var k = 0;
+  var html = ('' + q.question).replace(/(_{2,}|＿+)/g, function () {
+    var inp = '<input type="text" class="fill-input" id="fill-' + qid + '-' + k + '" autocomplete="off" spellcheck="false">';
+    k++;
+    return inp;
+  });
+  if (k === 0) {
+    // No markers in text -> append boxes based on answer shape
+    var n = fillBlankAnswers(q.answer, 1).length;
+    var ans = q.answer;
+    if (Array.isArray(ans)) n = Array.isArray(ans[0]) ? ans.length : (ans.length || 1);
+    if (n < 1) n = 1;
+    html += '<div class="fill-row">';
+    for (var b = 0; b < n; b++) {
+      if (n > 1) html += '<span class="fill-tag">' + (b + 1) + '.</span>';
+      html += '<input type="text" class="fill-input" id="fill-' + qid + '-' + b + '" autocomplete="off" spellcheck="false">';
+    }
+    html += '</div>';
+  }
+  return html;
+}
+
+document.addEventListener('DOMContentLoaded', build);
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  build();
+}
+
+// ─── Selection handlers ──────────────────────────────────────────────
+
+function sel(qid, idx) {
+  var prefix = 'opt-' + qid + '-';
+  var all = document.querySelectorAll('[id^="' + prefix + '"]');
+  for (var i = 0; i < all.length; i++) all[i].classList.remove('selected');
+  var target = document.getElementById('opt-' + qid + '-' + idx);
+  if (target) target.classList.add('selected');
+  var radio = document.querySelector('input[name="' + qid + '"][value="' + idx + '"]');
+  if (radio) radio.checked = true;
+}
+
+function toggle(qid, idx) {
+  var box = document.querySelector('input[name="' + qid + '"][value="' + idx + '"]');
+  var label = document.getElementById('opt-' + qid + '-' + idx);
+  if (!box) return;
+  box.checked = !box.checked;
+  if (label) label.classList.toggle('selected', box.checked);
+}
+
+// ─── Grading ─────────────────────────────────────────────────────────
+
+function gradeAll() {
+  var score = 0;
+  for (var i = 0; i < Q.length; i++) {
+    var q = Q[i];
+    var qid = 'q' + i;
+    var card = document.getElementById('card-' + qid);
+    var result = document.getElementById('result-' + qid);
+    var badge = document.getElementById('badge-' + qid);
+    var correctEl = document.getElementById('correct-' + qid);
+    if (!card || !result) continue;
+
+    result.style.display = 'block';
+
+    if (q.type === 'choice' || q.type === 'tf') {
+      score += gradeSingle(q, qid, card, badge, correctEl);
+    } else if (q.type === 'multi') {
+      score += gradeMulti(q, qid, card, badge, correctEl);
+    } else if (q.type === 'fill') {
+      score += gradeFill(q, qid, card, badge, correctEl);
+    } else {
+      card.classList.add('correct');
+      badge.className = 'badge badge-ref';
+      badge.textContent = LABELS.reference_label;
+    }
+  }
+
+  var sb = document.getElementById('score-box');
+  if (sb) {
+    sb.style.display = 'block';
+    document.getElementById('score-num').textContent = roundScore(score);
+    sb.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  var opts = document.querySelectorAll('.option');
+  for (var a = 0; a < opts.length; a++) opts[a].style.pointerEvents = 'none';
+  var tas = document.querySelectorAll('.q-textarea');
+  for (var b = 0; b < tas.length; b++) tas[b].disabled = true;
+  var fis = document.querySelectorAll('.fill-input');
+  for (var c = 0; c < fis.length; c++) fis[c].disabled = true;
+
+  var btn = document.getElementById('grade-btn');
+  if (btn) { btn.disabled = true; btn.textContent = LABELS.graded_label; }
+
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise().catch(function (err) {
+      console.error('MathJax typeset error:', err);
+    });
+  }
+}
+
+function roundScore(s) {
+  return Math.round(s * 10) / 10;
+}
+
+function gradeSingle(q, qid, card, badge, correctEl) {
+  var ansIdx = q.type === 'tf' ? tfAnswerIndex(q.answer) : choiceAnswerIndex(q.answer, q.options);
+  var radio = document.querySelector('input[name="' + qid + '"]:checked');
+  if (radio && parseInt(radio.value, 10) === ansIdx) {
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+    correctEl.innerHTML = '';
+    var ok = document.getElementById('opt-' + qid + '-' + ansIdx);
+    if (ok) ok.classList.add('correct-answer');
+    return q.points;
+  }
+  card.classList.add('wrong');
+  badge.className = 'badge badge-no';
+  badge.textContent = LABELS.wrong_label;
+  var ansText = q.type === 'choice'
+    ? String.fromCharCode(65 + ansIdx) + '. ' + (q.options ? q.options[ansIdx] : '')
+    : (ansIdx === 0 ? LABELS.true_label : LABELS.false_label);
+  correctEl.innerHTML = LABELS.answer_prefix + ansText;
+  if (radio) {
+    var wrongOpt = document.getElementById('opt-' + qid + '-' + radio.value);
+    if (wrongOpt) wrongOpt.classList.add('wrong-answer');
+  }
+  var corr = document.getElementById('opt-' + qid + '-' + ansIdx);
+  if (corr) corr.classList.add('correct-answer');
+  return 0;
+}
+
+function gradeMulti(q, qid, card, badge, correctEl) {
+  var want = multiAnswerSet(q.answer, q.options);
+  var wantKeys = Object.keys(want).map(Number);
+  var checked = document.querySelectorAll('input[name="' + qid + '"]:checked');
+  var picked = [];
+  for (var i = 0; i < checked.length; i++) picked.push(parseInt(checked[i].value, 10));
+
+  var anyWrong = false, hitCorrect = 0;
+  for (var p = 0; p < picked.length; p++) {
+    if (want[picked[p]]) hitCorrect++;
+    else anyWrong = true;
+  }
+
+  // reveal correct / wrong option markers
+  var mopts = q.options || [];
+  for (var j = 0; j < mopts.length; j++) {
+    var el = document.getElementById('opt-' + qid + '-' + j);
+    if (!el) continue;
+    if (want[j]) el.classList.add('correct-answer');
+    else if (picked.indexOf(j) !== -1) el.classList.add('wrong-answer');
+  }
+
+  var earned;
+  if (!anyWrong && hitCorrect === wantKeys.length && picked.length === wantKeys.length) {
+    earned = q.points;
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+    correctEl.innerHTML = '';
+  } else if (!anyWrong && hitCorrect > 0) {
+    // 少选不错选 -> partial credit
+    earned = roundScore(q.points * hitCorrect / wantKeys.length);
+    card.classList.add('partial');
+    badge.className = 'badge badge-partial';
+    badge.textContent = LABELS.partial_label;
+    correctEl.innerHTML = LABELS.answer_prefix + multiAnswerText(wantKeys, mopts);
+  } else {
+    earned = 0;
+    card.classList.add('wrong');
+    badge.className = 'badge badge-no';
+    badge.textContent = LABELS.wrong_label;
+    correctEl.innerHTML = LABELS.answer_prefix + multiAnswerText(wantKeys, mopts);
+  }
+  return earned;
+}
+
+function multiAnswerText(keys, options) {
+  return keys.sort(function (a, b) { return a - b; }).map(function (k) {
+    return String.fromCharCode(65 + k) + '. ' + (options ? options[k] : '');
+  }).join('  ');
+}
+
+function gradeFill(q, qid, card, badge, correctEl) {
+  var nBlanks = fillBlankCount(q.question);
+  var blanks = fillBlankAnswers(q.answer, nBlanks);
+  var n = blanks.length;
+  var hit = 0;
+  var displays = [];
+
+  for (var b = 0; b < n; b++) {
+    var inp = document.getElementById('fill-' + qid + '-' + b);
+    var accepted = blanks[b] || [''];
+    var user = inp ? normText(inp.value) : '';
+    var ok = false;
+    for (var a = 0; a < accepted.length; a++) {
+      if (accepted[a] !== '' && normText(accepted[a]) === user && user !== '') { ok = true; break; }
+    }
+    if (inp) inp.classList.add(ok ? 'fill-ok' : 'fill-no');
+    if (ok) hit++;
+    displays.push((n > 1 ? (b + 1) + '. ' : '') + accepted.filter(function (x) { return x !== ''; }).join(' / '));
+  }
+
+  var earned = roundScore(q.points * hit / n);
+  correctEl.innerHTML = LABELS.answer_prefix + displays.join('   ');
+
+  if (hit === n) {
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+  } else if (hit > 0) {
+    card.classList.add('partial');
+    badge.className = 'badge badge-partial';
+    badge.textContent = LABELS.partial_label;
+  } else {
+    card.classList.add('wrong');
+    badge.className = 'badge badge-no';
+    badge.textContent = LABELS.wrong_label;
+  }
+  return earned;
+}
+
+</script>
+</body>
+</html>

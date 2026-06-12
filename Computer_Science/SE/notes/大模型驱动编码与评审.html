@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>大模型驱动编码与评审</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>大模型驱动编码与评审</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s67675393">背景与现状</a></li>
+  <li><a href="#s50623264">关键概念 必考</a></li>
+  <li><a href="#s66868450">AI 编码工具类型</a></li>
+  <li><a href="#s40615965">AI 代码评审 重点</a></li>
+  <li><a href="#s12801782">实践原则</a></li>
+</ul>
+</div>
+<h2 id="s67675393">背景与现状</h2>
+<p>核心问题：LLM 正在<span class="kp">根本性地改变编程方式</span>——从手动编写每个字符到用自然语言描述意图，由 AI 生成代码。</p>
+<h3 id="s50623264">关键概念 <span class="tag-must">必考</span></h3>
+<ul>
+<li><span class="kp">Vibe Coding（氛围编程）</span>：Karpathy 2025 提出——通过自然语言提示与 AI 生成代码，强调开发者进入「创意 flow」状态</li>
+<li><span class="kp">Spec-driven Coding（规格驱动编码）</span>：先写规格说明——将需求和约束明确写出，再让 AI 严格按规格生成代码</li>
+</ul>
+<h3 id="s66868450">AI 编码工具类型</h3>
+<ul>
+<li><span class="kp">代码补全</span>（GitHub Copilot、Cursor）：行内实时建议</li>
+<li><span class="kp">对话式编码</span>（Claude、ChatGPT）：通过多轮对话生成函数/模块</li>
+<li><span class="kp">代理式编码</span>（Devin、Cline）：AI 自主规划、编写、测试和调试</li>
+</ul>
+<h3 id="s40615965">AI 代码评审 <span class="tag-key">重点</span></h3>
+<ul>
+<li>自动检测安全漏洞和代码异味</li>
+<li>检查编码规范一致性</li>
+<li>生成评审意见——但<span class="kp">最终决策需要人类审查</span></li>
+</ul>
+<blockquote>易错：Vibe Coding ≠ 不负责任地让 AI 随意生成代码。核心区别——Spec-driven Coding 先定义规格再让 AI 编码，Vibe Coding 是在保持创造心流的同时与 AI 协作。两者都需要人类审查代码质量。</blockquote>
+<h3 id="s12801782">实践原则</h3>
+<ul><li><span class="kp">遵循 SOLID 原则</span>——AI 生成的代码也要满足设计原则</li><li><span class="kp">代码审查不可省略</span>——AI 生成的代码可能包含隐藏 bug</li><li><span class="kp">理解每一行代码</span>——不能盲目复制粘贴 AI 输出</li></ul>
+
+
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.9 Requirements Modeling: Scenario-Based Methods (基于场景的建模)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.9 Requirements Modeling: Scenario-Based Methods (基于场景的建模)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s29695385">需求分析概述</a></li>
+  <li><a href="#s21650969">分析的经验法则 重点</a></li>
+<li><a href="#s48189865">领域分析 高频</a></li>
+<li><a href="#s91059366">需求模型的四类元素 必考</a></li>
+<li><a href="#s20780425">场景建模 (Scenario-Based Modeling) 必考</a></li>
+  <li><a href="#s49395958">开发用例</a></li>
+  <li><a href="#s15621587">审阅用例</a></li>
+  <li><a href="#s12919842">文档化用例</a></li>
+  <li><a href="#s58980581">活动图与泳道图</a></li>
+</ul>
+</div>
+<h2 id="s29695385">需求分析概述</h2>
+<p>核心目标：<span class="kp">描述客户需要什么 → 建立软件设计基础 → 定义可验证的需求集</span>。</p>
+<p>需求分析是<span class="kp">系统描述与设计模型之间的桥梁</span>。</p>
+<h3 id="s21650969">分析的经验法则 <span class="tag-key">重点</span></h3>
+<ul>
+<li>聚焦于问题/业务域内可见的需求，保持较高抽象层次</li>
+<li>每个分析模型元素应增加对需求的理解</li>
+<li><span class="kp">将基础设施和非功能模型推迟到设计阶段</span></li>
+<li>最小化系统耦合</li>
+<li>分析模型对所有利益相关者有价值</li>
+<li><span class="kp">保持模型尽可能简单</span></li>
+</ul>
+<h2 id="s48189865">领域分析 <span class="tag-freq">高频</span></h2>
+<p>从特定应用领域<span class="kp">识别、分析和规格化通用需求</span>，通常用于跨项目复用。知识来源：技术文献、现有应用、客户调查、专家建议、当前/未来需求。产出：类分类法、复用标准、功能模型、领域语言。</p>
+<h2 id="s91059366">需求模型的四类元素 <span class="tag-must">必考</span></h2>
+<table>
+<tr><th>类型</th><th>包含</th></tr>
+<tr><td><span class="kp">场景模型</span></td><td>用例（文字）、用例图、活动图、泳道图</td></tr>
+<tr><td><span class="kp">类模型</span></td><td>类图、分析包、CRC 模型、协作图</td></tr>
+<tr><td><span class="kp">流模型</span></td><td>数据流图、控制流图、处理叙述</td></tr>
+<tr><td><span class="kp">行为模型</span></td><td>状态图、序列图</td></tr>
+</table>
+<h2 id="s20780425">场景建模 (Scenario-Based Modeling) <span class="tag-must">必考</span></h2>
+<p>用例定义<span class="kp">系统外部存在什么（参与者）和系统应该执行什么</span>。四个问题：(1) 写什么？(2) 写多少？(3) 多详细？(4) 如何组织？</p>
+<h3 id="s49395958">开发用例</h3>
+<p>参与者执行的主要任务/功能？获取/产生/修改什么系统信息？需要告知系统外部环境变化？希望从系统获取什么信息？是否希望被通知意外变化？</p>
+<h3 id="s15621587">审阅用例</h3>
+<p>先以叙事形式编写再映射到模板。审查每个主要场景看是否有替代交互：参与者能否在此刻采取其他动作？是否会遇到错误条件？</p>
+<h3 id="s12919842">文档化用例</h3>
+<p><span class="kp">目标上下文</span>（整体范围）→ <span class="kp">前置条件</span>（用例开始前为真）→ <span class="kp">触发器</span>（启动用例的事件）→ <span class="kp">场景</span>（具体行动和系统响应）→ <span class="kp">异常</span>（初步用例细化中发现的异常情况）。</p>
+<h3 id="s58980581">活动图与泳道图</h3>
+<p><span class="kp">活动图</span>：用流程图补充用例的过程流。<span class="kp">泳道图</span>：在表示活动流的同时指出哪个参与者或分析类对每个活动矩形负责。</p>
+
+
+
+</body>
+</html>

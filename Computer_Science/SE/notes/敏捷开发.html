@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>软件工程 2.0 — 敏捷开发与 DevOps</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>软件工程 2.0 — 敏捷开发与 DevOps</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s11482668">敏捷开发内涵 必考</a></li>
+  <li><a href="#s43198489">敏捷宣言四大价值观</a></li>
+  <li><a href="#s36743900">Scrum 框架 必考</a></li>
+<li><a href="#s42148074">CI/CD 必考</a></li>
+<li><a href="#s77117641">DevOps 必考</a></li>
+</ul>
+</div>
+<h2 id="s11482668">敏捷开发内涵 <span class="tag-must">必考</span></h2>
+<p>核心问题：如何从<span class="kp">瀑布式的预先规划</span>转向<span class="kp">迭代式的持续交付</span>——以应变能力取代对计划的盲从。</p>
+<h3 id="s43198489">敏捷宣言四大价值观</h3>
+<ol>
+<li><span class="kp">个体和互动</span> 高于 流程和工具</li>
+<li><span class="kp">可工作的软件</span> 高于 详尽的文档</li>
+<li><span class="kp">客户合作</span> 高于 合同谈判</li>
+<li><span class="kp">响应变化</span> 高于 遵循计划</li>
+</ol>
+<p>「虽然右项也有价值，但我们更重视左项的价值。」</p>
+<h3 id="s36743900">Scrum 框架 <span class="tag-must">必考</span></h3>
+<table><tr><th>角色</th><th>职责</th></tr>
+<tr><td><span class="kp">Product Owner（产品负责人）</span></td><td>定义需求、排序 Backlog、最大化价值</td></tr>
+<tr><td><span class="kp">Scrum Master</span></td><td>过程教练——移除障碍、促进 Scrum 实践</td></tr>
+<tr><td><span class="kp">Development Team</span></td><td>自组织、跨职能——3-9 人</td></tr>
+</table>
+<p>核心仪式：<span class="kp">Sprint Planning → Daily Scrum → Sprint Review → Sprint Retrospective</span></p>
+<h2 id="s42148074">CI/CD <span class="tag-must">必考</span></h2>
+<ol>
+<li><span class="kp">持续集成 (CI)</span>：每次提交自动构建+测试——快速发现集成问题</li>
+<li><span class="kp">持续交付 (CD)</span>：CI 通过后自动部署到类生产环境——随时可手动发布</li>
+<li><span class="kp">持续部署 (CD)</span>：通过测试后自动部署到生产环境——全自动化发布</li>
+</ol>
+<h2 id="s77117641">DevOps <span class="tag-must">必考</span></h2>
+<p><span class="kp">DevOps = 开发 (Dev) + 运维 (Ops) 的文化融合</span>——打破「开发丢代码给运维」的墙。</p>
+<ul>
+<li><span class="kp">CAMS 模型</span>：Culture（文化）+ Automation（自动化）+ Measurement（度量）+ Sharing（共享）</li>
+<li><span class="kp">Infrastructure as Code (IaC)</span>：用代码定义和管理基础设施（Terraform/Ansible）</li>
+<li><span class="kp">Monitoring & Observability</span>：生产环境的持续监控和反馈</li>
+</ul>
+<blockquote>易错：敏捷不是「不写文档」「不做计划」——而是做「刚好够的文档和计划」。Scrum 不是敏捷的全部——XP、Kanban 也是敏捷实践。CI/CD ≠ DevOps——CI/CD 是技术管道，DevOps 是文化+技术+流程的融合。</blockquote>
+
+
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.14 Component-Level Design (构件级设计)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.14 Component-Level Design (构件级设计)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s66744351">什么是构件 必考</a></li>
+  <li><a href="#s82006406">OO 构件 vs 传统构件</a></li>
+<li><a href="#s40126468">设计原则 必考</a></li>
+<li><a href="#s36993045">构件级设计步骤 重点</a></li>
+<li><a href="#s25044325">内聚与耦合 重点</a></li>
+</ul>
+</div>
+<h2 id="s66744351">什么是构件 <span class="tag-must">必考</span></h2>
+<p>核心问题：如何将架构分解为<span class="kp">可独立开发、测试和部署的软件组件</span>。</p>
+<p><span class="kp">构件 (Component)</span>：一个<span class="kp">模块化、可部署和可替换</span>的软件系统部分，封装了实现并暴露一组接口。</p>
+<h3 id="s82006406">OO 构件 vs 传统构件</h3>
+<p>OO 构件：包含一组协作类。每个类完成构件的部分功能，通过消息协作。</p>
+<h2 id="s40126468">设计原则 <span class="tag-must">必考</span></h2>
+<ul>
+<li><span class="kp">开闭原则 (OCP)</span>：对扩展开放，对修改关闭——通过接口和继承扩展</li>
+<li><span class="kp">里氏替换原则 (LSP)</span>：子类必须能替换父类而不破坏系统</li>
+<li><span class="kp">依赖反转原则 (DIP)</span>：依赖抽象而非具体实现</li>
+<li><span class="kp">接口隔离原则 (ISP)</span>：不要强迫客户端依赖不使用的方法</li>
+<li><span class="kp">单一职责原则 (SRP)</span>：一个类应该只有一个改变的理由</li>
+</ul>
+<h2 id="s36993045">构件级设计步骤 <span class="tag-key">重点</span></h2>
+<ol>
+<li>识别所有与问题域对应的设计类</li>
+<li>识别所有与基础设施域对应的设计类</li>
+<li><span class="kp">细化</span>：详细说明每个类的属性、操作和接口</li>
+<li>描述每个操作的<span class="kp">处理细节</span>（伪代码、活动图等）</li>
+<li>说明数据源和数据的持久化方式</li>
+<li>细化部署图以提供额外的实现细节</li>
+</ol>
+<h2 id="s25044325">内聚与耦合 <span class="tag-key">重点</span></h2>
+<p>内聚类型（从优到劣）：<span class="kp">功能内聚 > 顺序内聚 > 通信内聚 > 过程内聚 > 时间内聚 > 逻辑内聚 > 偶然内聚</span></p>
+<p>耦合类型（从优到劣）：<span class="kp">无耦合 > 数据耦合 > 标记耦合 > 控制耦合 > 外部耦合 > 公共耦合 > 内容耦合</span></p>
+<blockquote>易错：内聚和耦合是衡量设计质量的两大维度。目标=高内聚（模块内紧密）+低耦合（模块间松散）。功能内聚最优，偶然内聚最差。</blockquote>
+
+
+
+</body>
+</html>

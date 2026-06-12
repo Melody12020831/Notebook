@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.3 Software Process Structure (软件过程结构)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+/* === Interactive Test Styles === */
+
+/* ── Score box ── */
+#score-box {
+  display: none; background: var(--paper-dark); color: var(--ink);
+  padding: 16px 20px; border-radius: var(--radius); margin: 14px 0;
+  text-align: center; border: 1px solid var(--card-border);
+}
+#score-box .score-num { font-size: 2.2em; font-weight: 700; }
+#score-box .score-label { font-size: 0.85em; color: var(--ink-light); }
+
+/* ── Question card ── */
+.q-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 12px 14px; margin: 10px 0;
+  transition: all 0.15s;
+}
+.q-card.correct { border-left: 3px solid var(--correct); background: #f7fdf4; }
+.q-card.wrong   { border-left: 3px solid var(--wrong); background: #fef9f9; }
+
+.q-num  { font-weight: 700; font-size: 0.98em; margin-bottom: 4px; }
+.q-text { margin-bottom: 8px; font-size: 0.98em; }
+
+/* ── Options (compact) ── */
+.option {
+  display: block; padding: 4px 10px; margin: 3px 0;
+  border: 1px solid var(--card-border); border-radius: 4px;
+  cursor: pointer; transition: all 0.12s; font-size: 0.93em;
+  background: #fefcf5;
+}
+.option:hover            { background: #f0ede0; }
+.option input            { margin-right: 6px; }
+.option.selected         { border-color: var(--accent); background: #eff6ff; }
+.option.correct-answer   { border-color: var(--correct); background: var(--correct-bg); }
+.option.wrong-answer     { border-color: var(--wrong); background: var(--wrong-bg); }
+
+/* ── Textareas (compact) ── */
+.q-textarea {
+  width: 100%; min-height: 56px; border: 1px solid var(--card-border);
+  border-radius: 4px; padding: 6px 10px; font-family: inherit;
+  font-size: 0.93em; background: #fefcf5; resize: vertical;
+}
+.q-textarea:focus { outline: none; border-color: var(--accent); }
+.q-code {
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  font-size: 0.88em; line-height: 1.5; background: #1e1e2e; color: #e0e0e0;
+  tab-size: 4; white-space: pre;
+}
+.q-code:focus { border-color: var(--accent); }
+
+/* ── Partial-credit badge ── */
+.badge-partial { background: #fef3c7; color: #92400e; }
+.q-card.partial { border-color: #f59e0b; }
+
+/* ── Result after grading ── */
+.result {
+  display: none; margin-top: 8px; padding: 8px 12px;
+  background: #fefcf5; border: 1px solid var(--card-border);
+  border-radius: 4px; font-size: 0.9em; line-height: 1.6;
+}
+.result .badge {
+  display: inline-block; padding: 1px 9px; border-radius: 3px;
+  font-weight: 700; font-size: 0.82em; margin-right: 6px;
+}
+.badge-ok  { background: var(--correct-bg); color: #166534; }
+.badge-no  { background: var(--wrong-bg); color: #991b1b; }
+.badge-ref { background: #dbeafe; color: #1e40af; }
+
+.result .explanation { margin-top: 4px; color: var(--ink); }
+.result .pitfall { color: #b45309; margin-top: 3px; font-size: 0.9em; }
+
+/* ── Grading button ── */
+.grading-bar { text-align: center; margin: 20px 0; }
+.grading-bar button {
+  font-size: 1em; padding: 8px 32px; background: var(--accent);
+  color: #fff; border: none; border-radius: var(--radius);
+  cursor: pointer; font-weight: 600; letter-spacing: 0.3px;
+}
+.grading-bar button:hover     { background: var(--accent-hover); }
+.grading-bar button:disabled  { background: #bbb; cursor: not-allowed; }
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.3 Software Process Structure (软件过程结构)</h1>
+<h2 style="text-align:center">章节测试</h2>
+<p style="text-align:center;color:var(--ink-light);font-size:0.95em">满分 100 分 | 选择 10 题 + 判断 10 题 + 填空 5 题 + 简答 3 题 + 问答 2 题 + 综合 1 题</p>
+
+<div id="score-box"><div class="score-num" id="score-num">0</div><div class="score-label">总分</div></div>
+<div id="questions-container"></div>
+<div class="grading-bar no-print"><button onclick="gradeAll()" id="grade-btn">提交批改</button></div>
+
+<script>
+var Q = [{"type": "choice", "points": 2, "question": "通用过程模型中框架活动的正确粒度层次（从大到小）是？", "options": ["任务 → 动作 → 活动", "过程 → 框架活动 → 动作 → 任务", "活动 → 过程 → 任务", "动作 → 任务 → 过程"], "answer": 1, "explanation": "粒度层次：过程 (Process) → 框架活动 (Framework Activity) → 动作 (Action) → 任务 (Task)。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "以下哪种过程流描述「以循环方式执行活动，每次迭代产出一个增量版本」？", "options": ["线性过程流", "迭代过程流", "演化过程流", "并行过程流"], "answer": 2, "explanation": "演化过程流以循环方式执行，每次迭代产出增量。迭代过程流是在下一活动前重复前一活动。", "pitfall": "区分「迭代」和「演化」：迭代在活动间来回，演化每次都产出可交付增量。"}, {"type": "choice", "points": 2, "question": "过程模式中，「定义框架活动」属于哪种类型？", "options": ["任务模式", "阶段模式", "阶段序列模式", "审查模式"], "answer": 1, "explanation": "三种类型：任务模式（定义工程动作/任务）、阶段模式（定义框架活动）、阶段序列模式（定义框架活动流程）。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "CMMI 模型由哪个机构提出？", "options": ["IEEE", "ISO", "CMU SEI", "NATO"], "answer": 2, "explanation": "CMMI 由卡内基梅隆大学软件工程研究所 (CMU SEI) 提出。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "CMMI Level 3 的名称是什么？", "options": ["已执行 (Performed)", "已管理 (Managed)", "已定义 (Defined)", "量化管理 (Quantitatively Managed)"], "answer": 2, "explanation": "Level 3 = 已定义 (Defined)：管理和工程过程被文档化、标准化，并集成到组织级。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "SPICE 标准对应哪个 ISO 标准？", "options": ["ISO 9001", "ISO/IEC 15504", "ISO/IEC 12207", "ISO 27001"], "answer": 1, "explanation": "SPICE (Software Process Improvement and Capability dEtermination) 对应 ISO/IEC 15504。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "CMMI 的最高成熟度等级是？", "options": ["Level 3", "Level 4", "Level 5", "Level 6"], "answer": 2, "explanation": "CMMI 共 6 个等级 (0-5)：不完整 → 已执行 → 已管理 → 已定义 → 量化管理 → 优化。最高为 Level 5。", "pitfall": "注意从 Level 0 开始编号，所以共 6 个等级。"}, {"type": "choice", "points": 2, "question": "CMMI Level 4 的核心特征是什么？", "options": ["任务开始执行", "过程被标准化", "使用详细度量进行量化理解和控制", "持续过程改进"], "answer": 2, "explanation": "Level 4 = 量化管理：过程和产品被量化理解与控制，使用详细度量。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "过程评估的目的是什么？", "options": ["只为了打分排序", "识别能力与风险，引导过程改进", "替换软件测试", "管理开发人员"], "answer": 1, "explanation": "过程评估识别软件过程的能力和风险 → 引出过程改进 → 导致能力提升。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "过程模式的「初始上下文」描述什么？", "options": ["模式的名称", "如何实现模式", "使用模式前必须存在的条件", "成功实现后的条件"], "answer": 2, "explanation": "初始上下文描述使用模式前必须存在的条件。结果上下文描述成功实现后的条件。", "pitfall": "区分初始上下文（before）和结果上下文（after）。"}, {"type": "tf", "points": 1, "question": "过程框架活动仅适用于大型项目。", "options": [], "answer": 1, "explanation": "框架活动适用于所有软件项目，不论规模或复杂度。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "线性过程流等同于瀑布模型。", "options": [], "answer": 1, "explanation": "瀑布模型使用线性过程流，但线性过程流也可以用于其他模型。二者不等同。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "CMMI Level 1 的名称是「初始」(Initial)。", "options": [], "answer": 1, "explanation": "CMMI Level 1 的名称是「已执行」(Performed)，不是「初始」。Level 0 是不完整。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "过程模式只在软件工程中有应用。", "options": [], "answer": 1, "explanation": "过程模式的概念来自更广泛的模式社区（如设计模式），可应用于多种工程领域。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "SCAMPI 是 CMMI 的标准评估方法。", "options": [], "answer": 0, "explanation": "SCAMPI (Standard CMMI Appraisal Method for Process Improvement) 是 CMMI 的标准评估方法。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "并行过程流意味着多个框架活动可以同时进行。", "options": [], "answer": 0, "explanation": "并行过程流中多个活动并行执行，适合需要团队协作的场景。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "CMMI Level 5 的核心是使用度量进行控制。", "options": [], "answer": 1, "explanation": "Level 5 核心是优化（持续改进），Level 4 才是使用度量进行量化管理。", "pitfall": "区分 Level 4（量化管理）和 Level 5（优化改进）。"}, {"type": "tf", "points": 1, "question": "IS0 9001:2000 专门针对软件质量管理。", "options": [], "answer": 0, "explanation": "ISO 9001:2000 for Software 确实将 ISO 9001 质量管理标准应用于软件领域。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "任务模式定义的是过程框架活动的流程。", "options": [], "answer": 1, "explanation": "任务模式定义工程动作或工作任务。阶段序列模式才定义框架活动的流程。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "普适性活动只在构建阶段发挥作用。", "options": [], "answer": 1, "explanation": "普适性活动贯穿整个过程，所有阶段都发挥作用。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "CMMI 共分为 ____ 个成熟度等级。", "options": [], "answer": "6", "explanation": "CMMI 共 6 个等级：Level 0 (不完整) 到 Level 5 (优化)。", "pitfall": "注意包含 Level 0，共 6 个等级。"}, {"type": "fill", "points": 2, "question": "过程模式的三种类型是：任务模式、阶段模式和____。", "options": [], "answer": "阶段序列模式", "explanation": "三种类型：Task Pattern / Stage Pattern / Phase Pattern（阶段序列模式）。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "CMMI Level 3 的名称是____。", "options": [], "answer": "已定义", "explanation": "Level 3 = Defined (已定义)。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "过程流有四种类型：线性、迭代、____、并行。", "options": [], "answer": "演化", "explanation": "四种：Linear / Iterative / Evolutionary / Parallel。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "SCAMPI 是____的标准评估方法。", "options": [], "answer": "CMMI", "explanation": "SCAMPI 是 CMMI 的标准评估方法。", "pitfall": ""}, {"type": "short", "points": 10, "question": "简述 CMMI 的六个成熟度等级及其核心特征。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br>Level 0 (Incomplete)：过程未执行或未达到目标。<br>Level 1 (Performed)：任务已在进行，产生所需工作产品。<br>Level 2 (Managed)：人员有足够资源，利益相关者参与，工作被监控评审。<br>Level 3 (Defined)：过程文档化、标准化、集成到组织级。<br>Level 4 (Quantitatively Managed)：过程和产品被量化理解与控制。<br>Level 5 (Optimizing)：通过量化反馈和创新测试实现持续改进。<br><br><strong>评分要点</strong>：每个等级 1.5 分，总结性说明 1 分。", "pitfall": "容易记错 Level 1 名称（不是 Initial），漏掉 Level 0。"}, {"type": "short", "points": 10, "question": "说明四种过程流类型的区别，并举例说明每种适合什么场景。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>线性</strong>：顺序执行，适合需求稳定明确的小型项目。<br><strong>迭代</strong>：下一活动前可重复前一活动，适合需求部分不明确但总体目标清晰的项目。<br><strong>演化</strong>：每次迭代产出可交付增量，适合需求持续变化的项目。<br><strong>并行</strong>：多活动同时进行，适合大型团队、模块独立性强。<br><br><strong>评分要点</strong>：四种各 2 分，场景举例各 0.5 分。", "pitfall": "迭代 vs 演化容易混淆：演化一定是增量交付的。"}, {"type": "short", "points": 10, "question": "解释过程模式的八个标准元素及其作用。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：名称（标识）、意图（目标）、类型（任务/阶段/阶段序列）、初始上下文（前置条件）、解决方案（实现方法）、结果上下文（后置条件）、相关模式（关联）、已知使用/示例（适用性）。<br><br><strong>评分要点</strong>：八个元素各 1.25 分。", "pitfall": ""}, {"type": "essay", "points": 10, "question": "分析为什么 CMMI Level 3「已定义」被认为是组织软件过程成熟度的关键转折点。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：Level 3 之前（0-2）关注的是单个项目层面的执行和管理。Level 3 后过程被文档化、标准化并集成到组织级，意味着：知识的组织化沉淀、可复制的成功、跨项目的一致性、新成员培训成本降低。从此组织不依赖个别英雄程序员。<br><br><strong>评分要点</strong>：Level 0-2 vs 3-5 对比 5 分，组织化意义 5 分。", "pitfall": ""}, {"type": "essay", "points": 10, "question": "比较演化过程流与迭代过程流的本质区别，说明为什么演化模型更适合现代软件开发。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：迭代过程流是在阶段间来回修正，本质上仍想一次做对。演化过程流承认需求本身就随时间演化，每次迭代交付可运行增量以获得真实反馈。现代软件开发面临需求不确定性、技术快速迭代、用户期望持续更新——演化模型更匹配这些条件。<br><br><strong>评分要点</strong>：区别分析 5 分，现代场景论证 5 分。", "pitfall": ""}, {"type": "comprehensive", "points": 10, "question": "从过程框架结构、过程流类型和 CMMI 成熟度三个维度，综合分析一个成熟的软件组织应如何构建和管理其软件过程。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><strong>过程框架</strong>：定义清晰的框架活动和普适性活动，建立标准化任务集。<br><strong>过程流</strong>：根据项目特点选择合适的过程流（稳定性用线性，不确定性用演化，大型团队用并行）。<br><strong>CMMI</strong>：以 CMMI 为指导循序渐进——先做到已执行和已管理，再定义标准化过程，进而量化管理，最终持续优化。<br><br><strong>评分要点</strong>：三个维度各 3 分，整合分析 1 分。", "pitfall": ""}];
+var LABELS = {"page_title": "章节测试", "section": {"choice": "一、选择题", "multi": "二、多选题", "tf": "三、判断题", "fill": "四、填空题", "short": "五、简答题", "calc": "六、计算题", "code": "七、代码题", "essay": "八、问答题", "comprehensive": "九、综合题"}, "section_order": ["choice", "multi", "tf", "fill", "short", "calc", "code", "essay", "comprehensive"], "points_suffix": "分", "true_label": "正确", "false_label": "错误", "placeholder": "在此作答...", "code_placeholder": "在此编写代码...", "pitfall_prefix": "易错提醒：", "correct_label": "正确", "wrong_label": "错误", "partial_label": "部分正确", "answer_prefix": "正确答案：", "reference_label": "参考答案", "graded_label": "已批改", "grade_button": "提交批改", "score_label": "总分", "duration_prefix": "满分 100 分 | 建议 ", "duration_suffix": " 分钟 | 选择答案后点击提交批改"};
+
+// ─── Answer normalization (robust to how the JSON was authored) ──────
+// tf / choice answers may arrive as int index, boolean, letter ("A"),
+// or label string ("正确"/"错误"/"对"/"错"). All are coerced to an
+// option index so grading never silently fails on a type mismatch.
+
+function tfAnswerIndex(ans) {
+  // option 0 = true_label (正确), option 1 = false_label (错误)
+  if (typeof ans === 'boolean') return ans ? 0 : 1;
+  if (typeof ans === 'number') return ans === 0 ? 0 : 1;
+  var s = ('' + ans).trim().toLowerCase();
+  var truthy = ['0', 't', 'true', '正确', '对', '是', 'yes', 'y', '√', '✓'];
+  var falsy  = ['1', 'f', 'false', '错误', '错', '否', 'no', 'n', '×', 'x'];
+  if (truthy.indexOf(s) !== -1) return 0;
+  if (falsy.indexOf(s) !== -1) return 1;
+  return ans ? 0 : 1;
+}
+
+function choiceAnswerIndex(ans, options) {
+  if (typeof ans === 'number') return ans;
+  var s = ('' + ans).trim();
+  if (/^[A-Za-z]$/.test(s)) return s.toUpperCase().charCodeAt(0) - 65;
+  if (/^\d+$/.test(s)) return parseInt(s, 10);
+  if (options) {
+    for (var i = 0; i < options.length; i++) {
+      if (('' + options[i]).trim() === s) return i;
+    }
+  }
+  return parseInt(s, 10);
+}
+
+function multiAnswerSet(ans, options) {
+  var arr = Array.isArray(ans) ? ans : [ans];
+  var set = {};
+  for (var i = 0; i < arr.length; i++) {
+    set[choiceAnswerIndex(arr[i], options)] = true;
+  }
+  return set;
+}
+
+// Normalize free text for fill-in-the-blank comparison: trim, lowercase,
+// drop surrounding whitespace and common punctuation, unify full/half width.
+function normText(s) {
+  s = ('' + s).trim().toLowerCase();
+  s = s.replace(/[\s　]+/g, '');
+  s = s.replace(/[.,;:!?。，、；：！？“”"'（）()【】\[\]<>《》]/g, '');
+  // full-width ASCII -> half-width
+  s = s.replace(/[！-～]/g, function (c) {
+    return String.fromCharCode(c.charCodeAt(0) - 0xfee0);
+  });
+  return s;
+}
+
+// How many blanks does a fill question have? Count underscore / ＿ runs.
+function fillBlankCount(question) {
+  var m = ('' + question).match(/(_{2,}|＿+)/g);
+  return m ? m.length : 0;
+}
+
+// Coerce a fill `answer` into an array (one entry per blank) of accepted
+// answer lists. Handles: string, [synonyms], [[blank1 syns],[blank2 syns]].
+function fillBlankAnswers(ans, nBlanks) {
+  if (nBlanks < 1) nBlanks = 1;
+  if (!Array.isArray(ans)) return padBlanks([[ans]], nBlanks);
+  if (ans.length && Array.isArray(ans[0])) return padBlanks(ans, nBlanks);
+  // flat array of strings
+  if (nBlanks === 1) return [ans];                 // synonyms for one blank
+  if (ans.length === nBlanks) {                    // one answer per blank
+    return ans.map(function (a) { return [a]; });
+  }
+  return padBlanks([ans], nBlanks);                // ambiguous -> all on blank 1
+}
+
+function padBlanks(arr, n) {
+  var out = arr.slice(0, n);
+  while (out.length < n) out.push(['']);
+  return out;
+}
+
+// ─── Build ───────────────────────────────────────────────────────────
+
+function build() {
+  var container = document.getElementById('questions-container');
+  if (!container) { console.error('ExamPass: questions-container not found'); return; }
+
+  // Stable-sort questions by section order so headings group correctly
+  // regardless of input order.
+  var order = LABELS.section_order || [];
+  Q.forEach(function (q, i) { q._i = i; });
+  Q.sort(function (a, b) {
+    var oa = order.indexOf(a.type); if (oa === -1) oa = 99;
+    var ob = order.indexOf(b.type); if (ob === -1) ob = 99;
+    return oa - ob || a._i - b._i;
+  });
+
+  var h = '';
+  var sec = '';
+  var titles = LABELS.section;
+
+  for (var i = 0; i < Q.length; i++) {
+    var q = Q[i];
+    if (q.type !== sec) {
+      sec = q.type;
+      if (titles[q.type]) h += '<h3>' + titles[q.type] + '</h3>';
+    }
+
+    var qid = 'q' + i;
+    h += '<div class="q-card" id="card-' + qid + '">';
+    h += '<div class="q-num">' + (i + 1) + '. (' + q.points + ' ' + LABELS.points_suffix + ')</div>';
+
+    if (q.type === 'fill') {
+      h += '<div class="q-text">' + renderFill(q, qid) + '</div>';
+    } else {
+      h += '<div class="q-text">' + q.question + '</div>';
+    }
+
+    if (q.type === 'choice') {
+      var opts = q.options || [];
+      for (var j = 0; j < opts.length; j++) {
+        h += '<label class="option" id="opt-' + qid + '-' + j + '" onclick="sel(\'' + qid + '\',' + j + ')">';
+        h += '<input type="radio" name="' + qid + '" value="' + j + '">' + String.fromCharCode(65 + j) + '. ' + opts[j] + '</label>';
+      }
+    } else if (q.type === 'multi') {
+      var mopts = q.options || [];
+      for (var k = 0; k < mopts.length; k++) {
+        h += '<label class="option" id="opt-' + qid + '-' + k + '" onclick="toggle(\'' + qid + '\',' + k + ')">';
+        h += '<input type="checkbox" name="' + qid + '" value="' + k + '">' + String.fromCharCode(65 + k) + '. ' + mopts[k] + '</label>';
+      }
+    } else if (q.type === 'tf') {
+      h += '<label class="option" id="opt-' + qid + '-0" onclick="sel(\'' + qid + '\',0)">';
+      h += '<input type="radio" name="' + qid + '" value="0">' + LABELS.true_label + '</label>';
+      h += '<label class="option" id="opt-' + qid + '-1" onclick="sel(\'' + qid + '\',1)">';
+      h += '<input type="radio" name="' + qid + '" value="1">' + LABELS.false_label + '</label>';
+    } else if (q.type === 'fill') {
+      // inputs already rendered inline inside q-text
+    } else if (q.type === 'code') {
+      h += '<textarea class="q-textarea q-code" id="text-' + qid + '" placeholder="' + (LABELS.code_placeholder || LABELS.placeholder) + '" rows="8" spellcheck="false"></textarea>';
+    } else {
+      h += '<textarea class="q-textarea" id="text-' + qid + '" placeholder="' + LABELS.placeholder + '" rows="3"></textarea>';
+    }
+
+    h += '<div class="result" id="result-' + qid + '">';
+    h += '<span class="badge" id="badge-' + qid + '"></span><span id="correct-' + qid + '"></span>';
+    h += '<div class="explanation">' + (q.explanation || '') + '</div>';
+    if (q.pitfall) {
+      h += '<div class="pitfall">' + LABELS.pitfall_prefix + q.pitfall + '</div>';
+    }
+    h += '</div></div>';
+  }
+
+  container.innerHTML = h;
+
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise([container]).catch(function (err) {
+      console.error('MathJax typeset error:', err);
+    });
+  }
+}
+
+// Render fill question text with inline <input> boxes replacing blanks.
+function renderFill(q, qid) {
+  var nBlanks = fillBlankCount(q.question);
+  var k = 0;
+  var html = ('' + q.question).replace(/(_{2,}|＿+)/g, function () {
+    var inp = '<input type="text" class="fill-input" id="fill-' + qid + '-' + k + '" autocomplete="off" spellcheck="false">';
+    k++;
+    return inp;
+  });
+  if (k === 0) {
+    // No markers in text -> append boxes based on answer shape
+    var n = fillBlankAnswers(q.answer, 1).length;
+    var ans = q.answer;
+    if (Array.isArray(ans)) n = Array.isArray(ans[0]) ? ans.length : (ans.length || 1);
+    if (n < 1) n = 1;
+    html += '<div class="fill-row">';
+    for (var b = 0; b < n; b++) {
+      if (n > 1) html += '<span class="fill-tag">' + (b + 1) + '.</span>';
+      html += '<input type="text" class="fill-input" id="fill-' + qid + '-' + b + '" autocomplete="off" spellcheck="false">';
+    }
+    html += '</div>';
+  }
+  return html;
+}
+
+document.addEventListener('DOMContentLoaded', build);
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  build();
+}
+
+// ─── Selection handlers ──────────────────────────────────────────────
+
+function sel(qid, idx) {
+  var prefix = 'opt-' + qid + '-';
+  var all = document.querySelectorAll('[id^="' + prefix + '"]');
+  for (var i = 0; i < all.length; i++) all[i].classList.remove('selected');
+  var target = document.getElementById('opt-' + qid + '-' + idx);
+  if (target) target.classList.add('selected');
+  var radio = document.querySelector('input[name="' + qid + '"][value="' + idx + '"]');
+  if (radio) radio.checked = true;
+}
+
+function toggle(qid, idx) {
+  var box = document.querySelector('input[name="' + qid + '"][value="' + idx + '"]');
+  var label = document.getElementById('opt-' + qid + '-' + idx);
+  if (!box) return;
+  box.checked = !box.checked;
+  if (label) label.classList.toggle('selected', box.checked);
+}
+
+// ─── Grading ─────────────────────────────────────────────────────────
+
+function gradeAll() {
+  var score = 0;
+  for (var i = 0; i < Q.length; i++) {
+    var q = Q[i];
+    var qid = 'q' + i;
+    var card = document.getElementById('card-' + qid);
+    var result = document.getElementById('result-' + qid);
+    var badge = document.getElementById('badge-' + qid);
+    var correctEl = document.getElementById('correct-' + qid);
+    if (!card || !result) continue;
+
+    result.style.display = 'block';
+
+    if (q.type === 'choice' || q.type === 'tf') {
+      score += gradeSingle(q, qid, card, badge, correctEl);
+    } else if (q.type === 'multi') {
+      score += gradeMulti(q, qid, card, badge, correctEl);
+    } else if (q.type === 'fill') {
+      score += gradeFill(q, qid, card, badge, correctEl);
+    } else {
+      card.classList.add('correct');
+      badge.className = 'badge badge-ref';
+      badge.textContent = LABELS.reference_label;
+    }
+  }
+
+  var sb = document.getElementById('score-box');
+  if (sb) {
+    sb.style.display = 'block';
+    document.getElementById('score-num').textContent = roundScore(score);
+    sb.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  var opts = document.querySelectorAll('.option');
+  for (var a = 0; a < opts.length; a++) opts[a].style.pointerEvents = 'none';
+  var tas = document.querySelectorAll('.q-textarea');
+  for (var b = 0; b < tas.length; b++) tas[b].disabled = true;
+  var fis = document.querySelectorAll('.fill-input');
+  for (var c = 0; c < fis.length; c++) fis[c].disabled = true;
+
+  var btn = document.getElementById('grade-btn');
+  if (btn) { btn.disabled = true; btn.textContent = LABELS.graded_label; }
+
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise().catch(function (err) {
+      console.error('MathJax typeset error:', err);
+    });
+  }
+}
+
+function roundScore(s) {
+  return Math.round(s * 10) / 10;
+}
+
+function gradeSingle(q, qid, card, badge, correctEl) {
+  var ansIdx = q.type === 'tf' ? tfAnswerIndex(q.answer) : choiceAnswerIndex(q.answer, q.options);
+  var radio = document.querySelector('input[name="' + qid + '"]:checked');
+  if (radio && parseInt(radio.value, 10) === ansIdx) {
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+    correctEl.innerHTML = '';
+    var ok = document.getElementById('opt-' + qid + '-' + ansIdx);
+    if (ok) ok.classList.add('correct-answer');
+    return q.points;
+  }
+  card.classList.add('wrong');
+  badge.className = 'badge badge-no';
+  badge.textContent = LABELS.wrong_label;
+  var ansText = q.type === 'choice'
+    ? String.fromCharCode(65 + ansIdx) + '. ' + (q.options ? q.options[ansIdx] : '')
+    : (ansIdx === 0 ? LABELS.true_label : LABELS.false_label);
+  correctEl.innerHTML = LABELS.answer_prefix + ansText;
+  if (radio) {
+    var wrongOpt = document.getElementById('opt-' + qid + '-' + radio.value);
+    if (wrongOpt) wrongOpt.classList.add('wrong-answer');
+  }
+  var corr = document.getElementById('opt-' + qid + '-' + ansIdx);
+  if (corr) corr.classList.add('correct-answer');
+  return 0;
+}
+
+function gradeMulti(q, qid, card, badge, correctEl) {
+  var want = multiAnswerSet(q.answer, q.options);
+  var wantKeys = Object.keys(want).map(Number);
+  var checked = document.querySelectorAll('input[name="' + qid + '"]:checked');
+  var picked = [];
+  for (var i = 0; i < checked.length; i++) picked.push(parseInt(checked[i].value, 10));
+
+  var anyWrong = false, hitCorrect = 0;
+  for (var p = 0; p < picked.length; p++) {
+    if (want[picked[p]]) hitCorrect++;
+    else anyWrong = true;
+  }
+
+  // reveal correct / wrong option markers
+  var mopts = q.options || [];
+  for (var j = 0; j < mopts.length; j++) {
+    var el = document.getElementById('opt-' + qid + '-' + j);
+    if (!el) continue;
+    if (want[j]) el.classList.add('correct-answer');
+    else if (picked.indexOf(j) !== -1) el.classList.add('wrong-answer');
+  }
+
+  var earned;
+  if (!anyWrong && hitCorrect === wantKeys.length && picked.length === wantKeys.length) {
+    earned = q.points;
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+    correctEl.innerHTML = '';
+  } else if (!anyWrong && hitCorrect > 0) {
+    // 少选不错选 -> partial credit
+    earned = roundScore(q.points * hitCorrect / wantKeys.length);
+    card.classList.add('partial');
+    badge.className = 'badge badge-partial';
+    badge.textContent = LABELS.partial_label;
+    correctEl.innerHTML = LABELS.answer_prefix + multiAnswerText(wantKeys, mopts);
+  } else {
+    earned = 0;
+    card.classList.add('wrong');
+    badge.className = 'badge badge-no';
+    badge.textContent = LABELS.wrong_label;
+    correctEl.innerHTML = LABELS.answer_prefix + multiAnswerText(wantKeys, mopts);
+  }
+  return earned;
+}
+
+function multiAnswerText(keys, options) {
+  return keys.sort(function (a, b) { return a - b; }).map(function (k) {
+    return String.fromCharCode(65 + k) + '. ' + (options ? options[k] : '');
+  }).join('  ');
+}
+
+function gradeFill(q, qid, card, badge, correctEl) {
+  var nBlanks = fillBlankCount(q.question);
+  var blanks = fillBlankAnswers(q.answer, nBlanks);
+  var n = blanks.length;
+  var hit = 0;
+  var displays = [];
+
+  for (var b = 0; b < n; b++) {
+    var inp = document.getElementById('fill-' + qid + '-' + b);
+    var accepted = blanks[b] || [''];
+    var user = inp ? normText(inp.value) : '';
+    var ok = false;
+    for (var a = 0; a < accepted.length; a++) {
+      if (accepted[a] !== '' && normText(accepted[a]) === user && user !== '') { ok = true; break; }
+    }
+    if (inp) inp.classList.add(ok ? 'fill-ok' : 'fill-no');
+    if (ok) hit++;
+    displays.push((n > 1 ? (b + 1) + '. ' : '') + accepted.filter(function (x) { return x !== ''; }).join(' / '));
+  }
+
+  var earned = roundScore(q.points * hit / n);
+  correctEl.innerHTML = LABELS.answer_prefix + displays.join('   ');
+
+  if (hit === n) {
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+  } else if (hit > 0) {
+    card.classList.add('partial');
+    badge.className = 'badge badge-partial';
+    badge.textContent = LABELS.partial_label;
+  } else {
+    card.classList.add('wrong');
+    badge.className = 'badge badge-no';
+    badge.textContent = LABELS.wrong_label;
+  }
+  return earned;
+}
+
+</script>
+</body>
+</html>

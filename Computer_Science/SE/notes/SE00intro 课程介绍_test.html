@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>软件工程 — 课程介绍</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+/* === Interactive Test Styles === */
+
+/* ── Score box ── */
+#score-box {
+  display: none; background: var(--paper-dark); color: var(--ink);
+  padding: 16px 20px; border-radius: var(--radius); margin: 14px 0;
+  text-align: center; border: 1px solid var(--card-border);
+}
+#score-box .score-num { font-size: 2.2em; font-weight: 700; }
+#score-box .score-label { font-size: 0.85em; color: var(--ink-light); }
+
+/* ── Question card ── */
+.q-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 12px 14px; margin: 10px 0;
+  transition: all 0.15s;
+}
+.q-card.correct { border-left: 3px solid var(--correct); background: #f7fdf4; }
+.q-card.wrong   { border-left: 3px solid var(--wrong); background: #fef9f9; }
+
+.q-num  { font-weight: 700; font-size: 0.98em; margin-bottom: 4px; }
+.q-text { margin-bottom: 8px; font-size: 0.98em; }
+
+/* ── Options (compact) ── */
+.option {
+  display: block; padding: 4px 10px; margin: 3px 0;
+  border: 1px solid var(--card-border); border-radius: 4px;
+  cursor: pointer; transition: all 0.12s; font-size: 0.93em;
+  background: #fefcf5;
+}
+.option:hover            { background: #f0ede0; }
+.option input            { margin-right: 6px; }
+.option.selected         { border-color: var(--accent); background: #eff6ff; }
+.option.correct-answer   { border-color: var(--correct); background: var(--correct-bg); }
+.option.wrong-answer     { border-color: var(--wrong); background: var(--wrong-bg); }
+
+/* ── Textareas (compact) ── */
+.q-textarea {
+  width: 100%; min-height: 56px; border: 1px solid var(--card-border);
+  border-radius: 4px; padding: 6px 10px; font-family: inherit;
+  font-size: 0.93em; background: #fefcf5; resize: vertical;
+}
+.q-textarea:focus { outline: none; border-color: var(--accent); }
+.q-code {
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+  font-size: 0.88em; line-height: 1.5; background: #1e1e2e; color: #e0e0e0;
+  tab-size: 4; white-space: pre;
+}
+.q-code:focus { border-color: var(--accent); }
+
+/* ── Partial-credit badge ── */
+.badge-partial { background: #fef3c7; color: #92400e; }
+.q-card.partial { border-color: #f59e0b; }
+
+/* ── Result after grading ── */
+.result {
+  display: none; margin-top: 8px; padding: 8px 12px;
+  background: #fefcf5; border: 1px solid var(--card-border);
+  border-radius: 4px; font-size: 0.9em; line-height: 1.6;
+}
+.result .badge {
+  display: inline-block; padding: 1px 9px; border-radius: 3px;
+  font-weight: 700; font-size: 0.82em; margin-right: 6px;
+}
+.badge-ok  { background: var(--correct-bg); color: #166534; }
+.badge-no  { background: var(--wrong-bg); color: #991b1b; }
+.badge-ref { background: #dbeafe; color: #1e40af; }
+
+.result .explanation { margin-top: 4px; color: var(--ink); }
+.result .pitfall { color: #b45309; margin-top: 3px; font-size: 0.9em; }
+
+/* ── Grading button ── */
+.grading-bar { text-align: center; margin: 20px 0; }
+.grading-bar button {
+  font-size: 1em; padding: 8px 32px; background: var(--accent);
+  color: #fff; border: none; border-radius: var(--radius);
+  cursor: pointer; font-weight: 600; letter-spacing: 0.3px;
+}
+.grading-bar button:hover     { background: var(--accent-hover); }
+.grading-bar button:disabled  { background: #bbb; cursor: not-allowed; }
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>软件工程 — 课程介绍</h1>
+<h2 style="text-align:center">章节测试</h2>
+<p style="text-align:center;color:var(--ink-light);font-size:0.95em">满分 100 分 | 选择 10 题 + 判断 10 题 + 填空 5 题 + 简答 3 题 + 问答 2 题 + 综合 1 题</p>
+
+<div id="score-box"><div class="score-num" id="score-num">0</div><div class="score-label">总分</div></div>
+<div id="questions-container"></div>
+<div class="grading-bar no-print"><button onclick="gradeAll()" id="grade-btn">提交批改</button></div>
+
+<script>
+var Q = [{"type": "choice", "points": 2, "question": "本课程的核心目标是帮助学生实现什么转变？", "options": ["从「写代码」到「写更多代码」", "从「编程序」到「做软件」", "从「理论」到「实践」", "从「个人」到「团队」"], "answer": 1, "explanation": "总体目标：帮助学生实现从「编程序」到「做软件」的重大转变。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "总成绩中 Project 占多少比例？", "options": ["20%", "30%", "40%", "50%"], "answer": 2, "explanation": "Project × 40% + Discussions × 20% + Final × 40% = 100%。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "期末考试的题型<strong>不</strong>包括以下哪项？", "options": ["选择（多选）", "判断", "简答", "编程题"], "answer": 3, "explanation": "期末考试题型为：选择（多选）+ 判断 + 简答 + 画图，不包含编程题。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "Project 各组人数要求是多少？", "options": ["3-5 人", "6-8 人", "8-10 人", "不限"], "answer": 1, "explanation": "每组 6-8 人左右，自由组合，组长自定。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "Project 各阶段占比最高的是？", "options": ["项目计划", "系统设计", "原型系统", "需求分析"], "answer": 3, "explanation": "需求分析 30% > 系统设计 20% = 原型系统 20% = 系统测试 20% > 项目计划 10%。", "pitfall": "各阶段占比要记住：需求30%、计划10%、设计20%、原型20%、测试20%。"}, {"type": "choice", "points": 2, "question": "第一次 Review 的时间是？", "options": ["第十周，需求分析与计划", "第十二周，系统设计", "第十六周，原型系统与测试", "第八周，项目计划"], "answer": 0, "explanation": "三次 Review：第十周需求分析与计划、第十二周系统设计、第十六周原型系统与测试。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "提交物要求中，所有文档使用什么格式？", "options": ["Word", "PDF", "Markdown", "LaTeX"], "answer": 2, "explanation": "所有文档使用 Markdown，并通过 Git 统一管理。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "下列关于 AI 使用的原则，正确的是？", "options": ["禁止使用任何 AI 工具", "可以完全依赖 AI 完成项目", "合理使用 AI，但需要提供 AI 使用说明和对话历史", "只需最终代码，无需说明 AI 使用情况"], "answer": 2, "explanation": "合理使用 AI：既不是不让用 AI，也不是过于依赖。底线是避免直接用大模型生成作业提交。需提供 AI 使用说明澄清文档及对话历史。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "发表论文于哪个会议可直接获得 95 分？", "options": ["所有国际会议", "ICSE/FSE/ASE/ISSTA 等顶会", "仅国内会议", "所有期刊"], "answer": 1, "explanation": "在 ICSE/FSE/ASE/ISSTA 等顶会发表论文，无需考试直接获 95 分。", "pitfall": ""}, {"type": "choice", "points": 2, "question": "Project 组得分的计算公式是？", "options": ["组得分 = 教师打分 × 100%", "组得分 = 教师打分 × 50% + 组长打分均值 × 50%", "组得分 = 教师打分 × 30% + 组长打分均值 × 70%", "组得分 = 教师打分 × 70% + 组长打分均值 × 30%"], "answer": 1, "explanation": "组得分 = 教师打分 × 50% +（各组长打分和）/ 组数 × 50%。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "本课程的教材是 Pressman 的《软件工程：实践者的研究方法》。", "options": [], "answer": 0, "explanation": "教材：Pressman R S. 软件工程：实践者的研究方法（郑人杰译，机械工业出版社 2011）。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "组长带领全组顺利完成任务可以获得总评 +5 的奖励。", "options": [], "answer": 0, "explanation": "组长奖罚规则：顺利完成任务总评+5，严重失误总评-5。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "课程理论学习只包括软件工程 1.0 的内容。", "options": [], "answer": 1, "explanation": "课程包含软件工程 1.0（10周）+ 2.0（1周）+ 3.0（4周）+ 开源（1周）。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "Project 鼓励学生完全不使用 AI 工具。", "options": [], "answer": 1, "explanation": "课程原则是合理使用 AI，既不是不用也不是完全依赖。底线是避免直接用大模型生成作业提交。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "组员得分等于组得分。", "options": [], "answer": 1, "explanation": "组员得分 = 组员贡献率 × 组得分 × 组人数，不等于组得分。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "实验部分需要掌握 UML 工具如 PlantUML 或 Mermaid。", "options": [], "answer": 0, "explanation": "实验需熟悉常用工具：UML (PlantUML/Mermaid)、IDE/AI Coding、JUnit/JMeter、Git/GitHub、SonarQube。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "Discussions 只通过课堂提问来计分。", "options": [], "answer": 1, "explanation": "Discussions 包括随机随堂测验（学在浙大）和课堂随机提问两种方式。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "总成绩由 Project 和 Final 两部分组成。", "options": [], "answer": 1, "explanation": "总成绩由三部分组成：Project 40% + Discussions 20% + Final 40% = 100%。", "pitfall": "容易忽略 Discussions 的 20%。"}, {"type": "tf", "points": 1, "question": "项目选题必须是给定的 5 个项目之一。", "options": [], "answer": 1, "explanation": "除 5 个推荐项目外，也接受「其他具有一定复杂度的真实项目」。", "pitfall": ""}, {"type": "tf", "points": 1, "question": "Review 要求对照打分表准备提交物和汇报 PPT 并提前发给助教。", "options": [], "answer": 0, "explanation": "Review 要求：对照打分表准备好提交物和汇报 PPT，提前发给助教留档。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "总成绩公式：____ × 40% + Discussions × 20% + Final × 40%。", "options": [], "answer": "Project", "explanation": "Project 占 40%，Discussions 占 20%，Final 占 40%。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "Project 各阶段中占 30% 的是____。", "options": [], "answer": "需求分析", "explanation": "需求分析 30% 是最高的阶段占比。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "课程实验共有 ____ 次 Review。", "options": [], "answer": "3", "explanation": "3 次 Review：第十周需求分析与计划、第十二周系统设计、第十六周原型系统与测试。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "所有文档使用 ____ 格式并通过 Git 统一管理。", "options": [], "answer": "Markdown", "explanation": "提交物要求：所有文档使用 Markdown，通过 Git 管理。", "pitfall": ""}, {"type": "fill", "points": 2, "question": "每组人数约为 ____ 到 ____ 人。", "options": [], "answer": ["6", "8"], "explanation": "每组 6-8 人左右，自由组合。", "pitfall": ""}, {"type": "short", "points": 10, "question": "简述本课程的四个层次的教学目标。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>软件工程 1.0</strong>：熟悉基本概念和基本理论——过程模型、需求分析、设计、测试、项目管理等经典内容。<br><br><strong>软件工程 2.0</strong>：掌握基本方法和基本工具——敏捷开发、CI/CD、DevOps 等现代软件工程实践。<br><br><strong>软件工程 3.0</strong>：了解最新工程实践和技术——大模型驱动开发（需求、编码、测试、运维）。<br><br><strong>Agentic Engineering</strong>：把握软件工程研究方向，了解学术前沿。<br><br><strong>评分要点</strong>：四个层次各 2.5 分。", "pitfall": "常见遗漏：忽略 Agentic Engineering 层面。"}, {"type": "short", "points": 10, "question": "列出 Project 的五个可选项目，并说明各项目的推荐功能。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br>1. <strong>移动支付系统（参考支付宝）</strong>：扫码支付、乘车码、钱包、卡券（折扣类目/叠加/互斥）<br>2. <strong>铁路购票系统（参考 12306）</strong>：购票（直达/中转/计次票/候补/退票/并发控制）、订餐<br>3. <strong>二手交易平台（参考闲鱼）</strong>：交易（议价/出价/取消/超时/幂等）、私聊（已读/未读/撤回/拉黑）<br>4. <strong>校园 BBS（参考 CC98）</strong>：十大热门、匿名发帖、引用回复、封解禁、积分系统<br>5. <strong>股票交易系统</strong>或其他具有一定复杂度的真实项目<br><br><strong>评分要点</strong>：五个项目各 1 分，功能描述 5 分。", "pitfall": ""}, {"type": "short", "points": 10, "question": "说明 Project 的评分机制，包括组得分和组员得分的计算方式。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>组得分</strong>：组得分 = 教师打分 × 50% +（各组长打分和）/ 组数 × 50%。教师打分包含汇报分（汇报效果+提交物质量）和过程分（Git 开发过程合理性）。<br><br><strong>组员得分</strong>：组员得分 = 组员贡献率 × 组得分 × 组人数。各阶段分别计算后按比例汇总：需求分析 30%、项目计划 10%、系统设计 20%、原型系统 20%、系统测试 20%。<br><br><strong>评分要点</strong>：组得分公式 4 分，组员得分公式 3 分，各阶段占比 3 分。", "pitfall": "易混淆：组得分是 50% 教师 + 50% 组长均值，不是 100% 教师评分。"}, {"type": "essay", "points": 10, "question": "分析本课程「合理使用 AI」原则的内涵——既不是禁止 AI 也不是完全依赖 AI。为什么这一原则对软件工程教育很重要？", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>原则内涵</strong>：<br>1. 允许使用 AI 辅助开发（编码、测试、文档生成等），提升效率。<br>2. 要求学生提供 AI 使用说明及对话历史，保持透明度。<br>3. 底线：不能直接用大模型生成完整作业提交，避免「临时赶工」式的滥用。<br><br><strong>重要性</strong>：<br>1. 业界真实需求：现代软件工程师必须会使用 AI 工具，教育应与产业接轨。<br>2. 批判性思维：理解 AI 输出不是完美的，需要人工判断和修改。<br>3. 避免能力空洞：完全依赖 AI 会导致基础能力退化，学生应具备「无 AI 也能做」的能力。<br>4. 学术诚信：过度依赖 AI 而不加说明等同于抄袭。<br><br><strong>评分要点</strong>：原则阐释 5 分，重要性分析 5 分。", "pitfall": "常见不足：只谈「不能依赖」不谈「可以使用」的积极面。"}, {"type": "essay", "points": 10, "question": "课程将「软件工程」划分为 1.0、2.0、3.0 三个阶段。分析这三个阶段分别关注什么核心问题，它们之间的关系是什么？", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>SE 1.0（经典软件工程）</strong>：关注过程模型和工程方法——如何系统化、规范化地开发软件。核心问题：如何管理复杂度、保证质量。代表：瀑布模型、CMMI、需求分析、设计、测试、项目管理。<br><br><strong>SE 2.0（现代软件工程）</strong>：关注快速迭代和持续交付——如何更快、更灵活地响应变化。核心问题：如何在不确定性中快速交付价值。代表：敏捷开发、CI/CD、DevOps。<br><br><strong>SE 3.0（AI 驱动软件工程）</strong>：关注大模型赋能——如何利用 AI 大幅提升开发效率和软件质量。核心问题：人机协作的新范式。代表：Vibe Coding、Spec-driven Coding、AI 测试生成。<br><br><strong>关系</strong>：不是替代关系而是叠加关系。1.0 的工程原则（质量、过程、度量）是基础；2.0 的敏捷理念（迭代、反馈、协作）是效率保障；3.0 的 AI 技术是放大器和加速器。<br><br><strong>评分要点</strong>：三个阶段描述各 2.5 分，关系分析 2.5 分。", "pitfall": "常见错误：说「3.0 替代了 1.0 和 2.0」，实际是叠加关系。"}, {"type": "comprehensive", "points": 10, "question": "从考核规则、Project 评分机制和提交物要求三个维度，综合分析本课程如何引导学生在「使用 AI」和「保持工程能力」之间取得平衡。", "options": [], "answer": -1, "explanation": "<strong>参考答案</strong>：<br><br><strong>考核规则维度</strong>：期末考试（40%）考察基础理论和工程方法理解——这些是 AI 无法替代的核心能力。Discussions（20%）通过随堂测验和随机提问确保学生日常参与。<br><br><strong>Project 评分维度</strong>：过程分通过 Git 历史评估开发过程合理性——可以看出学生是逐步迭代还是临时大段生成。汇报分考察对项目的理解深度，照搬 AI 输出的学生无法清晰回答提问。组员贡献率机制确保每个人真实参与。<br><br><strong>提交物要求维度</strong>：AI 使用说明和对话历史的提交要求了透明度——只要是合理使用并说明即可得分，但隐藏使用会失分。Markdown + Git 管理让整个过程可追溯。完整 Git 历史（而非仅最终代码）展示了开发过程全貌。<br><br><strong>结论</strong>：课程通过「过程可见性 + 透明度要求 + 能力考核」三管齐下，既拥抱 AI 工具又守住工程教育底线。<br><br><strong>评分要点</strong>：考核规则维 3 分，评分机制维 3 分，提交物维 2 分，结论 2 分。", "pitfall": "需具体对应到考核规则、评分机制和提交物的具体条款，不能泛泛而谈。"}];
+var LABELS = {"page_title": "章节测试", "section": {"choice": "一、选择题", "multi": "二、多选题", "tf": "三、判断题", "fill": "四、填空题", "short": "五、简答题", "calc": "六、计算题", "code": "七、代码题", "essay": "八、问答题", "comprehensive": "九、综合题"}, "section_order": ["choice", "multi", "tf", "fill", "short", "calc", "code", "essay", "comprehensive"], "points_suffix": "分", "true_label": "正确", "false_label": "错误", "placeholder": "在此作答...", "code_placeholder": "在此编写代码...", "pitfall_prefix": "易错提醒：", "correct_label": "正确", "wrong_label": "错误", "partial_label": "部分正确", "answer_prefix": "正确答案：", "reference_label": "参考答案", "graded_label": "已批改", "grade_button": "提交批改", "score_label": "总分", "duration_prefix": "满分 100 分 | 建议 ", "duration_suffix": " 分钟 | 选择答案后点击提交批改"};
+
+// ─── Answer normalization (robust to how the JSON was authored) ──────
+// tf / choice answers may arrive as int index, boolean, letter ("A"),
+// or label string ("正确"/"错误"/"对"/"错"). All are coerced to an
+// option index so grading never silently fails on a type mismatch.
+
+function tfAnswerIndex(ans) {
+  // option 0 = true_label (正确), option 1 = false_label (错误)
+  if (typeof ans === 'boolean') return ans ? 0 : 1;
+  if (typeof ans === 'number') return ans === 0 ? 0 : 1;
+  var s = ('' + ans).trim().toLowerCase();
+  var truthy = ['0', 't', 'true', '正确', '对', '是', 'yes', 'y', '√', '✓'];
+  var falsy  = ['1', 'f', 'false', '错误', '错', '否', 'no', 'n', '×', 'x'];
+  if (truthy.indexOf(s) !== -1) return 0;
+  if (falsy.indexOf(s) !== -1) return 1;
+  return ans ? 0 : 1;
+}
+
+function choiceAnswerIndex(ans, options) {
+  if (typeof ans === 'number') return ans;
+  var s = ('' + ans).trim();
+  if (/^[A-Za-z]$/.test(s)) return s.toUpperCase().charCodeAt(0) - 65;
+  if (/^\d+$/.test(s)) return parseInt(s, 10);
+  if (options) {
+    for (var i = 0; i < options.length; i++) {
+      if (('' + options[i]).trim() === s) return i;
+    }
+  }
+  return parseInt(s, 10);
+}
+
+function multiAnswerSet(ans, options) {
+  var arr = Array.isArray(ans) ? ans : [ans];
+  var set = {};
+  for (var i = 0; i < arr.length; i++) {
+    set[choiceAnswerIndex(arr[i], options)] = true;
+  }
+  return set;
+}
+
+// Normalize free text for fill-in-the-blank comparison: trim, lowercase,
+// drop surrounding whitespace and common punctuation, unify full/half width.
+function normText(s) {
+  s = ('' + s).trim().toLowerCase();
+  s = s.replace(/[\s　]+/g, '');
+  s = s.replace(/[.,;:!?。，、；：！？“”"'（）()【】\[\]<>《》]/g, '');
+  // full-width ASCII -> half-width
+  s = s.replace(/[！-～]/g, function (c) {
+    return String.fromCharCode(c.charCodeAt(0) - 0xfee0);
+  });
+  return s;
+}
+
+// How many blanks does a fill question have? Count underscore / ＿ runs.
+function fillBlankCount(question) {
+  var m = ('' + question).match(/(_{2,}|＿+)/g);
+  return m ? m.length : 0;
+}
+
+// Coerce a fill `answer` into an array (one entry per blank) of accepted
+// answer lists. Handles: string, [synonyms], [[blank1 syns],[blank2 syns]].
+function fillBlankAnswers(ans, nBlanks) {
+  if (nBlanks < 1) nBlanks = 1;
+  if (!Array.isArray(ans)) return padBlanks([[ans]], nBlanks);
+  if (ans.length && Array.isArray(ans[0])) return padBlanks(ans, nBlanks);
+  // flat array of strings
+  if (nBlanks === 1) return [ans];                 // synonyms for one blank
+  if (ans.length === nBlanks) {                    // one answer per blank
+    return ans.map(function (a) { return [a]; });
+  }
+  return padBlanks([ans], nBlanks);                // ambiguous -> all on blank 1
+}
+
+function padBlanks(arr, n) {
+  var out = arr.slice(0, n);
+  while (out.length < n) out.push(['']);
+  return out;
+}
+
+// ─── Build ───────────────────────────────────────────────────────────
+
+function build() {
+  var container = document.getElementById('questions-container');
+  if (!container) { console.error('ExamPass: questions-container not found'); return; }
+
+  // Stable-sort questions by section order so headings group correctly
+  // regardless of input order.
+  var order = LABELS.section_order || [];
+  Q.forEach(function (q, i) { q._i = i; });
+  Q.sort(function (a, b) {
+    var oa = order.indexOf(a.type); if (oa === -1) oa = 99;
+    var ob = order.indexOf(b.type); if (ob === -1) ob = 99;
+    return oa - ob || a._i - b._i;
+  });
+
+  var h = '';
+  var sec = '';
+  var titles = LABELS.section;
+
+  for (var i = 0; i < Q.length; i++) {
+    var q = Q[i];
+    if (q.type !== sec) {
+      sec = q.type;
+      if (titles[q.type]) h += '<h3>' + titles[q.type] + '</h3>';
+    }
+
+    var qid = 'q' + i;
+    h += '<div class="q-card" id="card-' + qid + '">';
+    h += '<div class="q-num">' + (i + 1) + '. (' + q.points + ' ' + LABELS.points_suffix + ')</div>';
+
+    if (q.type === 'fill') {
+      h += '<div class="q-text">' + renderFill(q, qid) + '</div>';
+    } else {
+      h += '<div class="q-text">' + q.question + '</div>';
+    }
+
+    if (q.type === 'choice') {
+      var opts = q.options || [];
+      for (var j = 0; j < opts.length; j++) {
+        h += '<label class="option" id="opt-' + qid + '-' + j + '" onclick="sel(\'' + qid + '\',' + j + ')">';
+        h += '<input type="radio" name="' + qid + '" value="' + j + '">' + String.fromCharCode(65 + j) + '. ' + opts[j] + '</label>';
+      }
+    } else if (q.type === 'multi') {
+      var mopts = q.options || [];
+      for (var k = 0; k < mopts.length; k++) {
+        h += '<label class="option" id="opt-' + qid + '-' + k + '" onclick="toggle(\'' + qid + '\',' + k + ')">';
+        h += '<input type="checkbox" name="' + qid + '" value="' + k + '">' + String.fromCharCode(65 + k) + '. ' + mopts[k] + '</label>';
+      }
+    } else if (q.type === 'tf') {
+      h += '<label class="option" id="opt-' + qid + '-0" onclick="sel(\'' + qid + '\',0)">';
+      h += '<input type="radio" name="' + qid + '" value="0">' + LABELS.true_label + '</label>';
+      h += '<label class="option" id="opt-' + qid + '-1" onclick="sel(\'' + qid + '\',1)">';
+      h += '<input type="radio" name="' + qid + '" value="1">' + LABELS.false_label + '</label>';
+    } else if (q.type === 'fill') {
+      // inputs already rendered inline inside q-text
+    } else if (q.type === 'code') {
+      h += '<textarea class="q-textarea q-code" id="text-' + qid + '" placeholder="' + (LABELS.code_placeholder || LABELS.placeholder) + '" rows="8" spellcheck="false"></textarea>';
+    } else {
+      h += '<textarea class="q-textarea" id="text-' + qid + '" placeholder="' + LABELS.placeholder + '" rows="3"></textarea>';
+    }
+
+    h += '<div class="result" id="result-' + qid + '">';
+    h += '<span class="badge" id="badge-' + qid + '"></span><span id="correct-' + qid + '"></span>';
+    h += '<div class="explanation">' + (q.explanation || '') + '</div>';
+    if (q.pitfall) {
+      h += '<div class="pitfall">' + LABELS.pitfall_prefix + q.pitfall + '</div>';
+    }
+    h += '</div></div>';
+  }
+
+  container.innerHTML = h;
+
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise([container]).catch(function (err) {
+      console.error('MathJax typeset error:', err);
+    });
+  }
+}
+
+// Render fill question text with inline <input> boxes replacing blanks.
+function renderFill(q, qid) {
+  var nBlanks = fillBlankCount(q.question);
+  var k = 0;
+  var html = ('' + q.question).replace(/(_{2,}|＿+)/g, function () {
+    var inp = '<input type="text" class="fill-input" id="fill-' + qid + '-' + k + '" autocomplete="off" spellcheck="false">';
+    k++;
+    return inp;
+  });
+  if (k === 0) {
+    // No markers in text -> append boxes based on answer shape
+    var n = fillBlankAnswers(q.answer, 1).length;
+    var ans = q.answer;
+    if (Array.isArray(ans)) n = Array.isArray(ans[0]) ? ans.length : (ans.length || 1);
+    if (n < 1) n = 1;
+    html += '<div class="fill-row">';
+    for (var b = 0; b < n; b++) {
+      if (n > 1) html += '<span class="fill-tag">' + (b + 1) + '.</span>';
+      html += '<input type="text" class="fill-input" id="fill-' + qid + '-' + b + '" autocomplete="off" spellcheck="false">';
+    }
+    html += '</div>';
+  }
+  return html;
+}
+
+document.addEventListener('DOMContentLoaded', build);
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  build();
+}
+
+// ─── Selection handlers ──────────────────────────────────────────────
+
+function sel(qid, idx) {
+  var prefix = 'opt-' + qid + '-';
+  var all = document.querySelectorAll('[id^="' + prefix + '"]');
+  for (var i = 0; i < all.length; i++) all[i].classList.remove('selected');
+  var target = document.getElementById('opt-' + qid + '-' + idx);
+  if (target) target.classList.add('selected');
+  var radio = document.querySelector('input[name="' + qid + '"][value="' + idx + '"]');
+  if (radio) radio.checked = true;
+}
+
+function toggle(qid, idx) {
+  var box = document.querySelector('input[name="' + qid + '"][value="' + idx + '"]');
+  var label = document.getElementById('opt-' + qid + '-' + idx);
+  if (!box) return;
+  box.checked = !box.checked;
+  if (label) label.classList.toggle('selected', box.checked);
+}
+
+// ─── Grading ─────────────────────────────────────────────────────────
+
+function gradeAll() {
+  var score = 0;
+  for (var i = 0; i < Q.length; i++) {
+    var q = Q[i];
+    var qid = 'q' + i;
+    var card = document.getElementById('card-' + qid);
+    var result = document.getElementById('result-' + qid);
+    var badge = document.getElementById('badge-' + qid);
+    var correctEl = document.getElementById('correct-' + qid);
+    if (!card || !result) continue;
+
+    result.style.display = 'block';
+
+    if (q.type === 'choice' || q.type === 'tf') {
+      score += gradeSingle(q, qid, card, badge, correctEl);
+    } else if (q.type === 'multi') {
+      score += gradeMulti(q, qid, card, badge, correctEl);
+    } else if (q.type === 'fill') {
+      score += gradeFill(q, qid, card, badge, correctEl);
+    } else {
+      card.classList.add('correct');
+      badge.className = 'badge badge-ref';
+      badge.textContent = LABELS.reference_label;
+    }
+  }
+
+  var sb = document.getElementById('score-box');
+  if (sb) {
+    sb.style.display = 'block';
+    document.getElementById('score-num').textContent = roundScore(score);
+    sb.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  var opts = document.querySelectorAll('.option');
+  for (var a = 0; a < opts.length; a++) opts[a].style.pointerEvents = 'none';
+  var tas = document.querySelectorAll('.q-textarea');
+  for (var b = 0; b < tas.length; b++) tas[b].disabled = true;
+  var fis = document.querySelectorAll('.fill-input');
+  for (var c = 0; c < fis.length; c++) fis[c].disabled = true;
+
+  var btn = document.getElementById('grade-btn');
+  if (btn) { btn.disabled = true; btn.textContent = LABELS.graded_label; }
+
+  if (window.MathJax && MathJax.typesetPromise) {
+    MathJax.typesetPromise().catch(function (err) {
+      console.error('MathJax typeset error:', err);
+    });
+  }
+}
+
+function roundScore(s) {
+  return Math.round(s * 10) / 10;
+}
+
+function gradeSingle(q, qid, card, badge, correctEl) {
+  var ansIdx = q.type === 'tf' ? tfAnswerIndex(q.answer) : choiceAnswerIndex(q.answer, q.options);
+  var radio = document.querySelector('input[name="' + qid + '"]:checked');
+  if (radio && parseInt(radio.value, 10) === ansIdx) {
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+    correctEl.innerHTML = '';
+    var ok = document.getElementById('opt-' + qid + '-' + ansIdx);
+    if (ok) ok.classList.add('correct-answer');
+    return q.points;
+  }
+  card.classList.add('wrong');
+  badge.className = 'badge badge-no';
+  badge.textContent = LABELS.wrong_label;
+  var ansText = q.type === 'choice'
+    ? String.fromCharCode(65 + ansIdx) + '. ' + (q.options ? q.options[ansIdx] : '')
+    : (ansIdx === 0 ? LABELS.true_label : LABELS.false_label);
+  correctEl.innerHTML = LABELS.answer_prefix + ansText;
+  if (radio) {
+    var wrongOpt = document.getElementById('opt-' + qid + '-' + radio.value);
+    if (wrongOpt) wrongOpt.classList.add('wrong-answer');
+  }
+  var corr = document.getElementById('opt-' + qid + '-' + ansIdx);
+  if (corr) corr.classList.add('correct-answer');
+  return 0;
+}
+
+function gradeMulti(q, qid, card, badge, correctEl) {
+  var want = multiAnswerSet(q.answer, q.options);
+  var wantKeys = Object.keys(want).map(Number);
+  var checked = document.querySelectorAll('input[name="' + qid + '"]:checked');
+  var picked = [];
+  for (var i = 0; i < checked.length; i++) picked.push(parseInt(checked[i].value, 10));
+
+  var anyWrong = false, hitCorrect = 0;
+  for (var p = 0; p < picked.length; p++) {
+    if (want[picked[p]]) hitCorrect++;
+    else anyWrong = true;
+  }
+
+  // reveal correct / wrong option markers
+  var mopts = q.options || [];
+  for (var j = 0; j < mopts.length; j++) {
+    var el = document.getElementById('opt-' + qid + '-' + j);
+    if (!el) continue;
+    if (want[j]) el.classList.add('correct-answer');
+    else if (picked.indexOf(j) !== -1) el.classList.add('wrong-answer');
+  }
+
+  var earned;
+  if (!anyWrong && hitCorrect === wantKeys.length && picked.length === wantKeys.length) {
+    earned = q.points;
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+    correctEl.innerHTML = '';
+  } else if (!anyWrong && hitCorrect > 0) {
+    // 少选不错选 -> partial credit
+    earned = roundScore(q.points * hitCorrect / wantKeys.length);
+    card.classList.add('partial');
+    badge.className = 'badge badge-partial';
+    badge.textContent = LABELS.partial_label;
+    correctEl.innerHTML = LABELS.answer_prefix + multiAnswerText(wantKeys, mopts);
+  } else {
+    earned = 0;
+    card.classList.add('wrong');
+    badge.className = 'badge badge-no';
+    badge.textContent = LABELS.wrong_label;
+    correctEl.innerHTML = LABELS.answer_prefix + multiAnswerText(wantKeys, mopts);
+  }
+  return earned;
+}
+
+function multiAnswerText(keys, options) {
+  return keys.sort(function (a, b) { return a - b; }).map(function (k) {
+    return String.fromCharCode(65 + k) + '. ' + (options ? options[k] : '');
+  }).join('  ');
+}
+
+function gradeFill(q, qid, card, badge, correctEl) {
+  var nBlanks = fillBlankCount(q.question);
+  var blanks = fillBlankAnswers(q.answer, nBlanks);
+  var n = blanks.length;
+  var hit = 0;
+  var displays = [];
+
+  for (var b = 0; b < n; b++) {
+    var inp = document.getElementById('fill-' + qid + '-' + b);
+    var accepted = blanks[b] || [''];
+    var user = inp ? normText(inp.value) : '';
+    var ok = false;
+    for (var a = 0; a < accepted.length; a++) {
+      if (accepted[a] !== '' && normText(accepted[a]) === user && user !== '') { ok = true; break; }
+    }
+    if (inp) inp.classList.add(ok ? 'fill-ok' : 'fill-no');
+    if (ok) hit++;
+    displays.push((n > 1 ? (b + 1) + '. ' : '') + accepted.filter(function (x) { return x !== ''; }).join(' / '));
+  }
+
+  var earned = roundScore(q.points * hit / n);
+  correctEl.innerHTML = LABELS.answer_prefix + displays.join('   ');
+
+  if (hit === n) {
+    card.classList.add('correct');
+    badge.className = 'badge badge-ok';
+    badge.textContent = LABELS.correct_label;
+  } else if (hit > 0) {
+    card.classList.add('partial');
+    badge.className = 'badge badge-partial';
+    badge.textContent = LABELS.partial_label;
+  } else {
+    card.classList.add('wrong');
+    badge.className = 'badge badge-no';
+    badge.textContent = LABELS.wrong_label;
+  }
+  return earned;
+}
+
+</script>
+</body>
+</html>

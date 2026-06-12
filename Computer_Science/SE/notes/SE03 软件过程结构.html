@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.3 Software Process Structure (软件过程结构)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.3 Software Process Structure (软件过程结构)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s75024943">3.1 通用过程模型</a></li>
+  <li><a href="#s15466261">过程框架结构 必考</a></li>
+  <li><a href="#s77818354">过程流类型 必考</a></li>
+<li><a href="#s14145339">3.4 过程模式 (Process Patterns)</a></li>
+  <li><a href="#s79225094">模式元素 重点</a></li>
+<li><a href="#s80469577">3.5 过程评估与 CMMI 必考</a></li>
+  <li><a href="#s70138236">评估方法</a></li>
+  <li><a href="#s48850053">CMMI 成熟度等级 必考</a></li>
+</ul>
+</div>
+<h2 id="s75024943">3.1 通用过程模型</h2>
+<p>核心问题：如何构建一个<span class="kp">适用于所有软件项目</span>的过程框架——无论规模和复杂度。</p>
+<h3 id="s15466261">过程框架结构 <span class="tag-must">必考</span></h3>
+<p>通用过程模型由以下组成：</p>
+<ul>
+<li><span class="kp">框架活动 (Framework Activities)</span>：沟通、计划、建模、构建、部署</li>
+<li><span class="kp">普适性活动 (Umbrella Activities)</span>：贯穿整个过程</li>
+<li><span class="kp">任务集 (Task Set)</span>：每个框架活动包含若干动作 (action)，每个动作包含若干任务 (task)</li>
+</ul>
+<p>层次关系：<span class="kp">过程 → 框架活动 → 动作 → 任务集 → 任务</span></p>
+<h3 id="s77818354">过程流类型 <span class="tag-must">必考</span></h3>
+<table>
+<tr><th>类型</th><th>特征</th></tr>
+<tr><td><span class="kp">线性过程流 (Linear)</span></td><td>按顺序执行五个活动，完成一个再开始下一个</td></tr>
+<tr><td><span class="kp">迭代过程流 (Iterative)</span></td><td>在下一活动开始前重复前一活动</td></tr>
+<tr><td><span class="kp">演化过程流 (Evolutionary)</span></td><td>以循环方式执行活动，每次迭代产出一个增量版本</td></tr>
+<tr><td><span class="kp">并行过程流 (Parallel)</span></td><td>多个活动并行执行</td></tr>
+</table>
+<blockquote>易错：线性 ≠ 瀑布。瀑布模型使用线性过程流，但线性过程流也可以用于其他模型。四种流的区别在于活动之间的时序关系。</blockquote>
+<h2 id="s14145339">3.4 过程模式 (Process Patterns)</h2>
+<p><span class="kp">过程模式</span>定义了一组活动、动作、工作任务、工作产品和/或相关行为。使用模板定义模式。</p>
+<h3 id="s79225094">模式元素 <span class="tag-key">重点</span></h3>
+<table>
+<tr><th>元素</th><th>说明</th></tr>
+<tr><td>模式名称</td><td>有意义的名字</td></tr>
+<tr><td>意图</td><td>模式的目标</td></tr>
+<tr><td><span class="kp">类型</span></td><td>任务模式（定义工程动作/任务）、阶段模式（定义框架活动）、阶段序列模式（定义框架活动流）</td></tr>
+<tr><td>初始上下文</td><td>使用模式前必须存在的条件</td></tr>
+<tr><td>解决方案</td><td>如何正确实现模式</td></tr>
+<tr><td>结果上下文</td><td>成功实现后的条件</td></tr>
+<tr><td>相关模式</td><td>关联的其他模式</td></tr>
+<tr><td>已知使用/示例</td><td>适用场景</td></tr>
+</table>
+<h2 id="s80469577">3.5 过程评估与 CMMI <span class="tag-must">必考</span></h2>
+<h3 id="s70138236">评估方法</h3>
+<ul>
+<li><span class="kp">SCAMPI</span>：CMMI 的标准评估方法</li>
+<li><span class="kp">SPICE (ISO/IEC 15504)</span>：国际标准过程评估</li>
+<li><span class="kp">CBA IPI</span>：基于 CMM 的内部过程改进</li>
+<li><span class="kp">ISO 9001:2000</span>：软件质量管理系统标准</li>
+</ul>
+<h3 id="s48850053">CMMI 成熟度等级 <span class="tag-must">必考</span></h3>
+<table>
+<tr><th>等级</th><th>名称</th><th>核心特征</th></tr>
+<tr><td>0</td><td><span class="kp">不完整 (Incomplete)</span></td><td>过程未执行或未达到所有目标</td></tr>
+<tr><td>1</td><td><span class="kp">已执行 (Performed)</span></td><td>产生所需工作产品的任务已在进行</td></tr>
+<tr><td>2</td><td><span class="kp">已管理 (Managed)</span></td><td>人员有足够资源，利益相关者参与，工作被监控和评审</td></tr>
+<tr><td>3</td><td><span class="kp">已定义 (Defined)</span></td><td>管理和工程过程被文档化、标准化，并集成到组织级软件过程</td></tr>
+<tr><td>4</td><td><span class="kp">量化管理 (Quantitatively Managed)</span></td><td>过程与产品被量化理解与控制，使用详细度量</td></tr>
+<tr><td>5</td><td><span class="kp">优化 (Optimizing)</span></td><td>通过量化反馈和测试创新想法实现持续过程改进</td></tr>
+</table>
+<blockquote>易错：CMMI 由 CMU SEI 提出。Level 1 不是「初始」而是「已执行」(Performed)。Level 0 为不完整。关键分界线在 Level 3——已定义意味着标准化和组织化。</blockquote>
+
+
+
+</body>
+</html>

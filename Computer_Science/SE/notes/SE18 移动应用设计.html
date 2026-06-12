@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.18 MobileApp Design (移动应用设计)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.18 MobileApp Design (移动应用设计)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s34797312">移动开发考虑 必考</a></li>
+  <li><a href="#s37743022">移动设计挑战</a></li>
+  <li><a href="#s67484610">移动设计原则 重点</a></li>
+  <li><a href="#s62006862">移动架构决策</a></li>
+</ul>
+</div>
+<h2 id="s34797312">移动开发考虑 <span class="tag-must">必考</span></h2>
+<p>核心问题：移动应用的设计<span class="kp">不能简单地缩小平移桌面应用</span>——移动场景带来全新的设计约束和机会。</p>
+<h3 id="s37743022">移动设计挑战</h3>
+<ul>
+<li><span class="kp">屏幕尺寸</span>：小屏幕限制信息密度——需要更精准的信息架构</li>
+<li><span class="kp">交互方式</span>：触摸——手势（点击/滑动/捏合），没有悬停状态</li>
+<li><span class="kp">使用情境</span>：碎片化时间、移动中、单手操作</li>
+<li><span class="kp">设备特性</span>：GPS、相机、加速度计等传感器带来的新可能</li>
+<li><span class="kp">电量与带宽</span>：有限电池和可能不稳定的网络</li>
+</ul>
+<h3 id="s67484610">移动设计原则 <span class="tag-key">重点</span></h3>
+<ul>
+<li><span class="kp">触控优先</span>：目标大小 ≥ 44pt（苹果 HIG）</li>
+<li><span class="kp">内容优先</span>：去除无关元素，聚焦核心内容</li>
+<li><span class="kp">导航简洁</span>：Tab Bar（3-5 项）、汉堡菜单（次级功能）</li>
+<li><span class="kp">减少输入</span>：使用自动填充、选择器替代自由文本输入</li>
+<li><span class="kp">即时反馈</span>：操作需立即响应，延迟感知阈值 ≤100ms</li>
+</ul>
+<h3 id="s62006862">移动架构决策</h3>
+<p><span class="kp">原生 (Native)</span> vs <span class="kp">混合 (Hybrid)</span> vs <span class="kp">Web</span> ——权衡性能/开发成本/跨平台复用。</p>
+<blockquote>易错：移动设计不仅仅是「缩小版桌面」——它从根本上重新定义了信息架构和交互模式。用户在移动端的行为模式（快速浏览、单手操作、碎片化）与桌面完全不同。</blockquote>
+
+
+
+</body>
+</html>

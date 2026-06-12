@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>大模型驱动需求与设计</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>大模型驱动需求与设计</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s62980519">需求与设计的本质</a></li>
+  <li><a href="#s40141309">传统流程中的三大高摩擦点 必考</a></li>
+<li><a href="#s88339899">大模型驱动需求与设计全景</a></li>
+  <li><a href="#s28368730">大模型驱动需求分析的基本能力 必考</a></li>
+  <li><a href="#s58420351">大模型驱动设计生成的基本能力 必考</a></li>
+  <li><a href="#s79070733">基本架构</a></li>
+<li><a href="#s21286674">传统需求阶段的复杂活动</a></li>
+<li><a href="#s14294332">大模型引入的新问题 重点</a></li>
+<li><a href="#s96582712">实践建议</a></li>
+</ul>
+</div>
+
+<h2 id="s62980519">需求与设计的本质</h2>
+
+<p>核心问题：需求与设计是<span class="kp">内外部环境的翻译接口</span>——将外部世界的业务需求准确转化为内部系统的设计方案。</p>
+
+<h3 id="s40141309">传统流程中的三大高摩擦点 <span class="tag-must">必考</span></h3>
+<ul>
+<li><span class="kp">自然语言不精确</span>：语言歧义导致理解偏差——信息在传递中失真</li>
+<li><span class="kp">多方利益冲突与知识碎片化</span>：不同角色利益不同，知识分散不系统，跨角色协同成本极高</li>
+<li><span class="kp">严重依赖个人隐性知识</span>：过度依赖个人经验形成单点瓶颈——知识难以传承和共享</li>
+</ul>
+
+<blockquote>易错：需求与设计作为「翻译接口」的比喻——好的翻译忠实传达原意，差翻译将错误放大到后续所有环节。这三大高摩擦点就是劣质翻译的根源。</blockquote>
+
+<h2 id="s88339899">大模型驱动需求与设计全景</h2>
+
+<h3 id="s28368730">大模型驱动需求分析的基本能力 <span class="tag-must">必考</span></h3>
+<ul>
+<li><span class="kp">引入多角色视角</span>：自动从不同利益相关者角度分析需求</li>
+<li><span class="kp">自然语言→业务模型</span>：将非结构化的自然语言描述转化为结构化的业务模型</li>
+<li><span class="kp">用户反馈聚类总结</span>：批量处理用户反馈，自动分类和提炼关键趋势</li>
+<li><span class="kp">海量文档消化与关键信息抽取</span>：从大量需求文档中自动提取核心需求点</li>
+</ul>
+
+<h3 id="s58420351">大模型驱动设计生成的基本能力 <span class="tag-must">必考</span></h3>
+<ul>
+<li><span class="kp">架构/方案设计生成</span>：从需求自动推导系统架构和方案</li>
+<li><span class="kp">UI/交互设计生成</span>：自动生成界面设计和交互流程</li>
+<li>2023-2025 年应用深度与广度呈<span class="kp">爆发式增长</span></li>
+</ul>
+
+<h3 id="s79070733">基本架构</h3>
+<ol>
+<li><span class="kp">提示词工程 (Prompt Engineering)</span>：设计引导 LLM 的精确输入</li>
+<li><span class="kp">知识库/RAG (检索增强生成)</span>：结合外部专业知识库增强 LLM 输出质量</li>
+<li><span class="kp">工具链 (Tool Chain)</span>：将 LLM 与 UML 生成、文档管理、代码生成等工具集成</li>
+<li><span class="kp">循环反馈 (Feedback Loop)</span>：人工审查→AI修正→再审查的迭代闭环</li>
+</ol>
+
+<h2 id="s21286674">传统需求阶段的复杂活动</h2>
+<table>
+<tr><th>阶段</th><th>核心活动</th></tr>
+<tr><td>需求采纳</td><td>业务领域识别指派、预分析、需求拆分</td></tr>
+<tr><td>需求分析与设计</td><td>需求实例化（场景边界拆分、用户故事/验收）、领域模型构建、方案设计</td></tr>
+<tr><td>计划与开发等待</td><td>迭代安排、测试设计</td></tr>
+</table>
+
+<h2 id="s14294332">大模型引入的新问题 <span class="tag-key">重点</span></h2>
+<ul>
+<li><span class="kp">幻觉 (Hallucination)</span>：LLM 可能生成看似合理但完全错误的需求分析或设计方案</li>
+<li><span class="kp">可解释性</span>：为什么 LLM 给出某个设计方案？——决策过程不透明</li>
+<li><span class="kp">一致性问题</span>：多次生成结果不一致——同一需求不同时刻可能得到不同分析</li>
+<li><span class="kp">人类监督必要性</span>：AI 的建议必须经过人类审查——尤其在安全关键系统</li>
+</ul>
+
+<h2 id="s96582712">实践建议</h2>
+<ul>
+<li><span class="kp">渐进式引入</span>：从低风险模块开始使用 LLM 辅助，逐步扩大范围</li>
+<li><span class="kp">人机协作而非替代</span>：LLM 提升效率，人类负责判断和决策</li>
+<li><span class="kp">建立检查清单</span>：对 LLM 输出的设计做系统检查——一致性/完整性/安全性</li>
+<li><span class="kp">提示词持续优化</span>：Prompt 质量决定输出质量——不断迭代改进提示词模板</li>
+</ul>
+
+<blockquote>易错：大模型不是「银弹」——它解决的是需求与设计中的信息处理和转换效率问题（偶然复杂度），但不解决需求本身是否正确的本质问题。需求工程师的判断力不可替代。</blockquote>
+
+
+
+</body>
+</html>

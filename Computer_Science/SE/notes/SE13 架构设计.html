@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.13 Architectural Design (体系结构设计)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.13 Architectural Design (体系结构设计)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s42436636">为什么需要架构 必考</a></li>
+  <li><a href="#s70405068">架构的重要性</a></li>
+<li><a href="#s18174605">架构风格 必考</a></li>
+<li><a href="#s74957597">架构设计决策</a></li>
+<li><a href="#s86096092">架构评估</a></li>
+</ul>
+</div>
+<h2 id="s42436636">为什么需要架构 <span class="tag-must">必考</span></h2>
+<p>核心问题：软件架构<span class="kp">是软件质量和长期可维护性的基础</span>。没有架构的系统是「偶然形成的系统」——复杂度失控。</p>
+<h3 id="s70405068">架构的重要性</h3>
+<ul>
+<li><span class="kp">促进利益相关者沟通</span>：架构是共同语言</li>
+<li><span class="kp">指导早期设计决策</span>：影响系统质量属性最深的决策</li>
+<li><span class="kp">定义约束</span>：为后续开发设定不可逾越的边界</li>
+<li><span class="kp">影响质量属性</span>：性能/安全/可维护性都由架构决定</li>
+</ul>
+<h2 id="s18174605">架构风格 <span class="tag-must">必考</span></h2>
+<table><tr><th>风格</th><th>特征</th><th>适用场景</th></tr>
+<tr><td><span class="kp">数据中心</span></td><td>共享数据存储被多个客户端访问</td><td>数据仓库、信息管理系统</td></tr>
+<tr><td><span class="kp">数据流（管道-过滤器）</span></td><td>数据通过一系列组件流转和转换</td><td>编译器、信号处理</td></tr>
+<tr><td><span class="kp">调用-返回</span></td><td>主程序/子程序、分层架构</td><td>大多数企业应用</td></tr>
+<tr><td><span class="kp">面向对象</span></td><td>对象通过消息传递协作</td><td>GUI 应用、业务系统</td></tr>
+<tr><td><span class="kp">分层架构</span></td><td>每层提供服务给上层，作为下层的客户端</td><td>Web 应用、OSI 模型</td></tr>
+<tr><td><span class="kp">MVC</span></td><td>Model-View-Controller 分离关注点</td><td>Web 框架、GUI 应用</td></tr>
+</table>
+<h2 id="s74957597">架构设计决策</h2>
+<p>系统如何分布？使用什么架构风格？如何分解为模块？如何控制和控制流？如何处理数据？</p>
+<h2 id="s86096092">架构评估</h2>
+<p><span class="kp">ATAM (Architecture Trade-off Analysis Method)</span>：识别架构方法 → 生成质量属性效用树 → 分析敏感点、权衡点和风险。</p>
+
+
+
+</body>
+</html>

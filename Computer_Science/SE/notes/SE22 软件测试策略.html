@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.22 Software Testing Strategies (软件测试策略)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.22 Software Testing Strategies (软件测试策略)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s44964059">测试策略概述 必考</a></li>
+  <li><a href="#s51297202">测试层次（V 模型） 必考</a></li>
+  <li><a href="#s74716972">集成测试策略</a></li>
+  <li><a href="#s21153139">测试技术分类</a></li>
+</ul>
+</div>
+<h2 id="s44964059">测试策略概述 <span class="tag-must">必考</span></h2>
+<p>核心问题：测试是以<span class="kp">发现错误为目的</span>而执行程序的过程。好的测试策略定义了系统化的测试方法和层次。</p>
+<h3 id="s51297202">测试层次（V 模型） <span class="tag-must">必考</span></h3>
+<table><tr><th>层次</th><th>范围</th><th>关注点</th></tr>
+<tr><td><span class="kp">单元测试</span></td><td>单个模块/组件</td><td>内部逻辑和数据流</td></tr>
+<tr><td><span class="kp">集成测试</span></td><td>模块间接口</td><td>接口通信和协作</td></tr>
+<tr><td><span class="kp">系统测试</span></td><td>完整集成系统</td><td>端到端功能和非功能需求</td></tr>
+<tr><td><span class="kp">验收测试</span></td><td>客户环境</td><td>用户需求和业务目标</td></tr>
+</table>
+<h3 id="s74716972">集成测试策略</h3>
+<ul><li><span class="kp">自顶向下 (Top-down)</span>：从顶层模块开始，用桩 (Stub) 替代未完成的下层</li><li><span class="kp">自底向上 (Bottom-up)</span>：从底层开始，用驱动 (Driver) 替代未完成的上层</li><li><span class="kp">三明治 (Sandwich)</span>：结合两者，中层关键模块后测</li></ul>
+<h3 id="s21153139">测试技术分类</h3>
+<p><span class="kp">黑盒测试</span>：基于输入输出规格，不关心内部实现。等价类划分、边界值分析。<span class="kp">白盒测试</span>：基于内部逻辑结构。语句覆盖、分支覆盖、路径覆盖。</p>
+<blockquote>易错：单元测试是白盒为主（开发者写），系统测试是黑盒为主（测试者写）。集成测试在两者之间——既考虑内部接口又考虑外部行为。</blockquote>
+
+
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>大模型驱动运维与管理</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>大模型驱动运维与管理</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s78437454">基础理论</a></li>
+  <li><a href="#s50623264">关键概念 必考</a></li>
+  <li><a href="#s11398867">LLM 在运维中的应用 重点</a></li>
+  <li><a href="#s53402051">可观测性三支柱 必考</a></li>
+</ul>
+</div>
+<h2 id="s78437454">基础理论</h2>
+<p>核心问题：LLM 正在将运维从<span class="kp">被动响应</span>转向<span class="kp">智能主动</span>——SRE + AI = AIOps。</p>
+<h3 id="s50623264">关键概念 <span class="tag-must">必考</span></h3>
+<ul>
+<li><span class="kp">SRE (Site Reliability Engineering)</span>：用软件工程方法解决运维问题——SLO/SLI/错误预算</li>
+<li><span class="kp">AIOps</span>：将 AI/ML 应用于运维——异常检测、根因分析、自动化修复、容量预测</li>
+<li><span class="kp">可观测性 (Observability)</span>：度量 (Metrics) + 日志 (Logs) + 追踪 (Traces)——三根支柱</li>
+</ul>
+<h3 id="s11398867">LLM 在运维中的应用 <span class="tag-key">重点</span></h3>
+<ul>
+<li><span class="kp">日志分析与异常检测</span>：LLM 理解非结构化日志语义——比规则引擎更智能</li>
+<li><span class="kp">自动化故障排查</span>：从告警描述+日志+指标自动推理故障根因</li>
+<li><span class="kp">Runbook 自动生成</span>：基于历史事件生成标准化操作手册</li>
+<li><span class="kp">自然语言查询</span>：运维人员用自然语言提问系统状态而非写 SQL/PromQL</li>
+</ul>
+<h3 id="s53402051">可观测性三支柱 <span class="tag-must">必考</span></h3>
+<table><tr><th>支柱</th><th>作用</th><th>工具示例</th></tr>
+<tr><td><span class="kp">Metrics (度量)</span></td><td>量化系统状态（CPU/延迟/错误率）</td><td>Prometheus</td></tr>
+<tr><td><span class="kp">Logs (日志)</span></td><td>记录离散事件</td><td>ELK Stack</td></tr>
+<tr><td><span class="kp">Traces (追踪)</span></td><td>请求在分布式系统中的端到端路径</td><td>Jaeger</td></tr>
+</table>
+<blockquote>易错：可观测性 ≠ 监控。监控告诉你「出问题了」，可观测性让你回答「为什么出问题」。LLM 增强的是可观测性——从海量数据中自动推理根因。</blockquote>
+
+
+
+</body>
+</html>

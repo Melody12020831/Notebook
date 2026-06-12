@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.17 WebApp Design (Web应用设计)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.17 WebApp Design (Web应用设计)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s73244907">WebApp 设计基础 必考</a></li>
+  <li><a href="#s89034656">WebApp 质量属性</a></li>
+<li><a href="#s39286526">设计金字塔 重点</a></li>
+  <li><a href="#s60528445">界面设计</a></li>
+  <li><a href="#s57532994">美学设计</a></li>
+  <li><a href="#s44555758">内容设计</a></li>
+  <li><a href="#s50346184">导航设计</a></li>
+  <li><a href="#s88841006">架构设计</a></li>
+</ul>
+</div>
+<h2 id="s73244907">WebApp 设计基础 <span class="tag-must">必考</span></h2>
+<p>核心问题：WebApp 的设计<span class="kp">不同于传统桌面应用</span>——它必须考虑网络延迟、浏览器兼容性、导航结构、内容组织等独特挑战。</p>
+<h3 id="s89034656">WebApp 质量属性</h3>
+<ul><li><span class="kp">可用性 (Usability)</span>：用户能否轻松完成目标？</li><li><span class="kp">功能性</span>：功能是否正确完备？</li><li><span class="kp">可靠性</span>：服务是否持续可用？</li><li><span class="kp">效率</span>：响应速度是否满足用户期望？</li><li><span class="kp">可维护性</span>：内容和技术能否持续更新？</li></ul>
+<h2 id="s39286526">设计金字塔 <span class="tag-key">重点</span></h2>
+<p>WebApp 设计层次（从下到上）：<span class="kp">界面设计 → 美学设计 → 内容设计 → 导航设计 → 架构设计 → 构件设计</span></p>
+<h3 id="s60528445">界面设计</h3>
+<p>用户在哪里？他们在做什么？响应式——适配不同屏幕尺寸。</p>
+<h3 id="s57532994">美学设计</h3>
+<p>布局、色彩方案、字体——用户「感受」到的第一印象。</p>
+<h3 id="s44555758">内容设计</h3>
+<p>内容是什么？如何组织？以什么格式呈现？</p>
+<h3 id="s50346184">导航设计</h3>
+<p>用户如何在不同内容区域之间移动？面包屑、导航菜单、站内搜索。</p>
+<h3 id="s88841006">架构设计</h3>
+<p>内容架构（线性/网格/层级/网络）和 WebApp 架构（MVC/SPA/SSR/微前端）。</p>
+
+
+
+</body>
+</html>

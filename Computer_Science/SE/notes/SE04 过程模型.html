@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.4 Process Models (过程模型)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.4 Process Models (过程模型)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s64111149">4.1 规约式过程模型</a></li>
+  <li><a href="#s61948400">瀑布模型 (Waterfall Model) 必考</a></li>
+  <li><a href="#s53426103">V 模型 重点</a></li>
+  <li><a href="#s87475369">增量过程模型 必考</a></li>
+  <li><a href="#s43981535">演化过程模型 — 原型开发 重点</a></li>
+  <li><a href="#s53318796">螺旋模型 (Spiral Model) 必考</a></li>
+  <li><a href="#s20967211">并发开发模型 高频</a></li>
+<li><a href="#s28037222">4.2 专用过程模型</a></li>
+<li><a href="#s40622589">4.3 统一过程 (Unified Process) 必考</a></li>
+  <li><a href="#s14650814">UP 阶段与工作产品</a></li>
+<li><a href="#s48034765">4.4 个人与团队过程模型</a></li>
+</ul>
+</div>
+<h2 id="s64111149">4.1 规约式过程模型</h2>
+<p>核心问题：<span class="kp">规约式模型</span>倡导有序、结构化的软件工程方法——但在一个以变化驱动的软件世界中，这种结构化的方法是否仍然合适？</p>
+<h3 id="s61948400">瀑布模型 (Waterfall Model) <span class="tag-must">必考</span></h3>
+<p>经典生命周期，按顺序执行：<span class="kp">沟通 → 计划 → 建模 → 构建 → 部署</span></p>
+<table><tr><th>阶段</th><th>内容</th></tr>
+<tr><td>沟通</td><td>项目启动、需求收集</td></tr>
+<tr><td>计划</td><td>估算、进度安排、跟踪</td></tr>
+<tr><td>建模</td><td>分析和设计</td></tr>
+<tr><td>构建</td><td>编码和测试</td></tr>
+<tr><td>部署</td><td>交付、支持、反馈</td></tr>
+</table>
+<p><strong>缺点</strong>：实际项目很少遵循顺序流；客户通常不能一次性明确所有需求；可运行版本要到项目后期才可用。</p>
+<h3 id="s53426103">V 模型 <span class="tag-key">重点</span></h3>
+<p>瀑布模型的变体——强调<span class="kp">测试与开发的对应关系</span>：需求建模 ↔ 验收测试、架构设计 ↔ 系统测试、组件设计 ↔ 集成测试、代码生成 ↔ 单元测试。</p>
+<blockquote>易错：瀑布模型不是完全不能用，而是有前提条件——需求稳定、明确、不太可能变更。判断常见陷阱：一说到瀑布就全盘否定。</blockquote>
+<h3 id="s87475369">增量过程模型 <span class="tag-must">必考</span></h3>
+<p>每一个增量交付一个<span class="kp">可运行的功能子集</span>。第一个增量通常是<span class="kp">核心产品 (Core Product)</span>，后续增量增加更多特性和功能。更好地利用资源。</p>
+<h3 id="s43981535">演化过程模型 — 原型开发 <span class="tag-key">重点</span></h3>
+<p><span class="kp">原型必须被丢弃 (must be thrown away)</span>。适用于客户有明确需求但不清楚细节的场景。步骤：沟通 → 快速计划 → 快速设计建模 → 原型构建 → 部署交付与反馈。</p>
+<blockquote>易错：原型不是最终产品，是「用过即弃」的沟通工具。常见错误：把原型当最终产品交付。</blockquote>
+<h3 id="s53318796">螺旋模型 (Spiral Model) <span class="tag-must">必考</span></h3>
+<p>以<span class="kp">风险分析</span>为核心驱动力。每个螺旋周期包含：确定目标/方案/约束 → 评估方案/识别并解决风险 → 开发验证下一级产品 → 计划下一阶段。</p>
+<p>核心特征：综合了<span class="kp">原型开发的迭代性质</span>和<span class="kp">瀑布模型的可控性和系统性</span>。</p>
+<h3 id="s20967211">并发开发模型 <span class="tag-freq">高频</span></h3>
+<p>定义<span class="kp">活动网络</span>而非线性事件序列。通过状态转换事件触发各活动中的状态变化。尤其适合<span class="kp">客户/服务器应用</span>。</p>
+<h2 id="s28037222">4.2 专用过程模型</h2>
+<ul>
+<li><span class="kp">构件化开发 (Component-Based Development)</span>：以复用为目标的开发过程</li>
+<li><span class="kp">形式化方法 (Formal Methods)</span>：强调需求的数学规格说明</li>
+<li><span class="kp">面向方面软件开发 (AOSD)</span>：定义、规格、设计和构建方面的过程方法</li>
+</ul>
+<h2 id="s40622589">4.3 统一过程 (Unified Process) <span class="tag-must">必考</span></h2>
+<p><span class="kp">「用例驱动、架构为中心、迭代和增量」</span>的软件过程，与 UML 紧密对齐。</p>
+<h3 id="s14650814">UP 阶段与工作产品</h3>
+<table><tr><th>阶段</th><th>核心工作产品</th></tr>
+<tr><td><span class="kp">初始 (Inception)</span></td><td>愿景文档、初始用例模型、项目术语表、初始业务用例、初始风险评估、项目计划</td></tr>
+<tr><td><span class="kp">细化 (Elaboration)</span></td><td>用例模型、需求（功能/非功能）、分析模型、软件架构描述、可执行架构原型、修订风险列表</td></tr>
+<tr><td><span class="kp">构建 (Construction)</span></td><td>设计模型、软件组件、集成软件增量、测试计划和用例、支持文档</td></tr>
+<tr><td><span class="kp">移交 (Transition)</span></td><td>交付软件增量、Beta 测试报告、用户反馈</td></tr>
+</table>
+<h2 id="s48034765">4.4 个人与团队过程模型</h2>
+<p><span class="kp">PSP (Personal Software Process)</span>：五个框架活动——计划、高层设计、高层设计评审、开发、事后分析。强调尽早识别错误并理解错误类型。</p>
+<p><span class="kp">TSP (Team Software Process)</span>：使用脚本启动每个项目，团队自指导，鼓励度量并以改进团队过程为目标分析度量。</p>
+
+
+
+</body>
+</html>
