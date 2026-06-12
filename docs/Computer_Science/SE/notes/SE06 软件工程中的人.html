@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.6 Human Aspects of Software Engineering (软件工程中的人)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.6 Human Aspects of Software Engineering (软件工程中的人)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s33995666">6.1 软件工程师的特质 重点</a></li>
+<li><a href="#s44278920">6.2 软件工程心理学</a></li>
+<li><a href="#s63557925">6.3 软件团队 必考</a></li>
+  <li><a href="#s46725040">有效团队属性</a></li>
+  <li><a href="#s40975136">团队毒性 (Team Toxicity) 重点</a></li>
+<li><a href="#s35591933">6.4 团队结构 必考</a></li>
+  <li><a href="#s67203508">影响团队结构的因素</a></li>
+<li><a href="#s32104567">6.5 敏捷团队 重点</a></li>
+  <li><a href="#s48208640">XP 团队价值观</a></li>
+<li><a href="#s64503403">6.6-6.9 其他主题</a></li>
+</ul>
+</div>
+<h2 id="s33995666">6.1 软件工程师的特质 <span class="tag-key">重点</span></h2>
+<p>核心问题：软件工程<span class="kp">不只是技术</span>——工程师的个人品质和团队协作能力同样决定项目成败。</p>
+<table><tr><th>特质</th><th>含义</th></tr>
+<tr><td><span class="kp">个人责任感</span></td><td>对工作结果负责</td></tr>
+<tr><td><span class="kp">敏锐意识</span></td><td>关注团队成员和利益相关者需求</td></tr>
+<tr><td><span class="kp">诚实批判</span></td><td>勇于承认设计缺陷，提出建设性意见</td></tr>
+<tr><td><span class="kp">抗压能力</span></td><td>在压力下保持韧性</td></tr>
+<tr><td><span class="kp">公正感</span></td><td>公平对待团队决策</td></tr>
+<tr><td><span class="kp">注重细节</span></td><td>精益求精</td></tr>
+<tr><td><span class="kp">务实</span></td><td>脚踏实地解决问题</td></tr>
+</table>
+<h2 id="s44278920">6.2 软件工程心理学</h2>
+<p>行为模型层次（由外到内）：<span class="kp">商业环境 → 公司 → 项目 → 团队 → 个人 → 软件 → 问题</span></p>
+<p>边界跨越团队角色：<span class="kp">大使 (Ambassador)</span>——外部沟通；<span class="kp">侦察员 (Scout)</span>——信息搜集；<span class="kp">守护员 (Guard)</span>——保护团队；<span class="kp">安检员 (Sentry)</span>——信息过滤；<span class="kp">协调员 (Coordinator)</span>——内外协调。</p>
+<h2 id="s63557925">6.3 软件团队 <span class="tag-must">必考</span></h2>
+<h3 id="s46725040">有效团队属性</h3>
+<ul><li><span class="kp">目标感 (Sense of purpose)</span></li><li><span class="kp">参与感 (Sense of involvement)</span></li><li><span class="kp">信任感 (Sense of trust)</span></li><li><span class="kp">改进感 (Sense of improvement)</span></li><li><span class="kp">技能多样性 (Diversity of skill sets)</span></li></ul>
+<h3 id="s40975136">团队毒性 (Team Toxicity) <span class="tag-key">重点</span></h3>
+<table><tr><th>症状</th><th>表现</th></tr>
+<tr><td>疯狂工作氛围</td><td>目标混乱，能量浪费</td></tr>
+<tr><td>高度挫败</td><td>个人/商业/技术因素导致的摩擦</td></tr>
+<tr><td>碎片化流程</td><td>程序不协调，过程模型选择不当</td></tr>
+<tr><td>角色不清</td><td>分工不明，相互指责</td></tr>
+<tr><td>持续失败</td><td>信心丧失，士气低落</td></tr>
+</table>
+<blockquote>易错：团队毒性的五大症状，考试常用案例题描述一个团队状况让你判断属于哪类毒性。</blockquote>
+<h2 id="s35591933">6.4 团队结构 <span class="tag-must">必考</span></h2>
+<table><tr><th>范型</th><th>特征</th></tr>
+<tr><td><span class="kp">封闭式 (Closed)</span></td><td>传统层级权威结构</td></tr>
+<tr><td><span class="kp">随机式 (Random)</span></td><td>松散结构，依赖个人主动性</td></tr>
+<tr><td><span class="kp">开放式 (Open)</span></td><td>兼具封闭式控制与随机式创新</td></tr>
+<tr><td><span class="kp">同步式 (Synchronous)</span></td><td>问题自然分割，成员独立工作，少沟通</td></tr>
+</table>
+<h3 id="s67203508">影响团队结构的因素</h3>
+<p>问题难度、程序规模（代码行数/功能点）、团队存续时间、问题可模块化程度、质量可靠性要求、交付日期刚性、项目沟通需求程度。</p>
+<h2 id="s32104567">6.5 敏捷团队 <span class="tag-key">重点</span></h2>
+<p>核心理念：<span class="kp">个人能力 + 群体协作 = 关键成功因素</span>。人是第一位，过程和政治次于人。敏捷团队是<span class="kp">自组织</span>的。</p>
+<h3 id="s48208640">XP 团队价值观</h3>
+<table><tr><th>价值观</th><th>含义</th></tr>
+<tr><td><span class="kp">沟通 (Communication)</span></td><td>团队成员和利益相关者间非正式口头沟通</td></tr>
+<tr><td><span class="kp">简单 (Simplicity)</span></td><td>只为当下需求设计，不为未来需求设计（活在当下）</td></tr>
+<tr><td><span class="kp">反馈 (Feedback)</span></td><td>来自实现的软件、客户和其他团队成员</td></tr>
+<tr><td><span class="kp">勇气 (Courage)</span></td><td>抵制为未来需求做设计的压力（活在当下的勇气）</td></tr>
+<tr><td><span class="kp">尊重 (Respect)</span></td><td>团队成员和利益相关者之间</td></tr>
+</table>
+<blockquote>易错：XP 的 Simplicity 和 Courage 都与「不为未来过度设计」相关。Simplicity 是原则，Courage 是坚持原则的勇气。</blockquote>
+<h2 id="s64503403">6.6-6.9 其他主题</h2>
+<p><span class="kp">社交媒体影响</span>：博客（共享信息）、微博（实时消息）、目标论坛（提问回答）、社交网络（开发者连接）、社交书签（资源共享）。</p>
+<p><span class="kp">云计算在 SE 中的应用</span>：提供所有工作产品访问、移除设备依赖、分布式测试、团队信息共享。关注点：安全风险、互操作性、隐私与性能冲突。</p>
+<p><span class="kp">协作工具 (CDE)</span>：命名空间（安全存储）、日历（事件协调）、模板（统一风格）、度量支持（量化评估贡献）、通信分析（跟踪消息模式）、工件聚类（依赖关系）。</p>
+<p><span class="kp">全球团队</span>：面临额外协作、协调挑战——问题复杂度、决策不确定性、意外后果法则、不同视角导致不同方案。</p>
+
+
+
+</body>
+</html>

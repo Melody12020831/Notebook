@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.2 Software Engineering (软件工程)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.2 Software Engineering (软件工程)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s47455450">2.1 软件工程的定义与层次</a></li>
+  <li><a href="#s73931885">IEEE 与 NATO 定义 必考</a></li>
+  <li><a href="#s63975425">软件工程的层次化技术 重点</a></li>
+<li><a href="#s75656418">2.2 软件过程</a></li>
+  <li><a href="#s53624546">过程、活动、动作、任务 重点</a></li>
+  <li><a href="#s24841733">通用过程框架 必考</a></li>
+  <li><a href="#s19017381">普适性活动 (Umbrella Activities) 重点</a></li>
+  <li><a href="#s92108653">过程适应性调整 高频</a></li>
+<li><a href="#s10738257">2.3 软件工程实践</a></li>
+  <li><a href="#s18660414">实践的精髓 重点</a></li>
+  <li><a href="#s27304254">通用原则 高频</a></li>
+<li><a href="#s28505024">2.4 软件开发神话</a></li>
+  <li><a href="#s36682195">管理神话 重点</a></li>
+  <li><a href="#s82520089">客户神话 重点</a></li>
+  <li><a href="#s76468689">从业者神话 必考</a></li>
+</ul>
+</div>
+<h2 id="s47455450">2.1 软件工程的定义与层次</h2>
+
+<p>本章核心问题：<span class="kp">什么是软件工程</span>——它不仅是写代码，而是一套系统化、规范化的工程方法体系。</p>
+
+<h3 id="s73931885">IEEE 与 NATO 定义 <span class="tag-must">必考</span></h3>
+
+<p><span class="kp">IEEE 定义</span>（两个层面）：</p>
+<ol>
+<li><span class="kp">将系统化的、规范的、可量化的方法应用于软件的开发、运行和维护</span>，即将工程化方法应用于软件</li>
+<li><span class="kp">对上述方法的研究</span></li>
+</ol>
+
+<p><span class="kp">NATO 1968 定义</span>：软件工程是建立并运用<span class="kp">可靠的工程化原则</span>，以<span class="kp">经济的方式</span>开发在真实机器上<span class="kp">可靠高效运行</span>的软件。</p>
+
+<p>核心公式：<span class="kp">软件工程 = 工程化原则 + 软件开发</span></p>
+
+<blockquote>易错：IEEE 定义有两层含义——(1) 应用工程化方法 (2) 研究方法本身。考试常只考第一层而忽略第二层。NATO 定义强调「经济性」和「可靠性」，这是区分关键词。</blockquote>
+
+<h3 id="s63975425">软件工程的层次化技术 <span class="tag-key">重点</span></h3>
+
+<p>软件工程是<span class="kp">分层技术</span>，自下而上为：</p>
+<table>
+<tr><th>层次</th><th>名称</th><th>作用</th></tr>
+<tr><td>底层基石</td><td><span class="kp">质量关注 (Quality)</span></td><td>整个软件工程的根基，一切活动的出发点和目标</td></tr>
+<tr><td>第二层</td><td><span class="kp">过程模型 (Process)</span></td><td>将开发活动有效组织起来，是项目管理和控制的基础，定义交付物、里程碑等</td></tr>
+<tr><td>第三层</td><td><span class="kp">方法 (Methods)</span></td><td>从技术上告诉我们怎么做——沟通、需求分析、设计、构造等</td></tr>
+<tr><td>最上层</td><td><span class="kp">工具 (Tools)</span></td><td>支撑软件工程方法的自动化或半自动化工具，如 CASE 工具</td></tr>
+</table>
+
+<blockquote>易错：质量是「根基」不是「目标之一」——没有质量关注，过程和方法都没有意义。常见判断题：说「过程是软件工程的基础」是对的，但这基础建立在质量之上。</blockquote>
+
+<h2 id="s75656418">2.2 软件过程</h2>
+
+<p>核心问题：如何把软件开发中的各种活动<span class="kp">系统化地组织起来</span>，形成可管理、可重复的过程。</p>
+
+<h3 id="s53624546">过程、活动、动作、任务 <span class="tag-key">重点</span></h3>
+
+<table>
+<tr><th>层级</th><th>定义</th><th>示例</th></tr>
+<tr><td><span class="kp">过程 (Process)</span></td><td>为创建某个工作产品而执行的活动、动作、任务的集合</td><td>整个软件开发过程</td></tr>
+<tr><td><span class="kp">活动 (Activity)</span></td><td>追求广泛目标，与领域、项目规模、复杂度、严格度无关</td><td>与利益相关者沟通</td></tr>
+<tr><td><span class="kp">动作 (Action)</span></td><td>包含一组产生主要工作产品的任务</td><td>架构设计（产出架构模型）</td></tr>
+<tr><td><span class="kp">任务 (Task)</span></td><td>聚焦小而明确的目标，产出具体成果</td><td>执行单元测试</td></tr>
+</table>
+
+<blockquote>易错：活动 > 动作 > 任务，三者粒度递减。活动关注「做什么」，动作关注「产出什么」，任务关注「具体怎么做」。常见混淆：把架构设计说成「活动」而非「动作」。</blockquote>
+
+<h3 id="s24841733">通用过程框架 <span class="tag-must">必考</span></h3>
+
+<p><span class="kp">过程框架 (Process Framework)</span>：通过识别少量适用于所有软件项目的框架活动，为完整的软件过程建立基础——<span class="kp">无论项目规模或复杂度</span>。</p>
+
+<p>五大框架活动：</p>
+<table>
+<tr><th>活动</th><th>核心内容</th></tr>
+<tr><td><span class="kp">沟通 (Communication)</span></td><td>客户协作与需求收集</td></tr>
+<tr><td><span class="kp">计划 (Planning)</span></td><td>建立工程工作计划，描述技术风险，列出资源需求、工作产品，定义进度</td></tr>
+<tr><td><span class="kp">建模 (Modeling)</span></td><td>创建模型帮助开发者和客户理解需求和软件设计</td></tr>
+<tr><td><span class="kp">构建 (Construction)</span></td><td>代码生成与测试</td></tr>
+<tr><td><span class="kp">部署 (Deployment)</span></td><td>交付软件供客户评估和反馈</td></tr>
+</table>
+
+<h3 id="s19017381">普适性活动 (Umbrella Activities) <span class="tag-key">重点</span></h3>
+
+<p>普适性活动<span class="kp">贯穿整个过程</span>，与框架活动互补：</p>
+<table>
+<tr><th>活动</th><th>职责</th></tr>
+<tr><td><span class="kp">软件项目跟踪与控制</span></td><td>评估进度，必要时采取纠正措施保持进度</td></tr>
+<tr><td><span class="kp">风险管理</span></td><td>评估可能影响项目结果或产品质量的风险</td></tr>
+<tr><td><span class="kp">软件质量保证 (SQA)</span></td><td>定义并执行确保软件质量所需的活动</td></tr>
+<tr><td><span class="kp">技术评审</span></td><td>评估工作产品，在上游发现并消除错误</td></tr>
+<tr><td><span class="kp">度量</span></td><td>定义和收集过程、项目、产品度量数据</td></tr>
+<tr><td><span class="kp">软件配置管理 (SCM)</span></td><td>管理整个过程中变更带来的影响</td></tr>
+<tr><td><span class="kp">复用管理</span></td><td>定义工作产品复用标准，建立复用机制</td></tr>
+<tr><td><span class="kp">工作产品准备与生产</span></td><td>创建模型、文档、日志、表单、列表等</td></tr>
+</table>
+
+<blockquote>易错：普适性活动不等同于框架活动。框架活动是「阶段」（沟通→计划→建模→构建→部署），普适性活动是贯穿始终的「保护伞」。</blockquote>
+
+<h3 id="s92108653">过程适应性调整 <span class="tag-freq">高频</span></h3>
+
+<p><span class="kp">过程不是教条</span>，可根据项目特点、团队特性、组织文化进行调整。调整维度包括：</p>
+<ul>
+<li>活动/动作/任务的<span class="kp">总体流程和相互依赖关系</span></li>
+<li>框架活动中<span class="kp">动作和任务细化的程度</span></li>
+<li><span class="kp">工作产品的定义和要求程度</span></li>
+<li><span class="kp">质量保证活动应用的方式</span></li>
+<li><span class="kp">项目跟踪和控制活动应用的方式</span></li>
+<li>过程描述的<span class="kp">详细程度和严谨程度</span></li>
+<li><span class="kp">客户和利益相关者参与程度</span></li>
+<li>软件团队的<span class="kp">自主权</span></li>
+<li><span class="kp">团队组织和角色的明确程度</span></li>
+</ul>
+
+<h2 id="s10738257">2.3 软件工程实践</h2>
+
+<p>核心问题：如何将软件工程理论<span class="kp">落地为日常实践</span>。</p>
+
+<h3 id="s18660414">实践的精髓 <span class="tag-key">重点</span></h3>
+
+<table>
+<tr><th>步骤</th><th>内容</th><th>对应过程框架</th></tr>
+<tr><td>1. <span class="kp">理解问题</span></td><td>沟通与分析</td><td>沟通 + 计划</td></tr>
+<tr><td>2. <span class="kp">策划方案</span></td><td>建模与软件设计（写代码前先设计！）</td><td>建模</td></tr>
+<tr><td>3. <span class="kp">执行计划</span></td><td>代码生成</td><td>构建</td></tr>
+<tr><td>4. <span class="kp">检查结果</span></td><td>测试与质量保证</td><td>构建 + 部署</td></tr>
+</table>
+
+<h3 id="s27304254">通用原则 <span class="tag-freq">高频</span></h3>
+
+<table>
+<tr><th>原则</th><th>含义</th></tr>
+<tr><td><span class="kp">存在价值</span></td><td>只为用户提供价值而存在</td></tr>
+<tr><td><span class="kp">KISS — 保持简洁</span></td><td>不要上来就复杂化</td></tr>
+<tr><td><span class="kp">保持愿景</span></td><td>在取舍中不忘记最初的目标</td></tr>
+<tr><td><span class="kp">关注使用者</span></td><td>从使用者角度思考</td></tr>
+<tr><td><span class="kp">面向未来</span></td><td>长远考虑，不过于短视</td></tr>
+<tr><td><span class="kp">提前计划复用</span></td><td>不要等规模大了才考虑复用</td></tr>
+<tr><td><span class="kp">认真思考</span></td><td>通盘考虑后再行动</td></tr>
+</table>
+
+<blockquote>易错：KISS 原则不是「降低功能复杂度」，而是「不引入不必要的复杂度」。保持愿景不是说需求不变更，而是在不可避免的取舍中不迷失方向。</blockquote>
+
+<h2 id="s28505024">2.4 软件开发神话</h2>
+
+<p>核心问题：破除软件开发中常见的<span class="kp">错误观念</span>，建立正确的工程思维。</p>
+
+<h3 id="s36682195">管理神话 <span class="tag-key">重点</span></h3>
+
+<table>
+<tr><th>神话</th><th>事实</th></tr>
+<tr><td>有一本标准规程手册就够了</td><td><span class="kp">没人真正关心和执行</span>，手册不等于实践</td></tr>
+<tr><td>进度落后就加人赶工</td><td><span class="kp">人月神话：向滞后的项目添加人手只会使其更滞后</span>（1+1 &lt;&lt; 2）——新人需要老人培训，反而拖慢进度</td></tr>
+<tr><td>外包出去就可以放手不管</td><td><span class="kp">如果管不好自己的团队，外包也必然失败</span></td></tr>
+</table>
+
+<blockquote>易错：「人月神话」是考试高频考点。核心论证：软件开发不是机械制造，新人加入需要沟通成本和培训时间，边际效益递减甚至为负。</blockquote>
+
+<h3 id="s82520089">客户神话 <span class="tag-key">重点</span></h3>
+
+<table>
+<tr><th>神话</th><th>事实</th></tr>
+<tr><td>有大概目标就可以开始写代码，细节后面补充</td><td><span class="kp">「完成 90%」陷阱</span>——开发者在剩余时间里始终「90% 完成」。不明确的需求导致无限返工</td></tr>
+<tr><td>软件是弹性的，需求变更容易适应</td><td><span class="kp">变更代价随时间指数增长</span>：早期变更成本低，后期变更可能推翻架构，代价极高</td></tr>
+</table>
+
+<h3 id="s76468689">从业者神话 <span class="tag-must">必考</span></h3>
+
+<table>
+<tr><th>神话</th><th>事实</th></tr>
+<tr><td>程序写完交付就完事了</td><td><span class="kp">60%~80% 的工作量发生在首次交付之后</span>（维护、修复、扩展）</td></tr>
+<tr><td>程序跑起来之前无法评估质量</td><td><span class="kp">技术评审 (Technical Review)</span> 是比测试更有效的质量过滤器，从项目启动即可实施</td></tr>
+<tr><td>可执行程序是唯一可交付成果</td><td><span class="kp">软件配置 = 程序 + 文档 + 数据</span>。文档是成功开发和维护的基础</td></tr>
+<tr><td>软件工程产生大量无用文档，拖慢效率</td><td><span class="kp">软件工程的目标是质量，不是文档</span>。好的质量 → 减少返工 → 更快的交付速度</td></tr>
+</table>
+
+<blockquote>易错：判断——「软件工程会降低开发效率」是错误的。实际上：软件工程 → 提高质量 → 减少返工 → 交付更快。文档是手段，质量是目的。</blockquote>
+
+
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.1 The Nature of Software (软件的本质)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.1 The Nature of Software (软件的本质)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s19577063">1.1 软件的本质</a></li>
+  <li><a href="#s19317050">软件的定义 必考</a></li>
+  <li><a href="#s27046626">软件退化曲线 重点</a></li>
+  <li><a href="#s22332162">软件的双重角色</a></li>
+  <li><a href="#s46367342">遗留软件必须变更的原因 高频</a></li>
+  <li><a href="#s19786247">软件危机的历史 重点</a></li>
+  <li><a href="#s71926834">软件开发的根本问题</a></li>
+<li><a href="#s52143575">1.2 软件的变化本质</a></li>
+  <li><a href="#s24416910">WebApps 高频</a></li>
+  <li><a href="#s62638189">移动应用 高频</a></li>
+  <li><a href="#s67471926">云计算 重点</a></li>
+  <li><a href="#s68523547">产品线软件 高频</a></li>
+  <li><a href="#s44927006">Software 1.0 / 2.0 / 3.0 必考</a></li>
+</ul>
+</div>
+<h2 id="s19577063">1.1 软件的本质</h2>
+<p>核心问题：<span class="kp">软件到底是什么</span>——它不只是代码，而是一种被开发而非制造的逻辑产品。</p>
+<h3 id="s19317050">软件的定义 <span class="tag-must">必考</span></h3>
+<p><span class="kp">软件</span>是一组构成<span class="kp">配置 (Configuration)</span> 的要素或对象的集合，包括：</p>
+<ol>
+<li><span class="kp">指令（计算机程序）</span>：执行时提供所需功能和性能</li>
+<li><span class="kp">数据结构</span>：使程序能充分处理信息</li>
+<li><span class="kp">文档</span>：描述程序的操作和使用</li>
+</ol>
+<p><span class="kp">关键区别</span>：软件是<span class="kp">被开发/工程化 (developed/engineered)</span> 的，而非传统意义上的<span class="kp">制造 (manufactured)</span>。</p>
+<blockquote>易错：软件与硬件的本质区别——软件是逻辑产物（开发），硬件是物理实体（制造）。软件不会「磨损」但会「退化」。</blockquote>
+<h3 id="s27046626">软件退化曲线 <span class="tag-key">重点</span></h3>
+<p>硬件失效曲线是<span class="kp">「浴缸曲线」</span>：初期失效率高 → 平稳期 → 磨损期失效率升高。</p>
+<p>软件不会磨损，但会<span class="kp">退化 (deteriorate)</span>：每次修改引入新错误，失效率突然升高。没有软件备件。</p>
+<blockquote>易错：判断题——「软件会像硬件一样磨损」是错误的。软件不会被磨损，但维护过程中的修改会导致退化。</blockquote>
+<h3 id="s22332162">软件的双重角色</h3>
+<p><span class="kp">软件 = 产品（信息转换器）+ 产品交付载体（OS/网络/工具）</span></p>
+<h3 id="s46367342">遗留软件必须变更的原因 <span class="tag-freq">高频</span></h3>
+<ol>
+<li><span class="kp">适应</span>：适应新计算环境或技术</li>
+<li><span class="kp">增强</span>：实现新业务需求</li>
+<li><span class="kp">扩展</span>：与其他现代系统或数据库互操作</li>
+<li><span class="kp">重新架构</span>：使其在网络环境中可行</li>
+</ol>
+<h3 id="s19786247">软件危机的历史 <span class="tag-key">重点</span></h3>
+<p><span class="kp">IBM 360 操作系统</span>（1963-1966）：5000 人-年工作量，最多 1000 人同时开发，近 100 万行源码。每次新版本从前版本修复约 1000 个错误。</p>
+<p>Brooks 总结：「程序设计工作正像一个泥潭…一批批程序员被迫在泥沼中拼命挣扎。」——由此诞生经典著作<span class="kp">《人月神话》</span>。</p>
+<blockquote>易错：IBM 360 案例是「软件危机」最著名的例子，Brooks 从中总结出人月神话的核心观点。</blockquote>
+<h3 id="s71926834">软件开发的根本问题</h3>
+<ul>
+<li>为什么软件需要这么长时间才能完成？</li>
+<li>为什么开发成本如此之高？</li>
+<li>为什么在交付前无法找到所有错误？</li>
+<li>为什么花这么多时间维护已有程序？</li>
+<li>为什么难以度量开发过程中的进展？</li>
+</ul>
+<h2 id="s52143575">1.2 软件的变化本质</h2>
+<p>核心问题：软件形态随时代不断演变——从单机程序到网络应用、移动应用、云端服务、AI 驱动软件。</p>
+<h3 id="s24416910">WebApps <span class="tag-freq">高频</span></h3>
+<p>现代 WebApps 不仅仅是超文本+图片。包含 XML/Java 增强交互性，可与数据库和业务应用集成。<span class="kp">Web 3.0 / 语义 Web</span>：语义数据库、灵活数据表示、API 访问。内容的<span class="kp">美学品质</span>是质量的重要决定因素。</p>
+<h3 id="s62638189">移动应用 <span class="tag-freq">高频</span></h3>
+<p>驻留在移动平台，UI 考虑设备特性和位置属性。提供<span class="kp">持久化存储</span>。移动 Web App（浏览器访问）vs 移动 App（直接访问硬件，本地处理和存储）。</p>
+<h3 id="s67471926">云计算 <span class="tag-key">重点</span></h3>
+<p>三层模型：<span class="kp">IaaS（基础设施即服务）→ PaaS（平台即服务）→ SaaS（软件即服务）</span></p>
+<p>云架构包含<span class="kp">前端服务</span>（客户端设备+应用软件）和<span class="kp">后端服务</span>（服务器+数据存储+驻留应用），可分段限制私有数据访问。</p>
+<h3 id="s68523547">产品线软件 <span class="tag-freq">高频</span></h3>
+<p><span class="kp">产品线软件</span>：共享一组共同特性、满足特定市场需求的一组软件密集型系统。利用<span class="kp">公共核心可复用组件</span>，共享需求、架构、设计模式、测试用例等资产。</p>
+<h3 id="s44927006">Software 1.0 / 2.0 / 3.0 <span class="tag-must">必考</span></h3>
+<table>
+<tr><th>版本</th><th>核心</th><th>编程方式</th><th>代表</th></tr>
+<tr><td><span class="kp">Software 1.0</span></td><td>计算机代码</td><td>程序员编写显式指令</td><td>传统程序、GitHub 代码库</td></tr>
+<tr><td><span class="kp">Software 2.0</span></td><td>神经网络权重</td><td>数据训练模型参数</td><td>AlexNet (2012)、HuggingFace 模型</td></tr>
+<tr><td><span class="kp">Software 3.0</span></td><td>LLM 提示词</td><td>自然语言提示</td><td>GPT 系列、可编程神经网络 (2019)</td></tr>
+</table>
+<p><span class="kp">Vibe Coding（氛围编程，2025）</span>：Andrej Karpathy 提出，通过自然语言提示与 AI 生成代码，强调开发者进入「创意 flow」状态。</p>
+<blockquote>易错：三个版本不是替代关系。Software 2.0 不是取代 1.0，而是增加了新的编程范式。Software 3.0 进一步用自然语言提示取代部分代码编写。</blockquote>
+
+
+
+</body>
+</html>

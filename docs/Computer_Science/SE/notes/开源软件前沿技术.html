@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>开源软件前沿技术</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>开源软件前沿技术</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s70049251">开源运动概述</a></li>
+  <li><a href="#s51838243">开源核心概念 必考</a></li>
+  <li><a href="#s51545984">开源开发模式 重点</a></li>
+  <li><a href="#s31201314">开源评价维度 重点</a></li>
+  <li><a href="#s91815075">前沿趋势</a></li>
+</ul>
+</div>
+<h2 id="s70049251">开源运动概述</h2>
+<p>核心问题：开源不仅仅是一种开发模式——它是一场<span class="kp">改变了整个软件产业</span>的运动，影响从个人开发者到跨国企业。</p>
+<h3 id="s51838243">开源核心概念 <span class="tag-must">必考</span></h3>
+<ul>
+<li><span class="kp">自由软件 vs 开源软件</span>：自由软件强调用户自由（Richard Stallman/FSF），开源软件强调开发方法的优势</li>
+<li><span class="kp">开源许可证类型</span>：宽松式 (Permissive: MIT/Apache) vs 强保护式 (Copyleft: GPL/AGPL)</li>
+<li><span class="kp">开源社区治理</span>：BDFL（仁慈独裁者）模型 vs 基金会治理 vs 公司主导</li>
+</ul>
+<h3 id="s51545984">开源开发模式 <span class="tag-key">重点</span></h3>
+<ul>
+<li><span class="kp">分布式协作</span>：全球开发者异步参与——PR (Pull Request) → Code Review → Merge</li>
+<li><span class="kp">精英治理 (Meritocracy)</span>：贡献决定影响力——不是头衔决定权力</li>
+<li><span class="kp">Fork & Pull 模型</span>：任何人都可以 Fork，贡献通过 Pull Request 回流</li>
+<li><span class="kp">InnerSource</span>：企业内部应用开源协作模式</li>
+</ul>
+<h3 id="s31201314">开源评价维度 <span class="tag-key">重点</span></h3>
+<ul>
+<li><span class="kp">社区健康度</span>：贡献者活跃数、Issue/PR 响应时间、新贡献者留存率</li>
+<li><span class="kp">项目成熟度</span>：版本稳定性、文档质量、测试覆盖率</li>
+<li><span class="kp">安全评分</span>：漏洞响应速度、安全审计历史、依赖安全性</li>
+</ul>
+<h3 id="s91815075">前沿趋势</h3>
+<ul>
+<li>AI/LLM 驱动的开源开发——代码审查、Issue 分类、文档生成</li>
+<li>开源供应链安全——SBOM、依赖扫描、签名验证</li>
+<li>开放科学和数据——不仅代码开源，训练数据和研究也开放</li>
+</ul>
+<blockquote>易错：MIT 许可证 = 几乎无限制（可商用/闭源/修改）。GPL = 传染性——使用了 GPL 代码的项目也必须以 GPL 开源。Apache 2.0 = MIT + 专利授权。选错许可证有法律后果。</blockquote>
+
+
+
+</body>
+</html>

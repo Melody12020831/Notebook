@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.8 Understanding Requirements (理解需求)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.8 Understanding Requirements (理解需求)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s39440561">需求工程七步法 必考</a></li>
+  <li><a href="#s83627902">1. 起始 (Inception)</a></li>
+  <li><a href="#s50100384">2. 获取 (Elicitation) 重点</a></li>
+  <li><a href="#s52066133">3. 细化 (Elaboration)</a></li>
+  <li><a href="#s38920697">4. 协商 (Negotiation) 重点</a></li>
+  <li><a href="#s65480468">5. 规格说明 (Specification)</a></li>
+  <li><a href="#s47556610">6. 验证 (Validation) 必考</a></li>
+  <li><a href="#s20874724">7. 需求管理</a></li>
+<li><a href="#s79163053">质量功能部署 (QFD) 重点</a></li>
+<li><a href="#s24784416">非功能需求 (NFR) 高频</a></li>
+<li><a href="#s54882796">获取工作产品</a></li>
+<li><a href="#s31585665">用例 (Use-Cases) 必考</a></li>
+<li><a href="#s45686139">分析模型元素</a></li>
+<li><a href="#s40300949">分析模式</a></li>
+</ul>
+</div>
+<h2 id="s39440561">需求工程七步法 <span class="tag-must">必考</span></h2>
+<p>核心问题：构建软件系统最困难的部分是<span class="kp">决定要构建什么</span>——三大问题：范围问题、理解问题、易变性问题。</p>
+<h3 id="s83627902">1. 起始 (Inception)</h3>
+<p>提出上下文无关问题建立基本理解：问题的基本理解 → 谁想要解决方案 → 期望的解决方案本质 → 前期沟通协作的有效性。识别利益相关者，识别多种视角，向协作努力。</p>
+<h3 id="s50100384">2. 获取 (Elicitation) <span class="tag-key">重点</span></h3>
+<p>从所有利益相关者获取需求。会议由软件工程师和客户共同参与，制定准备和参与规则，由引导者控制会议。使用定义机制（工作表/白板/电子公告板）。目标：<span class="kp">识别问题 → 提出方案元素 → 协商不同方法 → 制定初步需求集</span>。</p>
+<h3 id="s52066133">3. 细化 (Elaboration)</h3>
+<p>创建分析模型，识别数据、功能和行为需求。</p>
+<h3 id="s38920697">4. 协商 (Negotiation) <span class="tag-key">重点</span></h3>
+<p>识别关键利益相关者 → 确定每个利益相关者的「获胜条件」 → 协商 → 达成「双赢」需求集。<span class="kp">如果不同客户/用户无法就需求达成一致，失败风险非常高。</span></p>
+<h3 id="s65480468">5. 规格说明 (Specification)</h3>
+<p>可以是书面文档、模型集、形式化数学描述、用户场景集（用例）、原型中的任意一种或多种。</p>
+<h3 id="s47556610">6. 验证 (Validation) <span class="tag-must">必考</span></h3>
+<p>审查需求中的：内容或解释错误、需要澄清的地方、缺失信息、不一致（大型系统的主要问题）、冲突或不现实的需求。验证问题清单：是否与总体目标一致？抽象层次是否合适？是否必要？是否无歧义？是否有归属？是否冲突？是否可实现？是否可测试？</p>
+<h3 id="s20874724">7. 需求管理</h3>
+<p>持续跟踪、监控和调整需求，尤其在增量开发中——分布式调试、运行时验证、运行时确认、业务活动监控、演化与协同设计。</p>
+<h2 id="s79163053">质量功能部署 (QFD) <span class="tag-key">重点</span></h2>
+<p>三类需求：<span class="kp">正常需求 (Normal)</span>——明确陈述的；<span class="kp">期望需求 (Expected)</span>——隐含的、基本的；<span class="kp">兴奋需求 (Exciting)</span>——超出期望的增值特性。</p>
+<h2 id="s24784416">非功能需求 (NFR) <span class="tag-freq">高频</span></h2>
+<p>质量属性、性能属性、安全属性或系统约束。两阶段分析：创建 NFR× 指南矩阵 → 团队对每对 NFR/指南分类（互补/重叠/冲突/独立）并排优先级。</p>
+<h2 id="s54882796">获取工作产品</h2>
+<p>需求与可行性声明、系统和产品范围声明、利益相关者列表、技术环境描述、需求列表与领域约束、使用场景集、任何为更好定义需求而开发的原型。</p>
+<h2 id="s31585665">用例 (Use-Cases) <span class="tag-must">必考</span></h2>
+<p>从<span class="kp">参与者 (Actor)</span>视角描述使用场景的线程。每个场景回答：主要/次要参与者是谁？参与者目标是什么？前置条件？主要任务/功能？可能的扩展和变化？参与者获取/产生/修改什么信息？</p>
+<h2 id="s45686139">分析模型元素</h2>
+<ul><li><span class="kp">场景元素</span>：用例、活动图</li><li><span class="kp">类元素</span>：类图</li><li><span class="kp">行为元素</span>：状态图</li><li><span class="kp">流元素</span>：数据流图</li></ul>
+<h2 id="s40300949">分析模式</h2>
+<p>模式名 → 意图 → 动机 → 力量与上下文 → 解决方案 → 后果 → 设计 → 已知使用 → 相关模式。</p>
+
+
+
+</body>
+</html>

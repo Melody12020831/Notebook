@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.15 User Interface Design (用户界面设计)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.15 User Interface Design (用户界面设计)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s24035993">界面设计基础 必考</a></li>
+  <li><a href="#s43620349">黄金规则 (Golden Rules) 必考</a></li>
+  <li><a href="#s38149153">具体设计原则 重点</a></li>
+<li><a href="#s86243165">UI 设计过程 重点</a></li>
+<li><a href="#s72786318">Web 界面设计</a></li>
+</ul>
+</div>
+<h2 id="s24035993">界面设计基础 <span class="tag-must">必考</span></h2>
+<p>核心问题：接口是软件的<span class="kp">「脸面」</span>——无论内部功能多强大，糟糕的 UI 会让用户拒绝使用。</p>
+<h3 id="s43620349">黄金规则 (Golden Rules) <span class="tag-must">必考</span></h3>
+<ol>
+<li><span class="kp">将控制权交给用户 (Place the User in Control)</span></li>
+<li><span class="kp">减少用户记忆负担 (Reduce the User's Memory Load)</span></li>
+<li><span class="kp">保持界面一致 (Make the Interface Consistent)</span></li>
+</ol>
+<h3 id="s38149153">具体设计原则 <span class="tag-key">重点</span></h3>
+<ul>
+<li>以不显眼的模式定义交互——避免强制模态对话框</li>
+<li>提供灵活交互——支持键盘/鼠标/触摸多种方式</li>
+<li>允许中断和撤销——给用户反悔的机会</li>
+<li>使用有意义的隐喻——利用用户已有知识</li>
+<li>保持界面简洁——减少视觉噪音</li>
+<li>提供有意义的反馈——每次操作都有确认</li>
+</ul>
+<h2 id="s86243165">UI 设计过程 <span class="tag-key">重点</span></h2>
+<ol><li>用户分析（谁在使用？经验水平？）</li><li>任务分析（用户要完成什么？）</li><li>界面原型创建</li><li>用户评估和测试</li></ol>
+<h2 id="s72786318">Web 界面设计</h2>
+<p>响应式设计；导航清晰；内容优先（content is king）；加载速度；可访问性 (a11y)。</p>
+<blockquote>易错：用户界面设计不是纯粹的「美术」问题——它是交互设计+认知心理学+软件工程的交叉学科。美观不等于好用。</blockquote>
+
+
+
+</body>
+</html>

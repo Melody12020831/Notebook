@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ch.7 Principles that Guide Practice (指导实践的原则)</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>Ch.7 Principles that Guide Practice (指导实践的原则)</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s16641566">过程原则 (Principles that Guide Process)</a></li>
+  <li><a href="#s88818555">过程原则 I 重点</a></li>
+  <li><a href="#s51868978">过程原则 II</a></li>
+<li><a href="#s43426698">实践原则 (Principles that Guide Practice) 必考</a></li>
+  <li><a href="#s79157106">实践原则 I</a></li>
+  <li><a href="#s48895789">实践原则 II</a></li>
+<li><a href="#s29014336">沟通原则 重点</a></li>
+<li><a href="#s41778350">计划原则</a></li>
+<li><a href="#s46505811">建模原则 必考</a></li>
+  <li><a href="#s30419019">敏捷建模原则</a></li>
+  <li><a href="#s26298324">需求建模原则</a></li>
+  <li><a href="#s73244386">设计建模原则</a></li>
+  <li><a href="#s29434341">Living Modeling 原则</a></li>
+<li><a href="#s24215257">构建原则 重点</a></li>
+  <li><a href="#s32216423">准备原则</a></li>
+  <li><a href="#s39558356">编码原则</a></li>
+  <li><a href="#s18797818">验证原则</a></li>
+<li><a href="#s54839689">测试原则 重点</a></li>
+<li><a href="#s51912588">部署原则</a></li>
+</ul>
+</div>
+<h2 id="s16641566">过程原则 (Principles that Guide Process)</h2>
+<p>核心观点：Steve McConnell 提出<span class="kp">软件工程原则</span>没有 3 年半衰期——它们将服务整个职业生涯。</p>
+<h3 id="s88818555">过程原则 I <span class="tag-key">重点</span></h3>
+<ol>
+<li><span class="kp">保持敏捷</span>：无论选择规约式还是敏捷过程模型，敏捷开发的基本原则应指导方法</li>
+<li><span class="kp">每步关注质量</span>：每个过程活动/动作/任务的出口条件应聚焦于产生的工作产品质量</li>
+<li><span class="kp">准备适应</span>：过程不是宗教体验，必要时根据问题、人员和项目约束调整方法</li>
+<li><span class="kp">建立有效团队</span>：过程和实最重要，但底线是人——建立互信互尊的自组织团队</li>
+</ol>
+<h3 id="s51868978">过程原则 II</h3>
+<ol start="5">
+<li><span class="kp">建立沟通和协调机制</span>：项目失败往往因为重要信息遗漏和/或利益相关者协调失败</li>
+<li><span class="kp">管理变更</span>：建立正式或非正式机制管理变更的请求、评估、批准和实施</li>
+<li><span class="kp">评估风险</span>：制定应急计划，很多事都可能出错</li>
+<li><span class="kp">创造对他人有价值的工作产品</span>：只为其他过程活动/动作/任务提供价值的产品才值得创建</li>
+</ol>
+<h2 id="s43426698">实践原则 (Principles that Guide Practice) <span class="tag-must">必考</span></h2>
+<h3 id="s79157106">实践原则 I</h3>
+<ol>
+<li><span class="kp">分而治之</span>：分析和设计应始终强调关注点分离 (Separation of Concerns, SoC)</li>
+<li><span class="kp">理解抽象的使用</span>：抽象是对系统复杂元素的简化，用单个短语传达含义</li>
+<li><span class="kp">力求一致性</span>：熟悉的上下文使软件更易使用</li>
+<li><span class="kp">关注信息传递</span>：特别关注接口的分析、设计、构建和测试</li>
+</ol>
+<h3 id="s48895789">实践原则 II</h3>
+<ol start="5">
+<li><span class="kp">构建有效模块化的软件</span>：关注点分离是哲学，模块化是实现哲学的机制</li>
+<li><span class="kp">寻找模式</span>：模式的目标是创建知识体系帮助开发者解决重复出现的问题</li>
+<li><span class="kp">从多个视角表示问题和解决方案</span></li>
+<li><span class="kp">记住有人将维护软件</span></li>
+</ol>
+<blockquote>易错：SoC（关注点分离）是原则，模块化是实现手段。两者密切相关但概念不同——判断常混为一谈。</blockquote>
+<h2 id="s29014336">沟通原则 <span class="tag-key">重点</span></h2>
+<ol>
+<li>倾听——专注于说话者的内容，而非准备回应</li>
+<li>沟通前准备——先花时间理解问题</li>
+<li>有人应引导活动——每次沟通会议应有引导者</li>
+<li><span class="kp">面对面沟通最佳</span>——但有相关信息的其他表示时效果更好</li>
+<li>做笔记和记录决策</li>
+<li>力求协作——集体知识融合产生共识</li>
+<li>保持聚焦，模块化讨论</li>
+<li>不清楚就画图</li>
+<li>(a) 同意就进入下一步 (b) 不同意也前进 (c) 不清楚且无法澄清也前进</li>
+<li><span class="kp">谈判不是竞赛——双赢才是最好结果</span></li>
+</ol>
+<h2 id="s41778350">计划原则</h2>
+<ol>
+<li>理解项目范围——范围提供目的地</li>
+<li>让客户参与计划活动</li>
+<li><span class="kp">计划是迭代的</span>——从不是刻在石头上</li>
+<li>基于已知进行估算</li>
+<li>定义计划时考虑风险</li>
+<li>实事求是——人不是每天 100% 效率</li>
+<li>随计划展开调整粒度</li>
+<li>定义如何确保质量</li>
+<li>描述如何适应变更</li>
+<li><span class="kp">频繁跟踪计划并做调整</span>——项目落后是一天天累积的</li>
+</ol>
+<h2 id="s46505811">建模原则 <span class="tag-must">必考</span></h2>
+<p>两类模型：<span class="kp">需求模型（分析模型）</span>——从信息域/功能域/行为域描述客户需求；<span class="kp">设计模型</span>——描述帮助构建软件的特征（架构/UI/组件细节）。</p>
+<h3 id="s30419019">敏捷建模原则</h3>
+<p>首要目标<span class="kp">构建软件而非创建模型</span>；轻装上阵——不要创建超过需要的模型；创建最简单的模型；模型应易于变更；每个模型有明确目的；根据系统适配模型；追求有用而非完美；不要成为模型语法的教条者。</p>
+<h3 id="s26298324">需求建模原则</h3>
+<p>信息域必须被表示和理解；软件功能必须被定义；软件行为必须被表示；模型必须分层揭示细节；从基本信息向实现细节推进。</p>
+<h3 id="s73244386">设计建模原则</h3>
+<p>设计应可追溯到需求模型；始终考虑架构；数据设计与处理功能设计同等重要；接口需精心设计；UI 设计适应最终用户需求；<span class="kp">组件级设计应功能独立</span>；组件应松散耦合；设计模型应易理解；设计应迭代开发。</p>
+<h3 id="s29434341">Living Modeling 原则</h3>
+<p>以利益相关者为中心的模型；模型与代码紧密耦合；模型与代码间双向信息流；创建公共系统视图；模型信息持久化以跟踪变更；跨模型层信息一致性验证；每个模型元素有指定权限和责任。</p>
+<h2 id="s24215257">构建原则 <span class="tag-key">重点</span></h2>
+<h3 id="s32216423">准备原则</h3>
+<p>写代码前：理解问题、理解设计原则、选择合适语言、选择编程环境、<span class="kp">创建一组单元测试</span>。</p>
+<h3 id="s39558356">编码原则</h3>
+<p>结构化编程、考虑结对编程、选择合适的<span class="kp">数据结构</span>、理解架构一致接口、简单条件逻辑、嵌套循环易测试、有意义变量名、自文档化代码、可视化布局。</p>
+<h3 id="s18797818">验证原则</h3>
+<p><span class="kp">代码走查 (Code Walkthrough)</span> → 执行单元测试并修正错误 → <span class="kp">重构代码 (Refactor)</span>。</p>
+<h2 id="s54839689">测试原则 <span class="tag-key">重点</span></h2>
+<ol>
+<li>所有测试应可追溯到客户需求</li>
+<li>测试应在测试开始前很久就计划好</li>
+<li><span class="kp">帕累托原则</span>适用于软件测试（80% 错误来自 20% 组件）</li>
+<li>测试应从小开始向大推进</li>
+<li><span class="kp">穷尽测试不可能</span></li>
+<li>测试工作量与预期故障密度匹配</li>
+<li><span class="kp">静态测试可产生高回报</span></li>
+<li>跟踪缺陷并在缺陷中寻找模式</li>
+<li>包含展示软件正确行为的测试用例</li>
+</ol>
+<h2 id="s51912588">部署原则</h2>
+<ol>
+<li>管理客户对软件的期望</li>
+<li>组装和测试完整的交付包</li>
+<li>在软件交付前建立支持机制</li>
+<li>向最终用户提供适当的指导材料</li>
+<li><span class="kp">有缺陷的软件应先修复，后交付</span></li>
+</ol>
+
+
+
+</body>
+</html>

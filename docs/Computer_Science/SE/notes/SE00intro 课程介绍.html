@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>软件工程 — 课程介绍</title>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\(', '\)']],
+    displayMath: [['$$', '$$'], ['\[', '\]']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"></script>
+<style>
+/* === ExamPass Shared Styles === */
+/* Paper-like warm background, clean typography, responsive */
+
+:root {
+  --paper: #fdf6e3;
+  --paper-dark: #f5ecd7;
+  --ink: #2c2c2c;
+  --ink-light: #555;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --divider: #d6c8a8;
+  --card-bg: #fef9ef;
+  --card-border: #e8dcc8;
+  --correct: #22c55e;
+  --correct-bg: #f0fdf4;
+  --wrong: #ef4444;
+  --wrong-bg: #fef2f2;
+  --tag-bg: #fef3c7;
+  --tag-text: #92400e;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Microsoft YaHei", "Noto Sans SC", "SimSun", sans-serif;
+  font-size: 12pt; line-height: 1.75; color: var(--ink);
+  max-width: 860px; margin: auto; padding: 24px 20px 60px;
+  background: var(--paper);
+}
+
+@media print {
+  body { font-size: 10.5pt; background: #fff; }
+  .no-print { display: none !important; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Header ── */
+#exampass-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; margin-bottom: 0;
+}
+.header-brand { font-size: 1.2em; font-weight: 700; color: #1a1a2e; letter-spacing: 0.3px; }
+.header-url  { font-size: 0.78em; color: #999; }
+.header-divider { border: none; border-top: 2px solid var(--divider); margin: 4px 0 20px 0; }
+
+/* ── Typography ── */
+h1 { font-size: 1.55em; text-align: center; border-bottom: 2px solid var(--divider); padding-bottom: 8px; margin-top: 0; }
+h2 { font-size: 1.25em; border-bottom: 1px solid var(--divider); padding-bottom: 4px; margin-top: 28px; }
+h3 { font-size: 1.08em; margin-top: 20px; color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Tables ── */
+table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.95em; }
+td, th { border: 1px solid var(--card-border); padding: 5px 9px; text-align: left; }
+th { background: var(--paper-dark); font-weight: 700; }
+
+/* ── Knowledge point vs explanation ── */
+.kp { font-weight: 700; color: var(--ink); }           /* key point: bold dark */
+.exp { font-weight: 400; color: var(--ink-light); }    /* explanation: lighter */
+.exp em, .exp strong { color: var(--ink); }             /* emphasis inside explanation */
+
+/* ── Block elements ── */
+blockquote {
+  border-left: 3px solid #c0392b; background: #fef9ef;
+  padding: 6px 14px; margin: 10px 0; font-size: 0.95em;
+}
+code { background: #f0ede0; padding: 2px 5px; border-radius: 3px; font-size: 0.92em; }
+pre { background: #f0ede0; padding: 10px; border-radius: var(--radius); overflow-x: auto; }
+
+/* ── TOC ── */
+div.toc {
+  background: var(--card-bg); padding: 14px 18px;
+  border: 1px solid var(--card-border); border-radius: var(--radius); margin-bottom: 22px;
+}
+div.toc ul { padding-left: 18px; }
+div.toc li { margin: 3px 0; font-size: 0.95em; }
+
+/* ── Priority tags ── */
+.tag-must   { background: #fee2e2; color: #991b1b; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-key    { background: #fef3c7; color: #92400e; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-freq   { background: #dbeafe; color: #1e40af; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+.tag-info   { background: #f0fdf4; color: #166534; padding: 1px 6px; border-radius: 3px; font-size: 0.82em; font-weight: 600; }
+
+
+</style>
+</head>
+<body>
+
+<header id="exampass-header">
+  <div class="header-left"><span class="header-brand">ExamPass Assistant</span></div>
+  <div class="header-right"><span class="header-url">github.com/WUBING2023/ExamPass-Assistant</span></div>
+</header>
+<hr class="header-divider">
+
+<h1>软件工程 — 课程介绍</h1>
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li><a href="#s12543880">课程基本信息</a></li>
+  <li><a href="#s88673733">教学目标 重点</a></li>
+  <li><a href="#s44067677">教材与参考 了解</a></li>
+<li><a href="#s49429148">考核规则 必考</a></li>
+  <li><a href="#s12199668">期末考试 必考</a></li>
+  <li><a href="#s24787543">Discussions 重点</a></li>
+  <li><a href="#s71374147">Bonus 了解</a></li>
+<li><a href="#s37860951">Project 项目 必考</a></li>
+  <li><a href="#s92116522">项目选题</a></li>
+  <li><a href="#s47302385">组队规则</a></li>
+  <li><a href="#s78684578">评分机制 重点</a></li>
+  <li><a href="#s66570812">3 次 Review</a></li>
+  <li><a href="#s36569989">提交物要求 重点</a></li>
+<li><a href="#s83991688">教学安排 高频</a></li>
+</ul>
+</div>
+<h2 id="s12543880">课程基本信息</h2>
+<p>课程核心定位：帮助学生实现从<span class="kp">「编程序」到「做软件」</span>的重大转变。</p>
+<h3 id="s88673733">教学目标 <span class="tag-key">重点</span></h3>
+<ul>
+<li><span class="kp">软件工程 1.0</span>：熟悉基本概念和基本理论（过程模型、需求分析、设计、测试、项目管理）</li>
+<li><span class="kp">软件工程 2.0</span>：掌握基本方法和工具（敏捷开发、CI/CD、DevOps）</li>
+<li><span class="kp">软件工程 3.0</span>：了解最新工程实践（大模型驱动开发）</li>
+<li><span class="kp">Agentic Engineering</span>：把握软件工程研究方向</li>
+</ul>
+<h3 id="s44067677">教材与参考 <span class="tag-info">了解</span></h3>
+<p><span class="kp">教材</span>：Pressman R S. 软件工程：实践者的研究方法（郑人杰译，机械工业出版社 2011）</p>
+<p><span class="kp">参考书</span>：邹欣《构建之法》（第3版）、Evans《领域驱动设计》、Martin《敏捷软件开发》</p>
+<h2 id="s49429148">考核规则 <span class="tag-must">必考</span></h2>
+<p>总成绩 = <span class="kp">Project × 40% + Discussions × 20% + Final × 40% = 100%</span></p>
+<h3 id="s12199668">期末考试 <span class="tag-must">必考</span></h3>
+<p>题型：<span class="kp">选择（多选）+ 判断 + 简答 + 画图</span></p>
+<h3 id="s24787543">Discussions <span class="tag-key">重点</span></h3>
+<p>随机随堂测验（「学在浙大」）+ 课堂随机提问，主动回答有加分。</p>
+<h3 id="s71374147">Bonus <span class="tag-info">了解</span></h3>
+<p>在 ICSE/FSE/ASE/ISSTA 等顶会发表论文，<span class="kp">无需考试直接获得 95 分</span>。</p>
+<h2 id="s37860951">Project 项目 <span class="tag-must">必考</span></h2>
+<h3 id="s92116522">项目选题</h3>
+<table><tr><th>项目</th><th>参考</th><th>推荐功能</th></tr>
+<tr><td>移动支付系统</td><td>支付宝</td><td>扫码支付、乘车码、钱包、卡券（折扣类目/叠加/互斥）</td></tr>
+<tr><td>铁路购票系统</td><td>12306</td><td>购票（直达/中转/计次票/候补/退票/并发控制）、订餐</td></tr>
+<tr><td>二手交易平台</td><td>闲鱼</td><td>交易（议价/出价/取消/超时/幂等）、私聊（已读/未读/撤回/拉黑）</td></tr>
+<tr><td>校园BBS</td><td>CC98</td><td>十大热门、匿名发帖、引用回复、封解禁、积分系统</td></tr>
+<tr><td>股票交易系统</td><td>—</td><td>具有一定复杂度的真实项目</td></tr>
+</table>
+<h3 id="s47302385">组队规则</h3>
+<ul>
+<li><span class="kp">每组 6-8 人</span>，自由组合，组长自定</li>
+<li>组长负责：组织、分工、控制进度、分配组员得分</li>
+<li>组长奖罚：过半数组员不满 → 改选；顺利完成任务 → 总评+5；严重失误 → 总评-5</li>
+</ul>
+<h3 id="s78684578">评分机制 <span class="tag-key">重点</span></h3>
+<p><span class="kp">组得分 = 教师打分 × 50% +（各组长打分和）/ 组数 × 50%</span></p>
+<p>教师打分 = 汇报分（汇报效果+提交物质量）+ 过程分（Git 开发过程合理性）</p>
+<p><span class="kp">组员得分 = 组员贡献率 × 组得分 × 组人数</span></p>
+<p>各阶段占比：<span class="kp">需求分析 30%、项目计划 10%、系统设计 20%、原型系统 20%、系统测试 20%</span></p>
+<h3 id="s66570812">3 次 Review</h3>
+<table><tr><th>Review</th><th>时间</th></tr>
+<tr><td>需求分析与计划</td><td>第十周</td></tr>
+<tr><td>系统设计</td><td>第十二周</td></tr>
+<tr><td>原型系统与测试</td><td>第十六周</td></tr>
+</table>
+<h3 id="s36569989">提交物要求 <span class="tag-key">重点</span></h3>
+<ul>
+<li>完整 Git 仓库（含所有提交历史）</li>
+<li>所有文档使用 <span class="kp">Markdown</span> 并通过 Git 统一管理</li>
+<li>提供 <span class="kp">AI 使用说明澄清文档及 AI 对话历史数据</span></li>
+</ul>
+<blockquote>易错：合理使用 AI 的原则——不是禁止 AI，也不是完全依赖 AI。底线是避免临时赶工直接用大模型生成作业提交。</blockquote>
+<h2 id="s83991688">教学安排 <span class="tag-freq">高频</span></h2>
+<p>理论学习四阶段：<span class="kp">软件工程 1.0（10 周）→ 2.0（1 周）→ 3.0（4 周）→ 开源（1 周）</span></p>
+<p>实验工具要求：UML (PlantUML/Mermaid)、Coding (IDE/AI coding)、Test (JUnit/JMeter)、SCM (Git/GitHub)、SQA (SonarQube)</p>
+
+
+
+</body>
+</html>
