@@ -312,90 +312,88 @@ nav:
       - Computer_Science/SE/大模型赋能测试.md
       - Computer_Science/SE/大模型驱动运维与管理.md
       - "notes":
-        - Computer_Science/SE/notes/SE00intro 课程介绍.html
-        - Computer_Science/SE/notes/SE00intro 课程介绍_test.html
-        - Computer_Science/SE/notes/SE01 软件的本质.html
-        - Computer_Science/SE/notes/SE01 软件的本质_test.html
-        - Computer_Science/SE/notes/SE02 软件工程.html
-        - Computer_Science/SE/notes/SE02 软件工程_test.html
-        - Computer_Science/SE/notes/SE03 软件过程结构.html
-        - Computer_Science/SE/notes/SE03 软件过程结构_test.html
-        - Computer_Science/SE/notes/SE04 过程模型.html
-        - Computer_Science/SE/notes/SE04 过程模型_test.html
-        - Computer_Science/SE/notes/SE06 软件工程中的人.html
-        - Computer_Science/SE/notes/SE06 软件工程中的人_test.html
-        - Computer_Science/SE/notes/SE07 指导实践的原则.html
-        - Computer_Science/SE/notes/SE07 指导实践的原则_test.html
-        - Computer_Science/SE/notes/SE08 理解需求.html
-        - Computer_Science/SE/notes/SE08 理解需求_test.html
-        - Computer_Science/SE/notes/SE09 基于场景的需求建模.html
-        - Computer_Science/SE/notes/SE09 基于场景的需求建模_test.html
-        - Computer_Science/SE/notes/SE10 基于类的需求建模.html
-        - Computer_Science/SE/notes/SE10 基于类的需求建模_test.html
-        - Computer_Science/SE/notes/SE11 行为建模.html
-        - Computer_Science/SE/notes/SE11 行为建模_test.html
-        - Computer_Science/SE/notes/SE12 设计概念.html
-        - Computer_Science/SE/notes/SE12 设计概念_test.html
-        - Computer_Science/SE/notes/SE13 架构设计.html
-        - Computer_Science/SE/notes/SE13 架构设计_test.html
-        - Computer_Science/SE/notes/SE14 构件级设计.html
-        - Computer_Science/SE/notes/SE14 构件级设计_test.html
-        - Computer_Science/SE/notes/SE15 用户界面设计.html
-        - Computer_Science/SE/notes/SE15 用户界面设计_test.html
-        - Computer_Science/SE/notes/SE16 基于模式的设计.html
-        - Computer_Science/SE/notes/SE16 基于模式的设计_test.html
-        - Computer_Science/SE/notes/SE17 Web应用设计.html
-        - Computer_Science/SE/notes/SE17 Web应用设计_test.html
-        - Computer_Science/SE/notes/SE18 移动应用设计.html
-        - Computer_Science/SE/notes/SE18 移动应用设计_test.html
-        - Computer_Science/SE/notes/SE20 评审技术.html
-        - Computer_Science/SE/notes/SE20 评审技术_test.html
-        - Computer_Science/SE/notes/SE21 软件质量保证.html
-        - Computer_Science/SE/notes/SE21 软件质量保证_test.html
-        - Computer_Science/SE/notes/SE22 软件测试策略.html
-        - Computer_Science/SE/notes/SE22 软件测试策略_test.html
-        - Computer_Science/SE/notes/SE23 测试传统应用.html
-        - Computer_Science/SE/notes/SE23 测试传统应用_test.html
-        - Computer_Science/SE/notes/SE24 测试面向对象应用.html
-        - Computer_Science/SE/notes/SE24 测试面向对象应用_test.html
-        - Computer_Science/SE/notes/SE25 Web应用测试.html
-        - Computer_Science/SE/notes/SE25 Web应用测试_test.html
-        - Computer_Science/SE/notes/SE26 移动应用测试.html
-        - Computer_Science/SE/notes/SE26 移动应用测试_test.html
-        - Computer_Science/SE/notes/SE27 安全工程.html
-        - Computer_Science/SE/notes/SE27 安全工程_test.html
-        - Computer_Science/SE/notes/SE28 形式化方法.html
-        - Computer_Science/SE/notes/SE28 形式化方法_test.html
-        - Computer_Science/SE/notes/SE29 软件配置管理.html
-        - Computer_Science/SE/notes/SE29 软件配置管理_test.html
-        - Computer_Science/SE/notes/SE30 产品度量.html
-        - Computer_Science/SE/notes/SE30 产品度量_test.html
-        - Computer_Science/SE/notes/SE31 项目管理概念.html
-        - Computer_Science/SE/notes/SE31 项目管理概念_test.html
-        - Computer_Science/SE/notes/SE32 项目过程度量.html
-        - Computer_Science/SE/notes/SE32 项目过程度量_test.html
-        - Computer_Science/SE/notes/SE33 估算.html
-        - Computer_Science/SE/notes/SE33 估算_test.html
-        - Computer_Science/SE/notes/SE34 项目调度.html
-        - Computer_Science/SE/notes/SE34 项目调度_test.html
-        - Computer_Science/SE/notes/SE35 风险分析.html
-        - Computer_Science/SE/notes/SE35 风险分析_test.html
-        - Computer_Science/SE/notes/SE36 软件维护.html
-        - Computer_Science/SE/notes/SE36 软件维护_test.html
-        - Computer_Science/SE/notes/Tutorail.html
-        - Computer_Science/SE/notes/Tutorail_test.html
-        - Computer_Science/SE/notes/大模型驱动测试与安全.html
-        - Computer_Science/SE/notes/大模型驱动测试与安全_test.html
-        - Computer_Science/SE/notes/大模型驱动编码与评审.html
-        - Computer_Science/SE/notes/大模型驱动编码与评审_test.html
-        - Computer_Science/SE/notes/大模型驱动运维与管理.html
-        - Computer_Science/SE/notes/大模型驱动运维与管理_test.html
-        - Computer_Science/SE/notes/大模型驱动需求与设计.html
-        - Computer_Science/SE/notes/大模型驱动需求与设计_test.html
-        - Computer_Science/SE/notes/开源软件前沿技术.html
-        - Computer_Science/SE/notes/开源软件前沿技术_test.html
-        - Computer_Science/SE/notes/敏捷开发.html
-        - Computer_Science/SE/notes/敏捷开发_test.html
+        - "SE00intro 课程介绍": Computer_Science/SE/notes/SE00intro 课程介绍.html
+        - "SE00intro 课程介绍_test": Computer_Science/SE/notes/SE00intro 课程介绍_test.html
+        - "SE01 软件的本质": Computer_Science/SE/notes/SE01 软件的本质.html
+        - "SE01 软件的本质_test": Computer_Science/SE/notes/SE01 软件的本质_test.html
+        - "SE02 软件工程": Computer_Science/SE/notes/SE02 软件工程.html
+        - "SE02 软件工程_test": Computer_Science/SE/notes/SE02 软件工程_test.html
+        - "SE03 软件过程结构": Computer_Science/SE/notes/SE03 软件过程结构.html
+        - "SE03 软件过程结构_test": Computer_Science/SE/notes/SE03 软件过程结构_test.html
+        - "SE04 过程模型": Computer_Science/SE/notes/SE04 过程模型.html
+        - "SE04 过程模型_test": Computer_Science/SE/notes/SE04 过程模型_test.html
+        - "SE06 软件工程中的人": Computer_Science/SE/notes/SE06 软件工程中的人.html
+        - "SE06 软件工程中的人_test": Computer_Science/SE/notes/SE06 软件工程中的人_test.html
+        - "SE07 指导实践的原则": Computer_Science/SE/notes/SE07 指导实践的原则.html
+        - "SE07 指导实践的原则_test": Computer_Science/SE/notes/SE07 指导实践的原则_test.html
+        - "SE08 理解需求": Computer_Science/SE/notes/SE08 理解需求.html
+        - "SE08 理解需求_test": Computer_Science/SE/notes/SE08 理解需求_test.html
+        - "SE09 基于场景的需求建模": Computer_Science/SE/notes/SE09 基于场景的需求建模.html
+        - "SE09 基于场景的需求建模_test": Computer_Science/SE/notes/SE09 基于场景的需求建模_test.html
+        - "SE10 基于类的需求建模": Computer_Science/SE/notes/SE10 基于类的需求建模.html
+        - "SE10 基于类的需求建模_test": Computer_Science/SE/notes/SE10 基于类的需求建模_test.html
+        - "SE11 行为建模": Computer_Science/SE/notes/SE11 行为建模.html
+        - "SE11 行为建模_test": Computer_Science/SE/notes/SE11 行为建模_test.html
+        - "SE12 设计概念": Computer_Science/SE/notes/SE12 设计概念.html
+        - "SE12 设计概念_test": Computer_Science/SE/notes/SE12 设计概念_test.html
+        - "SE13 架构设计": Computer_Science/SE/notes/SE13 架构设计.html
+        - "SE13 架构设计_test": Computer_Science/SE/notes/SE13 架构设计_test.html
+        - "SE14 构件级设计": Computer_Science/SE/notes/SE14 构件级设计.html
+        - "SE14 构件级设计_test": Computer_Science/SE/notes/SE14 构件级设计_test.html
+        - "SE15 用户界面设计": Computer_Science/SE/notes/SE15 用户界面设计.html
+        - "SE15 用户界面设计_test": Computer_Science/SE/notes/SE15 用户界面设计_test.html
+        - "SE16 基于模式的设计": Computer_Science/SE/notes/SE16 基于模式的设计.html
+        - "SE16 基于模式的设计_test": Computer_Science/SE/notes/SE16 基于模式的设计_test.html
+        - "SE17 Web应用设计": Computer_Science/SE/notes/SE17 Web应用设计.html
+        - "SE17 Web应用设计_test": Computer_Science/SE/notes/SE17 Web应用设计_test.html
+        - "SE18 移动应用设计": Computer_Science/SE/notes/SE18 移动应用设计.html
+        - "SE18 移动应用设计_test": Computer_Science/SE/notes/SE18 移动应用设计_test.html
+        - "SE20 评审技术": Computer_Science/SE/notes/SE20 评审技术.html
+        - "SE20 评审技术_test": Computer_Science/SE/notes/SE20 评审技术_test.html
+        - "SE21 软件质量保证": Computer_Science/SE/notes/SE21 软件质量保证.html
+        - "SE21 软件质量保证_test": Computer_Science/SE/notes/SE21 软件质量保证_test.html
+        - "SE22 软件测试策略": Computer_Science/SE/notes/SE22 软件测试策略.html
+        - "SE22 软件测试策略_test": Computer_Science/SE/notes/SE22 软件测试策略_test.html
+        - "SE23 测试传统应用": Computer_Science/SE/notes/SE23 测试传统应用.html
+        - "SE23 测试传统应用_test": Computer_Science/SE/notes/SE23 测试传统应用_test.html
+        - "SE24 测试面向对象应用": Computer_Science/SE/notes/SE24 测试面向对象应用.html
+        - "SE24 测试面向对象应用_test": Computer_Science/SE/notes/SE24 测试面向对象应用_test.html
+        - "SE25 Web应用测试": Computer_Science/SE/notes/SE25 Web应用测试.html
+        - "SE25 Web应用测试_test": Computer_Science/SE/notes/SE25 Web应用测试_test.html
+        - "SE26 移动应用测试": Computer_Science/SE/notes/SE26 移动应用测试.html
+        - "SE26 移动应用测试_test": Computer_Science/SE/notes/SE26 移动应用测试_test.html
+        - "SE27 安全工程": Computer_Science/SE/notes/SE27 安全工程.html
+        - "SE27 安全工程_test": Computer_Science/SE/notes/SE27 安全工程_test.html
+        - "SE28 形式化方法": Computer_Science/SE/notes/SE28 形式化方法.html
+        - "SE28 形式化方法_test": Computer_Science/SE/notes/SE28 形式化方法_test.html
+        - "SE29 软件配置管理": Computer_Science/SE/notes/SE29 软件配置管理.html
+        - "SE29 软件配置管理_test": Computer_Science/SE/notes/SE29 软件配置管理_test.html
+        - "SE30 产品度量": Computer_Science/SE/notes/SE30 产品度量.html
+        - "SE30 产品度量_test": Computer_Science/SE/notes/SE30 产品度量_test.html
+        - "SE31 项目管理概念": Computer_Science/SE/notes/SE31 项目管理概念.html
+        - "SE31 项目管理概念_test": Computer_Science/SE/notes/SE31 项目管理概念_test.html
+        - "SE32 项目过程度量": Computer_Science/SE/notes/SE32 项目过程度量.html
+        - "SE32 项目过程度量_test": Computer_Science/SE/notes/SE32 项目过程度量_test.html
+        - "SE33 估算": Computer_Science/SE/notes/SE33 估算.html
+        - "SE33 估算_test": Computer_Science/SE/notes/SE33 估算_test.html
+        - "SE34 项目调度": Computer_Science/SE/notes/SE34 项目调度.html
+        - "SE34 项目调度_test": Computer_Science/SE/notes/SE34 项目调度_test.html
+        - "SE35 风险分析": Computer_Science/SE/notes/SE35 风险分析.html
+        - "SE35 风险分析_test": Computer_Science/SE/notes/SE35 风险分析_test.html
+        - "SE36 软件维护": Computer_Science/SE/notes/SE36 软件维护.html
+        - "SE36 软件维护_test": Computer_Science/SE/notes/SE36 软件维护_test.html
+        - "SE37 敏捷开发": Computer_Science/SE/notes/SE37 敏捷开发.html
+        - "SE37 敏捷开发_test": Computer_Science/SE/notes/SE37 敏捷开发_test.html
+        - "SE38 机器学习在软件工程中的应用": Computer_Science/SE/notes/SE38 机器学习在软件工程中的应用.html
+        - "SE38 机器学习在软件工程中的应用_test": Computer_Science/SE/notes/SE38 机器学习在软件工程中的应用_test.html
+        - "大模型驱动运维与管理": Computer_Science/SE/notes/大模型驱动运维与管理.html
+        - "大模型驱动运维与管理_test": Computer_Science/SE/notes/大模型驱动运维与管理_test.html
+        - "大模型驱动需求与设计": Computer_Science/SE/notes/大模型驱动需求与设计.html
+        - "大模型驱动需求与设计_test": Computer_Science/SE/notes/大模型驱动需求与设计_test.html
+        - "开源软件前沿技术": Computer_Science/SE/notes/开源软件前沿技术.html
+        - "开源软件前沿技术_test": Computer_Science/SE/notes/开源软件前沿技术_test.html
+        - "敏捷开发": Computer_Science/SE/notes/敏捷开发.html
+        - "敏捷开发_test": Computer_Science/SE/notes/敏捷开发_test.html
     - "AI":
       - Computer_Science/AI/index.md
     - "Visualization":
