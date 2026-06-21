@@ -349,3 +349,52 @@ a:active .heimu {
     font-size: 0.4rem;
     text-align: right;
 }
+
+/* 隐藏滚动条，但仍然可以滚动 */
+
+/* Firefox */
+html,
+body,
+.md-sidebar__scrollwrap,
+.md-nav,
+.md-content,
+.md-main,
+.md-main__inner {
+  scrollbar-width: none;
+}
+
+/* IE / old Edge */
+html,
+body,
+.md-sidebar__scrollwrap,
+.md-nav,
+.md-content,
+.md-main,
+.md-main__inner {
+  -ms-overflow-style: none;
+}
+
+/* Chrome / Edge / Safari */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.md-sidebar__scrollwrap::-webkit-scrollbar,
+.md-nav::-webkit-scrollbar,
+.md-content::-webkit-scrollbar,
+.md-main::-webkit-scrollbar,
+.md-main__inner::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none;
+}
+
+/* 禁止页面横向溢出，去掉底部横向滚动条 */
+html,
+body {
+  overflow-x: hidden;
+}
+
+.md-main__inner,
+.md-content,
+.md-typeset {
+  overflow-x: hidden;
+}
